@@ -1,0 +1,227 @@
+schema_version: "1.0"
+
+component:
+  id: "README-HERO"
+  name: "Repository Hero"
+  family: "README"
+  category: "core"
+
+  description: >
+    Presenta la identidad del repositorio mediante el banner,
+    el nombre del proyecto, el tagline, los badges principales
+    y una descripción corta opcional.
+
+  version: "1.0.0"
+  status: "stable"
+  owner: "Fran Ramirez"
+
+classification:
+  priority: "required"
+
+  maturity:
+    minimum: "L1"
+    recommended: "L2"
+    supported:
+      - "L1"
+      - "L2"
+      - "L3"
+      - "L4"
+
+  audience:
+    - "recruiter"
+    - "developer"
+    - "contributor"
+    - "maintainer"
+
+  repository_types:
+    - "backend"
+    - "fullstack"
+    - "ai"
+    - "documentation"
+    - "library"
+    - "website"
+    - "github-profile"
+
+responsibilities:
+  - "Presentar la identidad oficial del proyecto."
+  - "Comunicar el propósito del proyecto en pocos segundos."
+  - "Mostrar la información esencial del repositorio."
+  - "Constituir el punto de entrada visual del README."
+
+non_responsibilities:
+  - "Explicar la arquitectura completa del proyecto."
+  - "Documentar la instalación."
+  - "Describir todas las funcionalidades."
+  - "Sustituir la sección Overview."
+  - "Mostrar métricas técnicas detalladas."
+
+inputs:
+
+  project_name:
+    type: "string"
+    required: true
+    description: "Nombre oficial mostrado en el README."
+
+    validation:
+      min_length: 2
+      max_length: 60
+
+  tagline:
+    type: "string"
+    required: true
+    description: "Frase breve que explica qué es el proyecto."
+
+    validation:
+      min_length: 10
+      max_length: 100
+
+  short_description:
+    type: "string"
+    required: false
+    description: >
+      Descripción breve situada bajo los badges.
+      Debe complementar el Overview sin duplicarlo.
+
+    validation:
+      max_length: 240
+
+  banner:
+    type: "object"
+    required: false
+    description: "Configuración del banner principal."
+
+    properties:
+
+      source:
+        type: "path"
+        required: true
+
+      alt:
+        type: "string"
+        required: true
+
+      link:
+        type: "url"
+        required: false
+
+  alignment:
+    type: "enum"
+    required: false
+    default: "center"
+
+    allowed:
+      - "left"
+      - "center"
+
+  badges:
+    type: "array"
+    required: false
+    default: []
+
+    description: >
+      Lista de badges principales que aparecen
+      en la cabecera.
+
+    validation:
+      max_items: 6
+
+outputs:
+  format: "markdown"
+  file: "template.md"
+  content_type: "text/markdown"
+
+dependencies:
+
+  required:
+    - id: "VCL-HERO"
+      minimum_version: "1.0.0"
+
+  recommended:
+    - id: "VCL-BANNER"
+      minimum_version: "1.0.0"
+
+    - id: "VCL-BADGES"
+      minimum_version: "1.0.0"
+
+  optional: []
+
+compatibility:
+  github_markdown: true
+  github_light_mode: true
+  github_dark_mode: true
+  mobile: true
+  external_html: false
+
+composition:
+
+  order:
+    - "banner"
+    - "project_name"
+    - "tagline"
+    - "badges"
+    - "short_description"
+
+  following_components:
+    recommended:
+      - "README-STATUS"
+      - "README-OVERVIEW"
+
+constraints:
+  maximum_h1_count: 1
+  maximum_badges: 6
+  animated_assets: false
+  decorative_gifs: false
+  embedded_fonts: false
+
+quality_gates:
+
+  - id: "hero-project-name"
+    severity: "error"
+    description: >
+      El nombre del proyecto aparece como único H1.
+
+  - id: "hero-tagline"
+    severity: "error"
+    description: >
+      El tagline es específico y no contiene frases genéricas.
+
+  - id: "hero-badge-limit"
+    severity: "warning"
+    description: >
+      No se muestran más de seis badges.
+
+  - id: "hero-banner-alt"
+    severity: "error"
+    description: >
+      El banner dispone de texto alternativo.
+
+  - id: "hero-theme-compatibility"
+    severity: "error"
+    description: >
+      El componente es legible en modo claro y oscuro.
+
+files:
+  template: "template.md"
+  documentation: "README.md"
+  example: "example.md"
+  metadata: "metadata.yml"
+
+catalog:
+
+  specification:
+    document: "docs/design-system/08_REPOSITORY_DESIGN_SYSTEM.md"
+    component: "README-HERO"
+
+  registry:
+    document: "docs/design-system/09_COMPONENT_CATALOG.md"
+
+implementation:
+  status: "implemented"
+  template_available: true
+  example_available: true
+  preview_available: false
+
+maintenance:
+  created: "2026-08-06"
+  last_reviewed: "2026-08-06"
+  review_cycle: "annual"

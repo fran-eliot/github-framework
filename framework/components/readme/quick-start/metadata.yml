@@ -1,0 +1,30 @@
+schema_version: "1.0"
+
+component:
+  id: "README-QUICK-START"
+  name: "Quick Start"
+  family: "README"
+  category: "core"
+
+  description: >
+    Explica cómo ejecutar el proyecto por primera vez.
+
+  version: "1.0.0"
+  status: "stable"
+
+classification:
+  priority: "required"
+
+inputs:
+
+  prerequisites:
+    type: "markdown"
+
+  installation:
+    type: "markdown"
+
+  execution:
+    type: "markdown"
+
+outputs:
+  format: "markdown"

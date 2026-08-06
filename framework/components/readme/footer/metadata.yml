@@ -1,0 +1,24 @@
+schema_version: "1.0"
+
+component:
+  id: "README-FOOTER"
+  name: "Repository Footer"
+  family: "README"
+  category: "management"
+
+  description: >
+    Cierra el README con información complementaria.
+
+  version: "1.0.0"
+  status: "stable"
+
+classification:
+  priority: "required"
+
+inputs:
+
+  footer:
+    type: "markdown"
+
+outputs:
+  format: "markdown"

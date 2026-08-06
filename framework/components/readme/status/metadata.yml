@@ -1,0 +1,45 @@
+schema_version: "1.0"
+
+component:
+  id: "README-STATUS"
+  name: "Repository Status"
+  family: "README"
+  category: "core"
+
+  description: >
+    Muestra el estado actual del proyecto y su nivel de madurez.
+
+  version: "1.0.0"
+  status: "stable"
+
+classification:
+  priority: "required"
+
+  maturity:
+    minimum: "L2"
+
+inputs:
+
+  project_status:
+    type: "enum"
+    required: true
+
+    allowed:
+      - "planning"
+      - "active"
+      - "maintenance"
+      - "archived"
+
+  maturity:
+    type: "enum"
+    required: false
+
+    allowed:
+      - "L1"
+      - "L2"
+      - "L3"
+      - "L4"
+
+outputs:
+  format: "markdown"
+  file: "template.md"

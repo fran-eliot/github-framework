@@ -1,0 +1,26 @@
+schema_version: "1.0"
+
+component:
+  id: "README-ROADMAP"
+  name: "Repository Roadmap"
+  family: "README"
+  category: "management"
+
+  description: >
+    Presenta la evolución prevista del proyecto mediante
+    un resumen del roadmap.
+
+  version: "1.0.0"
+  status: "stable"
+
+classification:
+  priority: "recommended"
+
+inputs:
+
+  roadmap:
+    type: "markdown"
+    required: true
+
+outputs:
+  format: "markdown"

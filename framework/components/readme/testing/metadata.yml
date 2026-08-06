@@ -1,0 +1,30 @@
+schema_version: "1.0"
+
+component:
+  id: "README-TESTING"
+  name: "Testing"
+
+  family: "README"
+
+  category: "engineering"
+
+  description: >
+    Resume la estrategia de pruebas del proyecto.
+
+  version: "1.0.0"
+
+  status: "stable"
+
+classification:
+  priority: "recommended"
+
+inputs:
+
+  strategy:
+    type: "markdown"
+
+  coverage:
+    type: "string"
+
+outputs:
+  format: "markdown"

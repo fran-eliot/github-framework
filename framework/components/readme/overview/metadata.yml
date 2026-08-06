@@ -1,0 +1,63 @@
+schema_version: "1.0"
+
+component:
+  id: "README-OVERVIEW"
+  name: "Repository Overview"
+  family: "README"
+  category: "core"
+
+  description: >
+    Presenta una visión general del proyecto, explicando
+    su propósito, objetivos y contexto.
+
+  version: "1.0.0"
+  status: "stable"
+  owner: "Fran Ramirez"
+
+classification:
+  priority: "required"
+
+  maturity:
+    minimum: "L1"
+    recommended: "L2"
+
+inputs:
+
+  overview:
+    type: "markdown"
+    required: true
+
+    description: >
+      Explicación breve del proyecto.
+
+    validation:
+      min_length: 80
+      max_length: 1200
+
+outputs:
+  format: "markdown"
+  file: "template.md"
+
+dependencies:
+
+  required: []
+
+  recommended:
+    - id: "README-HERO"
+      minimum_version: "1.0.0"
+
+quality_gates:
+
+  - id: "overview-clear-purpose"
+    severity: "error"
+    description: >
+      El propósito del proyecto queda claramente explicado.
+
+  - id: "overview-no-installation"
+    severity: "warning"
+    description: >
+      No debe contener instrucciones de instalación.
+
+maintenance:
+  created: "2026-08-06"
+  last_reviewed: "2026-08-06"

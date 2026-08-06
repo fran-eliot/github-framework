@@ -1,0 +1,24 @@
+schema_version: "1.0"
+
+component:
+  id: "README-DOCUMENTATION"
+  name: "Documentation"
+  family: "README"
+  category: "engineering"
+
+  description: >
+    Centraliza los enlaces a la documentación del proyecto.
+
+  version: "1.0.0"
+  status: "stable"
+
+classification:
+  priority: "required"
+
+inputs:
+
+  documents:
+    type: "list"
+
+outputs:
+  format: "markdown"
