@@ -1,171 +1,154 @@
-# GitHub Framework
+<h1 align="center">
+  GitHub Framework
+</h1>
 
-> **Engineering framework for building professional GitHub repositories, technical portfolios and documentation systems.**
+🇬🇧 **English** | 🇪🇸 [Español](README_es.md)
 
-Build repositories with the same discipline used to build software.
+<p align="center">
+  <strong>Build repositories with the same discipline used to build software.</strong>
+</p>
 
-![Version](https://img.shields.io/badge/version-v0.1.0-blue)
-![Status](https://img.shields.io/badge/status-active-success)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Documentation](https://img.shields.io/badge/docs-in_progress-orange)
+<p align="center">
+  <img src="https://img.shields.io/badge/version-v0.1.0-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/status-active-success" alt="Status" />
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
+</p>
 
----
+<p align="center">
+  Engineering framework for designing, building and maintaining professional GitHub repositories.
+</p>
 
-# Overview
+## 📖 Overview
 
-GitHub Framework is an opinionated engineering framework designed to create **consistent**, **maintainable** and **reusable** GitHub repositories.
+GitHub Framework is an opinionated engineering framework for designing, building and maintaining professional GitHub repositories.
 
-Instead of designing every repository from scratch, the framework provides a common engineering foundation through standards, reusable components, documentation patterns and repository templates.
+Instead of treating repositories as collections of files that evolve through isolated decisions, the Framework applies software engineering principles to repository structure, documentation and long-term maintenance.
 
-Its goal is simple:
+It provides a common engineering foundation through standards, reusable components, repository templates and reference implementations.
 
-> Build repositories with the same discipline used to build software.
+The goal is to reduce repetitive decisions while allowing each project to remain adapted to its own domain.
 
----
+> Repositories are software assets. They deserve software engineering.
 
-# Why GitHub Framework?
+## ✨ Features
 
-Most repositories evolve organically.
-
-Documentation becomes inconsistent.
-
-README files grow without structure.
-
-Each project follows different conventions.
-
-Quality depends on individual decisions.
-
-GitHub Framework introduces a shared engineering approach that enables repositories to evolve consistently while remaining adapted to their own domain.
-
----
-
-# Core Pillars
-
-| Pillar                        | Purpose                                                                  |
-| ----------------------------- | ------------------------------------------------------------------------ |
-| **Engineering Standards**     | Define consistent conventions and best practices.                        |
-| **Repository Design System**  | Establish reusable design principles for repositories and documentation. |
-| **Component Library**         | Reusable building blocks for README files and documentation.             |
-| **Repository Templates**      | Standardized starting points for different project types.                |
-| **Reference Implementations** | Real projects built using the Framework itself.                          |
+- Engineering standards
+- Repository Design System
+- Reusable documentation components
+- Repository templates
+- Reference implementations
+- Framework evolution
+- Validation-ready architecture
 
 ---
 
-# Features
-
-* Modular README components
-* Repository engineering standards
-* Documentation design system
-* Component-driven documentation
-* Reusable repository templates
-* Consistent project organization
-* Versioned engineering framework
-* Reference implementations
-* Automation-ready architecture
-
----
-
-# Framework Architecture
+## 🏗️ Framework Architecture
 
 ```text
                     GitHub Framework
-
                            │
-
         ┌──────────────────┼──────────────────┐
-
         │                  │                  │
-
    Standards         Components         Templates
-
         │                  │                  │
-
         └──────────────────┼──────────────────┘
-
                            │
-
-                 Reference Implementations
+              Reference Implementations
 ```
 
-The framework separates engineering standards from reusable components and repository templates, allowing projects to share the same principles without sacrificing flexibility.
+GitHub Framework is built around a small set of engineering building blocks.
+
+Standards define common engineering practices.
+
+Components provide reusable documentation and repository building blocks.
+
+Templates assemble components into reusable repository structures.
+
+Reference implementations validate the Framework through real-world usage.
+
+For a complete architectural description, see the [Architecture documentation](docs/architecture/).
 
 ---
 
-# Getting Started
+## 🚀 Getting Started
 
-The framework is currently under active development.
+Start by exploring the official reference implementation of GitHub Framework.
 
-Current implementation includes:
+We recommend the following path:
 
-* Repository Standards (GRS)
-* Repository Design System (RDS)
-* Component Catalog
-* README Component Library
-* Framework Architecture
-* Initial Reference Implementation
-
-Future versions will progressively introduce:
-
-* Documentation Components
-* Workflow Components
-* Repository Templates
-* Validation Tools
-* Repository Generator
+1. Read this README.
+2. Explore the documentation.
+3. Discover the reusable components.
+4. Review the architecture.
+5. Follow the roadmap.
 
 ---
 
-# Documentation
+## 🔗 Quick Links
 
-Project documentation is organized into several areas:
-
-```text
-docs/
-├── architecture/
-├── design-system/
-├── governance/
-├── implementation/
-└── standards/
-```
-
-The documentation describes both the architecture of the Framework and the engineering principles behind it.
+- 📚 [Documentation](docs/)
+- 🗺️ [Roadmap](ROADMAP.md)
+- 🤝 [Contributing](CONTRIBUTING.md)
+- 📄 [License](LICENSE)
 
 ---
 
-# Roadmap
+## 📚 Documentation
 
-## Version 0.2
+Project documentation is organized into focused areas.
 
-* Complete Framework README
-* Reference implementation
-* Improve component library
+| Area | Description |
+|------|-------------|
+| [`architecture/`](docs/architecture/) | Framework architecture and design decisions. |
+| [`standards/`](docs/standards/) | Engineering standards and conventions. |
+| [`design-system/`](docs/design-system/) | Repository Design System and component catalog. |
+| [`implementation/`](docs/implementation/) | Reference implementations and implementation guides. |
+| [`governance/`](docs/governance/) | Project governance and planning documents. |
 
-## Version 0.3
-
-* Repository Templates
-* Documentation Components
-
-## Version 0.4
-
-* Workflow Components
-* GitHub Components
-
-## Version 0.5
-
-* Automation tools
-* Repository validation
-
-## Version 1.0
-
-* Stable Framework
-* Repository Generator
-* Complete documentation
-* Public release
+For detailed information, explore the `docs/` directory.
 
 ---
 
-# License
+## 🗺️ Roadmap
 
-This project will be released under the MIT License.
+GitHub Framework evolves through incremental releases.
+
+Current milestones include:
+
+- **v0.2.0** — Open Source Readiness
+- **v0.3.0** — Documentation Framework
+- **v0.4.0** — Repository Templates
+- **v0.5.0** — Workflow Framework
+- **v0.6.0** — Framework Automation
+- **v1.0.0** — Stable Release
+
+For the complete roadmap, see [ROADMAP.md](ROADMAP.md).
+
+---
+
+## 🤝 Contributing
+
+Contributions of any size are welcome.
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening an Issue or Pull Request.
+
+---
+
+## 📄 License
+
+This project is released under the MIT License.
+
+---
+
+## ⭐ Project Status
+
+GitHub Framework is currently evolving through incremental releases.
+
+The project has completed its architectural design and is now focused on validating the Framework through real-world implementations.
+
+Current milestone:
+
+**v0.2.0 — Open Source Readiness**
 
 ---
 
