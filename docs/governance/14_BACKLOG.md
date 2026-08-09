@@ -19,45 +19,43 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 ---
 
-# Prioridad Alta
+# Sprint Actual
 
-## GF-001 · README oficial del Framework
+## Historias de Usuario
+
+## GF-001 · Complete Framework README
 
 **Estado:** En progreso
 
-Construir el README oficial utilizando exclusivamente componentes del propio Framework.
+Construir la implementación oficial de referencia del README de GitHub Framework utilizando los componentes README del propio Framework y validando el enfoque de *dogfooding*.
 
 ---
 
-## GF-002 · LICENSE
+## GF-002 · Add Project License
 
 **Estado:** Pendiente
 
-Añadir la licencia oficial del proyecto.
+Incorporar la licencia oficial del proyecto para definir claramente los términos de uso, modificación y distribución de GitHub Framework.
 
 ---
 
-## GF-003 · Open Source Readiness
+## GF-003 · Prepare GitHub Community Files
 
 **Estado:** Pendiente
 
-Preparar la estructura `.github/`.
-
-Incluye:
-
-* Pull Request Template
-* Issue Templates
-* CODEOWNERS
+Preparar los archivos de comunidad de GitHub necesarios para facilitar la colaboración, la gestión de incidencias y el mantenimiento del proyecto.
 
 ---
 
-# Prioridad Media
+## GF-004 · Create CONTRIBUTING Guide
 
-## GF-004 · CONTRIBUTING.md
+**Estado:** Pendiente
 
-Definir la guía de contribución.
+Definir una guía de contribución que establezca el proceso para colaborar en GitHub Framework de forma consistente con sus principios de ingeniería.
 
 ---
+
+# Próximas Historias
 
 ## GF-005 · SECURITY.md
 
@@ -77,7 +75,7 @@ Implementar la primera biblioteca de componentes de documentación.
 
 ---
 
-# Prioridad Baja
+# Futuras Historias
 
 ## GF-008 · Repository Templates
 
