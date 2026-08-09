@@ -3,11 +3,11 @@
 | Campo                    | Valor                            |
 | ------------------------ | -------------------------------- |
 | **Proyecto**             | GitHub Framework                 |
-| **Versión actual**       | v0.1.0                           |
-| **Estado**               | En desarrollo activo             |
+| **Versión actual**       | v0.2.0                           |
+| **Estado**               | Open Source Ready                |
 | **Fase**                 | Implementación                   |
-| **Sprint actual**        | Sprint 4 — Open Source Readiness |
-| **Última actualización** | 2026-08-07                       |
+| **Sprint actual**        | Sprint 5 — Documentation Framework |
+| **Última actualización** | 2026-08-09                       |
 
 ---
 
@@ -23,17 +23,19 @@ El objetivo actual es validar el Framework mediante su propia utilización (dogf
 
 | Área                              | Estado |
 | --------------------------------- | :----: |
-| Arquitectura del Framework        |    ✅   |
-| GitHub Repository Standards (GRS) |    ✅   |
-| Repository Design System (RDS)    |    ✅   |
-| Component Catalog                 |    ✅   |
-| Componentes README                |    ✅   |
-| README oficial del Framework      |   🚧   |
-| Componentes Documentation         |    ⏳   |
-| Componentes Workflow              |    ⏳   |
-| Componentes Visual                |    ⏳   |
-| Repository Templates              |    ⏳   |
-| Automatización                    |    ⏳   |
+| Arquitectura del Framework        |   ✅   |
+| GitHub Repository Standards (GRS) |   ✅   |
+| Repository Design System (RDS)    |   ✅   |
+| Component Catalog                 |   ✅   |
+| Componentes README                |   ✅   |
+| README oficial del Framework      |   ✅   |
+| GitHub Community Files            |   ✅   |
+| Guía de Contribución              |   ✅   |
+| Componentes Documentation         |   ⏳   |
+| Componentes Workflow              |   ⏳   |
+| Componentes Visual                |   ⏳   |
+| Repository Templates              |   ⏳   |
+| Automatización                    |   ⏳   |
 
 ---
 
@@ -41,16 +43,7 @@ El objetivo actual es validar el Framework mediante su propia utilización (dogf
 
 ## Objetivo
 
-Convertir GitHub Framework en un repositorio con apariencia y estructura de un proyecto open source profesional.
-
-## Entregables
-
-* README oficial.
-* LICENSE.
-* ROADMAP.
-* PROJECT_STATUS.
-* BITÁCORA.
-* Preparación de `.github/`.
+Iniciar el desarrollo del Documentation Framework y ampliar la biblioteca de componentes reutilizables para documentación técnica.
 
 ---
 
@@ -58,11 +51,11 @@ Convertir GitHub Framework en un repositorio con apariencia y estructura de un p
 
 Versión objetivo
 
-v0.2.0
+v0.3.0
 
 Objetivo principal
 
-Open Source Readiness
+Documentation Framework
 
 ---
 
@@ -70,15 +63,14 @@ Open Source Readiness
 
 ## Versión objetivo
 
-**v0.2.0**
+**v0.3.0**
 
 ### Definition of Done
 
-* README oficial publicado.
-* Documentación de gobierno consolidada.
-* Repositorio preparado para evolución como proyecto open source.
-* CHANGELOG actualizado.
-* Tag v0.2.0 publicado.
+* Biblioteca inicial de componentes Documentation.
+* Primera implementación de referencia.
+* Integración con Repository Design System.
+* Documentación actualizada.
 
 ---
 
@@ -108,11 +100,11 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Finalizar el README oficial.
-2. Consolidar la preparación open source.
-3. Implementar Componentes Documentation.
+1. Diseñar Documentation Framework.
+2. Implementar Componentes Documentation.
+3. Validar el Framework mediante dogfooding.
 4. Diseñar Repository Templates.
-5. Iniciar herramientas de automatización.
+5. Continuar la evolución del ecosistema GitHub Framework.
 
 ---
 
@@ -121,3 +113,4 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 | Versión | Fecha      | Estado                  |
 | ------- | ---------- | ----------------------- |
 | v0.1.0  | 2026-08-07 | Arquitectura completada |
+| v0.2.0 | 2026-08-09 | Open Source Readiness completado |

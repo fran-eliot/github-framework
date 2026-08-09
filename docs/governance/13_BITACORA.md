@@ -39,6 +39,38 @@ El Framework deja de ser una idea conceptual y pasa a convertirse en un proyecto
 
 ---
 
+---
+
+# 2026-08-09 · v0.2.0
+
+## Objetivo
+
+Preparar GitHub Framework para su publicación como proyecto Open Source.
+
+## Trabajo realizado
+
+* Implementación del README oficial en inglés.
+* Creación de `README_es.md`.
+* Incorporación de la licencia MIT.
+* Creación de `CODEOWNERS`.
+* Implementación de GitHub Issue Forms.
+* Creación de la plantilla de Pull Requests.
+* Elaboración de `CONTRIBUTING.md`.
+* Validación del enfoque de *dogfooding* durante el desarrollo.
+
+## Decisiones relevantes
+
+* El README pasa a considerarse una implementación oficial de referencia del Framework.
+* La documentación de gobierno se actualiza al finalizar cada Sprint.
+* Los metadatos de GitHub (labels, milestones y asignaciones) dejan de duplicarse dentro de las Historias de Usuario.
+* Los Community Files se mantienen deliberadamente mínimos, priorizando simplicidad y mantenibilidad.
+
+## Resultado
+
+GitHub Framework alcanza el estado **Open Source Ready** y queda preparado para iniciar el desarrollo del Documentation Framework.
+
+---
+
 # Próxima Entrada
 
-Se añadirá una nueva entrada al finalizar el Sprint 4 y publicar la versión **v0.2.0**.
+Se añadirá una nueva entrada al finalizar el Sprint 5 y publicar la versión **v0.3.0**..

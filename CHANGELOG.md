@@ -4,16 +4,29 @@
 
 ### Added
 
-- Project governance documentation.
-- Product backlog.
-- Working agreements.
-- Continuity Kit.
-- Framework implementation planning.
+- Documentation Framework (work in progress).
+
+---
+
+## [0.2.0] - 2026-08-09
+
+### Added
+
+- Official Framework README.
+- Spanish README localization.
+- MIT License.
+- GitHub Community Files.
+- CODEOWNERS.
+- Pull Request template.
+- Bug Report Issue Form.
+- Feature Request Issue Form.
+- Contribution Guide (`CONTRIBUTING.md`).
 
 ### Changed
 
-- Repository organization.
-- Documentation structure.
+- Repository prepared for Open Source collaboration.
+- README converted into the official reference implementation.
+- Documentation governance refined after the first implementation sprint.
 
 ---
 
