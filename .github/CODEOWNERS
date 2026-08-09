@@ -1,0 +1,9 @@
+# ------------------------------------------------------------------
+# GitHub Framework - CODEOWNERS
+#
+# This file defines the default code owners for the repository.
+# Review requests are automatically assigned by GitHub.
+# ------------------------------------------------------------------
+
+# Default owner for the entire repository
+* @fran-eliot
