@@ -1,0 +1,45 @@
+name: Feature request
+description: Propose an improvement or new capability for GitHub Framework.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        GitHub Framework evolves from real use cases.
+
+        Before proposing a new capability, consider whether an existing component, template or pattern could solve the problem.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What real problem or limitation does this proposal address?
+      placeholder: Describe the need or limitation.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the solution you would like to see.
+    validations:
+      required: true
+
+  - type: textarea
+    id: value
+    attributes:
+      label: Value
+      description: Explain how this improvement would benefit GitHub Framework or its users.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe existing components, patterns or alternatives you considered.
+    validations:
+      required: false
