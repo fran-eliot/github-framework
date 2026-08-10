@@ -3,9 +3,9 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión**              | v0.1.0           |
+| **Versión**              | v0.2.0           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-08-07       |
+| **Última actualización** | 2026-08-09       |
 
 ---
 
@@ -19,79 +19,60 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 ---
 
-# Sprint Actual
 
-## Historias de Usuario
+## Historias Completadas
 
-## GF-001 · Complete Framework README
-
-**Estado:** En progreso
-
-Construir la implementación oficial de referencia del README de GitHub Framework utilizando los componentes README del propio Framework y validando el enfoque de *dogfooding*.
-
----
-
-## GF-002 · Add Project License
-
-**Estado:** Pendiente
-
-Incorporar la licencia oficial del proyecto para definir claramente los términos de uso, modificación y distribución de GitHub Framework.
+| ID | Historia | Versión | Estado |
+|----|----------|---------|--------|
+| GF-001 | Complete Framework README | v0.2.0 | Done |
+| GF-002 | Add Project License | v0.2.0 | Done |
+| GF-003 | Prepare GitHub Community Files | v0.2.0 | Done |
+| GF-004 | Create CONTRIBUTING Guide | v0.2.0 | Done |
 
 ---
 
-## GF-003 · Prepare GitHub Community Files
+## Sprint Activo
 
-**Estado:** Pendiente
+### Sprint 5 — Documentation Framework
 
-Preparar los archivos de comunidad de GitHub necesarios para facilitar la colaboración, la gestión de incidencias y el mantenimiento del proyecto.
+**Objetivo**
 
----
+Diseñar e implementar la primera biblioteca reutilizable de componentes de documentación del Framework.
 
-## GF-004 · Create CONTRIBUTING Guide
+**Resultado esperado**
 
-**Estado:** Pendiente
+Disponer de un conjunto coherente de componentes reutilizables para documentación técnica, validados mediante la documentación del propio GitHub Framework (dogfooding).
 
-Definir una guía de contribución que establezca el proceso para colaborar en GitHub Framework de forma consistente con sus principios de ingeniería.
+**Sprint Goal**
 
----
-
-# Próximas Historias
-
-## GF-005 · SECURITY.md
-
-Definir la política de seguridad.
+Transform documentation into reusable engineering components.
 
 ---
 
-## GF-006 · CODE_OF_CONDUCT.md
+## Product Backlog
 
-Añadir un código de conducta para el proyecto.
-
----
-
-## GF-007 · Documentation Components
-
-Implementar la primera biblioteca de componentes de documentación.
-
----
-
-# Futuras Historias
-
-## GF-008 · Repository Templates
-
-Diseñar las primeras plantillas reutilizables.
+| ID | Historia | Milestone | Prioridad |
+|----|----------|:---------:|
+| GF-005 | Documentation Component Architecture  | v0.3.0 | Alta |
+| GF-006 | Core Documentation Components | v0.3.0 | Alta |
+| GF-007 | Documentation Reference Implementation | v0.3.0 | Alta |
+| GF-008 | Documentation Writing Standards | v0.3.0 | Media |
+| GF-009 | Repository Templates | v0.4.0 | Media |
+| GF-010 | Workflow Components | v0.5.0 | Media |
+| GF-011 | Visual Components | v0.5.0 | Baja |
+| GF-012 | Framework Automation | v0.6.0 | Baja |
 
 ---
 
-## GF-009 · Validation Tools
+## Roadmap Alignment
 
-Crear herramientas de validación documental.
-
----
-
-## GF-010 · CLI Foundation
-
-Diseñar la base del futuro CLI `ghf`.
+| Milestone | Estado |
+|-----------|:------:|
+| v0.3.0 — Documentation Framework | 🟡 Planned |
+| v0.4.0 — Repository Templates | ⚪ Planned |
+| v0.5.0 — Workflow Framework | ⚪ Planned |
+| v0.6.0 — Framework Automation | ⚪ Planned |
+| v1.0.0 — Stable Release | ⚪ Planned |
 
 ---
 
@@ -131,4 +112,5 @@ Una tarea podrá incorporarse a un Sprint cuando:
 
 | Versión | Fecha      | Descripción                          |
 | ------- | ---------- | ------------------------------------ |
-| 1.0.0   | 2026-08-07 | Primera versión del Product Backlog. |
+| v0.1.0   | 2026-08-07 | Primera versión del Product Backlog. |
+| v0.2.0   | 2026-08-09 | Planificación Sprint 5 y reorganización del Product Backlog. |
