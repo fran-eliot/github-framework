@@ -1,0 +1,13 @@
+id: DOC-PROJECT-STATUS
+name: Project Status
+family: Documentation
+version: 0.1.0
+status: Experimental
+priority: Required
+audience:
+  - Maintainer
+maturity: L2
+description: >
+  Componente reutilizable para comunicar el estado actual de un proyecto,
+  su progreso, riesgos, próximos objetivos e hitos relevantes..
+dependencies: []
