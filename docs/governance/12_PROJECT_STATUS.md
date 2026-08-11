@@ -13,9 +13,11 @@
 
 # Estado General
 
-GitHub Framework ha completado su fase de arquitectura y ha iniciado la fase de implementación.
+GitHub Framework ha completado las fases de arquitectura, Open Source Readiness y Documentation Framework.
 
-El objetivo actual es validar el Framework mediante su propia utilización (dogfooding), construyendo el repositorio oficial utilizando exclusivamente sus componentes, estándares y metodología.
+El Framework dispone actualmente de una arquitectura formal, estándares de repositorio, sistema de componentes reutilizables, mecanismos de gobierno y una primera biblioteca de Documentation Components validada mediante dogfooding.
+
+El trabajo actual se centra en cerrar la documentación de Sprint 5 y preparar la release `v0.3.0 — Documentation Framework`.
 
 ---
 
@@ -31,8 +33,8 @@ El objetivo actual es validar el Framework mediante su propia utilización (dogf
 | Open Source Readiness | ✅ |
 | Documentation Component Architecture | ✅ |
 | Core Documentation Components | ✅ |
-| Documentation Reference Implementation | ⏳ |
-| Documentation Writing Standards | ⏳ |
+| Documentation Reference Implementation | ✅ |
+| Documentation Writing Standards | ✅ |
 
 ---
 
@@ -46,14 +48,17 @@ Construir y validar la primera biblioteca reutilizable de Documentation Componen
 
 ### Estado
 
+Sprint completado.
+
+Se ha definido la arquitectura de Documentation Components, implementado la primera biblioteca Core, validado su uso mediante dogfooding y establecido un estándar común de redacción documental.
+
+### Resultado
+
 - Documentation Component Architecture completada.
 - Core Documentation Components implementados.
-- Reference Implementation en curso.
-- Documentation Writing Standards pendiente.
-
-### Trabajo actual
-
-Validación de los Documentation Components mediante dogfooding sobre la documentación real de GitHub Framework.
+- Reference Implementation completada.
+- Documentation Writing Standards definidos.
+- Documentation Framework validado mediante dogfooding.
 
 ---
 
@@ -61,15 +66,15 @@ Validación de los Documentation Components mediante dogfooding sobre la documen
 
 ## Versión objetivo
 
-**v0.3.0**
+**v0.3.0 — Documentation Framework**
 
 ### Definition of Done
 
 - [x] Documentation Component Architecture definida.
 - [x] Core Documentation Components implementados.
-- [ ] Reference Implementation completada.
-- [ ] Documentation Writing Standards definidos.
-- [ ] Documentation Framework validado mediante dogfooding.
+- [x] Reference Implementation completada.
+- [x] Documentation Writing Standards definidos.
+- [x] Documentation Framework validado mediante dogfooding.
 - [ ] Documentación de proyecto actualizada.
 - [ ] Release `v0.3.0` preparada.
 
@@ -102,11 +107,11 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Completar la Reference Implementation del Documentation Framework.
-2. Definir Documentation Writing Standards.
-3. Validar la reutilización de los Documentation Components mediante dogfooding.
-4. Actualizar la documentación de gobierno y release.
-5. Preparar `v0.3.0`.
+1. Completar la actualización documental de Sprint 5.
+2. Validar el estado final de `feature/documentation-framework`.
+3. Preparar y revisar la Pull Request hacia `main`.
+4. Publicar `v0.3.0 — Documentation Framework`.
+5. Definir el siguiente milestone del Framework.
 
 ---
 

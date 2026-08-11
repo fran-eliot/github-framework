@@ -5,7 +5,7 @@
 | **Proyecto**             | GitHub Framework |
 | **Versión**              | v0.2.0           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-08-09       |
+| **Última actualización** | 2026-08-11       |
 
 ---
 
@@ -19,7 +19,6 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 ---
 
-
 ## Historias Completadas
 
 | ID | Historia | Versión | Estado |
@@ -28,35 +27,27 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 | GF-002 | Add Project License | v0.2.0 | Done |
 | GF-003 | Prepare GitHub Community Files | v0.2.0 | Done |
 | GF-004 | Create CONTRIBUTING Guide | v0.2.0 | Done |
+| GF-005 | Documentation Component Architecture | v0.3.0 | Done |
+| GF-006 | Core Documentation Components | v0.3.0 | Done |
+| GF-007 | Documentation Reference Implementation | v0.3.0 | Done |
+| GF-008 | Documentation Writing Standards | v0.3.0 | Done |
 
 ---
 
 ## Sprint Activo
 
-### Sprint 5 — Documentation Framework
+No existe actualmente un Sprint activo.
 
-**Objetivo**
+Sprint 5 — Documentation Framework ha completado su alcance funcional y se encuentra en proceso de cierre y preparación de la release `v0.3.0`.
 
-Diseñar e implementar la primera biblioteca reutilizable de componentes de documentación del Framework.
-
-**Resultado esperado**
-
-Disponer de un conjunto coherente de componentes reutilizables para documentación técnica, validados mediante la documentación del propio GitHub Framework (dogfooding).
-
-**Sprint Goal**
-
-Transform documentation into reusable engineering components.
+El siguiente Sprint se definirá después del cierre de `v0.3.0`.
 
 ---
 
 ## Product Backlog
 
 | ID | Historia | Milestone | Prioridad |
-|----|----------|:---------:|
-| GF-005 | Documentation Component Architecture  | v0.3.0 | Alta |
-| GF-006 | Core Documentation Components | v0.3.0 | Alta |
-| GF-007 | Documentation Reference Implementation | v0.3.0 | Alta |
-| GF-008 | Documentation Writing Standards | v0.3.0 | Media |
+|----|----------|:---------:|:---------:|
 | GF-009 | Repository Templates | v0.4.0 | Media |
 | GF-010 | Workflow Components | v0.5.0 | Media |
 | GF-011 | Visual Components | v0.5.0 | Baja |
@@ -68,7 +59,7 @@ Transform documentation into reusable engineering components.
 
 | Milestone | Estado |
 |-----------|:------:|
-| v0.3.0 — Documentation Framework | 🟡 Planned |
+| v0.3.0 — Documentation Framework | 🟡 Release preparation |
 | v0.4.0 — Repository Templates | ⚪ Planned |
 | v0.5.0 — Workflow Framework | ⚪ Planned |
 | v0.6.0 — Framework Automation | ⚪ Planned |
@@ -110,7 +101,8 @@ Una tarea podrá incorporarse a un Sprint cuando:
 
 # Historial
 
-| Versión | Fecha      | Descripción                          |
-| ------- | ---------- | ------------------------------------ |
-| v0.1.0   | 2026-08-07 | Primera versión del Product Backlog. |
-| v0.2.0   | 2026-08-09 | Planificación Sprint 5 y reorganización del Product Backlog. |
+| Versión | Fecha      | Descripción |
+| ------- | ---------- | ----------- |
+| v0.1.0 | 2026-08-07 | Primera versión del Product Backlog. |
+| v0.2.0 | 2026-08-09 | Planificación Sprint 5 y reorganización del Product Backlog. |
+| v0.2.1 | 2026-08-11 | Cierre funcional de Sprint 5 y actualización del Product Backlog. |
