@@ -1,0 +1,14 @@
+id: DOC-ARCHITECTURE
+name: Architecture
+family: Documentation
+version: 0.1.0
+status: Experimental
+priority: Required
+audience:
+  - Developer
+maturity: L3
+description: >
+  Componente reutilizable para describir la arquitectura de un proyecto,
+  incluyendo su contexto, estructura, componentes principales, relaciones,
+  restricciones y decisiones arquitectónicas relevantes.
+dependencies: []
