@@ -1,0 +1,14 @@
+id: DOC-REFERENCES
+name: References
+family: Documentation
+version: 0.1.0
+status: Experimental
+priority: Required
+audience:
+  - All
+maturity: L2
+description: >
+  Componente reutilizable para centralizar referencias externas relevantes,
+  estándares, especificaciones, documentación oficial y otras fuentes de
+  consulta relacionadas con un proyecto.
+dependencies: []
