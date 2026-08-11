@@ -9,5 +9,5 @@ audience:
 maturity: L2
 description: >
   Componente reutilizable para comunicar el estado actual de un proyecto,
-  su progreso, riesgos, próximos objetivos e hitos relevantes..
+  su progreso, riesgos, próximos objetivos e hitos relevantes.
 dependencies: []
