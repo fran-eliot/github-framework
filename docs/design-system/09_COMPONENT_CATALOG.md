@@ -1,12 +1,12 @@
 # 09 - COMPONENT CATALOG
 
-| Field        | Value                       |
-| ------------ | --------------------------- |
-| **Project**  | GitHub Professional Profile |
-| **Document** | Component Catalog           |
-| **Version**  | 1.0.0 (Draft)               |
-| **Status**   | In Progress                 |
-| **Owner**    | Fran Ramirez                |
+| Field        | Value                     |
+| ------------ | ------------------------- |
+| **Project**  | GitHub Framework          |
+| **Document** | Component Catalog         |
+| **Version**  | 1.0.1                     |
+| **Status**   | Stable                    |
+| **Owner**    | Fran Ramirez              |
 
 ---
 
@@ -1871,6 +1871,7 @@ A partir de este momento, cualquier nuevo repositorio podrá construirse selecci
 
 # 98. Revision History
 
-| Version | Date       | Description                                     |
-| ------- | ---------- | ----------------------------------------------- |
-| 1.0.0   | 2026-08-05 | Primera versión completa del Component Catalog. |
+| Version | Date       | Description |
+| ------- | ---------- | ----------- |
+| 1.0.0   | 2026-08-05 | Primera versión del Component Catalog. |
+| 1.0.1   | 2026-08-11 | Metadata alineada con GitHub Framework durante la implementación de referencia del Documentation Framework. |

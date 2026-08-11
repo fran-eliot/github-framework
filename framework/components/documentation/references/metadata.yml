@@ -3,7 +3,7 @@ name: References
 family: Documentation
 version: 0.1.0
 status: Experimental
-priority: Required
+priority: Recommended
 audience:
   - All
 maturity: L2

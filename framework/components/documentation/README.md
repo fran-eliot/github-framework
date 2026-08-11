@@ -449,7 +449,28 @@ Su objetivo es mantener **el conjunto mínimo de componentes necesarios para con
 
 ---
 
-## 16. Estado Actual
+## 16. Reference Implementation
+
+GitHub Framework actúa como implementación de referencia de la Documentation Component Library.
+
+La validación inicial de los Core Documentation Components utiliza las siguientes implementaciones:
+
+| Component | Reference Implementation | Adoption |
+| --------- | ------------------------ | -------- |
+| `DOC-ARCHITECTURE` | `docs/design-system/08_REPOSITORY_DESIGN_SYSTEM.md` + `09_COMPONENT_CATALOG.md` | Specialized / Distributed |
+| `DOC-PROJECT-STATUS` | `docs/governance/12_PROJECT_STATUS.md` | Direct |
+| `DOC-CHANGELOG` | `CHANGELOG.md` | Direct |
+| `DOC-REFERENCES` | — | Not instantiated |
+
+`DOC-REFERENCES` pertenece al Core de la biblioteca, pero su prioridad `Recommended` no obliga a todos los repositorios a instanciarlo.
+
+La implementación de referencia valida el contrato conceptual de los componentes, no la reproducción literal de sus templates.
+
+Las especializaciones son válidas cuando preservan la responsabilidad del componente y evitan duplicación documental.
+
+---
+
+## 17. Estado Actual
 
 La arquitectura de la Documentation Component Library está definida.
 

@@ -2,10 +2,10 @@
 
 | Field        | Value                          |
 | ------------ | ------------------------------ |
-| **Project**  | GitHub Professional Profile    |
+| **Project**  | GitHub Framework               |
 | **Document** | Repository Design System (RDS) |
-| **Version**  | 1.0.0 (Draft)                  |
-| **Status**   | In Progress                    |
+| **Version**  | 1.0.1                          |
+| **Status**   | Stable                         |
 | **Owner**    | Fran Ramirez                   |
 
 ---
@@ -4621,3 +4621,4 @@ De esta forma, el sistema dejará de ser únicamente documental y pasará a conv
 | Version | Date       | Description                                            |
 | ------- | ---------- | ------------------------------------------------------ |
 | 1.0.0   | 2026-08-05 | Primera versión completa del Repository Design System. |
+| 1.0.1   | 2026-08-11 | Metadata alineada con GitHub Framework durante la implementación de referencia del Documentation Framework. |

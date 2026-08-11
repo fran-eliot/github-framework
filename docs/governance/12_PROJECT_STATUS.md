@@ -1,13 +1,13 @@
 # 12 - PROJECT STATUS
 
-| Campo                    | Valor                            |
-| ------------------------ | -------------------------------- |
-| **Proyecto**             | GitHub Framework                 |
-| **Versión actual**       | v0.2.0                           |
-| **Estado**               | Open Source Ready                |
-| **Fase**                 | Implementación                   |
+| Campo                   | Valor                          |
+| ----------------------- | ------------------------------ |
+| **Proyecto**            | GitHub Framework               |
+| **Versión actual**      | v0.2.0                         |
+| **Estado**              | En desarrollo                  |
+| **Fase**                | Documentation Framework        |
 | **Sprint actual**        | Sprint 5 — Documentation Framework |
-| **Última actualización** | 2026-08-09                       |
+| **Última actualización**| 2026-08-11                     |
 
 ---
 
@@ -21,41 +21,39 @@ El objetivo actual es validar el Framework mediante su propia utilización (dogf
 
 # Estado por Áreas
 
-| Área                              | Estado |
-| --------------------------------- | :----: |
-| Arquitectura del Framework        |   ✅   |
-| GitHub Repository Standards (GRS) |   ✅   |
-| Repository Design System (RDS)    |   ✅   |
-| Component Catalog                 |   ✅   |
-| Componentes README                |   ✅   |
-| README oficial del Framework      |   ✅   |
-| GitHub Community Files            |   ✅   |
-| Guía de Contribución              |   ✅   |
-| Componentes Documentation         |   ⏳   |
-| Componentes Workflow              |   ⏳   |
-| Componentes Visual                |   ⏳   |
-| Repository Templates              |   ⏳   |
-| Automatización                    |   ⏳   |
+| Área | Estado |
+| ---- | :----: |
+| Arquitectura del Framework | ✅ |
+| GitHub Repository Standards (GRS) | ✅ |
+| Repository Design System (RDS) | ✅ |
+| Component Catalog | ✅ |
+| Componentes README | ✅ |
+| Open Source Readiness | ✅ |
+| Documentation Component Architecture | ✅ |
+| Core Documentation Components | ✅ |
+| Documentation Reference Implementation | ⏳ |
+| Documentation Writing Standards | ⏳ |
 
 ---
 
 # Sprint Actual
 
-## Objetivo
+### Sprint 5 — Documentation Framework
 
-Iniciar el desarrollo del Documentation Framework y ampliar la biblioteca de componentes reutilizables para documentación técnica.
+**Objetivo**
 
----
+Construir y validar la primera biblioteca reutilizable de Documentation Components del GitHub Framework.
 
-# Release Focus
+### Estado
 
-Versión objetivo
+- Documentation Component Architecture completada.
+- Core Documentation Components implementados.
+- Reference Implementation en curso.
+- Documentation Writing Standards pendiente.
 
-v0.3.0
+### Trabajo actual
 
-Objetivo principal
-
-Documentation Framework
+Validación de los Documentation Components mediante dogfooding sobre la documentación real de GitHub Framework.
 
 ---
 
@@ -67,10 +65,13 @@ Documentation Framework
 
 ### Definition of Done
 
-* Biblioteca inicial de componentes Documentation.
-* Primera implementación de referencia.
-* Integración con Repository Design System.
-* Documentación actualizada.
+- [x] Documentation Component Architecture definida.
+- [x] Core Documentation Components implementados.
+- [ ] Reference Implementation completada.
+- [ ] Documentation Writing Standards definidos.
+- [ ] Documentation Framework validado mediante dogfooding.
+- [ ] Documentación de proyecto actualizada.
+- [ ] Release `v0.3.0` preparada.
 
 ---
 
@@ -78,10 +79,11 @@ Documentation Framework
 
 Actualmente se identifican los siguientes riesgos:
 
-* Sobrearquitectura del Framework.
-* Crecimiento de componentes sin casos de uso reales.
-* Duplicidad documental.
-* Incremento innecesario de complejidad.
+- Sobrearquitectura del Framework.
+- Crecimiento de componentes sin casos de uso reales.
+- Duplicidad documental.
+- Incremento innecesario de complejidad.
+- Divergencia entre los componentes reutilizables y sus implementaciones reales.
 
 ---
 
@@ -100,11 +102,11 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Diseñar Documentation Framework.
-2. Implementar Componentes Documentation.
-3. Validar el Framework mediante dogfooding.
-4. Diseñar Repository Templates.
-5. Continuar la evolución del ecosistema GitHub Framework.
+1. Completar la Reference Implementation del Documentation Framework.
+2. Definir Documentation Writing Standards.
+3. Validar la reutilización de los Documentation Components mediante dogfooding.
+4. Actualizar la documentación de gobierno y release.
+5. Preparar `v0.3.0`.
 
 ---
 
