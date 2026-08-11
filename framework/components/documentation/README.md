@@ -470,7 +470,29 @@ Las especializaciones son válidas cuando preservan la responsabilidad del compo
 
 ---
 
-## 17. Estado Actual
+## 17. Documentation Writing Standards
+
+La redacción y mantenimiento de los Documentation Components deberá seguir los estándares definidos en:
+
+[`docs/standards/17_DOCUMENTATION_WRITING_STANDARDS.md`](../../../docs/standards/17_DOCUMENTATION_WRITING_STANDARDS.md)
+
+Estos estándares definen, entre otros aspectos:
+
+- política lingüística;
+- estilo de redacción;
+- jerarquía Markdown;
+- uso de listas, tablas y checklists;
+- enlaces;
+- placeholders;
+- Single Source of Truth;
+- mantenimiento;
+- Quality Gates documentales.
+
+Los componentes individuales podrán añadir reglas específicas cuando su responsabilidad lo requiera, pero no deberán contradecir los estándares generales del Framework.
+
+---
+
+## 18. Estado Actual
 
 La arquitectura de la Documentation Component Library está definida.
 
