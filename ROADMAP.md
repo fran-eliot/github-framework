@@ -8,6 +8,8 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.2.0 — Open Source Readiness
 
+**Estado:** ✅ Released
+
 ## Objetivos
 
 * README oficial del Framework.
@@ -20,15 +22,21 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.3.0 — Documentation Framework
 
+**Estado:** 🟡 Release preparation
+
 ## Objetivos
 
-* Componentes Documentation.
-* Mejora de la Component Library.
-* Primera documentación reutilizable.
+* Documentation Component Architecture.
+* Core Documentation Components.
+* Documentation Reference Implementation.
+* Documentation Writing Standards.
+* Validación mediante dogfooding.
 
 ---
 
 # v0.4.0 — Repository Templates
+
+**Estado:** ⚪ Planned
 
 ## Objetivos
 
@@ -41,6 +49,8 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.5.0 — Workflow Framework
 
+**Estado:** ⚪ Planned
+
 ## Objetivos
 
 * Componentes Workflow.
@@ -51,6 +61,8 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 ---
 
 # v0.6.0 — Framework Automation
+
+**Estado:** ⚪ Planned
 
 ## Objetivos
 
@@ -63,13 +75,15 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v1.0.0 — Stable Release
 
+**Estado:** ⚪ Planned
+
 ## Objetivos
 
 * Framework completamente funcional.
 * Generación consistente de repositorios.
 * Biblioteca estable de componentes.
 * Documentación consolidada.
-* Primera versión pública.
+* Primera versión estable del Framework.
 
 ---
 

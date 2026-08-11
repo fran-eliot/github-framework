@@ -1,0 +1,13 @@
+id: DOC-CHANGELOG
+name: Changelog
+family: Documentation
+version: 0.1.0
+status: Experimental
+priority: Required
+audience:
+  - All
+maturity: L2
+description: >
+  Componente reutilizable para registrar de forma estructurada los cambios
+  relevantes publicados a lo largo de la evolución de un proyecto.
+dependencies: []

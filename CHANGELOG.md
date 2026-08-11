@@ -4,7 +4,23 @@
 
 ### Added
 
-- Documentation Framework (work in progress).
+- Documentation Component Architecture.
+- Core Documentation Components:
+  - `DOC-ARCHITECTURE`.
+  - `DOC-PROJECT-STATUS`.
+  - `DOC-CHANGELOG`.
+  - `DOC-REFERENCES`.
+- Documentation Reference Implementation.
+- Documentation Writing Standards.
+
+### Changed
+
+- Repository Design System metadata aligned with GitHub Framework.
+- Component Catalog metadata aligned with GitHub Framework.
+- Project Status aligned with the reusable `DOC-PROJECT-STATUS` component.
+- Documentation governance refined through Framework dogfooding.
+- Documentation language policy aligned across contribution and component documentation.
+- Documentation Component Library linked to the official Documentation Writing Standards.
 
 ---
 

@@ -121,23 +121,54 @@ Repository-wide structural changes should be supported by clear evidence from re
 
 ## Language Policy
 
-GitHub Framework follows a bilingual documentation policy.
+GitHub Framework follows a bilingual documentation policy based on the audience and responsibility of the content.
+
+### English
 
 English is used for:
 
 - source code;
-- file and directory names;
+- filenames and directory names;
 - technical identifiers;
-- reusable components;
-- public-facing repository content.
+- component IDs;
+- metadata keys and canonical metadata values;
+- commits and branch names;
+- GitHub repository metadata;
+- the main public README;
+- public-facing content intended primarily for an international audience.
+
+### Spanish
 
 Spanish is used for:
 
 - architecture documentation;
 - governance documentation;
-- design and development documentation.
+- design documentation;
+- development documentation;
+- internal specifications;
+- explanatory content of Documentation Components;
+- guidance included in reusable templates when it is not part of the final technical artifact.
 
-When modifying bilingual content, keep both language versions synchronized.
+Established technical terms may remain in English when translation would reduce clarity.
+
+### Reusable Components
+
+Reusable components keep their technical identity in English while their explanatory documentation may be written in Spanish.
+
+Examples:
+
+```text
+DOC-ARCHITECTURE
+metadata.yml
+Experimental
+Recommended
+```
+
+while explanatory content such as component README files and template guidance may remain in Spanish.
+
+The complete documentation policy is defined in:
+
+[`docs/standards/17_DOCUMENTATION_WRITING_STANDARDS.md`](docs/standards/17_DOCUMENTATION_WRITING_STANDARDS.md)
 
 ## Code of Conduct
 
