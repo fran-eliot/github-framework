@@ -1,13 +1,13 @@
-id: TPL-BACKEND
-name: Backend Repository
+id: TPL-FULLSTACK
+name: Full Stack Repository
 family: Repository
 version: 0.1.0
 status: Experimental
-project_type: Backend
+project_type: FullStack
 maturity: L2
 description: >
-  Plantilla reutilizable para estructurar repositorios backend mediante
-  composición de GitHub Framework Components.
+  Plantilla reutilizable para repositorios que integran aplicaciones frontend
+  y backend dentro de una misma unidad de proyecto.
 
 components:
   required:
@@ -18,6 +18,7 @@ components:
     - README-QUICK-START
     - README-DOCUMENTATION
     - README-FOOTER
+    - DOC-ARCHITECTURE
     - DOC-CHANGELOG
 
   recommended:
@@ -25,9 +26,10 @@ components:
     - README-ARCHITECTURE
     - README-REPOSITORY-STRUCTURE
     - README-TESTING
-    - DOC-ARCHITECTURE
     - DOC-PROJECT-STATUS
     - DOC-TESTING
+    - DOC-DEPLOYMENT
+    - DOC-DIAGRAMS
 
   optional:
     - README-ROADMAP
@@ -39,7 +41,5 @@ components:
     - DOC-ADR
     - DOC-API
     - DOC-DATABASE
-    - DOC-DEPLOYMENT
     - DOC-SECURITY
-    - DOC-DIAGRAMS
     - DOC-REFERENCES

@@ -110,12 +110,14 @@ repositories/
 └── <repository-template>/
     ├── metadata.yml
     ├── README.md
-    └── template/
+    └── template/        # opcional
 ```
 
-Los directorios de Templates individuales se crearán únicamente cuando exista una implementación real.
+El directorio `template/` es opcional.
 
-No se crearán estructuras vacías para representar Templates todavía no implementados.
+Solo deberá existir cuando el Repository Template necesite artefactos físicos propios cuya responsabilidad no esté cubierta por Framework Components.
+
+No se crearán directorios vacíos para representar estructura todavía no necesaria.
 
 ---
 
@@ -151,7 +153,15 @@ TPL-DOCUMENTATION  → documentation/
 
 ### Archivos contractuales
 
-Todo Repository Template seguirá inicialmente este contrato:
+Todo Repository Template seguirá inicialmente este contrato mínimo:
+
+```text
+<template>/
+├── metadata.yml
+└── README.md
+```
+
+Cuando exista estructura física específica del Template podrá añadirse:
 
 ```text
 <template>/
@@ -160,7 +170,9 @@ Todo Repository Template seguirá inicialmente este contrato:
 └── template/
 ```
 
-No se añadirán archivos adicionales sin una necesidad demostrada.
+El directorio `template/` no forma parte del contrato mínimo obligatorio.
+
+No se añadirán archivos o directorios adicionales sin una necesidad demostrada.
 
 ---
 
@@ -423,19 +435,23 @@ El Template no deberá mantener una segunda definición incompatible del mismo C
 
 ## 17. Estructura Específica
 
-El directorio:
+Cuando un Repository Template necesite estructura física propia podrá incorporar el directorio:
 
 ```text
 template/
 ```
 
-contiene únicamente estructura específica del tipo de repositorio.
+Este directorio contendrá únicamente artefactos específicos del tipo de repositorio cuya responsabilidad no esté cubierta por Framework Components.
 
 Antes de incorporar un archivo o directorio deberá evaluarse:
 
 > ¿Representa una responsabilidad que podría reutilizarse independientemente en otros Templates?
 
 Si la respuesta es afirmativa, deberá considerarse primero como candidato a Component.
+
+La ausencia de `template/` es válida cuando el valor del Repository Template reside exclusivamente en la composición declarativa de Components y en sus reglas de instanciación.
+
+No se crearán directorios vacíos únicamente para satisfacer una convención estructural.
 
 ---
 
@@ -653,6 +669,18 @@ El objetivo es mantener **el conjunto mínimo de composiciones reutilizables que
 
 La Repository Template Architecture está definida.
 
-Los primeros Core Repository Templates se implementarán de forma incremental y servirán para validar el contrato mediante casos de uso reales.
+Los primeros Core Repository Templates están implementados en estado `Experimental` y permiten validar el contrato de composición mediante casos de uso reales.
 
-La implementación de Templates concretos pertenece a la siguiente etapa del desarrollo de la Repository Template Library.
+La siguiente etapa consiste en validar el modelo mediante una Reference Implementation y dogfooding antes de considerar estable cualquier Repository Template.
+
+---
+
+## 29. Component Availability
+
+Los Components declarados como `required` deberán estar implementados y disponibles en la versión actual del Framework.
+
+Los Components `recommended` u `optional` podrán estar registrados en el Component Catalog aunque su implementación física todavía esté pendiente.
+
+En esos casos, su adopción dependerá de una futura versión del Framework.
+
+Un Repository Template no deberá declararse `Stable` mientras alguno de sus Components `required` no esté disponible.
