@@ -1,0 +1,19 @@
+id: TPL-BACKEND
+name: Backend Repository
+family: Repository
+version: 0.1.0
+status: Experimental
+project_type: Backend
+maturity: L2
+description: >
+  Plantilla reutilizable para estructurar repositorios de proyectos backend.
+
+components:
+  required:
+    - <COMPONENT_ID>
+
+  recommended:
+    - <COMPONENT_ID>
+
+  optional:
+    - <COMPONENT_ID>
