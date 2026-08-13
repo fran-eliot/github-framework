@@ -1,13 +1,13 @@
 # 12 - PROJECT STATUS
 
-| Campo                   | Valor                          |
-| ----------------------- | ------------------------------ |
-| **Proyecto**            | GitHub Framework               |
-| **Versión actual**      | v0.2.0                         |
-| **Estado**              | En desarrollo                  |
-| **Fase**                | Documentation Framework        |
-| **Sprint actual**        | Sprint 5 — Documentation Framework |
-| **Última actualización**| 2026-08-11                     |
+| Campo                    | Valor                          |
+| ------------------------ | ------------------------------ |
+| **Proyecto**             | GitHub Framework               |
+| **Versión actual**       | v0.3.0                         |
+| **Estado**               | Documentation Framework Ready  |
+| **Fase**                 | Implementación                 |
+| **Sprint actual**        | Ninguno                        |
+| **Última actualización** | 2026-08-13                     |
 
 ---
 
@@ -38,19 +38,13 @@ El trabajo actual se centra en cerrar la documentación de Sprint 5 y preparar l
 
 ---
 
-# Sprint Actual
+# Último Sprint
 
 ### Sprint 5 — Documentation Framework
 
-**Objetivo**
+**Estado**
 
-Construir y validar la primera biblioteca reutilizable de Documentation Components del GitHub Framework.
-
-### Estado
-
-Sprint completado.
-
-Se ha definido la arquitectura de Documentation Components, implementado la primera biblioteca Core, validado su uso mediante dogfooding y establecido un estándar común de redacción documental.
+Completado.
 
 ### Resultado
 
@@ -66,17 +60,9 @@ Se ha definido la arquitectura de Documentation Components, implementado la prim
 
 ## Versión objetivo
 
-**v0.3.0 — Documentation Framework**
+**v0.4.0 — Repository Templates**
 
-### Definition of Done
-
-- [x] Documentation Component Architecture definida.
-- [x] Core Documentation Components implementados.
-- [x] Reference Implementation completada.
-- [x] Documentation Writing Standards definidos.
-- [x] Documentation Framework validado mediante dogfooding.
-- [ ] Documentación de proyecto actualizada.
-- [ ] Release `v0.3.0` preparada.
+El próximo ciclo desarrollará las primeras plantillas reutilizables del GitHub Framework a partir de los componentes ya implementados.
 
 ---
 
@@ -121,3 +107,4 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 | ------- | ---------- | ----------------------- |
 | v0.1.0  | 2026-08-07 | Arquitectura completada |
 | v0.2.0 | 2026-08-09 | Open Source Readiness completado |
+| v0.3.0 | 2026-08-13 | Documentation Framework completado |

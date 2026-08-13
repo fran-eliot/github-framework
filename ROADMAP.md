@@ -22,7 +22,7 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.3.0 — Documentation Framework
 
-**Estado:** 🟡 Release preparation
+**Estado:** ✅ Released
 
 ## Objetivos
 
@@ -36,7 +36,7 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.4.0 — Repository Templates
 
-**Estado:** ⚪ Planned
+**Estado:** 🟡 Next
 
 ## Objetivos
 

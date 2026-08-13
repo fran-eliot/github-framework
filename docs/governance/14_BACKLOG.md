@@ -3,9 +3,9 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión**              | v0.2.0           |
+| **Versión**              | v0.3.0           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-08-11       |
+| **Última actualización** | 2026-08-13       |
 
 ---
 
@@ -38,9 +38,9 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 No existe actualmente un Sprint activo.
 
-Sprint 5 — Documentation Framework ha completado su alcance funcional y se encuentra en proceso de cierre y preparación de la release `v0.3.0`.
+Sprint 5 — Documentation Framework ha sido completado y publicado como `v0.3.0`.
 
-El siguiente Sprint se definirá después del cierre de `v0.3.0`.
+El siguiente Sprint se definirá para el milestone `v0.4.0 — Repository Templates`.
 
 ---
 
@@ -59,7 +59,7 @@ El siguiente Sprint se definirá después del cierre de `v0.3.0`.
 
 | Milestone | Estado |
 |-----------|:------:|
-| v0.3.0 — Documentation Framework | 🟡 Release preparation |
+| v0.3.0 — Documentation Framework | ✅ Completed |
 | v0.4.0 — Repository Templates | ⚪ Planned |
 | v0.5.0 — Workflow Framework | ⚪ Planned |
 | v0.6.0 — Framework Automation | ⚪ Planned |
@@ -106,3 +106,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.1.0 | 2026-08-07 | Primera versión del Product Backlog. |
 | v0.2.0 | 2026-08-09 | Planificación Sprint 5 y reorganización del Product Backlog. |
 | v0.2.1 | 2026-08-11 | Cierre funcional de Sprint 5 y actualización del Product Backlog. |
+| v0.3.0 | 2026-08-13 | Publicación de Documentation Framework y cierre de Sprint 5. |
