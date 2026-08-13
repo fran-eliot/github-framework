@@ -36,11 +36,20 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 ## Sprint Activo
 
-No existe actualmente un Sprint activo.
+### Sprint 6 — Repository Templates
 
-Sprint 5 — Documentation Framework ha sido completado y publicado como `v0.3.0`.
+**Milestone:** `v0.4.0 — Repository Templates`
 
-El siguiente Sprint se definirá para el milestone `v0.4.0 — Repository Templates`.
+**Objetivo**
+
+Transformar los componentes reutilizables del Framework en Repository Templates componibles, implementados y validados mediante dogfooding.
+
+| Issue | Historia | Prioridad | Estado |
+| ----- | -------- | :-------: | :----: |
+| #11 | Repository Template Architecture | Alta | In Progress |
+| #12 | Core Repository Templates | Alta | Planned |
+| #13 | Repository Template Reference Implementation | Alta | Planned |
+| #14 | Repository Template Standards | Media | Planned |
 
 ---
 
@@ -48,10 +57,9 @@ El siguiente Sprint se definirá para el milestone `v0.4.0 — Repository Templa
 
 | ID | Historia | Milestone | Prioridad |
 |----|----------|:---------:|:---------:|
-| GF-009 | Repository Templates | v0.4.0 | Media |
-| GF-010 | Workflow Components | v0.5.0 | Media |
-| GF-011 | Visual Components | v0.5.0 | Baja |
-| GF-012 | Framework Automation | v0.6.0 | Baja |
+| TBD | Workflow Components | v0.5.0 | Media |
+| TBD | Visual Components | v0.5.0 | Baja |
+| TBD | Framework Automation | v0.6.0 | Baja |
 
 ---
 
@@ -60,7 +68,7 @@ El siguiente Sprint se definirá para el milestone `v0.4.0 — Repository Templa
 | Milestone | Estado |
 |-----------|:------:|
 | v0.3.0 — Documentation Framework | ✅ Completed |
-| v0.4.0 — Repository Templates | ⚪ Planned |
+| v0.4.0 — Repository Templates | 🟡 In Progress |
 | v0.5.0 — Workflow Framework | ⚪ Planned |
 | v0.6.0 — Framework Automation | ⚪ Planned |
 | v1.0.0 — Stable Release | ⚪ Planned |
@@ -107,3 +115,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.2.0 | 2026-08-09 | Planificación Sprint 5 y reorganización del Product Backlog. |
 | v0.2.1 | 2026-08-11 | Cierre funcional de Sprint 5 y actualización del Product Backlog. |
 | v0.3.0 | 2026-08-13 | Publicación de Documentation Framework y cierre de Sprint 5. |
+| v0.4.0 | 2026-08-13 | Planificación de Sprint 6 y adopción de GitHub Issue IDs para el trabajo nuevo. |
