@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.1.0-blue" alt="Versión" />
+  <img src="https://img.shields.io/badge/version-v0.4.0-blue" alt="Versión" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Estado" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="Licencia" />
 </p>
@@ -115,7 +115,7 @@ Para información detallada, explora el directorio `docs/`.
 
 GitHub Framework evoluciona mediante versiones incrementales.
 
-Los próximos hitos incluyen:
+El roadmap de versiones incluye:
 
 - **v0.2.0** — Preparación Open Source
 - **v0.3.0** — Documentation Framework
@@ -146,11 +146,11 @@ Este proyecto se distribuye bajo la licencia MIT.
 
 GitHub Framework evoluciona mediante versiones incrementales.
 
-El proyecto ha completado su fase de diseño arquitectónico y actualmente está centrado en validar el propio Framework mediante implementaciones reales.
+El proyecto ha establecido su arquitectura principal y actualmente continúa evolucionando el Framework mediante implementación incremental, validación y dogfooding.
 
-Hito actual:
+Último hito:
 
-**v0.2.0 — Open Source Readiness**
+**v0.4.0 — Repository Templates**
 
 ---
 

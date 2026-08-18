@@ -3,11 +3,11 @@
 | Campo                    | Valor                          |
 | ------------------------ | ------------------------------ |
 | **Proyecto**             | GitHub Framework               |
-| **Versión actual**       | v0.3.0                         |
-| **Estado**               | Documentation Framework Ready  |
-| **Fase**                 | Implementación                 |
-| **Sprint actual**        | Ninguno                        |
-| **Última actualización** | 2026-08-13                     |
+| **Versión actual**       | v0.4.0                         |
+| **Estado**               | En desarrollo                  |
+| **Fase**                 | Repository Templates           |
+| **Sprint actual** | Sprint 6 — Repository Templates (cerrado) |
+| **Última actualización** | 2026-08-18                     |
 
 ---
 
@@ -15,9 +15,15 @@
 
 GitHub Framework ha completado las fases de arquitectura, Open Source Readiness y Documentation Framework.
 
-El Framework dispone actualmente de una arquitectura formal, estándares de repositorio, sistema de componentes reutilizables, mecanismos de gobierno y una primera biblioteca de Documentation Components validada mediante dogfooding.
+El Framework dispone actualmente de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno y una primera biblioteca de Documentation Components validada mediante dogfooding.
 
-El trabajo actual se centra en cerrar la documentación de Sprint 5 y preparar la release `v0.3.0 — Documentation Framework`.
+El proyecto se encuentra actualmente en Sprint 6 — Repository Templates.
+
+Durante este Sprint se ha definido la Repository Template Architecture, se han implementado los primeros Core Repository Templates y se ha validado el modelo mediante una Reference Implementation basada en dogfooding sobre el propio GitHub Framework.
+
+La validación ha permitido además formalizar los Repository Template Standards y consolidar las reglas de composición, conformidad, lifecycle y mantenimiento de futuras plantillas.
+
+La auditoría de consistencia realizada durante la Reference Implementation ha permitido además refinar la clasificación `Implemented / Conceptual`, sincronizar el Component Catalog con las implementaciones físicas reales y distinguir entre disponibilidad de Framework Components y conformidad de repositorios consumidores.
 
 ---
 
@@ -35,24 +41,38 @@ El trabajo actual se centra en cerrar la documentación de Sprint 5 y preparar l
 | Core Documentation Components | ✅ |
 | Documentation Reference Implementation | ✅ |
 | Documentation Writing Standards | ✅ |
+| Repository Template Architecture | ✅ |
+| Core Repository Templates | ✅ |
+| Repository Template Reference Implementation | ✅ |
+| Repository Template Standards | ✅ |
 
 ---
 
-# Último Sprint
+# Sprint Actual
 
-### Sprint 5 — Documentation Framework
+### Sprint 6 — Repository Templates
 
-**Estado**
+**Objetivo**
 
-Completado.
+Transformar los componentes reutilizables del GitHub Framework en Repository Templates componibles, evitando duplicación y manteniendo una separación clara entre responsabilidades de componentes y plantillas.
 
-### Resultado
+### Alcance
 
-- Documentation Component Architecture completada.
-- Core Documentation Components implementados.
+| Issue | Historia | Prioridad | Estado |
+| ----- | -------- | :-------: | :----: |
+| #11 | Repository Template Architecture | Alta | ✅ |
+| #12 | Core Repository Templates | Alta | ✅ |
+| #13 | Repository Template Reference Implementation | Alta | ✅ |
+| #14 | Repository Template Standards | Media | ✅ |
+
+### Resultado esperado
+
+- Repository Template Architecture definida.
+- Primeros Core Repository Templates implementados.
+- Composición con Framework Components validada.
 - Reference Implementation completada.
-- Documentation Writing Standards definidos.
-- Documentation Framework validado mediante dogfooding.
+- Repository Template Standards definidos.
+- Modelo validado mediante dogfooding.
 
 ---
 
@@ -62,7 +82,18 @@ Completado.
 
 **v0.4.0 — Repository Templates**
 
-El próximo ciclo desarrollará las primeras plantillas reutilizables del GitHub Framework a partir de los componentes ya implementados.
+### Definition of Done
+
+- [x] Repository Template Architecture definida.
+- [x] Contrato de Repository Template establecido.
+- [x] Core Repository Templates implementados.
+- [x] Composición con Framework Components validada.
+- [x] Reference Implementation completada.
+- [x] Repository Template Standards definidos.
+- [x] Dogfooding completado.
+- [x] Component Catalog actualizado cuando corresponda.
+- [x] Documentación de gobierno actualizada.
+- [x] Release `v0.4.0` preparada.
 
 ---
 
@@ -93,11 +124,9 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Completar la actualización documental de Sprint 5.
-2. Validar el estado final de `feature/documentation-framework`.
-3. Preparar y revisar la Pull Request hacia `main`.
-4. Publicar `v0.3.0 — Documentation Framework`.
-5. Definir el siguiente milestone del Framework.
+1. Publicar `v0.4.0 — Repository Templates`.
+2. Revisar el Product Backlog para la siguiente fase del Framework.
+3. Planificar el siguiente Sprint.
 
 ---
 

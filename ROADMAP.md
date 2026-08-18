@@ -36,14 +36,15 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.4.0 — Repository Templates
 
-**Estado:** 🟡 Next
+**Estado:** ✅ Released
 
 ## Objetivos
 
-* Plantillas Backend.
-* Plantillas Full Stack.
-* Plantillas AI.
-* Plantillas Documentation.
+* Repository Template Architecture.
+* Core Repository Templates.
+* Repository Template Reference Implementation.
+* Repository Template Standards.
+* Validación mediante dogfooding.
 
 ---
 

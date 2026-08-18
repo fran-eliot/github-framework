@@ -1,0 +1,45 @@
+id: TPL-BACKEND
+name: Backend Repository
+family: Repository
+version: 0.1.0
+status: Experimental
+project_type: Backend
+maturity: L2
+description: >
+  Plantilla reutilizable para estructurar repositorios backend mediante
+  composición de GitHub Framework Components.
+
+components:
+  required:
+    - README-HERO
+    - README-OVERVIEW
+    - README-FEATURES
+    - README-TECH-STACK
+    - README-QUICK-START
+    - README-DOCUMENTATION
+    - README-FOOTER
+    - DOC-CHANGELOG
+
+  recommended:
+    - README-STATUS
+    - README-ARCHITECTURE
+    - README-REPOSITORY-STRUCTURE
+    - README-TESTING
+    - DOC-ARCHITECTURE
+    - DOC-PROJECT-STATUS
+    - DOC-TESTING
+
+  optional:
+    - README-ROADMAP
+    - README-CONTRIBUTING
+    - README-DEMO
+    - README-AUTHOR
+    - README-HIGHLIGHTS
+    - README-LICENSE
+    - DOC-ADR
+    - DOC-API
+    - DOC-DATABASE
+    - DOC-DEPLOYMENT
+    - DOC-SECURITY
+    - DOC-DIAGRAMS
+    - DOC-REFERENCES

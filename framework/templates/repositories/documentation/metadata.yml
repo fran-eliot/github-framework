@@ -1,0 +1,38 @@
+id: TPL-DOCUMENTATION
+name: Documentation Repository
+family: Repository
+version: 0.1.0
+status: Experimental
+project_type: Documentation
+maturity: L2
+description: >
+  Plantilla reutilizable para repositorios cuyo producto principal es
+  documentación técnica, conocimiento estructurado, estándares o guías.
+
+components:
+  required:
+    - README-HERO
+    - README-STATUS
+    - README-OVERVIEW
+    - README-DOCUMENTATION
+    - README-LICENSE
+    - README-FOOTER
+    - DOC-ARCHITECTURE
+    - DOC-PROJECT-STATUS
+    - DOC-CHANGELOG
+
+  recommended:
+    - README-ROADMAP
+    - README-REPOSITORY-STRUCTURE
+    - DOC-ADR
+    - DOC-ROADMAP
+    - DOC-GLOSSARY
+    - DOC-DIAGRAMS
+    - DOC-REFERENCES
+
+  optional:
+    - README-CONTRIBUTING
+    - README-AUTHOR
+    - README-HIGHLIGHTS
+    - DOC-TESTING
+    - DOC-SECURITY

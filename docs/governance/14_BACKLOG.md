@@ -3,9 +3,9 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión**              | v0.3.0           |
+| **Versión**              | v0.4.1           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-08-13       |
+| **Última actualización** | 2026-08-18       |
 
 ---
 
@@ -31,6 +31,10 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 | GF-006 | Core Documentation Components | v0.3.0 | Done |
 | GF-007 | Documentation Reference Implementation | v0.3.0 | Done |
 | GF-008 | Documentation Writing Standards | v0.3.0 | Done |
+| #11 | Repository Template Architecture | v0.4.0 | Done |
+| #12 | Core Repository Templates | v0.4.0 | Done |
+| #13 | Repository Template Reference Implementation | v0.4.0 | Done |
+| #14 | Repository Template Standards | v0.4.0 | Done |
 
 ---
 
@@ -38,9 +42,9 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 No existe actualmente un Sprint activo.
 
-Sprint 5 — Documentation Framework ha sido completado y publicado como `v0.3.0`.
+Sprint 6 — Repository Templates ha completado su alcance y se encuentra en proceso de publicación mediante `v0.4.0`.
 
-El siguiente Sprint se definirá para el milestone `v0.4.0 — Repository Templates`.
+El siguiente Sprint se definirá a partir del Product Backlog y del Roadmap.
 
 ---
 
@@ -48,10 +52,9 @@ El siguiente Sprint se definirá para el milestone `v0.4.0 — Repository Templa
 
 | ID | Historia | Milestone | Prioridad |
 |----|----------|:---------:|:---------:|
-| GF-009 | Repository Templates | v0.4.0 | Media |
-| GF-010 | Workflow Components | v0.5.0 | Media |
-| GF-011 | Visual Components | v0.5.0 | Baja |
-| GF-012 | Framework Automation | v0.6.0 | Baja |
+| TBD | Workflow Components | v0.5.0 | Media |
+| TBD | Visual Components | v0.5.0 | Baja |
+| TBD | Framework Automation | v0.6.0 | Baja |
 
 ---
 
@@ -60,7 +63,7 @@ El siguiente Sprint se definirá para el milestone `v0.4.0 — Repository Templa
 | Milestone | Estado |
 |-----------|:------:|
 | v0.3.0 — Documentation Framework | ✅ Completed |
-| v0.4.0 — Repository Templates | ⚪ Planned |
+| v0.4.0 — Repository Templates | ✅ Completed |
 | v0.5.0 — Workflow Framework | ⚪ Planned |
 | v0.6.0 — Framework Automation | ⚪ Planned |
 | v1.0.0 — Stable Release | ⚪ Planned |
@@ -107,3 +110,6 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.2.0 | 2026-08-09 | Planificación Sprint 5 y reorganización del Product Backlog. |
 | v0.2.1 | 2026-08-11 | Cierre funcional de Sprint 5 y actualización del Product Backlog. |
 | v0.3.0 | 2026-08-13 | Publicación de Documentation Framework y cierre de Sprint 5. |
+| v0.4.0 | 2026-08-13 | Planificación de Sprint 6 y adopción de GitHub Issue IDs para el trabajo nuevo. |
+| v0.4.1 | 2026-08-18 | Cierre funcional de Sprint 6 y actualización del estado de Repository Templates. |
+| v0.4.2 | 2026-08-18 | Cierre de Sprint 6 y preparación de la release v0.4.0. |
