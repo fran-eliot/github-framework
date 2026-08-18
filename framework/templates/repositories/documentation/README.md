@@ -100,27 +100,27 @@ Los siguientes Components forman parte del contrato mínimo:
 
 ```text
 README-HERO
+README-STATUS
 README-OVERVIEW
 README-DOCUMENTATION
+README-LICENSE
 README-FOOTER
 
 DOC-ARCHITECTURE
 DOC-PROJECT-STATUS
 DOC-CHANGELOG
-DOC-REFERENCES
 ```
 
 Estos Components permiten:
 
 - identificar el proyecto;
+- comunicar su estado;
 - explicar su propósito;
 - proporcionar acceso al contenido documental;
-- describir su organización;
-- comunicar su estado;
-- registrar su evolución;
-- mantener las referencias relevantes.
-
-`DOC-REFERENCES` es `required` en este Template porque las fuentes, estándares, especificaciones y documentación relacionada pueden formar parte estructural del conocimiento mantenido.
+- hacer visible su licencia;
+- describir su organización y arquitectura;
+- comunicar su estado operativo;
+- registrar su evolución.
 
 ---
 
@@ -136,6 +136,7 @@ DOC-ADR
 DOC-ROADMAP
 DOC-GLOSSARY
 DOC-DIAGRAMS
+DOC-REFERENCES
 ```
 
 Estos Components resultan especialmente útiles cuando el repositorio:
@@ -148,6 +149,10 @@ Estos Components resultan especialmente útiles cuando el repositorio:
 
 Podrán omitirse cuando no aporten valor suficiente.
 
+`DOC-REFERENCES` se recomienda cuando las fuentes, estándares, especificaciones o documentación externa forman parte relevante del conocimiento mantenido por el repositorio.
+
+No se requiere una instancia independiente cuando las referencias pueden mantenerse adecuadamente dentro de los documentos que las utilizan.
+
 ---
 
 ## 9. Optional Components
@@ -158,7 +163,6 @@ Los siguientes Components pueden incorporarse según las necesidades del proyect
 README-CONTRIBUTING
 README-AUTHOR
 README-HIGHLIGHTS
-README-LICENSE
 
 DOC-TESTING
 DOC-SECURITY
@@ -172,23 +176,71 @@ Por ejemplo:
 
 ---
 
-## 10. Component Priority vs Template Requirement
+### Disponibilidad de Components
 
-La prioridad global definida en el Component Catalog no determina automáticamente el requirement level dentro de este Template.
+La composición declarada por `TPL-DOCUMENTATION` incluye actualmente Components implementados y responsabilidades conceptuales todavía no materializadas.
+
+La disponibilidad actual puede resumirse como:
 
 ```text
-Component Catalog
-        ↓
-prioridad general
-
-TPL-DOCUMENTATION
-        ↓
-necesidad dentro de esta composición
+Required       8/9  Implemented
+Recommended    2/7  Implemented
+Optional       1/5  Implemented
+Total         11/21 Implemented
 ```
 
-Por ejemplo, `DOC-REFERENCES` puede ser globalmente `Recommended` y formar parte de los elementos `required` de `TPL-DOCUMENTATION`.
+El contrato mínimo del Template no puede materializarse todavía exclusivamente mediante Components implementados en la versión actual del Framework.
 
-Esto permite adaptar los Components al contexto sin modificar su definición canónica.
+Actualmente existe el siguiente gap entre los Components required:
+
+```text
+README-LICENSE → Conceptual
+```
+
+Este gap deberá resolverse antes de que `TPL-DOCUMENTATION` pueda considerarse completamente materializable.
+
+Su resolución podrá producirse mediante:
+
+- materialización de `README-LICENSE` como Framework Component; o
+- revisión de su requirement level si la validación mediante casos de uso reales demuestra que no pertenece al contrato mínimo.
+
+La existencia del gap no modifica automáticamente la composición del Template.
+
+```text
+Implementation classification
+≠
+Template requirement level
+```
+
+Los Components `recommended` y `optional` clasificados como Conceptual permanecen válidos como responsabilidades reconocidas, pero no deberán interpretarse como capacidades materialmente disponibles.
+
+La evolución de estos Components deberá seguir el lifecycle y las reglas de materialización definidos por GitHub Framework.
+
+---
+
+## 10. Component Priority vs Template Requirement
+
+La prioridad definida en la metadata canónica de un Component y su requirement level dentro de este Template representan conceptos diferentes.
+
+```text
+Component Metadata
+      ↓
+priority orientativa del Component
+
+Repository Template
+      ↓
+requirement level contextual
+```
+
+Por tanto:
+
+```text
+Component priority
+≠
+Template requirement level
+```
+
+Un Component con `priority: Required` puede ser `recommended`, `optional` o no formar parte de una composición concreta.
 
 ---
 
@@ -318,15 +370,19 @@ Antes de considerar válida una implementación:
 
 - [ ] La documentación representa un producto principal del repositorio.
 - [ ] Los Components `required` están presentes.
+- [ ] El estado del proyecto es visible desde el README.
+- [ ] La licencia del proyecto es accesible desde el README.
 - [ ] La arquitectura documental resulta comprensible.
 - [ ] El punto de entrada permite localizar la documentación principal.
-- [ ] El estado y evolución del proyecto están documentados.
-- [ ] Las referencias relevantes pueden localizarse.
+- [ ] El estado operativo y la evolución del proyecto están documentados.
+- [ ] Las referencias relevantes pueden localizarse cuando sean necesarias.
 - [ ] Los Components recomendados omitidos no son necesarios para comprender el repositorio.
 - [ ] Los Components opcionales responden a necesidades reales.
 - [ ] No se duplican especificaciones canónicas de Components.
 - [ ] La estructura física responde al dominio y no a una imposición del Template.
 - [ ] El Template permanece independiente de herramientas concretas de publicación.
+- [ ] Todos los Components `required` están implementados y disponibles.
+- [ ] Cada Component pertenece a un único requirement level.
 
 ---
 
@@ -334,4 +390,6 @@ Antes de considerar válida una implementación:
 
 `TPL-DOCUMENTATION` se encuentra actualmente en estado `Experimental`.
 
-Su composición deberá validarse mediante una Reference Implementation antes de considerarse `Stable`.
+Su composición deberá validarse mediante un mecanismo representativo antes de considerarse `Stable`.
+
+La validación podrá realizarse mediante una implementación real, Reference Implementation, instanciación representativa, dogfooding u otro caso de uso suficientemente realista.

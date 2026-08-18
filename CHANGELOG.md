@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+### Added
+
+- Repository Template Architecture.
+- Core Repository Templates:
+  - `TPL-BACKEND`.
+  - `TPL-FULLSTACK`.
+  - `TPL-DOCUMENTATION`.
+- Repository Template Reference Implementation.
+- Repository Template Standards.
+
+### Changed
+
+- Repository Design System extended with the Repository Template model.
+- Component Catalog extended to cover Repository Templates and refined Component availability classification.
+- Repository Template Library validated through Framework dogfooding.
+- Repository Template composition rules refined through the Reference Implementation.
+- Component availability and consumer conformance explicitly separated.
+- Project governance synchronized with the Repository Templates lifecycle.
+
 ---
 
 ## [0.3.0] - 2026-08-13

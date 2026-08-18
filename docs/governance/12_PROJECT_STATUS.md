@@ -7,7 +7,7 @@
 | **Estado**               | En desarrollo                  |
 | **Fase**                 | Repository Templates           |
 | **Sprint actual**        | Sprint 6 — Repository Templates |
-| **Última actualización** | 2026-08-13                     |
+| **Última actualización** | 2026-08-18                     |
 
 ---
 
@@ -15,9 +15,15 @@
 
 GitHub Framework ha completado las fases de arquitectura, Open Source Readiness y Documentation Framework.
 
-El Framework dispone actualmente de una arquitectura formal, estándares de repositorio, un sistema de componentes reutilizables, mecanismos de gobierno y una primera biblioteca de Documentation Components validada mediante dogfooding.
+El Framework dispone actualmente de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno y una primera biblioteca de Documentation Components validada mediante dogfooding.
 
-El proyecto inicia ahora Sprint 6 — Repository Templates, cuyo objetivo es transformar los componentes reutilizables del Framework en plantillas de repositorio componibles y validadas mediante implementación real.
+El proyecto se encuentra actualmente en Sprint 6 — Repository Templates.
+
+Durante este Sprint se ha definido la Repository Template Architecture, se han implementado los primeros Core Repository Templates y se ha validado el modelo mediante una Reference Implementation basada en dogfooding sobre el propio GitHub Framework.
+
+La validación ha permitido además formalizar los Repository Template Standards y consolidar las reglas de composición, conformidad, lifecycle y mantenimiento de futuras plantillas.
+
+La auditoría de consistencia realizada durante la Reference Implementation ha permitido además refinar la clasificación `Implemented / Conceptual`, sincronizar el Component Catalog con las implementaciones físicas reales y distinguir entre disponibilidad de Framework Components y conformidad de repositorios consumidores.
 
 ---
 
@@ -35,10 +41,10 @@ El proyecto inicia ahora Sprint 6 — Repository Templates, cuyo objetivo es tra
 | Core Documentation Components | ✅ |
 | Documentation Reference Implementation | ✅ |
 | Documentation Writing Standards | ✅ |
-| Repository Template Architecture | 🟡 |
-| Core Repository Templates | ⚪ |
-| Repository Template Reference Implementation | ⚪ |
-| Repository Template Standards | ⚪ |
+| Repository Template Architecture | ✅ |
+| Core Repository Templates | ✅ |
+| Repository Template Reference Implementation | ✅ |
+| Repository Template Standards | ✅ |
 
 ---
 
@@ -54,10 +60,10 @@ Transformar los componentes reutilizables del GitHub Framework en Repository Tem
 
 | Issue | Historia | Prioridad | Estado |
 | ----- | -------- | :-------: | :----: |
-| #11 | Repository Template Architecture | Alta | 🟡 |
-| #12 | Core Repository Templates | Alta | ⚪ |
-| #13 | Repository Template Reference Implementation | Alta | ⚪ |
-| #14 | Repository Template Standards | Media | ⚪ |
+| #11 | Repository Template Architecture | Alta | ✅ |
+| #12 | Core Repository Templates | Alta | ✅ |
+| #13 | Repository Template Reference Implementation | Alta | ✅ |
+| #14 | Repository Template Standards | Media | ✅ |
 
 ### Resultado esperado
 
@@ -78,15 +84,15 @@ Transformar los componentes reutilizables del GitHub Framework en Repository Tem
 
 ### Definition of Done
 
-- [ ] Repository Template Architecture definida.
-- [ ] Contrato de Repository Template establecido.
-- [ ] Core Repository Templates implementados.
-- [ ] Composición con Framework Components validada.
-- [ ] Reference Implementation completada.
-- [ ] Repository Template Standards definidos.
-- [ ] Dogfooding completado.
-- [ ] Component Catalog actualizado cuando corresponda.
-- [ ] Documentación de gobierno actualizada.
+- [x] Repository Template Architecture definida.
+- [x] Contrato de Repository Template establecido.
+- [x] Core Repository Templates implementados.
+- [x] Composición con Framework Components validada.
+- [x] Reference Implementation completada.
+- [x] Repository Template Standards definidos.
+- [x] Dogfooding completado.
+- [x] Component Catalog actualizado cuando corresponda.
+- [x] Documentación de gobierno actualizada.
 - [ ] Release `v0.4.0` preparada.
 
 ---
@@ -118,11 +124,8 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Definir Repository Template Architecture (#11).
-2. Implementar los primeros Core Repository Templates (#12).
-3. Validar el modelo mediante Reference Implementation y dogfooding (#13).
-4. Formalizar Repository Template Standards (#14).
-5. Preparar `v0.4.0 — Repository Templates`.
+1. Ejecutar la validación final del Sprint 6.
+2. Preparar `v0.4.0 — Repository Templates`.
 
 ---
 

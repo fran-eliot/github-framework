@@ -12,13 +12,14 @@ description: >
 components:
   required:
     - README-HERO
+    - README-STATUS
     - README-OVERVIEW
     - README-DOCUMENTATION
+    - README-LICENSE
     - README-FOOTER
     - DOC-ARCHITECTURE
     - DOC-PROJECT-STATUS
     - DOC-CHANGELOG
-    - DOC-REFERENCES
 
   recommended:
     - README-ROADMAP
@@ -27,11 +28,11 @@ components:
     - DOC-ROADMAP
     - DOC-GLOSSARY
     - DOC-DIAGRAMS
+    - DOC-REFERENCES
 
   optional:
     - README-CONTRIBUTING
     - README-AUTHOR
     - README-HIGHLIGHTS
-    - README-LICENSE
     - DOC-TESTING
     - DOC-SECURITY

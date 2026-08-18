@@ -3,9 +3,9 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión**              | v0.3.0           |
+| **Versión**              | v0.4.1           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-08-13       |
+| **Última actualización** | 2026-08-18       |
 
 ---
 
@@ -46,10 +46,12 @@ Transformar los componentes reutilizables del Framework en Repository Templates 
 
 | Issue | Historia | Prioridad | Estado |
 | ----- | -------- | :-------: | :----: |
-| #11 | Repository Template Architecture | Alta | In Progress |
-| #12 | Core Repository Templates | Alta | Planned |
-| #13 | Repository Template Reference Implementation | Alta | Planned |
-| #14 | Repository Template Standards | Media | Planned |
+| #11 | Repository Template Architecture | Alta | Done |
+| #12 | Core Repository Templates | Alta | Done |
+| #13 | Repository Template Reference Implementation | Alta | Done |
+| #14 | Repository Template Standards | Media | Done |
+
+> El alcance funcional del Sprint 6 está completado. Quedan pendientes la validación final y la preparación de la release `v0.4.0`.
 
 ---
 
@@ -116,3 +118,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.2.1 | 2026-08-11 | Cierre funcional de Sprint 5 y actualización del Product Backlog. |
 | v0.3.0 | 2026-08-13 | Publicación de Documentation Framework y cierre de Sprint 5. |
 | v0.4.0 | 2026-08-13 | Planificación de Sprint 6 y adopción de GitHub Issue IDs para el trabajo nuevo. |
+| v0.4.1 | 2026-08-18 | Cierre funcional de Sprint 6 y actualización del estado de Repository Templates. |

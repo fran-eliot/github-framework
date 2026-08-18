@@ -152,21 +152,60 @@ Por ejemplo:
 
 ---
 
-## 9. Component Priority vs Template Requirement
+### Disponibilidad de Components
 
-La prioridad global de un Component en el Component Catalog y su requirement level dentro de este Template representan conceptos diferentes.
+Todos los Components `required` declarados por `TPL-BACKEND` disponen actualmente de implementación canónica en el Framework.
+
+Por tanto, el contrato mínimo del Template puede materializarse con los Components disponibles en la versión actual.
+
+Los niveles `recommended` y `optional` incluyen tanto Components implementados como responsabilidades conceptuales todavía no materializadas.
+
+La disponibilidad actual puede resumirse como:
 
 ```text
-Component Catalog
+Required       8/8  Implemented
+Recommended    5/7  Implemented
+Optional       3/13 Implemented
+Total         16/28 Implemented
+```
+
+Los Components todavía no implementados permanecen válidos como parte de la composición conceptual del Template, pero no deberán interpretarse como disponibles materialmente hasta disponer de implementación canónica.
+
+La clasificación `Conceptual` no modifica su requirement level dentro del Template:
+
+```text
+Implementation classification
+≠
+Template requirement level
+```
+
+La evolución de estos Components deberá seguir el lifecycle y las reglas de materialización definidos por GitHub Framework.
+
+---
+
+## 9. Component Priority vs Template Requirement
+
+La prioridad definida en la metadata canónica de un Component y su requirement level dentro de este Template representan conceptos diferentes.
+
+```text
+Component Metadata
       ↓
-importancia general del Component
+priority orientativa del Component
 
 Repository Template
       ↓
-necesidad dentro de una composición concreta
+requirement level contextual
 ```
 
-Un Component globalmente `Required` puede no ser obligatorio en todas las composiciones.
+Por tanto:
+
+```text
+Component priority
+≠
+Template requirement level
+```
+
+Un Component con `priority: Required` puede ser `recommended`, `optional` o no formar parte de una composición concreta.
 
 ---
 
@@ -272,6 +311,8 @@ Antes de considerar válida una implementación:
 - [ ] La documentación permite comprender y comenzar a utilizar el proyecto.
 - [ ] La estructura tecnológica pertenece al proyecto y no al Template genérico.
 - [ ] La composición sigue siendo independiente del lenguaje o framework.
+- [ ] Todos los Components `required` están implementados y disponibles.
+- [ ] Cada Component pertenece a un único requirement level.
 
 ---
 
@@ -279,4 +320,6 @@ Antes de considerar válida una implementación:
 
 `TPL-BACKEND` se encuentra actualmente en estado `Experimental`.
 
-Su composición deberá validarse mediante una Reference Implementation antes de considerarse `Stable`.
+Su composición deberá validarse mediante un mecanismo representativo antes de considerarse `Stable`.
+
+La validación podrá realizarse mediante una implementación real, Reference Implementation, instanciación representativa, dogfooding u otro caso de uso suficientemente realista.

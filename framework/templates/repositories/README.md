@@ -62,10 +62,12 @@ Un Component no deberá depender de un Repository Template.
 | Ser reutilizable entre proyectos | ✅ | ✅ |
 | Seleccionar Components | ❌ | ✅ |
 | Definir estructura específica de un tipo de repositorio | ❌ | ✅ |
-| Ser Single Source of Truth de una capacidad | ✅ | ❌ |
+| Disponer de una definición canónica propia | ✅ | ✅ |
 | Preparar una futura instanciación | ❌ | ✅ |
 
 La separación entre ambas abstracciones deberá mantenerse explícita.
+
+La definición canónica de cada elemento corresponde a sus artefactos contractuales y metadata, no al catálogo que permite descubrirlo.
 
 ---
 
@@ -199,6 +201,40 @@ La metadata deberá permanecer procesable por máquinas y evitar campos especula
 
 ---
 
+### Definición canónica
+
+La definición canónica de un Repository Template implementado está formada por:
+
+```text
+<repository-template>/
+├── README.md
+└── metadata.yml
+```
+
+Cuando exista:
+
+```text
+template/
+```
+
+sus artefactos forman parte de la implementación del Template, pero no sustituyen su especificación ni su metadata.
+
+Por tanto:
+
+```text
+README.md
+        +
+metadata.yml
+        +
+template/ (when applicable)
+        ↓
+Canonical Repository Template Definition
+```
+
+El Component Catalog podrá registrar y facilitar el descubrimiento del Template, pero no constituye su definición canónica.
+
+---
+
 ## 8. Identidad
 
 ### `id`
@@ -306,7 +342,7 @@ Existe una implementación funcional y se encuentra en validación.
 
 ### Stable
 
-El Template ha sido validado mediante una Reference Implementation y se recomienda para reutilización.
+El Template ha sido validado mediante un mecanismo representativo y se recomienda para reutilización.
 
 ### Deprecated
 
@@ -357,6 +393,30 @@ components:
 
 Cada Component deberá pertenecer a un único requirement level dentro del Template.
 
+### Requirement Level vs Component Priority
+
+Los requirement levels declarados por un Repository Template son contextuales.
+
+```text
+required
+recommended
+optional
+```
+
+expresan la necesidad de un Component dentro de ese Template concreto.
+
+No deberán confundirse con el campo priority de la metadata canónica del Component.
+
+Por tanto:
+
+```text
+Component priority
+≠
+Template requirement level
+```
+
+Un Component con `priority: Required` podrá ser `recommended`, `optional` o no formar parte de determinados Repository Templates.
+
 ---
 
 ## 13. Required Components
@@ -405,31 +465,39 @@ optional
 relevant contextual extension
 ```
 
-El Component Catalog continúa siendo la fuente de verdad del inventario completo.
+El Component Catalog proporciona la vista centralizada de descubrimiento y clasificación del inventario reconocido por el Framework.
+
+Las definiciones canónicas permanecen en las especificaciones, metadata e implementaciones correspondientes.
 
 ---
 
-## 16. Single Source of Truth
+## 16. Fuentes Canónicas
 
-Los Repository Templates referencian Components.
+Los Repository Templates referencian Framework Components mediante sus identificadores estables.
 
 No mantienen copias independientes de sus especificaciones canónicas.
 
 ```text
+Component Specification + Metadata
+        │
+        │ canonical definition
+        ▼
 Framework Component
         │
-        │ Single Source of Truth
+        │ referenced by ID
         ▼
 Repository Template
         │
-        │ references
+        │ composition
         ▼
-Concrete Repository
+Repository Implementation
 ```
+
+Cada Repository Template mantiene a su vez su propia definición canónica mediante sus artefactos contractuales y metadata.
 
 La futura instanciación podrá materializar el contenido requerido dentro del repositorio generado.
 
-El Template no deberá mantener una segunda definición incompatible del mismo Component.
+El Template no deberá mantener una segunda definición incompatible de ningún Component.
 
 ---
 
@@ -574,16 +642,22 @@ Specification
       ↓
 Implementation
       ↓
-Reference Implementation
-      ↓
 Validation
       ↓
-Stable
+Adoption
       ↓
 Maintenance
       ↓
 Deprecation / Retirement
 ```
+
+La validación podrá realizarse mediante:
+
+- Reference Implementation;
+- implementación real;
+- instanciación representativa;
+- dogfooding;
+- otro caso de uso suficientemente realista.
 
 Un Repository Template no deberá pasar a `Stable` sin una validación representativa.
 
@@ -591,7 +665,7 @@ Un Repository Template no deberá pasar a `Stable` sin una validación represent
 
 ## 24. Reference Implementation
 
-Todo Template candidato a `Stable` deberá haber sido validado mediante:
+Todo Template candidato a `Stable` deberá haber sido validado mediante al menos uno de los siguientes mecanismos:
 
 - una implementación real;
 - una instanciación representativa;
@@ -628,7 +702,7 @@ Antes de considerar válido un Repository Template deberá verificarse:
 - [ ] Los placeholders son explícitos y reutilizables.
 - [ ] No depende de herencia entre Templates.
 - [ ] Puede instanciarse sin conocimiento implícito del autor.
-- [ ] Ha sido validado mediante una Reference Implementation antes de pasar a `Stable`.
+- [ ] Ha sido validado mediante una implementación, Reference Implementation, instanciación representativa o dogfooding antes de pasar a `Stable`.
 
 ---
 
@@ -669,18 +743,53 @@ El objetivo es mantener **el conjunto mínimo de composiciones reutilizables que
 
 La Repository Template Architecture está definida.
 
-Los primeros Core Repository Templates están implementados en estado `Experimental` y permiten validar el contrato de composición mediante casos de uso reales.
+Los primeros Repository Templates están implementados en estado `Experimental` y permiten validar el contrato de composición mediante casos de uso reales.
 
-La siguiente etapa consiste en validar el modelo mediante una Reference Implementation y dogfooding antes de considerar estable cualquier Repository Template.
+La siguiente etapa consiste en validar el modelo mediante implementaciones representativas y dogfooding antes de considerar estable cualquier Repository Template.
 
 ---
 
 ## 29. Component Availability
 
-Los Components declarados como `required` deberán estar implementados y disponibles en la versión actual del Framework.
+Los Repository Templates podrán referenciar Framework Components clasificados como `Implemented` o `Conceptual`.
 
-Los Components `recommended` u `optional` podrán estar registrados en el Component Catalog aunque su implementación física todavía esté pendiente.
+La clasificación de implementación describe la disponibilidad de una implementación canónica reutilizable.
 
-En esos casos, su adopción dependerá de una futura versión del Framework.
+No determina el requirement level contextual del Component dentro del Template.
 
-Un Repository Template no deberá declararse `Stable` mientras alguno de sus Components `required` no esté disponible.
+~~~text
+Implementation classification
+        ≠
+Template requirement level
+~~~
+
+Por tanto, un Component `Conceptual` podrá formar parte de:
+
+~~~text
+required
+recommended
+optional
+~~~
+
+cuando su responsabilidad pertenezca legítimamente al contrato del Template.
+
+En estos casos:
+
+- su clasificación deberá ser explícita;
+- no deberá presentarse como una capacidad reutilizable materialmente disponible;
+- un consumer podrá satisfacer la responsabilidad mediante una implementación propia, especializada o equivalente;
+- su presencia no obligará automáticamente a implementar el Framework Component.
+
+La conformidad del consumer deberá evaluarse mediante la responsabilidad satisfecha:
+
+~~~text
+Component availability
+        ≠
+Consumer conformance
+~~~
+
+Un Repository Template podrá evolucionar a `Stable` cuando su contrato sea suficientemente estable y exista evidencia representativa de que todas sus responsabilidades `required` pueden satisfacerse.
+
+La existencia de un Component `required` clasificado como `Conceptual` no impedirá por sí sola dicha promoción.
+
+La promoción deberá basarse en evidencia de validación y no únicamente en disponibilidad material de Framework Components.

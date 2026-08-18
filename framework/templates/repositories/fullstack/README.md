@@ -168,21 +168,60 @@ Por ejemplo:
 
 ---
 
-## 9. Component Priority vs Template Requirement
+### Disponibilidad de Components
 
-La prioridad global de un Component y su requirement level dentro del Template son conceptos distintos.
+Todos los Components `required` declarados por `TPL-FULLSTACK` disponen actualmente de implementación canónica en el Framework.
+
+Por tanto, el contrato mínimo del Template puede materializarse con los Components disponibles en la versión actual.
+
+Los niveles `recommended` y `optional` incluyen tanto Components implementados como responsabilidades conceptuales todavía no materializadas.
+
+La disponibilidad actual puede resumirse como:
 
 ```text
-Component Catalog
-        ↓
-prioridad general
-
-TPL-FULLSTACK
-        ↓
-necesidad dentro de esta composición
+Required       9/9  Implemented
+Recommended    4/8  Implemented
+Optional       3/11 Implemented
+Total         16/28 Implemented
 ```
 
-Un Component puede tener una prioridad determinada en el catálogo y otra relevancia dentro de una composición concreta.
+Los Components todavía no implementados permanecen válidos como parte de la composición conceptual del Template, pero no deberán interpretarse como disponibles materialmente hasta disponer de implementación canónica.
+
+La clasificación `Conceptual` no modifica su requirement level dentro del Template:
+
+```text
+Implementation classification
+≠
+Template requirement level
+```
+
+La evolución de estos Components deberá seguir el lifecycle y las reglas de materialización definidos por GitHub Framework.
+
+---
+
+## 9. Component Priority vs Template Requirement
+
+La prioridad definida en la metadata canónica de un Component y su requirement level dentro de este Template representan conceptos diferentes.
+
+```text
+Component Metadata
+      ↓
+priority orientativa del Component
+
+Repository Template
+      ↓
+requirement level contextual
+```
+
+Por tanto:
+
+```text
+Component priority
+≠
+Template requirement level
+```
+
+Un Component con `priority: Required` puede ser `recommended`, `optional` o no formar parte de una composición concreta.
 
 ---
 
@@ -295,7 +334,7 @@ Una implementación podrá:
 - incorporar tooling específico;
 - añadir documentación especializada.
 
-Deberá conservar los Components `required` y la separación conceptual frontend/backend para considerarse una implementación completa de `TPL-FULLSTACK`.
+Deberá conservar los Components `required` y unos límites conceptuales comprensibles entre frontend, integración y backend para considerarse una implementación completa de `TPL-FULLSTACK`.
 
 ---
 
@@ -336,6 +375,8 @@ Antes de considerar válida una implementación:
 - [ ] No se duplican especificaciones canónicas de Components.
 - [ ] La estructura física no se confunde con el contrato conceptual del Template.
 - [ ] La composición sigue siendo independiente del stack tecnológico.
+- [ ] Todos los Components `required` están implementados y disponibles.
+- [ ] Cada Component pertenece a un único requirement level.
 
 ---
 
@@ -343,4 +384,6 @@ Antes de considerar válida una implementación:
 
 `TPL-FULLSTACK` se encuentra actualmente en estado `Experimental`.
 
-Su composición deberá validarse mediante una Reference Implementation antes de considerarse `Stable`.
+Su composición deberá validarse mediante un mecanismo representativo antes de considerarse `Stable`.
+
+La validación podrá realizarse mediante una implementación real, Reference Implementation, instanciación representativa, dogfooding u otro caso de uso suficientemente realista.
