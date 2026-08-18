@@ -36,7 +36,7 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.4.0 — Repository Templates
 
-**Estado:** 🟡 In Progress
+**Estado:** ✅ Released
 
 ## Objetivos
 

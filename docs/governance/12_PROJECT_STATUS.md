@@ -6,7 +6,7 @@
 | **Versión actual**       | v0.3.0                         |
 | **Estado**               | En desarrollo                  |
 | **Fase**                 | Repository Templates           |
-| **Sprint actual**        | Sprint 6 — Repository Templates |
+| **Sprint actual**        | Sprint 6 cerrado |
 | **Última actualización** | 2026-08-18                     |
 
 ---
@@ -93,7 +93,7 @@ Transformar los componentes reutilizables del GitHub Framework en Repository Tem
 - [x] Dogfooding completado.
 - [x] Component Catalog actualizado cuando corresponda.
 - [x] Documentación de gobierno actualizada.
-- [ ] Release `v0.4.0` preparada.
+- [x] Release `v0.4.0` preparada.
 
 ---
 
