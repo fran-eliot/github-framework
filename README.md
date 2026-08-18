@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.3.0-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-v0.4.0-blue" alt="Version" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Status" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
 </p>
@@ -146,7 +146,7 @@ GitHub Framework is currently evolving through incremental releases.
 
 The project has established its core architecture and is now evolving the Framework through incremental implementation, validation and dogfooding.
 
-Current milestone:
+Latest milestone:
 
 **v0.4.0 — Repository Templates**
 

@@ -3,10 +3,10 @@
 | Campo                    | Valor                          |
 | ------------------------ | ------------------------------ |
 | **Proyecto**             | GitHub Framework               |
-| **Versión actual**       | v0.3.0                         |
+| **Versión actual**       | v0.4.0                         |
 | **Estado**               | En desarrollo                  |
 | **Fase**                 | Repository Templates           |
-| **Sprint actual**        | Sprint 6 cerrado |
+| **Sprint actual** | Sprint 6 — Repository Templates (cerrado) |
 | **Última actualización** | 2026-08-18                     |
 
 ---
@@ -124,8 +124,9 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Ejecutar la validación final del Sprint 6.
-2. Preparar `v0.4.0 — Repository Templates`.
+1. Publicar `v0.4.0 — Repository Templates`.
+2. Revisar el Product Backlog para la siguiente fase del Framework.
+3. Planificar el siguiente Sprint.
 
 ---
 

@@ -31,27 +31,20 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 | GF-006 | Core Documentation Components | v0.3.0 | Done |
 | GF-007 | Documentation Reference Implementation | v0.3.0 | Done |
 | GF-008 | Documentation Writing Standards | v0.3.0 | Done |
+| #11 | Repository Template Architecture | v0.4.0 | Done |
+| #12 | Core Repository Templates | v0.4.0 | Done |
+| #13 | Repository Template Reference Implementation | v0.4.0 | Done |
+| #14 | Repository Template Standards | v0.4.0 | Done |
 
 ---
 
 ## Sprint Activo
 
-### Sprint 6 — Repository Templates
+No existe actualmente un Sprint activo.
 
-**Milestone:** `v0.4.0 — Repository Templates`
+Sprint 6 — Repository Templates ha completado su alcance y se encuentra en proceso de publicación mediante `v0.4.0`.
 
-**Objetivo**
-
-Transformar los componentes reutilizables del Framework en Repository Templates componibles, implementados y validados mediante dogfooding.
-
-| Issue | Historia | Prioridad | Estado |
-| ----- | -------- | :-------: | :----: |
-| #11 | Repository Template Architecture | Alta | Done |
-| #12 | Core Repository Templates | Alta | Done |
-| #13 | Repository Template Reference Implementation | Alta | Done |
-| #14 | Repository Template Standards | Media | Done |
-
-> El alcance funcional del Sprint 6 está completado. Quedan pendientes la validación final y la preparación de la release `v0.4.0`.
+El siguiente Sprint se definirá a partir del Product Backlog y del Roadmap.
 
 ---
 
@@ -70,7 +63,7 @@ Transformar los componentes reutilizables del Framework en Repository Templates 
 | Milestone | Estado |
 |-----------|:------:|
 | v0.3.0 — Documentation Framework | ✅ Completed |
-| v0.4.0 — Repository Templates | 🟡 In Progress |
+| v0.4.0 — Repository Templates | ✅ Completed |
 | v0.5.0 — Workflow Framework | ⚪ Planned |
 | v0.6.0 — Framework Automation | ⚪ Planned |
 | v1.0.0 — Stable Release | ⚪ Planned |
@@ -119,3 +112,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.3.0 | 2026-08-13 | Publicación de Documentation Framework y cierre de Sprint 5. |
 | v0.4.0 | 2026-08-13 | Planificación de Sprint 6 y adopción de GitHub Issue IDs para el trabajo nuevo. |
 | v0.4.1 | 2026-08-18 | Cierre funcional de Sprint 6 y actualización del estado de Repository Templates. |
+| v0.4.2 | 2026-08-18 | Cierre de Sprint 6 y preparación de la release v0.4.0. |
