@@ -124,9 +124,8 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Publicar `v0.4.0 — Repository Templates`.
-2. Revisar el Product Backlog para la siguiente fase del Framework.
-3. Planificar el siguiente Sprint.
+1. Revisar el Product Backlog para la siguiente fase del Framework.
+2. Planificar el siguiente Sprint.
 
 ---
 
