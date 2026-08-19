@@ -3,9 +3,9 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión**              | v0.4.1           |
+| **Versión**              | v0.5.0           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-08-18       |
+| **Última actualización** | 2026-08-19       |
 
 ---
 
@@ -40,11 +40,20 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 ## Sprint Activo
 
-No existe actualmente un Sprint activo.
+### Sprint 7 — Workflow Framework
 
-Sprint 6 — Repository Templates ha completado su alcance y ha sido publicado mediante `v0.4.0`.
+**Milestone:** `v0.5.0 — Workflow Framework`
 
-El siguiente Sprint se definirá a partir del Product Backlog y del Roadmap.
+**Objetivo**
+
+Transformar las responsabilidades Workflow actualmente conceptuales en una primera biblioteca reutilizable de Workflow Components, validada mediante implementación real y dogfooding.
+
+| Issue | Historia | Prioridad | Estado |
+| ----- | -------- | :-------: | :----: |
+| #17 | Workflow Component Architecture | Alta | Planned |
+| #18 | Core Workflow Components | Alta | Planned |
+| #19 | Workflow Reference Implementation | Alta | Planned |
+| #20 | Workflow Component Standards | Media | Planned |
 
 ---
 
@@ -64,7 +73,7 @@ El siguiente Sprint se definirá a partir del Product Backlog y del Roadmap.
 |-----------|:------:|
 | v0.3.0 — Documentation Framework | ✅ Completed |
 | v0.4.0 — Repository Templates | ✅ Completed |
-| v0.5.0 — Workflow Framework | ⚪ Planned |
+| v0.5.0 — Workflow Framework | 🟡 In Progress |
 | v0.6.0 — Framework Automation | ⚪ Planned |
 | v1.0.0 — Stable Release | ⚪ Planned |
 
@@ -113,3 +122,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.4.0 | 2026-08-13 | Planificación de Sprint 6 y adopción de GitHub Issue IDs para el trabajo nuevo. |
 | v0.4.1 | 2026-08-18 | Cierre funcional de Sprint 6 y actualización del estado de Repository Templates. |
 | v0.4.2 | 2026-08-18 | Cierre de Sprint 6 y preparación de la release v0.4.0. |
+| v0.5.0 | 2026-08-19 | Planificación de Sprint 7 — Workflow Framework. |

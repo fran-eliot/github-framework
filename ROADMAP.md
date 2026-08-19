@@ -50,7 +50,7 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.5.0 — Workflow Framework
 
-**Estado:** ⚪ Planned
+**Estado:** 🟡 In Progress
 
 ## Objetivos
 

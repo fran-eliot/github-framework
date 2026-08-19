@@ -5,9 +5,9 @@
 | **Proyecto**             | GitHub Framework               |
 | **Versión actual**       | v0.4.0                         |
 | **Estado**               | En desarrollo                  |
-| **Fase**                 | Repository Templates           |
-| **Sprint actual** | Sprint 6 — Repository Templates (cerrado) |
-| **Última actualización** | 2026-08-18                     |
+| **Fase**                 | Workflow Framework             |
+| **Sprint actual**        | Sprint 7 — Workflow Framework  |
+| **Última actualización** | 2026-08-19                     |
 
 ---
 
@@ -45,34 +45,31 @@ La auditoría de consistencia realizada durante la Reference Implementation ha p
 | Core Repository Templates | ✅ |
 | Repository Template Reference Implementation | ✅ |
 | Repository Template Standards | ✅ |
+| Workflow Component Architecture | 🟡 |
+| Core Workflow Components | ⚪ |
+| Workflow Reference Implementation | ⚪ |
+| Workflow Component Standards | ⚪ |
 
 ---
 
 # Sprint Actual
 
-### Sprint 6 — Repository Templates
+## Sprint 7 — Workflow Framework
 
-**Objetivo**
+**Target:** `v0.5.0`
 
-Transformar los componentes reutilizables del GitHub Framework en Repository Templates componibles, evitando duplicación y manteniendo una separación clara entre responsabilidades de componentes y plantillas.
+### Objetivo
 
-### Alcance
+Transformar las responsabilidades Workflow actualmente conceptuales en una primera biblioteca reutilizable de Workflow Components, validada mediante implementación real y dogfooding.
+
+### Historias
 
 | Issue | Historia | Prioridad | Estado |
 | ----- | -------- | :-------: | :----: |
-| #11 | Repository Template Architecture | Alta | ✅ |
-| #12 | Core Repository Templates | Alta | ✅ |
-| #13 | Repository Template Reference Implementation | Alta | ✅ |
-| #14 | Repository Template Standards | Media | ✅ |
-
-### Resultado esperado
-
-- Repository Template Architecture definida.
-- Primeros Core Repository Templates implementados.
-- Composición con Framework Components validada.
-- Reference Implementation completada.
-- Repository Template Standards definidos.
-- Modelo validado mediante dogfooding.
+| #17 | Workflow Component Architecture | Alta | 🟡 |
+| #18 | Core Workflow Components | Alta | ⚪ |
+| #19 | Workflow Reference Implementation | Alta | ⚪ |
+| #20 | Workflow Component Standards | Media | ⚪ |
 
 ---
 
@@ -80,20 +77,20 @@ Transformar los componentes reutilizables del GitHub Framework en Repository Tem
 
 ## Versión objetivo
 
-**v0.4.0 — Repository Templates**
+**v0.5.0 — Workflow Framework**
 
 ### Definition of Done
 
-- [x] Repository Template Architecture definida.
-- [x] Contrato de Repository Template establecido.
-- [x] Core Repository Templates implementados.
-- [x] Composición con Framework Components validada.
-- [x] Reference Implementation completada.
-- [x] Repository Template Standards definidos.
-- [x] Dogfooding completado.
-- [x] Component Catalog actualizado cuando corresponda.
-- [x] Documentación de gobierno actualizada.
-- [x] Release `v0.4.0` preparada.
+- [ ] Workflow Component Architecture definida.
+- [ ] Contrato de implementación de Workflow Components establecido.
+- [ ] Core Workflow Components implementados.
+- [ ] Diferentes mecanismos de materialización validados.
+- [ ] Reference Implementation completada.
+- [ ] Dogfooding completado.
+- [ ] Workflow Component Standards definidos.
+- [ ] Component Catalog actualizado cuando corresponda.
+- [ ] Documentación de gobierno actualizada.
+- [ ] Release `v0.5.0` preparada.
 
 ---
 
@@ -124,8 +121,11 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Revisar el Product Backlog para la siguiente fase del Framework.
-2. Planificar el siguiente Sprint.
+1. Definir Workflow Component Architecture (#17).
+2. Implementar los primeros Core Workflow Components (#18).
+3. Validar el modelo mediante Reference Implementation y dogfooding (#19).
+4. Formalizar Workflow Component Standards (#20).
+5. Preparar `v0.5.0 — Workflow Framework`.
 
 ---
 
@@ -133,6 +133,7 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 | Versión | Fecha      | Estado                  |
 | ------- | ---------- | ----------------------- |
-| v0.1.0  | 2026-08-07 | Arquitectura completada |
+| v0.1.0 | 2026-08-07 | Arquitectura completada |
 | v0.2.0 | 2026-08-09 | Open Source Readiness completado |
 | v0.3.0 | 2026-08-13 | Documentation Framework completado |
+| v0.4.0 | 2026-08-18 | Repository Templates completado |
