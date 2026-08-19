@@ -42,7 +42,7 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 No existe actualmente un Sprint activo.
 
-Sprint 6 — Repository Templates ha completado su alcance y se encuentra en proceso de publicación mediante `v0.4.0`.
+Sprint 6 — Repository Templates ha completado su alcance y ha sido publicado mediante `v0.4.0`.
 
 El siguiente Sprint se definirá a partir del Product Backlog y del Roadmap.
 
