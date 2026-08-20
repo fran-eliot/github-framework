@@ -1,12 +1,12 @@
 # 09 - COMPONENT CATALOG
 
-| Field        | Value                     |
-| ------------ | ------------------------- |
-| **Project**  | GitHub Framework          |
-| **Document** | Component Catalog         |
-| **Version**  | 1.1.0 |
-| **Status**   | Stable                    |
-| **Owner**    | Fran Ramirez              |
+| Field        | Value             |
+| ------------ | ----------------- |
+| **Project**  | GitHub Framework  |
+| **Document** | Component Catalog |
+| **Version**  | 1.2.0             |
+| **Status**   | Stable            |
+| **Owner**    | Fran Ramirez      |
 
 ---
 
@@ -18,95 +18,148 @@
 
 # 1. Purpose
 
-El **Component Catalog (CC)** constituye el registro central de descubrimiento y clasificación de los elementos reutilizables reconocidos por GitHub Framework.
+El **Component Catalog (CC)** constituye el registro central de descubrimiento, clasificación y trazabilidad de los elementos reutilizables reconocidos por GitHub Framework.
 
-Su función consiste en facilitar la identificación, localización y comprensión de:
+Su responsabilidad consiste en facilitar la identificación y localización de:
 
 - Framework Components;
 - Repository Templates;
-- otros elementos gobernados por el RDS cuando corresponda.
+- otras capacidades reutilizables gobernadas por el Repository Design System cuando corresponda.
 
-El catálogo no sustituye las definiciones canónicas de estos elementos.
+El Component Catalog no constituye una fuente arquitectónica paralela.
 
-Cuando exista implementación, la definición canónica de un Framework Component estará formada por su especificación y metadata correspondientes.
+Tampoco sustituye:
 
-El **Repository Design System (RDS)** define el modelo arquitectónico, las responsabilidades y las reglas generales del sistema.
+- Specifications;
+- Metadata;
+- Materialization Artifacts;
+- Repository Template definitions;
+- Standards;
+- Reference Implementations.
 
-Por tanto:
+El catálogo representa el Framework existente.
 
-```text
-RDS
-        ↓
-Architecture and rules
-
-Specification + Metadata
-        ↓
-Canonical element definition
-
-Component Catalog
-        ↓
-Discovery and classification
-```
-
-
+No lo redefine.
 
 ---
 
 # 2. Vision
 
-El catálogo deberá facilitar el descubrimiento de capacidades reutilizables antes de diseñar nuevas soluciones.
+El Component Catalog deberá permitir responder rápidamente preguntas como:
+
+```text
+What reusable capabilities exist?
+
+Which family do they belong to?
+
+Are they Conceptual or Implemented?
+
+What is their lifecycle status?
+
+Where is their canonical definition?
+
+Which Repository Templates reference them?
+```
+
+Su objetivo consiste en facilitar descubrimiento antes de diseñar nuevas soluciones.
 
 Antes de introducir un nuevo Framework Component deberá comprobarse si:
 
 - existe una responsabilidad equivalente;
 - puede reutilizarse un Component existente;
-- existe un Repository Template adecuado;
-- la necesidad es suficientemente recurrente para justificar generalización.
+- puede ampliarse una capacidad ya definida;
+- existe un Repository Template apropiado;
+- la necesidad es suficientemente recurrente;
+- debe permanecer específica del consumidor.
 
-El catálogo deberá permitir realizar esta evaluación sin convertirse en una copia de las especificaciones canónicas.
+El catálogo deberá ayudar a realizar esta evaluación sin duplicar las fuentes canónicas.
 
 ---
 
-# 3. Relationship with Other Sources
+# 3. Relationship with Canonical Sources
+
+GitHub Framework mantiene responsabilidades diferenciadas entre sus principales fuentes.
 
 | Source | Responsibility |
-|---|---|
-| Repository Design System | Define la arquitectura y las reglas del sistema |
-| Component Specification | Define la responsabilidad y comportamiento del Component |
-| Component Metadata | Proporciona información estructurada y machine-readable |
-| Component Catalog | Facilita descubrimiento y clasificación |
+| --- | --- |
+| Repository Design System | Define arquitectura, contratos generales y reglas de composición |
+| Component Specification | Define responsabilidad, alcance y comportamiento esperado |
+| Component Metadata | Proporciona representación estructurada y machine-readable |
+| Materialization Artifacts | Proporcionan capacidad reusable cuando la responsabilidad lo requiere |
+| Component Catalog | Facilita descubrimiento, clasificación y trazabilidad |
 | Repository Templates | Componen Components según el tipo de proyecto |
-| Repository Standards | Definen reglas aplicables |
-| Reference Implementations | Validan el Framework mediante uso real |
+| Standards | Formalizan reglas prácticas validadas |
+| Reference Implementations | Proporcionan evidencia mediante uso real |
+| Governance Documents | Gestionan evolución, backlog y estado del proyecto |
 
-El Component Catalog no duplicará especificaciones completas.
+Modelo:
 
-Cuando exista una fuente canónica deberá enlazar o referenciarla.
+```text
+Repository Design System
+        ↓
+Architecture
+
+Specification
++
+Metadata
++
+Materialization when required
+        ↓
+Canonical Component Definition
+
+Component Catalog
+        ↓
+Discovery and Classification
+
+Repository Templates
+        ↓
+Contextual Composition
+
+Repository Implementations
+        ↓
+Consumer Materialization
+```
+
+El catálogo deberá referenciar estas fuentes.
+
+No deberá copiarlas íntegramente.
 
 ---
 
 # 4. Registry Philosophy
 
-Cada responsabilidad reutilizable deberá disponer de una definición canónica identificable.
+Cada responsabilidad reusable deberá disponer de una identidad canónica reconocible.
 
 No deberán coexistir Framework Components diferentes que representen esencialmente la misma responsabilidad.
 
-Cuando aparezca una necesidad nueva deberá evaluarse primero si:
+Cuando aparezca una nueva necesidad deberá evaluarse:
 
-- existe un Component equivalente;
-- puede ampliarse uno existente;
-- puede resolverse mediante configuración;
-- pertenece realmente a un Repository Template;
-- debe permanecer específica del consumidor;
-- justifica la creación de una nueva responsabilidad reutilizable.
+```text
+Reuse existing Component
+        ↓
+Configure
+        ↓
+Extend
+        ↓
+Create new Component
+```
 
-El catálogo deberá reflejar el sistema existente y no crear arquitectura paralela.
+La incorporación de una responsabilidad al catálogo no implica automáticamente que exista implementación material.
+
+El catálogo podrá registrar:
+
+```text
+Conceptual
+Implemented
+```
+
+siempre que la clasificación sea explícita.
 
 ---
 
 # 5. Registry Architecture
 
-El catálogo organiza los elementos reutilizables según su naturaleza.
+El Component Catalog organiza los elementos reutilizables según su naturaleza.
 
 ```text
 GitHub Framework
@@ -120,17 +173,42 @@ GitHub Framework
         └── Repository Templates
 ```
 
-Las familias de Framework Components representan responsabilidades reutilizables.
+Los Framework Components representan responsabilidades reutilizables.
 
-Los Repository Templates representan composiciones reutilizables de esas responsabilidades para tipos concretos de proyecto.
+Los Repository Templates representan composiciones reutilizables de esas responsabilidades.
 
-Los Maturity Profiles constituyen una dimensión independiente y no forman una familia de Components.
+Los Maturity Profiles constituyen una dimensión independiente.
+
+No forman una familia de Components ni Repository Templates.
 
 ---
 
-# 6. Element Identifier
+# 6. Registry Families
 
-Todo elemento registrado dispondrá de un identificador estable cuando su naturaleza lo requiera.
+El catálogo reconoce actualmente cuatro familias principales de Framework Components.
+
+| Prefix | Family |
+| --- | --- |
+| `README-*` | README Components |
+| `DOC-*` | Documentation Components |
+| `WCL-*` | Workflow Components |
+| `VCL-*` | Visual Components |
+
+Además, registra Repository Templates mediante:
+
+| Prefix | Element |
+| --- | --- |
+| `TPL-*` | Repository Templates |
+
+Los Repository Templates no constituyen una familia de Framework Components.
+
+La incorporación futura de nuevas familias deberá estar respaldada por el Repository Design System.
+
+---
+
+# 7. Element Identity
+
+Todo elemento registrado deberá disponer de un identificador estable cuando su naturaleza lo requiera.
 
 Formato general:
 
@@ -138,137 +216,430 @@ Formato general:
 PREFIX-NAME
 ```
 
-Ejemplos.
+Ejemplos:
 
-```
+```text
 README-HERO
-
-DOC-ADR
-
+DOC-ARCHITECTURE
 WCL-CI
-
 VCL-BANNER
-
 TPL-BACKEND
 ```
 
-Los prefijos permiten identificar la naturaleza o familia del elemento.
+El identificador deberá:
 
-Los identificadores deberán permanecer estables durante la evolución del Framework.
+- ser único;
+- representar una responsabilidad estable;
+- permitir referencias machine-readable;
+- mantenerse consistente entre versiones compatibles;
+- corresponder con la fuente canónica del elemento.
 
----
-
-# 7. Naming Rules
-
-Los identificadores deberán cumplir:
-
-* inglés;
-* mayúsculas;
-* guiones;
-* sin abreviaturas ambiguas;
-* estables entre versiones.
-
-Nunca deberán reutilizarse para otro componente.
+No deberá utilizarse el mismo identificador para responsabilidades diferentes.
 
 ---
 
-# 8. Component Metadata
+# 8. Naming Rules
 
-Los Framework Components implementados dispondrán de metadata estructurada conforme a su definición canónica.
+Los identificadores deberán utilizar:
 
-Entre los campos actualmente utilizados se encuentran:
+- inglés;
+- mayúsculas;
+- guiones;
+- nombres descriptivos;
+- prefijo oficial de la familia.
+
+Se evitarán:
+
+- abreviaturas ambiguas;
+- nombres ligados a consumidores concretos;
+- nombres tecnológicos cuando la responsabilidad sea más general;
+- identificadores duplicados;
+- cambios innecesarios de naming.
+
+La estabilidad del identificador forma parte del contrato público del Framework.
+
+---
+
+# 9. Canonical Component Definition
+
+Cuando un Framework Component esté `Implemented`, su definición canónica seguirá el modelo establecido por el RDS:
+
+```text
+Specification
+        +
+Metadata
+        +
+Materialization when required
+```
+
+La Specification define la responsabilidad humana.
+
+La Metadata proporciona representación estructurada.
+
+La Materialization proporciona capacidad reusable cuando la responsabilidad la requiere.
+
+El Component Catalog no sustituye ninguno de estos elementos.
+
+Su función consiste en indicar:
+
+- qué Component existe;
+- cómo se clasifica;
+- dónde localizarlo;
+- cuál es su disponibilidad actual.
+
+---
+
+# 10. Component Metadata
+
+Los Framework Components implementados dispondrán de Metadata estructurada conforme a su definición canónica.
+
+Entre los campos actualmente relevantes podrán encontrarse:
 
 | Field | Description |
-|---|---|
-| ID | Identificador |
+| --- | --- |
+| ID | Identificador estable |
 | Name | Nombre |
 | Family | Familia |
 | Version | Versión |
-| Status | Estado |
-| Priority | Prioridad orientativa del Component |
+| Status | Lifecycle status |
+| Priority | Prioridad orientativa |
 | Audience | Audiencia principal |
 | Maturity | Madurez mínima recomendada |
 | Description | Descripción resumida |
 | Dependencies | Dependencias declaradas |
 
-La metadata podrá evolucionar conforme maduren las capacidades del Framework.
+La Metadata podrá evolucionar conforme maduren las capacidades del Framework.
 
-El catálogo no deberá definir un esquema alternativo incompatible con la metadata canónica.
-
----
-
-# 9. Component States
-
-Todo componente tendrá un estado.
-
-| State        | Meaning         |
-| ------------ | --------------- |
-| Draft        | Diseño inicial  |
-| Experimental | Validación      |
-| Stable       | Uso recomendado |
-| Deprecated   | Sustituido      |
-| Retired      | Eliminado       |
-
-Los estados deberán comunicarse claramente.
-
-El estado describe el lifecycle del Component.
-
-No determina si debe utilizarse en un Repository Template concreto.
+El catálogo no deberá definir un esquema alternativo incompatible.
 
 ---
 
-# 10. Component Versioning
+# 11. Implementation Classification
 
-Cada componente seguirá Semantic Versioning.
+El Component Catalog distingue la disponibilidad material de una responsabilidad mediante:
 
-Ejemplos.
+| Classification | Meaning |
+| --- | --- |
+| `Conceptual` | Responsabilidad reconocida sin implementación canónica reusable suficiente |
+| `Implemented` | Existe una definición canónica reusable y gobernada conforme al RDS |
+
+Esta clasificación responde:
 
 ```text
-README-HERO
+Is a canonical reusable capability available?
+```
 
-1.0.0
+No responde:
+
+```text
+Is it Stable?
+Is it Required?
+Does a consumer conform?
+```
+
+Por tanto:
+
+```text
+Implementation Classification
+        ≠
+Lifecycle Status
+        ≠
+Template Requirement Level
+        ≠
+Consumer Conformance
+```
+
+---
+
+# 12. Conceptual Elements
+
+Un Component `Conceptual` representa una responsabilidad reconocida por la arquitectura que todavía no dispone de implementación canónica reusable suficiente.
+
+Puede existir conceptualmente para:
+
+- preservar una responsabilidad identificada;
+- evitar duplicaciones;
+- facilitar planificación;
+- permitir futura composición;
+- preparar implementación posterior.
+
+No deberá presentarse como capacidad material disponible.
+
+La existencia de una práctica equivalente en un repositorio consumidor no modifica automáticamente esta clasificación.
+
+---
+
+# 13. Implemented Elements
+
+Un Component podrá clasificarse como `Implemented` cuando exista una definición canónica reusable conforme al contrato del RDS.
+
+Como mínimo deberá disponer de:
+
+```text
+Specification
++
+Metadata
+```
+
+y además:
+
+```text
+Materialization
+```
+
+cuando su responsabilidad requiera capacidad material adicional.
+
+La clasificación deberá reflejar la realidad del Framework.
+
+No deberá utilizarse para representar intención futura.
+
+---
+
+# 14. Implementation Classification vs Materialization
+
+El mecanismo de materialización depende de la familia y responsabilidad.
+
+Ejemplos conceptuales:
+
+```text
+README Component
+        ↓
+Reusable section or template
 ```
 
 ```text
-VCL-BANNER
-
-2.1.0
+Documentation Component
+        ↓
+Reusable documentation structure
 ```
 
-La evolución de un Framework Component no implica la actualización inmediata del resto del sistema, salvo cuando existan dependencias o contratos afectados.
+```text
+Workflow Component
+        ↓
+Community file / configuration / executable workflow / convention
+```
+
+```text
+Visual Component
+        ↓
+Asset / layout / convention / template
+```
+
+El Component Catalog no define estos mecanismos en detalle.
+
+Esa responsabilidad pertenece al RDS y a las Specifications canónicas.
 
 ---
 
-# 11. Registry Families
+# 15. Lifecycle Status
 
-El catálogo reconoce actualmente cuatro familias principales de Framework Components:
+Los elementos implementados podrán mantener lifecycle states como:
 
-| Prefix | Family |
-|---|---|
-| README | README Components |
-| DOC | Documentation Components |
-| WCL | Workflow Components |
-| VCL | Visual Components |
+| State | Meaning |
+| --- | --- |
+| Draft | Diseño o implementación inicial |
+| Experimental | Implementado y en validación |
+| Stable | Validado para uso recomendado |
+| Deprecated | Disponible por compatibilidad, pero sustituido |
+| Retired | Fuera del catálogo activo |
 
-Además, registra Repository Templates mediante el prefijo:
+El lifecycle status describe evolución y madurez de adopción.
 
-| Prefix | Element |
-|---|---|
-| TPL | Repository Templates |
+No indica disponibilidad material por sí solo.
 
-Los Repository Templates no constituyen una familia de Framework Components.
+Ejemplo válido:
 
-Los Maturity Profiles tampoco constituyen Components y se gestionan como una dimensión independiente del modelo.
-
-La incorporación de nuevas familias deberá ser coherente con el Repository Design System.
+```text
+implementation: Implemented
+status: Experimental
+```
 
 ---
 
-# 12. Component Relationships
+# 16. Implementation Classification vs Lifecycle
 
-Los Framework Components podrán mantener relaciones o dependencias cuando exista una necesidad real.
+La implementación y el lifecycle constituyen dimensiones distintas.
 
-Ejemplo conceptual:
+Modelo:
+
+```text
+Conceptual
+        ↓
+Implementation work
+        ↓
+Implemented
+        ↓
+Experimental
+        ↓
+Validation
+        ↓
+Stable
+```
+
+Este flujo es orientativo.
+
+El catálogo deberá representar ambas dimensiones cuando corresponda.
+
+No deberá utilizar `Stable` como sustituto de `Implemented`.
+
+---
+
+# 17. Component Priority
+
+La Metadata de un Framework Component podrá expresar una prioridad orientativa dentro de su familia.
+
+Valores actuales:
+
+| Priority | Meaning |
+| --- | --- |
+| Required | Responsabilidad de alta relevancia dentro de su ámbito |
+| Recommended | Responsabilidad habitualmente útil |
+| Optional | Responsabilidad especializada o contextual |
+
+La prioridad describe el Component de forma general.
+
+No determina su obligatoriedad dentro de un Repository Template.
+
+Por tanto:
+
+```text
+Component Priority
+        ≠
+Template Requirement Level
+```
+
+---
+
+# 18. Template Requirement Levels
+
+Los Repository Templates utilizan:
+
+```text
+required
+recommended
+optional
+```
+
+para expresar la importancia contextual de un Component dentro de una composición concreta.
+
+El Component Catalog no deberá convertir estos requirement levels en propiedades universales.
+
+Un mismo Component puede ser:
+
+```text
+required
+```
+
+en un Template y:
+
+```text
+recommended
+```
+
+en otro.
+
+La fuente normativa de esta decisión será el Repository Template.
+
+---
+
+# 19. Component Availability vs Consumer Conformance
+
+El catálogo deberá mantener explícitamente la distinción:
+
+```text
+Component Availability
+        ≠
+Consumer Conformance
+```
+
+Un Component puede permanecer `Conceptual` mientras un consumidor satisface correctamente su responsabilidad mediante una implementación propia.
+
+Del mismo modo, un Component `Implemented` puede existir sin ser utilizado por un consumidor concreto.
+
+El catálogo informa disponibilidad.
+
+La conformance deberá evaluarse contra:
+
+- Repository Template;
+- responsabilidades seleccionadas;
+- Component contracts;
+- consumer materialization.
+
+---
+
+# 20. Component Relationships
+
+Los Framework Components podrán mantener relaciones con otros elementos.
+
+Podrán existir:
+
+- complementariedad;
+- navegación;
+- secuencia operativa;
+- consumo conjunto;
+- dependencia;
+- especialización;
+- relación con Repository Templates.
+
+El catálogo podrá exponer estas relaciones con fines de descubrimiento.
+
+No deberá transformar relaciones conceptuales en dependencias técnicas.
+
+---
+
+# 21. Component Dependencies
+
+Una dependencia representa una relación funcional real.
+
+Deberá declararse en la Specification o Metadata canónica cuando exista.
+
+Principio:
+
+```text
+Dependency
+        ≠
+Common usage
+```
+
+y:
+
+```text
+Dependency
+        ≠
+Template requirement level
+```
+
+El Component Catalog podrá mostrar dependencias.
+
+No deberá inventarlas.
+
+---
+
+# 22. Component Consumers
+
+Un Framework Component podrá ser consumido, según su responsabilidad, por:
+
+- repository README;
+- documentation;
+- GitHub configuration;
+- GitHub Actions;
+- Repository Templates;
+- GitHub Profile;
+- GitHub Pages;
+- Framework Automation;
+- futuros consumidores.
+
+La aplicabilidad depende de la responsabilidad.
+
+No todos los Components serán válidos para todos los contextos.
+
+---
+
+# 23. Cross-Family Reuse
+
+Los Components podrán relacionarse entre familias.
+
+Ejemplos:
 
 ```text
 README-ARCHITECTURE
@@ -276,309 +647,320 @@ README-ARCHITECTURE
 DOC-ARCHITECTURE
 ```
 
-Una relación no implica necesariamente dependencia funcional.
-
-Las dependencias reales deberán declararse explícitamente en la definición canónica del Component.
-
-No deberán introducirse jerarquías artificiales únicamente para mantener una estructura uniforme.
-
----
-
-# 13. Component Dependencies
-
-Las dependencias entre Framework Components deberán representar relaciones funcionales reales.
-
-Cuando exista una dependencia deberá quedar registrada en la metadata o especificación canónica correspondiente.
-
-Las dependencias no deberán confundirse con los requirement levels utilizados por Repository Templates.
-
-Por tanto:
-
 ```text
-Component dependency
-≠
-Template requirement level
+README-HERO
+        ↔
+VCL-HERO
 ```
 
-Los tipos de dependencia podrán formalizarse en el futuro si aparece una necesidad real de distinguir diferentes contratos entre Components.
-
----
-
-# 14. Component Consumers
-
-Un Framework Component podrá utilizarse, según su responsabilidad, por diferentes consumidores:
-
-- README;
-- documentación;
-- repositorios;
-- GitHub Profile;
-- GitHub Pages;
-- automatizaciones;
-- Repository Templates;
-- futuras herramientas del Framework.
-
-No todos los Components serán aplicables a todos los consumidores.
-
----
-
-# 15. Component Reuse
-
-Un mismo Framework Component podrá utilizarse en múltiples Repository Templates y Repository Implementations.
-
-Ejemplo:
-
 ```text
-README-QUICK-START
-        ↓
-Multiple Repository Templates
-        ↓
-Multiple Repository Implementations
+WCL-RELEASE
+        ↔
+DOC-CHANGELOG
 ```
 
-El Component mantiene una única responsabilidad canónica aunque disponga de múltiples consumidores.
+Estas relaciones deberán preservar responsabilidades independientes.
+
+No constituyen una jerarquía universal entre familias.
 
 ---
 
-# 16. Component Ownership
+# 24. Component Ownership
 
-Los Framework Components deberán mantenerse bajo una responsabilidad de mantenimiento identificable a nivel de proyecto o gobernanza.
+Todo elemento reusable deberá disponer de ownership identificable mediante la gobernanza del proyecto.
 
-La asignación de ownership individual por Component podrá incorporarse cuando el modelo colaborativo del Framework lo requiera.
+El catálogo podrá exponer ownership cuando resulte útil para descubrimiento.
 
-El catálogo no deberá duplicar información de ownership si existe una fuente canónica específica para ella.
+No deberá mantener una segunda fuente contradictoria si existe una fuente canónica específica.
+
+Actualmente, el ownership general pertenece al mantenimiento de GitHub Framework.
+
+Podrán incorporarse owners especializados en el futuro.
 
 ---
 
-# 17. Component Lifecycle
+# 25. Component Versioning
 
-Los Framework Components podrán evolucionar mediante un lifecycle como:
+Los Framework Components podrán mantener versionado independiente de GitHub Framework.
+
+Se utilizará Semantic Versioning cuando corresponda:
 
 ```text
-Need
-        ↓
-Specification
-        ↓
-Implementation
-        ↓
-Validation
-        ↓
-Adoption
-        ↓
-Maintenance
-        ↓
-Deprecation / Retirement
+Major.Minor.Patch
 ```
 
-El Component Catalog podrá registrar tanto elementos implementados como responsabilidades conceptuales reconocidas por el RDS, siempre que su estado quede claramente identificado.
+La actualización del Framework no obliga automáticamente a actualizar todos los Components.
 
-La presencia en el catálogo no deberá interpretarse automáticamente como existencia de una implementación canónica.
+El catálogo deberá reflejar la versión canónica.
 
----
-
-# 18. Implementation Classification
-
-El catálogo podrá distinguir el grado de materialización de un elemento.
-
-Entre las clasificaciones actualmente relevantes se encuentran:
-
-| Classification | Meaning |
-|---|---|
-| Implemented | Existe una implementación canónica dentro del Framework |
-| Conceptual | Responsabilidad reconocida pero todavía no implementada canónicamente |
-
-Esta clasificación es independiente de:
-
-- status;
-- priority;
-- maturity;
-- requirement level.
-
-Por tanto:
-
-```text
-Implementation classification
-≠
-Lifecycle status
-≠
-Template requirement level
-```
+No generar una versión paralela.
 
 ---
 
-# 19. Registry Attributes
+# 26. Maturity Mapping
 
-Además de la metadata canónica, el catálogo podrá exponer información derivada o de descubrimiento como:
-
-- implementación disponible;
-- consumidores conocidos;
-- Repository Templates relacionados;
-- ubicación canónica;
-- fecha de última revisión;
-- relaciones relevantes.
-
-Los atributos derivados no deberán convertirse en una segunda definición del Component.
-
----
-
-# 20. Audience Classification
-
-Cada componente indicará su audiencia principal.
-
-| Audience    | Purpose            |
-| ----------- | ------------------ |
-| Recruiter   | Perfil profesional |
-| Developer   | Ingeniería         |
-| Contributor | Colaboración       |
-| Maintainer  | Mantenimiento      |
-| All         | Uso general        |
-
-Esta clasificación facilitará la composición automática de README y plantillas.
-
-La audiencia constituye metadata descriptiva.
-
-No determina por sí misma la inclusión del Component en un Repository Template.
-
----
-
-# 21. Component Priority
-
-La metadata de un Framework Component podrá expresar una prioridad orientativa dentro de su familia.
-
-Los valores actualmente utilizados incluyen:
-
-| Priority | Meaning |
-|---|---|
-| Required | Responsabilidad de alta relevancia dentro de su ámbito |
-| Recommended | Responsabilidad habitualmente útil |
-| Optional | Responsabilidad especializada o contextual |
-
-Esta prioridad describe el Component de forma general.
-
-No determina si debe utilizarse en un repositorio concreto.
-
-La obligatoriedad contextual pertenece exclusivamente al Repository Template mediante sus requirement levels:
-
-```text
-Component priority
-≠
-Template requirement level
-```
-
-Un Component con `priority: Required` podrá no ser necesario para determinados tipos de proyecto.
-
----
-
-# 22. Maturity Mapping
-
-La metadata de un Framework Component podrá indicar el nivel mínimo de madurez recomendado para utilizarlo o mantenerlo adecuadamente.
+La Metadata podrá indicar una madurez mínima recomendada.
 
 | Level | Description |
-|---|---|
+| --- | --- |
 | L1 | Experimental |
 | L2 | Public Basic |
 | L3 | Supporting |
 | L4 | Strategic |
 
-Este valor no determina el tipo de proyecto ni el requirement level del Component.
+Este valor representa una expectativa orientativa.
 
-Representa una expectativa orientativa de madurez.
+No determina:
+
+- project type;
+- lifecycle status;
+- requirement level;
+- implementation classification.
 
 ---
 
-# 23. Registry Navigation
+# 27. Registry Attributes
 
-El catálogo deberá permitir localizar elementos mediante:
+El Component Catalog podrá exponer dos tipos de información.
 
-- identificador;
-- familia;
-- status;
-- audience;
-- priority;
-- maturity;
+## Canonical Metadata
+
+Información procedente directamente de la fuente canónica.
+
+Ejemplos:
+
+- ID;
+- Name;
+- Version;
+- Family;
+- Status;
+- Priority;
+- Audience;
+- Maturity;
+- Dependencies.
+
+## Derived Catalog Information
+
+Información calculada o mantenida para descubrimiento.
+
+Ejemplos:
+
 - implementation classification;
-- Repository Template relacionado;
-- ubicación canónica.
+- canonical location;
+- Repository Templates relacionados;
+- consumidores conocidos;
+- última revisión;
+- familia.
+
+La información derivada no deberá convertirse en una segunda Specification.
 
 ---
 
-# 24. Registry Principles
+# 28. Canonical Location
 
-El catálogo seguirá estos principios:
+Cuando exista implementación, el catálogo deberá permitir localizar la fuente canónica.
+
+Ubicaciones principales actuales:
+
+```text
+framework/components/readme/
+framework/components/documentation/
+framework/templates/repositories/
+```
+
+Conforme se materialicen nuevas familias podrán añadirse ubicaciones como:
+
+```text
+framework/components/workflow/
+framework/components/visual/
+```
+
+La presencia de una ubicación potencial no implica que la familia ya disponga de Components implementados.
+
+---
+
+# 29. Registry Navigation
+
+El catálogo deberá permitir localizar elementos mediante criterios como:
+
+- ID;
+- family;
+- implementation classification;
+- lifecycle status;
+- priority;
+- audience;
+- maturity;
+- Repository Template;
+- canonical location;
+- dependency;
+- responsibility.
+
+La navegación podrá evolucionar hacia herramientas machine-readable.
+
+La documentación actual constituye la interfaz humana principal.
+
+---
+
+# 30. Registry Synchronization
+
+El Component Catalog deberá mantenerse sincronizado con la implementación real.
+
+Cambios como:
+
+```text
+Conceptual
+        ↓
+Implemented
+```
+
+deberán reflejarse cuando exista una fuente canónica real.
+
+La sincronización podrá afectar a:
+
+- registry tables;
+- implementation counts;
+- canonical locations;
+- summaries;
+- relationships;
+- status;
+- version.
+
+El catálogo no deberá adelantarse a la implementación.
+
+---
+
+# 31. Registry Evolution
+
+La incorporación o evolución de un elemento deberá seguir conceptualmente:
+
+```text
+Need
+        ↓
+RDS evaluation
+        ↓
+Specification
+        ↓
+Implementation
+        ↓
+Catalog synchronization
+        ↓
+Validation
+        ↓
+Adoption
+```
+
+Un elemento conceptual podrá existir antes de la implementación cuando resulte útil para representar una responsabilidad reconocida.
+
+En ese caso deberá permanecer claramente clasificado.
+
+---
+
+# 32. Registry Principles
+
+El Component Catalog seguirá estos principios:
 
 - descubrimiento centralizado;
 - nomenclatura estable;
-- ausencia de duplicados conceptuales;
-- referencias hacia fuentes canónicas;
 - clasificación explícita;
-- evolución controlada;
-- sincronización con la implementación.
+- trazabilidad;
+- ausencia de duplicados conceptuales;
+- referencias a fuentes canónicas;
+- sincronización con implementación;
+- separación entre disponibilidad y conformance;
+- separación entre implementation classification y lifecycle;
+- ausencia de requirement levels globales.
 
 ---
 
-# 25. Anti-Patterns
+# 33. Registry Anti-Patterns
 
 No deberán aparecer:
 
-- identificadores repetidos;
+- identificadores duplicados;
 - familias ambiguas;
-- Components con responsabilidades duplicadas;
+- Components con responsabilidades equivalentes;
 - dependencias ocultas;
-- elementos presentados como implementados sin implementación canónica;
+- Components conceptuales presentados como implementados;
+- lifecycle status utilizado como implementación;
 - requirement levels globales definidos por el catálogo;
-- clasificaciones paralelas a las fuentes canónicas;
-- metadata duplicada con valores contradictorios;
+- Metadata duplicada con valores contradictorios;
 - Repository Profiles tratados como Components;
-- Maturity Profiles tratados como Repository Templates.
+- Maturity Profiles tratados como Repository Templates;
+- canonical locations inexistentes presentadas como disponibles;
+- prácticas de un consumer presentadas como implementación canónica;
+- información derivada convertida en Specification paralela.
 
 ---
 
-# 26. Quality Gates
+# 34. Registry Quality Gates
 
-Antes de registrar o actualizar un elemento deberán verificarse:
+Antes de registrar o actualizar un elemento deberá verificarse:
 
-- [ ] El identificador es único cuando corresponda.
+- [ ] El identificador es único.
 - [ ] La naturaleza o familia está correctamente identificada.
 - [ ] Existe una responsabilidad diferenciada.
+- [ ] La clasificación `Conceptual / Implemented` es correcta.
+- [ ] El lifecycle status es coherente cuando corresponde.
 - [ ] La fuente canónica está identificada cuando existe.
-- [ ] El status está correctamente representado.
-- [ ] La clasificación de implementación es correcta.
+- [ ] La ubicación canónica es correcta cuando existe implementación.
 - [ ] Las dependencias reales están documentadas.
-- [ ] La metadata mostrada coincide con la fuente canónica.
-- [ ] No se introduce un requirement level global.
+- [ ] La Metadata reproducida coincide con la fuente canónica.
+- [ ] No existe un requirement level global inventado.
+- [ ] La disponibilidad no se confunde con consumer conformance.
 - [ ] No se duplica una responsabilidad existente.
+- [ ] El catálogo continúa alineado con el RDS.
 
 ---
 
-# 27. Long-Term Vision
+# 35. Long-Term Vision
 
-El Component Catalog deberá convertirse en una interfaz de descubrimiento del ecosistema GitHub Framework.
+El Component Catalog deberá evolucionar hacia una interfaz central de descubrimiento de GitHub Framework.
 
-Permitirá localizar responsabilidades reutilizables, comprender su estado y acceder a sus fuentes canónicas.
+Permitirá localizar:
+
+- responsabilidades reutilizables;
+- implementaciones disponibles;
+- Repository Templates;
+- relaciones;
+- dependencias;
+- estado;
+- versiones;
+- fuentes canónicas.
 
 Con el tiempo podrá alimentar:
 
-- buscadores de Components;
 - Repository Wizards;
+- CLI;
 - validadores;
 - generadores;
-- análisis de dependencias;
-- herramientas de gobernanza.
+- herramientas de gobernanza;
+- dependency analysis;
+- Repository Health;
+- Framework Automation.
 
-La automatización deberá consumir las fuentes canónicas y utilizar el catálogo como índice, no como definición paralela.
+Estas herramientas deberán consumir las fuentes canónicas.
+
+El Catalog actuará como índice y capa de descubrimiento.
+
+No como arquitectura paralela.
 
 ---
 
-# 28. Part 1 Conclusions
+# 36. Part 1 Conclusions
 
-El **Component Catalog** proporciona una vista centralizada de los elementos reutilizables reconocidos por GitHub Framework.
+El **Component Catalog** proporciona una vista centralizada y gobernada de los elementos reutilizables reconocidos por GitHub Framework.
 
-Su responsabilidad principal es facilitar descubrimiento, clasificación y trazabilidad.
+El RDS define arquitectura.
 
-Las especificaciones y metadata mantienen las definiciones canónicas cuando existen.
+Las Specifications definen responsabilidades.
 
-Los Repository Templates determinan contextualmente la composición de Components, mientras que los Maturity Profiles constituyen una dimensión independiente.
+La Metadata estructura información.
 
-Por tanto:
+Las Materializations proporcionan capacidad reusable cuando resulta necesaria.
+
+El Component Catalog permite descubrir y clasificar estos elementos.
+
+Modelo:
 
 ```text
 Canonical Sources
@@ -592,11 +974,37 @@ Repository Templates
 Repository Implementations
 ```
 
-El catálogo deberá mantenerse sincronizado con la evolución real del Framework sin convertirse en una segunda fuente de verdad.
+El catálogo distingue explícitamente:
+
+```text
+Conceptual
+        ≠
+Implemented
+```
+
+```text
+Implementation Classification
+        ≠
+Lifecycle Status
+```
+
+```text
+Component Priority
+        ≠
+Template Requirement Level
+```
+
+```text
+Component Availability
+        ≠
+Consumer Conformance
+```
+
+Estas separaciones permiten representar con precisión el estado real del Framework sin convertir el catálogo en una segunda fuente de verdad.
 
 ---
 
-# 29. Part 1 Versioning
+# 37. Part 1 Versioning
 
 El versionado de esta Part se gestiona mediante el Revision History global del Component Catalog.
 
@@ -610,492 +1018,1189 @@ El versionado de esta Part se gestiona mediante el Revision History global del C
 
 ---
 
-# 30. Purpose
+# 38. Purpose
 
-Esta sección proporciona la vista de catálogo de las familias:
+Esta Part registra los Framework Components pertenecientes a las familias:
 
-- README Components (`README-*`);
-- Documentation Components (`DOC-*`).
-
-Su objetivo es facilitar el descubrimiento, clasificación y trazabilidad de los Components relacionados con README y documentación.
-
-Las especificaciones y metadata correspondientes constituyen sus fuentes canónicas cuando existe implementación.
-
-Esta sección no determina qué Components son obligatorios para cada tipo de proyecto.
-
-Esa responsabilidad corresponde a los Repository Templates.
-
----
-
-# 31. README Component Family
-
-## Prefix
-
-```text id="cc010"
-README
+```text
+README-*
+DOC-*
 ```
 
----
+Ambas familias proporcionan responsabilidades documentales reutilizables, pero operan en niveles diferentes.
 
-## Purpose
+Los README Components estructuran la superficie principal de entrada de un repositorio.
 
-Construir README modulares, reutilizables y consistentes.
+Los Documentation Components representan responsabilidades documentales especializadas que pueden requerir artefactos, estructuras o documentos adicionales.
 
----
-
-## Consumer
-
-* GitHub Repository
-* GitHub Profile
-* GitHub Pages
-* Documentation Landing Pages
-
----
-
-## Relationships
-
-Los README Components podrán relacionarse con Components de otras familias cuando exista una responsabilidad compartida o complementaria.
-
-Entre las relaciones habituales podrán encontrarse:
-
-- Documentation Components (`DOC-*`);
-- Visual Components (`VCL-*`).
-
-Las dependencias reales deberán declararse individualmente en la definición canónica de cada Component.
-
-La pertenencia a la familia README no implica automáticamente una dependencia con otra familia.
-
----
-
-# 32. README Component Registry
-
-| ID                          | Name                 | Priority    | Audience    | Maturity | Implementation |
-| --------------------------- | -------------------- | ----------- | ----------- | -------- | -------------- |
-| README-HERO                 | Hero Section         | Required    | All         | L1       | Implemented    |
-| README-STATUS               | Project Status       | Required    | All         | L2       | Implemented    |
-| README-OVERVIEW             | Project Overview     | Required    | All         | L1       | Implemented    |
-| README-HIGHLIGHTS           | Highlights           | Recommended | Recruiter   | L2       | Conceptual     |
-| README-FEATURES             | Features             | Required    | All         | L2       | Implemented    |
-| README-ARCHITECTURE         | Architecture         | Recommended | Developer   | L3       | Implemented    |
-| README-TECH-STACK           | Tech Stack           | Required    | All         | L2       | Implemented    |
-| README-REPOSITORY-STRUCTURE | Repository Structure | Recommended | Developer   | L3       | Conceptual     |
-| README-QUICK-START          | Quick Start          | Required    | Developer   | L2       | Implemented    |
-| README-DOCUMENTATION        | Documentation        | Required    | Developer   | L2       | Implemented    |
-| README-DEMO                 | Demo                 | Optional    | Recruiter   | L2       | Conceptual     |
-| README-TESTING              | Testing              | Recommended | Developer   | L3       | Implemented    |
-| README-ROADMAP              | Roadmap              | Recommended | Maintainer  | L3       | Implemented    |
-| README-CONTRIBUTING         | Contributing         | Optional    | Contributor | L3       | Conceptual     |
-| README-LICENSE              | License              | Required    | All         | L2       | Conceptual     |
-| README-AUTHOR               | Author               | Recommended | Recruiter   | L2       | Implemented    |
-| README-FOOTER               | Footer               | Required    | All         | L1       | Implemented    |
-
-Los valores de `Priority` representan metadata orientativa del Component conforme a §21.
-
-No constituyen requirement levels globales.
-
-La selección efectiva para cada tipo de proyecto corresponde a los Repository Templates.
-
----
-
-# 33. README Implementation Status
-
-La familia README contiene actualmente Components implementados y responsabilidades conceptuales reconocidas por el Framework.
+Modelo:
 
 ```text
 README Components
-        │
-        ├── 12 Implemented
-        └── 5 Conceptual
-                ├── README-HIGHLIGHTS
-                ├── README-REPOSITORY-STRUCTURE
-                ├── README-DEMO
-                ├── README-CONTRIBUTING
-                └── README-LICENSE
+        ↓
+Repository Entry Surface
+
+Documentation Components
+        ↓
+Specialized Documentation
 ```
 
-La clasificación `Implemented` indica que existe una implementación canónica dentro de `framework/components/readme/`.
+La clasificación de esta Part refleja la disponibilidad canónica real dentro del Framework.
 
-Los Components clasificados como `Conceptual` representan responsabilidades reconocidas que todavía no disponen de implementación canónica materializada.
-
-La presencia de un Component en el catálogo no implica por sí misma disponibilidad material ni obligatoriedad dentro de un Repository Template.
+Las responsabilidades reconocidas arquitectónicamente que todavía no disponen de implementación reusable suficiente permanecen `Conceptual`.
 
 ---
 
-# 34. README Selection Model
+# 39. README Component Family
 
-Los README Components no se agrupan globalmente como Core, Extended u Optional.
-
-Su necesidad depende del tipo de proyecto y del Repository Template correspondiente.
+La familia:
 
 ```text
-README Component
-        ↓
-Repository Template
-        ↓
-required / recommended / optional
-        ↓
-Repository Implementation
+README-*
 ```
 
-Por tanto, un mismo README Component podrá tener diferentes requirement levels según el Template consumidor.
+representa responsabilidades reutilizables destinadas principalmente a la composición de archivos `README.md`.
+
+Su objetivo consiste en evitar que cada repositorio diseñe desde cero responsabilidades recurrentes de presentación, comprensión, navegación y adopción.
+
+Los README Components no representan necesariamente archivos independientes.
+
+Su materialización habitual consiste en estructuras o secciones reutilizables dentro de un README consumidor.
 
 ---
 
-# 35. README Catalog Responsibility
+# 40. README Component Registry
 
-El catálogo describe qué README Components reconoce el Framework y facilita su descubrimiento.
+El catálogo reconoce actualmente los siguientes README Components:
 
-No determina una composición universal de README.
-
-La composición efectiva deberá derivarse de:
-
-- Repository Template;
-- necesidades reales del proyecto;
-- madurez esperada;
-- personalización justificada del consumidor.
-
-Las decisiones contextuales no deberán convertirse en nuevas clasificaciones globales dentro del catálogo.
+| ID | Responsibility | Implementation |
+| --- | --- | :---: |
+| `README-HERO` | Presentación principal e identidad inicial | Implemented |
+| `README-OVERVIEW` | Explicación resumida del proyecto | Implemented |
+| `README-HIGHLIGHTS` | Capacidades o elementos destacados | Conceptual |
+| `README-FEATURES` | Funcionalidades principales | Implemented |
+| `README-TECH-STACK` | Tecnologías principales | Implemented |
+| `README-QUICK-START` | Inicio rápido y primeros pasos | Implemented |
+| `README-DEMO` | Demostración o acceso al resultado | Conceptual |
+| `README-ARCHITECTURE` | Resumen arquitectónico | Implemented |
+| `README-DOCUMENTATION` | Acceso a documentación ampliada | Implemented |
+| `README-REPOSITORY-STRUCTURE` | Explicación de estructura del repositorio | Conceptual |
+| `README-TESTING` | Información resumida sobre testing | Implemented |
+| `README-STATUS` | Estado actual del proyecto | Implemented |
+| `README-ROADMAP` | Evolución prevista | Implemented |
+| `README-CONTRIBUTING` | Acceso o resumen de contribución | Conceptual |
+| `README-LICENSE` | Información de licencia | Conceptual |
+| `README-AUTHOR` | Información de autoría o mantenimiento | Implemented |
+| `README-FOOTER` | Cierre y navegación complementaria | Implemented |
 
 ---
 
-# 36. README Relationships
+# 41. README Registry Summary
 
-Los README Components pueden mantener relaciones de composición o complementariedad sin constituir una jerarquía obligatoria.
+Estado actual:
+
+```text
+README Components
+        17 total
+
+Implemented
+        12
+
+Conceptual
+         5
+```
+
+Components implementados:
+
+```text
+README-ARCHITECTURE
+README-AUTHOR
+README-DOCUMENTATION
+README-FEATURES
+README-FOOTER
+README-HERO
+README-OVERVIEW
+README-QUICK-START
+README-ROADMAP
+README-STATUS
+README-TECH-STACK
+README-TESTING
+```
+
+Components conceptuales:
+
+```text
+README-HIGHLIGHTS
+README-REPOSITORY-STRUCTURE
+README-DEMO
+README-CONTRIBUTING
+README-LICENSE
+```
+
+La clasificación representa disponibilidad reusable dentro de GitHub Framework.
+
+No representa consumer conformance.
+
+---
+
+# 42. README Implemented Components
+
+Los README Components clasificados como `Implemented` disponen de una definición canónica reusable dentro de:
+
+```text
+framework/components/readme/
+```
+
+Su implementación deberá mantenerse conforme al contrato general del RDS:
+
+```text
+Specification
++
+Metadata
++
+Materialization when required
+```
+
+El Component Catalog no reproduce las Specifications completas.
+
+Las tablas del catálogo proporcionan:
+
+- descubrimiento;
+- clasificación;
+- trazabilidad;
+- navegación.
+
+---
+
+# 43. README Conceptual Components
+
+Los README Components clasificados como `Conceptual` representan responsabilidades reconocidas por el Framework que todavía no disponen de implementación canónica reusable suficiente.
+
+Actualmente:
+
+```text
+README-HIGHLIGHTS
+README-REPOSITORY-STRUCTURE
+README-DEMO
+README-CONTRIBUTING
+README-LICENSE
+```
+
+La existencia de contenido equivalente en:
+
+- GitHub Framework;
+- Repository Templates;
+- Reference Implementations;
+- otros consumidores;
+
+no modifica automáticamente esta clasificación.
+
+---
+
+# 44. README-HIGHLIGHTS
+
+`README-HIGHLIGHTS` representa la responsabilidad de presentar capacidades, características o elementos especialmente relevantes de un proyecto.
+
+Registry classification:
+
+```text
+Family: README
+Implementation: Conceptual
+```
+
+Un consumidor puede incluir highlights sin que exista todavía una implementación reusable de este Component.
+
+---
+
+# 45. README-REPOSITORY-STRUCTURE
+
+`README-REPOSITORY-STRUCTURE` representa la responsabilidad de explicar desde el README la organización principal del repositorio cuando resulte útil.
+
+Registry classification:
+
+```text
+Family: README
+Implementation: Conceptual
+```
+
+La existencia de árboles de directorios o explicaciones estructurales en consumidores no constituye por sí sola implementación canónica.
+
+---
+
+# 46. README-DEMO
+
+`README-DEMO` representa la responsabilidad de facilitar acceso a una demostración, preview o resultado observable del proyecto cuando exista.
+
+Registry classification:
+
+```text
+Family: README
+Implementation: Conceptual
+```
+
+Su aplicabilidad depende del tipo de proyecto.
+
+No todos los repositorios necesitan esta responsabilidad.
+
+---
+
+# 47. README-CONTRIBUTING
+
+`README-CONTRIBUTING` representa la responsabilidad de facilitar desde el README el acceso al proceso de contribución.
+
+Registry classification:
+
+```text
+Family: README
+Implementation: Conceptual
+```
+
+La existencia de:
+
+```text
+CONTRIBUTING.md
+```
+
+o de un proceso de contribución en un consumidor no constituye automáticamente una implementación reusable de `README-CONTRIBUTING`.
+
+---
+
+# 48. README-LICENSE
+
+`README-LICENSE` representa la responsabilidad de comunicar desde el README la licencia aplicable al proyecto.
+
+Registry classification:
+
+```text
+Family: README
+Implementation: Conceptual
+```
+
+La existencia de:
+
+```text
+LICENSE
+```
+
+en un repositorio consumidor satisface una responsabilidad relacionada.
+
+No constituye por sí sola una implementación canónica reusable de `README-LICENSE`.
+
+---
+
+# 49. README Composition
+
+Los README Components están diseñados para composición.
 
 Ejemplo:
 
 ```text
 README-HERO
-        │
-        └── may use → VCL-HERO
-
-README-ARCHITECTURE
-        │
-        └── may reference → DOC-ARCHITECTURE
-
-README-DOCUMENTATION
-        │
-        └── may expose → Documentation Components
++
+README-OVERVIEW
++
+README-FEATURES
++
+README-TECH-STACK
++
+README-QUICK-START
++
+README-STATUS
+        ↓
+Repository README
 ```
 
-Estas relaciones son contextuales.
+No todos los repositorios deberán utilizar todos los Components.
 
-Las dependencias funcionales reales deberán declararse en la definición canónica de cada Component.
+La selección depende de:
 
----
+- Repository Template;
+- project type;
+- audience;
+- maturity;
+- contexto;
+- necesidades del consumidor.
 
-# 37. Documentation Component Family
-
-## Prefix
-
-```text
-DOC
-```
-
----
-
-## Purpose
-
-Construir sistemas documentales completos.
+El Component Catalog no establece una composición universal.
 
 ---
 
-## Consumer
+# 50. README Component Relationships
 
-* Documentation
-* MkDocs
-* GitHub Wiki
-* GitHub Pages
-
----
-
-## Relationships
-
-Los Documentation Components podrán relacionarse entre sí y con otras familias cuando exista una necesidad documental real.
-
-Estas relaciones no constituyen una jerarquía global.
-
-Las dependencias deberán declararse individualmente en las fuentes canónicas correspondientes.
-
----
-
-# 38. Documentation Component Registry
-
-| ID                 | Name                         | Priority    | Audience   | Maturity | Implementation |
-| ------------------ | ---------------------------- | ----------- | ---------- | -------- | -------------- |
-| DOC-ARCHITECTURE   | Architecture                 | Required    | Developer  | L3       | Implemented    |
-| DOC-ADR            | Architecture Decision Record | Recommended | Developer  | L3       | Conceptual     |
-| DOC-ROADMAP        | Roadmap                      | Recommended | Maintainer | L3       | Conceptual     |
-| DOC-PROJECT-STATUS | Project Status               | Required    | Maintainer | L2       | Implemented    |
-| DOC-KNOWN-ISSUES   | Known Issues                 | Recommended | Maintainer | L3       | Conceptual     |
-| DOC-CHANGELOG      | Changelog                    | Required    | All        | L2       | Implemented    |
-| DOC-RELEASE-NOTES  | Release Notes                | Recommended | All        | L3       | Conceptual     |
-| DOC-API            | API Documentation            | Optional    | Developer  | L3       | Conceptual     |
-| DOC-DATABASE       | Database Documentation       | Optional    | Developer  | L3       | Conceptual     |
-| DOC-DEPLOYMENT     | Deployment Guide             | Optional    | Developer  | L3       | Conceptual     |
-| DOC-TESTING        | Testing Strategy             | Recommended | Developer  | L3       | Conceptual     |
-| DOC-SECURITY       | Security                     | Recommended | Developer  | L3       | Conceptual     |
-| DOC-DIAGRAMS       | Diagrams                     | Recommended | Developer  | L3       | Conceptual     |
-| DOC-GLOSSARY       | Glossary                     | Optional    | All        | L4       | Conceptual     |
-| DOC-REFERENCES     | References                   | Recommended | All        | L2       | Implemented    |
-
-Los Components clasificados como `Conceptual` representan responsabilidades reconocidas por el RDS que todavía no disponen de implementación canónica.
-
-Su presencia en el catálogo no deberá interpretarse como disponibilidad material dentro de `framework/components/documentation/`.
-
----
-
-# 39. Documentation Implementation Status
-
-La familia Documentation contiene actualmente Components implementados y responsabilidades conceptuales reconocidas por el Framework.
-
-```text
-Documentation Components
-        │
-        ├── 4 Implemented
-        │       ├── DOC-ARCHITECTURE
-        │       ├── DOC-PROJECT-STATUS
-        │       ├── DOC-CHANGELOG
-        │       └── DOC-REFERENCES
-        │
-        └── 11 Conceptual
-                ├── DOC-ADR
-                ├── DOC-ROADMAP
-                ├── DOC-KNOWN-ISSUES
-                ├── DOC-RELEASE-NOTES
-                ├── DOC-API
-                ├── DOC-DATABASE
-                ├── DOC-DEPLOYMENT
-                ├── DOC-TESTING
-                ├── DOC-SECURITY
-                ├── DOC-DIAGRAMS
-                └── DOC-GLOSSARY
-```
-
-Los Components conceptuales representan responsabilidades reconocidas que todavía no disponen de implementación canónica dentro de `framework/components/documentation/`.
-
-Podrán evolucionar hacia `Implemented` cuando exista una necesidad validada y dispongan de una definición materializada y gobernada conforme al modelo del Framework.
-
----
-
-# 40. Documentation Selection Model
-
-Los Documentation Components no se clasifican globalmente como Core, Extended o Specialized.
-
-Su aplicabilidad depende del Repository Template y de las características reales del proyecto.
+Los README Components podrán mantener relaciones naturales con Documentation Components.
 
 Ejemplos:
 
-```text
-Backend
-        → may require DOC-API
+| README Component | Related Documentation Responsibility |
+| --- | --- |
+| `README-ARCHITECTURE` | `DOC-ARCHITECTURE` |
+| `README-DOCUMENTATION` | Documentation system |
+| `README-TESTING` | `DOC-TESTING` |
+| `README-ROADMAP` | `DOC-ROADMAP` |
+| `README-STATUS` | `DOC-PROJECT-STATUS` |
+| `README-LICENSE` | Repository licensing responsibility |
 
-Documentation
-        → may recommend DOC-GLOSSARY
+Estas relaciones expresan complementariedad.
 
-Project without database
-        → DOC-DATABASE not applicable
-```
-
-La selección contextual deberá expresarse mediante los requirement levels del Repository Template.
+No implican dependencia universal.
 
 ---
 
-# 41. Conceptual Documentation Components
+# 51. README Summary vs Documentation Detail
 
-El catálogo puede registrar responsabilidades documentales conceptuales antes de que exista implementación canónica.
+Los README Components deberán favorecer información resumida.
+
+Los Documentation Components podrán proporcionar profundidad adicional.
+
+Modelo:
+
+```text
+README
+        ↓
+Understand
+
+Documentation
+        ↓
+Explore
+```
+
+Ejemplo:
+
+```text
+README-ARCHITECTURE
+        ↓
+Architecture summary
+
+DOC-ARCHITECTURE
+        ↓
+Detailed architecture
+```
+
+Ambas responsabilidades pueden coexistir sin duplicación cuando mantienen diferentes niveles de profundidad.
+
+---
+
+# 52. README Reuse Principle
+
+Antes de crear una nueva responsabilidad reusable para README deberá evaluarse:
+
+```text
+Existing README Component?
+        ↓
+Can it be configured?
+        ↓
+Can it be extended?
+        ↓
+Is a new responsibility really needed?
+```
+
+Una variante de contenido no constituye automáticamente un nuevo Component.
+
+La familia deberá mantenerse limitada a responsabilidades suficientemente recurrentes.
+
+---
+
+# 53. README Consumer Adaptation
+
+Los consumidores podrán adaptar un README Component a su contexto.
+
+La adaptación podrá afectar a:
+
+- contenido;
+- profundidad;
+- enlaces;
+- ejemplos;
+- orden;
+- visibilidad;
+- integración con otros Components.
+
+La responsabilidad deberá mantenerse reconocible.
+
+Un Component no representa texto literal obligatorio.
+
+---
+
+# 54. README Availability vs Consumer Conformance
+
+El catálogo mantiene explícitamente:
+
+```text
+README Component Availability
+        ≠
+README Consumer Conformance
+```
+
+Un Component puede permanecer `Conceptual` mientras un consumidor satisface correctamente la responsabilidad mediante contenido propio.
+
+Del mismo modo, un Component `Implemented` puede existir sin ser utilizado por un consumidor concreto.
+
+---
+
+# 55. README Registry Maintenance
+
+Cuando un README Component cambie de:
+
+```text
+Conceptual
+        ↓
+Implemented
+```
+
+deberán revisarse:
+
+- registry table;
+- implementation counts;
+- canonical location;
+- lifecycle status;
+- relationships;
+- Repository Templates que lo referencien;
+- documentación de Framework.
+
+La transición deberá producirse únicamente después de existir una implementación canónica suficiente.
+
+---
+
+# 56. Documentation Component Family
+
+La familia:
+
+```text
+DOC-*
+```
+
+representa responsabilidades documentales especializadas reutilizables entre repositorios.
+
+Estas responsabilidades suelen necesitar mayor profundidad que una sección README.
+
+Podrán materializarse mediante:
+
+- documentos Markdown;
+- estructuras documentales;
+- templates;
+- conventions;
+- metadata;
+- otros artefactos apropiados.
+
+La materialización concreta depende del Component.
+
+---
+
+# 57. Documentation Component Registry
+
+El catálogo reconoce actualmente los siguientes Documentation Components:
+
+| ID | Responsibility | Implementation |
+| --- | --- | :---: |
+| `DOC-ADR` | Architecture Decision Records | Conceptual |
+| `DOC-API` | Documentación de APIs | Conceptual |
+| `DOC-ARCHITECTURE` | Arquitectura del sistema | Implemented |
+| `DOC-CHANGELOG` | Historial de cambios | Implemented |
+| `DOC-DATABASE` | Modelo y responsabilidades de datos | Conceptual |
+| `DOC-DEPLOYMENT` | Despliegue y operación | Conceptual |
+| `DOC-DIAGRAMS` | Diagramas técnicos | Conceptual |
+| `DOC-GLOSSARY` | Terminología y conceptos | Conceptual |
+| `DOC-KNOWN-ISSUES` | Problemas conocidos y limitaciones | Conceptual |
+| `DOC-PROJECT-STATUS` | Estado actual del proyecto | Implemented |
+| `DOC-REFERENCES` | Referencias y fuentes relacionadas | Implemented |
+| `DOC-RELEASE-NOTES` | Información específica de releases | Conceptual |
+| `DOC-ROADMAP` | Evolución prevista | Conceptual |
+| `DOC-SECURITY` | Documentación de seguridad | Conceptual |
+| `DOC-TESTING` | Estrategia y prácticas de testing | Conceptual |
+
+---
+
+# 58. Documentation Registry Summary
+
+Estado actual:
+
+```text
+Documentation Components
+        15 total
+
+Implemented
+         4
+
+Conceptual
+        11
+```
+
+Components implementados:
+
+```text
+DOC-ARCHITECTURE
+DOC-CHANGELOG
+DOC-PROJECT-STATUS
+DOC-REFERENCES
+```
+
+Components conceptuales:
+
+```text
+DOC-ADR
+DOC-API
+DOC-DATABASE
+DOC-DEPLOYMENT
+DOC-DIAGRAMS
+DOC-GLOSSARY
+DOC-KNOWN-ISSUES
+DOC-RELEASE-NOTES
+DOC-ROADMAP
+DOC-SECURITY
+DOC-TESTING
+```
+
+---
+
+# 59. Implemented Documentation Components
+
+Los Documentation Components implementados disponen de definición canónica reusable dentro de:
+
+```text
+framework/components/documentation/
+```
 
 Actualmente:
 
 ```text
+DOC-ARCHITECTURE
+DOC-CHANGELOG
+DOC-PROJECT-STATUS
+DOC-REFERENCES
+```
+
+El catálogo no deberá reproducir:
+
+- Specifications completas;
+- Metadata completa;
+- templates completos;
+- examples completos.
+
+Su responsabilidad consiste en registrar existencia, clasificación y trazabilidad.
+
+---
+
+# 60. DOC-ARCHITECTURE
+
+`DOC-ARCHITECTURE` representa la responsabilidad de documentar la arquitectura de un sistema o proyecto.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Implemented
+```
+
+Puede complementar:
+
+```text
+README-ARCHITECTURE
+```
+
+cuando sea necesaria mayor profundidad.
+
+---
+
+# 61. DOC-CHANGELOG
+
+`DOC-CHANGELOG` representa la responsabilidad de mantener un historial comprensible de cambios relevantes.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Implemented
+```
+
+Su materialización podrá integrarse con prácticas de release y versionado.
+
+---
+
+# 62. DOC-PROJECT-STATUS
+
+`DOC-PROJECT-STATUS` representa la responsabilidad de comunicar el estado actual de un proyecto mediante documentación especializada.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Implemented
+```
+
+Podrá complementar:
+
+```text
+README-STATUS
+```
+
+cuando sea necesaria información más detallada.
+
+---
+
+# 63. DOC-REFERENCES
+
+`DOC-REFERENCES` representa la responsabilidad de mantener referencias, fuentes y recursos relacionados.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Implemented
+```
+
+La implementación pertenece específicamente a la familia Documentation.
+
+No implica que exista una responsabilidad equivalente formalizada dentro de la familia README.
+
+---
+
+# 64. Conceptual Documentation Components
+
+Los siguientes Components permanecen `Conceptual`:
+
+```text
 DOC-ADR
-DOC-ROADMAP
-DOC-KNOWN-ISSUES
-DOC-RELEASE-NOTES
 DOC-API
 DOC-DATABASE
 DOC-DEPLOYMENT
-DOC-TESTING
-DOC-SECURITY
 DOC-DIAGRAMS
 DOC-GLOSSARY
+DOC-KNOWN-ISSUES
+DOC-RELEASE-NOTES
+DOC-ROADMAP
+DOC-SECURITY
+DOC-TESTING
 ```
 
-Estos elementos permiten preservar responsabilidades reconocidas por la arquitectura sin crear archivos vacíos o implementaciones prematuras.
+Sus responsabilidades están reconocidas.
 
-Para evolucionar a `Implemented` deberán disponer de:
-
-- especificación canónica;
-- metadata;
-- estructura material dentro del Framework;
-- validación suficiente para su reutilización.
+Sin embargo, no disponen actualmente de una implementación canónica reusable suficiente dentro del Framework.
 
 ---
 
-# 42. Documentation Relationships
+# 65. DOC-ADR
 
-Los Documentation Components podrán relacionarse según las necesidades del sistema documental.
+`DOC-ADR` representa la responsabilidad de documentar decisiones arquitectónicas significativas.
 
-Ejemplos:
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+La existencia de decisiones arquitectónicas documentadas dentro de GitHub Framework no constituye automáticamente una implementación reusable del Component.
+
+---
+
+# 66. DOC-API
+
+`DOC-API` representa la responsabilidad de documentar interfaces o APIs relevantes.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+Su aplicabilidad dependerá del tipo de proyecto.
+
+---
+
+# 67. DOC-DATABASE
+
+`DOC-DATABASE` representa la responsabilidad de documentar estructuras, decisiones y responsabilidades relacionadas con persistencia o datos.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+La responsabilidad deberá permanecer conceptual hasta disponer de una implementación reusable suficientemente validada.
+
+---
+
+# 68. DOC-DEPLOYMENT
+
+`DOC-DEPLOYMENT` representa la responsabilidad de documentar cómo desplegar, publicar u operar una solución.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+Podrá relacionarse con futuros Workflow Components de deployment sin constituir la misma responsabilidad.
+
+---
+
+# 69. DOC-DIAGRAMS
+
+`DOC-DIAGRAMS` representa la responsabilidad de incorporar y mantener diagramas técnicos cuando mejoren la comprensión del sistema.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+La existencia de diagramas concretos en consumidores no constituye una implementación reusable.
+
+---
+
+# 70. DOC-GLOSSARY
+
+`DOC-GLOSSARY` representa la responsabilidad de mantener terminología compartida cuando un proyecto disponga de vocabulario suficientemente específico.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+---
+
+# 71. DOC-KNOWN-ISSUES
+
+`DOC-KNOWN-ISSUES` representa la responsabilidad de documentar problemas conocidos, limitaciones o comportamientos relevantes todavía no resueltos.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+La responsabilidad deberá utilizarse únicamente cuando aporte valor real al consumidor.
+
+---
+
+# 72. DOC-RELEASE-NOTES
+
+`DOC-RELEASE-NOTES` representa la responsabilidad de comunicar información específica asociada a releases.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+Se diferencia de:
+
+```text
+DOC-CHANGELOG
+```
+
+porque las Release Notes pueden proporcionar contexto específico de una publicación, mientras el Changelog mantiene un historial continuo de cambios.
+
+---
+
+# 73. DOC-ROADMAP
+
+`DOC-ROADMAP` representa la responsabilidad de documentar la evolución prevista de un proyecto.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+La existencia del `ROADMAP.md` del propio GitHub Framework no constituye automáticamente una implementación reusable de `DOC-ROADMAP`.
+
+---
+
+# 74. DOC-SECURITY
+
+`DOC-SECURITY` representa la responsabilidad de documentar aspectos de seguridad relevantes para un proyecto.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+Su aplicabilidad y profundidad dependerán del contexto del consumidor.
+
+---
+
+# 75. DOC-TESTING
+
+`DOC-TESTING` representa la responsabilidad de documentar estrategia, alcance y prácticas de testing.
+
+Registry classification:
+
+```text
+Family: Documentation
+Implementation: Conceptual
+```
+
+Puede relacionarse con:
+
+```text
+README-TESTING
+WCL-CI
+```
+
+sin constituir la misma responsabilidad.
+
+---
+
+# 76. Documentation Composition
+
+Los Documentation Components pueden combinarse según las necesidades del consumidor.
+
+Ejemplo conceptual:
 
 ```text
 DOC-ARCHITECTURE
-        └── may be complemented by → DOC-ADR
-
-DOC-ARCHITECTURE
-        └── may use → DOC-DIAGRAMS
-
++
 DOC-API
-        └── may reference → DOC-SECURITY
-
-DOC-REFERENCES
-        └── may support → multiple Documentation Components
++
+DOC-DATABASE
++
+DOC-TESTING
++
+DOC-DEPLOYMENT
+        ↓
+Backend Documentation System
 ```
 
-Estas relaciones no representan una secuencia obligatoria.
+La composición pertenece principalmente a:
 
-Las dependencias reales deberán mantenerse en las fuentes canónicas correspondientes.
+- Repository Templates;
+- consumidores.
+
+No al Component Catalog.
 
 ---
 
-# 43. Repository Template Mapping
+# 77. Documentation Component Relationships
 
-La aplicabilidad de README y Documentation Components a cada tipo de proyecto se define mediante Repository Templates.
-
-Ejemplos de tipos actualmente contemplados:
-
-```text
-Backend
-Full Stack
-AI
-Documentation
-Library
-Website
-```
-
-El Component Catalog podrá mostrar estas relaciones con fines de descubrimiento, pero no deberá mantener una segunda matriz normativa de selección.
-
-La fuente aplicable para `required`, `recommended` y `optional` será el Repository Template correspondiente.
-
----
-
-# 44. Cross-Consumer Reuse
-
-Los README y Documentation Components podrán reutilizarse por diferentes consumidores cuando sus responsabilidades sean aplicables.
+Los Documentation Components podrán relacionarse entre sí.
 
 Ejemplos:
 
-| Component | Primary Consumer | Possible Additional Consumers |
-|---|---|---|
-| README-HERO | Repository README | GitHub Profile |
-| README-TECH-STACK | Repository README | GitHub Profile |
-| README-ROADMAP | Repository README | Documentation landing page |
-| DOC-ARCHITECTURE | Documentation | Repository Template |
-| DOC-ADR | Documentation | Repository Template |
-| DOC-CHANGELOG | Documentation | Release workflows |
-| DOC-DIAGRAMS | Documentation | README |
-
-Esta tabla representa posibilidades de reutilización y no requirement levels.
-
----
-
-# 45. Family Lifecycle
-
-Los README y Documentation Components siguen el lifecycle general definido en §17.
-
-Su estado concreto deberá obtenerse de la fuente canónica correspondiente.
-
-La clasificación `Implemented` o `Conceptual` es independiente del lifecycle status.
-
----
-
-# 46. Registry Evolution Rules
-
-Un nuevo README o Documentation Component solo deberá incorporarse cuando:
-
-- no exista una responsabilidad equivalente;
-- aporte una responsabilidad reutilizable diferenciada;
-- exista un caso de uso suficientemente claro;
-- pueda definirse sin acoplarse a un único proyecto;
-- sea coherente con el RDS;
-- su estado de implementación pueda representarse explícitamente.
-
-La creación de un Component conceptual no obliga a implementar inmediatamente su representación material.
-
----
-
-# 47. Anti-Patterns
-
-No deberán existir:
-
-- dos Components para la misma responsabilidad;
-- README que replique documentación extensa sin necesidad;
-- documentos técnicos duplicados;
-- dependencias circulares entre Components;
-- jerarquías artificiales presentadas como dependencias;
-- clasificaciones globales Core / Extended / Optional;
-- Components conceptuales presentados como implementados;
-- selección por tipo de proyecto duplicada respecto a Repository Templates.
-
----
-
-# 48. Quality Gates
-
-Antes de registrar o actualizar un README o Documentation Component deberán verificarse:
-
-- [ ] Identificador único.
-- [ ] Nombre consistente.
-- [ ] Responsabilidad diferenciada.
-- [ ] Priority coherente con la metadata cuando exista.
-- [ ] Audience definida.
-- [ ] Maturity mínima recomendada.
-- [ ] Implementation classification correcta.
-- [ ] Dependencias reales documentadas.
-- [ ] Fuente canónica identificada cuando exista.
-- [ ] Ausencia de requirement levels globales.
-- [ ] Coherencia con los Repository Templates.
-
----
-
-# 49. Long-Term Vision
-
-Las familias README y Documentation constituirán la base documental reutilizable del GitHub Framework.
-
-Los proyectos del ecosistema podrán seleccionar los Components adecuados a su tipo, contexto y madurez mediante Repository Templates.
-
-La existencia de un vocabulario común permitirá mantener consistencia sin imponer una composición documental idéntica.
-
-Con el tiempo, las fuentes canónicas y los Repository Templates podrán alimentar mecanismos automáticos de generación, validación y actualización documental.
-
----
-
-# 50. Part 2 Conclusions
-
-Las familias **README** y **Documentation** proporcionan responsabilidades documentales reutilizables y gobernadas.
-
-El Component Catalog permite descubrir estas capacidades y distinguir claramente entre Components implementados y conceptuales.
-
-La selección concreta no corresponde al catálogo:
-
 ```text
-Component Catalog
-        ↓
-Discover available responsibilities
-
-Repository Template
-        ↓
-Assign contextual requirement levels
-
-Repository Implementation
-        ↓
-Materialize selected Components
+DOC-ARCHITECTURE
+        ↔
+DOC-DIAGRAMS
 ```
 
-Este modelo permite mantener consistencia documental sin convertir el catálogo en una composición universal para todos los repositorios.
+```text
+DOC-API
+        ↔
+DOC-TESTING
+```
+
+```text
+DOC-DEPLOYMENT
+        ↔
+DOC-SECURITY
+```
+
+```text
+DOC-PROJECT-STATUS
+        ↔
+DOC-ROADMAP
+```
+
+Estas relaciones sirven para descubrimiento.
+
+No constituyen automáticamente dependencies.
 
 ---
 
-# 51. Part 2 Versioning
+# 78. Documentation and README Relationships
+
+README y Documentation Components podrán representar responsabilidades complementarias.
+
+Ejemplos:
+
+```text
+README-ARCHITECTURE
+        ↔
+DOC-ARCHITECTURE
+```
+
+```text
+README-TESTING
+        ↔
+DOC-TESTING
+```
+
+```text
+README-STATUS
+        ↔
+DOC-PROJECT-STATUS
+```
+
+```text
+README-ROADMAP
+        ↔
+DOC-ROADMAP
+```
+
+El README proporciona normalmente una superficie resumida.
+
+La Documentation puede proporcionar mayor profundidad.
+
+---
+
+# 79. Documentation and Workflow Relationships
+
+Documentation y Workflow Components podrán mantener relaciones complementarias.
+
+Ejemplos:
+
+```text
+DOC-TESTING
+        ↔
+WCL-CI
+```
+
+```text
+DOC-CHANGELOG
+        ↔
+WCL-RELEASE
+```
+
+```text
+DOC-DEPLOYMENT
+        ↔
+WCL-CD
+```
+
+```text
+DOC-SECURITY
+        ↔
+WCL-SECURITY
+```
+
+La Documentation explica, registra o contextualiza.
+
+El Workflow coordina, ejecuta o gobierna procesos.
+
+---
+
+# 80. Documentation Consumer Adaptation
+
+Los consumidores podrán adaptar Documentation Components a:
+
+- dominio;
+- stack;
+- arquitectura;
+- profundidad;
+- audiencia;
+- madurez;
+- operación.
+
+La adaptación no deberá modificar la responsabilidad canónica.
+
+Una especialización contextual no constituye automáticamente un nuevo Component.
+
+---
+
+# 81. Documentation Materialization
+
+Los Documentation Components no requieren necesariamente una estructura física idéntica.
+
+Un Component podrá materializarse mediante:
+
+```text
+single Markdown file
+directory
+template
+structured documentation set
+convention
+```
+
+según su responsabilidad.
+
+La clasificación `Implemented` deberá basarse en capacidad reusable real.
+
+No en simetría del filesystem.
+
+---
+
+# 82. Documentation Availability vs Consumer Conformance
+
+Un Documentation Component `Conceptual` puede representar una responsabilidad satisfecha correctamente por un consumidor.
+
+Ejemplo:
+
+```text
+DOC-ROADMAP
+        ↓
+Conceptual in Framework
+
+GitHub Framework
+        ↓
+ROADMAP.md
+```
+
+Estas dos afirmaciones pueden coexistir.
+
+Por tanto:
+
+```text
+Consumer artifact
+        ≠
+Canonical Framework Component
+```
+
+---
+
+# 83. Documentation Registry Maintenance
+
+Cuando un Documentation Component cambie de:
+
+```text
+Conceptual
+        ↓
+Implemented
+```
+
+deberán revisarse:
+
+- registry table;
+- implementation counts;
+- canonical location;
+- lifecycle status;
+- Repository Templates relacionados;
+- relationships;
+- Framework documentation.
+
+El cambio deberá producirse después de disponer de implementación canónica real.
+
+---
+
+# 84. README Registry Quality Gates
+
+Antes de modificar la clasificación de un README Component deberá verificarse:
+
+- [ ] El Component representa una responsabilidad reusable.
+- [ ] El ID es único.
+- [ ] La responsabilidad no duplica otro README Component.
+- [ ] Existe Specification cuando se clasifica como `Implemented`.
+- [ ] Existe Metadata cuando se clasifica como `Implemented`.
+- [ ] La materialización requerida existe.
+- [ ] La implementación puede adaptarse a diferentes consumidores.
+- [ ] La canonical location es real.
+- [ ] Los conteos del catálogo permanecen sincronizados.
+
+---
+
+# 85. Documentation Registry Quality Gates
+
+Antes de modificar la clasificación de un Documentation Component deberá verificarse:
+
+- [ ] La responsabilidad continúa siendo diferenciada.
+- [ ] El ID permanece estable.
+- [ ] Existe Specification cuando se clasifica como `Implemented`.
+- [ ] Existe Metadata cuando se clasifica como `Implemented`.
+- [ ] Existe materialización reusable suficiente cuando corresponde.
+- [ ] La canonical location es real.
+- [ ] No se confunde documentación del propio Framework con implementación reusable.
+- [ ] Las relaciones no se presentan como dependencies sin justificación.
+- [ ] Los Repository Templates afectados permanecen coherentes.
+- [ ] Los conteos del catálogo están sincronizados.
+
+---
+
+# 86. Family Statistics
+
+Estado actual de las dos familias registradas en esta Part:
+
+| Family | Implemented | Conceptual | Total |
+| --- | ---: | ---: | ---: |
+| README Components | 12 | 5 | 17 |
+| Documentation Components | 4 | 11 | 15 |
+| **Total** | **16** | **16** | **32** |
+
+Estas cifras representan disponibilidad dentro de GitHub Framework.
+
+No representan:
+
+- adopción;
+- conformidad;
+- requirement levels;
+- utilización por Repository Templates.
+
+---
+
+# 87. Implementation Distribution
+
+Distribución actual:
+
+```text
+README
+        12 Implemented
+         5 Conceptual
+
+Documentation
+         4 Implemented
+        11 Conceptual
+
+Total
+        16 Implemented
+        16 Conceptual
+```
+
+La proporción de Components implementados constituye una métrica descriptiva.
+
+No representa por sí sola madurez global del Framework.
+
+---
+
+# 88. Part 2 Conclusions
+
+Las familias README y Documentation combinan actualmente responsabilidades implementadas y conceptuales.
+
+Estado:
+
+```text
+README
+        17 Components
+        12 Implemented
+         5 Conceptual
+
+Documentation
+        15 Components
+         4 Implemented
+        11 Conceptual
+```
+
+La clasificación se deriva de la disponibilidad canónica real.
+
+Por tanto:
+
+```text
+Responsibility recognized
+        ≠
+Component implemented
+```
+
+y:
+
+```text
+Consumer artifact exists
+        ≠
+Framework implementation exists
+```
+
+Esta distinción permite que el Component Catalog represente fielmente el estado del Framework sin promover artificialmente responsabilidades todavía no materializadas.
+
+---
+
+# 89. Part 2 Versioning
 
 El versionado de esta Part se gestiona mediante el Revision History global del Component Catalog.
 
@@ -1109,148 +2214,386 @@ El versionado de esta Part se gestiona mediante el Revision History global del C
 
 ---
 
-# 52. Purpose
+# 90. Purpose
 
-Esta sección proporciona la vista de catálogo de las familias:
-
-- Workflow Components (`WCL-*`);
-- Visual Components (`VCL-*`).
-
-Su objetivo es facilitar el descubrimiento, clasificación y evolución de responsabilidades operativas y visuales reconocidas por GitHub Framework.
-
-La presencia de una responsabilidad en esta sección no implica necesariamente que disponga de implementación canónica.
-
-Su grado de materialización deberá expresarse mediante la clasificación `Implemented` o `Conceptual`.
-
----
-
-# 53. Workflow Component Family
-
-## Prefix
+Esta Part registra las familias:
 
 ```text
-WCL
+WCL-*
+VCL-*
 ```
 
----
+correspondientes a:
 
-## Purpose
+- Workflow Components;
+- Visual Components.
 
-Definir procesos reutilizables para el desarrollo, revisión, publicación y mantenimiento de repositorios.
+Ambas familias representan responsabilidades reutilizables reconocidas por GitHub Framework.
 
----
+Su presencia en el Component Catalog no implica automáticamente que exista una implementación canónica reusable.
 
-## Consumer
-
-* GitHub
-* GitHub Actions
-* Project Boards
-* Pull Requests
-* Releases
-
----
-
-## Relationships
-
-Los Workflow Components podrán relacionarse con otras familias cuando sus procesos consuman o afecten responsabilidades documentales, visuales o de repositorio.
-
-Estas relaciones podrán incluir, según el Component:
-
-- README Components (`README-*`);
-- Documentation Components (`DOC-*`);
-- Visual Components (`VCL-*`).
-
-La pertenencia a la familia Workflow no implica automáticamente estas dependencias.
-
-Las dependencias reales deberán declararse individualmente en las fuentes canónicas correspondientes.
-
----
-
-# 54. Workflow Component Registry
-
-| ID                       | Name                   | Priority    | Audience   | Maturity | Implementation |
-| ------------------------ | ---------------------- | ----------- | ---------- | -------- | -------------- |
-| WCL-ISSUE                | Issue Template         | Required    | Maintainer | L2       | Conceptual     |
-| WCL-LABEL                | Labels                 | Required    | Maintainer | L2       | Conceptual     |
-| WCL-PROJECT              | Project Board          | Recommended | Maintainer | L3       | Conceptual     |
-| WCL-BRANCH               | Branch Strategy        | Required    | Developer  | L2       | Conceptual     |
-| WCL-COMMIT               | Commit Convention      | Required    | Developer  | L2       | Conceptual     |
-| WCL-PULL-REQUEST         | Pull Request           | Required    | Developer  | L2       | Conceptual     |
-| WCL-CODE-REVIEW          | Code Review            | Recommended | Developer  | L3       | Conceptual     |
-| WCL-CI                   | Continuous Integration | Recommended | Developer  | L3       | Conceptual     |
-| WCL-CD                   | Continuous Delivery    | Optional    | Maintainer | L4       | Conceptual     |
-| WCL-DEPENDABOT           | Dependency Updates     | Recommended | Maintainer | L3       | Conceptual     |
-| WCL-SECURITY             | Security Workflow      | Recommended | Developer  | L3       | Conceptual     |
-| WCL-RELEASE              | Release Workflow       | Recommended | Maintainer | L3       | Conceptual     |
-| WCL-HOTFIX               | Hotfix Workflow        | Optional    | Developer  | L3       | Conceptual     |
-| WCL-DOCUMENTATION-UPDATE | Documentation Sync     | Recommended | Maintainer | L3       | Conceptual     |
-| WCL-ASSESSMENT           | GRS Assessment         | Required    | Maintainer | L4       | Conceptual     |
-| WCL-MAINTENANCE          | Maintenance Cycle      | Recommended | Maintainer | L3       | Conceptual     |
-
-Los Workflow Components se encuentran actualmente reconocidos como responsabilidades conceptuales del Framework.
-
-La utilización real de Issues, Pull Requests, Releases u otras capacidades en el propio repositorio no constituye por sí misma una implementación canónica del Component correspondiente.
-
-Para evolucionar a `Implemented` deberá existir una definición materializada y gobernada conforme al modelo del Framework.
-
----
-
-# 55. Workflow Implementation Status
-
-La familia Workflow se encuentra actualmente en fase conceptual.
+La clasificación:
 
 ```text
-Workflow Components
-        │
-        ├── 0 Implemented
-        └── 16 Conceptual
+Conceptual
+Implemented
 ```
 
-Estos Components representan responsabilidades operativas reconocidas que podrán materializarse progresivamente conforme avance el Framework.
+deberá reflejar exclusivamente la disponibilidad real dentro del Framework.
 
 ---
 
-# 56. Workflow Selection Model
+# 91. Workflow Component Family
 
-Los Workflow Components no se clasifican globalmente como Core, Extended o Specialized.
+La familia:
 
-Su necesidad dependerá del Repository Template, del contexto del proyecto y de las capacidades operativas requeridas.
+```text
+WCL-*
+```
+
+representa responsabilidades operativas reutilizables relacionadas con:
+
+- planificación;
+- desarrollo;
+- integración;
+- validación;
+- release;
+- seguridad;
+- mantenimiento;
+- evolución de repositorios.
+
+Los Workflow Components no constituyen únicamente automatizaciones.
+
+Podrán representar:
+
+```text
+Community Files
+Configuration
+Executable Workflows
+Conventions
+Composite Materializations
+```
+
+según la responsabilidad definida por el RDS.
+
+---
+
+# 92. Workflow Architecture Reference
+
+La arquitectura canónica de la familia Workflow pertenece al Repository Design System.
+
+El modelo general es:
 
 ```text
 Workflow Component
-        ↓
-Repository Template
-        ↓
-required / recommended / optional
-        ↓
-Repository Implementation
+        │
+        ├── Specification
+        ├── Metadata
+        └── Materialization when required
 ```
 
-La prioridad del Component no sustituye este requirement level contextual.
+El Component Catalog no vuelve a definir este contrato.
+
+Su responsabilidad consiste en registrar:
+
+- identidad;
+- responsabilidad;
+- clasificación de implementación;
+- estado;
+- localización;
+- relaciones relevantes.
 
 ---
 
-# 57. Workflow Materialization
+# 93. Workflow Component Registry
 
-Un Workflow Component podrá evolucionar de `Conceptual` a `Implemented` cuando exista una representación canónica reutilizable y gobernada.
+El catálogo reconoce actualmente los siguientes Workflow Components:
 
-Según su naturaleza, dicha materialización podrá incluir:
-
-- especificaciones;
-- configuraciones;
-- GitHub community files;
-- GitHub Actions workflows;
-- convenciones formalizadas;
-- automatizaciones;
-- metadata.
-
-La forma material concreta dependerá de la responsabilidad del Component y no deberá forzarse a una estructura uniforme.
+| ID | Responsibility | Implementation |
+| --- | --- | :---: |
+| `WCL-ISSUE` | Gestión estructurada de Issues | Conceptual |
+| `WCL-LABEL` | Clasificación mediante labels | Conceptual |
+| `WCL-PROJECT` | Organización y planificación del trabajo | Conceptual |
+| `WCL-BRANCH` | Estrategia de ramas | Conceptual |
+| `WCL-COMMIT` | Convención de commits | Conceptual |
+| `WCL-PULL-REQUEST` | Integración mediante Pull Requests | Conceptual |
+| `WCL-CODE-REVIEW` | Revisión de cambios | Conceptual |
+| `WCL-CI` | Continuous Integration | Conceptual |
+| `WCL-CD` | Continuous Delivery / Deployment | Conceptual |
+| `WCL-DEPENDABOT` | Actualización de dependencias | Conceptual |
+| `WCL-SECURITY` | Procesos de seguridad | Conceptual |
+| `WCL-RELEASE` | Gestión de releases | Conceptual |
+| `WCL-HOTFIX` | Gestión de correcciones urgentes | Conceptual |
+| `WCL-DOCUMENTATION-UPDATE` | Sincronización documental | Conceptual |
+| `WCL-ASSESSMENT` | Evaluación estructurada del repositorio | Conceptual |
+| `WCL-MAINTENANCE` | Ciclo de mantenimiento | Conceptual |
 
 ---
 
-# 58. Workflow Relationships
+# 94. Workflow Registry Summary
 
-Los Workflow Components podrán participar en secuencias operativas sin que ello implique dependencia estructural entre ellos.
+Estado actual:
+
+```text
+Workflow Components
+        16 total
+
+Implemented
+         0
+
+Conceptual
+        16
+```
+
+Por tanto:
+
+```text
+Workflow Component Architecture
+        ↓
+Defined
+
+Workflow Component Implementations
+        ↓
+Not yet available
+```
+
+La definición arquitectónica completada por el RDS no modifica automáticamente la clasificación de implementación.
+
+---
+
+# 95. Workflow Current Implementation Boundary
+
+Los 16 Workflow Components permanecen:
+
+```text
+Conceptual
+```
+
+porque todavía no existe una biblioteca canónica materializada dentro de:
+
+```text
+framework/components/workflow/
+```
+
+que satisfaga el contrato definido por el RDS.
+
+La utilización actual de:
+
+- Issues;
+- labels;
+- Pull Requests;
+- branches;
+- commits;
+- releases;
+- documentación de mantenimiento;
+
+dentro del propio GitHub Framework constituye práctica de consumidor.
+
+No constituye por sí misma una implementación canónica reusable.
+
+---
+
+# 96. Workflow Conceptual Status
+
+La clasificación `Conceptual` significa que la responsabilidad está reconocida.
+
+No significa que:
+
+- la responsabilidad sea hipotética;
+- el proceso no exista en consumidores;
+- no pueda formar parte de Repository Templates;
+- no pueda evaluarse durante una Reference Implementation.
+
+Significa únicamente:
+
+```text
+No canonical reusable implementation
+currently exists in GitHub Framework
+```
+
+Esta distinción permite evolucionar la arquitectura sin simular disponibilidad material.
+
+---
+
+# 97. Workflow Materialization Classification
+
+Cuando los Workflow Components se implementen, podrán utilizar diferentes mecanismos de materialización.
+
+El catálogo podrá registrar esta información con fines de descubrimiento.
+
+Tipos reconocidos arquitectónicamente:
+
+```text
+Community File
+Configuration
+Executable Workflow
+Convention
+Composite Materialization
+```
+
+Ejemplos conceptuales:
+
+```text
+WCL-ISSUE
+        ↓
+Community File / Configuration
+```
+
+```text
+WCL-CI
+        ↓
+Executable Workflow
+```
+
+```text
+WCL-BRANCH
+        ↓
+Convention / Configuration
+```
+
+```text
+WCL-RELEASE
+        ↓
+Composite Materialization
+```
+
+La clasificación concreta deberá derivarse de la implementación canónica.
+
+---
+
+# 98. Executable Workflow Components
+
+Algunos Workflow Components podrán requerir comportamiento ejecutable para satisfacer su responsabilidad.
+
+Entre los candidatos se encuentran:
+
+```text
+WCL-CI
+WCL-CD
+WCL-DEPENDABOT
+WCL-SECURITY
+```
+
+dependiendo de su implementación final.
+
+El catálogo no deberá clasificarlos como `Implemented` únicamente porque exista una descripción del workflow.
+
+Cuando la responsabilidad requiera ejecución automática deberá existir una materialización ejecutable reusable suficiente.
+
+---
+
+# 99. Non-Executable Workflow Components
+
+Otros Workflow Components podrán satisfacer su responsabilidad sin código ejecutable.
+
+Ejemplos potenciales:
+
+```text
+WCL-BRANCH
+WCL-COMMIT
+WCL-PULL-REQUEST
+WCL-CODE-REVIEW
+```
+
+Podrán materializarse mediante:
+
+- conventions;
+- templates;
+- community files;
+- configuration;
+- guidance;
+- combinaciones apropiadas.
+
+La ausencia de GitHub Actions no impide que un Workflow Component pueda considerarse `Implemented`.
+
+---
+
+# 100. Composite Workflow Components
+
+Determinadas responsabilidades podrán requerir varios mecanismos coordinados.
+
+Ejemplo conceptual:
+
+```text
+WCL-RELEASE
+        │
+        ├── Specification
+        ├── Metadata
+        ├── Versioning Convention
+        ├── Release Process
+        ├── CHANGELOG Interaction
+        └── Optional Automation
+```
+
+El catálogo deberá mantener una única identidad:
+
+```text
+WCL-RELEASE
+```
+
+mientras la responsabilidad continúe siendo única.
+
+No deberán crearse Components separados únicamente por cada archivo que forme parte de la materialización.
+
+---
+
+# 101. Workflow Implementation Transition
+
+Cuando un Workflow Component pase de:
+
+```text
+Conceptual
+        ↓
+Implemented
+```
+
+el catálogo deberá actualizar:
+
+- registry table;
+- implementation counts;
+- canonical location;
+- lifecycle status cuando corresponda;
+- version;
+- materialization information cuando sea útil;
+- relationships;
+- registry summary.
+
+La transición deberá producirse únicamente después de existir una implementación canónica suficiente.
+
+---
+
+# 102. Workflow Lifecycle
+
+La futura clasificación habitual de un Workflow Component recién implementado podrá ser:
+
+```text
+Implementation: Implemented
+Status: Experimental
+```
+
+mientras se valida mediante:
+
+- Reference Implementation;
+- dogfooding;
+- consumer adoption;
+- execution testing;
+- Quality Gates.
+
+La promoción posterior a:
+
+```text
+Stable
+```
+
+pertenece al lifecycle.
+
+No a la implementation classification.
+
+---
+
+# 103. Workflow Relationships
+
+Los Workflow Components podrán participar en secuencias operativas.
 
 Ejemplo:
 
@@ -1270,144 +2613,395 @@ WCL-CI
 WCL-RELEASE
 ```
 
-Este flujo representa una posible interacción operativa.
+Esta representación facilita comprensión.
 
-No constituye una cadena obligatoria de dependencias.
+No constituye una cadena universal de dependencias.
 
-Las dependencias funcionales reales deberán declararse individualmente.
-
----
-
-# 59. Workflow Capability Mapping
-
-| Component        | Primary Capability        |
-| ---------------- | ------------------------- |
-| WCL-BRANCH       | Git Strategy              |
-| WCL-COMMIT       | Version Control           |
-| WCL-PULL-REQUEST | Collaborative Development |
-| WCL-CODE-REVIEW  | Code Quality              |
-| WCL-CI           | Continuous Integration    |
-| WCL-CD           | DevOps                    |
-| WCL-SECURITY     | Secure Development        |
-| WCL-RELEASE      | Release Management        |
-| WCL-ASSESSMENT   | Engineering Governance    |
-
-El capability mapping describe la responsabilidad principal de cada Component y no determina su requirement level ni su estado de implementación.
-
----
-
-# 60. Visual Component Family
-
-## Prefix
+El catálogo deberá distinguir:
 
 ```text
-VCL
+Operational Relationship
+        ≠
+Functional Dependency
 ```
 
 ---
 
-## Purpose
+# 104. Workflow Cross-Family Relationships
 
-Definir responsabilidades visuales reutilizables para presentación, navegación, comunicación y visualización técnica cuando resulten aplicables.
+Los Workflow Components podrán relacionarse con otras familias.
 
-La familia Visual proporciona un vocabulario común sin imponer una identidad gráfica idéntica a todos los consumidores.
+Ejemplos:
 
----
+```text
+WCL-DOCUMENTATION-UPDATE
+        ↔
+Documentation Components
+```
 
-## Consumer
+```text
+WCL-RELEASE
+        ↔
+DOC-CHANGELOG
+```
 
-* README
-* GitHub Profile
-* GitHub Pages
-* Portfolio
+```text
+WCL-CI
+        ↔
+DOC-TESTING
+```
 
----
+```text
+WCL-SECURITY
+        ↔
+DOC-SECURITY
+```
 
-## Relationships
+Estas relaciones representan responsabilidades complementarias.
 
-Los Visual Components podrán complementar Components de otras familias, especialmente README y Documentation.
-
-Estas relaciones representan capacidades de presentación y comunicación visual.
-
-No implican automáticamente dependencias funcionales.
-
-Las dependencias reales deberán declararse individualmente cuando existan.
-
----
-
-# 61. Visual Component Registry
-
-| ID                       | Name                 | Priority    | Audience  | Maturity | Implementation |
-| ------------------------ | -------------------- | ----------- | --------- | -------- | -------------- |
-| VCL-BANNER               | Repository Banner    | Recommended | Recruiter | L3       | Conceptual     |
-| VCL-SOCIAL-PREVIEW       | Social Preview       | Recommended | Recruiter | L3       | Conceptual     |
-| VCL-HERO                 | Hero Layout          | Required    | All       | L2       | Conceptual     |
-| VCL-BADGES               | Badge Group          | Required    | All       | L2       | Conceptual     |
-| VCL-SKILL-ICONS          | Skill Icons          | Required    | Recruiter | L2       | Conceptual     |
-| VCL-PROJECT-CARD         | Project Card         | Recommended | Recruiter | L3       | Conceptual     |
-| VCL-STATS                | GitHub Stats         | Optional    | Recruiter | L2       | Conceptual     |
-| VCL-CONTRIBUTION-GRAPH   | Contribution Graph   | Optional    | Recruiter | L2       | Conceptual     |
-| VCL-TYPING-BANNER        | Typing Animation     | Optional    | Recruiter | L2       | Conceptual     |
-| VCL-ARCHITECTURE-DIAGRAM | Architecture Diagram | Recommended | Developer | L3       | Conceptual     |
-| VCL-WORKFLOW-DIAGRAM     | Workflow Diagram     | Recommended | Developer | L3       | Conceptual     |
-| VCL-FOLDER-DIAGRAM       | Repository Tree      | Recommended | Developer | L2       | Conceptual     |
-| VCL-NAVIGATION-CARD      | Navigation Card      | Recommended | All       | L3       | Conceptual     |
-| VCL-CALL-OUT             | GitHub Callouts      | Required    | All       | L2       | Conceptual     |
-
-Los Visual Components se encuentran actualmente reconocidos como responsabilidades conceptuales.
-
-La existencia de elementos visuales similares en repositorios o perfiles no implica que exista todavía una implementación canónica gobernada por GitHub Framework.
+No deberán convertirse automáticamente en dependencies.
 
 ---
 
-# 62. Visual Implementation Status
+# 105. Workflow Capability Mapping
 
-La familia Visual se encuentra actualmente en fase conceptual.
+El catálogo podrá utilizar capability mapping para facilitar descubrimiento.
+
+| Component | Primary Capability |
+| --- | --- |
+| `WCL-ISSUE` | Work Management |
+| `WCL-LABEL` | Work Classification |
+| `WCL-PROJECT` | Project Planning |
+| `WCL-BRANCH` | Version Control Strategy |
+| `WCL-COMMIT` | Change Traceability |
+| `WCL-PULL-REQUEST` | Collaborative Development |
+| `WCL-CODE-REVIEW` | Review and Quality |
+| `WCL-CI` | Continuous Integration |
+| `WCL-CD` | Delivery / Deployment |
+| `WCL-DEPENDABOT` | Dependency Maintenance |
+| `WCL-SECURITY` | Secure Development |
+| `WCL-RELEASE` | Release Management |
+| `WCL-HOTFIX` | Urgent Change Management |
+| `WCL-DOCUMENTATION-UPDATE` | Documentation Synchronization |
+| `WCL-ASSESSMENT` | Engineering Governance |
+| `WCL-MAINTENANCE` | Repository Maintenance |
+
+El capability mapping es descriptivo.
+
+No determina:
+
+- requirement level;
+- lifecycle;
+- implementation classification;
+- dependency.
+
+---
+
+# 106. Workflow Repository Template Integration
+
+Los Repository Templates podrán seleccionar Workflow Components mediante:
+
+```text
+required
+recommended
+optional
+```
+
+La presencia de un Workflow Component `Conceptual` dentro de un Template no implica disponibilidad canónica.
+
+Significa que la responsabilidad pertenece a la composición contextual.
+
+Modelo:
+
+```text
+Repository Template
+        ↓
+Workflow Responsibility
+        ↓
+Consumer Materialization
+```
+
+hasta que exista una implementación reusable del Framework.
+
+---
+
+# 107. Workflow Availability vs Conformance
+
+El catálogo mantiene:
+
+```text
+Workflow Component Availability
+        ≠
+Consumer Workflow Conformance
+```
+
+Ejemplo:
+
+```text
+WCL-PULL-REQUEST
+Implementation: Conceptual
+```
+
+mientras:
+
+```text
+GitHub Framework
+        ↓
+Pull Request template + PR process
+        ↓
+Consumer responsibility potentially satisfied
+```
+
+Ambas afirmaciones pueden ser correctas simultáneamente.
+
+---
+
+# 108. Workflow Reference Implementation Boundary
+
+La futura Workflow Reference Implementation deberá consumir Components previamente implementados.
+
+No deberá utilizarse para declarar automáticamente como implementadas prácticas existentes.
+
+Flujo correcto:
+
+```text
+Architecture
+        ↓
+Canonical Implementation
+        ↓
+Reference Implementation
+        ↓
+Validation
+        ↓
+Refinement
+```
+
+El catálogo deberá actualizarse al producirse la implementación.
+
+No esperar necesariamente al resultado final de validación para representar que existe una capacidad material.
+
+---
+
+# 109. Workflow Registry Quality Gates
+
+Antes de cambiar un `WCL-*` a `Implemented` deberá verificarse:
+
+- [ ] El ID permanece único y estable.
+- [ ] Existe Specification canónica.
+- [ ] Existe Metadata canónica.
+- [ ] La materialización requerida existe.
+- [ ] La materialización satisface la responsabilidad.
+- [ ] La ubicación canónica es real.
+- [ ] El tipo de materialización puede identificarse.
+- [ ] Las dependencies reales están declaradas.
+- [ ] La implementación no está acoplada innecesariamente a un único consumidor.
+- [ ] Los aspectos de seguridad han sido evaluados cuando existe ejecución.
+- [ ] La clasificación del Catalog coincide con la implementación.
+- [ ] Los conteos del Registry están sincronizados.
+
+---
+
+# 110. Visual Component Family
+
+La familia:
+
+```text
+VCL-*
+```
+
+representa responsabilidades visuales reutilizables relacionadas con:
+
+- identidad;
+- presentación;
+- comunicación;
+- navegación;
+- visualización técnica.
+
+La Visual Component Library complementa al Visual Design System.
+
+No lo sustituye.
+
+Modelo:
+
+```text
+Visual Design System
+        ↓
+Rules and Constraints
+
+Visual Components
+        ↓
+Reusable Visual Responsibilities
+```
+
+---
+
+# 111. Visual Architecture Reference
+
+La arquitectura canónica de Visual Components pertenece al RDS.
+
+Modelo:
+
+```text
+Visual Component
+        │
+        ├── Specification
+        ├── Metadata
+        └── Materialization when required
+```
+
+La materialización podrá adoptar formas como:
+
+```text
+Asset
+Layout
+Snippet
+Convention
+Template
+Configuration
+Composite mechanism
+```
+
+El Component Catalog registra disponibilidad.
+
+No redefine estas reglas.
+
+---
+
+# 112. Visual Component Registry
+
+El catálogo reconoce actualmente los siguientes Visual Components:
+
+| ID | Responsibility | Implementation |
+| --- | --- | :---: |
+| `VCL-BANNER` | Presentación visual del repositorio | Conceptual |
+| `VCL-SOCIAL-PREVIEW` | Imagen de preview al compartir el repositorio | Conceptual |
+| `VCL-HERO` | Composición visual principal | Conceptual |
+| `VCL-BADGES` | Información visual compacta | Conceptual |
+| `VCL-SKILL-ICONS` | Representación visual de tecnologías | Conceptual |
+| `VCL-PROJECT-CARD` | Representación visual de proyectos | Conceptual |
+| `VCL-STATS` | Visualización de métricas | Conceptual |
+| `VCL-CONTRIBUTION-GRAPH` | Visualización de contribuciones | Conceptual |
+| `VCL-TYPING-BANNER` | Presentación textual dinámica | Conceptual |
+| `VCL-ARCHITECTURE-DIAGRAM` | Visualización de arquitectura | Conceptual |
+| `VCL-WORKFLOW-DIAGRAM` | Visualización de procesos | Conceptual |
+| `VCL-FOLDER-DIAGRAM` | Visualización de estructura | Conceptual |
+| `VCL-NAVIGATION-CARD` | Navegación visual | Conceptual |
+| `VCL-CALL-OUT` | Destacado visual de información | Conceptual |
+
+---
+
+# 113. Visual Registry Summary
+
+Estado actual:
 
 ```text
 Visual Components
-        │
-        ├── 0 Implemented
-        └── 14 Conceptual
+        14 total
+
+Implemented
+         0
+
+Conceptual
+        14
 ```
 
-Su futura implementación deberá priorizar responsabilidades visuales reutilizables y evitar convertir decisiones puramente decorativas en Components del Framework.
+La utilización real de:
+
+- badges;
+- diagrams;
+- banners;
+- callouts;
+- icons;
+
+en repositorios consumidores no modifica automáticamente esta clasificación.
 
 ---
 
-# 63. Visual Selection Model
+# 114. Visual Current Implementation Boundary
 
-Los Visual Components no se clasifican globalmente como Core, Extended u Optional.
+Actualmente no existe una biblioteca canónica completa materializada dentro de:
 
-Su utilización dependerá del consumidor, del Repository Template y de las necesidades reales de comunicación visual.
+```text
+framework/components/visual/
+```
 
-Un mismo Component podrá ser relevante para un GitHub Profile y no aplicable a un repositorio técnico, o viceversa.
+Por tanto, los 14 Visual Components permanecen:
 
-La selección deberá mantenerse contextual.
+```text
+Conceptual
+```
+
+El Visual Design System y los assets utilizados por consumidores constituyen fuentes relacionadas.
+
+No equivalen automáticamente a implementaciones `VCL-*`.
 
 ---
 
-# 64. Visual Materialization
+# 115. Visual Conceptual Status
 
-Un Visual Component podrá evolucionar a `Implemented` cuando disponga de una representación canónica reutilizable.
-
-Según su naturaleza, podrá materializarse mediante:
+La clasificación conceptual permite reconocer responsabilidades visuales sin crear prematuramente:
 
 - assets;
-- layouts;
-- snippets;
-- convenciones visuales;
-- configuraciones;
 - templates;
-- metadata.
+- directories;
+- metadata;
+- implementations;
 
-La implementación deberá priorizar consistencia y reutilización sobre decoración.
+que todavía no hayan demostrado suficiente necesidad reusable.
+
+Esto mantiene el principio:
+
+```text
+Recognized Responsibility
+        ≠
+Available Reusable Component
+```
 
 ---
 
-# 65. Visual Relationships
+# 116. Visual Materialization
 
-Los Visual Components podrán combinarse para construir experiencias visuales coherentes.
+La futura materialización de Visual Components podrá incluir:
+
+```text
+assets
+layouts
+templates
+snippets
+configuration
+conventions
+metadata
+```
+
+La forma concreta dependerá de la responsabilidad.
+
+Ejemplos:
+
+```text
+VCL-BANNER
+        ↓
+Reusable visual asset/template
+```
+
+```text
+VCL-CALL-OUT
+        ↓
+Reusable convention
+```
+
+```text
+VCL-ARCHITECTURE-DIAGRAM
+        ↓
+Diagram specification/template
+```
+
+El catálogo no deberá imponer una estructura uniforme.
+
+---
+
+# 117. Visual Relationships
+
+Los Visual Components podrán mantener relaciones de complementariedad.
 
 Ejemplo:
 
@@ -1419,153 +3013,271 @@ VCL-HERO
 VCL-BADGES
 ```
 
-Estas relaciones representan complementariedad y no una jerarquía obligatoria.
+Esto no implica una dependencia obligatoria.
 
-Cada Component deberá conservar una responsabilidad independiente y reutilizable.
-
----
-
-# 66. Visual Capability Mapping
-
-| Component                | Primary Capability       |
-| ------------------------ | ------------------------ |
-| VCL-BANNER               | Brand Identity           |
-| VCL-HERO                 | Information Architecture |
-| VCL-BADGES               | Project Status           |
-| VCL-SKILL-ICONS          | Technology Communication |
-| VCL-PROJECT-CARD         | Portfolio Presentation   |
-| VCL-ARCHITECTURE-DIAGRAM | Software Architecture    |
-| VCL-WORKFLOW-DIAGRAM     | Process Design           |
-
-El capability mapping facilita descubrimiento y clasificación.
-
-No representa dependencias ni requirement levels.
+Cada Component deberá conservar una responsabilidad independiente.
 
 ---
 
-# 67. Cross-Family Relationships
+# 118. Visual Cross-Family Relationships
 
-Los Framework Components podrán relacionarse entre familias cuando sus responsabilidades sean complementarias.
-
-Ejemplos conceptuales:
+Entre las relaciones posibles se encuentran:
 
 ```text
 README-HERO
         ↔
 VCL-HERO
+```
 
+```text
 README-ARCHITECTURE
         ↔
+VCL-ARCHITECTURE-DIAGRAM
+```
+
+```text
 DOC-ARCHITECTURE
         ↔
 VCL-ARCHITECTURE-DIAGRAM
-
-README-DOCUMENTATION
-        ↔
-Documentation Components
 ```
 
-Estas relaciones facilitan composición y descubrimiento.
+```text
+WCL-RELEASE
+        ↔
+VCL-WORKFLOW-DIAGRAM
+```
 
-No deberán interpretarse automáticamente como dependencias funcionales.
+El Component visual proporciona representación.
 
----
-
-# 68. Cross-Consumer Reuse
-
-Workflow y Visual Components podrán tener diferentes consumidores según su responsabilidad.
-
-| Family | Primary Context | Possible Consumers |
-|---|---|---|
-| WCL | Repository operations | GitHub, automation, Repository Templates |
-| VCL | Visual communication | README, Documentation, GitHub Profile, GitHub Pages |
-
-Esta clasificación representa posibilidades de reutilización y no obligatoriedad.
+No sustituye la responsabilidad documental u operativa.
 
 ---
 
-# 69. Registry Evolution Rules
+# 119. Visual Capability Mapping
 
-Los Workflow y Visual Components solo deberán ampliarse cuando:
+El catálogo podrá utilizar el siguiente mapping descriptivo:
 
-- exista una necesidad recurrente;
-- la responsabilidad sea reutilizable;
-- no exista un Component equivalente;
-- no se incremente innecesariamente la complejidad;
-- exista coherencia con el RDS;
-- pueda identificarse claramente su estado de implementación.
+| Component | Primary Capability |
+| --- | --- |
+| `VCL-BANNER` | Brand Presentation |
+| `VCL-SOCIAL-PREVIEW` | Social Communication |
+| `VCL-HERO` | Visual Information Architecture |
+| `VCL-BADGES` | Compact Status Communication |
+| `VCL-SKILL-ICONS` | Technology Communication |
+| `VCL-PROJECT-CARD` | Project Presentation |
+| `VCL-STATS` | Metrics Visualization |
+| `VCL-CONTRIBUTION-GRAPH` | Activity Visualization |
+| `VCL-TYPING-BANNER` | Dynamic Presentation |
+| `VCL-ARCHITECTURE-DIAGRAM` | Architecture Visualization |
+| `VCL-WORKFLOW-DIAGRAM` | Process Visualization |
+| `VCL-FOLDER-DIAGRAM` | Structure Visualization |
+| `VCL-NAVIGATION-CARD` | Visual Navigation |
+| `VCL-CALL-OUT` | Information Highlighting |
 
-La incorporación conceptual no obliga a una implementación inmediata.
+El mapping facilita descubrimiento.
 
----
-
-# 70. Anti-Patterns
-
-No deberán registrarse:
-
-- workflows específicos de un único proyecto;
-- elementos visuales puramente decorativos sin responsabilidad reutilizable;
-- automatizaciones sin estrategia de mantenimiento;
-- variantes mínimas del mismo Component;
-- jerarquías artificiales presentadas como dependencias;
-- clasificaciones globales Core / Extended / Optional;
-- Components conceptuales presentados como implementados;
-- uso real de una capacidad confundido con implementación canónica.
+No constituye Specification.
 
 ---
 
-# 71. Quality Gates
+# 120. Visual Repository Template Integration
 
-Antes de registrar o actualizar un Workflow o Visual Component deberán verificarse:
+Los Repository Templates podrán seleccionar Visual Components únicamente cuando exista una necesidad real de presentación o comunicación.
 
-- [ ] Identificador único.
-- [ ] Responsabilidad diferenciada.
-- [ ] Audience identificada.
-- [ ] Priority coherente.
-- [ ] Maturity mínima recomendada.
-- [ ] Implementation classification correcta.
-- [ ] Relaciones reales documentadas.
-- [ ] Fuente canónica identificada cuando exista.
-- [ ] Ausencia de requirement levels globales.
-- [ ] Coherencia con el RDS.
+La madurez no deberá utilizarse como matriz automática.
 
----
-
-# 72. Long-Term Vision
-
-Las familias Workflow y Visual proporcionarán capacidades reutilizables para la operación y presentación de repositorios.
-
-Su evolución permitirá compartir patrones de trabajo y comunicación visual sin imponer procesos o diseños idénticos a todos los proyectos.
-
-Conforme estas familias se materialicen, podrán alimentar Repository Templates, automatizaciones y herramientas futuras del Framework.
-
----
-
-# 73. Part 3 Conclusions
-
-Las familias **Workflow** y **Visual** representan responsabilidades operativas y visuales reconocidas por GitHub Framework.
-
-Actualmente constituyen principalmente un catálogo conceptual que orienta futuras implementaciones.
-
-Su evolución deberá seguir el mismo principio que el resto del sistema:
+Modelo:
 
 ```text
-Recognized responsibility
+Project Type
++
+Communication Needs
++
+Visual Design System
         ↓
-Canonical definition
+Visual Component Selection
+```
+
+La selección final seguirá siendo contextual.
+
+---
+
+# 121. Visual Availability vs Consumer Conformance
+
+Puede existir:
+
+```text
+VCL-BANNER
+Implementation: Conceptual
+```
+
+mientras un repositorio consumidor dispone de:
+
+```text
+custom banner
+```
+
+La existencia del asset puede satisfacer una responsabilidad local.
+
+No convierte automáticamente ese asset en una implementación reusable de `VCL-BANNER`.
+
+Por tanto:
+
+```text
+Consumer Visual Asset
+        ≠
+Canonical Visual Component
+```
+
+---
+
+# 122. Visual Registry Quality Gates
+
+Antes de cambiar un `VCL-*` a `Implemented` deberá verificarse:
+
+- [ ] El ID permanece único y estable.
+- [ ] Existe Specification canónica.
+- [ ] Existe Metadata canónica.
+- [ ] La materialización requerida está disponible.
+- [ ] La materialización es reusable.
+- [ ] No duplica reglas pertenecientes al Visual Design System.
+- [ ] No duplica otro Visual Component.
+- [ ] La ubicación canónica es real.
+- [ ] Las dependencies reales están correctamente representadas.
+- [ ] Los aspectos de accesibilidad han sido considerados.
+- [ ] Las dependencias de proveedores externos están justificadas.
+- [ ] La clasificación del Catalog coincide con la implementación.
+
+---
+
+# 123. Workflow and Visual Cross-Consumer Reuse
+
+Workflow y Visual Components podrán tener consumidores distintos.
+
+| Family | Primary Context | Possible Consumers |
+| --- | --- | --- |
+| Workflow | Repository operations | GitHub repositories, Repository Templates, automation |
+| Visual | Visual communication | README, Documentation, GitHub Profile, GitHub Pages |
+
+La posibilidad de reutilización no implica obligatoriedad.
+
+Cada adopción deberá responder a una necesidad real.
+
+---
+
+# 124. Workflow and Visual Evolution
+
+Las dos familias evolucionarán mediante el lifecycle general:
+
+```text
+Recognized Responsibility
         ↓
-Implementation
+Conceptual
+        ↓
+Specification
+        ↓
+Metadata
+        ↓
+Materialization
+        ↓
+Implemented
         ↓
 Validation
         ↓
-Reusable adoption
+Stable when justified
 ```
 
-El catálogo permite preservar estas responsabilidades sin presentar prematuramente como implementado aquello que todavía pertenece al diseño.
+No deberán implementarse todos los Components simultáneamente.
+
+La evolución será incremental y guiada por casos reales.
 
 ---
 
-# 74. Part 3 Versioning
+# 125. Family Statistics
+
+Estado actual de las familias registradas en esta Part:
+
+| Family | Implemented | Conceptual | Total |
+| --- | ---: | ---: | ---: |
+| Workflow Components | 0 | 16 | 16 |
+| Visual Components | 0 | 14 | 14 |
+| **Total** | **0** | **30** | **30** |
+
+Estas cifras representan disponibilidad dentro del Framework.
+
+No representan adopción ni utilidad potencial.
+
+---
+
+# 126. Current Development Focus
+
+La siguiente familia prevista para materialización es:
+
+```text
+Workflow Components
+```
+
+El flujo actual de evolución es:
+
+```text
+Workflow Component Architecture
+        ↓
+Core Workflow Components
+        ↓
+Workflow Reference Implementation
+        ↓
+Workflow Standards
+```
+
+El Component Catalog deberá evolucionar junto con cada transición real de implementación.
+
+La familia Visual permanecerá conceptual hasta que exista una necesidad de implementación explícitamente planificada.
+
+---
+
+# 127. Part 3 Conclusions
+
+Las familias **Workflow** y **Visual** representan actualmente responsabilidades reconocidas arquitectónicamente pero todavía no materializadas como bibliotecas canónicas del Framework.
+
+Estado:
+
+```text
+Workflow
+        16 Components
+         0 Implemented
+        16 Conceptual
+
+Visual
+        14 Components
+         0 Implemented
+        14 Conceptual
+```
+
+La arquitectura Workflow ya dispone de un contrato de materialización definido por el RDS.
+
+Esto no cambia su clasificación de implementación.
+
+El siguiente cambio relevante deberá producirse cuando existan realmente:
+
+```text
+framework/components/workflow/
+        ↓
+Canonical WCL implementations
+```
+
+La familia Visual mantiene igualmente la separación:
+
+```text
+Visual responsibility recognized
+        ≠
+Visual Component implemented
+```
+
+El catálogo preserva así una representación fiel del Framework actual.
+
+---
+
+# 128. Part 3 Versioning
 
 El versionado de esta Part se gestiona mediante el Revision History global del Component Catalog.
 
@@ -1579,115 +3291,449 @@ El versionado de esta Part se gestiona mediante el Revision History global del C
 
 ---
 
-# 75. Purpose
+# 129. Purpose
 
-Esta sección completa el **Component Catalog** incorporando el registro de Repository Templates (`TPL-*`) y las reglas globales de trazabilidad y gobernanza del catálogo.
+Esta Part completa el Component Catalog incorporando:
+
+- Repository Templates;
+- Maturity Profiles;
+- relaciones globales del Framework;
+- trazabilidad;
+- gobernanza del catálogo;
+- resumen global del Registry.
 
 Los Repository Templates no constituyen una familia de Framework Components.
 
 Representan composiciones reutilizables de Components adaptadas a tipos concretos de proyecto.
 
-Los Maturity Profiles constituyen una dimensión independiente del modelo y no se registran como Templates ni como Components.
+Los Maturity Profiles constituyen una dimensión independiente.
 
-Esta sección deberá mantenerse alineada con:
-
-- Repository Design System;
-- especificaciones y metadata canónicas;
-- Repository Template Library;
-- implementación real del Framework.
+El Component Catalog deberá mantener estas distinciones explícitas.
 
 ---
 
-# 76. Repository Template Registry
+# 130. Repository Template Registry
 
-## Prefix
+Los Repository Templates utilizan el prefijo:
 
 ```text
-TPL
+TPL-*
 ```
 
----
+Su responsabilidad consiste en definir composiciones reutilizables de Framework Components para tipos concretos de proyecto.
 
-## Purpose
+Un Repository Template:
 
-Los Repository Templates representan composiciones reutilizables de Framework Components para tipos concretos de proyecto.
-
-Un Template:
-
-- define un project_type;
+- identifica un project type;
 - declara una madurez mínima recomendada;
 - selecciona Components existentes;
 - asigna requirement levels contextuales;
-- proporciona guidance específico de composición.
+- proporciona guidance de composición;
+- permite evaluar consumer conformance.
 
 No introduce nuevas responsabilidades canónicas dentro de los Components.
 
 ---
 
-## Consumer
+# 131. Repository Template Canonical Definition
 
-- nuevos repositorios;
-- Repository Implementations;
-- futuras herramientas de bootstrap;
-- futuros generadores o validadores.
+Un Repository Template implementado dispone de una definición canónica formada por:
 
-La existencia futura de automatización no forma parte todavía del contrato obligatorio del Template.
+```text
+Specification
+        +
+Metadata
+```
 
----
+La Specification define:
 
-# 77. Template Registry
+- propósito;
+- alcance;
+- project type;
+- composición;
+- requirement levels;
+- guidance;
+- extensibilidad;
+- especialización.
 
-Los Repository Templates implementados actualmente son:
+La Metadata proporciona representación estructurada para:
 
-| ID | Name | Project Type | Maturity | Status | Implementation |
-|---|---|---|---|---|---|
-| `TPL-BACKEND` | Backend Repository | Backend | L2 | Experimental | Implemented |
-| `TPL-FULLSTACK` | Full Stack Repository | Full Stack | L2 | Experimental | Implemented |
-| `TPL-DOCUMENTATION` | Documentation Repository | Documentation | L2 | Experimental | Implemented |
+- identidad;
+- versionado;
+- lifecycle;
+- project type;
+- maturity;
+- Components;
+- requirement levels;
+- automatización futura.
 
-La implementación canónica se mantiene en:
+La implementación canónica actual se mantiene en:
 
 ```text
 framework/templates/repositories/
 ```
 
-Otros tipos de proyecto identificados como candidatos son:
+---
 
-| Project Type | Classification |
-|---|---|
-| AI | Potential |
-| Library | Potential |
-| Website | Potential |
+# 132. Repository Template Registry
 
-Estos tipos no constituyen Repository Templates oficiales mientras no dispongan de:
+El catálogo registra actualmente:
 
-- caso de uso real;
-- especificación;
-- composición;
-- metadata;
-- implementación;
-- validación.
+| ID | Project Type | Maturity | Lifecycle | Implementation |
+| --- | --- | :---: | --- | --- |
+| `TPL-BACKEND` | Backend | L2 | Experimental | Implemented |
+| `TPL-FULLSTACK` | Full Stack | L2 | Experimental | Implemented |
+| `TPL-DOCUMENTATION` | Documentation | L2 | Experimental | Implemented |
 
-Por tanto, no se registran actualmente identificadores como `TPL-AI`, `TPL-LIBRARY` o `TPL-WEBSITE` como Templates implementados.
+Los tres Templates disponen de implementación canónica.
+
+No existen actualmente otros `TPL-*` oficiales.
 
 ---
 
-# 78. Maturity Profiles
+# 133. Repository Template Summary
+
+Estado actual:
+
+```text
+Repository Templates
+        3 total
+
+Implemented
+        3
+
+Conceptual
+        0
+```
+
+Los tipos de proyecto potenciales no deberán contabilizarse como Templates oficiales hasta disponer de:
+
+- Specification;
+- Metadata;
+- composición;
+- implementación;
+- validación suficiente.
+
+---
+
+# 134. TPL-BACKEND
+
+`TPL-BACKEND` representa repositorios cuyo producto principal es una aplicación, servicio o capacidad backend.
+
+Registry classification:
+
+```text
+ID: TPL-BACKEND
+Project Type: Backend
+Maturity: L2
+Lifecycle: Experimental
+Implementation: Implemented
+```
+
+Canonical location:
+
+```text
+framework/templates/repositories/backend/
+```
+
+La composición exacta deberá consultarse en su Metadata y Specification.
+
+El Component Catalog no la duplica.
+
+---
+
+# 135. TPL-FULLSTACK
+
+`TPL-FULLSTACK` representa repositorios que integran responsabilidades frontend y backend dentro de una misma unidad de proyecto.
+
+Registry classification:
+
+```text
+ID: TPL-FULLSTACK
+Project Type: Full Stack
+Maturity: L2
+Lifecycle: Experimental
+Implementation: Implemented
+```
+
+Canonical location:
+
+```text
+framework/templates/repositories/fullstack/
+```
+
+La selección concreta de Components pertenece a su definición canónica.
+
+---
+
+# 136. TPL-DOCUMENTATION
+
+`TPL-DOCUMENTATION` representa repositorios cuyo producto principal es documentación, conocimiento estructurado o documentación de Framework.
+
+Registry classification:
+
+```text
+ID: TPL-DOCUMENTATION
+Project Type: Documentation
+Maturity: L2
+Lifecycle: Experimental
+Implementation: Implemented
+```
+
+Canonical location:
+
+```text
+framework/templates/repositories/documentation/
+```
+
+GitHub Framework ha sido utilizado como Reference Implementation de este Template mediante dogfooding.
+
+Esta validación no modifica su naturaleza de Repository Template.
+
+---
+
+# 137. Repository Template Requirement Levels
+
+Los Templates utilizan:
+
+```text
+required
+recommended
+optional
+```
+
+para expresar la importancia contextual de un Component.
+
+El Component Catalog deberá mantener la distinción:
+
+```text
+Component Priority
+        ≠
+Template Requirement Level
+```
+
+y:
+
+```text
+Implementation Classification
+        ≠
+Template Requirement Level
+```
+
+Un Component `Conceptual` puede formar parte legítimamente de un Template cuando su responsabilidad corresponda al contrato.
+
+---
+
+# 138. Template Composition Source
+
+La composición canónica pertenece exclusivamente a cada Repository Template.
+
+Por tanto, el Catalog no deberá mantener una segunda matriz normativa de:
+
+```text
+required
+recommended
+optional
+```
+
+para todos los Templates.
+
+El catálogo podrá exponer relaciones derivadas con fines de descubrimiento.
+
+La fuente normativa continuará siendo:
+
+```text
+framework/templates/repositories/<template>/
+```
+
+---
+
+# 139. Component Availability in Templates
+
+Un Repository Template podrá referenciar Components:
+
+```text
+Implemented
+Conceptual
+```
+
+La disponibilidad de implementación no determina su requirement level.
+
+Ejemplo conceptual:
+
+```text
+Component
+Implementation: Conceptual
+
+Template
+Requirement Level: Required
+```
+
+puede ser válido cuando:
+
+- la responsabilidad pertenece al contrato del Template;
+- el Framework todavía no dispone de implementación reusable;
+- el consumidor puede satisfacer la responsabilidad mediante una materialización compatible.
+
+---
+
+# 140. Template Conformance
+
+El catálogo deberá distinguir:
+
+```text
+Template composition
+        ≠
+Consumer conformance
+```
+
+La composición define responsabilidades esperadas.
+
+La conformance evalúa si el consumidor las satisface.
+
+Modelo:
+
+```text
+Repository Template
+        ↓
+Selected Responsibilities
+        ↓
+Consumer Materialization
+        ↓
+Conformance Evaluation
+```
+
+El Component Catalog no realiza por sí mismo esta evaluación.
+
+---
+
+# 141. Template Lifecycle
+
+Los Repository Templates podrán utilizar lifecycle states:
+
+```text
+Draft
+Experimental
+Stable
+Deprecated
+Retired
+```
+
+Los Templates actuales permanecen:
+
+```text
+Experimental
+```
+
+Esto significa que:
+
+- están implementados;
+- pueden utilizarse;
+- están siendo validados;
+- su contrato todavía puede evolucionar.
+
+No significa que sean conceptuales.
+
+---
+
+# 142. Repository Template Promotion
+
+La promoción:
+
+```text
+Experimental
+        ↓
+Stable
+```
+
+deberá basarse en evidencia.
+
+Entre los factores relevantes podrán encontrarse:
+
+- Reference Implementations;
+- consumer adoption;
+- conformance results;
+- estabilidad de composición;
+- ausencia de gaps críticos;
+- calidad de Metadata;
+- mantenimiento;
+- compatibilidad.
+
+La antigüedad no constituye evidencia suficiente.
+
+---
+
+# 143. Potential Repository Templates
+
+Tipos de proyecto reconocidos como posibles candidatos futuros incluyen:
+
+```text
+AI
+Library
+Website
+```
+
+Estos nombres no constituyen IDs oficiales.
+
+No deberán registrarse prematuramente como:
+
+```text
+TPL-AI
+TPL-LIBRARY
+TPL-WEBSITE
+```
+
+hasta que exista una necesidad reusable suficientemente validada.
+
+---
+
+# 144. Maturity Profiles
 
 GitHub Framework mantiene cuatro niveles de madurez:
 
 | Level | Description |
-|---|---|
+| --- | --- |
 | L1 | Experimental |
 | L2 | Public Basic |
 | L3 | Supporting |
 | L4 | Strategic |
 
-Los Maturity Profiles expresan expectativas de evolución, mantenimiento y exigencia.
+Los Maturity Profiles representan expectativas sobre:
+
+- calidad;
+- documentación;
+- mantenimiento;
+- automatización;
+- governance;
+- continuidad.
 
 No constituyen Repository Templates.
 
-Por tanto, no existen:
+---
+
+# 145. Maturity Independence
+
+La madurez constituye una dimensión independiente.
+
+Por tanto:
+
+```text
+Project Type
+        ↓
+Repository Template
+```
+
+y:
+
+```text
+Maturity
+        ↓
+Quality and Maintenance Expectations
+```
+
+son decisiones distintas.
+
+No existen Templates como:
 
 ```text
 TPL-L1
@@ -1696,20 +3742,34 @@ TPL-L3
 TPL-L4
 ```
 
-La madurez se registra como propiedad del Repository Template o del elemento correspondiente.
+---
 
-Ejemplo:
+# 146. Maturity and Requirement Levels
+
+La madurez no deberá utilizarse para asignar automáticamente requirement levels.
+
+Ejemplo incorrecto:
 
 ```text
-TPL-DOCUMENTATION
-maturity: L2
+L3
+        ↓
+WCL-CI must be Required
 ```
 
-Dos Repository Templates con la misma madurez podrán utilizar composiciones diferentes.
+La necesidad de `WCL-CI` depende de:
+
+- project type;
+- Repository Template;
+- contexto del consumidor;
+- necesidades operativas.
+
+La madurez puede aumentar expectativas.
+
+No determina por sí sola la composición.
 
 ---
 
-# 79. Repository Context
+# 147. Repository Context
 
 Factores como:
 
@@ -1719,24 +3779,19 @@ Factores como:
 - investigación;
 - entorno empresarial;
 
-pueden modificar necesidades operativas o de gobernanza de un repositorio.
+pueden modificar necesidades de un consumidor.
 
-Estos factores forman parte del contexto del consumidor.
+Estos factores forman parte del contexto.
 
-No constituyen actualmente una familia formal de `Repository Profiles` dentro de GitHub Framework.
+No constituyen actualmente una familia formal de Repository Profiles.
 
-Cuando afecten a la composición, deberán resolverse mediante:
-
-- configuración del consumidor;
-- Components aplicables;
-- guidance del Repository Template;
-- futuras capacidades respaldadas por casos de uso reales.
+El modelo anterior de Profiles permanece fuera de la arquitectura activa.
 
 ---
 
-# 80. Repository Profile Model
+# 148. Repository Profile Boundary
 
-El modelo anterior basado en identificadores como:
+Identificadores históricos o conceptuales como:
 
 ```text
 PROFILE-SOLO
@@ -1746,191 +3801,196 @@ PROFILE-RESEARCH
 PROFILE-ENTERPRISE
 ```
 
-no forma parte de la arquitectura actual del Framework.
+no forman parte del Registry actual.
 
-La experiencia obtenida durante la implementación mostró que estos conceptos mezclaban contexto operativo con composición arquitectónica.
+La experiencia obtenida durante la evolución del Framework mostró que estos conceptos mezclaban:
 
-El modelo actual separa:
+- contexto;
+- composición;
+- madurez;
+- governance.
 
-```text
-Project Type
-        ↓
-Repository Template
-
-
-Maturity
-        ↓
-Independent expectation
-
-
-Repository Context
-        ↓
-Consumer-specific configuration
-```
-
-No se incorporará una nueva abstracción de Profile sin evidencia de una necesidad reutilizable que no pueda resolverse adecuadamente mediante el modelo existente.
+El modelo actual separa estas dimensiones.
 
 ---
 
-# 81. Template Composition
+# 149. Framework Composition
 
-Un Repository Template se define mediante:
-
-```text
-Repository Template
-        ├── Project Type
-        ├── Maturity
-        ├── Required Components
-        ├── Recommended Components
-        ├── Optional Components
-        └── Template-specific guidance
-```
-
-Ejemplo conceptual:
-
-```text
-TPL-BACKEND
-        │
-        ├── project_type: Backend
-        ├── maturity: L2
-        └── components
-                ├── required
-                ├── recommended
-                └── optional
-```
-
-No se compone mediante otros Templates de madurez ni Repository Profiles.
-
-El requirement level pertenece al contexto del Template y no modifica la metadata canónica del Component.
-
----
-
-# 82. Framework Composition
-
-La arquitectura general del Framework puede representarse como:
+La arquitectura global del Framework puede representarse como:
 
 ```text
 Standards
+        ↓
+Repository Design System
         ↓
 Framework Components
         ├── README
         ├── Documentation
         ├── Workflow
         └── Visual
-                ↓
+        ↓
 Repository Templates
-                ↓
+        ↓
 Repository Implementations
-                ↓
+        ↓
+Reference Implementations
+        ↓
 Validation and Evolution
 ```
 
-Los Maturity Profiles actúan como una dimensión independiente que modifica expectativas de calidad, mantenimiento y evolución.
+Los Maturity Profiles operan como una dimensión independiente.
 
-No forman una capa adicional de Components ni Templates.
+No constituyen una capa física adicional.
 
 ---
 
-# 83. Framework Relationships
+# 150. Framework Registry Summary
 
-Las principales relaciones del sistema son:
+Estado global actual:
+
+| Element | Implemented | Conceptual | Total |
+| --- | ---: | ---: | ---: |
+| README Components | 12 | 5 | 17 |
+| Documentation Components | 4 | 11 | 15 |
+| Workflow Components | 0 | 16 | 16 |
+| Visual Components | 0 | 14 | 14 |
+| Repository Templates | 3 | 0 | 3 |
+| **Total** | **19** | **46** | **65** |
+
+Estas cifras representan elementos reconocidos por el Registry.
+
+No representan:
+
+- adoption;
+- consumer conformance;
+- project maturity;
+- requirement levels;
+- release readiness.
+
+---
+
+# 151. Framework Component Summary
+
+Considerando únicamente Framework Components:
 
 ```text
-RDS
-        ↓ defines architecture
+README
+        17
 
-Framework Components
-        ↓ provide reusable responsibilities
+Documentation
+        15
 
-Repository Templates
-        ↓ compose Components
+Workflow
+        16
 
-Repository Implementations
-        ↓ consume Templates and Components
-
-Reference Implementations
-        ↓ validate the model
+Visual
+        14
+        ──
+        62 total
 ```
 
-Las relaciones entre Components deberán declararse únicamente cuando exista dependencia funcional real.
+Distribución:
 
-El catálogo no mantendrá una jerarquía global artificial entre familias.
+```text
+Implemented
+        16
 
----
+Conceptual
+        46
+```
 
-# 84. Framework Registry Summary
-
-| Element | Prefix | Recognized | Implemented | Conceptual / Potential |
-|---|---|---:|---:|---:|
-| README Components | `README-*` | 17 | 12 | 5 |
-| Documentation Components | `DOC-*` | 15 | 4 | 11 |
-| Workflow Components | `WCL-*` | 16 | 0 | 16 |
-| Visual Components | `VCL-*` | 14 | 0 | 14 |
-| Repository Templates | `TPL-*` | 3 | 3 | 0 |
-
-Los tipos potenciales de Repository Template se registran por separado y no se contabilizan como Templates registrados.
-
-Los Maturity Profiles no se contabilizan como Components ni como Templates.
+Los Repository Templates se contabilizan por separado porque no constituyen Framework Components.
 
 ---
 
-# 85. Registry Relationships
+# 152. Implementation Distribution
 
-| Element | Main Relationship |
-|---|---|
-| README Components | Presentación y navegación |
-| Documentation Components | Conocimiento técnico y operativo |
-| Workflow Components | Procesos de desarrollo y mantenimiento |
-| Visual Components | Comunicación y presentación visual |
-| Repository Templates | Composición contextual de Components |
-| Maturity Profiles | Expectativas independientes de evolución |
+Distribución global:
 
-Estas relaciones describen responsabilidades dentro del Framework.
+```text
+Framework Components
+        16 Implemented
+        46 Conceptual
 
-No representan dependencias técnicas universales entre familias.
+Repository Templates
+         3 Implemented
+         0 Conceptual
+
+Total Registered Elements
+        65
+```
+
+Por clasificación de implementación:
+
+```text
+Implemented
+        19
+
+Conceptual
+        46
+```
+
+La proporción de elementos materializados constituye una métrica descriptiva.
+
+No representa el progreso global exacto del proyecto.
 
 ---
 
-# 86. Repository Selection Strategy
+# 153. Registry Relationships
 
-Al crear un repositorio que adopte GitHub Framework se seguirá conceptualmente:
+Principales relaciones:
+
+| Element | Main Responsibility |
+| --- | --- |
+| README Components | Repository entry and presentation |
+| Documentation Components | Detailed knowledge |
+| Workflow Components | Operational processes |
+| Visual Components | Visual communication |
+| Repository Templates | Contextual composition |
+| Maturity Profiles | Quality expectations |
+
+Estas relaciones describen responsabilidad.
+
+No constituyen dependencias universales.
+
+---
+
+# 154. Repository Selection Strategy
+
+Conceptualmente, un consumidor deberá seguir:
 
 ```text
 Identify Project Type
         ↓
 Select Repository Template
         ↓
-Review Template Maturity
+Review Maturity Expectations
         ↓
-Apply Required Components
+Apply Required Responsibilities
         ↓
 Evaluate Recommended Components
         ↓
 Add Optional Components when justified
         ↓
-Configure Consumer-specific Needs
+Configure Consumer Context
         ↓
 Validate
-        ↓
-Publish
 ```
 
-Cuando no exista un Repository Template adecuado deberá evaluarse si:
+El Component Catalog facilita descubrimiento durante este proceso.
 
-- puede utilizarse uno existente;
-- la necesidad puede resolverse mediante configuración;
-- existe suficiente evidencia para diseñar un nuevo Template.
-
-No se crearán Templates únicamente para cubrir variaciones menores.
+No sustituye la lógica del Repository Template.
 
 ---
 
-# 87. Framework Layers
+# 155. Framework Layers
 
-GitHub Framework puede analizarse mediante diferentes capas de responsabilidad:
+El Framework puede analizarse mediante:
 
 ```text
 Standards Layer
+        ↓
+Architecture Layer
         ↓
 Component Layer
         ↓
@@ -1943,254 +4003,499 @@ Validation Layer
 Governance Layer
 ```
 
-Estas capas representan responsabilidades arquitectónicas.
+Estas capas representan responsabilidades.
 
-No implican una estructura física obligatoria del repositorio.
+No implican estructuras físicas obligatorias.
 
 ---
 
-# 88. Element Traceability
+# 156. Element Traceability
 
 Todo elemento registrado deberá permitir responder, cuando corresponda:
 
-- ¿Cuál es su identificador?
+- ¿Cuál es su ID?
 - ¿Cuál es su responsabilidad?
-- ¿Cuál es su fuente canónica?
-- ¿Está implementado o es conceptual?
-- ¿Cuál es su status?
-- ¿Qué Repository Templates lo utilizan?
-- ¿Qué relaciones o dependencias mantiene?
+- ¿A qué familia pertenece?
+- ¿Es `Conceptual` o `Implemented`?
+- ¿Cuál es su lifecycle status?
 - ¿Cuál es su versión?
+- ¿Dónde está su definición canónica?
+- ¿Qué dependencies mantiene?
+- ¿Qué Repository Templates lo referencian?
 - ¿Cuál es su maturity?
-- ¿Dónde está materializado?
+- ¿Qué consumidores conocidos existen?
 
-La trazabilidad deberá derivarse de fuentes canónicas y datos de catálogo sincronizados.
+La trazabilidad deberá derivarse de fuentes reales.
+
+No de información duplicada manualmente sin control.
 
 ---
 
-# 89. Registry Fields
+# 157. Registry Fields
 
-El catálogo podrá exponer dos tipos de información.
+El catálogo podrá exponer:
 
-## Canonical Metadata
+## Canonical Fields
 
-Cuando exista implementación:
+- ID;
+- Name;
+- Family;
+- Version;
+- Status;
+- Priority;
+- Audience;
+- Maturity;
+- Dependencies.
 
-| Field | Description |
-|---|---|
-| ID | Identificador |
-| Name | Nombre |
-| Family | Familia |
-| Version | Semantic Version |
-| Status | Estado |
-| Priority | Prioridad orientativa |
-| Audience | Audiencia |
-| Maturity | Madurez mínima recomendada |
-| Description | Descripción |
-| Dependencies | Dependencias declaradas |
+## Derived Fields
 
-## Derived Catalog Information
-
-El catálogo podrá añadir información derivada como:
-
-- implementation classification;
+- Implementation;
 - canonical location;
-- Repository Templates relacionados;
-- consumidores conocidos;
-- última revisión.
+- related Templates;
+- known consumers;
+- last reviewed;
+- materialization classification;
+- capability mapping.
 
-La información derivada deberá mantenerse sincronizada con las fuentes canónicas y no sustituirlas.
-
----
-
-# 90. Catalog Governance
-
-Todo elemento reconocido por el Component Catalog deberá respetar la gobernanza definida por el RDS.
-
-Para incorporar un nuevo Framework Component deberá:
-
-- existir una responsabilidad reutilizable diferenciada;
-- disponer de identificador estable cuando corresponda;
-- estar documentado;
-- declarar correctamente su estado de implementación;
-- evitar duplicar responsabilidades existentes;
-- mantener coherencia con las fuentes canónicas.
-
-La incorporación al catálogo proporciona descubrimiento y trazabilidad.
-
-No sustituye la especificación, metadata, implementación ni validación necesarias para considerar un elemento materializado.
+Los campos derivados deberán mantenerse sincronizados.
 
 ---
 
-# 91. Repository Bootstrap Process
+# 158. Catalog Governance
 
-El bootstrap conceptual de un repositorio será:
+Todo elemento registrado deberá respetar la gobernanza del RDS.
+
+Para incorporar o modificar un elemento deberá evaluarse:
+
+- responsabilidad;
+- duplicación;
+- identidad;
+- implementación;
+- Metadata;
+- lifecycle;
+- dependencies;
+- relaciones;
+- compatibilidad;
+- consumer impact.
+
+La incorporación al catálogo proporciona descubrimiento.
+
+No sustituye implementación ni validación.
+
+---
+
+# 159. Registry Change Process
+
+Los cambios del catálogo deberán producirse como consecuencia de cambios reales en el Framework.
+
+Flujo habitual:
 
 ```text
-Framework
+Framework Change
         ↓
-Identify Project Type
-        ↓
-Repository Template
-        ↓
-Required / Recommended / Optional Components
-        ↓
-Repository Implementation
-        ↓
-Validation
-```
-
-La madurez se evalúa dentro de este proceso como expectativa independiente.
-
-No se selecciona un Repository Profile ni un Maturity Template adicional.
-
----
-
-# 92. Evolution Strategy
-
-La evolución de los elementos reutilizables seguirá conceptualmente:
-
-```text
-Need
-        ↓
-Evaluate Existing Model
-        ↓
-Specification
-        ↓
-Implementation
+Canonical Source Update
         ↓
 Catalog Synchronization
         ↓
 Validation
-        ↓
-Adoption
-        ↓
-Maintenance
 ```
 
-La incorporación al catálogo no precede necesariamente a toda implementación.
+No:
 
-Los elementos conceptuales podrán registrarse cuando resulte útil para representar responsabilidades reconocidas, siempre que su clasificación sea explícita.
+```text
+Catalog Change
+        ↓
+Assume Framework changed
+```
+
+Esta dirección protege la fuente de verdad.
 
 ---
 
-# 93. Anti-Patterns
+# 160. Catalog Review Triggers
+
+El Component Catalog deberá revisarse cuando:
+
+- se implemente un Component;
+- se depreque un Component;
+- cambie una versión;
+- aparezca un nuevo Repository Template;
+- evolucione un Template;
+- cambien dependencies;
+- se detecte un canonical location incorrecto;
+- una auditoría revele drift;
+- cambie la arquitectura del RDS.
+
+Las revisiones deberán mantenerse trazables.
+
+---
+
+# 161. Catalog Drift
+
+Existe `Catalog Drift` cuando la representación del catálogo no coincide con la realidad.
+
+Ejemplos:
+
+```text
+Catalog says Implemented
+        ↓
+No canonical implementation exists
+```
+
+o:
+
+```text
+Canonical Component exists
+        ↓
+Catalog still says Conceptual
+```
+
+El drift deberá considerarse deuda del Design System.
+
+Deberá corregirse cuando se detecte.
+
+---
+
+# 162. Catalog Audit
+
+Las auditorías del Component Catalog podrán comprobar:
+
+- IDs;
+- duplicados;
+- implementation classification;
+- canonical locations;
+- Metadata;
+- counts;
+- Repository Template references;
+- dependencies;
+- lifecycle;
+- missing registrations;
+- orphan implementations.
+
+Las auditorías automáticas podrán incorporarse en futuras versiones del Framework.
+
+---
+
+# 163. Machine-Readable Evolution
+
+Conforme evolucione GitHub Framework, parte del Component Catalog podrá derivarse automáticamente de Metadata canónica.
+
+Modelo futuro:
+
+```text
+Canonical Metadata
+        ↓
+Registry Index
+        ↓
+Human-readable Catalog
++
+Automation
+```
+
+Esto permitirá reducir drift.
+
+El documento Markdown podrá continuar proporcionando interpretación humana.
+
+---
+
+# 164. Framework Automation Relationship
+
+Framework Automation deberá consumir:
+
+```text
+Canonical Definitions
+        +
+Metadata
+        +
+Repository Templates
+```
+
+El Component Catalog podrá proporcionar índices o navegación.
+
+No deberá convertirse en el único origen machine-readable cuando exista Metadata más precisa.
+
+---
+
+# 165. Repository Bootstrap Relationship
+
+Las futuras herramientas de bootstrap podrán utilizar:
+
+```text
+Repository Template
+        ↓
+Resolve Component IDs
+        ↓
+Locate Implemented Components
+        ↓
+Detect Conceptual Responsibilities
+        ↓
+Materialize / Guide Consumer
+```
+
+El Catalog podrá facilitar resolución.
+
+La lógica normativa deberá derivarse de Templates y Components.
+
+---
+
+# 166. Validation Tooling Relationship
+
+Los validadores futuros podrán utilizar el Catalog para:
+
+- discovery;
+- classification;
+- canonical location;
+- status overview.
+
+La evaluación de conformance deberá utilizar contratos canónicos.
+
+No únicamente las tablas del Catalog.
+
+---
+
+# 167. Repository Health Relationship
+
+Repository Health podrá utilizar información del Component Catalog como una de sus entradas.
+
+Ejemplos:
+
+- availability;
+- Template composition;
+- consumer adoption;
+- lifecycle.
+
+Sin embargo, el Catalog no define actualmente un algoritmo de Health.
+
+La capacidad permanece futura.
+
+---
+
+# 168. Registry Anti-Patterns
 
 No deberán existir:
 
-- Repository Profiles presentados como familia activa del Framework;
-- Maturity Profiles modelados como Repository Templates;
-- Templates potenciales presentados como implementados;
-- Components conceptuales presentados como materializados;
-- requirement levels globales mantenidos por el catálogo;
-- dependencias universales inventadas entre familias;
-- múltiples fuentes de verdad;
-- metadata del catálogo contradictoria con fuentes canónicas;
-- Templates especulativos sin caso de uso;
-- elementos incorporados únicamente para aumentar cobertura.
+- IDs duplicados;
+- Responsibilities equivalentes con IDs distintos;
+- canonical locations ficticias;
+- Components conceptuales presentados como implementados;
+- Templates potenciales presentados como oficiales;
+- Profiles obsoletos registrados como activos;
+- Maturity Profiles registrados como Templates;
+- lifecycle confundido con implementation classification;
+- priority confundida con requirement level;
+- availability confundida con conformance;
+- counts desincronizados;
+- Metadata contradictoria;
+- información del Catalog utilizada como Specification completa;
+- automatización basada en datos derivados obsoletos.
 
 ---
 
-# 94. Catalog Quality Gates
+# 169. Global Catalog Quality Gates
 
 Antes de aprobar una nueva versión del Component Catalog deberá verificarse:
 
-- [ ] Las familias reconocidas están alineadas con el RDS.
-- [ ] Los Components registrados coinciden con las responsabilidades reconocidas.
-- [ ] La clasificación `Implemented` / `Conceptual` es correcta.
-- [ ] Los Repository Templates registrados coinciden con la implementación real.
-- [ ] Los Templates potenciales no se presentan como oficiales.
-- [ ] Los Maturity Profiles no aparecen como Templates.
-- [ ] Los Repository Profiles no se presentan como elementos activos del Framework.
-- [ ] La metadata reproducida coincide con las fuentes canónicas.
-- [ ] Las relaciones y dependencias están correctamente representadas.
+- [ ] Las familias coinciden con el RDS.
+- [ ] Los IDs son únicos.
+- [ ] Los Registry tables coinciden con las responsabilidades reconocidas.
+- [ ] La clasificación `Implemented / Conceptual` refleja la realidad.
+- [ ] Los lifecycle states son coherentes.
+- [ ] Los canonical locations existen cuando se declaran.
+- [ ] Los Repository Templates registrados coinciden con la implementación.
+- [ ] Los Maturity Profiles permanecen como dimensión independiente.
+- [ ] Los Repository Profiles no aparecen como arquitectura activa.
+- [ ] Las dependencies reales están correctamente representadas.
 - [ ] No existen requirement levels globales.
-- [ ] Las fuentes canónicas pueden localizarse.
+- [ ] Los counts están sincronizados.
+- [ ] La Metadata reproducida coincide con fuentes canónicas.
+- [ ] La disponibilidad no se confunde con consumer conformance.
+- [ ] El Catalog continúa alineado con el RDS.
 
 ---
 
-# 95. Framework Evolution
+# 170. Registry Evolution Strategy
 
-El Component Catalog deberá evolucionar conforme se materialicen nuevas capacidades del Framework.
-
-Entre las líneas previsibles se encuentran:
-
-- implementación progresiva de Workflow Components;
-- implementación progresiva de Visual Components;
-- nuevos Repository Templates respaldados por casos reales;
-- validación automática del catálogo;
-- resolución machine-readable de Components;
-- generación asistida;
-- herramientas de descubrimiento;
-- análisis de dependencias y trazabilidad.
-
-La planificación concreta pertenece a:
+La evolución del Catalog seguirá:
 
 ```text
-ROADMAP.md
-+
-docs/governance/14_BACKLOG.md
-+
-GitHub Issues
+Recognize
+        ↓
+Classify
+        ↓
+Implement
+        ↓
+Synchronize
+        ↓
+Validate
+        ↓
+Maintain
 ```
 
-El Component Catalog no mantendrá un roadmap paralelo.
+Los elementos conceptuales podrán permanecer registrados durante varias releases cuando su responsabilidad continúe siendo válida.
+
+No deberán implementarse únicamente para reducir el número de Components conceptuales.
 
 ---
 
-# 96. Long-Term Vision
+# 171. Current Framework Focus
 
-El Component Catalog deberá funcionar como interfaz central de descubrimiento del ecosistema GitHub Framework.
+La evolución actual del Framework se centra en:
+
+```text
+Workflow Component Architecture
+        ↓
+Core Workflow Components
+        ↓
+Workflow Reference Implementation
+        ↓
+Workflow Standards
+        ↓
+v0.5.0
+```
+
+Por tanto, el próximo cambio esperado en el Registry será la transición de determinados `WCL-*`:
+
+```text
+Conceptual
+        ↓
+Implemented
+```
+
+cuando sus implementaciones canónicas existan realmente.
+
+---
+
+# 172. Long-Term Vision
+
+El Component Catalog deberá convertirse en la interfaz central de descubrimiento del ecosistema GitHub Framework.
 
 Permitirá comprender:
 
 - qué responsabilidades reconoce el Framework;
 - cuáles están implementadas;
-- cuáles permanecen conceptuales;
+- cuáles siguen conceptuales;
 - qué Repository Templates existen;
-- cómo localizar sus fuentes canónicas;
+- qué lifecycle mantiene cada elemento;
+- dónde se encuentran las fuentes canónicas;
 - cómo se relacionan los diferentes elementos.
 
-Con el tiempo podrá alimentar herramientas de validación, generación y gobierno sin convertirse en una definición paralela del sistema.
+Con el tiempo podrá alimentar:
+
+- CLI;
+- Repository Wizards;
+- validators;
+- generators;
+- dependency analysis;
+- migration tooling;
+- governance tools;
+- Framework Automation.
+
+Su valor continuará siendo:
+
+```text
+Discovery
++
+Classification
++
+Traceability
+```
+
+No duplicación arquitectónica.
 
 ---
 
-# 97. Final Conclusions
+# 173. Final Conclusions
 
-El **Component Catalog** proporciona una vista gobernada y centralizada de los elementos reutilizables reconocidos por GitHub Framework.
+El **Component Catalog** proporciona una vista gobernada del estado real de GitHub Framework.
 
-Las fuentes canónicas mantienen las definiciones.
-
-El catálogo facilita su descubrimiento.
-
-Los Repository Templates realizan la composición contextual.
-
-Los Maturity Profiles expresan expectativas independientes de evolución.
+Las responsabilidades están separadas:
 
 ```text
-RDS
+Repository Design System
+        ↓
+Architecture
+
+Specifications + Metadata + Materialization
         ↓
 Canonical Definitions
-        ↓
+
 Component Catalog
         ↓
+Discovery and Classification
+
 Repository Templates
         ↓
+Contextual Composition
+
 Repository Implementations
+        ↓
+Consumer Materialization
+
+Reference Implementations
         ↓
 Validation
 ```
 
-El catálogo permite distinguir claramente entre arquitectura reconocida e implementación disponible.
+Estado actual:
 
-Su valor no reside en convertirse en una segunda fuente de verdad, sino en mantener una representación coherente y navegable del Framework real.
+```text
+Framework Components
+        62 total
+
+Implemented
+        16
+
+Conceptual
+        46
+
+
+Repository Templates
+         3 total
+
+Implemented
+         3
+
+Conceptual
+         0
+
+
+Total Registered Elements
+        65
+```
+
+La familia Workflow dispone ahora de un contrato arquitectónico suficientemente definido para iniciar implementación.
+
+Sin embargo, sus 16 Components continúan `Conceptual` hasta que existan implementaciones canónicas reales.
+
+El Catalog mantiene así una fotografía verificable del Framework:
+
+```text
+Architecture recognized
+        ≠
+Implementation available
+```
+
+```text
+Implementation available
+        ≠
+Consumer conformance
+```
+
+```text
+Lifecycle status
+        ≠
+Implementation classification
+```
+
+Estas distinciones permiten que GitHub Framework evolucione sin presentar como materializado aquello que todavía pertenece al diseño.
 
 ---
 
-# 98. Revision History
+# 174. Revision History
 
-| Version | Date       | Description |
-| ------- | ---------- | ----------- |
-| 1.0.0   | 2026-08-05 | Primera versión del Component Catalog. |
-| 1.0.1   | 2026-08-11 | Metadata alineada con GitHub Framework durante la implementación de referencia del Documentation Framework. |
-| 1.1.0   | 2026-08-16 | Arquitectura del catálogo consolidada alrededor de fuentes canónicas, clasificación de implementación, Repository Templates contextuales y Maturity Profiles independientes; retirados Repository Profiles y Maturity Templates como elementos activos. |
+| Version | Date | Description |
+| --- | --- | --- |
+| 1.0.0 | 2026-08-05 | Primera versión del Component Catalog. |
+| 1.0.1 | 2026-08-11 | Metadata alineada con GitHub Framework durante la implementación de referencia del Documentation Framework. |
+| 1.1.0 | 2026-08-16 | Arquitectura del catálogo consolidada alrededor de fuentes canónicas, clasificación de implementación, Repository Templates contextuales y Maturity Profiles independientes; retirados Repository Profiles y Maturity Templates como elementos activos. |
+| 1.2.0 | 2026-08-19 | Catalog alineado con RDS 1.2.0, incorporando distinción explícita entre Specification, Metadata y Materialization, implementation classification frente a lifecycle, Component availability frente a consumer conformance y contrato actualizado para futura materialización de Workflow Components. |
