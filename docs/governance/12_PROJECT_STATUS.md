@@ -66,8 +66,8 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 
 | Issue | Historia | Prioridad | Estado |
 | ----- | -------- | :-------: | :----: |
-| #17 | Workflow Component Architecture | Alta | 🟡 |
-| #18 | Core Workflow Components | Alta | ⚪ |
+| #17 | Workflow Component Architecture | Alta | ✅ |
+| #18 | Core Workflow Components | Alta | ✅ |
 | #19 | Workflow Reference Implementation | Alta | ⚪ |
 | #20 | Workflow Component Standards | Media | ⚪ |
 
@@ -81,14 +81,14 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 
 ### Definition of Done
 
-- [ ] Workflow Component Architecture definida.
-- [ ] Contrato de implementación de Workflow Components establecido.
-- [ ] Core Workflow Components implementados.
-- [ ] Diferentes mecanismos de materialización validados.
+- [x] Workflow Component Architecture definida.
+- [x] Contrato de implementación de Workflow Components establecido.
+- [x] Core Workflow Components implementados.
+- [x] Diferentes mecanismos de materialización validados.
 - [ ] Reference Implementation completada.
 - [ ] Dogfooding completado.
 - [ ] Workflow Component Standards definidos.
-- [ ] Component Catalog actualizado cuando corresponda.
+- [x] Component Catalog actualizado cuando corresponda.
 - [ ] Documentación de gobierno actualizada.
 - [ ] Release `v0.5.0` preparada.
 
@@ -121,11 +121,10 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Definir Workflow Component Architecture (#17).
-2. Implementar los primeros Core Workflow Components (#18).
-3. Validar el modelo mediante Reference Implementation y dogfooding (#19).
-4. Formalizar Workflow Component Standards (#20).
-5. Preparar `v0.5.0 — Workflow Framework`.
+1. Validar los Core Workflow Components mediante Reference Implementation y dogfooding (#19).
+2. Refinar los Components según los findings de la Reference Implementation.
+3. Formalizar Workflow Component Standards (#20).
+4. Preparar `v0.5.0 — Workflow Framework`.
 
 ---
 

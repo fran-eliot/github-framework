@@ -50,8 +50,8 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 
 | Issue | Historia | Prioridad | Estado |
 | ----- | -------- | :-------: | :----: |
-| #17 | Workflow Component Architecture | Alta | Planned |
-| #18 | Core Workflow Components | Alta | Planned |
+| #17 | Workflow Component Architecture | Alta | Done |
+| #18 | Core Workflow Components | Alta | Done |
 | #19 | Workflow Reference Implementation | Alta | Planned |
 | #20 | Workflow Component Standards | Media | Planned |
 

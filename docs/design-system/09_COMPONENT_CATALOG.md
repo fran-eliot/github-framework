@@ -2311,13 +2311,13 @@ El catálogo reconoce actualmente los siguientes Workflow Components:
 
 | ID | Responsibility | Implementation |
 | --- | --- | :---: |
-| `WCL-ISSUE` | Gestión estructurada de Issues | Conceptual |
+| `WCL-ISSUE` | Gestión estructurada de Issues | Implemented |
 | `WCL-LABEL` | Clasificación mediante labels | Conceptual |
 | `WCL-PROJECT` | Organización y planificación del trabajo | Conceptual |
-| `WCL-BRANCH` | Estrategia de ramas | Conceptual |
-| `WCL-COMMIT` | Convención de commits | Conceptual |
-| `WCL-PULL-REQUEST` | Integración mediante Pull Requests | Conceptual |
-| `WCL-CODE-REVIEW` | Revisión de cambios | Conceptual |
+| `WCL-BRANCH` | Estrategia de ramas | Implemented |
+| `WCL-COMMIT` | Convención de commits | Implemented |
+| `WCL-PULL-REQUEST` | Integración mediante Pull Requests | Implemented |
+| `WCL-CODE-REVIEW` | Revisión de cambios | Implemented |
 | `WCL-CI` | Continuous Integration | Conceptual |
 | `WCL-CD` | Continuous Delivery / Deployment | Conceptual |
 | `WCL-DEPENDABOT` | Actualización de dependencias | Conceptual |
@@ -2339,11 +2339,41 @@ Workflow Components
         16 total
 
 Implemented
-         0
+         5
 
 Conceptual
-        16
+        11
 ```
+
+Componentes implementados:
+
+```text
+WCL-ISSUE
+WCL-BRANCH
+WCL-COMMIT
+WCL-PULL-REQUEST
+WCL-CODE-REVIEW
+```
+
+Componentes conceptuales:
+
+```text
+WCL-LABEL
+WCL-PROJECT
+WCL-CI
+WCL-CD
+WCL-DEPENDABOT
+WCL-SECURITY
+WCL-RELEASE
+WCL-HOTFIX
+WCL-DOCUMENTATION-UPDATE
+WCL-ASSESSMENT
+WCL-MAINTENANCE
+```
+
+La definición arquitectónica de la familia Workflow está establecida por el RDS.
+
+La implementación física evoluciona incrementalmente.
 
 Por tanto:
 
@@ -2352,44 +2382,50 @@ Workflow Component Architecture
         ↓
 Defined
 
-Workflow Component Implementations
+Core Workflow Component Implementations
         ↓
-Not yet available
+Available
+
+Remaining Workflow Components
+        ↓
+Conceptual
 ```
 
-La definición arquitectónica completada por el RDS no modifica automáticamente la clasificación de implementación.
+La definición arquitectónica y la primera implementación Core permanecen como dimensiones diferenciadas.
+
+Los cinco Core Workflow Components disponen ya de implementación canónica, mientras los once Components restantes continúan conceptuales.
 
 ---
 
 # 95. Workflow Current Implementation Boundary
 
-Los 16 Workflow Components permanecen:
-
-```text
-Conceptual
-```
-
-porque todavía no existe una biblioteca canónica materializada dentro de:
+La primera biblioteca Core de Workflow Components se encuentra implementada en:
 
 ```text
 framework/components/workflow/
 ```
 
-que satisfaga el contrato definido por el RDS.
+Actualmente dispone de implementaciones canónicas para:
 
-La utilización actual de:
+```text
+WCL-ISSUE
+WCL-BRANCH
+WCL-COMMIT
+WCL-PULL-REQUEST
+WCL-CODE-REVIEW
+```
 
-- Issues;
-- labels;
-- Pull Requests;
-- branches;
-- commits;
-- releases;
-- documentación de mantenimiento;
+Estos Components se encuentran:
 
-dentro del propio GitHub Framework constituye práctica de consumidor.
+```text
+Implementation: Implemented
+Lifecycle: Experimental
+Validation: Pending Reference Implementation
+```
 
-No constituye por sí misma una implementación canónica reusable.
+Los 11 Workflow Components restantes permanecen `Conceptual`.
+
+La existencia de prácticas equivalentes dentro de GitHub Framework no modifica automáticamente su clasificación hasta disponer de una implementación canónica reusable suficiente.
 
 ---
 
@@ -2738,7 +2774,7 @@ Consumer Workflow Conformance
 Ejemplo:
 
 ```text
-WCL-PULL-REQUEST
+WCL-RELEASE
 Implementation: Conceptual
 ```
 
@@ -2747,7 +2783,7 @@ mientras:
 ```text
 GitHub Framework
         ↓
-Pull Request template + PR process
+Release process
         ↓
 Consumer responsibility potentially satisfied
 ```
@@ -2758,11 +2794,19 @@ Ambas afirmaciones pueden ser correctas simultáneamente.
 
 # 108. Workflow Reference Implementation Boundary
 
-La futura Workflow Reference Implementation deberá consumir Components previamente implementados.
+La Workflow Reference Implementation debe consumir Components previamente implementados.
 
-No deberá utilizarse para declarar automáticamente como implementadas prácticas existentes.
+El estado actual permite iniciar esta fase con:
 
-Flujo correcto:
+```text
+WCL-ISSUE
+WCL-BRANCH
+WCL-COMMIT
+WCL-PULL-REQUEST
+WCL-CODE-REVIEW
+```
+
+El flujo correcto es:
 
 ```text
 Architecture
@@ -2776,9 +2820,11 @@ Validation
 Refinement
 ```
 
-El catálogo deberá actualizarse al producirse la implementación.
+La existencia de implementación canónica permite clasificar estos Components como `Implemented`.
 
-No esperar necesariamente al resultado final de validación para representar que existe una capacidad material.
+La validación posterior determinará su evolución dentro del lifecycle.
+
+Las prácticas existentes que todavía no han sido extraídas como Components canónicos no deberán declararse implementadas únicamente durante la Reference Implementation.
 
 ---
 
@@ -3199,9 +3245,9 @@ Estado actual de las familias registradas en esta Part:
 
 | Family | Implemented | Conceptual | Total |
 | --- | ---: | ---: | ---: |
-| Workflow Components | 0 | 16 | 16 |
+| Workflow Components | 5 | 11 | 16 |
 | Visual Components | 0 | 14 | 14 |
-| **Total** | **0** | **30** | **30** |
+| **Total** | **5** | **25** | **30** |
 
 Estas cifras representan disponibilidad dentro del Framework.
 
@@ -3237,15 +3283,15 @@ La familia Visual permanecerá conceptual hasta que exista una necesidad de impl
 
 # 127. Part 3 Conclusions
 
-Las familias **Workflow** y **Visual** representan actualmente responsabilidades reconocidas arquitectónicamente pero todavía no materializadas como bibliotecas canónicas del Framework.
+Las familias **Workflow** y **Visual** se encuentran actualmente en diferentes estados de materialización.
 
 Estado:
 
 ```text
 Workflow
         16 Components
-         0 Implemented
-        16 Conceptual
+         5 Implemented
+        11 Conceptual
 
 Visual
         14 Components
@@ -3253,19 +3299,21 @@ Visual
         14 Conceptual
 ```
 
-La arquitectura Workflow ya dispone de un contrato de materialización definido por el RDS.
-
-Esto no cambia su clasificación de implementación.
-
-El siguiente cambio relevante deberá producirse cuando existan realmente:
+La familia Workflow dispone de un contrato arquitectónico definido por el RDS y de una primera biblioteca Core materializada mediante:
 
 ```text
-framework/components/workflow/
-        ↓
-Canonical WCL implementations
+WCL-ISSUE
+WCL-BRANCH
+WCL-COMMIT
+WCL-PULL-REQUEST
+WCL-CODE-REVIEW
 ```
 
-La familia Visual mantiene igualmente la separación:
+Estos Components permanecen en lifecycle `Experimental` y están pendientes de validación mediante Reference Implementation y dogfooding.
+
+Los once Workflow Components restantes continúan Conceptual.
+
+La familia Visual mantiene la separación:
 
 ```text
 Visual responsibility recognized
@@ -3273,7 +3321,7 @@ Visual responsibility recognized
 Visual Component implemented
 ```
 
-El catálogo preserva así una representación fiel del Framework actual.
+El catálogo preserva así una representación fiel del estado actual del Framework.
 
 ---
 
@@ -3852,10 +3900,10 @@ Estado global actual:
 | --- | ---: | ---: | ---: |
 | README Components | 12 | 5 | 17 |
 | Documentation Components | 4 | 11 | 15 |
-| Workflow Components | 0 | 16 | 16 |
+| Workflow Components | 5 | 11 | 16 |
 | Visual Components | 0 | 14 | 14 |
 | Repository Templates | 3 | 0 | 3 |
-| **Total** | **19** | **46** | **65** |
+| **Total** | **24** | **41** | **65** |
 
 Estas cifras representan elementos reconocidos por el Registry.
 
@@ -3893,10 +3941,10 @@ Distribución:
 
 ```text
 Implemented
-        16
+        21
 
 Conceptual
-        46
+        41
 ```
 
 Los Repository Templates se contabilizan por separado porque no constituyen Framework Components.
@@ -3909,8 +3957,8 @@ Distribución global:
 
 ```text
 Framework Components
-        16 Implemented
-        46 Conceptual
+        21 Implemented
+        41 Conceptual
 
 Repository Templates
          3 Implemented
@@ -3924,10 +3972,10 @@ Por clasificación de implementación:
 
 ```text
 Implemented
-        19
+        24
 
 Conceptual
-        46
+        41
 ```
 
 La proporción de elementos materializados constituye una métrica descriptiva.
@@ -4353,15 +4401,19 @@ Workflow Standards
 v0.5.0
 ```
 
-Por tanto, el próximo cambio esperado en el Registry será la transición de determinados `WCL-*`:
+La arquitectura Workflow está definida y la primera biblioteca Core se encuentra implementada.
+
+El siguiente foco consiste en validar mediante Reference Implementation y dogfooding:
 
 ```text
-Conceptual
-        ↓
-Implemented
+WCL-ISSUE
+WCL-BRANCH
+WCL-COMMIT
+WCL-PULL-REQUEST
+WCL-CODE-REVIEW
 ```
 
-cuando sus implementaciones canónicas existan realmente.
+La evidencia obtenida durante esta validación podrá producir refinamientos antes de consolidar los Workflow Component Standards y preparar `v0.5.0`.
 
 ---
 
@@ -4443,10 +4495,10 @@ Framework Components
         62 total
 
 Implemented
-        16
+        21
 
 Conceptual
-        46
+        41
 
 
 Repository Templates
@@ -4463,9 +4515,21 @@ Total Registered Elements
         65
 ```
 
-La familia Workflow dispone ahora de un contrato arquitectónico suficientemente definido para iniciar implementación.
+La familia Workflow dispone ahora de un contrato arquitectónico definido y de una primera biblioteca Core formada por cinco Components implementados.
 
-Sin embargo, sus 16 Components continúan `Conceptual` hasta que existan implementaciones canónicas reales.
+Los Components:
+
+```text
+WCL-ISSUE
+WCL-BRANCH
+WCL-COMMIT
+WCL-PULL-REQUEST
+WCL-CODE-REVIEW
+```
+
+disponen de implementaciones canónicas reales y permanecen en lifecycle Experimental, pendientes de validación mediante Reference Implementation y dogfooding.
+
+Los once Workflow Components restantes continúan `Conceptual`.
 
 El Catalog mantiene así una fotografía verificable del Framework:
 

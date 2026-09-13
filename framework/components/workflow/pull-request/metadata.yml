@@ -1,0 +1,32 @@
+id: WCL-PULL-REQUEST
+name: Pull Request
+family: Workflow
+version: 0.1.0
+status: Experimental
+priority: Required
+audience:
+  - Maintainer
+  - Contributor
+maturity: L2
+description: >
+  Componente reutilizable para estructurar, documentar y facilitar
+  la revisión de cambios antes de su integración mediante Pull Requests.
+dependencies: []
+
+materialization:
+  primary:
+    - Community File
+  executable: false
+
+artifacts:
+  specification: README.md
+  templates:
+    - templates/PULL_REQUEST_TEMPLATE.md
+
+adoption:
+  target: .github/PULL_REQUEST_TEMPLATE.md
+  specialization: Allowed
+
+validation:
+  dogfooding: false
+  reference_implementation: Pending

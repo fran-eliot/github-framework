@@ -1,0 +1,8 @@
+# Replace placeholders with valid GitHub users or teams
+# when adopting this Component.
+
+* @OWNER
+
+# Optional examples:
+# /docs/ @DOCS_OWNER
+# /.github/ @MAINTAINER

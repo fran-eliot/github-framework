@@ -1,0 +1,29 @@
+id: WCL-COMMIT
+name: Commit
+family: Workflow
+version: 0.1.0
+status: Experimental
+priority: Recommended
+audience:
+  - Maintainer
+  - Developer
+maturity: L2
+description: >
+  Componente reutilizable para definir convenciones de estructura,
+  granularidad, trazabilidad y mantenimiento del historial de commits.
+dependencies: []
+
+materialization:
+  primary:
+    - Convention
+  executable: false
+
+artifacts:
+  specification: README.md
+
+adoption:
+  specialization: Allowed
+
+validation:
+  dogfooding: false
+  reference_implementation: Pending

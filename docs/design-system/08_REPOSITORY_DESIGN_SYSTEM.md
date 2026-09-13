@@ -4785,19 +4785,43 @@ La WCL no deberá duplicar esos datos salvo cuando resulten necesarios para expl
 
 # 161. Current Implementation Boundary
 
-La definición arquitectónica de esta Part establece cómo pueden materializarse los Workflow Components.
+La arquitectura Workflow definida por esta Part dispone actualmente de una primera biblioteca Core materializada en:
 
-No implica que hayan sido implementados.
+```text
+framework/components/workflow/
+```
 
-Hasta que exista una definición canónica física suficiente dentro del Framework, los Components deberán permanecer:
+Los siguientes Workflow Components cuentan con implementación canónica:
+
+```text
+WCL-ISSUE
+WCL-BRANCH
+WCL-COMMIT
+WCL-PULL-REQUEST
+WCL-CODE-REVIEW
+```
+
+Su estado actual es:
+
+```text
+Implementation: Implemented
+Lifecycle: Experimental
+Validation: Pending Reference Implementation
+```
+
+Los once Workflow Components restantes permanecen:
 
 ```text
 Conceptual
 ```
 
-La implementación de Components concretos pertenece al lifecycle de cada Component y al trabajo de implementación correspondiente.
+La clasificación de implementación deberá continuar reflejando la disponibilidad material real del Framework.
 
-La arquitectura no deberá presentar prematuramente como disponible aquello que todavía no existe materialmente.
+La existencia de prácticas equivalentes en GitHub Framework u otros consumidores no convierte automáticamente una responsabilidad conceptual en un Component implementado.
+
+La implementación de nuevos Components pertenece al lifecycle de cada Component y deberá satisfacer el contrato definido por esta Part.
+
+La arquitectura no deberá presentar prematuramente como disponible aquello que todavía no exista materialmente.
 
 ---
 

@@ -1,0 +1,34 @@
+id: WCL-CODE-REVIEW
+name: Code Review
+family: Workflow
+version: 0.1.0
+status: Experimental
+priority: Recommended
+audience:
+  - Maintainer
+  - Developer
+maturity: L2
+description: >
+  Componente reutilizable para definir criterios de revisión,
+  ownership y expectativas de validación de cambios antes
+  de su integración.
+dependencies: []
+
+materialization:
+  primary:
+    - Convention
+    - Configuration
+  executable: false
+
+artifacts:
+  specification: README.md
+  templates:
+    - templates/CODEOWNERS
+
+adoption:
+  target: .github/CODEOWNERS
+  specialization: Required
+
+validation:
+  dogfooding: false
+  reference_implementation: Pending
