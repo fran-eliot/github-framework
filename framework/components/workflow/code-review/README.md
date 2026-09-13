@@ -576,5 +576,5 @@ ID: WCL-CODE-REVIEW
 Family: Workflow
 Status: Implemented
 Primary Materialization: Convention / Configuration
-Validation: Pending Reference Implementation
+Validation: Reference Implementation Validated
 ```

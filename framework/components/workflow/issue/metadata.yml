@@ -32,5 +32,5 @@ adoption:
   specialization: Allowed
 
 validation:
-  dogfooding: false
-  reference_implementation: Pending
+  dogfooding: true
+  reference_implementation: Validated

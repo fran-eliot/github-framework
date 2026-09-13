@@ -465,5 +465,5 @@ ID: WCL-PULL-REQUEST
 Family: Workflow
 Status: Implemented
 Primary Materialization: Community File
-Validation: Pending Reference Implementation
+Validation: Reference Implementation Validated
 ```

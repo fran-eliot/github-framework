@@ -4806,7 +4806,7 @@ Su estado actual es:
 ```text
 Implementation: Implemented
 Lifecycle: Experimental
-Validation: Pending Reference Implementation
+Validation: Reference Implementation Validated
 ```
 
 Los once Workflow Components restantes permanecen:
@@ -4829,7 +4829,7 @@ La arquitectura no deberá presentar prematuramente como disponible aquello que 
 
 Los Workflow Components implementados deberán validarse mediante consumidores representativos cuando resulte necesario.
 
-GitHub Framework podrá actuar como primera Reference Implementation mediante dogfooding.
+GitHub Framework ha actuado como primera Reference Implementation de los Core Workflow Components mediante dogfooding.
 
 El proceso deberá distinguir:
 

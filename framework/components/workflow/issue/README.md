@@ -491,5 +491,5 @@ ID: WCL-ISSUE
 Family: Workflow
 Status: Implemented
 Primary Materialization: Community File / Configuration
-Validation: Pending Reference Implementation
+Validation: Reference Implementation Validated
 ```

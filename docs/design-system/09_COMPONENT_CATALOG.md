@@ -2420,7 +2420,7 @@ Estos Components se encuentran:
 ```text
 Implementation: Implemented
 Lifecycle: Experimental
-Validation: Pending Reference Implementation
+Validation: Reference Implementation Validated
 ```
 
 Los 11 Workflow Components restantes permanecen `Conceptual`.
@@ -3309,7 +3309,7 @@ WCL-PULL-REQUEST
 WCL-CODE-REVIEW
 ```
 
-Estos Components permanecen en lifecycle `Experimental` y están pendientes de validación mediante Reference Implementation y dogfooding.
+Estos Components permanecen en lifecycle `Experimental` y han sido validados mediante Reference Implementation y dogfooding sobre GitHub Framework.
 
 Los once Workflow Components restantes continúan Conceptual.
 
@@ -4401,9 +4401,9 @@ Workflow Standards
 v0.5.0
 ```
 
-La arquitectura Workflow está definida y la primera biblioteca Core se encuentra implementada.
+La Workflow Component Architecture está definida, la primera biblioteca Core se encuentra implementada y su Reference Implementation ha sido completada mediante dogfooding sobre GitHub Framework.
 
-El siguiente foco consiste en validar mediante Reference Implementation y dogfooding:
+Los cinco Core Workflow Components validados son:
 
 ```text
 WCL-ISSUE
@@ -4413,7 +4413,9 @@ WCL-PULL-REQUEST
 WCL-CODE-REVIEW
 ```
 
-La evidencia obtenida durante esta validación podrá producir refinamientos antes de consolidar los Workflow Component Standards y preparar `v0.5.0`.
+El siguiente foco consiste en consolidar los Workflow Component Standards a partir del contrato arquitectónico, las implementaciones canónicas y la evidencia obtenida durante la Reference Implementation.
+
+Tras completar dichos Standards, el Framework podrá preparar la release `v0.5.0`.
 
 ---
 
@@ -4527,7 +4529,7 @@ WCL-PULL-REQUEST
 WCL-CODE-REVIEW
 ```
 
-disponen de implementaciones canónicas reales y permanecen en lifecycle Experimental, pendientes de validación mediante Reference Implementation y dogfooding.
+disponen de implementaciones canónicas reales, permanecen en lifecycle `Experimental` y han sido validados mediante Reference Implementation y dogfooding sobre GitHub Framework.
 
 Los once Workflow Components restantes continúan `Conceptual`.
 

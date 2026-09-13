@@ -556,5 +556,5 @@ ID: WCL-BRANCH
 Family: Workflow
 Status: Implemented
 Primary Materialization: Convention
-Validation: Pending Reference Implementation
+Validation: Reference Implementation Validated
 ```
