@@ -5,7 +5,7 @@
 | **Proyecto**             | GitHub Framework |
 | **Versión**              | v0.5.0           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-08-19       |
+| **Última actualización** | 2026-09-14       |
 
 ---
 
@@ -35,10 +35,14 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 | #12 | Core Repository Templates | v0.4.0 | Done |
 | #13 | Repository Template Reference Implementation | v0.4.0 | Done |
 | #14 | Repository Template Standards | v0.4.0 | Done |
+| #17 | Workflow Component Architecture | v0.5.0 | Done |
+| #18 | Core Workflow Components | v0.5.0 | Done |
+| #19 | Workflow Reference Implementation | v0.5.0 | Done |
+| #20 | Workflow Component Standards | v0.5.0 | Done |
 
 ---
 
-## Sprint Activo
+## Último Sprint
 
 ### Sprint 7 — Workflow Framework
 
@@ -50,10 +54,10 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 
 | Issue | Historia | Prioridad | Estado |
 | ----- | -------- | :-------: | :----: |
-| #17 | Workflow Component Architecture | Alta | Planned |
-| #18 | Core Workflow Components | Alta | Planned |
-| #19 | Workflow Reference Implementation | Alta | Planned |
-| #20 | Workflow Component Standards | Media | Planned |
+| #17 | Workflow Component Architecture | Alta | Done |
+| #18 | Core Workflow Components | Alta | Done |
+| #19 | Workflow Reference Implementation | Alta | Done |
+| #20 | Workflow Component Standards | Media | Done |
 
 ---
 
@@ -61,8 +65,6 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 
 | ID | Historia | Milestone | Prioridad |
 |----|----------|:---------:|:---------:|
-| TBD | Workflow Components | v0.5.0 | Media |
-| TBD | Visual Components | v0.5.0 | Baja |
 | TBD | Framework Automation | v0.6.0 | Baja |
 
 ---
@@ -73,7 +75,7 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 |-----------|:------:|
 | v0.3.0 — Documentation Framework | ✅ Completed |
 | v0.4.0 — Repository Templates | ✅ Completed |
-| v0.5.0 — Workflow Framework | 🟡 In Progress |
+| v0.5.0 — Workflow Framework | ✅ Completed |
 | v0.6.0 — Framework Automation | ⚪ Planned |
 | v1.0.0 — Stable Release | ⚪ Planned |
 
@@ -123,3 +125,5 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.4.1 | 2026-08-18 | Cierre funcional de Sprint 6 y actualización del estado de Repository Templates. |
 | v0.4.2 | 2026-08-18 | Cierre de Sprint 6 y preparación de la release v0.4.0. |
 | v0.5.0 | 2026-08-19 | Planificación de Sprint 7 — Workflow Framework. |
+| v0.5.1 | 2026-09-14 | Cierre funcional del alcance de Sprint 7 y actualización del Product Backlog tras completar Workflow Component Standards. |
+| v0.5.2 | 2026-09-14 | Cierre de Sprint 7 y preparación final de la release v0.5.0. |

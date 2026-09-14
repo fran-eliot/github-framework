@@ -50,14 +50,15 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.5.0 — Workflow Framework
 
-**Estado:** 🟡 In Progress
+**Estado:** ✅ Completed
 
 ## Objetivos
 
-* Componentes Workflow.
-* Plantillas GitHub.
-* Automatización básica.
-* Validaciones del Framework.
+* Definir la Workflow Component Architecture.
+* Implementar los Core Workflow Components.
+* Validar los Core Workflow Components mediante Reference Implementation y dogfooding.
+* Consolidar los Workflow Component Standards.
+* Preparar una primera Workflow Component Library reutilizable.
 
 ---
 

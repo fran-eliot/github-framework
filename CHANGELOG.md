@@ -4,6 +4,32 @@
 
 ---
 
+## [0.5.0] - 2026-09-14
+
+### Added
+
+- Workflow Component Architecture.
+- Core Workflow Components:
+  - `WCL-ISSUE`.
+  - `WCL-BRANCH`.
+  - `WCL-COMMIT`.
+  - `WCL-PULL-REQUEST`.
+  - `WCL-CODE-REVIEW`.
+- Workflow Reference Implementation.
+- Workflow Component Standards.
+
+### Changed
+
+- Repository Design System extended with the Workflow Component model and implementation boundary.
+- Component Catalog extended with the first implemented Workflow Components.
+- Workflow Component Library validated through Framework dogfooding.
+- Physical and convention-based Workflow Component materializations validated through the Reference Implementation.
+- Consumer specialization rules validated for reusable Workflow Components.
+- Implementation classification, lifecycle and validation state explicitly separated for Workflow Components.
+- Project governance synchronized with the Workflow Framework lifecycle.
+
+---
+
 ## [0.4.0] - 2026-08-18
 
 ### Added

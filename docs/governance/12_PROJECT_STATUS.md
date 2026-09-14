@@ -3,27 +3,37 @@
 | Campo                    | Valor                          |
 | ------------------------ | ------------------------------ |
 | **Proyecto**             | GitHub Framework               |
-| **Versión actual**       | v0.4.0                         |
+| **Versión actual**       | v0.5.0                         |
 | **Estado**               | En desarrollo                  |
 | **Fase**                 | Workflow Framework             |
-| **Sprint actual**        | Sprint 7 — Workflow Framework  |
-| **Última actualización** | 2026-08-19                     |
+| **Último Sprint**        | Sprint 7 — Workflow Framework  |
+| **Última actualización** | 2026-09-14                     |
 
 ---
 
 # Estado General
 
-GitHub Framework ha completado las fases de arquitectura, Open Source Readiness y Documentation Framework.
+GitHub Framework ha completado las fases de arquitectura, Open Source Readiness, Documentation Framework y Repository Templates.
 
-El Framework dispone actualmente de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno y una primera biblioteca de Documentation Components validada mediante dogfooding.
+El Framework dispone actualmente de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno, una biblioteca de Documentation Components y una primera familia de Repository Templates validadas mediante Reference Implementation y dogfooding.
 
-El proyecto se encuentra actualmente en Sprint 6 — Repository Templates.
+El proyecto se encuentra actualmente en Sprint 7 — Workflow Framework.
 
-Durante este Sprint se ha definido la Repository Template Architecture, se han implementado los primeros Core Repository Templates y se ha validado el modelo mediante una Reference Implementation basada en dogfooding sobre el propio GitHub Framework.
+Durante este Sprint se ha definido la Workflow Component Architecture y se han implementado los primeros Core Workflow Components:
 
-La validación ha permitido además formalizar los Repository Template Standards y consolidar las reglas de composición, conformidad, lifecycle y mantenimiento de futuras plantillas.
+- `WCL-ISSUE`.
+- `WCL-BRANCH`.
+- `WCL-COMMIT`.
+- `WCL-PULL-REQUEST`.
+- `WCL-CODE-REVIEW`.
 
-La auditoría de consistencia realizada durante la Reference Implementation ha permitido además refinar la clasificación `Implemented / Conceptual`, sincronizar el Component Catalog con las implementaciones físicas reales y distinguir entre disponibilidad de Framework Components y conformidad de repositorios consumidores.
+Los Core Workflow Components han sido validados mediante una primera Workflow Reference Implementation basada en dogfooding sobre el propio GitHub Framework.
+
+La validación ha confirmado distintos mecanismos de materialización, incluyendo Community Files, Configuration y Convention, así como la separación entre clasificación de implementación, lifecycle y estado de validación.
+
+A partir de la evidencia obtenida se han consolidado los Workflow Component Standards, manteniendo los cinco Core Workflow Components como `Implemented`, en lifecycle `Experimental` y con Reference Implementation `Validated`.
+
+El alcance de Sprint 7 está completado y la release `v0.5.0 — Workflow Framework` ha quedado preparada para su integración y publicación.
 
 ---
 
@@ -45,14 +55,14 @@ La auditoría de consistencia realizada durante la Reference Implementation ha p
 | Core Repository Templates | ✅ |
 | Repository Template Reference Implementation | ✅ |
 | Repository Template Standards | ✅ |
-| Workflow Component Architecture | 🟡 |
-| Core Workflow Components | ⚪ |
-| Workflow Reference Implementation | ⚪ |
-| Workflow Component Standards | ⚪ |
+| Workflow Component Architecture | ✅ |
+| Core Workflow Components | ✅ |
+| Workflow Reference Implementation | ✅ |
+| Workflow Component Standards | ✅ |
 
 ---
 
-# Sprint Actual
+# Último Sprint
 
 ## Sprint 7 — Workflow Framework
 
@@ -66,10 +76,10 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 
 | Issue | Historia | Prioridad | Estado |
 | ----- | -------- | :-------: | :----: |
-| #17 | Workflow Component Architecture | Alta | 🟡 |
-| #18 | Core Workflow Components | Alta | ⚪ |
-| #19 | Workflow Reference Implementation | Alta | ⚪ |
-| #20 | Workflow Component Standards | Media | ⚪ |
+| #17 | Workflow Component Architecture | Alta | ✅ |
+| #18 | Core Workflow Components | Alta | ✅ |
+| #19 | Workflow Reference Implementation | Alta | ✅ |
+| #20 | Workflow Component Standards | Media | ✅ |
 
 ---
 
@@ -81,16 +91,16 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 
 ### Definition of Done
 
-- [ ] Workflow Component Architecture definida.
-- [ ] Contrato de implementación de Workflow Components establecido.
-- [ ] Core Workflow Components implementados.
-- [ ] Diferentes mecanismos de materialización validados.
-- [ ] Reference Implementation completada.
-- [ ] Dogfooding completado.
-- [ ] Workflow Component Standards definidos.
-- [ ] Component Catalog actualizado cuando corresponda.
-- [ ] Documentación de gobierno actualizada.
-- [ ] Release `v0.5.0` preparada.
+- [x] Workflow Component Architecture definida.
+- [x] Contrato de implementación de Workflow Components establecido.
+- [x] Core Workflow Components implementados.
+- [x] Diferentes mecanismos de materialización validados.
+- [x] Reference Implementation completada.
+- [x] Dogfooding completado.
+- [x] Workflow Component Standards definidos.
+- [x] Component Catalog actualizado cuando corresponda.
+- [x] Documentación de gobierno actualizada.
+- [x] Release `v0.5.0` preparada.
 
 ---
 
@@ -121,11 +131,10 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Definir Workflow Component Architecture (#17).
-2. Implementar los primeros Core Workflow Components (#18).
-3. Validar el modelo mediante Reference Implementation y dogfooding (#19).
-4. Formalizar Workflow Component Standards (#20).
-5. Preparar `v0.5.0 — Workflow Framework`.
+1. Integrar `feature/workflow-framework` en `main`.
+2. Publicar la release `v0.5.0 — Workflow Framework`.
+3. Crear el tag `v0.5.0`.
+4. Preparar la planificación de la siguiente evolución del Framework.
 
 ---
 
@@ -137,3 +146,4 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 | v0.2.0 | 2026-08-09 | Open Source Readiness completado |
 | v0.3.0 | 2026-08-13 | Documentation Framework completado |
 | v0.4.0 | 2026-08-18 | Repository Templates completado |
+| v0.5.0 | 2026-09-14 | Workflow Framework completado |

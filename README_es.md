@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.4.0-blue" alt="Versión" />
+  <img src="https://img.shields.io/badge/version-v0.5.0-blue" alt="Versión" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Estado" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="Licencia" />
 </p>
@@ -38,6 +38,7 @@ Su objetivo es reducir las decisiones repetitivas, permitiendo al mismo tiempo q
 - Repository Design System
 - Componentes reutilizables para documentación
 - Plantillas reutilizables de repositorios
+- Componentes reutilizables de Workflow
 - Implementaciones de referencia
 - Evolución versionada del Framework
 - Arquitectura preparada para futuras herramientas de validación y automatización
@@ -150,7 +151,7 @@ El proyecto ha establecido su arquitectura principal y actualmente continúa evo
 
 Último hito:
 
-**v0.4.0 — Repository Templates**
+**v0.5.0 — Workflow Framework**
 
 ---
 

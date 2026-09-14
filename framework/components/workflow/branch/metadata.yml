@@ -1,0 +1,29 @@
+id: WCL-BRANCH
+name: Branch
+family: Workflow
+version: 0.1.0
+status: Experimental
+priority: Recommended
+audience:
+  - Maintainer
+  - Developer
+maturity: L2
+description: >
+  Componente reutilizable para definir convenciones de propósito,
+  nomenclatura, lifecycle, trazabilidad e integración de ramas Git.
+dependencies: []
+
+materialization:
+  primary:
+    - Convention
+  executable: false
+
+artifacts:
+  specification: README.md
+
+adoption:
+  specialization: Allowed
+
+validation:
+  dogfooding: true
+  reference_implementation: Validated

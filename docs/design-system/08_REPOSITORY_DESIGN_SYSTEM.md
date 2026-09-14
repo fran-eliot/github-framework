@@ -4,9 +4,15 @@
 | ------------ | ------------------------------ |
 | **Project**  | GitHub Framework               |
 | **Document** | Repository Design System (RDS) |
-| **Version**  | 1.1.0                          |
+| **Version**  | 1.2.0                          |
 | **Status**   | Stable                         |
 | **Owner**    | Fran Ramirez                   |
+
+---
+
+# Part 1/7
+
+# Repository Design System Foundations
 
 ---
 
@@ -14,7 +20,7 @@
 
 El **Repository Design System (RDS)** define el modelo arquitectónico de GitHub Framework para construir, evolucionar y mantener repositorios mediante elementos reutilizables.
 
-Su objetivo consiste en transformar la creación de repositorios desde una actividad artesanal hacia un proceso basado en:
+Su objetivo consiste en transformar la creación y mantenimiento de repositorios desde una actividad artesanal hacia un proceso basado en:
 
 - estándares;
 - Framework Components;
@@ -26,9 +32,9 @@ Su objetivo consiste en transformar la creación de repositorios desde una activ
 
 El RDS complementa los estándares GRS.
 
-Mientras los GRS definen criterios de calidad y evaluación, el RDS define cómo estructurar y reutilizar las capacidades necesarias para construir repositorios coherentes.
+Mientras los GRS definen criterios de calidad y evaluación, el RDS define cómo estructurar, reutilizar y combinar las capacidades necesarias para construir repositorios coherentes.
 
-El sistema podrá aplicarse a distintos tipos de proyecto sin imponer una composición idéntica a todos ellos.
+El sistema podrá aplicarse a distintos tipos de proyecto sin imponer una composición, estructura física o nivel de automatización idénticos a todos ellos.
 
 ---
 
@@ -40,7 +46,14 @@ La creación de un nuevo proyecto no deberá comenzar necesariamente desde cero.
 
 Cuando exista un Repository Template adecuado, este proporcionará una composición inicial de Framework Components.
 
-El proyecto consumidor podrá adaptar esa composición según sus necesidades sin duplicar responsabilidades canónicas ni incorporar Components innecesarios.
+El proyecto consumidor podrá adaptar esa composición según sus necesidades sin:
+
+- duplicar responsabilidades canónicas;
+- introducir Components innecesarios;
+- alterar arbitrariamente sus contratos;
+- asumir que todos los repositorios deben materializar las mismas capacidades de la misma forma.
+
+El objetivo final consiste en permitir que las decisiones reutilizables permanezcan en el Framework mientras las decisiones específicas permanezcan en el repositorio consumidor.
 
 ---
 
@@ -58,9 +71,20 @@ El RDS se apoya en los siguientes documentos.
 | 06_VISUAL_DESIGN_SYSTEM        | Sistema visual                     |
 | 07_GITHUB_METADATA             | Estándares GRS                     |
 
-El RDS reutiliza todos ellos.
+El RDS reutiliza estos documentos cuando corresponde.
 
 No los sustituye.
+
+Del mismo modo, el RDS no sustituye:
+
+- el Component Catalog;
+- los estándares especializados;
+- las especificaciones canónicas de los Components;
+- las especificaciones canónicas de los Repository Templates;
+- las Reference Implementations;
+- la documentación de gobierno.
+
+Cada artefacto mantiene una responsabilidad diferenciada dentro de GitHub Framework.
 
 ---
 
@@ -70,7 +94,7 @@ Un repositorio deja de considerarse únicamente un conjunto de archivos.
 
 Pasa a entenderse como un sistema formado por responsabilidades relacionadas.
 
-Ejemplo conceptual:
+Modelo conceptual:
 
 ```text
 Repository
@@ -85,15 +109,29 @@ Repository
 
 Estas responsabilidades podrán materializarse mediante uno o varios Framework Components.
 
-Los Components encapsulan responsabilidades reutilizables.
+Los Framework Components encapsulan responsabilidades reutilizables.
 
 Los Repository Templates determinan qué combinación resulta adecuada para cada tipo de proyecto.
+
+Los repositorios consumidores materializan finalmente esas responsabilidades de acuerdo con su contexto.
+
+Por tanto:
+
+```text
+Reusable responsibility
+        ↓
+Framework Component
+        ↓
+Repository Template
+        ↓
+Consumer implementation
+```
 
 ---
 
 # 5. Component Philosophy
 
-Todo Framework Component deberá perseguir cuatro propiedades:
+Todo Framework Component deberá perseguir cuatro propiedades fundamentales:
 
 - reutilizable;
 - suficientemente desacoplado;
@@ -102,21 +140,40 @@ Todo Framework Component deberá perseguir cuatro propiedades:
 
 Un Component deberá representar una responsabilidad generalizable.
 
-Podrá admitir parámetros, variantes o guidance contextual, pero su definición canónica no deberá depender innecesariamente de un único proyecto consumidor.
+Podrá admitir:
+
+- parámetros;
+- variantes;
+- configuración;
+- guidance contextual;
+- diferentes mecanismos de materialización cuando su naturaleza lo requiera.
+
+Sin embargo, su definición canónica no deberá depender innecesariamente de un único proyecto consumidor.
 
 Cuando una necesidad sea exclusivamente específica de un proyecto y no exista evidencia de reutilización potencial, deberá permanecer en ese proyecto.
+
+La existencia de una práctica útil en un repositorio no implica automáticamente que deba convertirse en Framework Component.
 
 ---
 
 # 6. Design Principles
 
-El Repository Design System seguirá los principios:
+El Repository Design System seguirá los siguientes principios:
 
-* composición frente a duplicación;
-* consistencia frente a personalización excesiva;
-* simplicidad frente a complejidad;
-* evolución incremental;
-* documentación como parte del diseño.
+- composición frente a duplicación;
+- consistencia frente a personalización excesiva;
+- simplicidad frente a complejidad;
+- evolución incremental;
+- implementación antes que formalización prematura;
+- documentación como parte del diseño;
+- fuentes canónicas identificables;
+- automatización basada en contratos existentes;
+- especialización únicamente cuando aporte valor;
+- validación mediante uso real cuando corresponda.
+
+Estos principios deberán aplicarse conjuntamente.
+
+Ninguno deberá utilizarse de forma aislada para justificar complejidad innecesaria.
 
 ---
 
@@ -124,13 +181,30 @@ El Repository Design System seguirá los principios:
 
 Cada elemento reutilizable del RDS deberá disponer de una fuente canónica identificable.
 
-Para los Framework Components implementados, la definición canónica estará formada por su especificación y metadata correspondientes.
+Para los Framework Components implementados, la definición canónica estará formada por:
 
-El Component Catalog proporcionará descubrimiento y clasificación global sin sustituir esas definiciones.
+```text
+Specification
+        +
+Metadata
+        +
+Required materialization artifacts
+        when applicable
+```
 
-Los Repository Templates mantendrán su composición canónica en sus propias especificaciones y metadata.
+La Specification define la responsabilidad y el contrato humano del Component.
 
-Las plantillas, ejemplos, documentación y Reference Implementations deberán derivarse de estas fuentes.
+La Metadata proporciona su representación estructurada y machine-readable.
+
+Los artefactos de materialización proporcionan la capacidad reutilizable cuando la responsabilidad del Component no puede satisfacerse únicamente mediante Specification y Metadata.
+
+El Component Catalog proporciona descubrimiento, clasificación y estado global.
+
+No sustituye las definiciones canónicas.
+
+Los Repository Templates mantienen su composición canónica en sus propias especificaciones y metadata.
+
+Las plantillas, ejemplos, documentación, consumidores y Reference Implementations deberán derivarse de estas fuentes.
 
 No deberán mantenerse definiciones paralelas incompatibles del mismo elemento.
 
@@ -140,25 +214,256 @@ No deberán mantenerse definiciones paralelas incompatibles del mismo elemento.
 
 Los Framework Components podrán organizarse en familias según la responsabilidad que representan.
 
-Las familias actualmente definidas por el RDS incluyen:
+Las familias actualmente reconocidas por el RDS incluyen:
 
-| Family | Responsibility |
-|---|---|
-| README Components | Presentación y navegación principal |
-| Documentation Components | Documentación técnica y de gobierno |
-| Workflow Components | Procesos de desarrollo y mantenimiento |
-| Visual Components | Identidad y comunicación visual |
-| Governance Components | Responsabilidades de gobierno reutilizables cuando exista implementación |
+| Family | Prefix | Responsibility |
+| --- | --- | --- |
+| README Components | `README-*` | Presentación y navegación principal |
+| Documentation Components | `DOC-*` | Documentación técnica, operativa, de gobierno y referencia |
+| Workflow Components | `WCL-*` | Procesos de desarrollo, validación, publicación y mantenimiento |
+| Visual Components | `VCL-*` | Identidad y comunicación visual |
+| Governance Components | Según definición futura | Responsabilidades de gobierno reutilizables cuando exista implementación |
 
 La existencia conceptual de una familia no implica que todos sus Components estén implementados físicamente.
 
-El Component Catalog mantendrá la visión global de los Components reconocidos por el Framework.
+Las familias proporcionan clasificación y contexto arquitectónico.
+
+No determinan requirement levels.
+
+El Component Catalog mantiene la visión global de los Components reconocidos por GitHub Framework.
 
 ---
 
-# 9. Component Lifecycle
+# 9. Component Identity
 
-Los Framework Components seguirán el ciclo de vida definido por la gobernanza del RDS.
+Todo Framework Component reconocido formalmente deberá disponer de una identidad estable.
+
+La identidad deberá permitir:
+
+- referenciar el Component sin ambigüedad;
+- mantener relaciones y dependencias;
+- utilizarlo desde Repository Templates;
+- localizar su definición canónica;
+- validar su estado;
+- soportar automatización futura.
+
+Cuando una familia disponga de un prefijo definido, sus identificadores deberán utilizarlo.
+
+Ejemplos:
+
+```text
+README-HERO
+DOC-ARCHITECTURE
+WCL-CI
+VCL-BANNER
+```
+
+El identificador representa la responsabilidad canónica.
+
+No deberá utilizarse para representar una implementación específica de un repositorio consumidor.
+
+---
+
+# 10. Component Canonical Definition
+
+Un Framework Component implementado deberá disponer de una definición canónica suficiente para comprender y reutilizar su responsabilidad.
+
+Como mínimo, la definición canónica estará formada por:
+
+```text
+Component
+    │
+    ├── Specification
+    └── Metadata
+```
+
+Cuando la responsabilidad requiera materialización adicional:
+
+```text
+Component
+    │
+    ├── Specification
+    ├── Metadata
+    └── Materialization Artifacts
+```
+
+La Specification deberá describir, según corresponda:
+
+- propósito;
+- responsabilidad;
+- alcance;
+- límites;
+- consumidores;
+- utilización;
+- relaciones;
+- dependencias;
+- comportamiento esperado;
+- criterios relevantes de adopción.
+
+La Metadata deberá proporcionar la información estructurada necesaria para identificación, clasificación, versionado, lifecycle y futuras capacidades de validación o automatización.
+
+Los Materialization Artifacts dependerán de la naturaleza de la responsabilidad.
+
+No todos los Framework Components necesitarán el mismo tipo de artefacto.
+
+---
+
+# 11. Specification
+
+La Specification constituye la representación humana principal del contrato de un Framework Component.
+
+Deberá permitir responder al menos:
+
+```text
+What responsibility does this Component represent?
+
+Why does it exist?
+
+What does it cover?
+
+What does it not cover?
+
+How can it be consumed?
+```
+
+La Specification no deberá convertirse en una copia de:
+
+- estándares globales;
+- metadata;
+- implementación específica de un consumidor;
+- documentación mantenida canónicamente en otro artefacto.
+
+Cuando existan reglas generales aplicables a toda una familia, la Specification deberá referenciarlas en lugar de duplicarlas innecesariamente.
+
+---
+
+# 12. Metadata
+
+La Metadata constituye la representación estructurada del Component.
+
+Deberá utilizarse cuando sea necesaria para:
+
+- identidad;
+- descubrimiento;
+- clasificación;
+- versionado;
+- lifecycle;
+- relaciones;
+- dependencias;
+- validación;
+- composición;
+- automatización futura.
+
+La Metadata no deberá convertirse en una segunda Specification.
+
+Los campos deberán representar información suficientemente estable y machine-readable.
+
+Las decisiones específicas de cada familia podrán ampliar este contrato cuando exista una necesidad demostrada.
+
+---
+
+# 13. Materialization
+
+La materialización representa la forma mediante la cual una responsabilidad definida por un Framework Component se convierte en una capacidad reutilizable o en una implementación observable.
+
+La forma de materialización dependerá de la naturaleza del Component.
+
+Ejemplos conceptuales:
+
+```text
+Documentation responsibility
+        ↓
+Reusable document structure
+
+README responsibility
+        ↓
+Reusable README section
+
+Workflow responsibility
+        ↓
+Configuration / community file / executable workflow / convention
+
+Visual responsibility
+        ↓
+Reusable visual artifact or specification
+```
+
+No deberá imponerse un mecanismo de materialización idéntico a todas las familias ni a todos los Components de una misma familia.
+
+La arquitectura deberá preservar la responsabilidad antes que la simetría del filesystem.
+
+---
+
+# 14. Component Implementation States
+
+El RDS distinguirá como mínimo entre responsabilidades:
+
+```text
+Conceptual
+Implemented
+```
+
+## Conceptual
+
+Una responsabilidad `Conceptual` está reconocida por el RDS pero todavía no dispone de una representación canónica reutilizable suficiente para considerarse implementada dentro del Framework.
+
+Su existencia conceptual permite:
+
+- identificar una responsabilidad;
+- evitar duplicaciones futuras;
+- discutir su alcance;
+- evaluar su necesidad;
+- incorporarla posteriormente mediante el lifecycle correspondiente.
+
+No deberá presentarse como capacidad disponible para consumo directo.
+
+## Implemented
+
+Un Component `Implemented` dispone de una definición canónica reutilizable y gobernada que satisface el contrato arquitectónico aplicable a su responsabilidad.
+
+Como mínimo deberá existir:
+
+- Specification;
+- Metadata;
+- materialización adicional cuando la responsabilidad la requiera.
+
+La existencia de una práctica equivalente en GitHub Framework o en otro repositorio no convierte por sí sola una responsabilidad conceptual en un Component implementado.
+
+---
+
+# 15. Conceptual to Implemented Transition
+
+La transición:
+
+```text
+Conceptual
+        ↓
+Implemented
+```
+
+deberá producirse únicamente cuando exista evidencia suficiente de que la responsabilidad ha sido materializada como capacidad reutilizable del Framework.
+
+Antes de cambiar el estado deberá verificarse:
+
+- que la responsabilidad continúa siendo necesaria;
+- que no duplica otro Component;
+- que su identidad es estable;
+- que dispone de Specification;
+- que dispone de Metadata;
+- que sus dependencias reales están declaradas cuando corresponda;
+- que dispone de los artefactos necesarios para satisfacer su responsabilidad;
+- que puede ser consumida fuera de una única implementación accidental;
+- que cumple los Quality Gates aplicables.
+
+La transición no implica necesariamente que el Component haya alcanzado su máxima madurez.
+
+La validación mediante Reference Implementation o dogfooding podrá producir ajustes posteriores.
+
+---
+
+# 16. Component Lifecycle
+
+Los Framework Components seguirán el lifecycle definido por la gobernanza del RDS.
 
 Conceptualmente:
 
@@ -180,51 +485,69 @@ Deprecation
 Retirement
 ```
 
-Un Component no se considerará suficientemente maduro para adopción general únicamente por disponer de una implementación.
+Los estados de implementación y las etapas del lifecycle representan conceptos relacionados pero diferentes.
 
-Deberá existir evidencia de validación mediante uso real, Reference Implementation o dogfooding.
+Por ejemplo:
 
-La definición detallada de estados y transiciones pertenece a la gobernanza del RDS.
+```text
+Implemented
+≠
+Fully validated
+```
 
----
+Un Component podrá disponer de implementación antes de completar su validación mediante consumidores reales.
 
-# 10. Component Granularity
+No deberá considerarse suficientemente maduro para adopción general únicamente por existir físicamente.
 
-Los Framework Components deberán ser lo suficientemente pequeños para reutilizarse.
-
-Ejemplos.
-
-Correcto.
-
-* Hero Section
-* Quick Start
-* Architecture Diagram
-* Release Notes
-
-Incorrecto.
-
-* README completo
-* Todo el repositorio
-* Toda la documentación
+La definición detallada de estados y transiciones pertenece a la gobernanza del RDS y a los estándares especializados cuando corresponda.
 
 ---
 
-# 11. Composition Model
+# 17. Component Granularity
+
+Los Framework Components deberán ser lo suficientemente pequeños para reutilizarse y suficientemente completos para representar una responsabilidad coherente.
+
+Ejemplos adecuados:
+
+- Hero Section;
+- Quick Start;
+- Architecture Documentation;
+- Continuous Integration;
+- Release Management.
+
+Ejemplos excesivamente amplios:
+
+- README completo;
+- toda la documentación;
+- todo el repositorio;
+- todo el lifecycle de desarrollo.
+
+Ejemplos excesivamente pequeños:
+
+- una frase aislada;
+- un único comando sin responsabilidad propia;
+- una propiedad de configuración sin significado independiente.
+
+La granularidad deberá favorecer composición y mantenimiento.
+
+---
+
+# 18. Composition Model
 
 Los Framework Components se combinan mediante composición.
 
 Ejemplo conceptual:
 
 ```text
-Hero
+Component A
 +
-Tech Stack
+Component B
 +
-Quick Start
-+
-Architecture
-+
-Roadmap
+Component C
+        ↓
+Repository Template
+        ↓
+Consumer
 ```
 
 La composición no será completamente arbitraria.
@@ -234,7 +557,8 @@ Deberá respetar:
 - la responsabilidad de cada Component;
 - sus dependencias cuando existan;
 - el Repository Template aplicable;
-- las necesidades reales del proyecto consumidor.
+- las necesidades reales del proyecto consumidor;
+- las restricciones derivadas de la propia plataforma cuando correspondan.
 
 No todos los proyectos utilizarán exactamente la misma combinación.
 
@@ -242,7 +566,7 @@ Los Repository Templates proporcionarán composiciones reutilizables sin impedir
 
 ---
 
-# 12. Component Requirement Levels
+# 19. Component Requirement Levels
 
 La necesidad de un Framework Component se evaluará dentro del contexto de cada Repository Template.
 
@@ -254,7 +578,7 @@ El Component forma parte del contrato mínimo del Template.
 
 ## Recommended
 
-El Component aporta valor habitual, pero su necesidad depende del proyecto consumidor.
+El Component aporta valor habitual para ese tipo de repositorio, pero su necesidad final depende del proyecto consumidor.
 
 ## Optional
 
@@ -272,21 +596,106 @@ Requirement Level
 
 Un mismo Component podrá tener requirement levels diferentes en Templates distintos.
 
-El requirement level no modifica la prioridad, madurez o definición canónica del Component.
+Ejemplo conceptual:
+
+```text
+WCL-CI
+    ├── Required      → Template A
+    ├── Recommended   → Template B
+    └── Optional      → Template C
+```
+
+El requirement level no modifica:
+
+- la identidad;
+- la definición canónica;
+- el estado de implementación;
+- la prioridad;
+- la madurez intrínseca del Component.
 
 ---
 
-# 13. Component Independence
+# 20. Component Independence
 
 Cada Framework Component deberá poder evolucionar con el menor acoplamiento posible respecto al resto del sistema.
 
-Ejemplo.
+Modificar un Component no deberá obligar a modificar Components no relacionados.
 
-Modificar la sección "Quick Start" no deberá obligar a rediseñar el README completo.
+Ejemplo:
+
+```text
+README-QUICK-START
+```
+
+podrá evolucionar sin requerir el rediseño completo del README.
+
+Sin embargo, independencia no significa ausencia absoluta de relaciones.
+
+Cuando una responsabilidad requiera realmente otra capacidad, la dependencia deberá declararse explícitamente.
 
 ---
 
-# 14. Naming Convention
+# 21. Component Dependencies
+
+Una dependencia existe cuando un Component necesita otro elemento para satisfacer correctamente su responsabilidad.
+
+Las dependencias deberán ser:
+
+- reales;
+- explícitas;
+- mínimas;
+- justificables;
+- mantenibles.
+
+No deberán inferirse únicamente por:
+
+- proximidad física;
+- orden de presentación;
+- uso habitual conjunto;
+- pertenencia a la misma familia;
+- coincidencia de madurez.
+
+Ejemplo:
+
+```text
+Component A
+        ↓ requires
+Component B
+```
+
+es diferente de:
+
+```text
+Component A
+        ↔ commonly used with
+Component B
+```
+
+Las dependencias reales deberán mantenerse en la definición canónica cuando exista implementación.
+
+---
+
+# 22. Relationships
+
+Los Framework Components podrán mantener relaciones que no constituyan dependencias.
+
+Entre ellas podrán existir:
+
+- complementariedad;
+- navegación;
+- secuencia operativa;
+- especialización;
+- consumo conjunto habitual;
+- relación con documentación;
+- relación con Repository Templates.
+
+Estas relaciones deberán diferenciarse de dependencias estructurales.
+
+La arquitectura no deberá convertir relaciones conceptuales en acoplamiento obligatorio.
+
+---
+
+# 23. Naming Convention
 
 Los elementos reutilizables del RDS deberán utilizar nombres e identificadores estables y suficientemente descriptivos.
 
@@ -304,11 +713,37 @@ TPL-BACKEND
 
 Los nombres deberán representar responsabilidades y evitar ambigüedad.
 
-Los identificadores existentes no deberán modificarse sin evaluar compatibilidad, consumidores y metadata asociada.
+Los identificadores existentes no deberán modificarse sin evaluar:
+
+- compatibilidad;
+- consumidores;
+- metadata asociada;
+- Repository Templates;
+- documentación;
+- automatización futura.
 
 ---
 
-# 15. Versioning
+# 24. Machine-Readable Identifiers
+
+Los elementos reutilizables del RDS utilizarán identificadores estables cuando necesiten ser referenciados por:
+
+- documentación;
+- metadata;
+- Repository Templates;
+- validadores;
+- catálogos;
+- futuras automatizaciones.
+
+Estos identificadores deberán corresponder con la definición canónica del elemento.
+
+No deberán constituir una taxonomía paralela.
+
+Las futuras capacidades de automatización deberán consumir estos identificadores y la metadata existente en lugar de introducir tokens equivalentes.
+
+---
+
+# 25. Versioning
 
 Los Framework Components podrán mantener versionado independiente del repositorio y de la versión global de GitHub Framework.
 
@@ -320,64 +755,29 @@ Major.Minor.Patch
 
 Los Repository Templates podrán mantener igualmente versionado independiente.
 
-Una nueva versión del Framework no obliga automáticamente a modificar la versión de todos sus Components o Templates.
+Una nueva versión de GitHub Framework no obliga automáticamente a modificar la versión de todos sus Components o Templates.
 
 Los cambios incompatibles deberán reflejarse mediante el versionado correspondiente y seguir la política de compatibilidad definida por la gobernanza.
 
 ---
 
-# 16. Machine-Readable Identifiers
+# 26. Backward Compatibility
 
-Los elementos reutilizables del RDS utilizarán identificadores estables cuando necesiten ser referenciados por documentación, metadata, validadores o futuras automatizaciones.
+Los cambios en un Framework Component deberán mantener compatibilidad razonable con consumidores anteriores cuando sea posible.
 
-Ejemplos:
+Los cambios incompatibles deberán:
 
-```text
-README-HERO
-DOC-ARCHITECTURE
-WCL-RELEASE
-VCL-BANNER
-TPL-BACKEND
-```
+- estar justificados;
+- identificarse claramente;
+- reflejarse en el versionado;
+- considerar consumidores existentes;
+- proporcionar guidance de migración cuando corresponda.
 
-Estos identificadores deberán corresponder con la definición canónica del elemento y no constituir una taxonomía paralela.
-
-Las futuras capacidades de automatización deberán consumir estos identificadores y la metadata existente en lugar de introducir nuevos tokens equivalentes.
+No deberá mantenerse compatibilidad indefinida cuando esta impida corregir un contrato incorrecto o introduzca complejidad desproporcionada.
 
 ---
 
-# 17. Documentation First
-
-Todo Framework Component deberá disponer de documentación suficiente para comprender:
-
-- su propósito;
-- su responsabilidad;
-- su alcance;
-- sus límites;
-- su forma de utilización.
-
-Cuando corresponda, deberá incluir ejemplos, template o guidance de implementación.
-
-La documentación forma parte de la definición del Component.
-
-La Definition of Done general del RDS se mantiene en la sección de gobernanza.
-
----
-
-# 18. Component Quality Attributes
-
-Todo Framework Component deberá evaluarse según:
-
-* claridad;
-* reutilización;
-* independencia;
-* mantenibilidad;
-* facilidad de comprensión;
-* consistencia con el resto del sistema.
-
----
-
-# 19. Component Consumers
+# 27. Component Consumers
 
 Los Framework Components podrán utilizarse, según corresponda, en:
 
@@ -386,19 +786,53 @@ Los Framework Components podrán utilizarse, según corresponda, en:
 - repositorios documentales;
 - GitHub Profile;
 - proyectos de aprendizaje cuando sus necesidades lo justifiquen;
-- futuros tipos de repositorio soportados por el Framework.
+- futuros tipos de repositorio soportados por GitHub Framework.
 
 No todos los Components serán aplicables a todos los consumidores.
 
-La selección deberá realizarse mediante el Repository Template correspondiente o mediante una necesidad explícitamente justificada.
+La selección deberá realizarse mediante:
 
-La madurez del consumidor podrá modificar las expectativas de calidad y mantenimiento, pero no constituye por sí misma un tipo de consumidor.
+```text
+Repository Template
+```
+
+o mediante una necesidad explícitamente justificada cuando no exista Template aplicable.
+
+La madurez del consumidor podrá modificar las expectativas de calidad y mantenimiento.
+
+No constituye por sí misma un tipo de consumidor ni determina automáticamente la composición.
 
 ---
 
-# 20. Repository Design Layers
+# 28. Consumer Conformance
 
-El diseño completo de un repositorio se dividirá en capas.
+La disponibilidad de un Framework Component y la conformidad de un consumidor son conceptos diferentes.
+
+```text
+Component availability
+        ≠
+Consumer conformance
+```
+
+Un Component podrá estar `Implemented` aunque un repositorio consumidor no lo utilice.
+
+Un repositorio podrá materializar una responsabilidad equivalente sin ser necesariamente conforme con el Component canónico.
+
+La conformidad deberá evaluarse contra:
+
+- el Repository Template aplicable;
+- los Components seleccionados;
+- sus contratos canónicos;
+- las adaptaciones permitidas;
+- los Quality Gates correspondientes.
+
+No deberá inferirse conformidad únicamente por la existencia de archivos con nombres similares.
+
+---
+
+# 29. Repository Design Layers
+
+El diseño completo de un repositorio podrá analizarse mediante diferentes capas.
 
 ```text
 Brand Layer
@@ -420,32 +854,192 @@ Engineering Layer
 Governance Layer
 ```
 
-Cada capa agrupa componentes relacionados.
+Las capas proporcionan una vista conceptual.
+
+No obligan a mantener una correspondencia uno a uno con:
+
+- directorios;
+- Components;
+- Repository Templates;
+- mecanismos de materialización.
+
+Un Component podrá contribuir a más de una preocupación arquitectónica cuando su responsabilidad lo justifique.
 
 ---
 
-# 21. Backward Compatibility
+# 30. Reuse Strategy
 
-Los cambios en un componente deberán mantener compatibilidad razonable con versiones anteriores.
+Antes de crear un Component nuevo deberá comprobarse:
 
-Solo los cambios mayores justificarán modificaciones incompatibles.
+- ¿Existe ya una responsabilidad equivalente?
+- ¿Puede reutilizarse un Component existente?
+- ¿Puede ampliarse sin romper su responsabilidad?
+- ¿Puede parametrizarse?
+- ¿La necesidad es suficientemente recurrente?
+- ¿Debe permanecer específica del consumidor?
+
+El flujo preferente será:
+
+```text
+Reuse
+    ↓
+Configure
+    ↓
+Extend
+    ↓
+Create
+```
+
+La creación de un nuevo Component será la última opción cuando las anteriores no representen correctamente la responsabilidad.
 
 ---
 
-# 22. Reuse Strategy
+# 31. Documentation Requirements
 
-Antes de crear un componente nuevo deberá comprobarse:
+Todo Framework Component deberá disponer de documentación suficiente para comprender:
 
-* ¿Existe ya uno equivalente?
-* ¿Puede ampliarse?
-* ¿Puede parametrizarse?
-* ¿Es realmente necesario?
+- su propósito;
+- su responsabilidad;
+- su alcance;
+- sus límites;
+- su forma de utilización;
+- sus relaciones y dependencias cuando existan;
+- su mecanismo de materialización cuando sea relevante.
 
-El objetivo será minimizar duplicaciones.
+Cuando corresponda, deberá incluir:
+
+- ejemplos;
+- templates;
+- configuration guidance;
+- migration guidance;
+- validation guidance.
+
+La documentación forma parte de la definición del Component.
+
+No deberá sustituir a la implementación cuando la responsabilidad requiera capacidad material o ejecutable.
 
 ---
 
-# 23. Anti-Patterns
+# 32. Component Quality Attributes
+
+Todo Framework Component deberá evaluarse según:
+
+- claridad;
+- reutilización;
+- independencia;
+- mantenibilidad;
+- facilidad de comprensión;
+- consistencia con el resto del sistema;
+- verificabilidad;
+- proporcionalidad;
+- capacidad de evolución.
+
+Los Components ejecutables deberán considerar además atributos específicos como seguridad, observabilidad y reproducibilidad cuando resulten aplicables.
+
+---
+
+# 33. Validation Model
+
+La existencia de una definición canónica no constituye por sí sola evidencia suficiente de que un Component funciona correctamente en consumidores reales.
+
+La validación podrá realizarse mediante:
+
+- implementación directa;
+- Reference Implementation;
+- dogfooding;
+- adopción por consumidores;
+- Quality Gates;
+- automatización cuando exista.
+
+Modelo conceptual:
+
+```text
+Canonical Definition
+        ↓
+Implementation
+        ↓
+Reference Implementation
+        ↓
+Findings
+        ↓
+Refinement
+        ↓
+Validated Pattern
+```
+
+Los findings obtenidos mediante uso real podrán justificar ajustes arquitectónicos.
+
+No deberán utilizarse para introducir cambios no relacionados con la evidencia observada.
+
+---
+
+# 34. Framework Dogfooding
+
+GitHub Framework podrá utilizarse como consumidor de sus propios Components cuando exista una correspondencia real entre la responsabilidad del Component y las necesidades del repositorio.
+
+El dogfooding permite:
+
+- validar contratos;
+- detectar dependencias;
+- identificar complejidad innecesaria;
+- comprobar materializaciones;
+- evaluar mantenibilidad;
+- detectar diferencias entre disponibilidad y conformidad.
+
+Sin embargo:
+
+```text
+Existing repository practice
+        ≠
+Framework Component implementation
+```
+
+La utilización previa de una práctica dentro de GitHub Framework no demuestra por sí sola que exista un Component reutilizable.
+
+El Component deberá satisfacer su contrato canónico independientemente del consumidor utilizado para validarlo.
+
+---
+
+# 35. Automation Boundary
+
+La automatización futura deberá consumir las fuentes canónicas definidas por el RDS.
+
+No deberá convertirse en una fuente arquitectónica paralela.
+
+Modelo:
+
+```text
+Specification
+        +
+Metadata
+        +
+Materialization
+        ↓
+Automation
+```
+
+No:
+
+```text
+Automation
+        ↓
+Implicit architecture
+```
+
+Las herramientas futuras podrán:
+
+- descubrir Components;
+- resolver Repository Templates;
+- validar metadata;
+- evaluar conformidad;
+- materializar artefactos;
+- detectar drift.
+
+Estas capacidades deberán derivarse de contratos previamente definidos y validados.
+
+---
+
+# 36. Anti-Patterns
 
 No deberán aparecer:
 
@@ -456,27 +1050,42 @@ No deberán aparecer:
 - definiciones canónicas paralelas;
 - Components específicos de un único proyecto sin evidencia de reutilización;
 - Components incorporados únicamente para aumentar cobertura;
-- composiciones rígidas derivadas exclusivamente de la madurez.
+- composiciones rígidas derivadas exclusivamente de la madurez;
+- requirement levels definidos globalmente fuera de Repository Templates;
+- dependencias inferidas sin necesidad real;
+- artefactos vacíos creados únicamente para aparentar implementación;
+- estados `Implemented` sin capacidad reutilizable suficiente;
+- automatización que sustituya contratos arquitectónicos;
+- estructuras físicas uniformes impuestas a responsabilidades heterogéneas.
 
 ---
 
-# 24. Component Quality Gates
+# 37. Component Quality Gates
 
-Antes de incorporar un Framework Component al RDS deberá verificarse:
+Antes de incorporar o promover un Framework Component dentro del RDS deberá verificarse, según corresponda:
 
 - [ ] Tiene un propósito definido.
-- [ ] Su responsabilidad y alcance están documentados.
+- [ ] Su responsabilidad está claramente delimitada.
+- [ ] Su alcance y límites están documentados.
 - [ ] Existe evidencia de reutilización potencial.
 - [ ] Está suficientemente desacoplado.
 - [ ] Mantiene coherencia con el sistema.
 - [ ] No duplica una responsabilidad existente.
+- [ ] Su identidad es estable.
 - [ ] Su fuente canónica está identificada.
-- [ ] Incluye guidance, ejemplo o template cuando corresponda.
+- [ ] Dispone de Specification cuando corresponde a un Component implementado.
+- [ ] Dispone de Metadata cuando corresponde a un Component implementado.
+- [ ] Incluye materialización suficiente cuando su responsabilidad la requiere.
+- [ ] Sus dependencias reales están identificadas.
+- [ ] No introduce estructura o automatización innecesaria.
 - [ ] Puede validarse mediante implementación, Reference Implementation o dogfooding.
+- [ ] Su estado refleja correctamente su disponibilidad real.
+
+Los Quality Gates especializados de cada familia podrán ampliar estos criterios.
 
 ---
 
-# 25. Long-Term Vision
+# 38. Long-Term Vision
 
 El Repository Design System constituye el modelo arquitectónico sobre el que GitHub Framework desarrolla una biblioteca reutilizable para construir y evolucionar repositorios.
 
@@ -486,25 +1095,36 @@ Su evolución deberá permitir:
 - reutilizar responsabilidades ya resueltas;
 - mantener consistencia;
 - acelerar la documentación;
+- reutilizar procesos operativos;
 - facilitar la evolución de los repositorios;
 - validar conformidad;
+- detectar drift;
 - soportar progresivamente automatización y generación asistida.
 
-La evolución se realizará a partir de necesidades reales y de evidencia obtenida mediante consumidores, Reference Implementations y dogfooding.
+La evolución se realizará a partir de necesidades reales y de evidencia obtenida mediante:
+
+- implementaciones;
+- consumidores;
+- Reference Implementations;
+- dogfooding.
+
+La automatización deberá ampliar el sistema sin sustituir sus fuentes canónicas.
 
 ---
 
-# 26. Part 1 Conclusions
+# 39. Part 1 Conclusions
 
 El **Repository Design System** proporciona los fundamentos arquitectónicos de GitHub Framework.
 
 Los repositorios se entienden como sistemas formados por responsabilidades reutilizables.
 
-Los Framework Components encapsulan esas responsabilidades.
+Los Framework Components encapsulan esas responsabilidades mediante contratos canónicos.
 
 Los Repository Templates las combinan según tipos de proyecto.
 
 Los Maturity Profiles expresan expectativas de evolución y mantenimiento.
+
+Los consumidores materializan finalmente las responsabilidades seleccionadas.
 
 ```text
 Standards
@@ -518,11 +1138,23 @@ Repository Implementations
 Validation and Evolution
 ```
 
-El resultado es un sistema orientado a reutilización, consistencia y evolución incremental sin imponer la misma estructura o combinación de Components a todos los proyectos.
+La arquitectura distingue explícitamente entre:
+
+```text
+Responsibility
+Implementation
+Materialization
+Availability
+Consumer Conformance
+```
+
+Estas dimensiones están relacionadas, pero no son equivalentes.
+
+El resultado es un sistema orientado a reutilización, consistencia y evolución incremental sin imponer la misma estructura, composición o materialización a todos los proyectos.
 
 ---
 
-# 27. Part 1 Versioning
+# 40. Part 1 Versioning
 
 El versionado de esta Part se gestiona mediante el Revision History global del Repository Design System.
 
@@ -536,11 +1168,11 @@ El versionado de esta Part se gestiona mediante el Revision History global del R
 
 ---
 
-# 28. Purpose
+# 41. Purpose
 
-La **README Component Library** define componentes reutilizables para construir la capa de presentación y navegación principal de los repositorios que adopten GitHub Framework.
+La **README Component Library** define responsabilidades reutilizables para construir la capa principal de presentación, comprensión inicial y navegación de los repositorios que adopten GitHub Framework.
 
-Cada README Component representa una responsabilidad concreta.
+Cada README Component representa una responsabilidad concreta dentro del README.
 
 Los Repository Templates podrán reutilizar estos Components para definir composiciones adecuadas a distintos tipos de proyecto.
 
@@ -550,85 +1182,79 @@ Consiste en evitar que responsabilidades recurrentes deban diseñarse nuevamente
 
 ---
 
-# 29. README Philosophy
+# 42. README Philosophy
 
-Todo README deberá perseguir tres objetivos.
+Todo README deberá perseguir tres objetivos principales:
 
 ```text
 Capture Attention
-
-↓
-
+        ↓
 Build Confidence
-
-↓
-
+        ↓
 Enable Action
 ```
 
-El lector deberá:
+El lector deberá poder:
 
-* comprender el proyecto;
-* confiar en su calidad;
-* saber cómo utilizarlo.
+- comprender rápidamente qué es el proyecto;
+- identificar su propósito y capacidades principales;
+- evaluar su estado y contexto;
+- localizar la información necesaria;
+- saber cómo comenzar a utilizarlo cuando corresponda.
+
+El README constituye una capa de entrada.
+
+No deberá convertirse en una copia de toda la documentación del proyecto.
 
 ---
 
-# 30. Component Architecture
+# 43. README Architecture
 
-La arquitectura general será:
+La composición conceptual de un README podrá incluir responsabilidades como:
 
 ```text
 Hero
-
-↓
-
+        ↓
+Status
+        ↓
 Overview
-
-↓
-
-Features
-
-↓
-
+        ↓
+Highlights / Features
+        ↓
 Architecture
-
-↓
-
+        ↓
 Technology Stack
-
-↓
-
+        ↓
+Repository Structure
+        ↓
 Quick Start
-
-↓
-
+        ↓
 Documentation
-
-↓
-
+        ↓
+Demo / Testing
+        ↓
 Roadmap
-
-↓
-
+        ↓
 Contributing
-
-↓
-
+        ↓
 License
-
-↓
-
-Footer
+        ↓
+Author / Footer
 ```
 
-No todos los proyectos necesitarán todos los bloques.
+Este flujo representa una referencia de lectura.
+
+No constituye una estructura obligatoria ni un orden universal.
+
+No todos los repositorios necesitarán todos los Components.
+
+La composición efectiva deberá derivarse del Repository Template y de las necesidades reales del consumidor.
 
 ---
 
-# 31. Component Classification
+# 44. README Component Classification
 
-Los README Components se clasifican principalmente por su responsabilidad.
+Los README Components se clasifican principalmente por la responsabilidad que representan.
 
 Su necesidad dentro de un repositorio no se define mediante una clasificación global `Core`, `Extended` u `Optional`.
 
@@ -639,20 +1265,25 @@ Por tanto:
 ```text
 README Component
         ↓
-Canonical responsibility
+Canonical Responsibility
 
 Repository Template
         ↓
 Required / Recommended / Optional
 ```
 
-Un mismo README Component podrá ser `required` en un Template, `recommended` en otro y no formar parte de un tercero.
+Un mismo README Component podrá ser:
 
-La prioridad y madurez canónicas del Component se mantienen separadas de su requirement level contextual.
+- `required` en un Repository Template;
+- `recommended` en otro;
+- `optional` en otro;
+- o no formar parte de una determinada composición.
+
+La prioridad, madurez y disponibilidad canónicas del Component se mantienen separadas de su requirement level contextual.
 
 ---
 
-# 32. README-HERO
+# 45. README-HERO
 
 ## Identifier
 
@@ -660,22 +1291,20 @@ La prioridad y madurez canónicas del Component se mantienen separadas de su req
 README-HERO
 ```
 
----
-
 ## Purpose
 
-Presentar el proyecto en menos de cinco segundos.
+Presentar el proyecto de forma inmediata.
 
----
+Deberá permitir identificar el proyecto y su propuesta principal en pocos segundos.
 
-## Contents
+## Typical Contents
 
-* Banner
-* Nombre
-* Tagline
-* Badges principales
+Podrá incluir:
 
----
+- banner;
+- nombre;
+- tagline;
+- badges principales.
 
 ## Example
 
@@ -689,9 +1318,11 @@ Knowledge Engineering Platform
 Badges
 ```
 
+La presencia de cada elemento dependerá del proyecto y de su identidad visual.
+
 ---
 
-# 33. README-STATUS
+# 46. README-STATUS
 
 ## Identifier
 
@@ -699,31 +1330,29 @@ Badges
 README-STATUS
 ```
 
----
-
 ## Purpose
 
-Mostrar el estado del proyecto.
-
----
+Comunicar el estado actual del proyecto.
 
 ## Possible Values
 
+Ejemplos:
+
 ```text
 Active Development
-
 Stable
-
 Maintenance
-
 Archived
-
 Research
 ```
 
+Los valores concretos deberán mantener coherencia con la gobernanza y metadata del repositorio.
+
+El Component no deberá introducir un estado contradictorio con otras fuentes canónicas.
+
 ---
 
-# 34. README-OVERVIEW
+# 47. README-OVERVIEW
 
 ## Identifier
 
@@ -731,37 +1360,33 @@ Research
 README-OVERVIEW
 ```
 
----
-
 ## Purpose
 
-Explicar el proyecto.
+Explicar qué es el proyecto, por qué existe y a quién está dirigido.
 
-Debe responder:
+Deberá responder principalmente:
 
 ```text
 Why?
-
 What?
-
 Who?
 ```
 
-Nunca:
-
-How?
-
-Eso pertenece al Quick Start.
-
----
+La explicación detallada de instalación o ejecución pertenece normalmente a `README-QUICK-START`.
 
 ## Recommended Length
 
-200–500 palabras.
+Como referencia general:
+
+```text
+200–500 palabras
+```
+
+La extensión deberá adaptarse a la complejidad real del proyecto.
 
 ---
 
-# 35. README-HIGHLIGHTS
+# 48. README-HIGHLIGHTS
 
 ## Identifier
 
@@ -769,35 +1394,24 @@ Eso pertenece al Quick Start.
 README-HIGHLIGHTS
 ```
 
----
-
 ## Purpose
 
-Mostrar rápidamente las capacidades principales.
+Mostrar rápidamente las capacidades o características que mejor representan el valor del proyecto.
+
+## Typical Use
+
+Puede utilizarse para destacar:
+
+- capacidades diferenciales;
+- propiedades arquitectónicas;
+- casos de uso importantes;
+- características especialmente relevantes para el lector.
+
+No deberá convertirse en una repetición completa de `README-FEATURES`.
 
 ---
 
-## Format
-
-Lista breve.
-
-Ejemplo.
-
-```text
-Documentation First
-
-Knowledge Graph
-
-Semantic Validation
-
-MkDocs
-
-Automation
-```
-
----
-
-# 36. README-FEATURES
+# 49. README-FEATURES
 
 ## Identifier
 
@@ -805,31 +1419,29 @@ Automation
 README-FEATURES
 ```
 
----
-
 ## Purpose
 
-Describir funcionalidades.
+Presentar las funcionalidades principales del proyecto.
 
-No tecnologías.
+## Principle
 
----
+Las funcionalidades describen qué puede hacer el sistema.
 
-## Example
+No deberán confundirse con las tecnologías utilizadas para implementarlo.
+
+Ejemplo:
 
 ```text
-Recipe Knowledge Graph
-
-Semantic Validation
-
-Automation Pipeline
-
-Documentation Website
+Feature
+    ≠
+Technology
 ```
+
+Cuando el proyecto disponga de una especificación funcional extensa, el README deberá resumirla y enlazar la documentación canónica correspondiente.
 
 ---
 
-# 37. README-ARCHITECTURE
+# 50. README-ARCHITECTURE
 
 ## Identifier
 
@@ -837,25 +1449,38 @@ Documentation Website
 README-ARCHITECTURE
 ```
 
----
-
 ## Purpose
 
-Explicar la arquitectura.
-
----
+Proporcionar una visión arquitectónica suficiente para comprender la estructura general del sistema.
 
 ## Possible Contents
 
-* diagrama;
-* módulos;
-* capas;
-* flujo;
-* ADR relacionados.
+Podrá incluir:
+
+- módulos principales;
+- capas;
+- relaciones de alto nivel;
+- flujo principal;
+- diagrama resumido;
+- enlace a documentación arquitectónica completa.
+
+No deberá duplicar innecesariamente `DOC-ARCHITECTURE`.
+
+Cuando exista documentación arquitectónica especializada:
+
+```text
+README-ARCHITECTURE
+        ↓
+Architecture summary
+        ↓
+DOC-ARCHITECTURE
+        ↓
+Canonical detailed documentation
+```
 
 ---
 
-# 38. README-TECH-STACK
+# 51. README-TECH-STACK
 
 ## Identifier
 
@@ -863,39 +1488,31 @@ Explicar la arquitectura.
 README-TECH-STACK
 ```
 
----
-
 ## Purpose
 
-Mostrar tecnologías.
+Presentar las tecnologías principales utilizadas por el proyecto.
 
----
+## Principle
 
-## Preferred Style
+Deberá priorizar tecnologías relevantes para comprender, utilizar o mantener el proyecto.
 
-Skill Icons.
-
-No listas enormes.
-
----
+No deberá convertirse en una lista exhaustiva de todas las dependencias.
 
 ## Example
 
 ```text
 Java
-
-Spring
-
-Python
-
-Docker
-
+Spring Boot
 PostgreSQL
+Docker
+GitHub Actions
 ```
+
+Las funcionalidades y las tecnologías deberán mantenerse conceptualmente separadas.
 
 ---
 
-# 39. README-REPOSITORY-STRUCTURE
+# 52. README-REPOSITORY-STRUCTURE
 
 ## Identifier
 
@@ -903,29 +1520,27 @@ PostgreSQL
 README-REPOSITORY-STRUCTURE
 ```
 
----
-
 ## Purpose
 
-Explicar la organización.
-
----
+Explicar la organización principal del repositorio cuando esta información facilite su comprensión o mantenimiento.
 
 ## Example
 
 ```text
-docs/
-
-assets/
-
-src/
-
 .github/
+docs/
+framework/
+src/
+tests/
 ```
+
+No será necesario documentar cada archivo.
+
+La explicación deberá centrarse en elementos estructurales relevantes.
 
 ---
 
-# 40. README-QUICK-START
+# 53. README-QUICK-START
 
 ## Identifier
 
@@ -933,41 +1548,35 @@ src/
 README-QUICK-START
 ```
 
----
-
 ## Purpose
 
-Permitir comenzar rápidamente.
+Permitir que un usuario pueda comenzar a utilizar el proyecto con el menor esfuerzo razonable.
 
----
-
-## Maximum Reading Time
-
-Cinco minutos.
-
----
-
-## Structure
+## Typical Structure
 
 ```text
 Requirements
-
-↓
-
+        ↓
 Installation
-
-↓
-
+        ↓
 Configuration
-
-↓
-
+        ↓
 Run
 ```
 
+Podrán añadirse pasos cuando sean realmente necesarios.
+
+## Principle
+
+El Quick Start deberá optimizar el camino hacia una primera ejecución o utilización satisfactoria.
+
+Como referencia, debería poder completarse o comprenderse en pocos minutos cuando la naturaleza del proyecto lo permita.
+
+No deberá convertirse en documentación operativa exhaustiva.
+
 ---
 
-# 41. README-DOCUMENTATION
+# 54. README-DOCUMENTATION
 
 ## Identifier
 
@@ -975,25 +1584,33 @@ Run
 README-DOCUMENTATION
 ```
 
----
-
 ## Purpose
 
-Enlazar documentación extensa.
-
----
+Proporcionar navegación hacia documentación adicional del proyecto.
 
 ## Typical Links
 
-* Architecture
-* ADR
-* API
-* Roadmap
-* Status
+Podrá enlazar, según corresponda, a:
+
+- Architecture;
+- ADR;
+- API;
+- Database;
+- Deployment;
+- Security;
+- Testing;
+- Roadmap;
+- Project Status;
+- Glossary;
+- References.
+
+Los enlaces deberán corresponder a documentación realmente existente.
+
+No deberán crearse secciones o documentos vacíos únicamente para completar la navegación.
 
 ---
 
-# 42. README-DEMO
+# 55. README-DEMO
 
 ## Identifier
 
@@ -1001,24 +1618,28 @@ Enlazar documentación extensa.
 README-DEMO
 ```
 
----
-
 ## Purpose
 
-Mostrar el proyecto funcionando.
-
----
+Mostrar el proyecto funcionando cuando una demostración aporte valor real al lector.
 
 ## Possible Formats
 
-* GIF
-* vídeo
-* GitHub Pages
-* capturas
+Podrá utilizar:
+
+- capturas;
+- GIF;
+- vídeo;
+- GitHub Pages;
+- demo desplegada;
+- ejemplos ejecutables.
+
+La demostración deberá aportar información funcional.
+
+No deberá utilizarse únicamente como elemento decorativo.
 
 ---
 
-# 43. README-TESTING
+# 56. README-TESTING
 
 ## Identifier
 
@@ -1026,29 +1647,35 @@ Mostrar el proyecto funcionando.
 README-TESTING
 ```
 
----
-
 ## Purpose
 
-Explicar estrategia de calidad.
+Explicar cómo validar el proyecto o resumir su estrategia de testing cuando resulte relevante para el usuario o contributor.
 
----
+## Possible Contents
 
-## Example
+Podrá incluir:
+
+```text
+Test command
+Test types
+Coverage
+CI validation
+```
+
+Ejemplo:
 
 ```text
 JUnit
-
 PyTest
-
 Coverage
-
 CI
 ```
 
+Cuando exista `DOC-TESTING`, el README deberá proporcionar únicamente la información necesaria para comenzar y enlazar la documentación detallada.
+
 ---
 
-# 44. README-ROADMAP
+# 57. README-ROADMAP
 
 ## Identifier
 
@@ -1056,17 +1683,29 @@ CI
 README-ROADMAP
 ```
 
----
-
 ## Purpose
 
-Explicar evolución prevista.
+Resumir la evolución prevista del proyecto.
 
-No sustituye al ROADMAP.md.
+No sustituye al `ROADMAP.md` o al artefacto canónico equivalente.
+
+Cuando exista un Roadmap independiente:
+
+```text
+README-ROADMAP
+        ↓
+Summary
+        ↓
+DOC-ROADMAP / ROADMAP.md
+        ↓
+Canonical roadmap
+```
+
+El README deberá evitar mantener una segunda planificación detallada que pueda divergir.
 
 ---
 
-# 45. README-CONTRIBUTING
+# 58. README-CONTRIBUTING
 
 ## Identifier
 
@@ -1074,17 +1713,19 @@ No sustituye al ROADMAP.md.
 README-CONTRIBUTING
 ```
 
----
-
 ## Purpose
 
-Explicar cómo colaborar.
+Indicar cómo colaborar con el proyecto.
 
-Solo cuando el proyecto acepte contribuciones.
+Deberá utilizarse cuando el repositorio acepte contribuciones o cuando resulte necesario orientar a contributors.
+
+Cuando exista un `CONTRIBUTING.md`, este Component deberá actuar principalmente como punto de entrada.
+
+No deberá duplicar todas las reglas de contribución.
 
 ---
 
-# 46. README-LICENSE
+# 59. README-LICENSE
 
 ## Identifier
 
@@ -1092,17 +1733,23 @@ Solo cuando el proyecto acepte contribuciones.
 README-LICENSE
 ```
 
----
-
 ## Purpose
 
-Enlazar licencia.
+Comunicar la licencia aplicable y proporcionar acceso al artefacto canónico correspondiente.
 
-Nunca reproducirla completa.
+No deberá reproducir innecesariamente el texto completo de la licencia.
+
+Ejemplo:
+
+```text
+This project is released under the MIT License.
+```
+
+seguido del enlace correspondiente cuando sea necesario.
 
 ---
 
-# 47. README-AUTHOR
+# 60. README-AUTHOR
 
 ## Identifier
 
@@ -1110,19 +1757,24 @@ Nunca reproducirla completa.
 README-AUTHOR
 ```
 
----
-
 ## Purpose
 
-Presentar el autor.
+Identificar al autor, maintainer u organización responsable cuando esta información resulte apropiada para el proyecto.
 
-Muy breve.
+Deberá mantenerse breve.
 
-Enlazará al GitHub Profile.
+Podrá enlazar a:
+
+- GitHub Profile;
+- organización;
+- portfolio;
+- otros canales profesionales relevantes.
+
+No deberá convertirse en una biografía extensa dentro del README.
 
 ---
 
-# 48. README-FOOTER
+# 61. README-FOOTER
 
 ## Identifier
 
@@ -1130,26 +1782,28 @@ Enlazará al GitHub Profile.
 README-FOOTER
 ```
 
----
-
 ## Purpose
 
-Cerrar el documento.
+Cerrar el documento y proporcionar elementos finales de navegación o contexto cuando sean necesarios.
 
-Podrá incluir.
+Podrá incluir:
 
-* agradecimientos;
-* enlaces;
-* navegación.
+- agradecimientos;
+- enlaces;
+- navegación;
+- referencias breves;
+- información complementaria.
+
+No deberá duplicar contenido ya presentado en otras secciones.
 
 ---
 
-# 49. README Component Catalog
+# 62. README Component Catalog
 
-La README Component Library incluye actualmente los siguientes Components definidos por el RDS:
+La README Component Library reconoce actualmente los siguientes Components:
 
 | Component | Identifier | Responsibility |
-|---|---|---|
+| --- | --- | --- |
 | Hero | `README-HERO` | Presentación inicial |
 | Status | `README-STATUS` | Estado del proyecto |
 | Overview | `README-OVERVIEW` | Propósito y contexto |
@@ -1160,94 +1814,139 @@ La README Component Library incluye actualmente los siguientes Components defini
 | Repository Structure | `README-REPOSITORY-STRUCTURE` | Organización del repositorio |
 | Quick Start | `README-QUICK-START` | Primer uso |
 | Documentation | `README-DOCUMENTATION` | Navegación documental |
-| Demo | `README-DEMO` | Evidencia visual o funcional |
-| Testing | `README-TESTING` | Estrategia de testing |
+| Demo | `README-DEMO` | Demostración |
+| Testing | `README-TESTING` | Validación y testing |
 | Roadmap | `README-ROADMAP` | Evolución prevista |
-| Contributing | `README-CONTRIBUTING` | Participación externa |
-| License | `README-LICENSE` | Acceso a la licencia |
-| Author | `README-AUTHOR` | Autoría |
-| Footer | `README-FOOTER` | Cierre y navegación |
+| Contributing | `README-CONTRIBUTING` | Contribución |
+| License | `README-LICENSE` | Licencia |
+| Author | `README-AUTHOR` | Autoría o mantenimiento |
+| Footer | `README-FOOTER` | Cierre y navegación final |
 
-Esta tabla proporciona una vista funcional de la biblioteca.
+El estado, versión, madurez, prioridad y localización canónicos de cada Component deberán consultarse en el Component Catalog y en su definición canónica cuando exista implementación.
 
-La definición canónica de cada Component implementado pertenece a su especificación y metadata dentro del Framework.
+Esta tabla representa la taxonomía arquitectónica de la familia.
 
-Los requirement levels no se mantienen en esta matriz.
-
-Se definen contextualmente en cada Repository Template.
+No sustituye al Component Catalog.
 
 ---
 
-# 50. Component Dependencies
+# 63. README Composition
 
-Algunos README Components podrán mantener relaciones o dependencias con otros Components.
+Los README Components deberán utilizarse mediante composición.
 
-Estas relaciones deberán declararse únicamente cuando sean necesarias para cumplir su responsabilidad.
+Ejemplo conceptual:
+
+```text
+README-HERO
++
+README-STATUS
++
+README-OVERVIEW
++
+README-FEATURES
++
+README-QUICK-START
++
+README-DOCUMENTATION
++
+README-LICENSE
+        ↓
+README
+```
+
+La composición dependerá del Repository Template y de las necesidades del consumidor.
+
+No deberá seleccionarse un Component únicamente porque esté disponible en el Framework.
+
+---
+
+# 64. README Component Dependencies
+
+La mayoría de README Components deberán mantenerse suficientemente independientes.
+
+Sin embargo, podrán existir relaciones o dependencias reales.
 
 Ejemplo conceptual:
 
 ```text
 README-DOCUMENTATION
-        ↓
-Project Documentation
+        ↓ may reference
+DOC-ARCHITECTURE
+DOC-API
+DOC-ROADMAP
 ```
 
-Otros Components podrán ser independientes.
+Esta relación no implica necesariamente que todos esos Documentation Components sean obligatorios.
+
+Las dependencias reales deberán mantenerse en la definición canónica del Component cuando exista implementación.
+
+Las relaciones de navegación o uso habitual no deberán convertirse automáticamente en dependencias.
+
+---
+
+# 65. Relationship with Documentation Components
+
+README Components y Documentation Components cumplen responsabilidades diferentes.
+
+```text
+README Component
+        ↓
+Entry point / summary / navigation
+
+Documentation Component
+        ↓
+Detailed canonical documentation
+```
+
+Cuando una responsabilidad necesite explicación extensa, el README deberá resumir y enlazar.
 
 Ejemplo:
 
 ```text
-README-HERO
+README-ARCHITECTURE
+        ↓
+DOC-ARCHITECTURE
 ```
 
-Las dependencias reales deberán mantenerse en la definición canónica del Component cuando exista implementación.
-
-No deberán inferirse únicamente por el orden visual del README.
+No deberá mantenerse la misma documentación detallada en ambos lugares.
 
 ---
 
-# 51. Assembly Rules
+# 66. Relationship with Repository Templates
 
-Los README deberán construirse mediante composición de responsabilidades cuando exista un Repository Template aplicable.
+Los Repository Templates determinan qué README Components forman parte de la composición inicial para un tipo de proyecto.
 
-La materialización de un README Component podrá adaptar:
-
-- contenido;
-- parámetros;
-- enlaces;
-- ejemplos;
-- información específica del proyecto.
-
-La adaptación no deberá alterar innecesariamente la responsabilidad canónica del Component.
-
-Cuando una necesidad sea reutilizable deberá evaluarse si corresponde:
+Modelo:
 
 ```text
-Configure existing Component
+Project Type
         ↓
-Extend Component
+Repository Template
         ↓
-Create new Component
+README Component Composition
+        ↓
+Consumer
 ```
 
-No se duplicará un Component únicamente para introducir variaciones de contenido específicas de un proyecto.
+Cada Repository Template podrá clasificar los README Components como:
+
+```text
+Required
+Recommended
+Optional
+```
+
+El requirement level pertenece al Template.
+
+No deberá añadirse como propiedad universal del README Component.
 
 ---
 
-# 52. Template Integration
+# 67. Relationship with Maturity
 
-La composición de README Components se determina mediante Repository Templates y necesidades específicas del proyecto.
+La madurez del repositorio puede modificar las expectativas sobre profundidad, calidad y mantenimiento de un README.
 
-No existen perfiles README independientes como:
-
-```text
-Strategic
-Supporting
-Learning
-Experimental
-```
-
-Estos conceptos pertenecen al modelo de madurez cuando corresponda y no definen por sí solos una composición universal del README.
+No determina automáticamente qué README Components deben existir.
 
 El modelo correcto es:
 
@@ -1263,11 +1962,61 @@ Maturity Expectations
 
 Dos repositorios con la misma madurez podrán utilizar README Components diferentes.
 
-La composición canónica deberá consultarse en el Repository Template correspondiente.
+Dos repositorios del mismo tipo podrán presentar diferente profundidad documental según su estado de evolución, siempre que respeten el contrato aplicable.
 
 ---
 
-# 53. Anti-Patterns
+# 68. README Materialization
+
+Un README Component implementado deberá seguir el contrato general definido por el RDS:
+
+```text
+Specification
+        +
+Metadata
+        +
+Reusable materialization when required
+```
+
+La forma concreta de materialización dependerá de la responsabilidad.
+
+Podrá consistir, por ejemplo, en:
+
+- estructura reutilizable;
+- template;
+- guidance de composición;
+- contenido parametrizable;
+- combinación de estos mecanismos.
+
+La existencia de una sección equivalente en un README consumidor no implica por sí sola que exista una implementación canónica del Component dentro del Framework.
+
+---
+
+# 69. README Consumer Adaptation
+
+Los consumidores podrán adaptar los README Components cuando sea necesario para representar correctamente su proyecto.
+
+La adaptación podrá afectar, según corresponda, a:
+
+- contenido;
+- ejemplos;
+- enlaces;
+- parámetros;
+- nivel de detalle;
+- orden de presentación.
+
+La adaptación no deberá:
+
+- cambiar la responsabilidad canónica;
+- introducir contradicciones con otras fuentes;
+- duplicar innecesariamente documentación;
+- convertir un Component en una responsabilidad diferente.
+
+Cuando una adaptación recurrente revele una necesidad generalizable, deberá evaluarse si corresponde evolucionar el Component o introducir una nueva responsabilidad.
+
+---
+
+# 70. README Anti-Patterns
 
 No utilizar:
 
@@ -1275,15 +2024,18 @@ No utilizar:
 - secciones vacías;
 - tecnologías repetidas;
 - duplicación de información mantenida canónicamente en `docs/`;
-- GIF decorativos;
+- GIF puramente decorativos;
 - badges sin significado;
 - Components incorporados sin necesidad;
 - requirement levels definidos globalmente fuera de Repository Templates;
-- orden rígido cuando no responda a la experiencia de lectura.
+- orden rígido cuando no responda a la experiencia de lectura;
+- Components utilizados para responsabilidades distintas de su contrato;
+- contenido placeholder presentado como documentación final;
+- copias de documentación canónica que puedan divergir.
 
 ---
 
-# 54. README Quality Gates
+# 71. README Quality Gates
 
 Antes de aprobar un README deberá verificarse:
 
@@ -1297,10 +2049,12 @@ Antes de aprobar un README deberá verificarse:
 - [ ] Los enlaces son válidos.
 - [ ] La composición mantiene coherencia con el resto del repositorio.
 - [ ] No se duplica innecesariamente información canónica mantenida en otros documentos.
+- [ ] Las adaptaciones preservan la responsabilidad de los Components utilizados.
+- [ ] El README refleja el estado real del proyecto.
 
 ---
 
-# 55. Long-Term Vision
+# 72. Long-Term Vision
 
 La README Component Library permitirá construir README reutilizando responsabilidades estandarizadas y validadas.
 
@@ -1308,23 +2062,17 @@ Los Repository Templates proporcionarán composiciones iniciales adecuadas a dif
 
 Cada Component podrá evolucionar independientemente dentro de su contrato y política de compatibilidad.
 
-Con el tiempo, las especificaciones y metadata podrán permitir generación asistida de README a partir de Repository Templates y parámetros del proyecto.
+Con el tiempo, las Specifications y Metadata podrán permitir generación asistida de README a partir de Repository Templates y parámetros del proyecto.
 
 La automatización deberá consumir las fuentes canónicas existentes y no sustituirlas.
 
 ---
 
-# 56. Part 2 Conclusions
+# 73. Part 2 Conclusions
 
 La **README Component Library** convierte el README en un sistema modular de responsabilidades reutilizables.
 
-Cada README Component dispone de:
-
-- un propósito;
-- una responsabilidad;
-- reglas de uso;
-- relaciones o dependencias cuando correspondan;
-- una definición canónica cuando exista implementación.
+Cada README Component dispone, cuando está implementado, de una definición canónica conforme al contrato general del RDS.
 
 Los Repository Templates determinan contextualmente qué Components son:
 
@@ -1334,16 +2082,17 @@ Recommended
 Optional
 ```
 
+La materialización final permanece adaptada al proyecto consumidor.
+
 Por tanto, la biblioteca no define un README universal.
 
-Proporciona piezas reutilizables que permiten construir README coherentes, mantenibles y adaptados al tipo real de proyecto.
+Proporciona responsabilidades reutilizables que permiten construir README coherentes, mantenibles y adecuados al tipo real de proyecto.
 
 ---
 
-# 57. Part 2 Versioning
+# 74. Part 2 Versioning
 
 El versionado de esta Part se gestiona mediante el Revision History global del Repository Design System.
-
 
 ---
 
@@ -1355,37 +2104,48 @@ El versionado de esta Part se gestiona mediante el Revision History global del R
 
 ---
 
-# 58. Purpose
+# 75. Purpose
 
 La **Documentation Component Library (DCL)** define responsabilidades documentales reutilizables reconocidas por GitHub Framework.
 
-Mientras la **README Component Library** está orientada principalmente a la presentación y navegación inicial del proyecto, la DCL proporciona Components para documentación técnica, operativa, de gobierno y de referencia.
+Mientras la README Component Library está orientada principalmente a la presentación, comprensión inicial y navegación del proyecto, la DCL proporciona Components para documentación:
+
+- técnica;
+- operativa;
+- arquitectónica;
+- de gobierno;
+- de referencia.
 
 Los Repository Templates podrán reutilizar estos Components cuando resulten adecuados para el tipo de proyecto.
 
-La existencia de un Documentation Component en el RDS no implica necesariamente que disponga todavía de una implementación física estable dentro del Framework.
+La existencia de un Documentation Component en el RDS no implica necesariamente que disponga de una implementación canónica disponible dentro del Framework.
 
-El objetivo de la DCL consiste en evitar que responsabilidades documentales recurrentes deban diseñarse nuevamente desde cero, sin imponer un sistema documental idéntico a todos los repositorios.
+El objetivo de la DCL consiste en evitar que responsabilidades documentales recurrentes deban diseñarse nuevamente desde cero sin imponer un sistema documental idéntico a todos los repositorios.
 
 ---
 
-# 59. Documentation Philosophy
+# 76. Documentation Philosophy
 
 La documentación forma parte del producto cuando resulta necesaria para comprender, utilizar, mantener o evolucionar un proyecto.
 
 Cada documento deberá responder a una necesidad concreta.
 
-No deberá existir documentación únicamente "por si acaso".
+No deberá existir documentación únicamente para aumentar cobertura o aparentar madurez.
 
-Cuando una responsabilidad documental sea reutilizable y esté reconocida por el Framework, deberá reutilizarse el Documentation Component correspondiente.
+Cuando una responsabilidad documental sea reutilizable y esté reconocida por GitHub Framework, deberá evaluarse la reutilización del Documentation Component correspondiente.
 
 Las necesidades específicas de un proyecto que no justifiquen generalización podrán permanecer como documentación propia del consumidor.
 
-La documentación deberá mantener una fuente canónica identificable y evitar duplicaciones innecesarias.
+La documentación deberá:
+
+- mantener una fuente canónica identificable;
+- evitar duplicaciones innecesarias;
+- reflejar razonablemente el estado actual del proyecto;
+- evolucionar junto con las responsabilidades que documenta.
 
 ---
 
-# 60. Documentation Architecture
+# 77. Documentation Architecture
 
 La documentación de un repositorio podrá organizarse mediante diferentes responsabilidades según su tipo y necesidades.
 
@@ -1401,35 +2161,44 @@ Project Documentation
         └── Reference
 ```
 
-El README actúa como punto de entrada cuando corresponda.
+El README actúa como punto de entrada cuando corresponde.
 
 La estructura concreta deberá derivarse del Repository Template y de las necesidades reales del proyecto.
 
-No todos los repositorios necesitarán todas las áreas documentales ni deberán organizarlas físicamente de la misma forma.
+No todos los repositorios necesitarán todas las áreas documentales.
+
+Tampoco deberán organizarlas físicamente de la misma forma.
+
+La arquitectura documental prioriza responsabilidades sobre estructuras rígidas.
 
 ---
 
-# 61. Documentation Layers
+# 78. Documentation Layers
 
 La documentación puede analizarse mediante diferentes capas funcionales.
 
 | Layer | Purpose |
-|---|---|
+| --- | --- |
 | Entry | Primera toma de contacto y navegación |
 | Functional | Explicación del funcionamiento |
 | Technical | Arquitectura e implementación |
 | Governance | Gestión y evolución |
 | Reference | Información de consulta |
 
-Estas capas proporcionan un modelo conceptual para separar responsabilidades documentales.
+Estas capas proporcionan un modelo conceptual para separar responsabilidades.
 
-Un Documentation Component podrá relacionarse con una o varias de ellas cuando su responsabilidad lo justifique.
+Un Documentation Component podrá relacionarse con una o varias capas cuando su responsabilidad lo justifique.
 
-Las capas no determinan requirement levels ni una estructura física obligatoria.
+Las capas no determinan:
+
+- requirement levels;
+- estructura física;
+- estado de implementación;
+- obligatoriedad universal.
 
 ---
 
-# 62. Component Classification
+# 79. Documentation Component Classification
 
 Los Documentation Components se clasifican principalmente por la responsabilidad documental que representan.
 
@@ -1444,23 +2213,59 @@ Estas categorías facilitan descubrimiento y organización.
 
 No determinan si un Component es obligatorio.
 
-La necesidad de cada Documentation Component se establece contextualmente mediante el Repository Template correspondiente:
+La necesidad de cada Documentation Component se establece contextualmente mediante el Repository Template correspondiente.
 
 ```text
 Documentation Component
         ↓
-Canonical responsibility
+Canonical Responsibility
 
 Repository Template
         ↓
 Required / Recommended / Optional
 ```
 
-La clasificación funcional, la prioridad, la madurez y el requirement level son propiedades diferentes y no deberán confundirse.
+La clasificación funcional, la prioridad, la madurez, la disponibilidad y el requirement level son dimensiones diferentes.
+
+No deberán confundirse.
 
 ---
 
-# 63. DOC-ARCHITECTURE
+# 80. Documentation Component Canonical Definition
+
+Un Documentation Component `Implemented` deberá seguir el contrato general del RDS:
+
+```text
+Specification
+        +
+Metadata
+        +
+Materialization when required
+```
+
+En esta familia, la materialización podrá consistir principalmente en:
+
+- estructura documental reusable;
+- `template.md`;
+- guidance;
+- ejemplos;
+- metadata;
+- reglas de adopción;
+- combinaciones de estos elementos.
+
+La definición canónica deberá mantenerse dentro de:
+
+```text
+framework/components/documentation/
+```
+
+cuando exista implementación material.
+
+La mera existencia de un documento equivalente en un repositorio consumidor no implica que el Framework Component esté implementado.
+
+---
+
+# 81. DOC-ARCHITECTURE
 
 ## Identifier
 
@@ -1468,25 +2273,27 @@ La clasificación funcional, la prioridad, la madurez y el requirement level son
 DOC-ARCHITECTURE
 ```
 
----
-
 ## Purpose
 
 Describir la arquitectura general del proyecto.
 
+## Typical Responsibilities
+
+Podrá incluir:
+
+- visión general;
+- módulos;
+- capas;
+- relaciones;
+- diagramas;
+- dependencias relevantes;
+- decisiones arquitectónicas principales.
+
+Cuando existan ADR, deberán complementar la arquitectura y no sustituirla.
+
 ---
 
-## Typical Sections
-
-* visión general;
-* módulos;
-* diagramas;
-* dependencias;
-* decisiones clave.
-
----
-
-# 64. DOC-ADR
+# 82. DOC-ADR
 
 ## Identifier
 
@@ -1494,27 +2301,27 @@ Describir la arquitectura general del proyecto.
 DOC-ADR
 ```
 
----
-
 ## Purpose
 
 Registrar decisiones arquitectónicas relevantes.
 
----
-
-## Structure
+## Typical Structure
 
 ```text
 Context
-
+        ↓
 Decision
-
+        ↓
 Consequences
 ```
 
+Los ADR deberán utilizarse para decisiones que merezcan trazabilidad.
+
+No deberán emplearse para registrar decisiones triviales o temporales sin impacto arquitectónico relevante.
+
 ---
 
-# 65. DOC-ROADMAP
+# 83. DOC-ROADMAP
 
 ## Identifier
 
@@ -1522,29 +2329,26 @@ Consequences
 DOC-ROADMAP
 ```
 
----
-
 ## Purpose
 
-Mostrar la evolución prevista.
+Mostrar la evolución prevista del proyecto.
 
----
-
-## Typical Horizons
+## Possible Horizons
 
 ```text
 Current
-
 Next Release
-
 Future
-
 Long Term
 ```
 
+El Roadmap deberá representar dirección y prioridades.
+
+No deberá convertirse en una copia del Product Backlog.
+
 ---
 
-# 66. DOC-PROJECT-STATUS
+# 84. DOC-PROJECT-STATUS
 
 ## Identifier
 
@@ -1552,25 +2356,30 @@ Long Term
 DOC-PROJECT-STATUS
 ```
 
----
-
 ## Purpose
 
-Reflejar el estado actual del proyecto.
-
----
+Reflejar el estado operativo actual del proyecto.
 
 ## Possible Information
 
-* versión;
-* estabilidad;
-* hitos;
-* riesgos;
-* próximos pasos.
+Podrá incluir:
+
+- versión actual;
+- fase;
+- Sprint;
+- capacidades implementadas;
+- riesgos;
+- próximos objetivos;
+- estado de release;
+- decisiones recientes relevantes.
+
+El documento deberá representar el presente.
+
+No deberá utilizarse como historial detallado del proyecto.
 
 ---
 
-# 67. DOC-KNOWN-ISSUES
+# 85. DOC-KNOWN-ISSUES
 
 ## Identifier
 
@@ -1578,13 +2387,9 @@ Reflejar el estado actual del proyecto.
 DOC-KNOWN-ISSUES
 ```
 
----
-
 ## Purpose
 
-Registrar limitaciones conocidas.
-
----
+Registrar limitaciones, problemas o restricciones conocidas que resulte útil mantener visibles.
 
 ## Implementation Status
 
@@ -1596,19 +2401,28 @@ No dispone actualmente de una implementación canónica dentro de:
 framework/components/documentation/
 ```
 
-Su incorporación futura como Framework Component requerirá especificación, metadata, implementación y validación conforme al lifecycle del RDS.
+Por tanto, permanece:
+
+```text
+Conceptual
+```
+
+Su incorporación futura como Framework Component requerirá:
+
+- Specification;
+- Metadata;
+- materialización cuando corresponda;
+- validación conforme al lifecycle del RDS.
+
+## Principle
+
+Las limitaciones relevantes no deberán ocultarse.
+
+La transparencia forma parte de la calidad técnica.
 
 ---
 
-## Rules
-
-Nunca ocultar problemas importantes.
-
-La transparencia genera confianza.
-
----
-
-# 68. DOC-CHANGELOG
+# 86. DOC-CHANGELOG
 
 ## Identifier
 
@@ -1616,21 +2430,27 @@ La transparencia genera confianza.
 DOC-CHANGELOG
 ```
 
----
-
 ## Purpose
 
-Mantener el historial funcional.
+Mantener el historial funcional de cambios relevantes del proyecto.
+
+## Preferred Model
+
+Podrá seguir convenciones compatibles con:
+
+```text
+Keep a Changelog
++
+Semantic Versioning
+```
+
+cuando el proyecto utilice releases versionadas.
+
+El Changelog no deberá sustituir el historial Git ni convertirse en una lista de commits.
 
 ---
 
-## Preferred Format
-
-Keep a Changelog.
-
----
-
-# 69. DOC-RELEASE-NOTES
+# 87. DOC-RELEASE-NOTES
 
 ## Identifier
 
@@ -1638,15 +2458,27 @@ Keep a Changelog.
 DOC-RELEASE-NOTES
 ```
 
----
-
 ## Purpose
 
-Comunicar los cambios de cada versión.
+Comunicar los cambios relevantes de una release concreta.
 
-No sustituye al CHANGELOG.
+No sustituye al Changelog.
 
----
+Mientras el Changelog mantiene una visión acumulativa:
+
+```text
+CHANGELOG
+        ↓
+Version history
+```
+
+las Release Notes describen una versión determinada:
+
+```text
+Release
+        ↓
+Highlights / Changes / Migration / Known Issues
+```
 
 ## Implementation Status
 
@@ -1658,11 +2490,11 @@ No dispone actualmente de una implementación canónica dentro de:
 framework/components/documentation/
 ```
 
-Su incorporación futura como Framework Component requerirá especificación, metadata, implementación y validación conforme al lifecycle del RDS.
+Por tanto, permanece `Conceptual`.
 
 ---
 
-# 70. DOC-API
+# 88. DOC-API
 
 ## Identifier
 
@@ -1670,24 +2502,25 @@ Su incorporación futura como Framework Component requerirá especificación, me
 DOC-API
 ```
 
----
-
 ## Purpose
 
-Documentar interfaces públicas.
-
----
+Documentar interfaces públicas consumibles por otros sistemas o desarrolladores.
 
 ## Possible Formats
 
-* OpenAPI;
-* Markdown;
-* Javadoc;
-* MkDocs.
+Podrá materializarse mediante:
+
+- OpenAPI;
+- Markdown;
+- Javadoc;
+- generated documentation;
+- otros formatos adecuados al proyecto.
+
+La forma concreta dependerá del tipo de interfaz.
 
 ---
 
-# 71. DOC-DATABASE
+# 89. DOC-DATABASE
 
 ## Identifier
 
@@ -1695,24 +2528,27 @@ Documentar interfaces públicas.
 DOC-DATABASE
 ```
 
----
-
 ## Purpose
 
-Documentar el modelo de datos.
-
----
+Documentar el modelo de datos cuando resulte relevante para comprender o mantener el proyecto.
 
 ## Possible Contents
 
-* entidades;
-* relaciones;
-* diagramas ER;
-* convenciones.
+Podrá incluir:
+
+- entidades;
+- relaciones;
+- restricciones;
+- diagramas ER;
+- convenciones;
+- migraciones;
+- decisiones importantes del modelo.
+
+No deberá duplicar automáticamente esquemas generados o documentación que pueda obtenerse directamente de otra fuente canónica.
 
 ---
 
-# 72. DOC-DEPLOYMENT
+# 90. DOC-DEPLOYMENT
 
 ## Identifier
 
@@ -1720,25 +2556,30 @@ Documentar el modelo de datos.
 DOC-DEPLOYMENT
 ```
 
----
-
 ## Purpose
 
-Explicar despliegue.
-
----
+Explicar cómo desplegar o publicar el sistema cuando exista una responsabilidad de deployment.
 
 ## Possible Sections
 
-* requisitos;
-* infraestructura;
-* variables;
-* Docker;
-* Kubernetes.
+Podrá incluir:
+
+- requisitos;
+- infraestructura;
+- variables;
+- secretos;
+- Docker;
+- Kubernetes;
+- entornos;
+- comandos;
+- rollback;
+- validación posterior.
+
+El nivel de detalle deberá ser proporcional al modelo de despliegue real.
 
 ---
 
-# 73. DOC-TESTING
+# 91. DOC-TESTING
 
 ## Identifier
 
@@ -1746,24 +2587,30 @@ Explicar despliegue.
 DOC-TESTING
 ```
 
----
-
 ## Purpose
 
-Explicar estrategia de calidad.
-
----
+Explicar la estrategia de testing y validación técnica del proyecto.
 
 ## Possible Contents
 
-* unit tests;
-* integration tests;
-* coverage;
-* CI.
+Podrá incluir:
+
+- unit tests;
+- integration tests;
+- end-to-end tests;
+- fixtures;
+- coverage;
+- quality gates;
+- CI;
+- comandos de ejecución.
+
+El documento deberá explicar la estrategia.
+
+No deberá convertirse únicamente en una lista de herramientas.
 
 ---
 
-# 74. DOC-SECURITY
+# 92. DOC-SECURITY
 
 ## Identifier
 
@@ -1771,24 +2618,29 @@ Explicar estrategia de calidad.
 DOC-SECURITY
 ```
 
----
-
 ## Purpose
 
-Explicar aspectos de seguridad.
+Documentar aspectos de seguridad relevantes para comprender, utilizar o mantener el proyecto.
+
+## Possible Contents
+
+Podrá incluir:
+
+- autenticación;
+- autorización;
+- secretos;
+- configuración;
+- threat considerations;
+- vulnerabilidades conocidas;
+- reporting;
+- dependencias;
+- prácticas seguras.
+
+Cuando exista una política pública de reporte de vulnerabilidades, podrá relacionarse con un artefacto especializado como `SECURITY.md`.
 
 ---
 
-## Possible Sections
-
-* autenticación;
-* autorización;
-* secretos;
-* vulnerabilidades conocidas.
-
----
-
-# 75. DOC-DIAGRAMS
+# 93. DOC-DIAGRAMS
 
 ## Identifier
 
@@ -1796,25 +2648,32 @@ Explicar aspectos de seguridad.
 DOC-DIAGRAMS
 ```
 
----
-
 ## Purpose
 
-Centralizar diagramas.
-
----
+Centralizar o gobernar representaciones visuales técnicas cuando exista suficiente volumen o necesidad de reutilización.
 
 ## Preferred Formats
 
-* Mermaid;
-* PlantUML;
-* SVG.
+Se priorizarán formatos:
 
-Evitar diagramas editables no versionados.
+- versionables;
+- reproducibles;
+- abiertos;
+- mantenibles.
+
+Ejemplos:
+
+```text
+Mermaid
+PlantUML
+SVG
+```
+
+Se evitarán diagramas editables únicamente mediante herramientas cerradas cuando no exista una representación versionable equivalente.
 
 ---
 
-# 76. DOC-GLOSSARY
+# 94. DOC-GLOSSARY
 
 ## Identifier
 
@@ -1822,17 +2681,22 @@ Evitar diagramas editables no versionados.
 DOC-GLOSSARY
 ```
 
----
-
 ## Purpose
 
-Definir terminología.
+Definir terminología relevante para comprender el dominio, arquitectura o funcionamiento del proyecto.
 
-Especialmente útil en proyectos de dominio complejo.
+Resulta especialmente útil cuando:
+
+- existe terminología específica;
+- aparecen siglas no evidentes;
+- diferentes actores podrían interpretar conceptos de forma distinta;
+- el proyecto representa un dominio complejo.
+
+No deberá convertirse en un diccionario genérico de términos técnicos.
 
 ---
 
-# 77. DOC-REFERENCES
+# 95. DOC-REFERENCES
 
 ## Identifier
 
@@ -1840,32 +2704,106 @@ Especialmente útil en proyectos de dominio complejo.
 DOC-REFERENCES
 ```
 
----
-
 ## Purpose
 
-Centralizar enlaces relevantes.
-
----
+Centralizar fuentes y referencias externas relevantes para comprender o mantener el proyecto.
 
 ## Possible Targets
 
-* documentación externa;
-* estándares;
-* RFC;
-* papers;
-* especificaciones.
+Podrá incluir:
+
+- documentación externa;
+- estándares;
+- RFC;
+- papers;
+- especificaciones;
+- APIs externas;
+- fuentes normativas;
+- documentación de terceros.
+
+Cada referencia deberá aportar contexto suficiente para comprender su relevancia.
 
 ---
 
-# 78. Navigation Principles
+# 96. Documentation Component Catalog
 
-La documentación deberá permitir al lector comprender su contexto y localizar información relacionada cuando sea necesario.
+La Documentation Component Library reconoce actualmente las siguientes responsabilidades:
+
+| Component | Identifier | Responsibility |
+| --- | --- | --- |
+| Architecture | `DOC-ARCHITECTURE` | Arquitectura general |
+| ADR | `DOC-ADR` | Decisiones arquitectónicas |
+| Roadmap | `DOC-ROADMAP` | Evolución prevista |
+| Project Status | `DOC-PROJECT-STATUS` | Estado operativo |
+| Known Issues | `DOC-KNOWN-ISSUES` | Limitaciones conocidas |
+| Changelog | `DOC-CHANGELOG` | Historial funcional |
+| Release Notes | `DOC-RELEASE-NOTES` | Comunicación de releases |
+| API | `DOC-API` | Interfaces públicas |
+| Database | `DOC-DATABASE` | Modelo de datos |
+| Deployment | `DOC-DEPLOYMENT` | Despliegue |
+| Testing | `DOC-TESTING` | Estrategia de calidad |
+| Security | `DOC-SECURITY` | Seguridad |
+| Diagrams | `DOC-DIAGRAMS` | Representaciones técnicas |
+| Glossary | `DOC-GLOSSARY` | Terminología |
+| References | `DOC-REFERENCES` | Fuentes y referencias |
+
+Esta tabla representa la taxonomía arquitectónica de la familia.
+
+El estado real de implementación deberá consultarse en:
+
+```text
+Component Catalog
+        +
+Canonical Component Definition
+```
+
+cuando exista.
+
+La DCL no deberá convertirse en una segunda fuente de estado o metadata.
+
+---
+
+# 97. Documentation Implementation Model
+
+Los Documentation Components podrán encontrarse en diferentes estados de implementación.
+
+Modelo conceptual:
+
+```text
+Recognized Responsibility
+        ↓
+Conceptual
+        ↓
+Specification
+        ↓
+Metadata
+        ↓
+Reusable Materialization
+        ↓
+Implemented
+        ↓
+Validation
+```
+
+La creación de un documento en un repositorio consumidor no cambia automáticamente la clasificación del Framework Component.
+
+Para evolucionar a `Implemented`, deberá existir una representación canónica reutilizable dentro del Framework.
+
+---
+
+# 98. Navigation Principles
+
+La documentación deberá permitir al lector:
+
+- comprender su contexto;
+- localizar información relacionada;
+- identificar fuentes canónicas;
+- profundizar cuando sea necesario.
 
 Según el tipo de documento podrán utilizarse:
 
 - enlaces hacia documentación de nivel superior;
-- enlaces hacia información más especializada;
+- enlaces hacia información especializada;
 - documentos relacionados;
 - índices;
 - navegación desde el README;
@@ -1877,7 +2815,7 @@ No será necesario introducir enlaces artificiales únicamente para satisfacer u
 
 ---
 
-# 79. Documentation Hierarchy
+# 99. Documentation Hierarchy
 
 Los documentos deberán mantener responsabilidades diferenciadas y evitar duplicar información canónica.
 
@@ -1886,20 +2824,24 @@ Cuando exista una relación de profundización podrá utilizarse un modelo como:
 ```text
 README
         ↓
-Architecture
+Architecture Summary
         ↓
-ADR
+DOC-ARCHITECTURE
+        ↓
+DOC-ADR
 ```
 
 El nivel superior resume y orienta.
 
 El nivel especializado desarrolla el detalle correspondiente.
 
-Las referencias podrán ser bidireccionales cuando mejoren la navegación, pero el contenido canónico deberá mantenerse en el documento responsable de esa información.
+Las referencias podrán ser bidireccionales cuando mejoren la navegación.
+
+El contenido canónico deberá permanecer en el artefacto responsable de esa información.
 
 ---
 
-# 80. Cross References
+# 100. Cross References
 
 Las referencias internas entre archivos del repositorio utilizarán preferentemente enlaces relativos.
 
@@ -1908,15 +2850,17 @@ Esto facilita:
 - forks;
 - branches;
 - reorganizaciones;
-- reutilización de Templates.
+- reutilización de Templates;
+- consumo local;
+- mantenimiento.
 
-Las referencias hacia recursos externos utilizarán su URL correspondiente.
+Las referencias hacia recursos externos utilizarán la URL correspondiente.
 
 Los enlaces deberán apuntar a la fuente canónica siempre que sea posible.
 
 ---
 
-# 81. Document Metadata
+# 101. Document Metadata
 
 Los Documentation Components podrán definir metadata cuando sea necesaria para su mantenimiento y gobernanza.
 
@@ -1927,21 +2871,202 @@ Entre los campos habituales podrán encontrarse:
 - estado;
 - owner;
 - fecha;
-- historial.
+- historial;
+- scope;
+- relaciones.
 
-La metadata requerida dependerá de la responsabilidad del Component y del Repository Template.
+La metadata requerida dependerá de la responsabilidad del Component.
 
 No todos los documentos necesitarán necesariamente el mismo bloque de metadata.
 
-Cuando exista una especificación canónica del Component, esta determinará los campos aplicables.
+Cuando exista una Specification canónica del Component, esta determinará los campos aplicables.
+
+La metadata del documento consumidor no deberá confundirse con la Metadata canónica del Framework Component.
 
 ---
 
-# 82. Callout Standards
+# 102. Documentation Materialization
 
-Se utilizarán los callouts nativos de GitHub.
+Un Documentation Component podrá materializarse de diferentes formas según su responsabilidad.
 
-Ejemplos.
+Ejemplos:
+
+```text
+DOC-CHANGELOG
+        ↓
+CHANGELOG.md
+
+DOC-ADR
+        ↓
+ADR structure / template
+
+DOC-API
+        ↓
+OpenAPI / Markdown / generated reference
+
+DOC-DIAGRAMS
+        ↓
+Diagram governance + reusable conventions
+```
+
+La arquitectura no exige una correspondencia universal:
+
+```text
+1 Component
+=
+1 fixed filename
+```
+
+salvo cuando la Specification del Component establezca explícitamente esa restricción.
+
+La responsabilidad deberá prevalecer sobre una estructura física artificial.
+
+---
+
+# 103. Documentation Consumer Adaptation
+
+Los repositorios consumidores podrán adaptar un Documentation Component dentro de los límites de su responsabilidad.
+
+La adaptación podrá afectar a:
+
+- profundidad;
+- organización;
+- ejemplos;
+- nomenclatura contextual;
+- formato;
+- navegación;
+- información específica del proyecto.
+
+La adaptación no deberá:
+
+- cambiar la responsabilidad fundamental;
+- eliminar información necesaria para satisfacer el contrato;
+- crear contradicciones con otras fuentes canónicas;
+- convertir el documento en una copia de otro Component.
+
+Cuando aparezca una necesidad recurrente que exceda el contrato actual, deberá evaluarse una evolución del Component.
+
+---
+
+# 104. Relationship with README Components
+
+README y Documentation Components deberán cooperar sin duplicar responsabilidades.
+
+Modelo habitual:
+
+```text
+README Component
+        ↓
+Summary / Navigation
+        ↓
+Documentation Component
+        ↓
+Detailed Content
+```
+
+Ejemplos:
+
+```text
+README-ARCHITECTURE
+        ↓
+DOC-ARCHITECTURE
+```
+
+```text
+README-ROADMAP
+        ↓
+DOC-ROADMAP
+```
+
+```text
+README-TESTING
+        ↓
+DOC-TESTING
+```
+
+Estas relaciones deberán utilizarse cuando mejoren navegación y claridad.
+
+No constituyen dependencias universales.
+
+---
+
+# 105. Relationship with Repository Templates
+
+La composición de Documentation Components pertenece a los Repository Templates.
+
+Un Template podrá seleccionar diferentes responsabilidades documentales según el tipo de proyecto.
+
+Modelo:
+
+```text
+Project Type
+        ↓
+Repository Template
+        ↓
+Documentation Component Composition
+        ↓
+Required / Recommended / Optional
+```
+
+La DCL no deberá mantener una matriz universal de documentos.
+
+La composición canónica deberá consultarse siempre en el Repository Template correspondiente.
+
+---
+
+# 106. Relationship with Maturity
+
+Los Maturity Profiles podrán incrementar las expectativas de:
+
+- profundidad;
+- mantenimiento;
+- trazabilidad;
+- gobernanza;
+- calidad documental.
+
+No constituyen una matriz universal de Documentation Components.
+
+Por tanto:
+
+```text
+Same maturity
+≠
+Same documentation
+```
+
+Dos repositorios con la misma madurez podrán necesitar sistemas documentales diferentes.
+
+La madurez modifica expectativas.
+
+El Repository Template define composición.
+
+---
+
+# 107. Documentation Dependencies
+
+Los Documentation Components podrán mantener dependencias cuando una responsabilidad necesite realmente otra capacidad.
+
+Ejemplo conceptual:
+
+```text
+DOC-API
+        ↓ may require context from
+DOC-SECURITY
+```
+
+solo cuando la relación sea necesaria para satisfacer correctamente el contrato.
+
+Las relaciones habituales o de navegación no deberán convertirse automáticamente en dependencias.
+
+Las dependencias reales deberán mantenerse en la definición canónica cuando exista implementación.
+
+---
+
+# 108. Callout Standards
+
+Cuando la documentación utilice callouts en Markdown de GitHub se priorizarán los mecanismos nativos soportados por la plataforma.
+
+Ejemplos:
 
 ```markdown
 > [!NOTE]
@@ -1955,94 +3080,28 @@ Ejemplos.
 > [!CAUTION]
 ```
 
-No se crearán estilos personalizados.
+No deberán crearse estilos personalizados sin una necesidad demostrada.
+
+Las reglas detalladas de escritura pertenecen a los Documentation Writing Standards.
 
 ---
 
-# 83. Diagram Standards
+# 109. Diagram Principles
 
 Los diagramas deberán:
 
-* mantenerse en Git;
-* ser reproducibles;
-* utilizar formato abierto;
-* actualizarse junto con la documentación.
+- mantenerse junto al proyecto o en una fuente controlada;
+- ser reproducibles cuando sea posible;
+- utilizar formatos abiertos o versionables;
+- actualizarse junto con la documentación;
+- responder a una necesidad de comprensión;
+- evitar complejidad visual innecesaria.
+
+Las reglas detalladas de representación podrán pertenecer al Visual Design System o a Components especializados.
 
 ---
 
-# 84. Documentation Component Catalog
-
-La Documentation Component Library reconoce actualmente las siguientes responsabilidades:
-
-| Component | Identifier | Responsibility | Implementation |
-|---|---|---|---|
-| Architecture | `DOC-ARCHITECTURE` | Arquitectura general | Implemented |
-| ADR | `DOC-ADR` | Decisiones arquitectónicas | Implemented |
-| Roadmap | `DOC-ROADMAP` | Evolución prevista | Implemented |
-| Project Status | `DOC-PROJECT-STATUS` | Estado operativo | Implemented |
-| Known Issues | `DOC-KNOWN-ISSUES` | Limitaciones conocidas | Conceptual |
-| Changelog | `DOC-CHANGELOG` | Historial de cambios | Implemented |
-| Release Notes | `DOC-RELEASE-NOTES` | Comunicación de releases | Conceptual |
-| API | `DOC-API` | Interfaces públicas | Implemented |
-| Database | `DOC-DATABASE` | Modelo de datos | Implemented |
-| Deployment | `DOC-DEPLOYMENT` | Despliegue | Implemented |
-| Testing | `DOC-TESTING` | Estrategia de calidad | Implemented |
-| Security | `DOC-SECURITY` | Seguridad | Implemented |
-| Diagrams | `DOC-DIAGRAMS` | Representaciones visuales | Implemented |
-| Glossary | `DOC-GLOSSARY` | Terminología | Implemented |
-| References | `DOC-REFERENCES` | Fuentes y referencias | Implemented |
-
-`Implemented` indica que existe actualmente una definición canónica dentro de:
-
-```text
-framework/components/documentation/
-```
-
-`Conceptual` indica una responsabilidad reconocida por el RDS que todavía no dispone de implementación canónica dentro del Framework.
-
-La presencia en este catálogo no determina requirement level.
-
-Los Repository Templates establecen contextualmente qué Components son `required`, `recommended` u `optional`.
-
-El Component Catalog global y las definiciones canónicas deberán mantenerse sincronizados con esta evolución.
-
----
-
-# 85. Template Integration
-
-La composición de Documentation Components pertenece a los Repository Templates.
-
-Un Template podrá seleccionar diferentes responsabilidades documentales según el tipo de proyecto.
-
-Ejemplo conceptual:
-
-```text
-Project Type
-        ↓
-Repository Template
-        ↓
-Documentation Component Composition
-        ↓
-Required / Recommended / Optional
-```
-
-Los Maturity Profiles podrán incrementar las expectativas de profundidad, mantenimiento o gobernanza documental.
-
-No constituyen, sin embargo, una matriz universal de documentos.
-
-Por tanto:
-
-```text
-Same maturity
-≠
-Same documentation
-```
-
-Dos repositorios con la misma madurez podrán requerir sistemas documentales diferentes.
-
----
-
-# 86. Anti-Patterns
+# 110. Documentation Anti-Patterns
 
 No utilizar:
 
@@ -2051,18 +3110,21 @@ No utilizar:
 - ADR para decisiones triviales;
 - enlaces rotos;
 - documentos huérfanos sin justificación;
-- mezclas innecesarias de idiomas dentro de un mismo documento;
+- mezclas innecesarias de idiomas dentro de un mismo artefacto;
 - referencias externas sin contexto;
 - Documentation Components incorporados sin necesidad;
 - requirement levels definidos globalmente fuera de Repository Templates;
 - documentación creada únicamente para aumentar cobertura;
-- definiciones paralelas de una misma responsabilidad documental.
+- definiciones paralelas de una misma responsabilidad documental;
+- documentos placeholder presentados como implementación completa;
+- estructuras físicas rígidas sin necesidad;
+- contenido desactualizado mantenido únicamente por compatibilidad visual.
 
 ---
 
-# 87. Documentation Quality Gates
+# 111. Documentation Quality Gates
 
-Antes de aprobar el sistema documental de un repositorio deberá verificarse:
+Antes de aprobar el sistema documental de un repositorio deberá verificarse, según corresponda:
 
 - [ ] Los Required Documentation Components del Repository Template están correctamente materializados.
 - [ ] Cada documento responde a una responsabilidad identificable.
@@ -2074,38 +3136,57 @@ Antes de aprobar el sistema documental de un repositorio deberá verificarse:
 - [ ] Los diagramas existentes están actualizados y son mantenibles.
 - [ ] No existen documentos obsoletos o huérfanos sin justificación.
 - [ ] La documentación refleja razonablemente el estado actual del proyecto.
+- [ ] Las adaptaciones del consumidor preservan la responsabilidad de los Components.
+- [ ] Las fuentes canónicas pueden identificarse.
 
 ---
 
-# 88. Long-Term Vision
+# 112. Long-Term Vision
 
 La Documentation Component Library permitirá construir sistemas documentales reutilizando responsabilidades estandarizadas y validadas.
 
 Los Repository Templates proporcionarán composiciones adecuadas a diferentes tipos de proyecto.
 
-Los repositorios podrán compartir responsabilidades, convenciones y patrones de navegación sin necesitar una estructura documental idéntica.
+Los repositorios podrán compartir:
 
-Con el tiempo, las especificaciones y metadata podrán permitir:
+- responsabilidades;
+- convenciones;
+- patrones de navegación;
+- estructuras reutilizables;
+- metadata;
+
+sin necesitar una estructura documental idéntica.
+
+Con el tiempo, las Specifications y Metadata podrán permitir:
 
 - resolución automática de Documentation Components;
-- generación asistida de documentación;
+- generación asistida;
 - validación de conformidad;
 - detección de documentación obsoleta;
-- análisis de navegación y referencias.
+- análisis de navegación;
+- comprobación de referencias.
 
 La automatización deberá consumir las fuentes canónicas existentes y no sustituirlas.
 
 ---
 
-# 89. Part 3 Conclusions
+# 113. Part 3 Conclusions
 
 La **Documentation Component Library** convierte responsabilidades documentales recurrentes en elementos reutilizables del Framework.
 
 Cada Documentation Component representa una responsabilidad definida.
 
-Cuando existe implementación, su especificación y metadata constituyen su fuente canónica.
+Cuando existe implementación, su definición canónica sigue el contrato general:
 
-El RDS podrá reconocer además responsabilidades conceptuales pendientes de implementación, siempre que su estado quede claramente diferenciado.
+```text
+Specification
+        +
+Metadata
+        +
+Materialization when required
+```
+
+El RDS podrá reconocer responsabilidades conceptuales pendientes de implementación siempre que su clasificación quede claramente diferenciada.
 
 Los Repository Templates determinan contextualmente qué Documentation Components son:
 
@@ -2115,16 +3196,23 @@ Recommended
 Optional
 ```
 
-Por tanto, la DCL no impone un sistema documental universal.
+La madurez modifica expectativas de profundidad y mantenimiento.
 
-Proporciona responsabilidades reutilizables para construir documentación coherente, mantenible y adaptada a las necesidades reales de cada tipo de proyecto.
+No determina una composición universal.
+
+Por tanto, la DCL proporciona responsabilidades reutilizables para construir documentación:
+
+- coherente;
+- mantenible;
+- navegable;
+- verificable;
+- adaptada a las necesidades reales del proyecto.
 
 ---
 
-# 90. Part 3 Versioning
+# 114. Part 3 Versioning
 
 El versionado de esta Part se gestiona mediante el Revision History global del Repository Design System.
-
 
 ---
 
@@ -2136,30 +3224,43 @@ El versionado de esta Part se gestiona mediante el Revision History global del R
 
 ---
 
-# 91. Purpose
+# 115. Purpose
 
-La **Workflow Component Library (WCL)** define responsabilidades operativas reutilizables relacionadas con el desarrollo, validación, publicación y mantenimiento de repositorios.
+La **Workflow Component Library (WCL)** define responsabilidades operativas reutilizables relacionadas con:
 
-Los Workflow Components permiten reutilizar prácticas y procesos cuando resultan adecuados para el tipo de proyecto y su contexto operativo.
+- planificación;
+- desarrollo;
+- validación;
+- integración;
+- publicación;
+- mantenimiento;
+- evolución de repositorios.
+
+Los Workflow Components permiten reutilizar prácticas, procesos, configuraciones y automatizaciones cuando resultan adecuados para el tipo de proyecto y su contexto operativo.
 
 Los Repository Templates podrán incorporar estos Components mediante requirement levels contextuales.
 
-El objetivo consiste en proporcionar patrones reutilizables sin imponer un workflow universal a todos los repositorios.
+El objetivo consiste en proporcionar capacidades operativas reutilizables sin imponer un workflow universal a todos los repositorios.
 
-Diferentes proyectos podrán utilizar composiciones operativas diferentes incluso cuando compartan nivel de madurez.
+Diferentes proyectos podrán utilizar composiciones operativas diferentes incluso cuando compartan tipo de proyecto o nivel de madurez.
 
 ---
 
-# 92. Workflow Philosophy
+# 116. Workflow Philosophy
 
-Un workflow deberá:
+Un workflow deberá responder a una necesidad operativa identificable.
 
-- responder a una necesidad operativa identificable;
-- ser comprensible;
-- reducir errores;
-- facilitar el mantenimiento;
-- automatizar tareas repetitivas cuando aporte valor;
-- minimizar la burocracia.
+Deberá favorecer, según corresponda:
+
+- claridad;
+- reproducibilidad;
+- reducción de errores;
+- trazabilidad;
+- mantenibilidad;
+- colaboración;
+- automatización útil;
+- observabilidad;
+- seguridad.
 
 Los procesos deberán ayudar al desarrollo y mantenimiento del proyecto.
 
@@ -2167,29 +3268,65 @@ No deberán incorporarse únicamente para reproducir prácticas habituales de ot
 
 La complejidad del workflow deberá ser proporcional a las necesidades reales del consumidor.
 
+La automatización constituye un mecanismo posible de materialización.
+
+No constituye la definición completa de un Workflow Component.
+
 ---
 
-# 93. Workflow Layers
+# 117. Workflow Responsibility Model
 
-Los workflows pueden analizarse mediante diferentes capas funcionales.
+Cada Workflow Component representa una responsabilidad operativa reutilizable.
+
+Ejemplos:
+
+```text
+WCL-ISSUE
+        ↓
+Work intake and issue structure
+
+WCL-PULL-REQUEST
+        ↓
+Change integration and review context
+
+WCL-CI
+        ↓
+Automated integration validation
+
+WCL-RELEASE
+        ↓
+Version publication process
+```
+
+La responsabilidad deberá permanecer independiente de una implementación concreta siempre que sea razonable.
+
+Por ejemplo:
+
+```text
+WCL-CI
+        ≠
+specific ci.yml file
+```
+
+El archivo concreto constituye una posible materialización.
+
+El Component representa la responsabilidad reusable que dicha materialización implementa.
+
+---
+
+# 118. Workflow Layers
+
+Los Workflow Components podrán analizarse mediante diferentes capas funcionales.
 
 ```text
 Planning
-
-↓
-
+        ↓
 Development
-
-↓
-
+        ↓
 Validation
-
-↓
-
+        ↓
 Release
-
-↓
-
+        ↓
 Maintenance
 ```
 
@@ -2197,71 +3334,818 @@ Estas capas proporcionan un modelo conceptual para organizar responsabilidades o
 
 Un Workflow Component podrá relacionarse con una o varias capas cuando su responsabilidad lo justifique.
 
-Las capas no determinan requirement levels ni una secuencia universal obligatoria.
+Las capas no determinan:
+
+- requirement levels;
+- dependencias;
+- estado de implementación;
+- mecanismo de materialización;
+- secuencia universal.
 
 ---
 
-# 94. Workflow Classification
+# 119. Workflow Classification
 
 Los Workflow Components podrán relacionarse con diferentes áreas operativas:
 
 | Area | Purpose |
-|---|---|
-| Planning | Organización del trabajo |
-| Development | Desarrollo e integración |
-| Validation | Revisión y calidad |
+| --- | --- |
+| Planning | Organización y entrada de trabajo |
+| Development | Desarrollo e integración de cambios |
+| Validation | Revisión y comprobación de calidad |
 | Release | Versionado y publicación |
-| Maintenance | Evolución posterior |
+| Maintenance | Evolución posterior y mantenimiento |
 
 Estas áreas facilitan clasificación y descubrimiento.
 
 No determinan si un Workflow Component es obligatorio.
 
-La necesidad del Component se establece contextualmente mediante el Repository Template y las necesidades operativas del proyecto.
+La necesidad del Component se establece contextualmente mediante:
+
+```text
+Repository Template
++
+Project Needs
+```
+
+La clasificación funcional, la prioridad, la madurez, la disponibilidad y el requirement level son dimensiones diferentes.
 
 ---
 
-# 95. WCL-ISSUE
+# 120. Workflow Component Canonical Definition
+
+Un Workflow Component `Implemented` deberá disponer de una definición canónica formada por:
+
+```text
+Workflow Component
+    │
+    ├── Specification
+    ├── Metadata
+    └── Materialization
+            when required
+```
+
+La Specification define la responsabilidad y el contrato humano.
+
+La Metadata proporciona la representación estructurada.
+
+La Materialization proporciona la capacidad operativa reutilizable cuando la responsabilidad no puede satisfacerse únicamente mediante Specification y Metadata.
+
+La definición canónica deberá permitir distinguir claramente:
+
+```text
+Responsibility
+        ≠
+Specification
+        ≠
+Materialization
+        ≠
+Consumer configuration
+```
+
+---
+
+# 121. Workflow Specification
+
+La Specification de un Workflow Component deberá describir, según corresponda:
+
+- propósito;
+- responsabilidad;
+- alcance;
+- límites;
+- consumidores;
+- triggers;
+- inputs;
+- outputs;
+- precondiciones;
+- comportamiento esperado;
+- dependencias;
+- approval points;
+- configuración;
+- observabilidad;
+- security considerations;
+- adopción;
+- validación.
+
+No todos estos elementos serán necesarios para todos los Workflow Components.
+
+La Specification deberá mantenerse proporcional a la responsabilidad.
+
+No deberá convertirse en una descripción detallada de una implementación específica de GitHub Framework.
+
+---
+
+# 122. Workflow Metadata
+
+La Metadata de un Workflow Component deberá proporcionar información estructurada suficiente para:
+
+- identidad;
+- familia;
+- versionado;
+- lifecycle;
+- prioridad;
+- audiencia;
+- madurez;
+- dependencias;
+- clasificación;
+- descubrimiento;
+- automatización futura.
+
+Podrá incorporar información adicional cuando una necesidad real lo justifique.
+
+La Metadata no deberá duplicar:
+
+- instrucciones extensas;
+- lógica ejecutable;
+- documentación normativa;
+- configuración específica de consumidores.
+
+---
+
+# 123. Workflow Materialization Model
+
+La materialización de un Workflow Component depende de la naturaleza de su responsabilidad.
+
+No todos los Workflow Components se implementarán mediante GitHub Actions.
+
+Modelo conceptual:
+
+```text
+Workflow Component
+        │
+        ├── Specification
+        ├── Metadata
+        │
+        └── Materialization
+                ├── Community File
+                ├── Configuration
+                ├── Executable Workflow
+                ├── Convention
+                ├── Composite Materialization
+                └── Other validated mechanism
+```
+
+La arquitectura deberá favorecer la materialización mínima suficiente para satisfacer la responsabilidad.
+
+No deberá imponerse simetría física entre Components heterogéneos.
+
+---
+
+# 124. Materialization Types
+
+Los Workflow Components podrán materializarse mediante diferentes tipos.
+
+## Community File
+
+Artefactos nativos o convencionales de GitHub utilizados para estructurar interacción o colaboración.
+
+Ejemplos:
+
+```text
+.github/ISSUE_TEMPLATE/
+.github/PULL_REQUEST_TEMPLATE.md
+```
+
+## Configuration
+
+Archivos de configuración que gobiernan comportamiento o capacidades del repositorio.
+
+Ejemplos conceptuales:
+
+```text
+dependabot.yml
+label configuration
+repository settings representation
+```
+
+## Executable Workflow
+
+Automatización ejecutable mediante una plataforma como GitHub Actions.
+
+Ejemplo:
+
+```text
+.github/workflows/ci.yml
+```
+
+## Convention
+
+Regla formalizada que representa un comportamiento reutilizable sin requerir necesariamente ejecución automática.
+
+Ejemplos:
+
+```text
+branch naming
+commit convention
+release procedure
+```
+
+## Composite Materialization
+
+Combinación de varios mecanismos cuando una única forma no resulte suficiente.
+
+Ejemplo conceptual:
+
+```text
+WCL-RELEASE
+        │
+        ├── Release Specification
+        ├── Versioning Convention
+        ├── CHANGELOG interaction
+        └── Optional executable automation
+```
+
+Un Component no deberá clasificarse artificialmente dentro de un único tipo si su responsabilidad necesita una composición real.
+
+---
+
+# 125. Executable Workflow Components
+
+Un Workflow Component será ejecutable cuando su responsabilidad incluya comportamiento automático materializado mediante código, configuración ejecutable o automatización.
+
+Ejemplos potenciales:
+
+```text
+WCL-CI
+WCL-CD
+WCL-SECURITY
+WCL-DEPENDABOT
+```
+
+cuando su implementación utilice mecanismos automáticos.
+
+Los Components ejecutables deberán considerar, cuando corresponda:
+
+- triggers;
+- permissions;
+- secrets;
+- inputs;
+- outputs;
+- failure behavior;
+- retries;
+- observability;
+- security;
+- portability;
+- maintenance.
+
+La existencia de código ejecutable implica obligaciones adicionales de calidad y seguridad.
+
+---
+
+# 126. Non-Executable Workflow Components
+
+Algunos Workflow Components podrán representar responsabilidades operativas que no requieren ejecución automática.
+
+Ejemplos:
+
+```text
+WCL-BRANCH
+WCL-COMMIT
+WCL-PULL-REQUEST
+```
+
+según su implementación concreta.
+
+Estos Components podrán materializarse mediante:
+
+- convenciones;
+- community files;
+- templates;
+- guidance;
+- configuración;
+- reglas de proceso.
+
+La ausencia de código ejecutable no implica que el Component sea menos válido.
+
+La arquitectura evalúa si la responsabilidad está suficientemente materializada como capacidad reusable.
+
+---
+
+# 127. Composite Workflow Components
+
+Una responsabilidad operativa podrá requerir diferentes artefactos coordinados.
+
+Ejemplo:
+
+```text
+WCL-RELEASE
+        │
+        ├── Specification
+        ├── Metadata
+        ├── Versioning rules
+        ├── Release checklist
+        ├── CHANGELOG interaction
+        └── Optional GitHub Actions workflow
+```
+
+En estos casos, el Component deberá mantener una única identidad.
+
+No deberán crearse Components separados únicamente porque la responsabilidad se materialice mediante varios artefactos.
+
+La separación solo estará justificada cuando existan responsabilidades independientes y reutilizables.
+
+---
+
+# 128. Materialization Sufficiency
+
+Un Workflow Component no deberá considerarse `Implemented` únicamente porque existan Specification y Metadata si su responsabilidad exige una capacidad material adicional.
+
+Ejemplo:
+
+```text
+WCL-CI
+        ↓
+Specification + Metadata only
+        ↓
+Insufficient
+```
+
+cuando el contrato del Component requiera validación automática reutilizable.
+
+Del mismo modo:
+
+```text
+WCL-BRANCH
+        ↓
+Specification + Metadata + reusable convention
+        ↓
+Potentially sufficient
+```
+
+si la responsabilidad queda correctamente satisfecha sin automatización.
+
+La suficiencia deberá evaluarse sobre la responsabilidad.
+
+No sobre el número de archivos.
+
+---
+
+# 129. Conceptual to Implemented Transition for Workflow Components
+
+Un Workflow Component podrá evolucionar:
+
+```text
+Conceptual
+        ↓
+Implemented
+```
+
+cuando exista una representación canónica reutilizable y gobernada suficiente para satisfacer su responsabilidad.
+
+Antes de realizar la transición deberá verificarse:
+
+- [ ] La responsabilidad continúa siendo válida.
+- [ ] El identificador `WCL-*` es estable.
+- [ ] Existe Specification canónica.
+- [ ] Existe Metadata canónica.
+- [ ] Se ha identificado el tipo de materialización.
+- [ ] La materialización es suficiente para la responsabilidad.
+- [ ] Las dependencias reales están declaradas.
+- [ ] Los mecanismos específicos del consumidor se han separado del contrato reusable.
+- [ ] No se duplica otro Workflow Component.
+- [ ] Los security considerations han sido evaluados cuando existe ejecución.
+- [ ] Puede reutilizarse fuera de una única implementación accidental.
+- [ ] Los Quality Gates aplicables están satisfechos.
+
+La transición no significa que el Component sea `Stable`.
+
+Podrá permanecer en lifecycle `Experimental` mientras se valida mediante Reference Implementation y dogfooding.
+
+---
+
+# 130. Workflow Implementation vs Consumer Practice
+
+La existencia de una práctica operativa en un repositorio consumidor no constituye automáticamente una implementación canónica.
+
+Ejemplo:
+
+```text
+GitHub Framework uses Pull Requests
+        ≠
+WCL-PULL-REQUEST is Implemented
+```
+
+Para considerarlo implementado deberá existir una capacidad reutilizable gobernada dentro del Framework.
+
+El flujo correcto es:
+
+```text
+Existing practice
+        ↓
+Analyze
+        ↓
+Extract reusable responsibility
+        ↓
+Define canonical Component
+        ↓
+Materialize
+        ↓
+Validate through consumer
+```
+
+Este principio evita convertir accidentalmente cualquier práctica local en arquitectura del Framework.
+
+---
+
+# 131. Workflow Portability
+
+Los Workflow Components deberán evitar acoplamiento innecesario con un único repositorio consumidor.
+
+Cuando una responsabilidad dependa de GitHub como plataforma, podrá utilizar capacidades específicas de GitHub.
+
+Sin embargo, deberán diferenciarse:
+
+```text
+Platform dependency
+        ≠
+Consumer-specific assumption
+```
+
+Ejemplo válido:
+
+```text
+WCL-PULL-REQUEST
+        ↓
+GitHub Pull Request capability
+```
+
+Ejemplo problemático:
+
+```text
+hard-coded repository name
+hard-coded branch belonging to one project
+hard-coded maintainer
+consumer-specific paths without configuration
+```
+
+Los parámetros específicos del consumidor deberán externalizarse o documentarse cuando sea razonable.
+
+---
+
+# 132. Workflow Inputs
+
+Un Workflow Component podrá recibir inputs cuando su comportamiento dependa de configuración contextual.
+
+Ejemplos:
+
+```text
+branch name
+runtime version
+documentation paths
+test command
+release branch
+artifact path
+```
+
+Los inputs deberán:
+
+- representar variabilidad legítima;
+- evitar valores hard-coded del consumidor;
+- mantenerse al mínimo necesario;
+- disponer de defaults cuando estos sean realmente generales;
+- documentarse cuando afecten a adopción o ejecución.
+
+No deberá parametrizarse arbitrariamente todo comportamiento.
+
+---
+
+# 133. Workflow Outputs
+
+Un Workflow Component podrá producir outputs observables.
+
+Ejemplos:
+
+```text
+validation result
+build artifact
+release artifact
+GitHub status
+generated report
+updated documentation
+```
+
+Cuando existan outputs relevantes deberán documentarse.
+
+Los outputs machine-readable podrán facilitar futura composición y automatización.
+
+No deberán introducirse contratos de outputs complejos sin necesidad real.
+
+---
+
+# 134. Workflow Triggers
+
+Los Components ejecutables o event-driven podrán reaccionar a triggers.
+
+Ejemplos:
+
+```text
+push
+pull_request
+workflow_dispatch
+release
+schedule
+repository event
+```
+
+Los triggers deberán derivarse de la responsabilidad del Component.
+
+No deberán copiarse de otro workflow sin evaluar el contexto.
+
+La Specification deberá permitir comprender por qué existe cada trigger relevante.
+
+---
+
+# 135. Manual Approval Points
+
+Determinadas decisiones podrán requerir aprobación humana según el riesgo y contexto.
+
+Ejemplos:
+
+- publicar una release;
+- desplegar a producción;
+- modificar una licencia;
+- archivar un repositorio;
+- ejecutar una migración;
+- promover un artefacto crítico.
+
+Los approval points deberán utilizarse cuando aporten control real.
+
+No deberán introducirse como burocracia universal.
+
+Un Workflow Component podrá combinar automatización con decisión humana.
+
+---
+
+# 136. Workflow Security
+
+Los Workflow Components ejecutables deberán diseñarse aplicando privilegio mínimo.
+
+Cuando corresponda deberá evaluarse:
+
+- permisos;
+- secretos;
+- tokens;
+- actions externas;
+- pinning de versiones;
+- ejecución sobre forks;
+- exposición de información;
+- generación o publicación de artefactos;
+- acceso de escritura;
+- supply chain.
+
+La reutilización no deberá aumentar innecesariamente la superficie de ataque.
+
+Los security considerations específicas deberán documentarse en la Specification o en estándares especializados.
+
+---
+
+# 137. Workflow Observability
+
+Los workflows automatizados deberán producir evidencia suficiente para comprender su ejecución.
+
+Según el Component podrá incluir:
+
+- logs;
+- status;
+- summaries;
+- artifacts;
+- annotations;
+- failure messages;
+- outputs.
+
+Los fallos deberán ser suficientemente comprensibles para permitir diagnóstico razonable.
+
+La observabilidad deberá ser proporcional a la responsabilidad.
+
+---
+
+# 138. Workflow Failure Behavior
+
+Los Components ejecutables deberán definir un comportamiento razonable ante fallos.
+
+Cuando corresponda deberá quedar claro:
+
+- qué constituye fallo;
+- si el fallo bloquea integración;
+- si permite retry;
+- si requiere intervención humana;
+- si produce evidencia;
+- si puede dejar estado parcial.
+
+No deberá ocultarse un fallo relevante para conseguir pipelines aparentemente verdes.
+
+---
+
+# 139. Workflow Dependencies
+
+Un Workflow Component podrá depender de otro Framework Component cuando esa relación sea necesaria para satisfacer su responsabilidad.
+
+Ejemplo conceptual:
+
+```text
+WCL-DOCUMENTATION-UPDATE
+        ↓ may depend on
+Documentation Components
+```
+
+o:
+
+```text
+WCL-RELEASE
+        ↓ may interact with
+DOC-CHANGELOG
+```
+
+Estas relaciones deberán analizarse cuidadosamente.
+
+Interacción no implica automáticamente dependencia.
+
+Las dependencias reales deberán:
+
+- declararse;
+- justificarse;
+- evitar ciclos innecesarios;
+- mantenerse mínimas;
+- permitir comprender impacto de cambios.
+
+---
+
+# 140. Workflow Relationships
+
+Los Workflow Components podrán participar en secuencias operativas sin que ello implique dependencia estructural.
+
+Ejemplo:
+
+```text
+WCL-ISSUE
+        ↓
+WCL-BRANCH
+        ↓
+WCL-COMMIT
+        ↓
+WCL-PULL-REQUEST
+        ↓
+WCL-CODE-REVIEW
+        ↓
+WCL-CI
+        ↓
+WCL-RELEASE
+```
+
+Este flujo representa una posible interacción operativa.
+
+No constituye una cadena obligatoria.
+
+Un consumidor podrá utilizar subconjuntos diferentes.
+
+La arquitectura deberá preservar:
+
+```text
+Operational sequence
+        ≠
+Structural dependency
+```
+
+---
+
+# 141. Workflow Composition
+
+Los Workflow Components se combinan mediante necesidades operativas y Repository Templates.
+
+Ejemplo conceptual:
+
+```text
+WCL-ISSUE
++
+WCL-PULL-REQUEST
++
+WCL-CI
++
+WCL-RELEASE
+        ↓
+Repository Template
+        ↓
+Consumer operational model
+```
+
+La composición deberá evitar:
+
+- workflows innecesarios;
+- dependencias artificiales;
+- automatización sin necesidad;
+- duplicación de responsabilidades;
+- procesos incompatibles entre sí.
+
+La existencia de un Component implementado no implica que deba incorporarse a todos los Repository Templates.
+
+---
+
+# 142. Repository Template Integration
+
+Los Repository Templates podrán incorporar Workflow Components mediante requirement levels contextuales.
+
+Modelo:
+
+```text
+Project Type
+        ↓
+Repository Template
+        ↓
+Workflow Component Composition
+        ↓
+Required / Recommended / Optional
+```
+
+Un mismo Workflow Component podrá tener diferentes requirement levels.
+
+Ejemplo conceptual:
+
+```text
+WCL-CI
+        ├── Required
+        ├── Recommended
+        ├── Optional
+        └── Not selected
+```
+
+dependiendo del Template.
+
+El requirement level no deberá mantenerse dentro de la definición canónica del Workflow Component.
+
+---
+
+# 143. Maturity Interaction
+
+Los Maturity Profiles podrán incrementar expectativas sobre:
+
+- automatización;
+- trazabilidad;
+- revisión;
+- seguridad;
+- observabilidad;
+- mantenimiento.
+
+Sin embargo:
+
+```text
+Same maturity
+        ≠
+Same workflow composition
+```
+
+La madurez no determina una matriz universal de Workflow Components.
+
+Un repositorio L3 podrá necesitar CI y no releases formales.
+
+Otro repositorio L3 podrá necesitar releases y no deployment automático.
+
+La composición depende de necesidades reales.
+
+---
+
+# 144. WCL-ISSUE
 
 ## Identifier
 
-```text id="workflow002"
+```text
 WCL-ISSUE
 ```
 
----
-
 ## Purpose
 
-Representar una unidad de trabajo.
+Representar una unidad estructurada de trabajo o cambio dentro de un repositorio.
 
----
+## Possible Responsibilities
 
-## Structure
+Podrá incluir:
 
-```text id="workflow003"
+```text
 Context
-
-↓
-
-Objective
-
-↓
-
-Acceptance Criteria
-
-↓
-
-Technical Notes
-
-↓
-
-Related Links
+        ↓
+Problem / Objective
+        ↓
+Expected Result
+        ↓
+Relevant Information
 ```
 
+La estructura concreta podrá variar según el tipo de Issue.
+
+## Possible Materialization
+
+Podrá materializarse mediante:
+
+- GitHub Issue Forms;
+- Issue templates;
+- configuration;
+- conventions;
+- guidance.
+
+El Component no obliga a utilizar un único formulario universal.
+
 ---
 
-# 96. WCL-LABEL
+# 145. WCL-LABEL
 
 ## Identifier
 
@@ -2269,58 +4153,63 @@ Related Links
 WCL-LABEL
 ```
 
----
-
 ## Purpose
 
-Clasificar Issues y Pull Requests.
-
----
+Clasificar trabajo y facilitar navegación, filtrado o automatización cuando sea necesario.
 
 ## Possible Categories
 
+Podrán existir categorías como:
+
 ```text
-type:
-
-priority:
-
-status:
-
-area:
+type
+priority
+status
+area
 ```
 
-Las categorías concretas deberán adaptarse al modelo de trabajo del repositorio.
+La taxonomía concreta dependerá del consumidor.
+
+## Possible Materialization
+
+Podrá utilizar:
+
+- label specification;
+- reusable label set;
+- configuration;
+- setup guidance;
+- future automation.
 
 No todos los consumidores necesitarán el mismo conjunto de labels.
 
 ---
 
-# 97. WCL-PROJECT
+# 146. WCL-PROJECT
 
 ## Identifier
 
-```text id="workflow006"
+```text
 WCL-PROJECT
 ```
 
----
-
 ## Purpose
 
-Organizar el backlog.
+Organizar trabajo mediante una vista de planificación cuando el repositorio necesite gestión estructurada de backlog o roadmap.
+
+## Possible Views
+
+Ejemplos:
+
+- Backlog;
+- Sprint;
+- Roadmap;
+- Done.
+
+La utilización de GitHub Projects no deberá ser obligatoria para repositorios cuya complejidad no lo justifique.
 
 ---
 
-## Recommended Views
-
-* Backlog
-* Sprint
-* Roadmap
-* Done
-
----
-
-# 98. WCL-BRANCH
+# 147. WCL-BRANCH
 
 ## Identifier
 
@@ -2328,17 +4217,13 @@ Organizar el backlog.
 WCL-BRANCH
 ```
 
----
-
 ## Purpose
 
 Definir una estrategia coherente para organizar ramas cuando el proyecto necesite desarrollo paralelo o aislamiento de cambios.
 
----
-
 ## Possible Strategies
 
-Según el contexto podrán utilizarse estrategias como:
+Podrán utilizarse estrategias como:
 
 ```text
 main
@@ -2360,91 +4245,108 @@ release/*
 hotfix/*
 ```
 
-También podrán utilizarse otros modelos compatibles con las necesidades del proyecto.
-
-La estrategia concreta deberá definirse en el Repository Template o en la configuración del consumidor cuando corresponda.
+También podrán utilizarse otros modelos.
 
 No se impondrá Git Flow como estrategia universal.
 
+## Materialization
+
+Podrá materializarse principalmente mediante:
+
+- convention;
+- branch naming rules;
+- protection configuration;
+- repository guidance.
+
 ---
 
-# 99. WCL-COMMIT
+# 148. WCL-COMMIT
 
 ## Identifier
 
-```text id="workflow009"
+```text
 WCL-COMMIT
 ```
 
----
-
 ## Purpose
 
-Normalizar commits.
-
----
+Definir una convención consistente para commits.
 
 ## Possible Convention
 
-Podrá utilizarse una convención basada en prefijos como:
+Podrá utilizarse un modelo basado en prefijos como:
 
 ```text
 feat
-
 fix
-
 docs
-
 test
-
 refactor
-
 build
-
 ci
-
 chore
 ```
 
-El Repository Template o el proyecto consumidor podrá establecer convenciones adicionales, incluido el idioma, cuando resulte necesario.
+El consumidor podrá establecer:
 
-La convención deberá mantenerse consistente dentro del repositorio.
+- idioma;
+- scope;
+- formato adicional;
+- reglas específicas.
+
+## Materialization
+
+Podrá utilizar:
+
+- convention;
+- examples;
+- commit tooling;
+- validation automation;
+- configuration.
+
+La automatización de la convención será opcional salvo que el contrato específico determine lo contrario.
 
 ---
 
-# 100. WCL-PULL-REQUEST
+# 149. WCL-PULL-REQUEST
 
 ## Identifier
 
-```text id="workflow011"
+```text
 WCL-PULL-REQUEST
 ```
 
----
-
 ## Purpose
 
-Documentar integración.
+Estructurar la integración de cambios y proporcionar contexto suficiente para revisión.
 
----
+## Typical Responsibilities
 
-## Typical Sections
+Podrá cubrir:
 
 ```text
 Summary
-
 Changes
-
 Validation
-
 Evidence
-
 Related Issues
 ```
 
+## Possible Materialization
+
+Podrá utilizar:
+
+- Pull Request template;
+- guidance;
+- branch integration rules;
+- checks;
+- metadata or configuration.
+
+La existencia de un PR template no garantiza por sí sola la satisfacción completa del Component.
+
 ---
 
-# 101. WCL-CODE-REVIEW
+# 150. WCL-CODE-REVIEW
 
 ## Identifier
 
@@ -2452,27 +4354,40 @@ Related Issues
 WCL-CODE-REVIEW
 ```
 
----
-
 ## Purpose
 
-Revisar calidad antes del merge.
-
----
+Definir prácticas reutilizables para revisar cambios antes de su integración.
 
 ## Possible Review Areas
 
-* arquitectura;
-* naming;
-* tests;
-* documentación;
-* seguridad;
-* duplicación;
-* complejidad.
+Podrá incluir:
+
+- arquitectura;
+- naming;
+- tests;
+- documentación;
+- seguridad;
+- duplicación;
+- complejidad;
+- impacto;
+- compatibilidad.
+
+## Possible Materialization
+
+Podrá utilizar:
+
+- review guidance;
+- checklist;
+- CODEOWNERS;
+- branch protection;
+- approval rules;
+- automation complementaria.
+
+La revisión humana no deberá automatizarse artificialmente cuando requiera juicio técnico.
 
 ---
 
-# 102. WCL-CI
+# 151. WCL-CI
 
 ## Identifier
 
@@ -2480,68 +4395,81 @@ Revisar calidad antes del merge.
 WCL-CI
 ```
 
----
-
 ## Purpose
 
-Validar automáticamente.
+Validar automáticamente cambios integrables para detectar problemas antes de su incorporación al repositorio principal.
 
----
+## Typical Responsibilities
 
-## Typical Steps
+Podrá incluir:
 
-```text id="workflow015"
+```text
 Checkout
-
-↓
-
+        ↓
+Setup
+        ↓
 Dependencies
-
-↓
-
-Build
-
-↓
-
+        ↓
+Build / Validation
+        ↓
 Tests
-
-↓
-
-Coverage
-
-↓
-
-Static Analysis
+        ↓
+Static Checks
+        ↓
+Result
 ```
 
+No todos los proyectos necesitarán cada paso.
+
+## Materialization
+
+`WCL-CI` requerirá una capacidad ejecutable reutilizable cuando se considere `Implemented`.
+
+Podrá materializarse mediante:
+
+- GitHub Actions;
+- reusable workflows;
+- composite actions;
+- configuration;
+- scripts invocados por el workflow;
+- combinaciones de estos mecanismos.
+
+La mera documentación de un proceso CI no será suficiente para considerarlo implementado si el contrato exige ejecución automática.
+
 ---
 
-# 103. WCL-CD
+# 152. WCL-CD
 
 ## Identifier
 
-```text id="workflow016"
+```text
 WCL-CD
 ```
 
----
-
 ## Purpose
 
-Automatizar publicación.
-
----
+Automatizar o estructurar la entrega o despliegue de artefactos cuando el proyecto necesite una capacidad de Continuous Delivery o Deployment.
 
 ## Possible Targets
 
-* GitHub Pages
-* Docker Registry
-* Releases
-* Documentation
+Podrá incluir:
+
+- GitHub Pages;
+- package registries;
+- container registries;
+- cloud environments;
+- documentation sites;
+- release artifacts.
+
+## Materialization
+
+Su implementación dependerá fuertemente del entorno consumidor.
+
+Por ello deberá evitar acoplamiento innecesario a una única plataforma de deployment salvo que la responsabilidad del Component lo justifique.
 
 ---
 
-# 104. WCL-DEPENDABOT
+# 153. WCL-DEPENDABOT
 
 ## Identifier
 
@@ -2549,23 +4477,34 @@ Automatizar publicación.
 WCL-DEPENDABOT
 ```
 
----
-
 ## Purpose
 
-Mantener dependencias actualizadas.
+Gestionar actualizaciones automáticas de dependencias cuando aporten valor operativo.
 
----
+## Possible Materialization
 
-## Update Strategy
+Podrá utilizar:
 
-La frecuencia y configuración deberán adaptarse al ecosistema tecnológico, actividad y necesidades de mantenimiento del proyecto.
+```text
+.github/dependabot.yml
+```
+
+junto con guidance y configuración reusable.
+
+## Principles
+
+La frecuencia y configuración deberán adaptarse a:
+
+- ecosistema tecnológico;
+- actividad;
+- riesgo;
+- necesidades de mantenimiento.
 
 Las actualizaciones automáticas no deberán generar ruido operativo innecesario.
 
 ---
 
-# 105. WCL-SECURITY
+# 154. WCL-SECURITY
 
 ## Identifier
 
@@ -2573,24 +4512,36 @@ Las actualizaciones automáticas no deberán generar ruido operativo innecesario
 WCL-SECURITY
 ```
 
----
-
 ## Purpose
 
-Gestionar aspectos de seguridad.
-
----
+Representar procesos reutilizables de validación o mantenimiento de seguridad.
 
 ## Possible Capabilities
 
-- Secret Scanning
-- Code Scanning
-- Security Policy
-- Dependabot Alerts
+Podrá incluir:
+
+- dependency scanning;
+- code scanning;
+- secret scanning;
+- security checks;
+- policy validation;
+- vulnerability reporting integration.
+
+## Materialization
+
+Podrá combinar:
+
+- GitHub Actions;
+- GitHub security configuration;
+- community files;
+- policies;
+- reusable configuration.
+
+El alcance deberá mantenerse claramente delimitado respecto a `DOC-SECURITY`.
 
 ---
 
-# 106. WCL-RELEASE
+# 155. WCL-RELEASE
 
 ## Identifier
 
@@ -2598,34 +4549,43 @@ Gestionar aspectos de seguridad.
 WCL-RELEASE
 ```
 
----
-
 ## Purpose
 
-Definir un proceso reproducible para publicar versiones cuando el proyecto mantenga releases.
-
----
+Definir un proceso reproducible para publicar versiones cuando el proyecto mantenga releases formales.
 
 ## Possible Responsibilities
 
-Un release podrá implicar, según el proyecto:
+Un release podrá implicar:
 
 - versionado;
+- changelog;
 - tag;
 - release notes;
 - GitHub Release;
-- actualización de changelog;
+- build de artefactos;
+- publicación;
 - actualización de estado;
-- publicación de artefactos;
-- despliegue.
+- validación posterior.
 
-La secuencia y responsabilidades concretas deberán derivarse del contexto del proyecto.
+No todos estos pasos serán obligatorios.
+
+## Possible Materialization
+
+Podrá combinar:
+
+- release specification;
+- checklist;
+- versioning convention;
+- GitHub Actions;
+- scripts;
+- templates;
+- interactions with Documentation Components.
 
 No todos los repositorios necesitarán releases formales.
 
 ---
 
-# 107. WCL-HOTFIX
+# 156. WCL-HOTFIX
 
 ## Identifier
 
@@ -2633,58 +4593,79 @@ No todos los repositorios necesitarán releases formales.
 WCL-HOTFIX
 ```
 
----
-
 ## Purpose
 
-Gestionar correcciones urgentes que requieren un tratamiento diferente al flujo ordinario de cambios.
+Gestionar correcciones urgentes que requieran un tratamiento diferente al flujo ordinario.
+
+## Possible Responsibilities
+
+Podrá incluir:
+
+- aislamiento;
+- prioridad;
+- validación acelerada;
+- integración;
+- release;
+- sincronización;
+- documentación.
+
+## Materialization
+
+Dependerá especialmente de:
+
+```text
+WCL-BRANCH
++
+WCL-RELEASE
+```
+
+cuando existan esas responsabilidades.
+
+La relación no deberá convertirse automáticamente en dependencia obligatoria.
 
 ---
 
-## Guidance
-
-La estrategia concreta dependerá del branching model y del release model utilizados por el repositorio.
-
-Un hotfix podrá requerir:
-
-- aislamiento del cambio;
-- validación prioritaria;
-- publicación acelerada;
-- sincronización con ramas activas;
-- actualización documental cuando corresponda.
-
-No se presupone una estructura concreta de ramas.
-
----
-
-# 108. WCL-DOCUMENTATION-UPDATE
+# 157. WCL-DOCUMENTATION-UPDATE
 
 ## Identifier
 
-```text id="workflow023"
+```text
 WCL-DOCUMENTATION-UPDATE
 ```
 
----
-
 ## Purpose
 
-Sincronizar documentación.
-
----
+Mantener sincronizada la documentación cuando cambios del repositorio puedan invalidarla.
 
 ## Possible Triggers
+
+Podrá reaccionar a:
 
 - cambios de comportamiento;
 - cambios arquitectónicos;
 - nuevas capacidades;
 - releases;
-- modificaciones de configuración;
-- cambios que invaliden documentación existente.
+- configuración;
+- cambios de metadata;
+- cambios que afecten a documentación existente.
+
+## Possible Materialization
+
+Podrá combinar:
+
+- checklist;
+- PR validation;
+- path-based detection;
+- automation;
+- metadata validation;
+- documentation build;
+- manual review points.
+
+La responsabilidad no presupone que toda actualización documental pueda automatizarse.
 
 ---
 
-# 109. WCL-ASSESSMENT
+# 158. WCL-ASSESSMENT
 
 ## Identifier
 
@@ -2692,24 +4673,39 @@ Sincronizar documentación.
 WCL-ASSESSMENT
 ```
 
----
-
 ## Purpose
 
-Ejecutar una evaluación estructurada del repositorio cuando corresponda, incluyendo GRS Assessment cuando forme parte del modelo de evaluación aplicable.
+Ejecutar una evaluación estructurada del repositorio cuando corresponda.
 
----
+Podrá incluir GRS Assessment cuando forme parte del modelo de evaluación aplicable.
 
 ## Possible Outputs
 
-- Score;
-- Readiness;
-- Findings;
-- Backlog.
+Podrá producir:
+
+```text
+Score
+Readiness
+Findings
+Backlog
+Recommendations
+```
+
+## Materialization
+
+Podrá combinar:
+
+- checklist;
+- assessment specification;
+- scripts;
+- reports;
+- future validators.
+
+La evaluación automática no deberá sustituir criterios cualitativos que requieran juicio.
 
 ---
 
-# 110. WCL-MAINTENANCE
+# 159. WCL-MAINTENANCE
 
 ## Identifier
 
@@ -2717,219 +4713,392 @@ Ejecutar una evaluación estructurada del repositorio cuando corresponda, incluy
 WCL-MAINTENANCE
 ```
 
----
-
 ## Purpose
 
-Mantener el repositorio.
+Definir un ciclo de mantenimiento reutilizable para repositorios que necesiten revisión periódica.
+
+## Typical Responsibilities
+
+Podrá incluir:
+
+- actualizar dependencias;
+- revisar Issues;
+- revisar Pull Requests pendientes;
+- comprobar enlaces;
+- actualizar Roadmap;
+- revisar documentación;
+- revisar seguridad;
+- detectar deuda.
+
+## Materialization
+
+Podrá utilizar:
+
+- schedule;
+- checklist;
+- Issues recurrentes;
+- automation;
+- reports;
+- manual review process.
+
+No deberá introducir ciclos periódicos sin una necesidad de mantenimiento real.
 
 ---
 
-## Typical Tasks
+# 160. Workflow Component Catalog
 
-* actualizar dependencias;
-* revisar Issues;
-* revisar enlaces;
-* actualizar roadmap;
-* revisar documentación.
+La Workflow Component Library reconoce actualmente:
+
+| Identifier | Responsibility |
+| --- | --- |
+| `WCL-ISSUE` | Issue management |
+| `WCL-LABEL` | Classification |
+| `WCL-PROJECT` | Project planning |
+| `WCL-BRANCH` | Branch strategy |
+| `WCL-COMMIT` | Commit convention |
+| `WCL-PULL-REQUEST` | Pull Request integration |
+| `WCL-CODE-REVIEW` | Review process |
+| `WCL-CI` | Continuous Integration |
+| `WCL-CD` | Continuous Delivery / Deployment |
+| `WCL-DEPENDABOT` | Dependency updates |
+| `WCL-SECURITY` | Security workflow |
+| `WCL-RELEASE` | Release management |
+| `WCL-HOTFIX` | Urgent correction process |
+| `WCL-DOCUMENTATION-UPDATE` | Documentation synchronization |
+| `WCL-ASSESSMENT` | Repository assessment |
+| `WCL-MAINTENANCE` | Maintenance cycle |
+
+Esta tabla representa la taxonomía arquitectónica.
+
+El Component Catalog mantiene:
+
+- clasificación de implementación;
+- prioridad;
+- audiencia;
+- madurez;
+- estado;
+- descubrimiento.
+
+La WCL no deberá duplicar esos datos salvo cuando resulten necesarios para explicar arquitectura.
 
 ---
 
-# 111. Workflow Relationships
+# 161. Current Implementation Boundary
 
-Los Workflow Components podrán mantener relaciones o dependencias cuando su responsabilidad lo requiera.
-
-Ejemplo de composición posible:
+La arquitectura Workflow definida por esta Part dispone actualmente de una primera biblioteca Core materializada en:
 
 ```text
-Issue
-        ↓
-Branch
-        ↓
-Commit
-        ↓
-Pull Request
-        ↓
-Review
-        ↓
-CI
-        ↓
-Release
+framework/components/workflow/
 ```
 
-Esta secuencia representa una composición posible, no un workflow universal.
+Los siguientes Workflow Components cuentan con implementación canónica:
 
-Otros repositorios podrán utilizar subconjuntos diferentes.
+```text
+WCL-ISSUE
+WCL-BRANCH
+WCL-COMMIT
+WCL-PULL-REQUEST
+WCL-CODE-REVIEW
+```
 
-Las dependencias reales deberán declararse en la definición canónica del Workflow Component cuando exista implementación.
+Su estado actual es:
 
-No se crearán dependencias artificiales únicamente para mantener una cadena operativa uniforme.
+```text
+Implementation: Implemented
+Lifecycle: Experimental
+Validation: Reference Implementation Validated
+```
+
+Los once Workflow Components restantes permanecen:
+
+```text
+Conceptual
+```
+
+La clasificación de implementación deberá continuar reflejando la disponibilidad material real del Framework.
+
+La existencia de prácticas equivalentes en GitHub Framework u otros consumidores no convierte automáticamente una responsabilidad conceptual en un Component implementado.
+
+La implementación de nuevos Components pertenece al lifecycle de cada Component y deberá satisfacer el contrato definido por esta Part.
+
+La arquitectura no deberá presentar prematuramente como disponible aquello que todavía no exista materialmente.
 
 ---
 
-# 112. Template Integration
+# 162. Workflow Reference Implementation
 
-La composición de Workflow Components pertenece a los Repository Templates y a las necesidades operativas del proyecto.
+Los Workflow Components implementados deberán validarse mediante consumidores representativos cuando resulte necesario.
 
-No existen Workflow Profiles independientes como:
+GitHub Framework ha actuado como primera Reference Implementation de los Core Workflow Components mediante dogfooding.
+
+El proceso deberá distinguir:
 
 ```text
-Strategic
-Supporting
-Learning
-Experimental
+Framework Component
+        ↓
+Canonical reusable capability
+
+Consumer
+        ↓
+Repository-specific adoption
 ```
 
-Estos conceptos pertenecen al modelo de madurez cuando corresponda.
+La Reference Implementation deberá permitir detectar:
 
-El modelo correcto es:
+- gaps de Specification;
+- gaps de Metadata;
+- materializaciones insuficientes;
+- dependencias incorrectas;
+- acoplamiento al consumidor;
+- problemas de seguridad;
+- problemas de mantenibilidad;
+- simplificaciones posibles.
+
+Los findings deberán clasificarse antes de modificar arquitectura o Component.
+
+---
+
+# 163. Workflow Conformance
+
+La conformidad de un consumidor se evaluará contra los Workflow Components que realmente le correspondan.
+
+No deberá exigir todos los Components reconocidos por la WCL.
+
+Modelo:
 
 ```text
-Project Type
-        ↓
 Repository Template
         ↓
-Workflow Component Composition
-        +
-Maturity Expectations
+Selected Workflow Components
+        ↓
+Consumer Materialization
+        ↓
+Conformance Evaluation
 ```
 
-Los Maturity Profiles podrán incrementar expectativas de revisión, automatización, seguridad o mantenimiento.
+La evaluación deberá considerar:
 
-No determinan una matriz universal de Workflow Components.
+- responsabilidad satisfecha;
+- configuración;
+- ejecución cuando corresponda;
+- dependencias;
+- evidencia;
+- adaptación permitida.
 
-Por tanto:
+La simple existencia de:
 
 ```text
-Same maturity
-≠
-Same workflow
+.github/workflows/
 ```
 
----
+no implica conformidad con `WCL-CI`.
 
-# 113. Automation Policy
-
-Toda tarea repetitiva deberá evaluarse para automatización cuando exista suficiente estabilidad del proceso.
-
-Ejemplos:
-
-- validación Markdown;
-- comprobación de enlaces;
-- testing;
-- releases;
-- documentación;
-- validación de metadata.
-
-La automatización deberá:
-
-- aportar valor operativo;
-- ser comprensible;
-- mantenerse observable;
-- consumir fuentes canónicas cuando existan;
-- evitar duplicar reglas mantenidas en otros lugares.
-
-No se automatizarán decisiones que requieran necesariamente juicio humano.
-
-La automatización no constituye un objetivo por sí misma.
+La evaluación debe comprobar el contrato.
 
 ---
 
-# 114. Manual Approval Points
+# 164. Workflow Quality Attributes
 
-Determinadas decisiones podrán requerir aprobación humana según el riesgo y contexto del proyecto.
+Todo Workflow Component deberá ser, según corresponda:
 
-Ejemplos:
-
-- publicar una release;
-- archivar un repositorio;
-- promocionar un proyecto;
-- cambiar una licencia;
-- modificar una estrategia operativa relevante.
-
-Los approval points deberán utilizarse cuando aporten control real.
-
-No deberán introducirse como burocracia automática en todos los workflows.
-
----
-
-# 115. Workflow Quality Attributes
-
-Todo workflow deberá ser:
-
+- claro;
 - reproducible;
+- reutilizable;
 - documentado;
-- simple;
 - observable;
 - mantenible;
-- proporcional a la necesidad.
+- proporcional a la necesidad;
+- suficientemente desacoplado;
+- configurable cuando exista variabilidad legítima.
+
+Los Components ejecutables deberán considerar además:
+
+- seguridad;
+- confiabilidad;
+- behavior ante fallo;
+- permisos;
+- portabilidad razonable;
+- trazabilidad.
 
 ---
 
-# 116. Anti-Patterns
+# 165. Workflow Anti-Patterns
 
 No utilizar:
 
 - procesos duplicados;
-- ramas permanentes innecesarias;
 - branching models complejos sin necesidad;
+- ramas permanentes innecesarias;
 - workflows sin mantenimiento;
 - Pull Requests innecesariamente grandes;
 - releases formales cuando el proyecto no las necesita;
 - automatizaciones opacas;
-- Workflow Components incorporados únicamente por madurez;
+- Components incorporados únicamente por madurez;
 - requirement levels definidos globalmente fuera de Repository Templates;
-- dependencias artificiales entre Workflow Components;
-- procesos copiados de otro proyecto sin evaluar su contexto.
+- dependencias artificiales;
+- procesos copiados de otro proyecto sin evaluar contexto;
+- hard-coded values específicos de un consumidor dentro del contrato reusable;
+- Specification sin materialización cuando la responsabilidad exige ejecución;
+- GitHub Actions creadas únicamente para aparentar automatización;
+- permisos más amplios de lo necesario;
+- Components separados únicamente por diferencias menores de configuración;
+- secuencias operativas presentadas como dependencias universales;
+- prácticas locales presentadas como Components implementados sin definición canónica.
 
 ---
 
-# 117. Workflow Quality Gates
+# 166. Workflow Component Quality Gates
 
-Antes de aprobar un Workflow Component o una composición operativa deberá verificarse, según corresponda:
+Antes de promover un Workflow Component a `Implemented` deberá verificarse:
 
-- [ ] El objetivo está definido.
-- [ ] Responde a una necesidad operativa real.
+- [ ] El identificador `WCL-*` es único y estable.
+- [ ] El propósito está definido.
 - [ ] La responsabilidad está claramente delimitada.
-- [ ] La automatización está justificada cuando existe.
-- [ ] La documentación necesaria está disponible.
-- [ ] Las dependencias reales están identificadas.
-- [ ] No introduce complejidad innecesaria.
-- [ ] Puede mantenerse y observarse.
-- [ ] No duplica una responsabilidad existente.
-- [ ] Su requirement level procede del Repository Template cuando corresponda.
-- [ ] Puede reutilizarse o permanecer específico del consumidor según su naturaleza.
+- [ ] El alcance y límites están documentados.
+- [ ] Existe Specification canónica.
+- [ ] Existe Metadata canónica.
+- [ ] El mecanismo de materialización está identificado.
+- [ ] La materialización es suficiente para satisfacer la responsabilidad.
+- [ ] Las dependencias reales están declaradas.
+- [ ] No se han introducido dependencias artificiales.
+- [ ] La variabilidad legítima puede configurarse cuando corresponde.
+- [ ] La implementación no está acoplada innecesariamente a un consumidor.
+- [ ] Los triggers están justificados cuando existen.
+- [ ] Inputs y outputs relevantes están documentados.
+- [ ] El comportamiento ante fallos es comprensible cuando existe ejecución.
+- [ ] La observabilidad es suficiente cuando corresponde.
+- [ ] Los permisos y security considerations han sido revisados cuando existe ejecución.
+- [ ] No duplica otra responsabilidad Workflow.
+- [ ] Puede reutilizarse razonablemente.
+- [ ] Su clasificación de implementación refleja la realidad.
 
 ---
 
-# 118. Long-Term Vision
+# 167. Workflow Composition Quality Gates
 
-La Workflow Component Library permitirá construir procesos operativos reutilizando responsabilidades estandarizadas y validadas.
+Antes de aprobar una composición de Workflow Components para un consumidor deberá verificarse:
 
-Los Repository Templates podrán proporcionar composiciones adecuadas a diferentes tipos de proyecto.
+- [ ] Cada Component responde a una necesidad operativa real.
+- [ ] Los Required Workflow Components del Repository Template están correctamente materializados.
+- [ ] Los Components adicionales aportan valor.
+- [ ] No existen procesos duplicados.
+- [ ] Las dependencias reales están satisfechas.
+- [ ] La automatización está justificada.
+- [ ] Los approval points son proporcionales al riesgo.
+- [ ] La composición puede mantenerse.
+- [ ] Los procesos son observables cuando corresponde.
+- [ ] La seguridad ha sido considerada.
+- [ ] No se ha utilizado la madurez como matriz automática de composición.
+- [ ] La composición refleja las necesidades actuales del proyecto.
 
-Los repositorios compartirán patrones operativos cuando exista una necesidad común, sin requerir exactamente la misma forma de trabajar.
+---
 
-Con el tiempo, las especificaciones y metadata podrán permitir:
+# 168. Workflow Automation Policy
+
+Toda tarea repetitiva deberá evaluarse para automatización cuando exista:
+
+- repetición suficiente;
+- proceso estable;
+- beneficio operativo;
+- posibilidad razonable de mantenimiento.
+
+Ejemplos:
+
+- testing;
+- validación Markdown;
+- validación de metadata;
+- comprobación de enlaces;
+- releases;
+- documentación;
+- assessment;
+- mantenimiento.
+
+La automatización deberá:
+
+- aportar valor;
+- ser comprensible;
+- mantenerse observable;
+- consumir fuentes canónicas;
+- evitar duplicar reglas;
+- utilizar permisos mínimos.
+
+No se automatizarán decisiones que requieran necesariamente juicio humano.
+
+---
+
+# 169. Long-Term Vision
+
+La Workflow Component Library permitirá construir modelos operativos reutilizando responsabilidades estandarizadas y validadas.
+
+Los Repository Templates podrán proporcionar composiciones adecuadas a distintos tipos de proyecto.
+
+Los repositorios podrán compartir:
+
+- prácticas;
+- convenciones;
+- community files;
+- configuraciones;
+- automatizaciones;
+- procesos de validación;
+
+sin necesitar exactamente la misma forma de trabajar.
+
+Con el tiempo, Specifications y Metadata podrán permitir:
 
 - resolución automática de Workflow Components;
-- configuración asistida de workflows;
+- configuración asistida;
 - validación de dependencias;
 - análisis de conformidad;
-- generación de automatizaciones;
-- detección de procesos obsoletos.
+- generación de workflows;
+- detección de drift;
+- mantenimiento asistido;
+- integración con Framework Automation.
 
-La automatización deberá consumir las fuentes canónicas existentes y no sustituirlas.
+La automatización deberá consumir las fuentes canónicas existentes.
+
+No deberá sustituir el contrato arquitectónico de los Components.
 
 ---
 
-# 119. Part 4 Conclusions
+# 170. Part 4 Conclusions
 
 La **Workflow Component Library** convierte responsabilidades operativas recurrentes en elementos reutilizables del Framework.
 
-Issues, ramas, commits, Pull Requests, revisión, integración continua, releases y mantenimiento podrán modelarse mediante Workflow Components cuando resulten necesarios.
+Cada Workflow Component representa una responsabilidad independiente de su materialización concreta.
 
-Cada Workflow Component representa una responsabilidad operativa definida.
+El contrato general es:
+
+```text
+Workflow Component
+        │
+        ├── Specification
+        ├── Metadata
+        └── Materialization when required
+```
+
+La materialización podrá utilizar:
+
+```text
+Community Files
+Configuration
+Executable Workflows
+Conventions
+Composite mechanisms
+```
+
+según la responsabilidad.
+
+La transición:
+
+```text
+Conceptual
+        ↓
+Implemented
+```
+
+requiere una capacidad reutilizable suficiente.
+
+No basta con que una práctica equivalente exista en un repositorio consumidor.
 
 Los Repository Templates determinan contextualmente qué Workflow Components son:
 
@@ -2939,18 +5108,22 @@ Recommended
 Optional
 ```
 
-Los Maturity Profiles podrán incrementar las expectativas operativas, pero no definen una composición universal.
+Los Maturity Profiles podrán incrementar expectativas operativas.
+
+No definen una composición universal.
 
 Por tanto:
 
 ```text
-Reusable workflow responsibilities
+Reusable Workflow Responsibilities
         +
 Repository Template
         +
-Project needs
+Project Needs
+        +
+Appropriate Materialization
         ↓
-Appropriate operational model
+Consumer Operational Model
 ```
 
 La WCL no pretende que todos los repositorios trabajen de la misma forma.
@@ -2959,10 +5132,9 @@ Pretende evitar que responsabilidades operativas recurrentes deban diseñarse nu
 
 ---
 
-# 120. Part 4 Versioning
+# 171. Part 4 Versioning
 
 El versionado de esta Part se gestiona mediante el Revision History global del Repository Design System.
-
 
 ---
 
@@ -2974,7 +5146,7 @@ El versionado de esta Part se gestiona mediante el Revision History global del R
 
 ---
 
-# 121. Purpose
+# 172. Purpose
 
 La **Visual Component Library (VCL)** define responsabilidades visuales reutilizables reconocidas por GitHub Framework.
 
@@ -2982,16 +5154,17 @@ Su objetivo consiste en facilitar una presentación visual coherente, profesiona
 
 La VCL complementa el **Visual Design System**, pero no lo sustituye.
 
-El Visual Design System define principios, reglas y convenciones como:
+El Visual Design System define principios, reglas y constraints como:
 
 - color;
 - tipografía;
 - espaciado;
 - accesibilidad;
 - compatibilidad visual;
-- comportamiento responsive.
+- comportamiento responsive;
+- consistencia gráfica.
 
-La VCL define elementos visuales reutilizables que pueden materializar esas reglas.
+La Visual Component Library define responsabilidades reutilizables que podrán materializar esas reglas.
 
 Por tanto:
 
@@ -3005,38 +5178,85 @@ Visual Component Library
 Reusable visual responsibilities
 ```
 
-No todo proyecto necesitará Visual Components específicos ni deberá compartir exactamente la misma identidad gráfica.
+No todos los proyectos necesitarán Visual Components específicos.
+
+Tampoco deberán compartir exactamente la misma identidad gráfica o composición visual.
 
 ---
 
-# 122. Visual Philosophy
+# 173. Visual Philosophy
 
 Todo Visual Component deberá responder a una necesidad identificable.
 
 Podrá contribuir a:
 
-- facilitar la comprensión;
-- reforzar la identidad;
-- mejorar la navegación;
+- facilitar comprensión;
+- reforzar identidad;
+- mejorar navegación;
 - comunicar información;
+- representar estructura;
+- explicar procesos;
 - proporcionar contexto visual.
 
 Los elementos visuales no deberán incorporarse únicamente con fines decorativos.
 
 La complejidad visual deberá ser proporcional al valor que aporta al consumidor.
 
-La coherencia deberá derivarse de las reglas del Visual Design System y no de imponer exactamente los mismos elementos gráficos a todos los repositorios.
+La coherencia deberá derivarse del Visual Design System y de la responsabilidad del Component.
+
+No deberá conseguirse mediante la repetición obligatoria de los mismos elementos gráficos en todos los repositorios.
 
 ---
 
-# 123. Visual Architecture
+# 174. Visual Responsibility Model
 
-La experiencia visual de un repositorio puede construirse mediante diferentes responsabilidades.
+Cada Visual Component representa una responsabilidad visual reutilizable.
+
+Ejemplos:
+
+```text
+VCL-BANNER
+        ↓
+Repository visual presentation
+
+VCL-BADGES
+        ↓
+Compact project information
+
+VCL-ARCHITECTURE-DIAGRAM
+        ↓
+Architecture visualization
+
+VCL-NAVIGATION-CARD
+        ↓
+Visual navigation
+```
+
+La responsabilidad visual deberá permanecer diferenciada de su implementación concreta.
+
+Por ejemplo:
+
+```text
+VCL-BANNER
+        ≠
+specific PNG file
+```
+
+El asset concreto constituye una materialización.
+
+El Component representa la responsabilidad reutilizable.
+
+---
+
+# 175. Visual Architecture
+
+La experiencia visual de un repositorio podrá construirse mediante diferentes responsabilidades.
 
 Modelo conceptual:
 
 ```text
 Visual Experience
+        │
         ├── Identity
         ├── Presentation
         ├── Information
@@ -3048,247 +5268,501 @@ Los Visual Components podrán relacionarse con una o varias de estas áreas.
 
 No existe una secuencia visual universal que todos los repositorios deban implementar.
 
-La composición deberá derivarse del Repository Template, del contexto del consumidor y de las reglas del Visual Design System.
+La composición deberá derivarse de:
+
+```text
+Repository Template
++
+Consumer Context
++
+Visual Design System
++
+Project Needs
+```
 
 ---
 
-# 124. Visual Classification
+# 176. Visual Classification
 
 Los Visual Components podrán relacionarse con diferentes áreas funcionales:
 
 | Area | Purpose |
-|---|---|
+| --- | --- |
 | Identity | Identidad visual del proyecto |
-| Presentation | Presentación inicial y comunicación visual |
+| Presentation | Presentación inicial y comunicación |
 | Information | Comunicación visual de información |
 | Navigation | Acceso visual a contenidos relacionados |
-| Technical Visualization | Representación de arquitectura, procesos o estructura |
+| Technical Visualization | Representación de arquitectura, estructura o procesos |
 
 Estas áreas facilitan clasificación y descubrimiento.
 
-No determinan requirement levels.
+No determinan:
+
+- requirement levels;
+- estado de implementación;
+- prioridad;
+- madurez;
+- estructura física.
 
 Un Visual Component podrá utilizarse en diferentes tipos de consumidor cuando su responsabilidad resulte aplicable.
 
 ---
 
-# 125. VCL-BANNER
+# 177. Visual Component Canonical Definition
 
-## Identifier
+Un Visual Component `Implemented` deberá seguir el contrato general definido por el RDS:
 
-```text id="visual002"
-VCL-BANNER
+```text
+Visual Component
+        │
+        ├── Specification
+        ├── Metadata
+        └── Materialization
+                when required
+```
+
+La Specification define la responsabilidad visual y sus constraints.
+
+La Metadata proporciona identificación, clasificación y trazabilidad.
+
+La Materialization representa la capacidad visual reutilizable cuando la responsabilidad requiera un artefacto concreto.
+
+La definición canónica deberá distinguir:
+
+```text
+Visual Responsibility
+        ≠
+Visual Design Rule
+        ≠
+Reusable Asset
+        ≠
+Consumer-specific Asset
 ```
 
 ---
+
+# 178. Relationship with Visual Design System
+
+El Visual Design System mantiene las reglas visuales globales.
+
+La VCL deberá consumirlas.
+
+No deberá duplicarlas innecesariamente.
+
+Modelo:
+
+```text
+Visual Design System
+        ↓
+Color / Typography / Spacing / Accessibility / Responsive Rules
+        ↓
+Visual Component
+        ↓
+Consumer Materialization
+```
+
+Por tanto:
+
+```text
+VCL-BANNER
+```
+
+podrá definir la responsabilidad de presentar visualmente un proyecto.
+
+Pero las reglas generales de:
+
+- contraste;
+- colores;
+- tipografía;
+- accesibilidad;
+
+permanecerán en el Visual Design System cuando exista una fuente canónica para ellas.
+
+---
+
+# 179. Visual Materialization Model
+
+Los Visual Components podrán materializarse mediante diferentes mecanismos según su responsabilidad.
+
+Ejemplos:
+
+```text
+Visual Component
+        │
+        ├── Asset
+        ├── Layout
+        ├── Snippet
+        ├── Convention
+        ├── Template
+        ├── Configuration
+        └── Composite Materialization
+```
+
+No deberá imponerse una forma física idéntica.
+
+Ejemplo:
+
+```text
+VCL-BANNER
+        ↓
+SVG / PNG / reusable template
+```
+
+mientras:
+
+```text
+VCL-CALL-OUT
+        ↓
+Markdown convention
+```
+
+y:
+
+```text
+VCL-ARCHITECTURE-DIAGRAM
+        ↓
+Mermaid / PlantUML / SVG guidance
+```
+
+podrán necesitar mecanismos diferentes.
+
+---
+
+# 180. Visual Materialization Sufficiency
+
+Un Visual Component no deberá considerarse `Implemented` únicamente por existir una descripción conceptual cuando su responsabilidad requiera una capacidad visual reusable.
+
+La suficiencia deberá evaluarse según la responsabilidad.
+
+Ejemplo:
+
+```text
+VCL-BANNER
+        ↓
+Specification + Metadata only
+        ↓
+Potentially insufficient
+```
+
+si el contrato exige una materialización reusable.
+
+Mientras:
+
+```text
+VCL-CALL-OUT
+        ↓
+Specification + Metadata + reusable convention
+        ↓
+Potentially sufficient
+```
+
+cuando la responsabilidad quede completamente satisfecha mediante una convención.
+
+La arquitectura prioriza:
+
+```text
+Responsibility satisfaction
+        >
+Number of files
+```
+
+---
+
+# 181. Visual Consumer Adaptation
+
+Los consumidores podrán adaptar Visual Components para representar correctamente su identidad y contexto.
+
+La adaptación podrá afectar a:
+
+- contenido;
+- texto;
+- iconografía;
+- dimensiones;
+- composición;
+- assets;
+- enlaces;
+- variantes;
+- parámetros.
+
+La adaptación no deberá:
+
+- alterar la responsabilidad canónica;
+- contradecir el Visual Design System;
+- eliminar requisitos esenciales de accesibilidad;
+- introducir dependencia innecesaria de un único proveedor;
+- convertir una variante local en un nuevo Component sin evidencia de reutilización.
+
+---
+
+# 182. Visual Portability
+
+Los Visual Components deberán evitar acoplamiento innecesario a un único consumidor o proveedor.
+
+Cuando se utilice un servicio externo, deberá distinguirse:
+
+```text
+Visual Responsibility
+        ≠
+Provider
+```
+
+Ejemplo:
+
+```text
+VCL-SKILL-ICONS
+        ↓
+Technology representation
+```
+
+no deberá redefinirse utilizando el nombre de un proveedor específico si la responsabilidad puede satisfacerse mediante otros mecanismos equivalentes.
+
+La dependencia de proveedor deberá justificarse cuando exista.
+
+---
+
+# 183. VCL-BANNER
+
+## Identifier
+
+```text
+VCL-BANNER
+```
 
 ## Purpose
 
 Presentar visualmente el proyecto.
 
----
+## Possible Contents
 
-## Recommended Contents
+Podrá incluir:
 
-* nombre;
-* tagline;
-* iconografía;
-* fondo minimalista.
+- nombre;
+- tagline;
+- iconografía;
+- identidad;
+- fondo;
+- elementos gráficos relacionados.
 
----
+## Materialization
 
-## Recommended Format
+Podrá utilizar:
 
-Las dimensiones deberán adaptarse al contexto donde se utilice el banner.
+- SVG;
+- PNG;
+- template reusable;
+- asset generation guidance;
+- otros formatos mantenibles.
 
-Cuando se necesite un formato horizontal reutilizable podrá utilizarse una relación aproximada:
+## Guidance
+
+Cuando se necesite un formato horizontal reusable podrá utilizarse como referencia una relación aproximada:
 
 ```text
 2:1
 ```
 
-Las dimensiones concretas podrán definirse mediante guidance o variantes del Component.
+Las dimensiones concretas deberán adaptarse al contexto.
 
 ---
 
-# 126. VCL-SOCIAL-PREVIEW
+# 184. VCL-SOCIAL-PREVIEW
 
 ## Identifier
 
-```text id="visual004"
+```text
 VCL-SOCIAL-PREVIEW
 ```
 
----
-
 ## Purpose
 
-Imagen utilizada por GitHub al compartir el repositorio.
+Representar visualmente el repositorio cuando se comparte mediante plataformas que utilizan una preview image.
+
+## Principles
+
+Deberá ser:
+
+- legible en tamaños reducidos;
+- reconocible;
+- coherente con la identidad;
+- suficientemente simple;
+- mantenible.
+
+No deberá contener texto excesivo.
+
+## Materialization
+
+Podrá utilizar:
+
+- PNG;
+- SVG transformado;
+- reusable template;
+- generated asset.
 
 ---
 
-## Recommended Principles
-
-* legible en miniatura;
-* sin texto excesivo;
-* coherente con el banner;
-* fácilmente reconocible.
-
----
-
-# 127. VCL-HERO
+# 185. VCL-HERO
 
 ## Identifier
 
-```text id="visual005"
+```text
 VCL-HERO
 ```
 
----
-
 ## Purpose
 
-Construir la cabecera del README.
-
----
+Representar visualmente la cabecera o presentación principal del README.
 
 ## Relationship
 
-Puede materializar visualmente responsabilidades definidas por `README-HERO`.
+Puede complementar:
 
-No sustituye al README Component ni duplica su responsabilidad documental.
+```text
+README-HERO
+```
 
----
+pero no sustituye su responsabilidad documental.
+
+Modelo:
+
+```text
+README-HERO
+        ↓
+Content responsibility
+
+VCL-HERO
+        ↓
+Visual presentation responsibility
+```
 
 ## Typical Structure
 
 ```text
 Banner
-
-↓
-
+        ↓
 Project Name
-
-↓
-
+        ↓
 Tagline
-
-↓
-
+        ↓
 Primary Badges
 ```
 
+La composición concreta deberá adaptarse al proyecto.
+
 ---
 
-# 128. VCL-BADGES
+# 186. VCL-BADGES
 
 ## Identifier
 
-```text id="visual007"
+```text
 VCL-BADGES
 ```
 
----
-
 ## Purpose
 
-Mostrar información rápida.
-
----
+Mostrar información breve y relevante mediante indicadores visuales compactos.
 
 ## Possible Categories
 
-* Build
-* Version
-* License
-* Documentation
-* Status
+Podrá incluir:
 
----
+- build;
+- version;
+- license;
+- documentation;
+- status;
+- coverage;
+- release.
 
 ## Badge Policy
 
-Utilizar únicamente badges útiles.
+Los badges deberán aportar información real.
 
-Evitar colecciones enormes.
+No deberán utilizarse para:
+
+- decorar;
+- aumentar artificialmente percepción de actividad;
+- repetir información irrelevante;
+- mostrar métricas sin utilidad.
+
+La cantidad deberá mantenerse limitada.
 
 ---
 
-# 129. VCL-SKILL-ICONS
+# 187. VCL-SKILL-ICONS
 
 ## Identifier
 
-```text id="visual008"
+```text
 VCL-SKILL-ICONS
 ```
 
----
-
 ## Purpose
 
-Representar tecnologías.
+Representar tecnologías, herramientas o stacks mediante iconografía reusable.
 
----
+## Possible Providers
 
-## Possible Sources
+Podrán utilizarse proveedores o assets compatibles con el Visual Design System.
 
-Podrán utilizarse proveedores o assets compatibles con las reglas del Visual Design System.
-
-Entre las opciones actuales puede utilizarse:
+Entre las opciones actuales podrá utilizarse, cuando resulte apropiado:
 
 ```text
 skillicons.dev
 ```
 
-La responsabilidad del Component no dependerá de un proveedor concreto.
-
----
+La responsabilidad del Component no depende de este proveedor.
 
 ## Principles
 
-* pocas tecnologías;
-* agrupadas por categorías;
-* sin duplicados.
+Se priorizarán:
+
+- pocas tecnologías relevantes;
+- agrupación coherente;
+- ausencia de duplicados;
+- consistencia visual;
+- legibilidad.
 
 ---
 
-# 130. VCL-PROJECT-CARD
+# 188. VCL-PROJECT-CARD
 
 ## Identifier
 
-```text id="visual010"
+```text
 VCL-PROJECT-CARD
 ```
 
----
-
 ## Purpose
 
-Representar proyectos relacionados.
+Representar visualmente un proyecto relacionado.
 
----
+## Possible Contents
 
-## Contents
+Podrá incluir:
 
-* nombre;
-* descripción;
-* stack;
-* enlace.
-
----
+- nombre;
+- descripción;
+- stack;
+- estado;
+- enlace;
+- preview.
 
 ## Possible Consumers
 
 - GitHub Profile;
 - portfolio;
 - landing pages;
-- documentación que necesite representar proyectos relacionados.
+- documentación;
+- páginas de proyectos.
 
+El Component deberá mantener una responsabilidad de representación.
 
+No deberá convertirse en un bloque rígido de contenido.
 
 ---
 
-# 131. VCL-STATS
+# 189. VCL-STATS
 
 ## Identifier
 
@@ -3296,31 +5770,31 @@ Representar proyectos relacionados.
 VCL-STATS
 ```
 
----
-
 ## Purpose
 
-Representar visualmente métricas o estadísticas relevantes cuando aporten contexto al consumidor.
-
----
+Representar visualmente métricas o estadísticas cuando aporten información relevante.
 
 ## Typical Consumer
 
 GitHub Profile.
 
----
-
 ## Guidance
 
-Las estadísticas deberán utilizarse únicamente cuando aporten información útil.
+Las estadísticas deberán utilizarse únicamente cuando ayuden a comprender:
 
-La selección de widgets, proveedores o métricas no forma parte del contrato general del Component.
+- actividad;
+- contribuciones;
+- uso;
+- estado;
+- evolución.
 
-No deberá asumirse que los repositorios individuales necesitan estadísticas visuales.
+La selección de métricas o proveedores no forma parte del contrato general del Component.
+
+No deberá asumirse que todos los repositorios necesitan estadísticas visuales.
 
 ---
 
-# 132. VCL-CONTRIBUTION-GRAPH
+# 190. VCL-CONTRIBUTION-GRAPH
 
 ## Identifier
 
@@ -3328,29 +5802,25 @@ No deberá asumirse que los repositorios individuales necesitan estadísticas vi
 VCL-CONTRIBUTION-GRAPH
 ```
 
----
-
 ## Purpose
 
-Representar visualmente actividad o contribuciones cuando esta información resulte relevante.
-
----
+Representar visualmente actividad o contribuciones cuando resulte relevante para el consumidor.
 
 ## Typical Consumer
 
 GitHub Profile.
 
----
-
 ## Guidance
 
-Su uso deberá justificarse por el contexto.
+Su uso deberá estar justificado por el contexto.
 
-No forma parte de la composición visual general de los repositorios.
+No forma parte de la composición visual universal de los repositorios.
+
+La visualización deberá evitar interpretaciones engañosas de actividad o productividad.
 
 ---
 
-# 133. VCL-TYPING-BANNER
+# 191. VCL-TYPING-BANNER
 
 ## Identifier
 
@@ -3358,29 +5828,30 @@ No forma parte de la composición visual general de los repositorios.
 VCL-TYPING-BANNER
 ```
 
----
-
 ## Purpose
 
-Mostrar contenido textual dinámico cuando aporte valor a la presentación.
-
----
+Mostrar contenido textual dinámico cuando aporte valor real a la presentación.
 
 ## Typical Consumer
 
 GitHub Profile.
 
----
-
 ## Guidance
 
-Su uso deberá ser excepcional y responder a una necesidad concreta.
+Su utilización deberá ser excepcional.
 
-No deberá incorporarse como elemento visual estándar de los repositorios.
+No deberá incorporarse como elemento estándar de todos los consumidores.
+
+Los efectos dinámicos deberán evitar:
+
+- ruido visual;
+- problemas de accesibilidad;
+- carga innecesaria;
+- dependencia excesiva de proveedores.
 
 ---
 
-# 134. VCL-ARCHITECTURE-DIAGRAM
+# 192. VCL-ARCHITECTURE-DIAGRAM
 
 ## Identifier
 
@@ -3388,23 +5859,47 @@ No deberá incorporarse como elemento visual estándar de los repositorios.
 VCL-ARCHITECTURE-DIAGRAM
 ```
 
----
-
 ## Purpose
 
-Representar la arquitectura.
+Representar visualmente la arquitectura de un sistema.
+
+## Possible Formats
+
+Se priorizarán:
+
+```text
+Mermaid
+PlantUML
+SVG
+```
+
+cuando resulten adecuados.
+
+## Principles
+
+El diagrama deberá:
+
+- ayudar a comprender;
+- representar información relevante;
+- ser mantenible;
+- evolucionar con la arquitectura;
+- evitar detalle innecesario.
+
+## Relationship
+
+Podrá complementar:
+
+```text
+README-ARCHITECTURE
+DOC-ARCHITECTURE
+DOC-DIAGRAMS
+```
+
+sin sustituir sus responsabilidades.
 
 ---
 
-## Recommended Formats
-
-* Mermaid
-* PlantUML
-* SVG
-
----
-
-# 135. VCL-WORKFLOW-DIAGRAM
+# 193. VCL-WORKFLOW-DIAGRAM
 
 ## Identifier
 
@@ -3412,23 +5907,42 @@ Representar la arquitectura.
 VCL-WORKFLOW-DIAGRAM
 ```
 
----
-
 ## Purpose
 
-Explicar procesos.
+Representar visualmente procesos o secuencias operativas.
+
+## Possible Uses
+
+Ejemplos:
+
+- CI/CD;
+- release flow;
+- development flow;
+- documentation pipeline;
+- knowledge pipeline;
+- maintenance process.
+
+## Relationship
+
+Podrá representar visualmente procesos definidos por Workflow Components.
+
+Ejemplo:
+
+```text
+WCL-RELEASE
+        ↓
+Operational responsibility
+
+VCL-WORKFLOW-DIAGRAM
+        ↓
+Visual representation
+```
+
+No deberá confundirse el diagrama con el workflow ejecutable.
 
 ---
 
-## Examples
-
-* CI/CD
-* Release Flow
-* Knowledge Pipeline
-
----
-
-# 136. VCL-FOLDER-DIAGRAM
+# 194. VCL-FOLDER-DIAGRAM
 
 ## Identifier
 
@@ -3436,36 +5950,34 @@ Explicar procesos.
 VCL-FOLDER-DIAGRAM
 ```
 
----
-
 ## Purpose
 
-Explicar estructura.
-
----
+Representar la estructura principal de un repositorio, módulo o conjunto de archivos cuando facilite comprensión.
 
 ## Possible Formats
+
+Podrá utilizar:
 
 - árbol textual;
 - Mermaid;
 - SVG;
-- otras representaciones mantenibles cuando aporten claridad.
+- diagramas equivalentes mantenibles.
 
 Ejemplo:
 
 ```text
-src/
-
-docs/
-
-assets/
-
 .github/
+docs/
+framework/
+src/
+tests/
 ```
+
+No deberá representar cada archivo si ello reduce claridad.
 
 ---
 
-# 137. VCL-NAVIGATION-CARD
+# 195. VCL-NAVIGATION-CARD
 
 ## Identifier
 
@@ -3473,24 +5985,31 @@ assets/
 VCL-NAVIGATION-CARD
 ```
 
----
-
 ## Purpose
 
-Enlazar documentación relacionada.
-
----
+Representar enlaces o destinos relacionados mediante un elemento visual reusable.
 
 ## Possible Targets
 
-* Architecture
-* API
-* Roadmap
-* ADR
+Podrá enlazar:
+
+- Architecture;
+- API;
+- Roadmap;
+- ADR;
+- Documentation;
+- demos;
+- proyectos relacionados.
+
+## Guidance
+
+La navegación visual deberá complementar la navegación textual.
+
+No deberá introducir dependencias de JavaScript o HTML complejo cuando una solución simple sea suficiente.
 
 ---
 
-# 138. VCL-CALL-OUT
+# 196. VCL-CALL-OUT
 
 ## Identifier
 
@@ -3498,25 +6017,21 @@ Enlazar documentación relacionada.
 VCL-CALL-OUT
 ```
 
----
-
 ## Purpose
 
-Resaltar información importante.
-
----
+Resaltar información relevante dentro de contenido documental.
 
 ## Relationship
 
-La representación y sintaxis deberán seguir las reglas definidas por la Documentation Component Library y los estándares documentales aplicables.
+La sintaxis y utilización deberán seguir los estándares documentales aplicables.
 
-Este Component representa la responsabilidad visual de destacar información y no redefine la sintaxis canónica de los callouts.
+Este Component representa la responsabilidad visual de destacar información.
 
----
+No redefine las reglas generales de documentación.
 
 ## Current Recommended Style
 
-GitHub Callouts.
+Para GitHub podrá utilizarse:
 
 ```markdown
 > [!NOTE]
@@ -3526,102 +6041,199 @@ GitHub Callouts.
 > [!IMPORTANT]
 
 > [!WARNING]
+
+> [!CAUTION]
 ```
+
+cuando corresponda.
 
 ---
 
-# 139. Color System
+# 197. Visual Component Catalog
 
-El sistema de color se define mediante el Visual Design System.
+La Visual Component Library reconoce actualmente:
+
+| Identifier | Responsibility |
+| --- | --- |
+| `VCL-BANNER` | Repository visual presentation |
+| `VCL-SOCIAL-PREVIEW` | Shared repository preview |
+| `VCL-HERO` | Hero visual layout |
+| `VCL-BADGES` | Compact project information |
+| `VCL-SKILL-ICONS` | Technology representation |
+| `VCL-PROJECT-CARD` | Project representation |
+| `VCL-STATS` | Metrics visualization |
+| `VCL-CONTRIBUTION-GRAPH` | Contribution visualization |
+| `VCL-TYPING-BANNER` | Dynamic textual presentation |
+| `VCL-ARCHITECTURE-DIAGRAM` | Architecture visualization |
+| `VCL-WORKFLOW-DIAGRAM` | Process visualization |
+| `VCL-FOLDER-DIAGRAM` | Repository structure visualization |
+| `VCL-NAVIGATION-CARD` | Visual navigation |
+| `VCL-CALL-OUT` | Highlighted information |
+
+Esta tabla representa la taxonomía arquitectónica de la familia.
+
+El Component Catalog mantiene la clasificación global de:
+
+- implementación;
+- prioridad;
+- audiencia;
+- madurez;
+- descubrimiento.
+
+La VCL no deberá convertirse en una segunda fuente de esos datos.
+
+---
+
+# 198. Current Implementation Boundary
+
+El RDS reconoce actualmente las responsabilidades visuales de la VCL.
+
+La existencia de:
+
+- banners;
+- badges;
+- diagramas;
+- callouts;
+- iconos;
+- social previews;
+
+en GitHub Framework u otros consumidores no implica automáticamente que los Components correspondientes estén `Implemented`.
+
+La transición requiere una definición canónica reusable conforme al contrato general:
+
+```text
+Specification
+        +
+Metadata
+        +
+Sufficient Materialization
+```
+
+La práctica del consumidor constituye evidencia potencial.
+
+No constituye por sí sola implementación canónica.
+
+---
+
+# 199. Color System
+
+El sistema de color pertenece al Visual Design System.
 
 Los Visual Components deberán reutilizar sus roles y convenciones cuando corresponda.
 
-No deberán introducir colores arbitrarios que contradigan la identidad visual definida.
+No deberán introducir colores arbitrarios que contradigan la identidad o reglas definidas.
 
-Los colores concretos, tokens y variantes pertenecen a la fuente canónica del Visual Design System y no se duplican en la VCL.
+Los tokens concretos, variantes y decisiones cromáticas deberán permanecer en su fuente canónica.
+
+La VCL podrá referenciarlos.
+
+No deberá duplicarlos.
 
 ---
 
-# 140. Typography
+# 200. Typography
 
 Los Visual Components deberán respetar las reglas tipográficas definidas por el Visual Design System y las capacidades del medio donde se rendericen.
 
-En GitHub se priorizará la tipografía nativa y la legibilidad.
+En GitHub se priorizará:
+
+- tipografía nativa;
+- legibilidad;
+- compatibilidad;
+- accesibilidad.
 
 Se evitarán:
 
 - fuentes embebidas innecesarias;
 - imágenes utilizadas únicamente para representar texto;
-- efectos tipográficos que reduzcan accesibilidad o mantenibilidad.
-
-Las decisiones tipográficas canónicas pertenecen al Visual Design System.
+- efectos tipográficos que reduzcan comprensión;
+- dependencias externas sin valor suficiente.
 
 ---
 
-# 141. Spacing
+# 201. Spacing
 
-Los Visual Components deberán mantener una separación visual coherente con el contexto donde se utilicen.
+Los Visual Components deberán mantener una separación visual coherente con su contexto.
 
 Se evitarán:
 
 - bloques excesivamente densos;
 - encabezados consecutivos sin contenido;
 - separación irregular;
-- espacios introducidos artificialmente mediante hacks de Markdown o HTML.
+- hacks de Markdown o HTML;
+- espacios creados artificialmente mediante caracteres invisibles.
 
 Las reglas específicas de espaciado pertenecen al Visual Design System cuando estén definidas.
 
 ---
 
-# 142. Iconography
+# 202. Iconography
 
-Los Visual Components deberán utilizar iconografía consistente cuando resulte necesaria.
+Los Visual Components deberán utilizar iconografía coherente cuando resulte necesaria.
 
-Las fuentes podrán incluir, entre otras:
+Las fuentes podrán incluir:
 
 - Skill Icons;
 - Simple Icons;
 - GitHub Octicons;
-- assets propios mantenidos por el proyecto.
+- assets propios;
+- proveedores equivalentes.
 
-La selección deberá respetar las reglas del Visual Design System.
+La selección deberá respetar:
 
-No deberán mezclarse estilos visuales incompatibles sin justificación.
+- consistencia;
+- legibilidad;
+- licencia;
+- accesibilidad;
+- mantenimiento.
+
+No deberán mezclarse estilos incompatibles sin justificación.
 
 ---
 
-# 143. Image Policy
+# 203. Image Policy
 
-Las imágenes utilizadas por Visual Components deberán ser mantenibles y formar parte de una estrategia de assets identificable.
+Las imágenes utilizadas por Visual Components deberán formar parte de una estrategia mantenible.
 
 Cuando corresponda deberán:
 
 - estar versionadas;
-- almacenarse junto al proyecto o en una fuente controlada;
+- almacenarse en una fuente controlada;
 - optimizarse;
 - mantenerse actualizadas;
-- disponer de texto alternativo cuando sea necesario.
+- utilizar nombres comprensibles;
+- disponer de texto alternativo;
+- respetar licencias.
 
 Las dependencias externas deberán utilizarse únicamente cuando aporten una ventaja justificada.
 
-La ubicación física concreta de los assets dependerá de la estructura del Repository Template o del consumidor.
+La ubicación física dependerá del Repository Template o del consumidor.
 
 ---
 
-# 144. Dark Mode Compatibility
+# 204. Dark Mode Compatibility
 
-Los Visual Components deberán verificarse en los modos de visualización relevantes del medio donde se utilicen.
+Los Visual Components deberán verificarse en los modos de visualización relevantes.
 
-Para GitHub deberán considerarse, como mínimo:
+Para GitHub deberán considerarse, cuando corresponda:
 
-- GitHub Dark;
-- GitHub Light.
+```text
+GitHub Dark
+GitHub Light
+```
 
-Los Components no deberán depender exclusivamente de un único modo cuando esto comprometa su comprensión.
+Los Components no deberán depender exclusivamente de un único modo cuando ello comprometa:
+
+- legibilidad;
+- contraste;
+- comprensión;
+- reconocimiento.
+
+Las variantes podrán utilizarse cuando aporten una solución mantenible.
 
 ---
 
-# 145. Responsive Behavior
+# 205. Responsive Behavior
 
 Los Visual Components deberán conservar su comprensión en los tamaños de pantalla relevantes para su consumidor.
 
@@ -3631,30 +6243,119 @@ Cuando corresponda deberán evaluarse en:
 - tablet;
 - móvil.
 
-La validación deberá prestar especial atención a elementos con dimensiones amplias, texto integrado o información visual densa.
+Se prestará especial atención a:
+
+- assets muy anchos;
+- texto integrado en imágenes;
+- tablas visuales;
+- diagramas densos;
+- cards;
+- banners.
+
+La responsividad deberá perseguir comprensión.
+
+No uniformidad absoluta.
 
 ---
 
-# 146. Accessibility
+# 206. Accessibility
 
 Los Visual Components deberán respetar principios básicos de accesibilidad.
 
 Entre ellos:
 
-- mantener contraste suficiente;
+- contraste suficiente;
 - no depender únicamente del color;
-- utilizar texto alternativo cuando proceda;
-- evitar imágenes con exceso de información;
-- mantener legibilidad en diferentes tamaños;
-- evitar movimiento o efectos visuales innecesarios.
+- texto alternativo cuando proceda;
+- legibilidad;
+- tamaño adecuado;
+- movimiento limitado;
+- estructura comprensible;
+- información equivalente cuando una imagen sea esencial.
 
-Las reglas detalladas deberán mantenerse en el Visual Design System o en estándares especializados cuando existan.
+La accesibilidad forma parte del contrato de calidad visual.
+
+No constituye una mejora opcional posterior.
 
 ---
 
-# 147. Template Integration
+# 207. Visual Dependencies
 
-La composición de Visual Components pertenece a los Repository Templates y a las necesidades de presentación del proyecto.
+Los Visual Components podrán mantener dependencias únicamente cuando sean necesarias.
+
+Ejemplo:
+
+```text
+VCL-HERO
+        ↓ may rely on
+VCL-BANNER
+```
+
+solo cuando la Specification concreta lo establezca.
+
+El uso habitual conjunto no deberá interpretarse automáticamente como dependencia.
+
+Ejemplo:
+
+```text
+VCL-BANNER
++
+VCL-BADGES
+```
+
+puede representar complementariedad sin dependencia.
+
+Las dependencias reales deberán mantenerse en la definición canónica correspondiente.
+
+---
+
+# 208. Cross-Family Relationships
+
+Los Visual Components podrán complementar responsabilidades de otras familias.
+
+Ejemplos:
+
+```text
+README-HERO
+        ↔
+VCL-HERO
+```
+
+```text
+DOC-ARCHITECTURE
+        ↔
+VCL-ARCHITECTURE-DIAGRAM
+```
+
+```text
+WCL-RELEASE
+        ↔
+VCL-WORKFLOW-DIAGRAM
+```
+
+Estas relaciones deberán mantener responsabilidades separadas.
+
+La familia visual representa comunicación visual.
+
+No sustituye documentación, workflows ni contenido.
+
+---
+
+# 209. Repository Template Integration
+
+La composición de Visual Components pertenece a los Repository Templates y a las necesidades del consumidor.
+
+Modelo:
+
+```text
+Project Type
+        ↓
+Repository Template
+        ↓
+Visual Component Composition
+        ↓
+Required / Recommended / Optional
+```
 
 No existen Visual Profiles independientes como:
 
@@ -3665,102 +6366,187 @@ Learning
 Experimental
 ```
 
-Estos conceptos pertenecen al modelo de madurez cuando corresponda.
+La madurez constituye una dimensión independiente.
 
-El modelo correcto es:
-
-```text
-Project Type
-        ↓
-Repository Template
-        ↓
-Visual Component Composition
-        +
-Maturity Expectations
-```
-
-Los Maturity Profiles podrán incrementar expectativas de calidad, consistencia, accesibilidad o presentación.
-
-No determinan una matriz universal de Visual Components.
-
-Por tanto:
-
-```text
-Same maturity
-≠
-Same visual composition
-```
+El Repository Template define la composición contextual.
 
 ---
 
-# 148. Anti-Patterns
+# 210. Maturity Interaction
+
+Los Maturity Profiles podrán incrementar expectativas relacionadas con:
+
+- calidad visual;
+- consistencia;
+- mantenimiento;
+- accesibilidad;
+- presentación;
+- identidad.
+
+Sin embargo:
+
+```text
+Same maturity
+        ≠
+Same visual composition
+```
+
+Un repositorio estratégico no necesita necesariamente todos los Visual Components.
+
+La utilización deberá responder al proyecto real.
+
+---
+
+# 211. Visual Validation
+
+Los Visual Components implementados deberán validarse mediante consumidores representativos cuando resulte necesario.
+
+La validación podrá evaluar:
+
+- claridad;
+- reutilización;
+- adaptación;
+- legibilidad;
+- dark/light compatibility;
+- responsividad;
+- accesibilidad;
+- mantenimiento;
+- provider dependence;
+- consumer coupling.
+
+El dogfooding podrá utilizar GitHub Framework cuando exista una responsabilidad visual aplicable.
+
+No deberá forzarse adopción únicamente para demostrar cobertura.
+
+---
+
+# 212. Visual Anti-Patterns
 
 No utilizar:
 
 - elementos visuales sin propósito;
-- GIF decorativos;
+- GIF puramente decorativos;
 - badges excesivos;
 - fondos recargados;
 - iconografía inconsistente;
 - estadísticas sin valor informativo;
-- colores sin criterio;
+- colores arbitrarios;
 - tipografías artificiales;
 - imágenes de baja calidad;
 - Visual Components incorporados únicamente por madurez;
 - requirement levels definidos globalmente fuera de Repository Templates;
 - reglas del Visual Design System duplicadas dentro de Components;
 - dependencias innecesarias de proveedores externos;
-- elementos específicos de un consumidor generalizados sin evidencia de reutilización.
+- elementos específicos de un consumidor generalizados sin evidencia;
+- assets sin mantenimiento;
+- texto esencial disponible únicamente dentro de imágenes;
+- materializaciones inaccesibles;
+- Components distintos creados únicamente para pequeñas variantes estéticas.
 
 ---
 
-# 149. Visual Quality Gates
+# 213. Visual Component Quality Gates
 
-Antes de aprobar la composición visual de un repositorio deberá verificarse, según corresponda:
+Antes de promover un Visual Component a `Implemented` deberá verificarse:
+
+- [ ] El identificador `VCL-*` es único y estable.
+- [ ] El propósito está definido.
+- [ ] La responsabilidad visual está claramente delimitada.
+- [ ] Existe Specification canónica.
+- [ ] Existe Metadata canónica.
+- [ ] El mecanismo de materialización está identificado.
+- [ ] La materialización es suficiente para la responsabilidad.
+- [ ] No duplica reglas pertenecientes al Visual Design System.
+- [ ] No duplica otro Visual Component.
+- [ ] Las dependencias reales están identificadas.
+- [ ] Los assets pueden mantenerse cuando existen.
+- [ ] Los proveedores externos están justificados cuando se utilizan.
+- [ ] La accesibilidad ha sido considerada.
+- [ ] La compatibilidad visual ha sido evaluada cuando corresponde.
+- [ ] La adaptación del consumidor está suficientemente desacoplada.
+- [ ] La clasificación de implementación refleja la realidad.
+
+---
+
+# 214. Visual Composition Quality Gates
+
+Antes de aprobar la composición visual de un consumidor deberá verificarse, según corresponda:
 
 - [ ] Los Required Visual Components del Repository Template están correctamente materializados.
 - [ ] Cada elemento visual responde a una necesidad identificable.
-- [ ] Los Components adicionales aportan valor real.
-- [ ] La composición respeta las reglas aplicables del Visual Design System.
+- [ ] Los Components adicionales aportan valor.
+- [ ] La composición respeta el Visual Design System.
 - [ ] La información visual es legible.
-- [ ] La navegación visual es comprensible cuando exista.
+- [ ] La navegación visual es comprensible cuando existe.
 - [ ] Los assets son mantenibles.
-- [ ] La compatibilidad con los modos de visualización relevantes ha sido revisada.
-- [ ] El comportamiento responsive es adecuado cuando corresponde.
+- [ ] La compatibilidad con los modos relevantes ha sido revisada.
+- [ ] El comportamiento responsive es adecuado.
 - [ ] La accesibilidad ha sido considerada.
-- [ ] No existen elementos puramente decorativos que generen ruido innecesario.
-- [ ] No se duplican reglas mantenidas canónicamente en el Visual Design System.
+- [ ] No existen elementos puramente decorativos que generen ruido.
+- [ ] No se duplican reglas mantenidas canónicamente en otras fuentes.
+- [ ] La identidad específica del consumidor no ha sido generalizada innecesariamente.
 
 ---
 
-# 150. Long-Term Vision
+# 215. Long-Term Vision
 
-La Visual Component Library permitirá reutilizar responsabilidades visuales validadas cuando un repositorio necesite identidad, presentación, navegación o visualización técnica.
+La Visual Component Library permitirá reutilizar responsabilidades visuales validadas cuando un repositorio necesite:
+
+- identidad;
+- presentación;
+- navegación;
+- comunicación;
+- visualización técnica.
 
 Los Repository Templates podrán proporcionar composiciones visuales adecuadas a diferentes tipos de proyecto.
 
 Los repositorios podrán compartir lenguaje visual sin necesitar exactamente los mismos elementos gráficos.
 
-Con el tiempo, las especificaciones, assets y metadata podrán permitir:
+Con el tiempo, Specifications, Metadata y materializaciones podrán permitir:
 
 - resolución automática de Visual Components;
 - generación asistida de assets;
 - validación de consistencia visual;
 - comprobaciones de accesibilidad;
 - detección de assets obsoletos;
-- adaptación de variantes.
+- adaptación de variantes;
+- integración con herramientas de bootstrap.
 
-La automatización deberá consumir las fuentes canónicas del Visual Design System y de los Visual Components sin duplicarlas.
+La automatización deberá consumir las fuentes canónicas del Visual Design System y de los Visual Components.
+
+No deberá sustituirlas.
 
 ---
 
-# 151. Part 5 Conclusions
+# 216. Part 5 Conclusions
 
 La **Visual Component Library** convierte responsabilidades visuales recurrentes en elementos reutilizables del Framework.
 
-Banners, social previews, badges, tarjetas, diagramas y otros elementos podrán modelarse mediante Visual Components cuando exista una necesidad reutilizable.
+Cada Visual Component representa una responsabilidad diferenciada de las reglas globales del Visual Design System.
 
-Las reglas de color, tipografía, espaciado, accesibilidad, responsive behavior y compatibilidad visual pertenecen al Visual Design System y actúan como constraints sobre estos Components.
+El contrato general es:
+
+```text
+Visual Component
+        │
+        ├── Specification
+        ├── Metadata
+        └── Materialization when required
+```
+
+Los Visual Components podrán materializarse mediante:
+
+```text
+Assets
+Layouts
+Snippets
+Conventions
+Templates
+Configurations
+Composite mechanisms
+```
+
+según su naturaleza.
 
 Los Repository Templates determinan contextualmente qué Visual Components son:
 
@@ -3770,31 +6556,40 @@ Recommended
 Optional
 ```
 
-Los Maturity Profiles podrán incrementar las expectativas de calidad visual, pero no definen una composición universal.
+Los Maturity Profiles podrán incrementar expectativas visuales.
+
+No definen una composición universal.
 
 Por tanto:
 
 ```text
 Visual Design System
         +
-Reusable Visual Components
+Reusable Visual Responsibilities
         +
 Repository Template
         +
-Project needs
+Consumer Identity
         ↓
-Appropriate visual experience
+Appropriate Visual Experience
 ```
 
 La VCL no pretende que todos los repositorios tengan la misma apariencia.
 
-Pretende reutilizar responsabilidades visuales comunes manteniendo coherencia, claridad y capacidad de adaptación.
+Pretende reutilizar responsabilidades visuales comunes manteniendo:
+
+- coherencia;
+- claridad;
+- accesibilidad;
+- mantenibilidad;
+- capacidad de adaptación.
 
 ---
 
-# 152. Part 5 Versioning
+# 217. Part 5 Versioning
 
 El versionado de esta Part se gestiona mediante el Revision History global del Repository Design System.
+
 ---
 
 # 08 - REPOSITORY DESIGN SYSTEM
@@ -3805,305 +6600,805 @@ El versionado de esta Part se gestiona mediante el Revision History global del R
 
 ---
 
-# 153. Purpose
+# 218. Purpose
 
-La **Repository Template Library (RTL)** define composiciones reutilizables para crear y estructurar repositorios según su tipo de proyecto.
+La **Repository Template Library (RTL)** define composiciones reutilizables para crear, estructurar y evaluar repositorios según su tipo de proyecto.
 
 Cada Repository Template establece:
 
 - un tipo de proyecto;
-- un nivel mínimo de madurez recomendado;
+- una madurez mínima recomendada;
 - una composición de Framework Components;
-- reglas de aplicación y personalización.
+- requirement levels contextuales;
+- guidance de adopción;
+- reglas de especialización;
+- expectativas de conformidad.
 
-El objetivo consiste en reducir decisiones repetitivas durante la creación de repositorios y proporcionar una base coherente sin imponer tecnologías, estructuras o Components innecesarios.
+El objetivo consiste en reducir decisiones repetitivas durante la creación y evolución de repositorios sin imponer:
+
+- tecnologías concretas;
+- estructuras físicas innecesarias;
+- Components no aplicables;
+- modelos operativos universales;
+- una única madurez para todos los consumidores.
 
 ---
 
-# 154. Template Philosophy
+# 219. Template Philosophy
 
 Los Repository Templates no son repositorios completos ni copias rígidas de una estructura predeterminada.
 
-Son composiciones reutilizables del Framework.
-
-Cada Template selecciona únicamente los Components necesarios para representar un determinado tipo de repositorio y establece su requirement level dentro de esa composición.
+Representan **contratos de composición reutilizables**.
 
 Principio:
 
 ```text
-Components
-    ↓
-Reusable responsibilities
-    ↓
+Framework Components
+        ↓
+Reusable Responsibilities
+        ↓
 Repository Template
-    ↓
-Context-specific composition
+        ↓
+Contextual Composition
+        ↓
+Consumer Repository
 ```
 
-Un Template reutiliza Components.
+Un Template selecciona Components existentes.
 
 No redefine sus responsabilidades canónicas.
 
----
+Un Template podrá añadir guidance contextual cuando sea necesaria para explicar cómo aplicar una responsabilidad dentro del tipo de proyecto que representa.
 
-# 155. Template Architecture
-
-Un Repository Template se modela mediante:
-
-```text
-Repository Template
-├── Project Type
-├── Maturity
-├── Required Components
-├── Recommended Components
-├── Optional Components
-└── Template-specific guidance
-```
-
-El tipo de proyecto determina el contexto principal de la composición.
-
-La madurez representa el nivel mínimo recomendado para utilizar el Template y se registra como metadata.
-
-Los Components se clasifican dentro de cada Template como:
-
-```text
-Required
-Recommended
-Optional
-```
-
-El requirement level dentro de un Template es contextual y no modifica la prioridad canónica del Component en el Component Catalog.
+No deberá duplicar Specifications completas de Components.
 
 ---
 
-# 156. Maturity Levels
+# 220. Repository Template Responsibility
 
-GitHub Framework mantiene los niveles de madurez definidos por el sistema:
+Cada Repository Template representa una responsabilidad distinta de los Framework Components.
 
-| Level | Description |
-|---|---|
-| L1 | Experimental |
-| L2 | Public Basic |
-| L3 | Supporting |
-| L4 | Strategic |
+Los Framework Components responden:
 
-La madurez describe el nivel de evolución, mantenimiento y exigencia esperado para un repositorio o Component.
+```text
+What reusable responsibility exists?
+```
 
-No constituye un Repository Template independiente.
+Los Repository Templates responden:
+
+```text
+Which reusable responsibilities are appropriate
+for this project type?
+```
 
 Por tanto:
 
 ```text
-TPL-DOCUMENTATION
-maturity: L2
+Component
+        ↓
+Defines responsibility
+
+Repository Template
+        ↓
+Defines composition
 ```
 
-No se modelará mediante:
+La separación deberá mantenerse explícita.
+
+Un Template no deberá convertirse en una nueva fuente canónica de responsabilidades ya definidas por Components.
+
+---
+
+# 221. Template Canonical Definition
+
+Un Repository Template implementado deberá disponer de una definición canónica compuesta al menos por:
 
 ```text
-TPL-DOCUMENTATION
-+
-TPL-L2
+Repository Template
+        │
+        ├── Specification
+        └── Metadata
 ```
 
-La evolución de madurez podrá requerir incorporar nuevos Components o prácticas, pero no implica cambiar el tipo de Repository Template.
+La Specification deberá explicar:
 
----
+- propósito;
+- tipo de proyecto;
+- alcance;
+- límites;
+- composición;
+- requirement levels;
+- guidance;
+- especialización;
+- extensibilidad;
+- criterios de adopción.
 
-# 157. L1 — Experimental Maturity Profile
+La Metadata deberá proporcionar una representación estructurada de:
 
-## Purpose
+- identidad;
+- versión;
+- status;
+- project type;
+- maturity;
+- descripción;
+- Components;
+- requirement levels;
+- información adicional necesaria para automatización futura.
 
-Explorar y validar ideas con una inversión estructural mínima.
-
-## Typical Projects
-
-- pruebas;
-- prototipos;
-- investigación;
-- spikes técnicos.
-
-## Characteristics
-
-- estructura mínima;
-- documentación esencial;
-- Components limitados a necesidades reales;
-- automatización opcional;
-- cambios frecuentes permitidos.
-
-L1 no define una estructura física ni un Repository Template específico.
-
----
-
-# 158. L2 — Public Basic Maturity Profile
-
-## Purpose
-
-Mantener un repositorio público comprensible y utilizable.
-
-## Characteristics
-
-- identidad y propósito claros;
-- licencia cuando corresponda;
-- documentación de uso suficiente;
-- estado visible;
-- historial de cambios cuando exista versionado;
-- prácticas básicas de mantenimiento.
-
-L2 constituye actualmente el nivel mínimo recomendado para los Repository Templates implementados.
-
----
-
-# 159. L3 — Supporting Maturity Profile
-
-## Purpose
-
-Mantener proyectos públicos relevantes con mayor profundidad documental y operativa.
-
-## Characteristics
-
-- documentación técnica ampliada;
-- testing documentado;
-- roadmap cuando exista evolución planificada;
-- automatización de calidad;
-- procesos de contribución y revisión cuando sean necesarios;
-- mayor trazabilidad de decisiones.
-
-L3 amplía las expectativas de mantenimiento sin constituir un Template independiente.
-
----
-
-# 160. L4 — Strategic Maturity Profile
-
-## Purpose
-
-Mantener repositorios estratégicos con alta exigencia de calidad, gobernanza y continuidad.
-
-## Characteristics
-
-- documentación profunda;
-- gobernanza explícita;
-- automatización avanzada cuando aporte valor;
-- seguridad y mantenimiento continuado;
-- trazabilidad de decisiones;
-- releases y evolución controlada;
-- alta calidad de presentación y experiencia de uso.
-
-L4 representa el nivel de madurez más exigente del Framework.
-
-No obliga a incorporar todos los Components existentes.
-
----
-
-# 161. Repository Template Catalog
-
-La Repository Template Library se organiza por tipo de proyecto.
-
-Los Repository Templates implementados actualmente son:
-
-| Template | Project Type | Maturity | Status |
-|---|---|---:|---|
-| `TPL-BACKEND` | Backend | L2 | Experimental |
-| `TPL-FULLSTACK` | Full Stack | L2 | Experimental |
-| `TPL-DOCUMENTATION` | Documentation | L2 | Experimental |
-
-Estos Templates constituyen las composiciones canónicas disponibles actualmente en:
+La implementación canónica se mantiene actualmente en:
 
 ```text
 framework/templates/repositories/
 ```
 
-Otros tipos de proyecto podrán originar nuevos Repository Templates cuando exista un caso de uso real que justifique su incorporación.
+---
 
-Entre los tipos potenciales se encuentran:
+# 222. Template Identity
+
+Todo Repository Template oficial deberá disponer de un identificador estable.
+
+Formato actual:
 
 ```text
-AI
-Library
-Website
+TPL-NAME
 ```
 
-Estos tipos no constituyen Templates oficiales mientras no dispongan de una especificación, composición, implementación y validación dentro del Framework.
+Ejemplos:
+
+```text
+TPL-BACKEND
+TPL-FULLSTACK
+TPL-DOCUMENTATION
+```
+
+El identificador deberá:
+
+- ser único;
+- utilizar el prefijo `TPL-`;
+- permanecer estable entre versiones compatibles;
+- representar un tipo de composición reutilizable;
+- evitar referencias a tecnologías concretas cuando estas no definan realmente el tipo de proyecto.
+
+Los identificadores no deberán reutilizarse para Templates diferentes.
+
+---
+
+# 223. Template Architecture
+
+Un Repository Template se modela conceptualmente mediante:
+
+```text
+Repository Template
+        │
+        ├── Identity
+        ├── Project Type
+        ├── Version
+        ├── Lifecycle Status
+        ├── Maturity
+        ├── Required Components
+        ├── Recommended Components
+        ├── Optional Components
+        └── Template-specific Guidance
+```
+
+El tipo de proyecto determina el contexto principal.
+
+La madurez expresa el nivel mínimo recomendado.
+
+Los requirement levels expresan la importancia contextual de cada Component dentro del Template.
+
+Estas dimensiones deberán mantenerse separadas.
+
+---
+
+# 224. Project Type
+
+El `project_type` identifica la naturaleza principal del repositorio para el que se diseña el Template.
+
+Ejemplos actualmente implementados:
+
+```text
+Backend
+Full Stack
+Documentation
+```
+
+El tipo de proyecto deberá representar una diferencia suficientemente significativa como para justificar una composición distinta.
+
+No deberá crearse un Repository Template nuevo únicamente por:
+
+- lenguaje;
+- framework;
+- proveedor cloud;
+- base de datos;
+- una diferencia menor de tooling;
+- una variante de madurez.
+
+Ejemplo:
+
+```text
+Spring Boot backend
+FastAPI backend
+Django backend
+```
+
+podrán consumir:
+
+```text
+TPL-BACKEND
+```
+
+si sus responsabilidades estructurales continúan siendo equivalentes.
+
+---
+
+# 225. Template Requirement Levels
+
+Cada Repository Template clasifica sus Components mediante tres requirement levels.
+
+## Required
+
+El Component forma parte del contrato mínimo del Template.
+
+Su responsabilidad deberá estar satisfecha para considerar al consumidor conforme, salvo desviación explícitamente justificada.
+
+## Recommended
+
+El Component aporta valor habitual para ese tipo de proyecto.
+
+Su necesidad final depende del contexto del consumidor.
+
+Su ausencia no invalida por sí sola la conformidad.
+
+## Optional
+
+El Component resulta aplicable únicamente cuando existe una necesidad concreta.
+
+No deberá incorporarse únicamente para aumentar cobertura.
+
+Modelo:
+
+```text
+Component
+        +
+Repository Template
+        ↓
+Requirement Level
+```
+
+El requirement level es contextual.
+
+No modifica la definición canónica del Component.
+
+---
+
+# 226. Requirement Level Independence
+
+Los requirement levels deberán mantenerse separados de otras propiedades.
+
+Por tanto:
+
+```text
+Component Priority
+        ≠
+Template Requirement Level
+```
+
+```text
+Component Maturity
+        ≠
+Template Requirement Level
+```
+
+```text
+Component Availability
+        ≠
+Template Requirement Level
+```
+
+```text
+Lifecycle Status
+        ≠
+Template Requirement Level
+```
+
+Un Component con prioridad canónica `Recommended` podrá ser `required` dentro de un Repository Template concreto cuando su responsabilidad forme parte del contrato mínimo del tipo de proyecto.
+
+Del mismo modo, un Component implementado podrá no formar parte de una composición determinada.
+
+---
+
+# 227. Template Composition Model
+
+La composición canónica seguirá el modelo:
+
+```text
+Repository Template
+        │
+        ├── required
+        ├── recommended
+        └── optional
+```
+
+Cada Component deberá aparecer como máximo en un único requirement level dentro del mismo Template.
+
+No deberán existir duplicados entre:
+
+```text
+required
+recommended
+optional
+```
+
+La ausencia de un Component del Template significa que su responsabilidad no forma parte de la composición canónica.
+
+No significa que el Component sea inválido o incompatible con el consumidor.
+
+---
+
+# 228. Component Availability
+
+Los Repository Templates podrán referenciar Framework Components clasificados como:
+
+```text
+Implemented
+Conceptual
+```
+
+La clasificación de implementación describe la disponibilidad de una capacidad canónica reusable dentro del Framework.
+
+No determina el requirement level contextual.
+
+Por tanto:
+
+```text
+Implementation Classification
+        ≠
+Template Requirement Level
+```
+
+Un Component `Conceptual` podrá ser:
+
+```text
+required
+recommended
+optional
+```
+
+cuando su responsabilidad pertenezca legítimamente al contrato del Template.
+
+En estos casos deberá quedar claro que:
+
+- la responsabilidad está reconocida;
+- no existe todavía implementación canónica reusable;
+- el consumidor deberá satisfacerla mediante una materialización apropiada;
+- el Framework no deberá presentar un artefacto inexistente como disponible.
+
+---
+
+# 229. Consumer Conformance
+
+La conformidad de un repositorio consumidor se evalúa contra responsabilidades.
+
+No únicamente contra disponibilidad de Framework Components.
 
 Principio:
 
 ```text
-Potential Project Type
-        ↓
-Real use case
-        ↓
-Template specification
-        ↓
-Implementation
-        ↓
-Validation
-        ↓
-Official Repository Template
+Component Availability
+        ≠
+Consumer Conformance
 ```
 
-La Repository Template Library evoluciona mediante necesidades reales y no mediante la creación anticipada de Templates.
+Un consumidor podrá satisfacer una responsabilidad mediante:
+
+- implementación canónica del Framework;
+- especialización permitida;
+- implementación propia compatible;
+- mecanismo equivalente que satisfaga el contrato.
+
+Ejemplo conceptual:
+
+```text
+README-LICENSE
+        ↓
+Framework classification: Conceptual
+        ↓
+Consumer materialization: LICENSE + README reference
+        ↓
+Responsibility satisfied
+```
+
+Por tanto, un Repository Template puede mantener una responsabilidad `required` aunque el Component correspondiente permanezca `Conceptual`.
 
 ---
 
-# 162. TPL-BACKEND
+# 230. Responsibility Satisfaction
 
-`TPL-BACKEND` define la composición base para repositorios cuyo producto principal es una aplicación o servicio backend.
+Una responsabilidad se considerará satisfecha cuando la implementación del consumidor cumpla razonablemente el contrato que representa el Component.
 
-Características:
+La evaluación deberá considerar:
+
+- propósito;
+- contenido o comportamiento;
+- evidencia;
+- constraints;
+- relaciones necesarias;
+- materialización;
+- adaptación permitida.
+
+No deberá utilizarse únicamente:
 
 ```text
+filename exists
+```
+
+como prueba universal de satisfacción.
+
+Por ejemplo:
+
+```text
+CI file exists
+        ≠
+WCL-CI satisfied
+```
+
+si el workflow no realiza la responsabilidad definida.
+
+---
+
+# 231. Consumer Specialization
+
+Un repositorio consumidor podrá especializar Components cuando su contexto lo requiera.
+
+La especialización podrá afectar a:
+
+- contenido;
+- parámetros;
+- configuración;
+- implementación tecnológica;
+- estructura física;
+- mecanismos operativos;
+- profundidad documental.
+
+La especialización deberá preservar la responsabilidad canónica.
+
+Modelo:
+
+```text
+Canonical Component
+        ↓
+Consumer Context
+        ↓
+Specialized Materialization
+```
+
+No deberá utilizarse especialización para justificar una responsabilidad completamente diferente.
+
+---
+
+# 232. Template Specialization
+
+Un Repository Template podrá especializar la utilización de un Framework Component para su tipo de proyecto.
+
+La especialización podrá afectar a:
+
+- requirement level;
+- guidance;
+- contexto;
+- orden recomendado;
+- parámetros;
+- relaciones relevantes;
+- expectativas de materialización.
+
+No deberá redefinir la Specification canónica del Component.
+
+Ejemplo:
+
+```text
+DOC-API
+        ↓
+TPL-BACKEND
+        ↓
+API-oriented guidance
+```
+
+La responsabilidad `DOC-API` permanece independiente del Template.
+
+---
+
+# 233. Template Extensibility
+
+Un repositorio consumidor podrá incorporar Components adicionales no incluidos en la composición canónica cuando exista una necesidad real.
+
+Modelo:
+
+```text
+Repository Template
+        ↓
+Canonical Composition
+        +
+Consumer-specific Components
+        ↓
+Repository Implementation
+```
+
+La extensión deberá:
+
+- estar justificada;
+- evitar duplicación;
+- respetar dependencias;
+- mantener coherencia;
+- no modificar el Template canónico únicamente por una necesidad específica.
+
+Cuando una extensión aparezca repetidamente en consumidores equivalentes deberá evaluarse si el Repository Template necesita evolucionar.
+
+---
+
+# 234. Maturity Profiles
+
+GitHub Framework mantiene cuatro niveles de madurez:
+
+| Level | Description |
+| --- | --- |
+| L1 | Experimental |
+| L2 | Public Basic |
+| L3 | Supporting |
+| L4 | Strategic |
+
+Los Maturity Profiles expresan expectativas de:
+
+- calidad;
+- mantenimiento;
+- documentación;
+- automatización;
+- gobernanza;
+- continuidad.
+
+No constituyen Repository Templates.
+
+Por tanto, no existen Templates como:
+
+```text
+TPL-L1
+TPL-L2
+TPL-L3
+TPL-L4
+```
+
+La madurez constituye una dimensión independiente.
+
+---
+
+# 235. L1 — Experimental
+
+## Purpose
+
+Explorar y validar ideas con una inversión estructural mínima.
+
+## Typical Characteristics
+
+Podrá incluir:
+
+- estructura reducida;
+- documentación esencial;
+- pocos Components;
+- automatización opcional;
+- alto ritmo de cambio;
+- contratos todavía inestables.
+
+L1 no define una composición universal.
+
+Tampoco exige un Repository Template específico.
+
+---
+
+# 236. L2 — Public Basic
+
+## Purpose
+
+Mantener un repositorio público comprensible y razonablemente utilizable.
+
+## Typical Characteristics
+
+Podrá incluir:
+
+- identidad clara;
+- propósito comprensible;
+- licencia cuando corresponda;
+- documentación de uso;
+- estado visible;
+- prácticas básicas de mantenimiento;
+- historial cuando exista versionado.
+
+L2 constituye actualmente la madurez mínima recomendada para los Repository Templates implementados.
+
+---
+
+# 237. L3 — Supporting
+
+## Purpose
+
+Mantener proyectos relevantes con mayor profundidad técnica y operativa.
+
+## Typical Characteristics
+
+Podrá incluir:
+
+- documentación técnica ampliada;
+- testing mantenido;
+- CI;
+- Roadmap;
+- procesos de revisión;
+- contribución;
+- mayor trazabilidad;
+- automatización de calidad;
+- prácticas de mantenimiento.
+
+L3 incrementa expectativas.
+
+No obliga a incorporar todos los Components de estas áreas.
+
+---
+
+# 238. L4 — Strategic
+
+## Purpose
+
+Mantener repositorios estratégicos con alta exigencia de calidad, gobernanza y continuidad.
+
+## Typical Characteristics
+
+Podrá incluir:
+
+- documentación profunda;
+- gobernanza explícita;
+- seguridad mantenida;
+- automatización avanzada;
+- releases controladas;
+- trazabilidad;
+- continuidad operativa;
+- procesos de mantenimiento;
+- alta calidad de presentación.
+
+L4 representa la madurez más exigente definida actualmente.
+
+No constituye una lista obligatoria de Components.
+
+---
+
+# 239. Maturity and Composition
+
+La madurez no determina directamente la composición.
+
+Principio:
+
+```text
+Maturity
+        ↓
+Quality and Maintenance Expectations
+```
+
+mientras:
+
+```text
+Project Type
+        ↓
+Repository Template
+        ↓
+Component Composition
+```
+
+Por tanto:
+
+```text
+Same maturity
+        ≠
+Same components
+```
+
+Dos repositorios L3 podrán utilizar composiciones sustancialmente diferentes.
+
+La madurez podrá justificar expectativas adicionales sobre Components seleccionados, pero no deberá convertirse en una matriz automática.
+
+---
+
+# 240. Repository Template Catalog
+
+Los Repository Templates implementados actualmente son:
+
+| Template | Project Type | Maturity | Lifecycle | Implementation |
+| --- | --- | :---: | --- | --- |
+| `TPL-BACKEND` | Backend | L2 | Experimental | Implemented |
+| `TPL-FULLSTACK` | Full Stack | L2 | Experimental | Implemented |
+| `TPL-DOCUMENTATION` | Documentation | L2 | Experimental | Implemented |
+
+Las definiciones canónicas se mantienen en:
+
+```text
+framework/templates/repositories/
+```
+
+El Component Catalog proporciona descubrimiento y clasificación global.
+
+La RTL no deberá duplicar en detalle las composiciones canónicas de estos Templates.
+
+---
+
+# 241. TPL-BACKEND
+
+`TPL-BACKEND` representa repositorios cuyo producto principal es una aplicación, servicio o capacidad backend.
+
+Características actuales:
+
+```text
+id: TPL-BACKEND
 project_type: Backend
 maturity: L2
 status: Experimental
 ```
 
-La composición canónica del Template se mantiene en:
+La composición canónica se mantiene en:
 
 ```text
 framework/templates/repositories/backend/
 ```
 
-El Template reutiliza Components relacionados con responsabilidades como:
+El Template podrá utilizar responsabilidades relacionadas con:
 
-- presentación del proyecto;
+- presentación;
 - arquitectura;
 - API;
 - persistencia;
 - testing;
 - documentación;
 - despliegue;
-- evolución del proyecto.
+- evolución;
+- workflows.
 
-La selección exacta y sus requirement levels pertenecen a la especificación canónica del Template y no se duplican en este documento.
+La selección exacta pertenece a su Metadata y Specification.
+
+No se duplica en el RDS.
 
 ---
 
-# 163. Backend Template Guidance
+# 242. Backend Template Guidance
 
-`TPL-BACKEND` no presupone un framework, lenguaje, base de datos o estrategia de despliegue concretos.
+`TPL-BACKEND` no presupone:
 
-Puede aplicarse, entre otros, a proyectos desarrollados con:
+- lenguaje;
+- framework;
+- base de datos;
+- arquitectura concreta;
+- proveedor cloud;
+- estrategia de despliegue.
 
-- Spring Boot;
-- FastAPI;
-- Django;
-- otros stacks backend equivalentes.
+Podrá aplicarse, por ejemplo, a:
 
-Tecnologías como Docker, Kubernetes, OpenAPI o sistemas de observabilidad deberán incorporarse únicamente cuando respondan a necesidades reales del proyecto.
+```text
+Spring Boot
+FastAPI
+Django
+NestJS
+Other backend stacks
+```
+
+si la responsabilidad principal del repositorio continúa siendo backend.
+
+Las tecnologías constituyen decisiones del consumidor.
 
 El Template define responsabilidades.
 
-El proyecto consumidor decide su implementación tecnológica.
-
 ---
 
-# 164. TPL-FULLSTACK
+# 243. TPL-FULLSTACK
 
-`TPL-FULLSTACK` define la composición base para repositorios que integran responsabilidades frontend y backend dentro de un mismo proyecto.
+`TPL-FULLSTACK` representa repositorios que integran responsabilidades frontend y backend dentro de la misma unidad de proyecto.
 
-Características:
+Características actuales:
 
 ```text
+id: TPL-FULLSTACK
 project_type: Full Stack
 maturity: L2
 status: Experimental
@@ -4115,7 +7410,7 @@ La composición canónica se mantiene en:
 framework/templates/repositories/fullstack/
 ```
 
-El Template puede incorporar responsabilidades relacionadas con:
+Podrá incorporar responsabilidades relacionadas con:
 
 - presentación;
 - arquitectura;
@@ -4125,19 +7420,28 @@ El Template puede incorporar responsabilidades relacionadas con:
 - persistencia;
 - testing;
 - documentación;
-- despliegue.
+- despliegue;
+- workflows.
 
-La composición exacta deberá consultarse siempre en la especificación canónica del Template.
+El RDS no mantiene una segunda copia de esa composición.
 
 ---
 
-# 165. TPL-DOCUMENTATION
+# 244. TPL-DOCUMENTATION
 
-`TPL-DOCUMENTATION` define la composición base para repositorios cuyo producto principal es documentación técnica, conocimiento estructurado, estándares o guías.
+`TPL-DOCUMENTATION` representa repositorios cuyo producto principal es:
 
-Características:
+- documentación técnica;
+- conocimiento estructurado;
+- estándares;
+- guías;
+- documentación de Framework;
+- sistemas equivalentes de conocimiento.
+
+Características actuales:
 
 ```text
+id: TPL-DOCUMENTATION
 project_type: Documentation
 maturity: L2
 status: Experimental
@@ -4149,127 +7453,263 @@ La composición canónica se mantiene en:
 framework/templates/repositories/documentation/
 ```
 
-El Template combina README Components y Documentation Components para proporcionar:
+GitHub Framework ha sido utilizado como primera Reference Implementation de `TPL-DOCUMENTATION` mediante dogfooding.
 
-- identidad;
-- estado;
-- overview;
-- navegación documental;
-- arquitectura;
-- estado operativo;
-- historial de cambios;
-- licencia;
-- cierre y navegación.
+La validación permitió comprobar:
 
-GitHub Framework se utiliza como primera Reference Implementation de este Template mediante dogfooding y se encuentra actualmente en proceso de validación.
+- composición;
+- responsibilities `required`;
+- disponibilidad de Components;
+- consumer conformance;
+- especialización;
+- gaps del Framework.
 
----
-
-# 166. Future Repository Templates
-
-La arquitectura admite la incorporación futura de nuevos tipos de Repository Template.
-
-Entre los candidatos identificados se encuentran:
-
-- AI;
-- Library;
-- Website.
-
-Su presencia en esta lista no implica que formen parte actualmente de la Repository Template Library.
-
-Un nuevo Template deberá incorporarse únicamente cuando:
-
-- exista al menos un caso de uso real;
-- los Components necesarios estén identificados;
-- la composición pueda generalizarse;
-- no pueda resolverse adecuadamente mediante un Template existente;
-- exista una implementación que permita validarlo.
-
-No se crearán Templates especulativos para cubrir escenarios todavía no utilizados.
+El resultado de la Reference Implementation fue conforme tras resolver los findings aplicables.
 
 ---
 
-# 167. Template Requirement Levels
+# 245. Repository Template Reference Implementation
 
-Cada Repository Template clasifica sus Components mediante tres requirement levels.
+Un Repository Template deberá poder validarse mediante un consumidor representativo antes de considerarse suficientemente maduro para adopción general.
 
-## Required
-
-Responsabilidades necesarias para satisfacer el contrato mínimo del Template.
-
-La ausencia de uno de estos Components deberá considerarse una desviación y justificarse explícitamente.
-
-## Recommended
-
-Components que aportan valor habitual al tipo de repositorio, pero cuya necesidad depende del proyecto consumidor.
-
-Su ausencia no invalida por sí sola la conformidad.
-
-## Optional
-
-Components aplicables únicamente cuando exista una necesidad concreta.
-
-No deberán incorporarse para aumentar artificialmente la cobertura del Template.
-
-El requirement level es contextual al Repository Template.
-
-No modifica la prioridad, madurez o definición canónica del Component.
-
----
-
-# 168. Template Composition Model
-
-La composición de un Repository Template sigue el modelo:
+Modelo:
 
 ```text
 Repository Template
-        │
-        ├── Required
-        │
-        ├── Recommended
-        │
-        └── Optional
+        ↓
+Reference Implementation
+        ↓
+Conformance Analysis
+        ↓
+Findings
+        ↓
+Refinement
+        ↓
+Validated Contract
 ```
 
-Los Maturity Profiles no mantienen una matriz global rígida de Components.
+La Reference Implementation deberá permitir detectar:
 
-Dos Templates con la misma madurez pueden necesitar composiciones distintas.
+- Template Gaps;
+- Component Gaps;
+- Consumer Gaps;
+- documentación inconsistente;
+- requirement levels incorrectos;
+- responsabilidades redundantes;
+- necesidades de especialización.
 
-Ejemplo conceptual:
+La Reference Implementation no deberá modificarse únicamente para conseguir un resultado favorable.
 
-```text
-TPL-BACKEND
-maturity: L2
-        │
-        └── Backend-oriented composition
-```
-
-```text
-TPL-DOCUMENTATION
-maturity: L2
-        │
-        └── Documentation-oriented composition
-```
-
-Por tanto:
-
-```text
-Same maturity
-≠
-Same components
-```
-
-La composición canónica pertenece siempre a cada Repository Template.
+Los findings deberán clasificarse primero.
 
 ---
 
-# 169. Workflow Composition
+# 246. Gap Classification
 
-Los Repository Templates pueden requerir o recomendar Workflow Components cuando el tipo de proyecto y su contexto operativo lo justifiquen.
+Durante una validación podrán aparecer diferentes tipos de gap.
 
-La madurez puede incrementar las expectativas de mantenimiento, pero no define por sí sola una matriz universal de workflows.
+## Consumer Gap
 
-Principio:
+El Repository Template es adecuado, pero el consumidor no satisface correctamente una responsabilidad.
+
+## Template Gap
+
+La composición o guidance del Repository Template no representa correctamente el tipo de proyecto.
+
+## Component Gap
+
+La responsabilidad es correcta, pero el Framework Component:
+
+- no existe;
+- permanece conceptual;
+- tiene un contrato insuficiente;
+- necesita evolución.
+
+## Framework Gap
+
+El problema afecta a una capacidad arquitectónica más amplia del Framework.
+
+La clasificación deberá producirse antes de decidir dónde aplicar el cambio.
+
+---
+
+# 247. Conformance Analysis
+
+La conformidad de un consumidor deberá evaluarse respecto al Repository Template aplicable.
+
+Modelo:
+
+```text
+Repository Template
+        ↓
+Required Responsibilities
+        ↓
+Consumer Materialization
+        ↓
+Conformance Analysis
+```
+
+Los Components `recommended` y `optional` deberán evaluarse únicamente cuando hayan sido adoptados o cuando su ausencia represente un finding contextual relevante.
+
+La ausencia de un Component `optional` no constituye defecto.
+
+La ausencia de un `recommended` tampoco invalida automáticamente la conformidad.
+
+---
+
+# 248. Conformance Result
+
+Una Reference Implementation deberá poder producir un resultado explícito.
+
+Ejemplos:
+
+```text
+CONFORMANT
+PARTIAL
+NON-CONFORMANT
+```
+
+El vocabulario concreto podrá evolucionar mediante Standards o automatización futura.
+
+El resultado deberá estar respaldado por evidencia.
+
+No deberá inferirse únicamente por percepción general de calidad.
+
+Un resultado inicial no conforme puede ser válido y útil cuando permite descubrir gaps reales.
+
+---
+
+# 249. Template Lifecycle
+
+Los Repository Templates seguirán un lifecycle controlado.
+
+Estados reconocidos:
+
+```text
+Draft
+Experimental
+Stable
+Deprecated
+Retired
+```
+
+Flujo habitual:
+
+```text
+Draft
+        ↓
+Experimental
+        ↓
+Stable
+        ↓
+Deprecated
+        ↓
+Retired
+```
+
+La transición no deberá producirse únicamente por antigüedad.
+
+Deberá basarse en evidencia.
+
+---
+
+# 250. Draft Templates
+
+Un Repository Template `Draft` se encuentra en definición o implementación inicial.
+
+Podrá cambiar significativamente.
+
+No deberá presentarse como Template validado para adopción general.
+
+Podrá utilizarse para:
+
+- diseño;
+- experimentación;
+- implementación inicial;
+- preparación de Reference Implementations.
+
+---
+
+# 251. Experimental Templates
+
+Un Repository Template `Experimental` dispone de una implementación material suficiente para ser utilizado y validado.
+
+Podrá:
+
+- contener Components `Conceptual`;
+- utilizarse mediante dogfooding;
+- participar en Reference Implementations;
+- descubrir gaps;
+- evolucionar su composición.
+
+El estado `Experimental` no significa puramente conceptual.
+
+Debe existir una implementación real del Template.
+
+Los Templates actuales se encuentran en este estado.
+
+---
+
+# 252. Stable Templates
+
+Un Repository Template podrá evolucionar a `Stable` cuando exista evidencia suficiente de que su contrato es:
+
+- coherente;
+- reutilizable;
+- mantenible;
+- validado;
+- suficientemente estable.
+
+Antes de promoverlo deberá verificarse, como mínimo:
+
+- identidad definida;
+- Specification y Metadata sincronizadas;
+- composición validada;
+- responsabilidades `required` satisfacibles;
+- Quality Gates evaluables;
+- evidencia representativa de uso;
+- gaps críticos resueltos o explícitamente aceptados;
+- ausencia de contradicciones conocidas con el RDS.
+
+La presencia de Components `Conceptual` no impide automáticamente la promoción.
+
+La decisión deberá basarse en la estabilidad del contrato y la capacidad demostrada de satisfacer sus responsabilidades.
+
+---
+
+# 253. Deprecated and Retired Templates
+
+## Deprecated
+
+Un Repository Template `Deprecated` continúa registrado por compatibilidad o trazabilidad, pero no deberá recomendarse para nuevas adopciones.
+
+Deberá indicar, cuando corresponda:
+
+- motivo;
+- alternativa;
+- impacto;
+- estrategia de migración.
+
+## Retired
+
+Un Repository Template `Retired` no deberá utilizarse para nuevas adopciones.
+
+Su definición podrá conservarse para:
+
+- trazabilidad;
+- historial;
+- migraciones;
+- comprensión de consumidores existentes.
+
+Un Template no debería evolucionar directamente de `Stable` a `Retired` sin pasar por `Deprecated`, salvo razón excepcional documentada.
+
+---
+
+# 254. Workflow Composition
+
+Los Repository Templates podrán incorporar Workflow Components cuando el tipo de proyecto y sus necesidades operativas lo justifiquen.
+
+Modelo:
 
 ```text
 Project Type
@@ -4278,69 +7718,162 @@ Repository Needs
 +
 Maturity Expectations
         ↓
-Appropriate Workflow Components
+Workflow Component Composition
 ```
 
-Un repositorio documental y un backend pueden compartir nivel L2 y, sin embargo, necesitar workflows diferentes.
+La madurez podrá aumentar expectativas operativas.
 
-Los Workflow Components deberán seleccionarse por responsabilidad y necesidad real.
+No determina automáticamente los Workflow Components.
+
+Un backend y un repositorio documental con madurez L2 pueden necesitar workflows diferentes.
+
+La disponibilidad de un Workflow Component tampoco determina su selección.
 
 ---
 
-# 170. Maturity Evolution
+# 255. Visual Composition
 
-Un repositorio puede evolucionar progresivamente entre Maturity Profiles.
+Los Repository Templates podrán incorporar Visual Components cuando exista una responsabilidad visual aplicable.
 
-```text id="template007"
-L1
+Modelo:
 
-↓
-
-L2
-
-↓
-
-L3
-
-↓
-
-L4
+```text
+Project Type
++
+Communication Needs
++
+Visual Design System
+        ↓
+Visual Component Composition
 ```
 
-Esta evolución no requiere recrear el repositorio ni sustituir necesariamente su Repository Template.
+No todos los repositorios necesitarán:
 
-La promoción de madurez puede implicar:
+- banner;
+- social preview;
+- diagrams;
+- cards;
+- visual assets.
 
-- incorporar nuevos Components;
-- reforzar documentación;
-- mejorar workflows;
-- introducir automatización;
-- aumentar controles de calidad;
-- formalizar gobernanza.
-
-La evolución deberá responder a necesidades reales y no a la acumulación automática de Components.
+La composición deberá mantenerse contextual.
 
 ---
 
-# 171. Maturity Upgrade Checklist
+# 256. Documentation Composition
 
-Antes de promocionar la madurez de un repositorio deberá comprobarse:
+Los Repository Templates seleccionan Documentation Components según las responsabilidades documentales del tipo de proyecto.
 
-- [ ] La necesidad de promoción está justificada.
-- [ ] La metadata refleja la madurez objetivo.
-- [ ] Los Required Components del Repository Template siguen satisfechos.
-- [ ] Los nuevos Components incorporados responden a necesidades reales.
-- [ ] La documentación refleja el nuevo nivel operativo.
-- [ ] Los workflows necesarios están definidos.
-- [ ] Los controles de calidad son adecuados.
-- [ ] La gobernanza requerida está disponible.
-- [ ] No se ha introducido complejidad únicamente para satisfacer el perfil.
+Ejemplo conceptual:
+
+```text
+TPL-BACKEND
+        ↓
+Architecture
+API
+Testing
+Deployment
+```
+
+mientras:
+
+```text
+TPL-DOCUMENTATION
+        ↓
+Architecture
+Project Status
+Changelog
+References
+```
+
+Las composiciones exactas deberán consultarse en las fuentes canónicas.
+
+El RDS únicamente define el modelo.
 
 ---
 
-# 172. Bootstrap Strategy
+# 257. README Composition
 
-Todo nuevo repositorio basado en la RTL seguirá conceptualmente:
+Los Repository Templates seleccionan README Components para proporcionar una entrada adecuada al tipo de proyecto.
+
+Todos los repositorios no necesitan necesariamente:
+
+- Demo;
+- Author;
+- Architecture summary;
+- Roadmap;
+- Testing section;
+- Repository Structure.
+
+La composición deberá favorecer:
+
+```text
+Understand
+        ↓
+Trust
+        ↓
+Use
+```
+
+sin convertir el README en documentación completa.
+
+---
+
+# 258. Template Dependencies
+
+Un Repository Template no deberá introducir dependencias entre Components si dichas dependencias no existen realmente.
+
+La inclusión conjunta de:
+
+```text
+Component A
++
+Component B
+```
+
+no implica:
+
+```text
+A requires B
+```
+
+Las dependencias pertenecen a las definiciones canónicas de los Components.
+
+El Template realiza composición.
+
+No inventa relaciones estructurales.
+
+---
+
+# 259. Template Materialization
+
+Un Repository Template podrá disponer de artefactos físicos adicionales cuando exista una necesidad reusable real.
+
+Ejemplos potenciales:
+
+```text
+template files
+directory skeleton
+configuration defaults
+bootstrap artifacts
+```
+
+Sin embargo, la existencia de una estructura material idéntica para todos los Templates no es obligatoria.
+
+Principio:
+
+```text
+Conceptual consistency
+        >
+Filesystem symmetry
+```
+
+No deberán crearse directorios vacíos únicamente para aparentar que un Template dispone de materialización adicional.
+
+---
+
+# 260. Bootstrap Strategy
+
+Todo nuevo repositorio basado en Repository Templates seguirá conceptualmente:
 
 ```text
 Identify Project Type
@@ -4349,11 +7882,13 @@ Select Repository Template
         ↓
 Review Maturity
         ↓
-Apply Required Components
+Apply Required Responsibilities
         ↓
 Evaluate Recommended Components
         ↓
 Add Optional Components when justified
+        ↓
+Configure Consumer Context
         ↓
 Configure Workflows
         ↓
@@ -4362,111 +7897,206 @@ Validate
 Publish
 ```
 
-El Template proporciona una base.
+El Repository Template proporciona una base reusable.
 
 No sustituye las decisiones específicas del proyecto.
 
 ---
 
-# 173. Automation Vision
+# 261. Repository Migration
 
-La arquitectura de Repository Templates está preparada para soportar automatización futura.
+Un repositorio existente podrá adoptar un Repository Template de forma incremental.
 
-Una herramienta podrá utilizar metadata canónica para:
+Modelo:
 
 ```text
+Existing Repository
+        ↓
+Identify Project Type
+        ↓
 Select Repository Template
         ↓
-Read Template Metadata
+Conformance Analysis
         ↓
-Resolve Components
+Gap Classification
         ↓
-Collect Parameters
+Migration Plan
         ↓
-Materialize Repository
+Implementation
         ↓
-Validate Result
+Validation
 ```
 
-La automatización deberá consumir las especificaciones existentes.
+No será necesario recrear el repositorio.
 
-No deberá introducir una segunda definición de Templates o Components.
+La migración deberá perseguir responsabilidades útiles.
 
-La generación automática no forma parte todavía del contrato de la RTL.
-
----
-
-# 174. Template Versioning
-
-Cada Repository Template mantiene versionado independiente.
-
-Los cambios deberán reflejar la evolución de su contrato, composición o guidance.
-
-La actualización de un Template no obliga automáticamente a migrar los repositorios consumidores.
-
-Las migraciones deberán evaluarse según:
-
-- impacto;
-- compatibilidad;
-- valor;
-- necesidad real.
+No conformidad mecánica.
 
 ---
 
-# 175. Compatibility Rules
+# 262. Template Versioning
 
-Los Repository Templates deberán mantener compatibilidad razonable entre versiones siempre que sea posible.
+Cada Repository Template mantiene versionado independiente mediante Semantic Versioning.
 
-Un cambio incompatible en el contrato deberá:
+```text
+Major.Minor.Patch
+```
+
+## Major
+
+Cambio incompatible del contrato.
+
+## Minor
+
+Nueva capacidad o evolución compatible relevante.
+
+## Patch
+
+Corrección compatible.
+
+Una nueva versión global de GitHub Framework no obliga a modificar la versión de todos los Repository Templates.
+
+---
+
+# 263. Template Compatibility
+
+Los Repository Templates deberán mantener compatibilidad razonable siempre que sea posible.
+
+Un cambio incompatible deberá:
 
 - estar justificado;
-- documentarse;
 - reflejarse en el versionado;
-- proporcionar guidance de migración cuando existan consumidores afectados.
+- documentarse;
+- identificar consumidores afectados;
+- proporcionar guidance de migración cuando corresponda.
 
-La compatibilidad se evaluará sobre responsabilidades y contratos, no sobre una estructura física rígida.
+La compatibilidad deberá evaluarse sobre:
+
+- responsabilidades;
+- composición;
+- contratos;
+- metadata.
+
+No sobre estructuras accidentales que no formen parte del Template.
 
 ---
 
-# 176. Anti-Patterns
+# 264. Future Repository Templates
+
+La arquitectura admite nuevos tipos de Repository Template.
+
+Entre tipos de proyecto potencialmente identificados se encuentran:
+
+```text
+AI
+Library
+Website
+```
+
+Estos tipos no constituyen Templates oficiales mientras no exista:
+
+- un caso de uso real;
+- una composición diferenciada;
+- Specification;
+- Metadata;
+- implementación;
+- validación.
+
+Flujo:
+
+```text
+Potential Project Type
+        ↓
+Real Use Case
+        ↓
+Template Specification
+        ↓
+Implementation
+        ↓
+Reference Implementation
+        ↓
+Validation
+        ↓
+Official Template
+```
+
+No se crearán Templates especulativos únicamente para aumentar cobertura.
+
+---
+
+# 265. Template Anti-Patterns
 
 No utilizar:
 
 - Templates gigantes;
+- Templates especulativos;
+- Templates por tecnología sin necesidad arquitectónica;
 - Components innecesarios;
-- Templates especulativos sin consumidor real;
-- duplicación de especificaciones canónicas;
-- matrices universales de Components basadas únicamente en madurez;
+- composiciones basadas únicamente en madurez;
+- requirement levels heredados sin análisis;
+- duplicación de Specifications de Components;
 - estructuras físicas rígidas sin necesidad;
-- requirement levels heredados sin evaluar el contexto;
-- Templates distintos para proyectos equivalentes;
-- Components creados únicamente para conseguir conformidad.
+- Components añadidos únicamente para obtener conformidad;
+- Template forks por pequeñas variaciones;
+- Components conceptuales presentados como materialmente disponibles;
+- consumer-specific decisions incorporadas prematuramente al Template;
+- múltiples Templates para necesidades equivalentes.
 
 ---
 
-# 177. Quality Gates
+# 266. Repository Template Quality Gates
 
-Antes de aprobar un Repository Template deberá verificarse:
+Antes de aprobar o evolucionar un Repository Template deberá verificarse:
 
+- [ ] El identificador `TPL-*` es único y estable.
 - [ ] El tipo de proyecto está claramente identificado.
+- [ ] Existe una necesidad reusable real.
 - [ ] La madurez recomendada está definida.
+- [ ] Existe Specification.
+- [ ] Existe Metadata.
 - [ ] Los Components `required` representan el contrato mínimo.
 - [ ] Los Components `recommended` aportan valor habitual.
 - [ ] Los Components `optional` responden a escenarios reales.
-- [ ] No se duplican especificaciones canónicas de Components.
-- [ ] La estructura física no se impone sin necesidad.
-- [ ] La composición puede reutilizarse en más de un proyecto equivalente.
-- [ ] Existe un caso de uso real.
-- [ ] El Template puede validarse mediante implementación, Reference Implementation o dogfooding.
-- [ ] Las decisiones específicas del Template están documentadas.
+- [ ] No existen duplicados entre requirement levels.
+- [ ] Todos los Component IDs están reconocidos por el Framework.
+- [ ] No se duplican Specifications canónicas de Components.
+- [ ] Las dependencias no se redefinen artificialmente.
+- [ ] La composición puede reutilizarse en proyectos equivalentes.
+- [ ] Las decisiones específicas del consumidor permanecen fuera del contrato.
+- [ ] La disponibilidad de Components se representa correctamente.
+- [ ] La conformidad puede evaluarse por responsabilidad.
+- [ ] Existe o puede existir una Reference Implementation representativa.
+- [ ] Los gaps críticos están resueltos o registrados.
 
 ---
 
-# 178. Long-Term Vision
+# 267. Stable Promotion Gate
 
-La Repository Template Library permitirá iniciar nuevos repositorios reutilizando composiciones validadas del Framework.
+La promoción:
 
-Cada Template representará una configuración mantenible de responsabilidades adaptada a un tipo de proyecto.
+```text
+Experimental
+        ↓
+Stable
+```
+
+deberá producirse únicamente cuando:
+
+- los Quality Gates aplicables hayan sido evaluados;
+- exista evidencia representativa de adopción o validación;
+- el contrato sea suficientemente estable;
+- no existan gaps críticos sin resolver o explícitamente aceptados.
+
+La antigüedad de un Template no constituye evidencia suficiente.
+
+---
+
+# 268. Long-Term Vision
+
+La Repository Template Library permitirá iniciar y evolucionar repositorios reutilizando composiciones validadas del Framework.
+
+Cada Template representará un contrato mantenible adaptado a un tipo de proyecto.
 
 La evolución futura podrá incorporar:
 
@@ -4474,170 +8104,817 @@ La evolución futura podrá incorporar:
 - validación automática;
 - resolución de Components;
 - generación asistida;
-- migraciones entre versiones.
+- migraciones;
+- análisis de conformidad;
+- configuración de Workflow Components;
+- integración con Framework Automation.
 
-La automatización deberá construirse sobre el modelo declarativo existente y no sustituirlo.
+La automatización deberá construirse sobre el modelo declarativo existente.
+
+No deberá sustituirlo.
 
 ---
 
-# 179. Part 6 Conclusions
+# 269. Part 6 Conclusions
 
-La **Repository Template Library** transforma la creación de repositorios en un proceso basado en composición.
+La **Repository Template Library** transforma la creación y evolución de repositorios en un proceso basado en composición reusable.
 
-Los Repository Templates representan tipos de proyecto.
-
-Los Maturity Profiles representan expectativas de evolución y mantenimiento.
-
-Los Components representan responsabilidades reutilizables.
+Los elementos principales mantienen responsabilidades diferenciadas:
 
 ```text
-Components
+Framework Components
         ↓
+Reusable Responsibilities
+
 Repository Templates
         ↓
-Repository Implementation
+Contextual Composition
+
+Maturity Profiles
         ↓
-Maturity Evolution
+Quality and Maintenance Expectations
+
+Repository Implementations
+        ↓
+Consumer-specific Materialization
 ```
 
-Esta separación evita convertir la madurez en una segunda jerarquía de Templates y permite que proyectos diferentes compartan nivel de madurez sin necesitar la misma composición.
+La conformidad se evalúa sobre responsabilidades.
 
-La RTL proporciona así una arquitectura extensible, reutilizable y preparada para futuras capacidades de validación y generación.
+No exclusivamente sobre disponibilidad física de Components.
+
+Por tanto:
+
+```text
+Component Availability
+        ≠
+Consumer Conformance
+```
+
+Los Templates podrán incluir Components `Conceptual` cuando su responsabilidad pertenezca legítimamente al contrato.
+
+Los consumidores podrán satisfacer esas responsabilidades mediante implementaciones equivalentes mientras respeten su propósito.
+
+La validación mediante Reference Implementations y dogfooding proporciona evidencia para refinar:
+
+- Components;
+- Templates;
+- Standards;
+- arquitectura.
+
+La RTL proporciona así una arquitectura:
+
+- extensible;
+- reutilizable;
+- verificable;
+- compatible con diferentes tipos de proyecto;
+- preparada para automatización futura.
 
 ---
 
-# 180. Part 6 Versioning
+# 270. Part 6 Versioning
 
 El versionado de esta Part se gestiona mediante el Revision History global del Repository Design System.
 
 ---
 
-# 181. Purpose
+# 08 - REPOSITORY DESIGN SYSTEM
 
-Esta sección define la gobernanza oficial del **Repository Design System (RDS)**.
+# Part 7/7
 
-Su objetivo consiste en garantizar que el sistema:
-
-* permanezca coherente;
-* evolucione de forma controlada;
-* mantenga compatibilidad;
-* pueda aplicarse a futuros proyectos sin rediseños completos.
-
-El RDS deja de ser un conjunto de documentos.
-
-Se convierte en un producto mantenido.
+# RDS Governance, Validation & Evolution
 
 ---
 
-# 182. Governance Philosophy
+# 271. Purpose
 
-Todo elemento mantenido por el RDS deberá evolucionar siguiendo principios similares al software.
+Esta Part define la gobernanza, validación y evolución del **Repository Design System (RDS)**.
 
-Cambios:
+Su objetivo consiste en garantizar que GitHub Framework:
 
-* pequeños;
-* revisables;
-* documentados;
-* versionados;
-* compatibles cuando sea posible.
+- permanezca coherente;
+- evolucione de forma controlada;
+- mantenga fuentes canónicas identificables;
+- gestione compatibilidad;
+- pueda incorporar nuevas capacidades sin rediseños completos;
+- valide sus decisiones mediante implementación real.
+
+El RDS no constituye únicamente documentación arquitectónica.
+
+Representa un producto mantenido que gobierna responsabilidades reutilizables, composición y evolución del Framework.
 
 ---
 
-# 183. Framework Element Lifecycle
+# 272. Governance Philosophy
 
-Todo elemento reutilizable mantenido por el RDS deberá evolucionar mediante un ciclo controlado.
+Todo elemento mantenido por el RDS deberá evolucionar mediante cambios:
+
+- pequeños cuando sea posible;
+- revisables;
+- trazables;
+- documentados;
+- versionados;
+- compatibles cuando resulte razonable;
+- respaldados por necesidades reales.
+
+La arquitectura deberá favorecer:
+
+```text
+Reuse
+        ↓
+Refinement
+        ↓
+Extension
+        ↓
+New Capability
+```
+
+La creación de nuevas abstracciones deberá ser la última opción.
+
+---
+
+# 273. Framework Element Lifecycle
+
+Todo elemento reutilizable mantenido por el RDS podrá evolucionar mediante un lifecycle controlado.
+
+Modelo conceptual:
 
 ```text
 Idea
-    ↓
+        ↓
 Specification
-    ↓
+        ↓
 Implementation
-    ↓
+        ↓
 Validation
-    ↓
+        ↓
 Adoption
-    ↓
+        ↓
 Maintenance
-    ↓
+        ↓
 Deprecation
-    ↓
+        ↓
 Retirement
 ```
 
-Este ciclo podrá aplicarse, según corresponda, a:
+Este lifecycle podrá aplicarse, según corresponda, a:
 
 - Framework Components;
 - Repository Templates;
-- convenciones reutilizables del Design System.
+- otras capacidades reutilizables gobernadas por el RDS.
 
 La implementación no implica estabilidad automática.
 
-Un elemento deberá validarse mediante uso real, Reference Implementation o dogfooding antes de considerarse suficientemente maduro para adopción general.
-
-No existirán elementos oficiales permanentes sin mantenimiento.
+La validación mediante uso real deberá producir evidencia suficiente antes de recomendar adopción general.
 
 ---
 
-# 184. Framework Element States
+# 274. Lifecycle States
 
-Los elementos oficiales del RDS utilizarán, cuando corresponda, estados explícitos de evolución.
+Los elementos oficiales podrán utilizar estados explícitos de evolución.
 
 | State | Meaning |
-|---|---|
-| Draft | En diseño |
+| --- | --- |
+| Draft | En diseño o implementación inicial |
 | Experimental | Implementado y en validación |
 | Stable | Validado para uso recomendado |
-| Deprecated | Sigue disponible, pero existe una alternativa preferida |
+| Deprecated | Disponible por compatibilidad, pero sustituido |
 | Retired | Fuera del catálogo activo |
 
-El estado deberá registrarse en la fuente canónica correspondiente.
+El lifecycle status deberá mantenerse en la fuente canónica correspondiente.
 
-El paso entre estados deberá estar respaldado por evidencia de implementación, validación o mantenimiento.
+No deberá inferirse únicamente a partir de:
 
-Los Repository Templates y Framework Components podrán evolucionar de forma independiente.
+- antigüedad;
+- existencia física;
+- número de consumidores;
+- versión global de GitHub Framework.
 
 ---
 
-# 185. Component Registry
+# 275. Implementation Classification vs Lifecycle Status
 
-El **Component Catalog** constituye el registro central de los Framework Components reconocidos por el sistema.
+La clasificación:
 
-El catálogo proporciona una vista global de:
+```text
+Conceptual
+Implemented
+```
+
+representa disponibilidad material.
+
+Los estados:
+
+```text
+Draft
+Experimental
+Stable
+Deprecated
+Retired
+```
+
+representan lifecycle.
+
+Por tanto:
+
+```text
+Implementation Classification
+        ≠
+Lifecycle Status
+```
+
+Ejemplo:
+
+```text
+WCL-CI
+implementation: Implemented
+status: Experimental
+```
+
+será válido cuando exista una materialización canónica pero todavía se encuentre en validación.
+
+Un Component `Conceptual` no deberá presentarse como `Stable`.
+
+---
+
+# 276. Canonical Source Governance
+
+Cada elemento reutilizable deberá mantener una fuente canónica identificable.
+
+Modelo:
+
+```text
+RDS
+        ↓
+Architecture
+
+Component Specification + Metadata
+        ↓
+Canonical Component Definition
+
+Repository Template Specification + Metadata
+        ↓
+Canonical Template Definition
+
+Component Catalog
+        ↓
+Discovery and Classification
+
+Reference Implementation
+        ↓
+Validation Evidence
+```
+
+Las fuentes deberán mantenerse sincronizadas.
+
+Cuando exista contradicción, deberá resolverse determinando qué artefacto es responsable de la información afectada.
+
+---
+
+# 277. Component Catalog Governance
+
+El **Component Catalog** constituye el registro central de descubrimiento de Framework Components y Repository Templates.
+
+Deberá proporcionar una vista global de:
 
 - identificadores;
 - familias;
 - responsabilidades;
-- prioridades;
-- madurez;
-- estado;
+- priority;
+- audience;
+- maturity;
+- implementation classification;
+- lifecycle status;
+- localización canónica;
 - relaciones relevantes.
 
-Las especificaciones y metadata de cada Component constituyen su definición canónica cuando exista una implementación dentro de:
+No deberá duplicar Specifications completas.
+
+Las diferencias entre el Catalog y las fuentes canónicas deberán considerarse deuda del Design System.
+
+---
+
+# 278. Catalog Synchronization
+
+Cuando un Component evolucione de:
 
 ```text
-framework/components/
+Conceptual
+        ↓
+Implemented
 ```
+
+deberá sincronizarse el Component Catalog.
+
+La sincronización deberá reflejar, según corresponda:
+
+- Implementation;
+- canonical location;
+- status;
+- version;
+- metadata relevante;
+- registry summary.
+
+La actualización del catálogo no constituye por sí sola la implementación.
+
+Deberá producirse como consecuencia de una fuente canónica real.
+
+---
+
+# 279. Repository Template Governance
+
+Los Repository Templates deberán evolucionar independientemente cuando su contrato lo requiera.
+
+La gobernanza deberá controlar:
+
+- composición;
+- requirement levels;
+- maturity;
+- versionado;
+- lifecycle;
+- compatibilidad;
+- Reference Implementations;
+- consumidores conocidos;
+- gaps.
+
+Un cambio en un Framework Component no obliga automáticamente a modificar todos los Templates que lo referencian.
+
+Deberá evaluarse impacto real.
+
+---
+
+# 280. Workflow Component Governance
+
+Los Workflow Components deberán respetar adicionalmente el contrato definido en la Workflow Component Library.
+
+Todo `WCL-*` deberá mantener, cuando esté `Implemented`:
+
+```text
+Specification
+        +
+Metadata
+        +
+Sufficient Materialization
+```
+
+La gobernanza deberá verificar que el mecanismo de materialización corresponda a la responsabilidad.
+
+No deberá exigir:
+
+```text
+GitHub Actions
+```
+
+como mecanismo universal.
+
+Podrán coexistir Components:
+
+- ejecutables;
+- no ejecutables;
+- configuracionales;
+- basados en community files;
+- basados en convenciones;
+- compuestos.
+
+---
+
+# 281. Executable Workflow Governance
+
+Los Workflow Components ejecutables deberán recibir especial atención debido a su impacto operativo.
+
+Cuando corresponda deberán revisarse:
+
+- permisos;
+- secrets;
+- triggers;
+- third-party actions;
+- dependency versions;
+- outputs;
+- failure behavior;
+- logs;
+- artifacts;
+- portability;
+- maintenance.
+
+Los cambios que amplíen privilegios o superficie de ataque deberán tratarse como cambios relevantes incluso cuando no modifiquen la identidad del Component.
+
+---
+
+# 282. Workflow Materialization Evolution
+
+Un Workflow Component podrá evolucionar su mecanismo de materialización sin cambiar necesariamente su responsabilidad.
+
+Ejemplo:
+
+```text
+WCL-CI
+        ↓
+initial GitHub Actions workflow
+        ↓
+reusable workflow
+```
+
+podrá constituir una evolución compatible si el contrato permanece equivalente.
+
+Sin embargo:
+
+```text
+Change in responsibility
+```
+
+podrá requerir:
+
+- nueva versión;
+- actualización de Specification;
+- revisión de consumidores;
+- posible cambio incompatible.
+
+La materialización no deberá convertirse en la identidad del Component.
+
+---
+
+# 283. Framework Review Triggers
+
+Los elementos del RDS deberán revisarse cuando:
+
+- aparezca una necesidad real nueva;
+- una Reference Implementation revele un gap;
+- el dogfooding contradiga una decisión existente;
+- se detecte duplicación;
+- evolucione GitHub o una dependencia relevante;
+- cambie el comportamiento de una plataforma;
+- aparezca deuda de diseño;
+- una Specification diverja de su implementación;
+- la Metadata quede desincronizada;
+- un Repository Template deje de representar correctamente a sus consumidores.
+
+La revisión deberá producir cambios únicamente cuando exista evidencia suficiente.
+
+---
+
+# 284. Change Classification
+
+Los cambios relevantes del RDS deberán clasificarse antes de aplicarse.
+
+Podrán afectar a:
+
+- arquitectura;
+- Framework Component;
+- Repository Template;
+- Metadata;
+- Catalog;
+- Standard;
+- Reference Implementation;
+- consumer configuration;
+- governance.
+
+La clasificación ayuda a evitar cambios aplicados en el artefacto equivocado.
+
+Ejemplo:
+
+```text
+Consumer problem
+        ≠
+Automatic Framework change
+```
+
+Primero deberá determinarse la naturaleza real del finding.
+
+---
+
+# 285. Gap Classification
+
+Los findings podrán clasificarse como:
+
+## Consumer Gap
+
+El consumidor no satisface correctamente un contrato válido.
+
+## Component Gap
+
+La responsabilidad es correcta, pero el Component:
+
+- no existe;
+- permanece conceptual;
+- tiene Specification insuficiente;
+- tiene Metadata insuficiente;
+- necesita mejor materialización.
+
+## Template Gap
+
+La composición o guidance del Repository Template es incorrecta o insuficiente.
+
+## Standard Gap
+
+Las reglas prácticas no cubren adecuadamente un patrón validado.
+
+## Framework Gap
+
+Existe una limitación arquitectónica transversal.
+
+## Documentation Gap
+
+La implementación es correcta, pero la documentación está incompleta o desactualizada.
+
+La clasificación deberá preceder a la solución.
+
+---
+
+# 286. Reference Implementation Governance
+
+Las Reference Implementations constituyen evidencia de validación.
+
+No forman parte del contrato canónico de un Component o Template.
+
+Deberán utilizarse para:
+
+- comprobar responsabilidades;
+- evaluar conformance;
+- detectar gaps;
+- validar materialización;
+- comprobar dependencias;
+- evaluar mantenibilidad;
+- descubrir simplificaciones.
+
+No deberán modificarse artificialmente únicamente para obtener un resultado `CONFORMANT`.
+
+Los resultados iniciales no conformes pueden constituir evidencia valiosa.
+
+---
+
+# 287. Dogfooding Governance
+
+GitHub Framework utilizará dogfooding cuando el propio repositorio sea un consumidor legítimo de la capacidad evaluada.
+
+El dogfooding deberá seguir:
+
+```text
+Canonical Capability
+        ↓
+Consumer Adoption
+        ↓
+Validation
+        ↓
+Findings
+        ↓
+Refinement
+```
+
+No:
+
+```text
+Existing Practice
+        ↓
+Declare Component Implemented
+```
+
+La práctica previa del proyecto constituye evidencia potencial.
+
+No sustituye la extracción y gobernanza de una capacidad reusable.
+
+---
+
+# 288. Validation Philosophy
+
+La validación deberá comprobar contratos reales.
+
+No únicamente estructuras.
 
 Principio:
 
 ```text
-Component Catalog
-        ↓
-Global discovery and classification
-
-Component specification + metadata
-        ↓
-Canonical component definition
+Responsibility
+        >
+Filename
 ```
 
-El catálogo no deberá duplicar en detalle las especificaciones mantenidas por cada Component.
+```text
+Behavior
+        >
+Presence
+```
 
-Las diferencias entre catálogo y definición canónica deberán considerarse deuda del Design System y resolverse mediante sincronización.
+```text
+Conformance
+        >
+Visual Similarity
+```
+
+La validación deberá permitir detectar falsas conformidades producidas por archivos existentes que no satisfacen realmente la responsabilidad.
 
 ---
 
-# 186. Versioning Strategy
+# 289. Framework Component Validation
+
+La validación de un Framework Component podrá incluir:
+
+- Specification review;
+- Metadata validation;
+- materialization review;
+- dependency validation;
+- consumer adoption;
+- Reference Implementation;
+- dogfooding;
+- Quality Gates;
+- execution testing cuando corresponda;
+- security review para Components ejecutables.
+
+El tipo de validación deberá adaptarse a la responsabilidad.
+
+---
+
+# 290. Workflow Component Validation
+
+Los Workflow Components deberán validar adicionalmente su comportamiento operativo cuando corresponda.
+
+Para Components ejecutables podrá incluir:
+
+- trigger execution;
+- success path;
+- failure path;
+- permissions;
+- outputs;
+- logs;
+- compatibility;
+- configurability.
+
+Para Components no ejecutables podrá incluir:
+
+- claridad;
+- adopción;
+- consistency;
+- usability;
+- absence of ambiguity;
+- maintenance effort.
+
+No se deberá utilizar una única estrategia de validación para todos los `WCL-*`.
+
+---
+
+# 291. Repository Validation
+
+La validación de un repositorio deberá comprobar su conformidad con las responsabilidades que realmente le correspondan.
+
+Modelo:
+
+```text
+Repository Template
+        ↓
+Required Components
+        ↓
+Consumer Materialization
+        ↓
+Conformance Analysis
+        ↓
+Findings
+        ↓
+Validation Result
+```
+
+La validación podrá incluir:
+
+- README;
+- documentación;
+- workflows;
+- metadata;
+- visual responsibilities;
+- governance;
+- GRS Assessment cuando corresponda.
+
+Los Components `recommended` y `optional` deberán evaluarse contextualmente.
+
+---
+
+# 292. Validation Evidence
+
+Las decisiones de validación deberán estar respaldadas por evidencia suficiente.
+
+La evidencia podrá incluir:
+
+- archivos;
+- Metadata;
+- workflow runs;
+- logs;
+- test results;
+- screenshots;
+- reports;
+- GitHub configuration;
+- repository state;
+- manual review results.
+
+La cantidad de evidencia deberá ser proporcional al riesgo y complejidad.
+
+No deberá generarse evidencia innecesaria únicamente para aumentar formalidad.
+
+---
+
+# 293. Conformance Results
+
+Los procesos de validación podrán utilizar resultados como:
+
+```text
+CONFORMANT
+PARTIAL
+NON-CONFORMANT
+```
+
+cuando este vocabulario resulte aplicable.
+
+Un resultado deberá acompañarse de:
+
+- scope;
+- responsabilidades evaluadas;
+- gaps relevantes;
+- decisiones;
+- excepciones aceptadas cuando existan.
+
+La conformidad deberá ser reproducible razonablemente por otro maintainer.
+
+---
+
+# 294. Quality Gate Philosophy
+
+Los Quality Gates deberán proteger calidad real.
+
+No deberán convertirse en checklists burocráticos.
+
+Un Quality Gate deberá existir cuando permita detectar:
+
+- inconsistencia;
+- deuda;
+- riesgo;
+- duplicación;
+- ausencia de responsabilidad;
+- materialización insuficiente;
+- dependencia incorrecta;
+- problemas de mantenimiento;
+- problemas de seguridad.
+
+Los Quality Gates deberán evolucionar a partir de findings reales.
+
+---
+
+# 295. RDS Quality Gates
+
+Antes de aprobar una evolución relevante del Repository Design System deberá verificarse:
+
+- [ ] Las responsabilidades afectadas están correctamente identificadas.
+- [ ] Los Framework Components afectados están registrados.
+- [ ] Los Repository Templates afectados están sincronizados.
+- [ ] La Metadata refleja la implementación real.
+- [ ] El Component Catalog está alineado.
+- [ ] La compatibilidad ha sido evaluada.
+- [ ] Las fuentes canónicas no se contradicen.
+- [ ] La documentación aplicable está actualizada.
+- [ ] Los examples o Reference Implementations siguen siendo válidos.
+- [ ] Los gaps encontrados están resueltos o registrados.
+- [ ] La gobernanza refleja los cambios relevantes.
+- [ ] No se ha introducido duplicación innecesaria.
+- [ ] El cambio responde a una necesidad demostrada.
+
+---
+
+# 296. Definition of Done
+
+Una capacidad reusable del Repository Design System se considerará suficientemente implementada cuando se cumplan los criterios aplicables.
+
+## Specification
+
+- [ ] Su responsabilidad está definida.
+- [ ] Su alcance y límites son claros.
+- [ ] La fuente canónica está identificada.
+
+## Metadata
+
+- [ ] Existe Metadata cuando corresponda.
+- [ ] La Metadata está sincronizada.
+- [ ] La identidad es estable.
+
+## Implementation
+
+- [ ] Existe materialización suficiente cuando la responsabilidad la requiere.
+- [ ] No duplica responsabilidades existentes.
+- [ ] Las dependencias reales están declaradas.
+- [ ] La implementación es reusable razonablemente.
+
+## Validation
+
+- [ ] Existe evidencia de uso real, Reference Implementation o dogfooding cuando corresponde.
+- [ ] Los gaps encontrados están resueltos o registrados.
+- [ ] Los Quality Gates aplicables están satisfechos.
+
+## Governance
+
+- [ ] El cambio es trazable.
+- [ ] El Catalog está sincronizado cuando corresponde.
+- [ ] La documentación de gobierno está actualizada cuando corresponde.
+- [ ] El versionado refleja cambios contractuales relevantes.
+
+La automatización futura no constituye un requisito general para considerar implementada una responsabilidad que no la necesita.
+
+---
+
+# 297. Versioning Strategy
 
 GitHub Framework utilizará Semantic Versioning para los artefactos versionables del RDS.
 
@@ -4647,248 +8924,131 @@ Major.Minor.Patch
 
 ## Major
 
-Cambios incompatibles en responsabilidades, contratos o modelos públicos.
+Cambios incompatibles en:
+
+- responsabilidades;
+- contratos;
+- composición;
+- arquitectura pública.
 
 ## Minor
 
-Nuevas capacidades compatibles, Components, Repository Templates o ampliaciones relevantes.
+Nuevas capacidades compatibles o ampliaciones significativas.
 
 ## Patch
 
 Correcciones compatibles que no modifican sustancialmente el contrato.
 
-Los Framework Components y Repository Templates podrán mantener versiones independientes de la versión global del proyecto.
-
-Una nueva versión de GitHub Framework no obliga automáticamente a modificar la versión de todos sus elementos.
+Los Framework Components y Repository Templates podrán mantener versiones independientes.
 
 ---
 
-# 187. Compatibility Policy
+# 298. Compatibility Policy
 
-La evolución del RDS deberá preservar compatibilidad razonable siempre que sea posible.
+La evolución deberá preservar compatibilidad razonable siempre que sea posible.
 
 Los cambios incompatibles deberán:
 
 - estar justificados;
-- reflejarse en el versionado correspondiente;
+- reflejarse en versionado;
 - documentarse;
-- identificar los consumidores afectados;
-- proporcionar guidance de migración cuando sea necesario.
+- identificar consumidores;
+- evaluar impacto;
+- proporcionar guidance de migración cuando resulte necesario.
 
-La compatibilidad se evaluará principalmente sobre responsabilidades y contratos.
-
-No se garantizará compatibilidad con estructuras accidentales que no formen parte de una especificación canónica.
+No deberá mantenerse compatibilidad con estructuras accidentales que nunca formaron parte de un contrato canónico.
 
 ---
 
-# 188. Deprecation Policy
+# 299. Deprecation Policy
 
 Cuando un Framework Component, Repository Template u otro elemento oficial sea sustituido:
 
-- cambiará su estado a `Deprecated`;
+- deberá evolucionar a `Deprecated`;
 - permanecerá documentado durante un periodo razonable;
 - indicará la alternativa recomendada;
-- identificará las implicaciones de migración;
+- identificará implicaciones de migración;
 - mantendrá compatibilidad temporal cuando sea viable.
 
-La retirada definitiva deberá producirse de forma explícita mediante el estado:
+La retirada definitiva se representará mediante:
 
 ```text
 Retired
 ```
 
-Un elemento no desaparecerá del sistema activo sin una decisión documentada.
+Un elemento no deberá desaparecer silenciosamente del Framework.
 
 ---
 
-# 189. Ownership
+# 300. Ownership
 
 Todo elemento mantenido por el RDS deberá tener ownership identificable.
 
-Actualmente, el mantenimiento principal del sistema corresponde a:
+Actualmente, el mantenimiento principal corresponde a:
 
 ```text
 Owner
-
 Fran Ramirez
 ```
 
-En el futuro podrán existir varios Maintainers o responsables especializados por familia, Component o Repository Template.
+En el futuro podrán existir:
+
+- Maintainers;
+- CODEOWNERS;
+- responsables por familia;
+- responsables por Component;
+- responsables por Repository Template.
 
 El ownership deberá permitir identificar quién puede:
 
-- mantener la especificación;
-- revisar cambios;
+- revisar;
+- mantener;
+- aprobar evolución;
 - resolver inconsistencias;
-- aprobar evolución relevante.
+- gestionar deprecations.
 
 ---
 
-# 190. Framework Review
-
-Los elementos del RDS deberán revisarse cuando:
-
-- aparezca una nueva necesidad real;
-- se detecte duplicación;
-- una Reference Implementation revele un gap;
-- el dogfooding contradiga una decisión existente;
-- evolucione GitHub o una dependencia relevante;
-- cambie la estrategia del Framework;
-- aparezca deuda de diseño;
-- una especificación diverja de su implementación.
-
-La revisión deberá favorecer:
-
-```text
-Reuse
-before
-Extension
-before
-New Element
-```
-
-No toda necesidad específica deberá originar un nuevo Component o Template.
-
----
-
-# 191. Repository Bootstrap
-
-Todo nuevo proyecto que adopte el Framework seguirá conceptualmente:
-
-```text
-Identify Project Type
-        ↓
-Select Repository Template
-        ↓
-Review Template Maturity
-        ↓
-Apply Required Components
-        ↓
-Evaluate Recommended Components
-        ↓
-Add Optional Components when justified
-        ↓
-Configure Project-specific Needs
-        ↓
-Validate
-        ↓
-Publish
-```
-
-El Maturity Profile no se selecciona como un Template independiente.
-
-La madurez constituye una propiedad y una expectativa de evolución del repositorio.
-
-El proceso de bootstrap deberá reutilizar las definiciones canónicas existentes y evitar recrear Components manualmente cuando ya exista una especificación aplicable.
-
----
-
-# 192. Repository Validation
-
-La validación de un repositorio deberá comprobar su conformidad con las responsabilidades y contratos que realmente le correspondan.
-
-Flujo conceptual:
-
-```text
-Repository Template
-        ↓
-Required Components
-        ↓
-Repository Implementation
-        ↓
-Conformance Analysis
-        ↓
-Consumer Gaps / Template Gaps
-        ↓
-Validation Result
-```
-
-La validación podrá incluir, según el contexto:
-
-- conformidad con el Repository Template;
-- presencia y correcta materialización de Required Components;
-- metadata;
-- documentación;
-- workflows;
-- calidad;
-- GRS Assessment cuando corresponda.
-
-La ausencia de un Component `recommended` u `optional` no deberá considerarse automáticamente un defecto.
-
-Las desviaciones deberán clasificarse antes de modificar el repositorio o el Framework.
-
----
-
-# 193. Continuous Improvement
-
-El sistema deberá mejorar mediante evidencia obtenida de implementaciones reales.
-
-Cada nuevo proyecto podrá revelar:
-
-- oportunidades de reutilización;
-- mejoras de Components;
-- simplificaciones;
-- gaps de Repository Templates;
-- necesidades de nuevos Components;
-- candidatos a nuevos Templates;
-- decisiones específicas que no deban generalizarse.
-
-Principio:
-
-```text
-Project-specific need
-        ↓
-Evaluate
-        ├── Existing Component
-        ├── Existing Template
-        ├── Framework improvement
-        └── Keep project-specific
-```
-
-No toda variación deberá incorporarse al Framework.
-
-La generalización requerirá evidencia de reutilización potencial.
-
----
-
-# 194. Design Debt
+# 301. Design Debt
 
 El propio Design System puede acumular deuda.
 
 Ejemplos:
 
 - Components redundantes;
-- Repository Templates obsoletos;
+- Templates obsoletos;
 - documentación divergente;
-- metadata desincronizada;
-- modelos arquitectónicos históricos todavía presentes;
+- Metadata desincronizada;
 - diagramas antiguos;
-- especificaciones que no reflejan la implementación;
-- duplicación de fuentes de verdad.
+- Specifications que no reflejan implementación;
+- definiciones canónicas duplicadas;
+- Components conceptuales nunca reevaluados;
+- workflows sin mantenimiento;
+- Quality Gates desactualizados.
 
-La deuda del Design System deberá gestionarse igual que la deuda técnica:
+La deuda deberá gestionarse igual que deuda técnica.
+
+Modelo:
 
 ```text
 Detect
-    ↓
+        ↓
 Classify
-    ↓
+        ↓
 Prioritize
-    ↓
+        ↓
 Resolve
-    ↓
+        ↓
 Validate
 ```
 
-El dogfooding constituye una fuente principal para detectar esta deuda.
-
 ---
 
-# 195. Design Backlog
+# 302. Design Backlog
 
-Las mejoras, gaps y deuda del Design System deberán registrarse mediante los mecanismos de planificación de GitHub Framework.
+Las mejoras, gaps y deuda del RDS deberán registrarse mediante los mecanismos oficiales del proyecto.
 
-Las fuentes principales son:
+Fuentes principales:
 
 ```text
 GitHub Issues
@@ -4901,20 +9061,21 @@ Los findings derivados de:
 - dogfooding;
 - Reference Implementations;
 - auditorías;
-- implementación de Components;
-- implementación de Repository Templates;
+- Component implementation;
+- Template implementation;
+- workflow execution;
 
 deberán convertirse en trabajo trazable cuando requieran actuación.
 
-No se mantendrá un backlog paralelo del RDS que pueda divergir del sistema de gobierno del proyecto.
+No deberá mantenerse un backlog paralelo del RDS.
 
 ---
 
-# 196. Repository Migration
+# 303. Repository Migration
 
 Un repositorio existente podrá adoptar GitHub Framework de forma incremental.
 
-La migración seguirá conceptualmente:
+Modelo:
 
 ```text
 Repository Assessment
@@ -4934,30 +9095,24 @@ Implementation
 Validation
 ```
 
-Los gaps deberán distinguir, cuando corresponda, entre:
-
-- Consumer Gaps;
-- Template Gaps;
-- Component Gaps;
-- documentación o metadata desactualizada.
+Los gaps deberán distinguirse correctamente.
 
 La migración no deberá perseguir conformidad mecánica.
 
-Solo se incorporarán Components que respondan al contrato del Template o a necesidades reales del repositorio.
-
-No será necesario recrear un repositorio para adoptar el Framework.
+Solo deberán incorporarse responsabilidades realmente aplicables.
 
 ---
 
-# 197. Repository Audit
+# 304. Repository Audit
 
-Los repositorios que adopten GitHub Framework podrán revisarse periódicamente para detectar:
+Los consumidores podrán revisarse periódicamente para detectar:
 
-- divergencias respecto a su Repository Template;
+- divergencias respecto al Repository Template;
 - Components desactualizados;
 - documentación obsoleta;
-- metadata inconsistente;
-- deuda de mantenimiento;
+- workflows rotos;
+- Metadata inconsistente;
+- deuda;
 - problemas de seguridad;
 - oportunidades de simplificación.
 
@@ -4967,19 +9122,37 @@ La frecuencia dependerá de:
 - actividad;
 - madurez;
 - ritmo de evolución;
+- riesgo;
 - necesidades de mantenimiento.
-
-Las auditorías también podrán ejecutarse cuando:
-
-- cambie el Repository Template;
-- exista una migración;
-- se prepare una release relevante;
-- aparezcan problemas de conformidad;
-- una Reference Implementation revele nueva deuda.
 
 ---
 
-# 198. Metrics
+# 305. Maintenance Strategy
+
+Los elementos del Framework deberán mantenerse mientras exista:
+
+- responsabilidad válida;
+- consumidor potencial;
+- utilidad reusable;
+- capacidad razonable de mantenimiento.
+
+El mantenimiento podrá incluir:
+
+- dependencia updates;
+- documentation updates;
+- compatibility review;
+- security review;
+- Reference Implementation review;
+- Metadata synchronization;
+- Quality Gate evolution.
+
+Un elemento sin consumidores actuales podrá mantenerse si existe evidencia suficiente de utilidad futura.
+
+No deberá conservarse indefinidamente únicamente por inercia.
+
+---
+
+# 306. Metrics
 
 El RDS podrá utilizar métricas para evaluar su efectividad.
 
@@ -4987,24 +9160,26 @@ Entre ellas:
 
 - reutilización de Components;
 - adopción de Repository Templates;
-- consistencia;
-- mantenibilidad;
-- tiempo de creación;
-- calidad documental;
-- gaps detectados mediante dogfooding;
-- esfuerzo necesario para migraciones.
+- tiempo de bootstrap;
+- conformance;
+- gaps detectados;
+- effort de mantenimiento;
+- frecuencia de drift;
+- workflow reliability;
+- migraciones;
+- deprecations.
 
-Las métricas deberán utilizarse para mejorar decisiones.
+Las métricas deberán ayudar a tomar decisiones.
 
-No deberán convertirse en objetivos artificiales de cobertura o acumulación de Components.
+No deberán convertirse en objetivos artificiales de cobertura.
 
 ---
 
-# 199. Repository Health
+# 307. Repository Health
 
-GitHub Framework podrá incorporar en el futuro mecanismos para evaluar el estado general de un repositorio.
+GitHub Framework podrá incorporar mecanismos para evaluar el estado general de un repositorio.
 
-Una evaluación de salud podría considerar:
+Una evaluación futura podría considerar:
 
 ```text
 Template Conformance
@@ -5013,6 +9188,8 @@ Maintenance
 +
 Documentation
 +
+Workflow Health
++
 Quality
 +
 Security
@@ -5020,42 +9197,84 @@ Security
 Repository Activity
 ```
 
-Los niveles, métricas y algoritmos concretos deberán definirse antes de constituir una capacidad oficial del Framework.
+Los algoritmos y niveles concretos deberán validarse antes de constituir una capacidad oficial.
 
-Repository Health se considera actualmente una capacidad potencial y no un contrato implementado del RDS.
+Repository Health continúa siendo una capacidad potencial.
+
+No forma parte todavía del contrato estable del RDS.
 
 ---
 
-# 200. Automation Roadmap
+# 308. Automation Roadmap
 
-La evolución del Framework podrá automatizar progresivamente tareas repetitivas basadas en especificaciones canónicas.
+La evolución del Framework podrá automatizar progresivamente tareas basadas en contratos canónicos.
 
 Entre ellas:
 
-- resolución de Repository Templates;
-- generación asistida de repositorios;
-- materialización de Components;
-- generación de README;
-- validación Markdown;
-- validación de metadata;
-- comprobación de enlaces;
-- análisis de conformidad;
-- auditorías;
-- soporte a releases.
+- Repository Template resolution;
+- Component resolution;
+- bootstrap;
+- repository generation;
+- README materialization;
+- documentation generation;
+- Workflow Component configuration;
+- Metadata validation;
+- Markdown validation;
+- link validation;
+- conformance analysis;
+- assessment;
+- release support;
+- maintenance checks.
 
-La automatización deberá consumir Components, Templates y metadata existentes.
+La automatización deberá consumir:
 
-No deberá introducir una segunda fuente de verdad.
+```text
+Specifications
++
+Metadata
++
+Canonical Materializations
+```
 
-Las capacidades se implementarán únicamente cuando exista suficiente estabilidad del modelo que automatizan.
+No deberá mantener arquitectura duplicada.
 
 ---
 
-# 201. Design System Evolution
+# 309. Workflow Automation Boundary
 
-La evolución del Repository Design System se realizará incrementalmente.
+El Workflow Framework constituye una capa reusable previa a Framework Automation.
 
-Las capacidades actualmente definidas incluyen:
+Por tanto:
+
+```text
+Workflow Component
+        ↓
+Reusable Operational Capability
+        ↓
+Framework Automation
+        ↓
+Programmatic Resolution / Generation / Validation
+```
+
+La futura automatización no deberá definir implícitamente qué es:
+
+```text
+WCL-CI
+WCL-RELEASE
+WCL-DOCUMENTATION-UPDATE
+```
+
+Esas responsabilidades deberán existir previamente como contratos canónicos.
+
+Esto permite que automatización y arquitectura evolucionen de forma desacoplada.
+
+---
+
+# 310. Design System Evolution
+
+La evolución del RDS se realizará incrementalmente.
+
+Las capacidades reconocidas actualmente incluyen:
 
 - README Components;
 - Documentation Components;
@@ -5065,136 +9284,109 @@ Las capacidades actualmente definidas incluyen:
 - Maturity Profiles;
 - Governance.
 
-La implementación física de estas capacidades podrá avanzar a ritmos diferentes.
+Su implementación física podrá avanzar a ritmos diferentes.
 
-Entre las líneas de evolución potencial se encuentran:
+Las líneas futuras podrán incluir:
 
 - ampliación de Component Libraries;
-- nuevos Repository Templates respaldados por casos reales;
-- validación automática;
-- generación asistida;
-- Automation Components;
-- AI-assisted generation;
-- análisis de Repository Health;
-- herramientas de migración.
+- Workflow Component implementation;
+- Visual Component implementation;
+- nuevos Repository Templates;
+- validation tooling;
+- Framework Automation;
+- CLI;
+- Repository Health;
+- migration tooling;
+- AI-assisted generation.
 
-La planificación concreta se mantendrá en los mecanismos de gobierno del proyecto y no se duplicará en este documento.
+La planificación concreta pertenece al Roadmap y Product Backlog.
 
 ---
 
-# 202. Repository Ecosystem
+# 311. Repository Ecosystem
 
 GitHub Framework está diseñado para soportar múltiples repositorios y tipos de proyecto.
 
-El sistema podrá ser consumido por:
+Podrá ser consumido por:
 
-- repositorios backend;
-- proyectos full stack;
-- repositorios documentales;
+- backend;
+- full stack;
+- documentation;
 - GitHub Profile;
-- proyectos de aprendizaje;
-- futuros tipos de repositorio.
+- learning projects;
+- futuros tipos de proyecto.
 
-El nivel de madurez de estos consumidores constituye una dimensión independiente de su tipo de proyecto.
+Los consumidores podrán diferir en:
+
+- tecnología;
+- madurez;
+- contexto;
+- workflows;
+- identidad visual;
+- governance.
+
+El Framework deberá reutilizar responsabilidades comunes sin borrar estas diferencias legítimas.
 
 ---
 
-# 203. Repository Design Principles
+# 312. Repository Design Principles
 
-El sistema mantendrá como principios operativos:
+El RDS mantendrá como principios operativos:
 
 - reutilizar antes que duplicar;
+- configurar antes que copiar;
 - extender antes que crear;
+- implementar antes que formalizar prematuramente;
 - documentar antes que automatizar;
 - automatizar antes que repetir;
 - validar mediante uso real;
 - evolucionar antes que reemplazar;
 - mantener una única fuente canónica;
+- separar responsabilidad de materialización;
+- separar disponibilidad de conformance;
 - evitar complejidad sin necesidad.
 
-Estos principios deberán prevalecer sobre la búsqueda de cobertura total o uniformidad artificial.
+Estos principios deberán prevalecer sobre la búsqueda de cobertura total.
 
 ---
 
-# 204. Anti-Patterns
+# 313. Global Anti-Patterns
 
 No deberán aparecer:
 
 - Components duplicados;
-- Repository Templates incompatibles para necesidades equivalentes;
-- Templates sin mantener;
+- Templates equivalentes incompatibles;
 - Templates especulativos;
-- automatizaciones huérfanas;
-- documentación divergente;
-- metadata desincronizada;
+- Components conceptuales presentados como implementados;
+- workflows específicos de un consumidor presentados como capacidad reusable;
+- automation-driven architecture;
+- Metadata desincronizada;
 - múltiples fuentes de verdad;
-- decisiones arquitectónicas no registradas;
+- dependencias inventadas;
+- requirement levels globales;
+- Filesystem symmetry utilizada como objetivo arquitectónico;
+- Quality Gates puramente burocráticos;
 - conformidad conseguida mediante Components innecesarios;
-- reglas de madurez utilizadas como composición rígida.
+- reglas de madurez utilizadas como composición rígida;
+- prácticas sin mantenimiento;
+- materialización insuficiente presentada como implementación completa.
 
 ---
 
-# 205. RDS Quality Gates
+# 314. Long-Term Vision
 
-Antes de aprobar una evolución relevante del Repository Design System deberá verificarse:
-
-- [ ] Los Components afectados están registrados.
-- [ ] Los Repository Templates afectados están sincronizados.
-- [ ] La metadata refleja la implementación.
-- [ ] La compatibilidad ha sido evaluada.
-- [ ] La documentación está actualizada.
-- [ ] Las fuentes canónicas no se contradicen.
-- [ ] Los ejemplos o Reference Implementations siguen siendo válidos.
-- [ ] Los gaps detectados están resueltos o registrados.
-- [ ] La gobernanza refleja los cambios relevantes.
-- [ ] No se ha introducido duplicación innecesaria.
-
----
-
-# 206. Definition of Done
-
-Una capacidad del Repository Design System se considerará implementada cuando:
-
-## Specification
-
-- [ ] Su responsabilidad esté definida.
-- [ ] Su alcance y límites sean claros.
-- [ ] La fuente canónica esté identificada.
-
-## Implementation
-
-- [ ] Exista una implementación cuando la capacidad la requiera.
-- [ ] La metadata esté sincronizada.
-- [ ] No duplique responsabilidades existentes.
-
-## Validation
-
-- [ ] Exista evidencia de uso real, Reference Implementation o dogfooding.
-- [ ] Los gaps encontrados estén resueltos o registrados.
-- [ ] Los Quality Gates aplicables estén satisfechos.
-
-## Governance
-
-- [ ] El cambio sea trazable.
-- [ ] La documentación de gobierno esté actualizada cuando corresponda.
-- [ ] El versionado refleje cambios contractuales relevantes.
-
-La existencia de futuras capacidades de automatización no será requisito para considerar implementado el modelo actual.
-
----
-
-# 207. Long-Term Vision
-
-GitHub Framework deberá proporcionar una base reutilizable para construir, evolucionar y mantener repositorios técnicos.
+GitHub Framework deberá proporcionar una base reusable para construir, evolucionar y mantener repositorios técnicos.
 
 El Repository Design System constituye su modelo arquitectónico para organizar:
 
-- Components;
+- Framework Components;
 - Repository Templates;
 - Maturity Profiles;
-- reglas de composición;
-- validación;
-- gobernanza.
+- composition;
+- materialization;
+- conformance;
+- validation;
+- governance.
 
 El objetivo no consiste únicamente en producir repositorios visualmente atractivos.
 
@@ -5202,31 +9394,52 @@ Consiste en crear un ecosistema:
 
 - coherente;
 - profesional;
-- reutilizable;
+- reusable;
 - mantenible;
 - verificable;
-- preparado para evolucionar durante muchos años.
+- extensible;
+- preparado para automatización.
 
-La automatización futura deberá ampliar este modelo sin sustituir sus fuentes canónicas.
+La automatización futura deberá ampliar este modelo.
+
+No sustituirlo.
 
 ---
 
-# 208. Final Conclusions
+# 315. Final Conclusions
 
-El **Repository Design System** proporciona el modelo arquitectónico de GitHub Framework.
+El **Repository Design System** proporciona el modelo arquitectónico central de GitHub Framework.
 
-Los estándares definen reglas y criterios.
+Los Standards definen reglas y criterios.
 
 Los Framework Components encapsulan responsabilidades reutilizables.
 
-Los Repository Templates componen esas responsabilidades según tipos de proyecto.
+Cada Component implementado dispone de:
 
-Los Maturity Profiles expresan expectativas de evolución y mantenimiento.
+```text
+Specification
+        +
+Metadata
+        +
+Materialization when required
+```
 
-La gobernanza controla su ciclo de vida.
+Los Repository Templates componen estas responsabilidades según tipos de proyecto.
+
+Los Maturity Profiles expresan expectativas independientes de calidad y mantenimiento.
+
+Los repositorios consumidores materializan las responsabilidades seleccionadas.
+
+La validación determina conformance mediante evidencia.
+
+La gobernanza controla evolución, compatibilidad y mantenimiento.
+
+Modelo general:
 
 ```text
 Standards
+        ↓
+Repository Design System
         ↓
 Framework Components
         ↓
@@ -5234,54 +9447,107 @@ Repository Templates
         ↓
 Repository Implementations
         ↓
+Reference Implementations
+        ↓
 Validation and Evolution
 ```
 
-Los repositorios que adopten GitHub Framework no deberán diseñar desde cero responsabilidades ya resueltas por el sistema.
-
-Al mismo tiempo, el Framework no impondrá Components, estructuras o automatizaciones que no respondan a necesidades reales.
-
-El resultado es una arquitectura orientada a reutilización, consistencia, trazabilidad y evolución incremental.
-
----
-
-# 209. Next Evolution
-
-El Repository Design System ha evolucionado desde una especificación documental hacia una implementación reutilizable dentro de GitHub Framework.
-
-La siguiente etapa consiste en consolidar la correspondencia entre:
+La arquitectura distingue explícitamente:
 
 ```text
-Design System
-        ↓
-Framework Components
-        ↓
-Repository Templates
-        ↓
-Reference Implementations
+Responsibility
+        ≠
+Materialization
 ```
 
-Las prioridades de evolución deberán centrarse en:
+```text
+Implementation
+        ≠
+Validation
+```
 
-- completar la implementación física de Components definidos;
-- validar Repository Templates mediante consumidores reales;
-- resolver gaps detectados mediante dogfooding;
-- mantener sincronizados RDS, Component Catalog y metadata;
-- ampliar el Framework únicamente a partir de necesidades demostradas;
-- preparar progresivamente capacidades de validación y automatización.
+```text
+Component Availability
+        ≠
+Consumer Conformance
+```
 
-GitHub Framework constituye la plataforma reutilizable.
+```text
+Operational Sequence
+        ≠
+Structural Dependency
+```
 
-El RDS constituye su modelo arquitectónico.
+```text
+Automation
+        ≠
+Architecture
+```
 
-La evolución futura deberá preservar esta separación.
+Estas distinciones permiten que GitHub Framework evolucione sin imponer estructuras artificiales ni convertir prácticas específicas en contratos globales.
 
 ---
 
-# 210. Revision History
+# 316. Next Evolution
 
-| Version | Date       | Description |
-| ------- | ---------- | ----------- |
-| 1.0.0   | 2026-08-05 | Primera versión completa del Repository Design System. |
-| 1.0.1   | 2026-08-11 | Metadata alineada con GitHub Framework durante la implementación de referencia del Documentation Framework. |
-| 1.1.0   | 2026-08-14 | Arquitectura del RDS consolidada alrededor de Framework Components, Repository Templates, requirement levels contextuales, Maturity Profiles independientes y fuentes canónicas sincronizadas con la implementación. |
+La Workflow Component Architecture, los Core Workflow Components, su primera Reference Implementation mediante dogfooding y los Workflow Component Standards han quedado establecidos dentro de GitHub Framework.
+
+El estado alcanzado es:
+
+```text
+Workflow Component Architecture
+        ↓
+Core Workflow Components
+        ↓
+Workflow Reference Implementation
+        ↓
+Dogfooding
+        ↓
+Workflow Component Standards
+        ↓
+Workflow Framework v0.5.0
+```
+
+Las etapas de arquitectura, implementación, Reference Implementation, dogfooding y estandarización del alcance actual están completadas.
+
+Los Workflow Component Standards consolidan los patrones demostrados mediante la implementación y validación de los Core Workflow Components sin redefinir su arquitectura.
+
+La siguiente evolución consiste en preparar y publicar:
+
+```text
+Workflow Framework v0.5.0
+```
+
+La evolución deberá continuar preservando el principio:
+
+```text
+Architecture
+        ↓
+Implementation
+        ↓
+Reference Implementation / Dogfooding
+        ↓
+Evidence
+        ↓
+Validation
+        ↓
+Validated Patterns
+        ↓
+Standards
+        ↓
+Evolution
+```
+
+Los Standards no deberán formalizar patrones que todavía no hayan sido demostrados mediante implementación y evidencia suficiente.
+
+---
+
+# 317. Revision History
+
+| Version | Date | Description |
+| --- | --- | --- |
+| 1.0.0 | 2026-08-05 | Primera versión completa del Repository Design System. |
+| 1.0.1 | 2026-08-11 | Metadata alineada con GitHub Framework durante la implementación de referencia del Documentation Framework. |
+| 1.1.0 | 2026-08-14 | Arquitectura del RDS consolidada alrededor de Framework Components, Repository Templates, requirement levels contextuales, Maturity Profiles independientes y fuentes canónicas sincronizadas con la implementación. |
+| 1.2.0 | 2026-08-19 | Contrato arquitectónico ampliado para Framework Components y Workflow Components, incluyendo materialization model, criterios `Conceptual → Implemented`, executable and non-executable workflows, conformance, validation y Quality Gates específicos. |
+| 1.2.1 | 2026-09-14 | Workflow Framework sincronizado tras la validación de los Core Workflow Components mediante Reference Implementation y la consolidación de Workflow Component Standards. |

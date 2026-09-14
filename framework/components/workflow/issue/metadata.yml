@@ -1,0 +1,36 @@
+id: WCL-ISSUE
+name: Issue
+family: Workflow
+version: 0.1.0
+status: Experimental
+priority: Required
+audience:
+  - Maintainer
+  - Contributor
+maturity: L2
+description: >
+  Componente reutilizable para estructurar la creación de Issues,
+  capturar información relevante y configurar mecanismos de
+  submission mediante community files de GitHub.
+dependencies: []
+
+materialization:
+  primary:
+    - Community File
+    - Configuration
+  executable: false
+
+artifacts:
+  specification: README.md
+  templates:
+    - templates/bug_report.yml
+    - templates/feature_request.yml
+    - templates/config.yml
+
+adoption:
+  target: .github/ISSUE_TEMPLATE/
+  specialization: Allowed
+
+validation:
+  dogfooding: true
+  reference_implementation: Validated
