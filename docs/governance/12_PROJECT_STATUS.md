@@ -3,10 +3,10 @@
 | Campo                    | Valor                          |
 | ------------------------ | ------------------------------ |
 | **Proyecto**             | GitHub Framework               |
-| **Versión actual**       | v0.4.0                         |
+| **Versión actual**       | v0.5.0                         |
 | **Estado**               | En desarrollo                  |
 | **Fase**                 | Workflow Framework             |
-| **Sprint actual**        | Sprint 7 — Workflow Framework  |
+| **Último Sprint**        | Sprint 7 — Workflow Framework  |
 | **Última actualización** | 2026-09-14                     |
 
 ---
@@ -33,7 +33,7 @@ La validación ha confirmado distintos mecanismos de materialización, incluyend
 
 A partir de la evidencia obtenida se han consolidado los Workflow Component Standards, manteniendo los cinco Core Workflow Components como `Implemented`, en lifecycle `Experimental` y con Reference Implementation `Validated`.
 
-El alcance funcional de Sprint 7 está completado y el proyecto se encuentra preparando la release `v0.5.0 — Workflow Framework`.
+El alcance de Sprint 7 está completado y la release `v0.5.0 — Workflow Framework` ha quedado preparada para su integración y publicación.
 
 ---
 
@@ -62,7 +62,7 @@ El alcance funcional de Sprint 7 está completado y el proyecto se encuentra pre
 
 ---
 
-# Sprint Actual
+# Último Sprint
 
 ## Sprint 7 — Workflow Framework
 
@@ -100,7 +100,7 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 - [x] Workflow Component Standards definidos.
 - [x] Component Catalog actualizado cuando corresponda.
 - [x] Documentación de gobierno actualizada.
-- [ ] Release `v0.5.0` preparada.
+- [x] Release `v0.5.0` preparada.
 
 ---
 
@@ -131,10 +131,10 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Verificar la consistencia final del Workflow Framework.
-2. Revisar los cambios acumulados de Sprint 7 antes de integración.
-3. Preparar la release `v0.5.0 — Workflow Framework`.
-4. Actualizar la documentación de release y versionado aplicable.
+1. Integrar `feature/workflow-framework` en `main`.
+2. Publicar la release `v0.5.0 — Workflow Framework`.
+3. Crear el tag `v0.5.0`.
+4. Preparar la planificación de la siguiente evolución del Framework.
 
 ---
 
@@ -146,3 +146,4 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 | v0.2.0 | 2026-08-09 | Open Source Readiness completado |
 | v0.3.0 | 2026-08-13 | Documentation Framework completado |
 | v0.4.0 | 2026-08-18 | Repository Templates completado |
+| v0.5.0 | 2026-09-14 | Workflow Framework completado |

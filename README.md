@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.4.0-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-v0.5.0-blue" alt="Version" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Status" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
 </p>
@@ -36,6 +36,7 @@ The goal is to reduce repetitive decisions while allowing each project to remain
 - Repository Design System
 - Reusable documentation components
 - Repository templates
+- Reusable workflow components
 - Reference implementations
 - Framework evolution
 - Validation-ready architecture
@@ -148,7 +149,7 @@ The project has established its core architecture and is now evolving the Framew
 
 Latest milestone:
 
-**v0.4.0 — Repository Templates**
+**v0.5.0 — Workflow Framework**
 
 ---
 

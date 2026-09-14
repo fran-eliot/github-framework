@@ -42,7 +42,7 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 ---
 
-## Sprint Activo
+## Último Sprint
 
 ### Sprint 7 — Workflow Framework
 
@@ -75,7 +75,7 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 |-----------|:------:|
 | v0.3.0 — Documentation Framework | ✅ Completed |
 | v0.4.0 — Repository Templates | ✅ Completed |
-| v0.5.0 — Workflow Framework | 🟡 In Progress |
+| v0.5.0 — Workflow Framework | ✅ Completed |
 | v0.6.0 — Framework Automation | ⚪ Planned |
 | v1.0.0 — Stable Release | ⚪ Planned |
 
@@ -126,3 +126,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.4.2 | 2026-08-18 | Cierre de Sprint 6 y preparación de la release v0.4.0. |
 | v0.5.0 | 2026-08-19 | Planificación de Sprint 7 — Workflow Framework. |
 | v0.5.1 | 2026-09-14 | Cierre funcional del alcance de Sprint 7 y actualización del Product Backlog tras completar Workflow Component Standards. |
+| v0.5.2 | 2026-09-14 | Cierre de Sprint 7 y preparación final de la release v0.5.0. |
