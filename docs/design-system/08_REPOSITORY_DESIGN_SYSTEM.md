@@ -9490,9 +9490,9 @@ Estas distinciones permiten que GitHub Framework evolucione sin imponer estructu
 
 # 316. Next Evolution
 
-Tras consolidar Repository Templates y definir el contrato arquitectónico de Workflow Components, la siguiente evolución consiste en materializar y validar capacidades operativas reales.
+La Workflow Component Architecture, los Core Workflow Components, su primera Reference Implementation mediante dogfooding y los Workflow Component Standards han quedado establecidos dentro de GitHub Framework.
 
-El flujo esperado es:
+El estado alcanzado es:
 
 ```text
 Workflow Component Architecture
@@ -9503,24 +9503,42 @@ Workflow Reference Implementation
         ↓
 Dogfooding
         ↓
-Workflow Standards
+Workflow Component Standards
         ↓
 Workflow Framework v0.5.0
 ```
 
-La evolución deberá preservar el principio:
+Las etapas de arquitectura, implementación, Reference Implementation, dogfooding y estandarización del alcance actual están completadas.
+
+Los Workflow Component Standards consolidan los patrones demostrados mediante la implementación y validación de los Core Workflow Components sin redefinir su arquitectura.
+
+La siguiente evolución consiste en preparar y publicar:
+
+```text
+Workflow Framework v0.5.0
+```
+
+La evolución deberá continuar preservando el principio:
 
 ```text
 Architecture
         ↓
 Implementation
         ↓
+Reference Implementation / Dogfooding
+        ↓
+Evidence
+        ↓
 Validation
         ↓
+Validated Patterns
+        ↓
 Standards
+        ↓
+Evolution
 ```
 
-Los Standards no deberán formalizar patrones que todavía no hayan sido demostrados mediante implementación.
+Los Standards no deberán formalizar patrones que todavía no hayan sido demostrados mediante implementación y evidencia suficiente.
 
 ---
 
@@ -9532,3 +9550,4 @@ Los Standards no deberán formalizar patrones que todavía no hayan sido demostr
 | 1.0.1 | 2026-08-11 | Metadata alineada con GitHub Framework durante la implementación de referencia del Documentation Framework. |
 | 1.1.0 | 2026-08-14 | Arquitectura del RDS consolidada alrededor de Framework Components, Repository Templates, requirement levels contextuales, Maturity Profiles independientes y fuentes canónicas sincronizadas con la implementación. |
 | 1.2.0 | 2026-08-19 | Contrato arquitectónico ampliado para Framework Components y Workflow Components, incluyendo materialization model, criterios `Conceptual → Implemented`, executable and non-executable workflows, conformance, validation y Quality Gates específicos. |
+| 1.2.1 | 2026-09-14 | Workflow Framework sincronizado tras la validación de los Core Workflow Components mediante Reference Implementation y la consolidación de Workflow Component Standards. |

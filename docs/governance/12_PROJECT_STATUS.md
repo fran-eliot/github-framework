@@ -48,7 +48,7 @@ La auditoría de consistencia realizada durante la Reference Implementation ha p
 | Workflow Component Architecture | ✅ |
 | Core Workflow Components | ✅ |
 | Workflow Reference Implementation | ✅ |
-| Workflow Component Standards | ⚪ |
+| Workflow Component Standards | ✅ |
 
 ---
 
@@ -69,7 +69,7 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 | #17 | Workflow Component Architecture | Alta | ✅ |
 | #18 | Core Workflow Components | Alta | ✅ |
 | #19 | Workflow Reference Implementation | Alta | ✅ |
-| #20 | Workflow Component Standards | Media | ⚪ |
+| #20 | Workflow Component Standards | Media | ✅ |
 
 ---
 
@@ -87,7 +87,7 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 - [x] Diferentes mecanismos de materialización validados.
 - [x] Reference Implementation completada.
 - [x] Dogfooding completado.
-- [ ] Workflow Component Standards definidos.
+- [x] Workflow Component Standards definidos.
 - [x] Component Catalog actualizado cuando corresponda.
 - [x] Documentación de gobierno actualizada.
 - [ ] Release `v0.5.0` preparada.
@@ -121,10 +121,11 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Consolidar los Workflow Component Standards (#20).
-2. Incorporar a los Standards los criterios confirmados durante la Reference Implementation.
-3. Verificar la consistencia final entre RDS, Component Catalog, Workflow Component Library y Standards.
-4. Preparar la release `v0.5.0`.
+1. Verificar la consistencia final del Workflow Framework.
+2. Revisar los cambios acumulados de Sprint 7 antes de integración.
+3. Preparar la release `v0.5.0 — Workflow Framework`.
+4. Actualizar la documentación de release y versionado aplicable.
+
 ---
 
 # Historial de Versiones

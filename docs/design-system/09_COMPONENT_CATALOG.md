@@ -2794,9 +2794,9 @@ Ambas afirmaciones pueden ser correctas simultáneamente.
 
 # 108. Workflow Reference Implementation Boundary
 
-La Workflow Reference Implementation debe consumir Components previamente implementados.
+La Workflow Reference Implementation consume Components previamente implementados y proporciona evidencia sobre su comportamiento en un consumer representativo.
 
-El estado actual permite iniciar esta fase con:
+La primera Workflow Reference Implementation ha sido completada mediante dogfooding sobre GitHub Framework para:
 
 ```text
 WCL-ISSUE
@@ -2806,25 +2806,29 @@ WCL-PULL-REQUEST
 WCL-CODE-REVIEW
 ```
 
-El flujo correcto es:
+El flujo aplicado ha sido:
 
 ```text
 Architecture
         ↓
 Canonical Implementation
         ↓
-Reference Implementation
+Reference Implementation / Dogfooding
+        ↓
+Evidence
         ↓
 Validation
         ↓
-Refinement
+Validated Pattern
 ```
 
-La existencia de implementación canónica permite clasificar estos Components como `Implemented`.
+La implementación canónica permite clasificar estos Components como `Implemented`.
 
-La validación posterior determinará su evolución dentro del lifecycle.
+La Reference Implementation ha proporcionado evidencia suficiente para validar sus contratos actuales, manteniéndose los cinco Components en lifecycle `Experimental`.
 
-Las prácticas existentes que todavía no han sido extraídas como Components canónicos no deberán declararse implementadas únicamente durante la Reference Implementation.
+La validación no implica promoción automática a `Stable`.
+
+Las prácticas existentes que todavía no hayan sido extraídas como Components canónicos no deberán declararse `Implemented` únicamente por existir en un consumer.
 
 ---
 
@@ -3257,23 +3261,23 @@ No representan adopción ni utilidad potencial.
 
 # 126. Current Development Focus
 
-La siguiente familia prevista para materialización es:
+La familia Workflow dispone actualmente de una primera biblioteca Core implementada y validada.
 
-```text
-Workflow Components
-```
-
-El flujo actual de evolución es:
+El estado alcanzado es:
 
 ```text
 Workflow Component Architecture
         ↓
 Core Workflow Components
         ↓
-Workflow Reference Implementation
+Workflow Reference Implementation / Dogfooding
         ↓
-Workflow Standards
+Workflow Component Standards
 ```
+
+Los cinco Core Workflow Components permanecen `Implemented` y en lifecycle `Experimental`.
+
+Los once Workflow Components restantes permanecen `Conceptual` hasta que exista una necesidad real que justifique su implementación.
 
 El Component Catalog deberá evolucionar junto con cada transición real de implementación.
 
@@ -4387,21 +4391,21 @@ No deberán implementarse únicamente para reducir el número de Components conc
 
 # 171. Current Framework Focus
 
-La evolución actual del Framework se centra en:
+La evolución actual del Framework ha alcanzado:
 
 ```text
 Workflow Component Architecture
         ↓
 Core Workflow Components
         ↓
-Workflow Reference Implementation
+Workflow Reference Implementation / Dogfooding
         ↓
-Workflow Standards
+Workflow Component Standards
         ↓
 v0.5.0
 ```
 
-La Workflow Component Architecture está definida, la primera biblioteca Core se encuentra implementada y su Reference Implementation ha sido completada mediante dogfooding sobre GitHub Framework.
+La Workflow Component Architecture está definida, la primera biblioteca Core se encuentra implementada, su Reference Implementation ha sido completada mediante dogfooding sobre GitHub Framework y los Workflow Component Standards han sido consolidados a partir de la evidencia obtenida.
 
 Los cinco Core Workflow Components validados son:
 
@@ -4413,9 +4417,21 @@ WCL-PULL-REQUEST
 WCL-CODE-REVIEW
 ```
 
-El siguiente foco consiste en consolidar los Workflow Component Standards a partir del contrato arquitectónico, las implementaciones canónicas y la evidencia obtenida durante la Reference Implementation.
+Estos Components permanecen:
 
-Tras completar dichos Standards, el Framework podrá preparar la release `v0.5.0`.
+```text
+Implementation: Implemented
+Lifecycle: Experimental
+Validation: Reference Implementation Validated
+```
+
+Los once Workflow Components restantes permanecen `Conceptual`.
+
+El siguiente foco consiste en preparar la release:
+
+```text
+v0.5.0 — Workflow Framework
+```
 
 ---
 
