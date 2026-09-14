@@ -35,6 +35,10 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 | #12 | Core Repository Templates | v0.4.0 | Done |
 | #13 | Repository Template Reference Implementation | v0.4.0 | Done |
 | #14 | Repository Template Standards | v0.4.0 | Done |
+| #17 | Workflow Component Architecture | v0.5.0 | Done |
+| #18 | Core Workflow Components | v0.5.0 | Done |
+| #19 | Workflow Reference Implementation | v0.5.0 | Done |
+| #20 | Workflow Component Standards | v0.5.0 | Done |
 
 ---
 

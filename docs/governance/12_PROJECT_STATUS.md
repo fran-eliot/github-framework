@@ -7,23 +7,33 @@
 | **Estado**               | En desarrollo                  |
 | **Fase**                 | Workflow Framework             |
 | **Sprint actual**        | Sprint 7 — Workflow Framework  |
-| **Última actualización** | 2026-08-19                     |
+| **Última actualización** | 2026-09-14                     |
 
 ---
 
 # Estado General
 
-GitHub Framework ha completado las fases de arquitectura, Open Source Readiness y Documentation Framework.
+GitHub Framework ha completado las fases de arquitectura, Open Source Readiness, Documentation Framework y Repository Templates.
 
-El Framework dispone actualmente de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno y una primera biblioteca de Documentation Components validada mediante dogfooding.
+El Framework dispone actualmente de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno, una biblioteca de Documentation Components y una primera familia de Repository Templates validadas mediante Reference Implementation y dogfooding.
 
-El proyecto se encuentra actualmente en Sprint 6 — Repository Templates.
+El proyecto se encuentra actualmente en Sprint 7 — Workflow Framework.
 
-Durante este Sprint se ha definido la Repository Template Architecture, se han implementado los primeros Core Repository Templates y se ha validado el modelo mediante una Reference Implementation basada en dogfooding sobre el propio GitHub Framework.
+Durante este Sprint se ha definido la Workflow Component Architecture y se han implementado los primeros Core Workflow Components:
 
-La validación ha permitido además formalizar los Repository Template Standards y consolidar las reglas de composición, conformidad, lifecycle y mantenimiento de futuras plantillas.
+- `WCL-ISSUE`.
+- `WCL-BRANCH`.
+- `WCL-COMMIT`.
+- `WCL-PULL-REQUEST`.
+- `WCL-CODE-REVIEW`.
 
-La auditoría de consistencia realizada durante la Reference Implementation ha permitido además refinar la clasificación `Implemented / Conceptual`, sincronizar el Component Catalog con las implementaciones físicas reales y distinguir entre disponibilidad de Framework Components y conformidad de repositorios consumidores.
+Los Core Workflow Components han sido validados mediante una primera Workflow Reference Implementation basada en dogfooding sobre el propio GitHub Framework.
+
+La validación ha confirmado distintos mecanismos de materialización, incluyendo Community Files, Configuration y Convention, así como la separación entre clasificación de implementación, lifecycle y estado de validación.
+
+A partir de la evidencia obtenida se han consolidado los Workflow Component Standards, manteniendo los cinco Core Workflow Components como `Implemented`, en lifecycle `Experimental` y con Reference Implementation `Validated`.
+
+El alcance funcional de Sprint 7 está completado y el proyecto se encuentra preparando la release `v0.5.0 — Workflow Framework`.
 
 ---
 
