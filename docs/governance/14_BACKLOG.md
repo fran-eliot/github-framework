@@ -42,33 +42,28 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 ---
 
-## Último Sprint
+## Sprint Actual
 
-### Sprint 7 — Workflow Framework
+### Sprint 8 — Framework Automation
 
-**Milestone:** `v0.5.0 — Workflow Framework`
+**Milestone:** `v0.6.0 — Framework Automation`
 
 **Objetivo**
 
-Transformar las responsabilidades Workflow actualmente conceptuales en una primera biblioteca reutilizable de Workflow Components, validada mediante implementación real y dogfooding.
+Introducir capacidades de automatización deterministas sobre el modelo de componentes de GitHub Framework, partiendo de un contrato común de metadata, normalizando los Components implementados y validando el propio Framework mediante su primer Framework Validator.
 
 | Issue | Historia | Prioridad | Estado |
 | ----- | -------- | :-------: | :----: |
-| #17 | Workflow Component Architecture | Alta | Done |
-| #18 | Core Workflow Components | Alta | Done |
-| #19 | Workflow Reference Implementation | Alta | Done |
-| #20 | Workflow Component Standards | Media | Done |
+| #23 | Component Metadata Standard | Alta | Todo |
+| #24 | Component Metadata Normalization | Alta | Todo |
+| #25 | Framework Validator | Alta | Todo |
+| #26 | Automation Reference Implementation | Media | Todo |
 
 ---
 
 ## Product Backlog
 
-| ID | Historia | Milestone | Prioridad |
-|----|----------|:---------:|:---------:|
-| TBD | Component Metadata Standard | v0.6.0 | Alta |
-| TBD | Component Metadata Normalization | v0.6.0 | Alta |
-| TBD | Framework Validator | v0.6.0 | Alta |
-| TBD | Automation Reference Implementation | v0.6.0 | Media |
+No existen actualmente historias priorizadas fuera del alcance de Sprint 8.
 
 ---
 
@@ -131,3 +126,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.5.1 | 2026-09-14 | Cierre funcional del alcance de Sprint 7 y actualización del Product Backlog tras completar Workflow Component Standards. |
 | v0.5.2 | 2026-09-14 | Cierre de Sprint 7 y preparación final de la release v0.5.0. |
 | v0.5.3 | 2026-09-17 | Definición del alcance de v0.6.0 — Framework Automation tras la fase de discovery. |
+| v0.5.4 | 2026-09-17 | Apertura de Sprint 8 — Framework Automation y asignación de las Issues #23–#26. |

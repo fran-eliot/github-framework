@@ -6,7 +6,7 @@
 | **Versión actual**       | v0.5.0                         |
 | **Estado**               | En desarrollo                  |
 | **Fase**                 | Framework Automation           |
-| **Último Sprint**        | Sprint 7 — Workflow Framework  |
+| **Sprint actual**        | Sprint 8 — Framework Automation |
 | **Última actualización** | 2026-09-17                     |
 
 ---
@@ -43,6 +43,12 @@ Como resultado del discovery, `v0.6.0` se centrará en la definición de un Comm
 
 La generación de componentes y repositorios queda fuera del alcance de `v0.6.0`. La automatización se limitará inicialmente a operaciones deterministas sobre contratos ya demostrados por el Framework.
 
+Tras validar este alcance se ha abierto formalmente el Sprint 8 — Framework Automation, asociado a la milestone `v0.6.0 — Framework Automation`.
+
+El Sprint se estructura en cuatro historias sucesivas: Component Metadata Standard (#23), Component Metadata Normalization (#24), Framework Validator (#25) y Automation Reference Implementation (#26).
+
+La implementación comenzará por la formalización del contrato común de metadata antes de modificar los Components existentes o desarrollar tooling de validación.
+
 ---
 
 # Estado por Áreas
@@ -74,24 +80,24 @@ La generación de componentes y repositorios queda fuera del alcance de `v0.6.0`
 
 ---
 
-# Último Sprint
+# Sprint Actual
 
-## Sprint 7 — Workflow Framework
+## Sprint 8 — Framework Automation
 
-**Target:** `v0.5.0`
+**Target:** `v0.6.0`
 
 ### Objetivo
 
-Transformar las responsabilidades Workflow actualmente conceptuales en una primera biblioteca reutilizable de Workflow Components, validada mediante implementación real y dogfooding.
+Introducir capacidades de automatización deterministas sobre el modelo de componentes de GitHub Framework, partiendo de un contrato común de metadata, normalizando los Components implementados y validando el propio Framework mediante su primer Framework Validator.
 
 ### Historias
 
 | Issue | Historia | Prioridad | Estado |
 | ----- | -------- | :-------: | :----: |
-| #17 | Workflow Component Architecture | Alta | ✅ |
-| #18 | Core Workflow Components | Alta | ✅ |
-| #19 | Workflow Reference Implementation | Alta | ✅ |
-| #20 | Workflow Component Standards | Media | ✅ |
+| #23 | Component Metadata Standard | Alta | Todo |
+| #24 | Component Metadata Normalization | Alta | Todo |
+| #25 | Framework Validator | Alta | Todo |
+| #26 | Automation Reference Implementation | Media | Todo |
 
 ---
 
@@ -101,7 +107,7 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 
 **v0.6.0 — Framework Automation**
 
-### Alcance previsto
+### Definition of Done
 
 - [ ] Common Component Metadata Schema definido.
 - [ ] Metadata de los Framework Components implementados normalizada.
@@ -112,8 +118,6 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 - [ ] Punto de entrada CLI mínimo disponible.
 - [ ] Automation Reference Implementation completada.
 - [ ] Dogfooding sobre GitHub Framework completado.
-
-El alcance definitivo del siguiente Sprint se establecerá antes de iniciar la implementación.
 
 ---
 
@@ -146,9 +150,10 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Formalizar el Common Component Metadata Schema.
-2. Planificar Sprint 8 a partir del alcance validado de `v0.6.0 — Framework Automation`.
-3. Crear las Issues del Sprint y comenzar la normalización de metadata antes de implementar el Framework Validator.
+1. Completar #23 — Component Metadata Standard.
+2. Normalizar los metadata existentes mediante #24 antes de implementar tooling.
+3. Implementar #25 — Framework Validator sobre el contrato normalizado.
+4. Validar la automatización mediante #26 — Automation Reference Implementation y dogfooding.
 
 ---
 
