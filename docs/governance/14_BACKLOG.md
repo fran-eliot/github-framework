@@ -5,7 +5,7 @@
 | **Proyecto**             | GitHub Framework |
 | **Versión**              | v0.5.0           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-09-14       |
+| **Última actualización** | 2026-09-17       |
 
 ---
 
@@ -65,7 +65,10 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 
 | ID | Historia | Milestone | Prioridad |
 |----|----------|:---------:|:---------:|
-| TBD | Framework Automation | v0.6.0 | Baja |
+| TBD | Component Metadata Standard | v0.6.0 | Alta |
+| TBD | Component Metadata Normalization | v0.6.0 | Alta |
+| TBD | Framework Validator | v0.6.0 | Alta |
+| TBD | Automation Reference Implementation | v0.6.0 | Media |
 
 ---
 
@@ -85,8 +88,8 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 
 Ideas identificadas pero no priorizadas.
 
+* Generador de componentes.
 * Generador de repositorios.
-* Validación automática de componentes.
 * Integración con GitHub Actions.
 * Plantillas específicas por lenguaje.
 * Generación de diagramas.
@@ -127,3 +130,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.5.0 | 2026-08-19 | Planificación de Sprint 7 — Workflow Framework. |
 | v0.5.1 | 2026-09-14 | Cierre funcional del alcance de Sprint 7 y actualización del Product Backlog tras completar Workflow Component Standards. |
 | v0.5.2 | 2026-09-14 | Cierre de Sprint 7 y preparación final de la release v0.5.0. |
+| v0.5.3 | 2026-09-17 | Definición del alcance de v0.6.0 — Framework Automation tras la fase de discovery. |

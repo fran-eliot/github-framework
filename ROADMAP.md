@@ -66,12 +66,56 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 **Estado:** ⚪ Planned
 
-## Objetivos
+## Objetivo
 
-* Scripts de validación.
-* Generación de componentes.
-* Automatización documental.
-* Primeras herramientas CLI.
+Introducir capacidades de automatización deterministas sobre el modelo de componentes de GitHub Framework, partiendo de un contrato de metadata común y validando el propio Framework mediante sus herramientas.
+
+## Alcance
+
+### Component Metadata Standard
+
+* Definir un contrato común de metadata para los Framework Components implementados.
+* Establecer un núcleo compartido entre las familias README, Documentation y Workflow.
+* Preservar extensiones específicas de cada familia.
+* Normalizar la representación de valores comunes sin alterar su semántica.
+
+### Component Metadata Normalization
+
+* Migrar los componentes implementados al contrato común de metadata.
+* Eliminar diferencias estructurales innecesarias entre formatos existentes.
+* Preservar estados de lifecycle, prioridades y semántica específica de cada componente.
+* Validar la normalización antes de construir tooling sobre ella.
+
+### Framework Validator
+
+* Descubrir los componentes implementados desde `framework/components/`.
+* Validar metadata mediante reglas deterministas.
+* Aplicar reglas comunes y reglas específicas por familia.
+* Validar estructura física y artefactos declarados.
+* Detectar identificadores duplicados, referencias inválidas e inconsistencias estructurales.
+* Producir resultados legibles y códigos de salida deterministas.
+
+### Automation Reference Implementation
+
+* Ejecutar el Framework Validator sobre el propio repositorio GitHub Framework.
+* Validar mediante dogfooding el contrato de metadata normalizado.
+* Proporcionar un punto de entrada CLI mínimo para la validación.
+* Documentar los patrones de automatización demostrados y sus límites.
+
+## Fuera de alcance
+
+* Generadores de componentes o repositorios.
+* Reescritura automática de documentación libre.
+* Publicación automática de releases.
+* Orquestación compleja mediante GitHub Actions.
+* Bots o mantenimiento autónomo de repositorios.
+* Sistemas de plugins o plataformas extensibles de reglas.
+* Interfaces gráficas o servicios de automatización.
+* Automatización de decisiones arquitectónicas o de diseño.
+
+## Principio de la Release
+
+> Automation follows demonstrated architecture: normalize established contracts first, then automate deterministic operations over them.
 
 ---
 
