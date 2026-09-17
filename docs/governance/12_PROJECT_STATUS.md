@@ -17,7 +17,7 @@ GitHub Framework ha completado las fases de arquitectura, Open Source Readiness,
 
 El Framework dispone actualmente de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno, una biblioteca de Documentation Components y una primera familia de Repository Templates validadas mediante Reference Implementation y dogfooding.
 
-El proyecto se encuentra actualmente en Sprint 7 — Workflow Framework.
+El Sprint 7 — Workflow Framework ha finalizado.
 
 Durante este Sprint se ha definido la Workflow Component Architecture y se han implementado los primeros Core Workflow Components:
 
@@ -33,7 +33,7 @@ La validación ha confirmado distintos mecanismos de materialización, incluyend
 
 A partir de la evidencia obtenida se han consolidado los Workflow Component Standards, manteniendo los cinco Core Workflow Components como `Implemented`, en lifecycle `Experimental` y con Reference Implementation `Validated`.
 
-El alcance de Sprint 7 está completado y la release `v0.5.0 — Workflow Framework` ha quedado preparada para su integración y publicación.
+El alcance de Sprint 7 está completado y la release `v0.5.0 — Workflow Framework` ha sido integrada en `main`, etiquetada y publicada.
 
 ---
 
@@ -100,7 +100,7 @@ Transformar las responsabilidades Workflow actualmente conceptuales en una prime
 - [x] Workflow Component Standards definidos.
 - [x] Component Catalog actualizado cuando corresponda.
 - [x] Documentación de gobierno actualizada.
-- [x] Release `v0.5.0` preparada.
+- [x] Release `v0.5.0` publicada.
 
 ---
 
@@ -131,10 +131,9 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Integrar `feature/workflow-framework` en `main`.
-2. Publicar la release `v0.5.0 — Workflow Framework`.
-3. Crear el tag `v0.5.0`.
-4. Preparar la planificación de la siguiente evolución del Framework.
+1. Preparar la planificación de la siguiente evolución del Framework.
+2. Definir el alcance de `v0.6.0 — Framework Automation`.
+3. Crear el siguiente Sprint únicamente después de validar dicho alcance.
 
 ---
 
