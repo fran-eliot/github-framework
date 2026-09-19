@@ -1,19 +1,16 @@
 schema_version: "1.0"
 
-component:
-  id: "README-QUICK-START"
-  name: "Quick Start"
-  family: "README"
-  category: "core"
+id: "README-QUICK-START"
+name: "Quick Start"
+family: "README"
+version: "1.0.0"
+status: Stable
+priority: Required
 
-  description: >
-    Explica cómo ejecutar el proyecto por primera vez.
+description: >
+  Explica cómo ejecutar el proyecto por primera vez.
 
-  version: "1.0.0"
-  status: "stable"
-
-classification:
-  priority: "required"
+category: "core"
 
 inputs:
 

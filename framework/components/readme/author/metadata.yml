@@ -1,22 +1,18 @@
 schema_version: "1.0"
 
-component:
-  id: "README-AUTHOR"
-  name: "Author"
-  family: "README"
-  category: "management"
+id: "README-AUTHOR"
+name: "Author"
+family: "README"
+version: "1.0.0"
+status: Stable
+priority: Optional
 
-  description: >
-    Presenta el autor o mantenedores del proyecto.
+description: >
+  Presenta el autor o mantenedores del proyecto.
 
-  version: "1.0.0"
-  status: "stable"
-
-classification:
-  priority: "optional"
+category: "management"
 
 inputs:
-
   author:
     type: "markdown"
 

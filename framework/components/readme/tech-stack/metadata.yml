@@ -1,22 +1,18 @@
 schema_version: "1.0"
 
-component:
-  id: "README-TECH-STACK"
-  name: "Technology Stack"
-  family: "README"
-  category: "core"
+id: "README-TECH-STACK"
+name: "Technology Stack"
+family: "README"
+version: "1.0.0"
+status: Stable
+priority: Required
 
-  description: >
-    Resume las tecnologías principales utilizadas por el proyecto.
+description: >
+  Resume las tecnologías principales utilizadas por el proyecto.
 
-  version: "1.0.0"
-  status: "stable"
-
-classification:
-  priority: "required"
+category: "core"
 
 inputs:
-
   technologies:
     type: "list"
     required: true

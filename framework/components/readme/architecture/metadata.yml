@@ -1,23 +1,19 @@
 schema_version: "1.0"
 
-component:
-  id: "README-ARCHITECTURE"
-  name: "Repository Architecture"
-  family: "README"
-  category: "engineering"
+id: "README-ARCHITECTURE"
+name: "Repository Architecture"
+family: "README"
+version: "1.0.0"
+status: Stable
+priority: Recommended
 
-  description: >
-    Resume la arquitectura técnica del proyecto y enlaza
-    a la documentación detallada.
+description: >
+  Resume la arquitectura técnica del proyecto y enlaza
+  a la documentación detallada.
 
-  version: "1.0.0"
-  status: "stable"
-
-classification:
-  priority: "recommended"
+category: "engineering"
 
 inputs:
-
   summary:
     type: "markdown"
     required: true

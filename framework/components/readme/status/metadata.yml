@@ -1,25 +1,21 @@
 schema_version: "1.0"
 
-component:
-  id: "README-STATUS"
-  name: "Repository Status"
-  family: "README"
-  category: "core"
+id: "README-STATUS"
+name: "Repository Status"
+family: "README"
+version: "1.0.0"
+status: Stable
+priority: Required
 
-  description: >
-    Muestra el estado actual del proyecto y su nivel de madurez.
+description: >
+  Muestra el estado actual del proyecto y su nivel de madurez.
 
-  version: "1.0.0"
-  status: "stable"
+maturity:
+  minimum: "L2"
 
-classification:
-  priority: "required"
-
-  maturity:
-    minimum: "L2"
+category: "core"
 
 inputs:
-
   project_status:
     type: "enum"
     required: true

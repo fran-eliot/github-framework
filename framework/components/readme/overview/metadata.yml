@@ -1,25 +1,23 @@
 schema_version: "1.0"
 
-component:
-  id: "README-OVERVIEW"
-  name: "Repository Overview"
-  family: "README"
-  category: "core"
+id: "README-OVERVIEW"
+name: "Repository Overview"
+family: "README"
+version: "1.0.0"
+status: Stable
+priority: Required
 
-  description: >
-    Presenta una visión general del proyecto, explicando
-    su propósito, objetivos y contexto.
+description: >
+  Presenta una visión general del proyecto, explicando
+  su propósito, objetivos y contexto.
 
-  version: "1.0.0"
-  status: "stable"
-  owner: "Fran Ramirez"
+owner: "Fran Ramirez"
 
-classification:
-  priority: "required"
+maturity:
+  minimum: "L1"
+  recommended: "L2"
 
-  maturity:
-    minimum: "L1"
-    recommended: "L2"
+category: "core"
 
 inputs:
 

@@ -1,46 +1,44 @@
 schema_version: "1.0"
 
-component:
-  id: "README-HERO"
-  name: "Repository Hero"
-  family: "README"
-  category: "core"
+id: "README-HERO"
+name: "Repository Hero"
+family: "README"
+version: "1.0.0"
+status: Stable
+priority: Required
 
-  description: >
-    Presenta la identidad del repositorio mediante el banner,
-    el nombre del proyecto, el tagline, los badges principales
-    y una descripción corta opcional.
+description: >
+  Presenta la identidad del repositorio mediante el banner,
+  el nombre del proyecto, el tagline, los badges principales
+  y una descripción corta opcional.
 
-  version: "1.0.0"
-  status: "stable"
-  owner: "Fran Ramirez"
+owner: "Fran Ramirez"
 
-classification:
-  priority: "required"
+audience:
+  - "recruiter"
+  - "developer"
+  - "contributor"
+  - "maintainer"
 
-  maturity:
-    minimum: "L1"
-    recommended: "L2"
-    supported:
-      - "L1"
-      - "L2"
-      - "L3"
-      - "L4"
+maturity:
+  minimum: "L1"
+  recommended: "L2"
+  supported:
+    - "L1"
+    - "L2"
+    - "L3"
+    - "L4"
 
-  audience:
-    - "recruiter"
-    - "developer"
-    - "contributor"
-    - "maintainer"
+category: "core"
 
-  repository_types:
-    - "backend"
-    - "fullstack"
-    - "ai"
-    - "documentation"
-    - "library"
-    - "website"
-    - "github-profile"
+repository_types:
+  - "backend"
+  - "fullstack"
+  - "ai"
+  - "documentation"
+  - "library"
+  - "website"
+  - "github-profile"
 
 responsibilities:
   - "Presentar la identidad oficial del proyecto."

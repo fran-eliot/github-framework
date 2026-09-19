@@ -1,3 +1,5 @@
+schema_version: "1.0"
+
 id: DOC-ARCHITECTURE
 name: Architecture
 family: Documentation
