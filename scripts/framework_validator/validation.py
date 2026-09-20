@@ -368,3 +368,266 @@ def validate_optional_common_fields(metadata: dict[str, Any]) -> list[str]:
                     seen.add(member)
 
     return errors
+
+
+WORKFLOW_MATERIALIZATION_MECHANISMS = {
+    "Convention",
+    "Configuration",
+    "Community File",
+}
+
+
+def validate_workflow_materialization(
+    metadata: dict[str, Any],
+) -> list[str]:
+    """Validate materialization for a Workflow Component."""
+    errors: list[str] = []
+
+    if metadata.get("family") != "Workflow":
+        return errors
+
+    if "materialization" not in metadata:
+        return ["materialization: required field is missing"]
+
+    materialization = metadata["materialization"]
+
+    if not isinstance(materialization, dict):
+        return ["materialization: expected a mapping"]
+
+    if "primary" not in materialization:
+        errors.append("materialization.primary: required field is missing")
+    else:
+        primary = materialization["primary"]
+
+        if not isinstance(primary, list) or not primary:
+            errors.append("materialization.primary: expected a non-empty list")
+        else:
+            seen: set[str] = set()
+
+            for index, mechanism in enumerate(primary):
+                path = f"materialization.primary[{index}]"
+
+                if (
+                    not isinstance(mechanism, str)
+                    or mechanism not in WORKFLOW_MATERIALIZATION_MECHANISMS
+                ):
+                    errors.append(f"{path}: invalid mechanism")
+                    continue
+
+                if mechanism in seen:
+                    errors.append(f"{path}: duplicate '{mechanism}'")
+                else:
+                    seen.add(mechanism)
+
+    if "executable" not in materialization:
+        errors.append("materialization.executable: required field is missing")
+    elif not isinstance(materialization["executable"], bool):
+        errors.append("materialization.executable: expected a boolean")
+
+    return errors
+
+
+def validate_workflow_artifacts(
+    metadata: dict[str, Any],
+) -> list[str]:
+    """Validate the structure of Workflow artifact declarations."""
+    errors: list[str] = []
+
+    if metadata.get("family") != "Workflow":
+        return errors
+
+    if "artifacts" not in metadata:
+        return ["artifacts: required field is missing"]
+
+    artifacts = metadata["artifacts"]
+
+    if not isinstance(artifacts, dict):
+        return ["artifacts: expected a mapping"]
+
+    if "specification" not in artifacts:
+        errors.append("artifacts.specification: required field is missing")
+    else:
+        specification = artifacts["specification"]
+
+        if not isinstance(specification, str) or not specification.strip():
+            errors.append(
+                "artifacts.specification: expected a non-empty path"
+            )
+
+    if "templates" in artifacts:
+        templates = artifacts["templates"]
+
+        if not isinstance(templates, list):
+            errors.append("artifacts.templates: expected a list")
+        else:
+            seen: set[str] = set()
+
+            for index, template in enumerate(templates):
+                path = f"artifacts.templates[{index}]"
+
+                if not isinstance(template, str) or not template.strip():
+                    errors.append(f"{path}: expected a non-empty path")
+                    continue
+
+                if template in seen:
+                    errors.append(f"{path}: duplicate '{template}'")
+                else:
+                    seen.add(template)
+
+    return errors
+
+
+def validate_workflow_artifact_files(
+    metadata: dict[str, Any],
+    component_dir: Path,
+) -> list[str]:
+    """Check that declared Workflow artifacts are local, existing files."""
+    errors: list[str] = []
+
+    if metadata.get("family") != "Workflow":
+        return errors
+
+    artifacts = metadata.get("artifacts")
+
+    # Structural errors are reported by validate_workflow_artifacts.
+    if not isinstance(artifacts, dict):
+        return errors
+
+    declared_paths: list[tuple[str, str]] = []
+
+    specification = artifacts.get("specification")
+    if isinstance(specification, str) and specification.strip():
+        declared_paths.append(("artifacts.specification", specification))
+
+    templates = artifacts.get("templates")
+    if isinstance(templates, list):
+        for index, template in enumerate(templates):
+            if isinstance(template, str) and template.strip():
+                declared_paths.append(
+                    (f"artifacts.templates[{index}]", template)
+                )
+
+    root = component_dir.resolve()
+
+    for property_name, declared_path in declared_paths:
+        # Artifact paths use repository-style forward slashes.
+        # Reject backslashes rather than interpreting them differently
+        # on Windows and Unix.
+        if "\\" in declared_path:
+            errors.append(
+                f"{property_name}: expected a forward-slash relative path"
+            )
+            continue
+
+        relative_path = Path(declared_path)
+
+        if (
+            declared_path.startswith("/")
+            or relative_path.is_absolute()
+            or ":" in declared_path
+        ):
+            errors.append(
+                f"{property_name}: expected a relative path"
+            )
+            continue
+
+        resolved_path = (root / relative_path).resolve()
+
+        if not resolved_path.is_relative_to(root):
+            errors.append(
+                f"{property_name}: path escapes the Component directory"
+            )
+            continue
+
+        if not resolved_path.is_file():
+            errors.append(
+                f"{property_name}: file does not exist: '{declared_path}'"
+            )
+
+    return errors
+
+
+WORKFLOW_SPECIALIZATIONS = {"Allowed", "Required"}
+
+
+def validate_workflow_adoption(
+    metadata: dict[str, Any],
+) -> list[str]:
+    """Validate adoption declarations for a Workflow Component."""
+    errors: list[str] = []
+
+    if metadata.get("family") != "Workflow":
+        return errors
+
+    if "adoption" not in metadata:
+        return ["adoption: required field is missing"]
+
+    adoption = metadata["adoption"]
+
+    if not isinstance(adoption, dict):
+        return ["adoption: expected a mapping"]
+
+    if "specialization" not in adoption:
+        errors.append("adoption.specialization: required field is missing")
+    elif adoption["specialization"] not in WORKFLOW_SPECIALIZATIONS:
+        errors.append(
+            "adoption.specialization: expected 'Allowed' or 'Required'"
+        )
+
+    if "target" in adoption:
+        target = adoption["target"]
+
+        if not isinstance(target, str) or not target.strip():
+            errors.append("adoption.target: expected a non-empty path")
+        elif (
+            target.startswith("/")
+            or "\\" in target
+            or ":" in target
+            or any(part == ".." for part in target.split("/"))
+        ):
+            errors.append(
+                "adoption.target: expected a relative repository path"
+            )
+
+    return errors
+
+
+def validate_workflow_validation(
+    metadata: dict[str, Any],
+) -> list[str]:
+    """Validate Workflow evidence declarations."""
+    errors: list[str] = []
+
+    if metadata.get("family") != "Workflow":
+        return errors
+
+    if "validation" not in metadata:
+        return ["validation: required field is missing"]
+
+    validation = metadata["validation"]
+
+    if not isinstance(validation, dict):
+        return ["validation: expected a mapping"]
+
+    if "dogfooding" not in validation:
+        errors.append("validation.dogfooding: required field is missing")
+    elif not isinstance(validation["dogfooding"], bool):
+        errors.append("validation.dogfooding: expected a boolean")
+
+    if "reference_implementation" not in validation:
+        errors.append(
+            "validation.reference_implementation: required field is missing"
+        )
+    else:
+        reference_implementation = validation["reference_implementation"]
+
+        if (
+            not isinstance(reference_implementation, str)
+            or not reference_implementation.strip()
+        ):
+            errors.append(
+                "validation.reference_implementation: "
+                "expected a non-empty state"
+            )
+
+    return errors

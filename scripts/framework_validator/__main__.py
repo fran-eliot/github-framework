@@ -13,6 +13,11 @@ from .validation import (
     validate_maturity,
     validate_dependencies,
     validate_optional_common_fields,
+    validate_workflow_materialization,
+    validate_workflow_artifacts,
+    validate_workflow_artifact_files,
+    validate_workflow_adoption,
+    validate_workflow_validation
 )
 
 
@@ -27,6 +32,11 @@ def main() -> int:
 
     component_dirs = discover_components(COMPONENTS_ROOT)
     errors: list[str] = []
+
+    if not component_dirs:
+        errors.append(
+            f"{COMPONENTS_ROOT}: no Components discovered"
+        )
 
     print(f"Components discovered: {len(component_dirs)}")
 
@@ -73,6 +83,21 @@ def main() -> int:
         for error in validate_optional_common_fields(metadata):
             errors.append(f"{metadata_path}: {error}")
 
+        for error in validate_workflow_materialization(metadata):
+            errors.append(f"{metadata_path}: {error}")
+
+        for error in validate_workflow_artifacts(metadata):
+            errors.append(f"{metadata_path}: {error}")
+
+        for error in validate_workflow_artifact_files(metadata, component_dir):
+            errors.append(f"{metadata_path}: {error}")
+
+        for error in validate_workflow_adoption(metadata):
+            errors.append(f"{metadata_path}: {error}")
+
+        for error in validate_workflow_validation(metadata):
+            errors.append(f"{metadata_path}: {error}")
+
         print(f"  {component_id}: {component_dir.name}")
 
     errors.extend(validate_unique_ids(loaded_components))
@@ -87,8 +112,8 @@ def main() -> int:
         return 1
 
     print(
-        "Discovery, metadata loading, Common Core, identity, "
-        "uniqueness, maturity and dependencies validation passed."
+        "Validation passed: discovery, metadata loading, Common Core, "
+        "identity, uniqueness, maturity, dependencies and Workflow extensions."
     )
     return 0
 

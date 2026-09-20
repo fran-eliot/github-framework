@@ -3,6 +3,7 @@
 from typing import Any
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 from scripts.framework_validator.validation import (
     validate_common_core,
@@ -11,6 +12,11 @@ from scripts.framework_validator.validation import (
     validate_unique_ids,
     validate_maturity,
     validate_optional_common_fields,
+    validate_workflow_materialization,
+    validate_workflow_artifacts,
+    validate_workflow_artifact_files,
+    validate_workflow_adoption,
+    validate_workflow_validation,
 )
 
 
@@ -529,6 +535,645 @@ class OptionalCommonFieldsTests(unittest.TestCase):
         self.assertEqual(
             validate_optional_common_fields(metadata),
             ["audience[1]: duplicate 'Developer'"],
+        )
+
+
+
+class WorkflowMaterializationTests(unittest.TestCase):
+    """Verify Workflow materialization declarations."""
+
+    def workflow_metadata(self) -> dict:
+        metadata = valid_metadata()
+        metadata["family"] = "Workflow"
+        metadata["materialization"] = {
+            "primary": ["Convention"],
+            "executable": False,
+        }
+        return metadata
+
+    def test_valid_convention(self) -> None:
+        self.assertEqual(
+            validate_workflow_materialization(self.workflow_metadata()),
+            [],
+        )
+
+    def test_valid_multiple_mechanisms(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["materialization"]["primary"] = [
+            "Convention",
+            "Configuration",
+        ]
+
+        self.assertEqual(validate_workflow_materialization(metadata), [])
+
+    def test_non_workflow_is_ignored(self) -> None:
+        metadata = valid_metadata()
+        metadata["materialization"] = "not applicable"
+
+        self.assertEqual(validate_workflow_materialization(metadata), [])
+
+    def test_missing_materialization(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["materialization"]
+
+        self.assertEqual(
+            validate_workflow_materialization(metadata),
+            ["materialization: required field is missing"],
+        )
+
+    def test_invalid_materialization_type(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["materialization"] = []
+
+        self.assertEqual(
+            validate_workflow_materialization(metadata),
+            ["materialization: expected a mapping"],
+        )
+
+    def test_missing_primary(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["materialization"]["primary"]
+
+        self.assertEqual(
+            validate_workflow_materialization(metadata),
+            ["materialization.primary: required field is missing"],
+        )
+
+    def test_empty_primary(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["materialization"]["primary"] = []
+
+        self.assertEqual(
+            validate_workflow_materialization(metadata),
+            ["materialization.primary: expected a non-empty list"],
+        )
+
+    def test_invalid_mechanism(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["materialization"]["primary"] = ["Unknown"]
+
+        self.assertEqual(
+            validate_workflow_materialization(metadata),
+            ["materialization.primary[0]: invalid mechanism"],
+        )
+
+    def test_duplicate_mechanism(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["materialization"]["primary"] = [
+            "Convention",
+            "Convention",
+        ]
+
+        self.assertEqual(
+            validate_workflow_materialization(metadata),
+            ["materialization.primary[1]: duplicate 'Convention'"],
+        )
+
+    def test_missing_executable(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["materialization"]["executable"]
+
+        self.assertEqual(
+            validate_workflow_materialization(metadata),
+            ["materialization.executable: required field is missing"],
+        )
+
+    def test_invalid_executable_type(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["materialization"]["executable"] = "false"
+
+        self.assertEqual(
+            validate_workflow_materialization(metadata),
+            ["materialization.executable: expected a boolean"],
+        )
+
+
+
+class WorkflowArtifactsTests(unittest.TestCase):
+    """Verify Workflow artifact declarations."""
+
+    def workflow_metadata(self) -> dict:
+        metadata = valid_metadata()
+        metadata["family"] = "Workflow"
+        metadata["artifacts"] = {
+            "specification": "README.md",
+            "templates": ["templates/CODEOWNERS"],
+        }
+        return metadata
+
+    def test_valid_artifacts(self) -> None:
+        self.assertEqual(
+            validate_workflow_artifacts(self.workflow_metadata()),
+            [],
+        )
+
+    def test_templates_are_optional(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["artifacts"]["templates"]
+
+        self.assertEqual(validate_workflow_artifacts(metadata), [])
+
+    def test_empty_templates_are_allowed(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["artifacts"]["templates"] = []
+
+        self.assertEqual(validate_workflow_artifacts(metadata), [])
+
+    def test_non_workflow_is_ignored(self) -> None:
+        metadata = valid_metadata()
+        metadata["artifacts"] = "not applicable"
+
+        self.assertEqual(validate_workflow_artifacts(metadata), [])
+
+    def test_missing_artifacts(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["artifacts"]
+
+        self.assertEqual(
+            validate_workflow_artifacts(metadata),
+            ["artifacts: required field is missing"],
+        )
+
+    def test_invalid_artifacts_type(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["artifacts"] = []
+
+        self.assertEqual(
+            validate_workflow_artifacts(metadata),
+            ["artifacts: expected a mapping"],
+        )
+
+    def test_missing_specification(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["artifacts"]["specification"]
+
+        self.assertEqual(
+            validate_workflow_artifacts(metadata),
+            ["artifacts.specification: required field is missing"],
+        )
+
+    def test_empty_specification(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["artifacts"]["specification"] = " "
+
+        self.assertEqual(
+            validate_workflow_artifacts(metadata),
+            ["artifacts.specification: expected a non-empty path"],
+        )
+
+    def test_invalid_templates_type(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["artifacts"]["templates"] = "templates/CODEOWNERS"
+
+        self.assertEqual(
+            validate_workflow_artifacts(metadata),
+            ["artifacts.templates: expected a list"],
+        )
+
+    def test_invalid_template_entry(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["artifacts"]["templates"] = [""]
+
+        self.assertEqual(
+            validate_workflow_artifacts(metadata),
+            ["artifacts.templates[0]: expected a non-empty path"],
+        )
+
+    def test_duplicate_template(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["artifacts"]["templates"] = [
+            "templates/CODEOWNERS",
+            "templates/CODEOWNERS",
+        ]
+
+        self.assertEqual(
+            validate_workflow_artifacts(metadata),
+            [
+                "artifacts.templates[1]: duplicate "
+                "'templates/CODEOWNERS'"
+            ],
+        )
+
+
+
+class WorkflowArtifactFilesTests(unittest.TestCase):
+    """Verify local Workflow artifact files and path containment."""
+
+    def workflow_metadata(self) -> dict:
+        metadata = valid_metadata()
+        metadata["family"] = "Workflow"
+        metadata["artifacts"] = {
+            "specification": "README.md",
+            "templates": ["templates/CODEOWNERS"],
+        }
+        return metadata
+
+    def test_existing_files(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "README.md").write_text("Specification", encoding="utf-8")
+            (root / "templates").mkdir()
+            (root / "templates" / "CODEOWNERS").write_text(
+                "* @maintainer", encoding="utf-8"
+            )
+
+            self.assertEqual(
+                validate_workflow_artifact_files(
+                    self.workflow_metadata(), root
+                ),
+                [],
+            )
+
+    def test_missing_specification(self) -> None:
+        with TemporaryDirectory() as directory:
+            metadata = self.workflow_metadata()
+            del metadata["artifacts"]["templates"]
+
+            self.assertEqual(
+                validate_workflow_artifact_files(
+                    metadata, Path(directory)
+                ),
+                [
+                    "artifacts.specification: "
+                    "file does not exist: 'README.md'"
+                ],
+            )
+
+    def test_missing_template(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "README.md").write_text("Specification", encoding="utf-8")
+
+            self.assertEqual(
+                validate_workflow_artifact_files(
+                    self.workflow_metadata(), root
+                ),
+                [
+                    "artifacts.templates[0]: "
+                    "file does not exist: 'templates/CODEOWNERS'"
+                ],
+            )
+
+    def test_parent_directory_escape(self) -> None:
+        with TemporaryDirectory() as directory:
+            metadata = self.workflow_metadata()
+            metadata["artifacts"] = {
+                "specification": "../README.md",
+            }
+
+            self.assertEqual(
+                validate_workflow_artifact_files(
+                    metadata, Path(directory)
+                ),
+                [
+                    "artifacts.specification: "
+                    "path escapes the Component directory"
+                ],
+            )
+
+    def test_absolute_path(self) -> None:
+        with TemporaryDirectory() as directory:
+            metadata = self.workflow_metadata()
+            metadata["artifacts"] = {
+                "specification": "/tmp/README.md",
+            }
+
+            self.assertEqual(
+                validate_workflow_artifact_files(
+                    metadata, Path(directory)
+                ),
+                [
+                    "artifacts.specification: expected a relative path"
+                ],
+            )
+
+    def test_windows_style_path(self) -> None:
+        with TemporaryDirectory() as directory:
+            metadata = self.workflow_metadata()
+            metadata["artifacts"] = {
+                "specification": r"templates\CODEOWNERS",
+            }
+
+            self.assertEqual(
+                validate_workflow_artifact_files(
+                    metadata, Path(directory)
+                ),
+                [
+                    "artifacts.specification: "
+                    "expected a forward-slash relative path"
+                ],
+            )
+
+    def test_directory_is_not_a_file(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "README.md").mkdir()
+
+            metadata = self.workflow_metadata()
+            del metadata["artifacts"]["templates"]
+
+            self.assertEqual(
+                validate_workflow_artifact_files(metadata, root),
+                [
+                    "artifacts.specification: "
+                    "file does not exist: 'README.md'"
+                ],
+            )
+
+    def test_non_workflow_is_ignored(self) -> None:
+        with TemporaryDirectory() as directory:
+            metadata = valid_metadata()
+            metadata["artifacts"] = {
+                "specification": "missing.md",
+            }
+
+            self.assertEqual(
+                validate_workflow_artifact_files(
+                    metadata, Path(directory)
+                ),
+                [],
+            )
+
+
+
+WORKFLOW_SPECIALIZATIONS = {"Allowed", "Required"}
+
+
+def validate_workflow_adoption(
+    metadata: dict[str, Any],
+) -> list[str]:
+    """Validate adoption declarations for a Workflow Component."""
+    errors: list[str] = []
+
+    if metadata.get("family") != "Workflow":
+        return errors
+
+    if "adoption" not in metadata:
+        return ["adoption: required field is missing"]
+
+    adoption = metadata["adoption"]
+
+    if not isinstance(adoption, dict):
+        return ["adoption: expected a mapping"]
+
+    if "specialization" not in adoption:
+        errors.append("adoption.specialization: required field is missing")
+    elif adoption["specialization"] not in WORKFLOW_SPECIALIZATIONS:
+        errors.append(
+            "adoption.specialization: expected 'Allowed' or 'Required'"
+        )
+
+    if "target" in adoption:
+        target = adoption["target"]
+
+        if not isinstance(target, str) or not target.strip():
+            errors.append("adoption.target: expected a non-empty path")
+        elif (
+            target.startswith("/")
+            or "\\" in target
+            or ":" in target
+            or any(part == ".." for part in target.split("/"))
+        ):
+            errors.append(
+                "adoption.target: expected a relative repository path"
+            )
+
+    return errors
+
+
+
+class WorkflowAdoptionTests(unittest.TestCase):
+    """Verify Workflow adoption declarations."""
+
+    def workflow_metadata(self) -> dict:
+        metadata = valid_metadata()
+        metadata["family"] = "Workflow"
+        metadata["adoption"] = {
+            "target": ".github/ISSUE_TEMPLATE/",
+            "specialization": "Allowed",
+        }
+        return metadata
+
+    def test_valid_adoption(self) -> None:
+        self.assertEqual(
+            validate_workflow_adoption(self.workflow_metadata()),
+            [],
+        )
+
+    def test_target_is_optional(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["adoption"]["target"]
+
+        self.assertEqual(validate_workflow_adoption(metadata), [])
+
+    def test_required_specialization(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["adoption"]["specialization"] = "Required"
+
+        self.assertEqual(validate_workflow_adoption(metadata), [])
+
+    def test_non_workflow_is_ignored(self) -> None:
+        metadata = valid_metadata()
+        metadata["adoption"] = "not applicable"
+
+        self.assertEqual(validate_workflow_adoption(metadata), [])
+
+    def test_missing_adoption(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["adoption"]
+
+        self.assertEqual(
+            validate_workflow_adoption(metadata),
+            ["adoption: required field is missing"],
+        )
+
+    def test_invalid_adoption_type(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["adoption"] = []
+
+        self.assertEqual(
+            validate_workflow_adoption(metadata),
+            ["adoption: expected a mapping"],
+        )
+
+    def test_missing_specialization(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["adoption"]["specialization"]
+
+        self.assertEqual(
+            validate_workflow_adoption(metadata),
+            ["adoption.specialization: required field is missing"],
+        )
+
+    def test_invalid_specialization(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["adoption"]["specialization"] = "Custom"
+
+        self.assertEqual(
+            validate_workflow_adoption(metadata),
+            [
+                "adoption.specialization: "
+                "expected 'Allowed' or 'Required'"
+            ],
+        )
+
+    def test_empty_target(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["adoption"]["target"] = " "
+
+        self.assertEqual(
+            validate_workflow_adoption(metadata),
+            ["adoption.target: expected a non-empty path"],
+        )
+
+    def test_absolute_target(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["adoption"]["target"] = "/etc/config"
+
+        self.assertEqual(
+            validate_workflow_adoption(metadata),
+            [
+                "adoption.target: "
+                "expected a relative repository path"
+            ],
+        )
+
+    def test_parent_directory_target(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["adoption"]["target"] = "../outside"
+
+        self.assertEqual(
+            validate_workflow_adoption(metadata),
+            [
+                "adoption.target: "
+                "expected a relative repository path"
+            ],
+        )
+
+    def test_windows_style_target(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["adoption"]["target"] = r".github\CODEOWNERS"
+
+        self.assertEqual(
+            validate_workflow_adoption(metadata),
+            [
+                "adoption.target: "
+                "expected a relative repository path"
+            ],
+        )
+
+
+
+class WorkflowValidationTests(unittest.TestCase):
+    """Verify Workflow validation evidence declarations."""
+
+    def workflow_metadata(self) -> dict:
+        metadata = valid_metadata()
+        metadata["family"] = "Workflow"
+        metadata["validation"] = {
+            "dogfooding": True,
+            "reference_implementation": "Validated",
+        }
+        return metadata
+
+    def test_valid_validation(self) -> None:
+        self.assertEqual(
+            validate_workflow_validation(self.workflow_metadata()),
+            [],
+        )
+
+    def test_false_dogfooding_is_allowed(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["validation"]["dogfooding"] = False
+
+        self.assertEqual(validate_workflow_validation(metadata), [])
+
+    def test_other_nonempty_reference_state_is_allowed(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["validation"]["reference_implementation"] = "Pending"
+
+        self.assertEqual(validate_workflow_validation(metadata), [])
+
+    def test_non_workflow_is_ignored(self) -> None:
+        metadata = valid_metadata()
+        metadata["validation"] = "not applicable"
+
+        self.assertEqual(validate_workflow_validation(metadata), [])
+
+    def test_missing_validation(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["validation"]
+
+        self.assertEqual(
+            validate_workflow_validation(metadata),
+            ["validation: required field is missing"],
+        )
+
+    def test_invalid_validation_type(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["validation"] = []
+
+        self.assertEqual(
+            validate_workflow_validation(metadata),
+            ["validation: expected a mapping"],
+        )
+
+    def test_missing_dogfooding(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["validation"]["dogfooding"]
+
+        self.assertEqual(
+            validate_workflow_validation(metadata),
+            ["validation.dogfooding: required field is missing"],
+        )
+
+    def test_invalid_dogfooding_type(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["validation"]["dogfooding"] = "true"
+
+        self.assertEqual(
+            validate_workflow_validation(metadata),
+            ["validation.dogfooding: expected a boolean"],
+        )
+
+    def test_missing_reference_implementation(self) -> None:
+        metadata = self.workflow_metadata()
+        del metadata["validation"]["reference_implementation"]
+
+        self.assertEqual(
+            validate_workflow_validation(metadata),
+            [
+                "validation.reference_implementation: "
+                "required field is missing"
+            ],
+        )
+
+    def test_empty_reference_implementation(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["validation"]["reference_implementation"] = " "
+
+        self.assertEqual(
+            validate_workflow_validation(metadata),
+            [
+                "validation.reference_implementation: "
+                "expected a non-empty state"
+            ],
+        )
+
+    def test_multiple_validation_errors(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["validation"] = {
+            "dogfooding": "yes",
+            "reference_implementation": "",
+        }
+
+        self.assertEqual(
+            validate_workflow_validation(metadata),
+            [
+                "validation.dogfooding: expected a boolean",
+                "validation.reference_implementation: "
+                "expected a non-empty state",
+            ],
         )
 
 
