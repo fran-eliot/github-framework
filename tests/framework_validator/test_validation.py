@@ -7,7 +7,10 @@ from pathlib import Path
 from scripts.framework_validator.validation import (
     validate_common_core,
     validate_component_identity,
+    validate_dependencies,
     validate_unique_ids,
+    validate_maturity,
+    validate_optional_common_fields,
 )
 
 
@@ -237,6 +240,296 @@ class UniqueIdValidationTests(unittest.TestCase):
         ]
 
         self.assertEqual(validate_unique_ids(components), [])
+
+
+
+class MaturityValidationTests(unittest.TestCase):
+    """Verify optional Component maturity declarations."""
+
+    def test_absent_maturity(self) -> None:
+        self.assertEqual(validate_maturity(valid_metadata()), [])
+
+    def test_valid_scalar_maturity(self) -> None:
+        metadata = valid_metadata()
+        metadata["maturity"] = "L2"
+
+        self.assertEqual(validate_maturity(metadata), [])
+
+    def test_invalid_scalar_maturity(self) -> None:
+        metadata = valid_metadata()
+        metadata["maturity"] = "L5"
+
+        self.assertEqual(
+            validate_maturity(metadata),
+            ["maturity: expected one of [L1, L2, L3, L4]"],
+        )
+
+    def test_valid_partial_mapping(self) -> None:
+        metadata = valid_metadata()
+        metadata["maturity"] = {"minimum": "L2"}
+
+        self.assertEqual(validate_maturity(metadata), [])
+
+    def test_valid_mapping_with_supported(self) -> None:
+        metadata = valid_metadata()
+        metadata["maturity"] = {
+            "minimum": "L1",
+            "recommended": "L2",
+            "supported": ["L1", "L2", "L3", "L4"],
+        }
+
+        self.assertEqual(validate_maturity(metadata), [])
+
+    def test_invalid_minimum_type(self) -> None:
+        metadata = valid_metadata()
+        metadata["maturity"] = {"minimum": ["L1"]}
+
+        errors = validate_maturity(metadata)
+
+        self.assertEqual(
+            errors,
+            ["maturity.minimum: expected one of [L1, L2, L3, L4]"],
+        )
+
+    def test_duplicate_supported_level(self) -> None:
+        metadata = valid_metadata()
+        metadata["maturity"] = {
+            "supported": ["L1", "L1"],
+        }
+
+        errors = validate_maturity(metadata)
+
+        self.assertEqual(
+            errors,
+            ["maturity.supported[1]: duplicate 'L1'"],
+        )
+
+    def test_minimum_not_supported(self) -> None:
+        metadata = valid_metadata()
+        metadata["maturity"] = {
+            "minimum": "L1",
+            "supported": ["L2", "L3"],
+        }
+
+        errors = validate_maturity(metadata)
+
+        self.assertEqual(
+            errors,
+            ["maturity.minimum: 'L1' is not in supported"],
+        )
+
+    def test_invalid_supported_type(self) -> None:
+        metadata = valid_metadata()
+        metadata["maturity"] = {"supported": "L2"}
+
+        self.assertEqual(
+            validate_maturity(metadata),
+            ["maturity.supported: expected a non-empty list"],
+        )
+
+    def test_nested_input_maturity_is_not_root_maturity(self) -> None:
+        metadata = valid_metadata()
+        metadata["inputs"] = {
+            "maturity": {
+                "type": "enum",
+                "allowed": ["L1", "L2", "L3", "L4"],
+            }
+        }
+
+        self.assertEqual(validate_maturity(metadata), [])
+
+
+
+class DependencyValidationTests(unittest.TestCase):
+    """Verify simple and classified Component dependencies."""
+
+    def test_absent_dependencies(self) -> None:
+        self.assertEqual(validate_dependencies(valid_metadata()), [])
+
+    def test_empty_dependencies(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = []
+
+        self.assertEqual(validate_dependencies(metadata), [])
+
+    def test_valid_simple_list(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = [
+            "README-HERO",
+            "DOC-ARCHITECTURE",
+            "VCL-BANNER",
+        ]
+
+        self.assertEqual(validate_dependencies(metadata), [])
+
+    def test_valid_classified_dependencies(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = {
+            "required": ["VCL-HERO"],
+            "recommended": [
+                {"id": "README-OVERVIEW", "minimum_version": "1.0.0"}
+            ],
+            "optional": [],
+        }
+
+        self.assertEqual(validate_dependencies(metadata), [])
+
+    def test_invalid_dependencies_type(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = "README-HERO"
+
+        self.assertEqual(
+            validate_dependencies(metadata),
+            ["dependencies: expected a list or classified mapping"],
+        )
+
+    def test_invalid_category(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = {"mandatory": ["README-HERO"]}
+
+        self.assertEqual(
+            validate_dependencies(metadata),
+            ["dependencies.mandatory: unknown category"],
+        )
+
+    def test_invalid_category_value(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = {"required": "README-HERO"}
+
+        self.assertEqual(
+            validate_dependencies(metadata),
+            ["dependencies.required: expected a list"],
+        )
+
+    def test_invalid_dependency_id(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = ["readme-hero"]
+
+        self.assertEqual(
+            validate_dependencies(metadata),
+            ["dependencies[0].id: invalid Component ID"],
+        )
+
+    def test_missing_dependency_id(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = [{"minimum_version": "1.0.0"}]
+
+        self.assertEqual(
+            validate_dependencies(metadata),
+            ["dependencies[0].id: required field is missing"],
+        )
+
+    def test_invalid_minimum_version(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = [
+            {"id": "README-HERO", "minimum_version": "1.0"}
+        ]
+
+        self.assertEqual(
+            validate_dependencies(metadata),
+            [
+                "dependencies[0].minimum_version: "
+                "expected a MAJOR.MINOR.PATCH string"
+            ],
+        )
+
+    def test_duplicate_across_categories(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = {
+            "required": ["README-HERO"],
+            "optional": ["README-HERO"],
+        }
+
+        self.assertEqual(
+            validate_dependencies(metadata),
+            [
+                "dependencies.optional[0].id: duplicate 'README-HERO'; "
+                "first declared at dependencies.required[0]"
+            ],
+        )
+
+    def test_invalid_entry_type(self) -> None:
+        metadata = valid_metadata()
+        metadata["dependencies"] = [42]
+
+        self.assertEqual(
+            validate_dependencies(metadata),
+            ["dependencies[0]: expected an ID or dependency mapping"],
+        )
+
+
+
+class OptionalCommonFieldsTests(unittest.TestCase):
+    """Verify optional owner and audience declarations."""
+
+    def test_absent_optional_fields(self) -> None:
+        self.assertEqual(
+            validate_optional_common_fields(valid_metadata()),
+            [],
+        )
+
+    def test_valid_owner(self) -> None:
+        metadata = valid_metadata()
+        metadata["owner"] = "Framework Maintainers"
+
+        self.assertEqual(validate_optional_common_fields(metadata), [])
+
+    def test_invalid_owner(self) -> None:
+        metadata = valid_metadata()
+        metadata["owner"] = "   "
+
+        self.assertEqual(
+            validate_optional_common_fields(metadata),
+            ["owner: expected a non-empty string"],
+        )
+
+    def test_valid_audience(self) -> None:
+        metadata = valid_metadata()
+        metadata["audience"] = ["Developer", "Maintainer"]
+
+        self.assertEqual(validate_optional_common_fields(metadata), [])
+
+    def test_custom_audience_is_allowed(self) -> None:
+        metadata = valid_metadata()
+        metadata["audience"] = ["Security Engineer"]
+
+        self.assertEqual(validate_optional_common_fields(metadata), [])
+
+    def test_empty_audience(self) -> None:
+        metadata = valid_metadata()
+        metadata["audience"] = []
+
+        self.assertEqual(
+            validate_optional_common_fields(metadata),
+            ["audience: expected a non-empty list"],
+        )
+
+    def test_invalid_audience_type(self) -> None:
+        metadata = valid_metadata()
+        metadata["audience"] = "Developer"
+
+        self.assertEqual(
+            validate_optional_common_fields(metadata),
+            ["audience: expected a non-empty list"],
+        )
+
+    def test_empty_audience_member(self) -> None:
+        metadata = valid_metadata()
+        metadata["audience"] = ["Developer", " "]
+
+        self.assertEqual(
+            validate_optional_common_fields(metadata),
+            ["audience[1]: expected a non-empty string"],
+        )
+
+    def test_duplicate_audience_member(self) -> None:
+        metadata = valid_metadata()
+        metadata["audience"] = ["Developer", "Developer"]
+
+        self.assertEqual(
+            validate_optional_common_fields(metadata),
+            ["audience[1]: duplicate 'Developer'"],
+        )
 
 
 if __name__ == "__main__":

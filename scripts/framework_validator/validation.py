@@ -1,8 +1,8 @@
 """Validate the Common Core of Framework Component metadata."""
 
 import re
-from typing import Any
 from pathlib import Path
+from typing import Any
 
 REQUIRED_FIELDS = (
     "schema_version",
@@ -148,5 +148,223 @@ def validate_unique_ids(
             )
         else:
             first_occurrence[component_id] = metadata_path
+
+    return errors
+
+
+MATURITY_LEVELS = {"L1", "L2", "L3", "L4"}
+MATURITY_FIELDS = {"minimum", "recommended", "supported"}
+
+
+def validate_maturity(metadata: dict[str, Any]) -> list[str]:
+    """Validate the optional root-level maturity declaration."""
+    errors: list[str] = []
+
+    if "maturity" not in metadata:
+        return errors
+
+    maturity = metadata["maturity"]
+
+    if isinstance(maturity, str):
+        if maturity not in MATURITY_LEVELS:
+            errors.append(
+                "maturity: expected one of [L1, L2, L3, L4]"
+            )
+        return errors
+
+    if not isinstance(maturity, dict):
+        return ["maturity: expected a level or mapping"]
+
+    for field in maturity:
+        if field not in MATURITY_FIELDS:
+            errors.append(f"maturity.{field}: unknown property")
+
+    for field in ("minimum", "recommended"):
+        if field not in maturity:
+            continue
+
+        if (
+            not isinstance(maturity[field], str)
+            or maturity[field] not in MATURITY_LEVELS
+        ):
+            errors.append(
+                f"maturity.{field}: expected one of [L1, L2, L3, L4]"
+            )
+
+    if "supported" in maturity:
+        supported = maturity["supported"]
+
+        if not isinstance(supported, list) or not supported:
+            errors.append(
+                "maturity.supported: expected a non-empty list"
+            )
+        else:
+            seen: set[str] = set()
+
+            for index, level in enumerate(supported):
+                if not isinstance(level, str) or level not in MATURITY_LEVELS:
+                    errors.append(
+                        f"maturity.supported[{index}]: invalid level"
+                    )
+                    continue
+
+                if level in seen:
+                    errors.append(
+                        f"maturity.supported[{index}]: duplicate '{level}'"
+                    )
+
+                seen.add(level)
+
+            for field in ("minimum", "recommended"):
+                level = maturity.get(field)
+
+                if (
+                    isinstance(level, str)
+                    and level in MATURITY_LEVELS
+                    and level not in seen
+                ):
+                    errors.append(
+                        f"maturity.{field}: '{level}' is not in supported"
+                    )
+
+    return errors
+
+
+
+DEPENDENCY_CATEGORIES = ("required", "recommended", "optional")
+DEPENDENCY_ID = re.compile(r"^(?:README|DOC|WCL|VCL)-[A-Z0-9]+(?:-[A-Z0-9]+)*$")
+
+
+def validate_dependencies(metadata: dict[str, Any]) -> list[str]:
+    """Validate the optional root-level Component dependencies."""
+    errors: list[str] = []
+
+    if "dependencies" not in metadata:
+        return errors
+
+    dependencies = metadata["dependencies"]
+
+    if isinstance(dependencies, list):
+        groups = [("dependencies", dependencies)]
+    elif isinstance(dependencies, dict):
+        groups = []
+
+        for category in dependencies:
+            if category not in DEPENDENCY_CATEGORIES:
+                errors.append(
+                    f"dependencies.{category}: unknown category"
+                )
+
+        for category in DEPENDENCY_CATEGORIES:
+            if category not in dependencies:
+                continue
+
+            value = dependencies[category]
+
+            if not isinstance(value, list):
+                errors.append(
+                    f"dependencies.{category}: expected a list"
+                )
+                continue
+
+            groups.append((f"dependencies.{category}", value))
+    else:
+        return ["dependencies: expected a list or classified mapping"]
+
+    seen: dict[str, str] = {}
+
+    for group_path, entries in groups:
+        for index, entry in enumerate(entries):
+            entry_path = f"{group_path}[{index}]"
+
+            if isinstance(entry, str):
+                dependency_id = entry
+
+            elif isinstance(entry, dict):
+                unknown_fields = set(entry) - {"id", "minimum_version"}
+
+                for field in sorted(unknown_fields):
+                    errors.append(
+                        f"{entry_path}.{field}: unknown property"
+                    )
+
+                if "id" not in entry:
+                    errors.append(
+                        f"{entry_path}.id: required field is missing"
+                    )
+                    continue
+
+                dependency_id = entry["id"]
+
+                if "minimum_version" in entry:
+                    minimum_version = entry["minimum_version"]
+
+                    if (
+                        not isinstance(minimum_version, str)
+                        or SEMANTIC_VERSION.fullmatch(minimum_version) is None
+                    ):
+                        errors.append(
+                            f"{entry_path}.minimum_version: "
+                            "expected a MAJOR.MINOR.PATCH string"
+                        )
+
+            else:
+                errors.append(
+                    f"{entry_path}: expected an ID or dependency mapping"
+                )
+                continue
+
+            if (
+                not isinstance(dependency_id, str)
+                or DEPENDENCY_ID.fullmatch(dependency_id) is None
+            ):
+                errors.append(
+                    f"{entry_path}.id: invalid Component ID"
+                )
+                continue
+
+            if dependency_id in seen:
+                errors.append(
+                    f"{entry_path}.id: duplicate '{dependency_id}'; "
+                    f"first declared at {seen[dependency_id]}"
+                )
+            else:
+                seen[dependency_id] = entry_path
+
+    return errors
+
+
+
+def validate_optional_common_fields(metadata: dict[str, Any]) -> list[str]:
+    """Validate optional Common Core owner and audience fields."""
+    errors: list[str] = []
+
+    if "owner" in metadata:
+        owner = metadata["owner"]
+
+        if not isinstance(owner, str) or not owner.strip():
+            errors.append("owner: expected a non-empty string")
+
+    if "audience" in metadata:
+        audience = metadata["audience"]
+
+        if not isinstance(audience, list) or not audience:
+            errors.append("audience: expected a non-empty list")
+        else:
+            seen: set[str] = set()
+
+            for index, member in enumerate(audience):
+                if not isinstance(member, str) or not member.strip():
+                    errors.append(
+                        f"audience[{index}]: expected a non-empty string"
+                    )
+                    continue
+
+                if member in seen:
+                    errors.append(
+                        f"audience[{index}]: duplicate '{member}'"
+                    )
+                else:
+                    seen.add(member)
 
     return errors

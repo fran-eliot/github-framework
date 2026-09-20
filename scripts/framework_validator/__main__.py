@@ -10,6 +10,9 @@ from .validation import (
     validate_common_core,
     validate_component_identity,
     validate_unique_ids,
+    validate_maturity,
+    validate_dependencies,
+    validate_optional_common_fields,
 )
 
 
@@ -61,6 +64,15 @@ def main() -> int:
         for error in identity_errors:
             errors.append(f"{metadata_path}: {error}")
 
+        for error in validate_maturity(metadata):
+            errors.append(f"{metadata_path}: {error}")
+
+        for error in validate_dependencies(metadata):
+            errors.append(f"{metadata_path}: {error}")
+
+        for error in validate_optional_common_fields(metadata):
+            errors.append(f"{metadata_path}: {error}")
+
         print(f"  {component_id}: {component_dir.name}")
 
     errors.extend(validate_unique_ids(loaded_components))
@@ -74,7 +86,10 @@ def main() -> int:
 
         return 1
 
-    print("Discovery, metadata loading, Common Core, identity and uniqueness validation passed.")
+    print(
+        "Discovery, metadata loading, Common Core, identity, "
+        "uniqueness, maturity and dependencies validation passed."
+    )
     return 0
 
 
