@@ -26,6 +26,12 @@ def validate_common_core(metadata: dict[str, Any]) -> list[str]:
     """Return Common Core validation errors for one Component."""
     errors: list[str] = []
 
+    for wrapper in ("component", "classification"):
+        if wrapper in metadata:
+            errors.append(
+                f"{wrapper}: historical root wrapper is not allowed"
+            )
+
     missing_fields = set(REQUIRED_FIELDS) - metadata.keys()
 
     for field in REQUIRED_FIELDS:
@@ -374,6 +380,7 @@ WORKFLOW_MATERIALIZATION_MECHANISMS = {
     "Convention",
     "Configuration",
     "Community File",
+    "Template",
 }
 
 
@@ -592,6 +599,11 @@ def validate_workflow_adoption(
     return errors
 
 
+WORKFLOW_REFERENCE_IMPLEMENTATION_STATES = {
+    "Pending",
+    "Validated",
+}
+
 def validate_workflow_validation(
     metadata: dict[str, Any],
 ) -> list[str]:
@@ -623,11 +635,12 @@ def validate_workflow_validation(
 
         if (
             not isinstance(reference_implementation, str)
-            or not reference_implementation.strip()
+            or reference_implementation
+            not in WORKFLOW_REFERENCE_IMPLEMENTATION_STATES
         ):
             errors.append(
                 "validation.reference_implementation: "
-                "expected a non-empty state"
+                "expected 'Pending' or 'Validated'"
             )
 
     return errors

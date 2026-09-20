@@ -103,6 +103,28 @@ class CommonCoreValidationTests(unittest.TestCase):
         self.assertEqual(len(errors), 1)
         self.assertIn("family: expected one of", errors[0])
 
+    def test_historical_component_wrapper_is_rejected(self) -> None:
+        metadata = valid_metadata()
+        metadata["component"] = {"id": "README-EXAMPLE"}
+
+        errors = validate_common_core(metadata)
+
+        self.assertIn(
+            "component: historical root wrapper is not allowed",
+            errors,
+        )
+
+    def test_historical_classification_wrapper_is_rejected(self) -> None:
+        metadata = valid_metadata()
+        metadata["classification"] = {"family": "README"}
+
+        errors = validate_common_core(metadata)
+
+        self.assertIn(
+            "classification: historical root wrapper is not allowed",
+            errors,
+        )
+
     
 FAMILY_PREFIXES = {
     "README": "README",
@@ -647,6 +669,12 @@ class WorkflowMaterializationTests(unittest.TestCase):
             ["materialization.executable: expected a boolean"],
         )
 
+    def test_template_materialization_is_allowed(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["materialization"]["primary"] = ["Template"]
+
+        self.assertEqual(validate_workflow_materialization(metadata), [])
+
 
 
 class WorkflowArtifactsTests(unittest.TestCase):
@@ -1156,8 +1184,21 @@ class WorkflowValidationTests(unittest.TestCase):
             validate_workflow_validation(metadata),
             [
                 "validation.reference_implementation: "
-                "expected a non-empty state"
+                "expected 'Pending' or 'Validated'"
             ],
+        )
+
+    def test_unknown_reference_implementation(self) -> None:
+        metadata = self.workflow_metadata()
+        metadata["validation"]["reference_implementation"] = "Unknown"
+
+        errors = validate_workflow_validation(metadata)
+
+        self.assertTrue(
+            any(
+                "validation.reference_implementation:" in error
+                for error in errors
+            )
         )
 
     def test_multiple_validation_errors(self) -> None:
@@ -1172,7 +1213,7 @@ class WorkflowValidationTests(unittest.TestCase):
             [
                 "validation.dogfooding: expected a boolean",
                 "validation.reference_implementation: "
-                "expected a non-empty state",
+                "expected 'Pending' or 'Validated'",
             ],
         )
 
