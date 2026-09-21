@@ -50,7 +50,7 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.5.0 — Workflow Framework
 
-**Estado:** ✅ Completed
+**Estado:** ✅ Released
 
 ## Objetivos
 
@@ -64,7 +64,7 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.6.0 — Framework Automation
 
-**Estado:** ⏳ Implementation completed — release pending
+**Estado:** ⏳ Implementation completed and merged into `main` — release pending
 
 ## Objetivo
 
@@ -142,14 +142,20 @@ Las cuatro historias previstas para `v0.6.0` han sido implementadas y cerradas:
 
 La implementación de referencia y sus limitaciones están documentadas en `docs/implementation/22_AUTOMATION_REFERENCE_IMPLEMENTATION.md`.
 
+### Integración
+
+La implementación de Framework Automation se integró en `main` mediante el Pull Request #27, con el commit de merge `4b357d8`.
+
+Las cuatro historias (#23–#26) están completadas y cerradas. La preparación documental de la release se realiza en la rama `chore/v0.6.0-post-merge`.
+
 ### Pendiente para la publicación
 
-* Completar la revisión final de la documentación de gobierno.
-* Revisar el Pull Request de `feature/framework-automation` hacia `main`.
-* Integrar los cambios.
-* Preparar y publicar `v0.6.0`.
+* Finalizar y revisar la documentación de release.
+* Integrar la rama `chore/v0.6.0-post-merge` en `main`.
+* Crear el tag `v0.6.0` y publicar la release en GitHub.
+* Verificar el estado del repositorio tras la publicación.
 
-La finalización funcional del Sprint 8 no implica que la release haya sido publicada.
+La implementación funcional y su integración en `main` están completadas. La versión publicada continúa siendo `v0.5.0` hasta que se publique `v0.6.0`.
 
 ---
 

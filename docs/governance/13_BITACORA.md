@@ -271,16 +271,48 @@ La versión publicada continúa siendo `v0.5.0`. La integración en `main` y la 
 
 ---
 
+# 2026-09-21 · Sprint 8 — Framework Automation: integración en main
+
+## Objetivo
+
+Integrar la implementación de `v0.6.0 — Framework Automation` en la rama principal y preparar su publicación.
+
+## Trabajo realizado
+
+* Revisión final de los cambios desarrollados en `feature/framework-automation`.
+* Apertura y revisión del Pull Request #27: `feat(automation): implement Framework Automation (v0.6.0)`.
+* Verificación satisfactoria del check del Pull Request y ausencia de conflictos de integración.
+* Merge del Pull Request #27 en `main`.
+* Sincronización de la rama local `main` con `origin/main`.
+* Apertura de la rama `chore/v0.6.0-post-merge` para preparar la documentación de release.
+* Inicio de la actualización de `CHANGELOG.md`, `README.md`, `README_es.md` y los documentos de gobierno.
+
+**Commit de merge:** `4b357d8`.
+
+## Decisiones relevantes
+
+* Separar la integración funcional de la publicación de la versión.
+* Preparar los ajustes documentales en una rama específica, sin introducir nuevas funcionalidades.
+* Mantener `v0.5.0` como última versión publicada hasta crear el tag y la release de `v0.6.0`.
+* Conservar la trazabilidad de los cuatro issues completados (#23–#26) y del Pull Request #27.
+
+## Resultado
+
+**Framework Automation está integrado en `main`.**
+
+La implementación funcional de Sprint 8 está completada y sus cuatro historias están cerradas. La publicación de `v0.6.0` permanece pendiente de finalizar e integrar la documentación de release, crear el tag y publicar la versión en GitHub.
+
+---
+
 # Próximo Hito
 
 ## v0.6.0 — Framework Automation
 
 Actividades pendientes:
 
-1. Sincronizar la documentación de gobierno, el Changelog y el Roadmap.
-2. Revisar los cambios de integración.
-3. Preparar y revisar el Pull Request hacia `main`.
-4. Integrar la rama `feature/framework-automation`.
-5. Publicar y verificar `v0.6.0`.
+1. Finalizar y revisar la documentación de release.
+2. Integrar `chore/v0.6.0-post-merge` en `main`.
+3. Crear el tag `v0.6.0` y publicar la release en GitHub.
+4. Verificar el estado del repositorio tras la publicación.
 
 El siguiente incremento funcional del Framework se definirá después de completar esta release.

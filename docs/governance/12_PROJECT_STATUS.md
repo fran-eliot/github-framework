@@ -5,8 +5,8 @@
 | **Proyecto**             | GitHub Framework                                            |
 | **Versión actual**       | v0.5.0                                                      |
 | **Estado**               | En desarrollo                                               |
-| **Fase**                 | Framework Automation                                        |
-| **Sprint actual**        | Sprint 8 — Framework Automation (implementación completada) |
+| **Fase**                 | Framework Automation — preparación de release               |
+| **Sprint actual**        | Sprint 8 — completado e integrado en `main`                 |
 | **Versión objetivo**     | v0.6.0                                                      |
 | **Última actualización** | 2026-09-21                                                  |
 
@@ -26,12 +26,9 @@ El Sprint 8 introduce capacidades de automatización deterministas sobre el mode
 
 Su desarrollo parte de un contrato común de metadata, normaliza los Components implementados y proporciona un primer validador ejecutable mediante CLI.
 
-El alcance funcional del Sprint 8 está completado mediante cuatro historias:
+**El alcance funcional del Sprint 8 está completado e integrado en `main`.** Las cuatro historias (#23–#26) están cerradas y el Pull Request #27 se ha fusionado mediante el commit `4b357d8`.
 
-* **#23 — Component Metadata Standard:** definición del contrato común de metadata y de las extensiones por familia.
-* **#24 — Component Metadata Normalization:** normalización de los archivos `metadata.yml` de los Components implementados.
-* **#25 — Framework Validator:** implementación de las reglas deterministas de descubrimiento, carga y validación.
-* **#26 — Automation Reference Implementation:** validación del propio GitHub Framework mediante dogfooding y pruebas aisladas de comportamiento.
+La documentación de release se está sincronizando en la rama `chore/v0.6.0-post-merge`. Quedan pendientes su revisión e integración, la creación del tag `v0.6.0`, la publicación de la release en GitHub y la verificación posterior.
 
 La implementación mantiene los archivos `framework/components/**/metadata.yml` como fuente de verdad de los Components físicos.
 
@@ -52,8 +49,6 @@ La validación final del Sprint 8 ha confirmado:
 Las pruebas negativas incluyen errores de metadata, artefactos Workflow inexistentes e IDs duplicados. Se ejecutan sobre directorios temporales sin modificar los Components reales.
 
 La implementación de referencia está documentada en `docs/implementation/22_AUTOMATION_REFERENCE_IMPLEMENTATION.md`.
-
-**El alcance funcional de Sprint 8 está completado.** Quedan pendientes la sincronización final de la documentación de gobierno, la revisión de integración, el Pull Request, el merge y la publicación de `v0.6.0`.
 
 La generación de Components y repositorios, la corrección automática de metadata y la integración CI no forman parte del alcance de esta release.
 
@@ -85,7 +80,8 @@ La generación de Components y repositorios, la corrección automática de metad
 | Component Metadata Normalization             |    ✅   |
 | Framework Validator                          |    ✅   |
 | Automation Reference Implementation          |    ✅   |
-| Integración y publicación de v0.6.0          |    ⏳   |
+| Integración de Framework Automation en `main` |    ✅   |
+| Publicación de v0.6.0                         |    ⏳   |
 
 ---
 
@@ -95,7 +91,7 @@ La generación de Components y repositorios, la corrección automática de metad
 
 **Target:** `v0.6.0`
 
-**Estado:** implementación completada; integración y release pendientes.
+**Estado:** implementación completada e integrada en `main`; publicación de la release pendiente.
 
 ### Objetivo
 
@@ -130,7 +126,7 @@ Commits principales:
 | `ecfff96` | Alineación con los estándares de metadata (#25) |
 | `dc0abdb` | Automation Reference Implementation (#26)       |
 
-Los commits anteriores están publicados en `origin/feature/framework-automation`.
+La implementación se integró en `main` mediante el Pull Request #27, con el commit de merge `4b357d8`.
 
 ---
 
@@ -151,16 +147,16 @@ Los commits anteriores están publicados en `origin/feature/framework-automation
 * [x] Dogfooding sobre GitHub Framework completado.
 * [x] Batería de 109 tests superada.
 
-### Pendiente para la release
+### Integración y publicación
 
-* [ ] Sincronizar la documentación de gobierno y el Changelog.
-* [ ] Revisar los cambios de integración.
-* [ ] Crear y revisar el Pull Request hacia `main`.
-* [ ] Integrar la rama `feature/framework-automation`.
-* [ ] Preparar y publicar `v0.6.0`.
+* [x] Sincronizar la documentación de gobierno para el cierre funcional del Sprint 8.
+* [x] Revisar los cambios de integración.
+* [x] Crear y revisar el Pull Request #27 hacia `main`.
+* [x] Integrar la rama `feature/framework-automation` mediante el merge `4b357d8`.
+* [ ] Finalizar y revisar la documentación de `v0.6.0`.
+* [ ] Integrar la rama `chore/v0.6.0-post-merge` en `main`.
+* [ ] Crear el tag `v0.6.0` y publicar la release en GitHub.
 * [ ] Verificar el estado del repositorio tras la publicación.
-
-La finalización funcional del Sprint no equivale a la publicación de la versión.
 
 ---
 
@@ -195,9 +191,10 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Completar la revisión de integración y preparar el Pull Request de `feature/framework-automation`.
-2. Integrar y publicar `v0.6.0 — Framework Automation`.
-3. Evaluar el siguiente incremento del Framework después de la publicación, sin anticipar su alcance.
+1. Completar la sincronización documental de `v0.6.0` y revisar su coherencia.
+2. Integrar los cambios de preparación de release en `main`.
+3. Crear el tag `v0.6.0`, publicar la release y verificar el repositorio.
+4. Evaluar el siguiente incremento del Framework después de la publicación, sin anticipar su alcance.
 
 ---
 

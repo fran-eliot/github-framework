@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+---
+
+## [0.6.0] - 2026-09-21
+
 ### Added
 
 * Component Metadata Standard defining a shared Common Core and family-specific metadata extensions.

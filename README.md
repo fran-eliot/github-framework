@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.5.0-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-v0.6.0-blue" alt="Version" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Status" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
 </p>
@@ -37,9 +37,10 @@ The goal is to reduce repetitive decisions while allowing each project to remain
 - Reusable documentation components
 - Repository templates
 - Reusable workflow components
-- Reference implementations
+- Common component metadata contract
+- Deterministic Framework Validator
+- Reference implementations and dogfooding
 - Framework evolution
-- Validation-ready architecture
 
 ---
 
@@ -110,6 +111,34 @@ For detailed information, explore the `docs/` directory.
 
 ---
 
+## ✅ Framework Validation
+
+GitHub Framework includes a deterministic validator for its implemented Components.
+
+The validator discovers Components, loads their metadata, and checks the Common Core, identity, uniqueness, maturity, dependencies, and applicable Workflow extensions.
+
+Run it from the repository root:
+
+```bash
+python -m scripts.framework_validator
+```
+
+The CLI produces a human-readable report and returns exit code `0` on success or `1` when validation fails.
+
+Run the automated test suite with:
+
+```bash
+python -m unittest discover -s tests/framework_validator -p "test_*.py"
+```
+
+The v0.6.0 reference implementation validates 21 Components and includes 109 automated tests.
+
+For details, see the [Component Metadata Standard](docs/standards/21_COMPONENT_METADATA_STANDARD.md) and [Automation Reference Implementation](docs/implementation/22_AUTOMATION_REFERENCE_IMPLEMENTATION.md).
+
+The validator checks deterministic rules; it does not replace architectural review or generate repository content.
+
+---
+
 ## 🗺️ Roadmap
 
 GitHub Framework evolves through incremental releases.
@@ -149,7 +178,7 @@ The project has established its core architecture and is now evolving the Framew
 
 Latest milestone:
 
-**v0.5.0 — Workflow Framework**
+**v0.6.0 — Framework Automation**
 
 ---
 
