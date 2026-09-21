@@ -55,7 +55,7 @@ Las historias de `v0.6.0` están implementadas y cerradas. Su inclusión en esta
 
 **Milestone:** `v0.6.0 — Framework Automation`
 
-**Estado:** implementación completada; integración y publicación pendientes.
+**Estado:** implementación completada e integrada en `main`; publicación de `v0.6.0` pendiente.
 
 **Objetivo**
 
@@ -79,9 +79,9 @@ Introducir capacidades de automatización deterministas sobre el modelo de Compo
 * Pruebas negativas representativas superadas mediante directorios temporales.
 * Automation Reference Implementation documentada y validada.
 
-La implementación se encuentra publicada en la rama `feature/framework-automation`.
+La implementación se integró en `main` mediante el Pull Request #27, con el commit de merge `4b357d8`.
 
-La integración en `main` y la publicación de `v0.6.0` siguen pendientes.
+La publicación de `v0.6.0` permanece pendiente. La documentación de release se está preparando en `chore/v0.6.0-post-merge`.
 
 ---
 
@@ -89,7 +89,7 @@ La integración en `main` y la publicación de `v0.6.0` siguen pendientes.
 
 No existen actualmente historias funcionales priorizadas fuera del alcance completado de Sprint 8.
 
-El siguiente incremento funcional se definirá después de la integración y publicación de `v0.6.0`.
+El siguiente incremento funcional se definirá después de la publicación de `v0.6.0`.
 
 Las actividades de preparación de la release no constituyen nuevas historias funcionales.
 
@@ -102,7 +102,7 @@ Las actividades de preparación de la release no constituyen nuevas historias fu
 | v0.3.0 — Documentation Framework |                  ✅ Released                 |
 | v0.4.0 — Repository Templates    |                  ✅ Released                 |
 | v0.5.0 — Workflow Framework      |                  ✅ Released                 |
-| v0.6.0 — Framework Automation    | ⏳ Implementation completed; release pending |
+| v0.6.0 — Framework Automation    | ⏳ Integrated into main; release pending |
 | v1.0.0 — Stable Release          |                  ⚪ Planned                  |
 
 ---
@@ -158,3 +158,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.5.3  | 2026-09-17 | Definición del alcance de v0.6.0 — Framework Automation tras la fase de discovery.                                              |
 | v0.5.4  | 2026-09-17 | Apertura de Sprint 8 — Framework Automation y asignación de las Issues #23–#26.                                                 |
 | v0.5.5  | 2026-09-21 | Cierre funcional de Sprint 8: cuatro historias completadas, 109 tests superados y Automation Reference Implementation validada. |
+| v0.5.6  | 2026-09-21 | Integración de Framework Automation en `main` mediante el PR #27 y preparación documental de la release v0.6.0. |

@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.5.0-blue" alt="Versión" />
+  <img src="https://img.shields.io/badge/version-v0.6.0-blue" alt="Versión" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Estado" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="Licencia" />
 </p>
@@ -39,9 +39,10 @@ Su objetivo es reducir las decisiones repetitivas, permitiendo al mismo tiempo q
 - Componentes reutilizables para documentación
 - Plantillas reutilizables de repositorios
 - Componentes reutilizables de Workflow
-- Implementaciones de referencia
+- Contrato común de metadata para Components
+- Framework Validator con reglas de validación deterministas
+- Implementaciones de referencia y dogfooding
 - Evolución versionada del Framework
-- Arquitectura preparada para futuras herramientas de validación y automatización
 
 ---
 
@@ -112,6 +113,34 @@ Para información detallada, explora el directorio `docs/`.
 
 ---
 
+## ✅ Validación del Framework
+
+GitHub Framework incorpora un validador determinista para sus Components implementados.
+
+El validador descubre los Components, carga sus archivos de metadata y comprueba el Common Core, la identidad, la unicidad, la madurez, las dependencias y las extensiones Workflow aplicables.
+
+Para ejecutarlo desde la raíz del repositorio:
+
+```bash
+python -m scripts.framework_validator
+```
+
+El CLI genera un informe legible y devuelve el código de salida `0` cuando la validación es satisfactoria o `1` cuando se detectan errores de validación.
+
+Para ejecutar la batería de tests automatizados:
+
+```bash
+python -m unittest discover -s tests/framework_validator -p "test_*.py"
+```
+
+La implementación de referencia de `v0.6.0` valida 21 Components e incluye 109 tests automatizados.
+
+Para más información, consulta el [Component Metadata Standard](docs/standards/21_COMPONENT_METADATA_STANDARD.md) y la [Automation Reference Implementation](docs/implementation/22_AUTOMATION_REFERENCE_IMPLEMENTATION.md).
+
+El validador comprueba reglas deterministas; no sustituye la revisión arquitectónica ni genera contenido para repositorios.
+
+---
+
 ## 🗺️ Roadmap
 
 GitHub Framework evoluciona mediante versiones incrementales.
@@ -151,7 +180,7 @@ El proyecto ha establecido su arquitectura principal y actualmente continúa evo
 
 Último hito:
 
-**v0.5.0 — Workflow Framework**
+**v0.6.0 — Framework Automation**
 
 ---
 
