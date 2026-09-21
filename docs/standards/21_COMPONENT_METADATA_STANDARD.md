@@ -2105,4 +2105,3 @@ Las futuras extensiones deberán derivarse de nuevas implementaciones y evidenci
 **Principio final:**
 
 > Normalize established contracts first. Automate deterministic operations second.
-

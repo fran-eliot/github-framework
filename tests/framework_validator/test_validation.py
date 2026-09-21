@@ -125,7 +125,7 @@ class CommonCoreValidationTests(unittest.TestCase):
             errors,
         )
 
-    
+
 FAMILY_PREFIXES = {
     "README": "README",
     "Documentation": "DOC",
