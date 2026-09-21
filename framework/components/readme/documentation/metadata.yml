@@ -1,22 +1,18 @@
 schema_version: "1.0"
 
-component:
-  id: "README-DOCUMENTATION"
-  name: "Documentation"
-  family: "README"
-  category: "engineering"
+id: "README-DOCUMENTATION"
+name: "Documentation"
+family: "README"
+version: "1.0.0"
+status: Stable
+priority: Required
 
-  description: >
-    Centraliza los enlaces a la documentación del proyecto.
+description: >
+  Centraliza los enlaces a la documentación del proyecto.
 
-  version: "1.0.0"
-  status: "stable"
-
-classification:
-  priority: "required"
+category: "engineering"
 
 inputs:
-
   documents:
     type: "list"
 

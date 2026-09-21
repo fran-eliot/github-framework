@@ -1,3 +1,5 @@
+schema_version: "1.0"
+
 id: WCL-COMMIT
 name: Commit
 family: Workflow

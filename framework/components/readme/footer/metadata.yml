@@ -1,22 +1,18 @@
 schema_version: "1.0"
 
-component:
-  id: "README-FOOTER"
-  name: "Repository Footer"
-  family: "README"
-  category: "management"
+id: "README-FOOTER"
+name: "Repository Footer"
+family: "README"
+version: "1.0.0"
+status: Stable
+priority: Required
 
-  description: >
-    Cierra el README con información complementaria.
+description: >
+  Cierra el README con información complementaria.
 
-  version: "1.0.0"
-  status: "stable"
-
-classification:
-  priority: "required"
+category: "management"
 
 inputs:
-
   footer:
     type: "markdown"
 

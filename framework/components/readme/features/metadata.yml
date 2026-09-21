@@ -1,22 +1,18 @@
 schema_version: "1.0"
 
-component:
-  id: "README-FEATURES"
-  name: "Repository Features"
-  family: "README"
-  category: "core"
+id: "README-FEATURES"
+name: "Repository Features"
+family: "README"
+version: "1.0.0"
+status: Stable
+priority: Required
 
-  description: >
-    Presenta las principales funcionalidades o capacidades del proyecto.
+description: >
+  Presenta las principales funcionalidades o capacidades del proyecto.
 
-  version: "1.0.0"
-  status: "stable"
-
-classification:
-  priority: "required"
+category: "core"
 
 inputs:
-
   features:
     type: "list"
     required: true

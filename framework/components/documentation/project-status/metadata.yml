@@ -1,3 +1,5 @@
+schema_version: "1.0"
+
 id: DOC-PROJECT-STATUS
 name: Project Status
 family: Documentation

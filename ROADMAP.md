@@ -64,14 +64,92 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.6.0 — Framework Automation
 
-**Estado:** ⚪ Planned
+**Estado:** ⏳ Implementation completed — release pending
 
-## Objetivos
+## Objetivo
 
-* Scripts de validación.
-* Generación de componentes.
-* Automatización documental.
-* Primeras herramientas CLI.
+Introducir capacidades de automatización deterministas sobre el modelo de componentes de GitHub Framework, partiendo de un contrato de metadata común y validando el propio Framework mediante sus herramientas.
+
+## Alcance
+
+### Component Metadata Standard
+
+* Definir un contrato común de metadata para los Framework Components implementados.
+* Establecer un núcleo compartido entre las familias README, Documentation y Workflow.
+* Preservar extensiones específicas de cada familia.
+* Normalizar la representación de valores comunes sin alterar su semántica.
+
+### Component Metadata Normalization
+
+* Migrar los componentes implementados al contrato común de metadata.
+* Eliminar diferencias estructurales innecesarias entre formatos existentes.
+* Preservar estados de lifecycle, prioridades y semántica específica de cada componente.
+* Validar la normalización antes de construir tooling sobre ella.
+
+### Framework Validator
+
+* Descubrir los componentes implementados desde `framework/components/`.
+* Validar metadata mediante reglas deterministas.
+* Aplicar reglas comunes y reglas específicas por familia.
+* Validar estructura física y artefactos declarados.
+* Detectar identificadores duplicados, referencias inválidas e inconsistencias estructurales.
+* Producir resultados legibles y códigos de salida deterministas.
+
+### Automation Reference Implementation
+
+* Ejecutar el Framework Validator sobre el propio repositorio GitHub Framework.
+* Validar mediante dogfooding el contrato de metadata normalizado.
+* Proporcionar un punto de entrada CLI mínimo para la validación.
+* Documentar los patrones de automatización demostrados y sus límites.
+
+## Fuera de alcance
+
+* Generadores de componentes o repositorios.
+* Reescritura automática de documentación libre.
+* Publicación automática de releases.
+* Orquestación compleja mediante GitHub Actions.
+* Bots o mantenimiento autónomo de repositorios.
+* Sistemas de plugins o plataformas extensibles de reglas.
+* Interfaces gráficas o servicios de automatización.
+* Automatización de decisiones arquitectónicas o de diseño.
+
+## Principio de la Release
+
+> Automation follows demonstrated architecture: normalize established contracts first, then automate deterministic operations over them.
+
+---
+
+## Resultado de implementación — Sprint 8
+
+**Estado funcional:** Completed.
+
+Las cuatro historias previstas para `v0.6.0` han sido implementadas y cerradas:
+
+| Issue | Entregable                          | Estado |
+| ----- | ----------------------------------- | ------ |
+| #23   | Component Metadata Standard         | Done   |
+| #24   | Component Metadata Normalization    | Done   |
+| #25   | Framework Validator                 | Done   |
+| #26   | Automation Reference Implementation | Done   |
+
+### Evidencias de validación
+
+* Los 21 Components implementados han sido normalizados y validados.
+* El Framework Validator dispone de reglas deterministas para el Common Core, la identidad, la unicidad, la madurez, las dependencias y las extensiones Workflow.
+* El CLI proporciona informes legibles y códigos de salida `0` y `1`.
+* La batería completa de 109 tests ha finalizado correctamente.
+* La Automation Reference Implementation ha sido validada mediante dogfooding sobre GitHub Framework.
+
+La implementación de referencia y sus limitaciones están documentadas en `docs/implementation/22_AUTOMATION_REFERENCE_IMPLEMENTATION.md`.
+
+### Pendiente para la publicación
+
+* Completar la revisión final de la documentación de gobierno.
+* Revisar el Pull Request de `feature/framework-automation` hacia `main`.
+* Integrar los cambios.
+* Preparar y publicar `v0.6.0`.
+
+La finalización funcional del Sprint 8 no implica que la release haya sido publicada.
 
 ---
 

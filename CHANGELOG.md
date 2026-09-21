@@ -2,6 +2,33 @@
 
 ## [Unreleased]
 
+### Added
+
+* Component Metadata Standard defining a shared Common Core and family-specific metadata extensions.
+* Framework Validator with deterministic checks for:
+
+  * Component discovery and metadata loading.
+  * Common Core fields and controlled vocabularies.
+  * Component identity and ID uniqueness.
+  * Maturity and dependency declarations.
+  * Workflow-specific metadata and local artifacts.
+* Minimal validator CLI through `python -m scripts.framework_validator`.
+* Human-readable validation reports and deterministic exit codes (`0` for success, `1` for validation failure).
+* Automation Reference Implementation documenting Framework dogfooding, validation evidence, findings and limitations.
+* Automated tests covering valid metadata and representative failures, including missing Workflow artifacts and duplicate Component IDs.
+
+### Changed
+
+* Normalized the metadata of all 21 implemented Components across the README, Documentation and Workflow families.
+* Aligned the Framework Validator with the established metadata and Workflow Component standards.
+* Preserved family-specific metadata semantics within the normalized contract.
+
+### Validation
+
+* Successfully validated all 21 implemented Components through Framework dogfooding.
+* Passed 109 automated tests.
+* Verified the validator CLI success exit code (`0`) and representative failure exit code (`1`).
+
 ---
 
 ## [0.5.0] - 2026-09-14
