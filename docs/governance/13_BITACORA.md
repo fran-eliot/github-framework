@@ -343,6 +343,51 @@ El proyecto pasa a una fase de discovery para determinar el siguiente incremento
 
 ---
 
+# 2026-09-26 · Public Release — publicación open source
+
+## Objetivo
+
+Completar la transición de GitHub Framework desde repositorio privado a proyecto open source público, verificando previamente su preparación técnica, documental y de seguridad.
+
+## Trabajo realizado
+
+* Ejecución de una revisión específica de Public Release Readiness.
+* Auditoría del árbol actual y del historial Git para detectar posibles secretos, credenciales, claves o archivos sensibles.
+* Revisión de la identidad de autor expuesta por el historial Git.
+* Retirada de `legacy/` del árbol versionado y exclusión del material local mediante `.gitignore`.
+* Validación posterior del Framework Validator sobre los 21 Components implementados.
+* Ejecución satisfactoria de los 109 tests automatizados.
+* Integración de la limpieza mediante el Pull Request #30.
+* Configuración de la descripción y los topics públicos del repositorio.
+* Activación de Dependency Graph, Dependabot Alerts y Dependabot Security Updates.
+* Creación y activación del ruleset `Protect main` sobre la rama por defecto.
+* Activación de Secret Protection y Push Protection después del cambio de visibilidad.
+* Cambio de visibilidad del repositorio de privado a público.
+* Verificación del repositorio mediante acceso no autenticado, incluyendo README, metadata pública, licencia MIT, release `v0.6.0` e Issues.
+
+**Commit de limpieza:** `7e77e07`.
+
+**Commit de merge del Pull Request #30:** `a5a954f`.
+
+## Decisiones relevantes
+
+* Publicar el repositorio sobre la versión estable existente `v0.6.0`, sin crear una release adicional exclusivamente por el cambio de visibilidad.
+* Mantener intacto el historial Git al no haberse detectado secretos que justificasen una reescritura.
+* Mantener `SECURITY.md` fuera del repositorio mientras no exista una necesidad real que justifique una política pública específica.
+* Aplicar un baseline de seguridad proporcionado sin introducir todavía CodeQL, Dependabot Version Updates ni nuevas automatizaciones CI.
+* Exigir Pull Request para integrar cambios en `main`, bloquear su eliminación y los force pushes, sin exigir aprobaciones externas mientras exista un único maintainer.
+* Mantener el siguiente incremento funcional sin versión, Sprint, milestone ni alcance comprometidos hasta completar su discovery.
+
+## Resultado
+
+**GitHub Framework pasa oficialmente a ser un proyecto open source público.**
+
+La publicación conserva `v0.6.0 — Framework Automation` como última release y mantiene el proyecto en discovery del siguiente incremento funcional.
+
+El repositorio público queda protegido mediante reglas sobre `main`, controles preventivos de secretos y monitorización de dependencias, manteniendo el alcance de automatización del Framework sin cambios.
+
+---
+
 # Próximo Hito
 
 ## Siguiente incremento — por definir
