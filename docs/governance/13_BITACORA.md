@@ -304,15 +304,51 @@ La implementación funcional de Sprint 8 está completada y sus cuatro historias
 
 ---
 
+# 2026-09-25 · v0.6.0 — Framework Automation: publicación y cierre
+
+## Objetivo
+
+Completar la publicación de `v0.6.0 — Framework Automation` y cerrar formalmente Sprint 8.
+
+## Trabajo realizado
+
+* Finalización de la documentación de release en `chore/v0.6.0-post-merge`.
+* Integración de la documentación mediante el Pull Request #28.
+* Sincronización de `main` después del merge.
+* Creación y publicación del tag anotado `v0.6.0`.
+* Publicación de `v0.6.0 — Framework Automation` como GitHub Release.
+* Verificación de la release publicada.
+* Cierre de la milestone `v0.6.0 — Framework Automation`.
+* Eliminación de las ramas de trabajo de Sprint 8 y limpieza de referencias remotas obsoletas.
+* Apertura de `docs/v0.6.0-release-closure` para sincronizar el estado final de la documentación de gobierno.
+
+**Commit de preparación documental:** `fe267ac`.
+
+**Commit de merge del Pull Request #28:** `c8d844d`.
+
+## Decisiones relevantes
+
+* Mantener separadas la integración funcional, la preparación documental y la publicación de la release para preservar su trazabilidad.
+* Considerar `v0.6.0` cerrada únicamente después de verificar tag, GitHub Release, milestone y estado del repositorio.
+* No asignar automáticamente `v0.7.0` ni promover elementos del Icebox sin realizar previamente discovery.
+* Iniciar el siguiente ciclo sin Sprint activo, versión objetivo ni alcance funcional comprometido.
+
+## Resultado
+
+**`v0.6.0 — Framework Automation` está publicada y Sprint 8 está cerrado.**
+
+GitHub Framework dispone ahora de un contrato común de metadata, 21 Components normalizados y un Framework Validator validado mediante 109 tests y dogfooding sobre el propio repositorio.
+
+El proyecto pasa a una fase de discovery para determinar el siguiente incremento funcional.
+
+---
+
 # Próximo Hito
 
-## v0.6.0 — Framework Automation
+## Siguiente incremento — por definir
 
-Actividades pendientes:
+El siguiente incremento funcional de GitHub Framework se determinará mediante discovery.
 
-1. Finalizar y revisar la documentación de release.
-2. Integrar `chore/v0.6.0-post-merge` en `main`.
-3. Crear el tag `v0.6.0` y publicar la release en GitHub.
-4. Verificar el estado del repositorio tras la publicación.
+No existe actualmente un Sprint activo, una versión objetivo asignada ni una milestone abierta para el siguiente incremento.
 
-El siguiente incremento funcional del Framework se definirá después de completar esta release.
+Las ideas existentes en el Icebox permanecen sin priorizar hasta identificar un caso de uso que justifique su incorporación al Product Backlog.
