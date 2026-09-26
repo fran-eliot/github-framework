@@ -8,7 +8,7 @@
 | **Fase**                 | Discovery del siguiente incremento         |
 | **Sprint actual**        | Ninguno                                    |
 | **Versión objetivo**     | Por definir                                |
-| **Última actualización** | 2026-09-25                                 |
+| **Última actualización** | 2026-09-26                                 |
 
 ---
 
@@ -54,6 +54,18 @@ La generación de Components y repositorios, la corrección automática de metad
 
 ---
 
+## Public Release
+
+El 2026-09-26 GitHub Framework pasó oficialmente de repositorio privado a repositorio público tras completar una revisión específica de Public Release Readiness.
+
+La revisión confirmó la ausencia de secretos o archivos sensibles detectables en el árbol actual y en el historial auditado, retiró del repositorio actual el material local de `legacy/` y verificó nuevamente el Framework Validator y sus 109 tests automatizados.
+
+Como parte de la preparación pública se configuraron la descripción y los topics del repositorio, se estableció un ruleset activo sobre `main` y se habilitó un baseline de seguridad compuesto por Dependency Graph, Dependabot Alerts, Dependabot Security Updates, Secret Protection y Push Protection.
+
+La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada y el proyecto permanece en discovery del siguiente incremento, sin Sprint ni versión objetivo activos.
+
+---
+
 # Estado por Áreas
 
 | Área                                         | Estado |
@@ -81,7 +93,8 @@ La generación de Components y repositorios, la corrección automática de metad
 | Framework Validator                          |    ✅   |
 | Automation Reference Implementation          |    ✅   |
 | Integración de Framework Automation en `main` |    ✅   |
-| Publicación de v0.6.0                         |    ⏳   |
+| Publicación de v0.6.0                         |    ✅   |
+| Publicación pública del repositorio           |    ✅   |
 
 ---
 
