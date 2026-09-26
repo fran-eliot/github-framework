@@ -3,10 +3,10 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión publicada**    | v0.5.0           |
-| **Versión objetivo**     | v0.6.0           |
+| **Versión publicada**    | v0.6.0           |
+| **Versión objetivo**     | Por definir      |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-09-21       |
+| **Última actualización** | 2026-09-25       |
 
 ---
 
@@ -45,53 +45,29 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 | #25    | Framework Validator                          | v0.6.0  | Done   |
 | #26    | Automation Reference Implementation          | v0.6.0  | Done   |
 
-Las historias de `v0.6.0` están implementadas y cerradas. Su inclusión en esta tabla no implica que la versión se haya publicado.
+Las historias de `v0.6.0` están implementadas, integradas y publicadas como parte de Framework Automation.
 
 ---
 
 ## Sprint Actual
 
-### Sprint 8 — Framework Automation
+No existe actualmente un Sprint activo.
 
-**Milestone:** `v0.6.0 — Framework Automation`
+Sprint 8 — Framework Automation finalizó con la publicación de `v0.6.0`.
 
-**Estado:** implementación completada e integrada en `main`; publicación de `v0.6.0` pendiente.
+La milestone `v0.6.0 — Framework Automation` está cerrada y las cuatro historias previstas (#23–#26) están completadas.
 
-**Objetivo**
-
-Introducir capacidades de automatización deterministas sobre el modelo de Components de GitHub Framework, partiendo de un contrato común de metadata, normalizando los Components implementados y validando el propio Framework mediante su primer Framework Validator.
-
-### Resultado funcional
-
-| Issue | Historia                            | Prioridad | Estado |
-| ----- | ----------------------------------- | :-------: | :----: |
-| #23   | Component Metadata Standard         |    Alta   |  Done  |
-| #24   | Component Metadata Normalization    |    Alta   |  Done  |
-| #25   | Framework Validator                 |    Alta   |  Done  |
-| #26   | Automation Reference Implementation |   Media   |  Done  |
-
-**Evidencias de validación:**
-
-* 21 Components implementados descubiertos y validados.
-* 109 tests automatizados superados.
-* Framework Validator ejecutado satisfactoriamente sobre el propio repositorio.
-* Código de salida `0` en la validación real.
-* Pruebas negativas representativas superadas mediante directorios temporales.
-* Automation Reference Implementation documentada y validada.
-
-La implementación se integró en `main` mediante el Pull Request #27, con el commit de merge `4b357d8`.
-
-La publicación de `v0.6.0` permanece pendiente. La documentación de release se está preparando en `chore/v0.6.0-post-merge`.
+El siguiente Sprint se definirá después de realizar el discovery y priorizar el próximo incremento funcional del Framework.
 
 ---
 
 ## Product Backlog
 
-No existen actualmente historias funcionales priorizadas fuera del alcance completado de Sprint 8.
+No existen actualmente historias funcionales priorizadas para el siguiente incremento.
 
-El siguiente incremento funcional se definirá después de la publicación de `v0.6.0`.
+El alcance del próximo Sprint se definirá mediante discovery antes de crear nuevas historias, milestone o rama de desarrollo.
 
-Las actividades de preparación de la release no constituyen nuevas historias funcionales.
+Las ideas recogidas en el Icebox permanecen sin priorizar y no constituyen compromisos de implementación.
 
 ---
 
@@ -102,7 +78,7 @@ Las actividades de preparación de la release no constituyen nuevas historias fu
 | v0.3.0 — Documentation Framework |                  ✅ Released                 |
 | v0.4.0 — Repository Templates    |                  ✅ Released                 |
 | v0.5.0 — Workflow Framework      |                  ✅ Released                 |
-| v0.6.0 — Framework Automation    | ⏳ Integrated into main; release pending |
+| v0.6.0 — Framework Automation    |                  ✅ Released                 |
 | v1.0.0 — Stable Release          |                  ⚪ Planned                  |
 
 ---
@@ -159,3 +135,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.5.4  | 2026-09-17 | Apertura de Sprint 8 — Framework Automation y asignación de las Issues #23–#26.                                                 |
 | v0.5.5  | 2026-09-21 | Cierre funcional de Sprint 8: cuatro historias completadas, 109 tests superados y Automation Reference Implementation validada. |
 | v0.5.6  | 2026-09-21 | Integración de Framework Automation en `main` mediante el PR #27 y preparación documental de la release v0.6.0. |
+| v0.6.0  | 2026-09-25 | Publicación de Framework Automation, cierre de Sprint 8 y transición del Product Backlog al discovery del siguiente incremento. |

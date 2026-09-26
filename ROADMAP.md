@@ -64,7 +64,7 @@ Las versiones podrán ajustarse conforme evolucione el Framework.
 
 # v0.6.0 — Framework Automation
 
-**Estado:** ⏳ Implementation completed and merged into `main` — release pending
+**Estado:** ✅ Released
 
 ## Objetivo
 
@@ -119,11 +119,11 @@ Introducir capacidades de automatización deterministas sobre el modelo de compo
 
 ---
 
-## Resultado de implementación — Sprint 8
+## Resultado — Sprint 8
 
-**Estado funcional:** Completed.
+**Estado:** Completed.
 
-Las cuatro historias previstas para `v0.6.0` han sido implementadas y cerradas:
+Las cuatro historias previstas para `v0.6.0` fueron implementadas y cerradas:
 
 | Issue | Entregable                          | Estado |
 | ----- | ----------------------------------- | ------ |
@@ -134,28 +134,24 @@ Las cuatro historias previstas para `v0.6.0` han sido implementadas y cerradas:
 
 ### Evidencias de validación
 
-* Los 21 Components implementados han sido normalizados y validados.
+* Los 21 Components implementados fueron normalizados y validados.
 * El Framework Validator dispone de reglas deterministas para el Common Core, la identidad, la unicidad, la madurez, las dependencias y las extensiones Workflow.
 * El CLI proporciona informes legibles y códigos de salida `0` y `1`.
-* La batería completa de 109 tests ha finalizado correctamente.
-* La Automation Reference Implementation ha sido validada mediante dogfooding sobre GitHub Framework.
+* La batería completa de 109 tests finalizó correctamente.
+* La Automation Reference Implementation fue validada mediante dogfooding sobre GitHub Framework.
 
 La implementación de referencia y sus limitaciones están documentadas en `docs/implementation/22_AUTOMATION_REFERENCE_IMPLEMENTATION.md`.
 
-### Integración
+### Integración y publicación
 
-La implementación de Framework Automation se integró en `main` mediante el Pull Request #27, con el commit de merge `4b357d8`.
+* Framework Automation se integró en `main` mediante el Pull Request #27.
+* La documentación de release se integró mediante el Pull Request #28.
+* El tag `v0.6.0` fue creado y publicado.
+* `v0.6.0 — Framework Automation` fue publicada como GitHub Release.
+* La milestone `v0.6.0 — Framework Automation` fue cerrada.
+* Las ramas de trabajo de Sprint 8 fueron eliminadas tras verificar su integración.
 
-Las cuatro historias (#23–#26) están completadas y cerradas. La preparación documental de la release se realiza en la rama `chore/v0.6.0-post-merge`.
-
-### Pendiente para la publicación
-
-* Finalizar y revisar la documentación de release.
-* Integrar la rama `chore/v0.6.0-post-merge` en `main`.
-* Crear el tag `v0.6.0` y publicar la release en GitHub.
-* Verificar el estado del repositorio tras la publicación.
-
-La implementación funcional y su integración en `main` están completadas. La versión publicada continúa siendo `v0.5.0` hasta que se publique `v0.6.0`.
+La release `v0.6.0` cierra Sprint 8 y constituye la versión publicada actual del Framework.
 
 ---
 
