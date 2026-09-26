@@ -69,3 +69,6 @@ site/
 
 .env
 .env.*
+
+# Local legacy source material
+legacy/
