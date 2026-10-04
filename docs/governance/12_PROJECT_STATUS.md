@@ -5,10 +5,10 @@
 | **Proyecto**             | GitHub Framework                           |
 | **Versión actual**       | v0.6.0                                     |
 | **Estado**               | En desarrollo                              |
-| **Fase**                 | Discovery del siguiente incremento         |
+| **Fase**                 | Solution Shaping Discovery — Existing Repository Adoption         |
 | **Sprint actual**        | Ninguno                                    |
 | **Versión objetivo**     | Por definir                                |
-| **Última actualización** | 2026-09-26                                 |
+| **Última actualización** | 2026-10-04                                 |
 
 ---
 
@@ -20,37 +20,48 @@ El Framework dispone de una arquitectura formal, estándares de repositorio, un 
 
 Las versiones `v0.1.0` a `v0.6.0` han sido publicadas. La última versión publicada es **`v0.6.0 — Framework Automation`**.
 
-## Framework Automation
+## Existing Repository Adoption Discovery
 
-El Sprint 8 introduce capacidades de automatización deterministas sobre el modelo de Components existente.
+La investigación sobre Existing Repository Adoption ha completado una primera fase de Problem Discovery y un experimento adicional de Manual Adoption Assessment.
 
-Su desarrollo parte de un contrato común de metadata, normaliza los Components implementados y proporciona un primer validador ejecutable mediante CLI.
+El trabajo se documenta en:
 
-**Sprint 8 está completado y cerrado.** Las cuatro historias (#23–#26) fueron implementadas y cerradas. La implementación se integró en `main` mediante el Pull Request #27 y la documentación de release mediante el Pull Request #28.
+- `docs/discovery/23_BACKEND_ADOPTION_DISCOVERY.md`;
+- `docs/discovery/24_ADOPTION_MODEL_DISCOVERY.md`;
+- `docs/discovery/25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`.
 
-El tag `v0.6.0` y la GitHub Release `v0.6.0 — Framework Automation` fueron publicados. La milestone correspondiente está cerrada y las ramas de trabajo fueron eliminadas después de verificar su integración.
+La investigación ha contrastado `TPL-BACKEND v0.1.0` sobre cuatro consumers backend con tecnologías diferentes:
 
-La implementación mantiene los archivos `framework/components/**/metadata.yml` como fuente de verdad de los Components físicos.
+- Java / Spring Boot;
+- TypeScript / NestJS;
+- Python / FastAPI;
+- PHP / Symfony.
 
-El Framework Validator comprueba el Common Core, la identidad y unicidad de los Components, la madurez, las dependencias y las extensiones Workflow aplicables, incluidos sus artefactos locales.
+El modelo provisional distingue actualmente:
 
-La validación final del Sprint 8 ha confirmado:
+- Detected Facts;
+- Evidence;
+- Responsibility State;
+- Applicability;
+- Implementation Characteristics;
+- Uncertainty;
+- Evaluation Rationale;
+- Adoption Decision;
+- Decision Rationale.
 
-| Evidencia                           | Resultado                        |
-| ----------------------------------- | -------------------------------- |
-| Components descubiertos             | 21                               |
-| Familias implementadas              | README, Documentation y Workflow |
-| Tests automatizados                 | 109 — OK                         |
-| Validación del repositorio real     | Passed                           |
-| Código de salida del CLI            | `0`                              |
-| Pruebas negativas representativas   | Superadas                        |
-| Automation Reference Implementation | Validated                        |
+El Manual Adoption Assessment ha resultado operacionalmente viable y trazable durante el experimento, aunque su repetibilidad no ha sido validada de forma independiente.
 
-Las pruebas negativas incluyen errores de metadata, artefactos Workflow inexistentes e IDs duplicados. Se ejecutan sobre directorios temporales sin modificar los Components reales.
+El resultado del Experimento #4 es `REFINEMENT NEEDED`: no se ha identificado una contradicción fundamental del modelo, pero el papel de `EVALUATE` y `JUSTIFY` requiere mayor refinamiento.
 
-La implementación de referencia está documentada en `docs/implementation/22_AUTOMATION_REFERENCE_IMPLEMENTATION.md`.
+La investigación entra ahora en **Solution Shaping Discovery** para comparar representaciones mínimas del assessment.
 
-La generación de Components y repositorios, la corrección automática de metadata y la integración CI no forman parte del alcance de esta release.
+No existe todavía:
+
+- Solution seleccionada;
+- Delivery Scope;
+- Sprint;
+- milestone;
+- versión objetivo.
 
 ---
 
@@ -62,7 +73,7 @@ La revisión confirmó la ausencia de secretos o archivos sensibles detectables 
 
 Como parte de la preparación pública se configuraron la descripción y los topics del repositorio, se estableció un ruleset activo sobre `main` y se habilitó un baseline de seguridad compuesto por Dependency Graph, Dependabot Alerts, Dependabot Security Updates, Secret Protection y Push Protection.
 
-La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada y el proyecto permanece en discovery del siguiente incremento, sin Sprint ni versión objetivo activos.
+La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada y el proyecto se encuentra actualmente en Solution Shaping Discovery del siguiente incremento, sin Sprint ni versión objetivo activos.
 
 ---
 
@@ -112,13 +123,9 @@ El siguiente Sprint se definirá después del discovery y priorización del pró
 
 # Próximo Hito
 
-## Siguiente incremento — por definir
+## Solution Shaping Discovery — Existing Repository Adoption
 
-El siguiente incremento funcional de GitHub Framework se determinará mediante discovery.
-
-No se ha asignado todavía una versión objetivo, milestone ni Sprint.
-
-La selección del próximo alcance deberá partir de una necesidad real, respetar la arquitectura existente y evitar promover automáticamente ideas del Icebox a trabajo comprometido.
+¿Cuál es la representación mínima que permite ejecutar y conservar un adoption assessment sin introducir acoplamiento técnico prematuro?
 
 ---
 
@@ -153,10 +160,10 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Realizar el discovery del siguiente incremento funcional.
-2. Identificar y comparar necesidades reales que justifiquen la evolución del Framework.
-3. Definir el alcance antes de crear nuevas historias, milestone o rama de desarrollo.
-4. Mantener las ideas del Icebox sin priorizar hasta que exista un caso de uso que justifique su promoción.
+1. Comparar representaciones mínimas para ejecutar y conservar un adoption assessment.
+2. Evaluar las Solution Hypotheses relevantes sin seleccionar prematuramente una implementación.
+3. Refinar el papel de `EVALUATE` y `JUSTIFY` dentro del modelo provisional.
+4. Validar posteriormente la repetibilidad del assessment antes de promover una solución a Delivery Scope.
 
 ---
 

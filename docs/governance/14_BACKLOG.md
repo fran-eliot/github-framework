@@ -6,7 +6,7 @@
 | **Versión publicada**    | v0.6.0           |
 | **Versión objetivo**     | Por definir      |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-09-25       |
+| **Última actualización** | 2026-10-04       |
 
 ---
 
@@ -65,9 +65,35 @@ El siguiente Sprint se definirá después de realizar el discovery y priorizar e
 
 No existen actualmente historias funcionales priorizadas para el siguiente incremento.
 
-El alcance del próximo Sprint se definirá mediante discovery antes de crear nuevas historias, milestone o rama de desarrollo.
+El alcance del próximo Sprint se definirá mediante discovery antes de comprometer nuevas historias, milestone o trabajo de implementación.
 
 Las ideas recogidas en el Icebox permanecen sin priorizar y no constituyen compromisos de implementación.
+
+---
+
+## Discovery Actual
+
+El proyecto se encuentra en Solution Shaping Discovery sobre Existing Repository Adoption.
+
+La fase anterior ha producido:
+
+- un modelo provisional de adoption assessment;
+- cuatro consumer experiments sobre `TPL-BACKEND`;
+- un Manual Adoption Assessment operacionalmente viable y trazable;
+- Requirement Candidates consolidados;
+- Solution Hypotheses todavía no seleccionadas.
+
+Las hipótesis actualmente relevantes para la siguiente investigación son:
+
+- SH-01 — Manual Adoption Guide;
+- SH-02 — Adoption Checklist / Assessment;
+- SH-04 — Adoption Report;
+- SH-11 — Staged Adoption Process.
+
+Estas hipótesis no constituyen historias de Product Backlog, Delivery Scope ni compromiso de implementación.
+
+La siguiente investigación comparará representaciones mínimas del assessment antes de decidir si alguna Solution Hypothesis debe
+promoverse a alcance de entrega.
 
 ---
 
@@ -136,3 +162,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.5.5  | 2026-09-21 | Cierre funcional de Sprint 8: cuatro historias completadas, 109 tests superados y Automation Reference Implementation validada. |
 | v0.5.6  | 2026-09-21 | Integración de Framework Automation en `main` mediante el PR #27 y preparación documental de la release v0.6.0. |
 | v0.6.0  | 2026-09-25 | Publicación de Framework Automation, cierre de Sprint 8 y transición del Product Backlog al discovery del siguiente incremento. |
+| v0.6.1 | 2026-10-04 | Actualización del Product Backlog tras Existing Repository Adoption Discovery y transición a Solution Shaping Discovery. |

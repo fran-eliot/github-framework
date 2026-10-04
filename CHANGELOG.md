@@ -2,6 +2,21 @@
 
 ## [Unreleased]
 
+### Added
+
+* Existing Repository Adoption discovery using `TPL-BACKEND` against external consumer repositories.
+* Provisional adoption model separating detected facts, evidence, responsibility state, applicability, implementation characteristics, uncertainty, evaluation rationale and adoption decisions.
+* Manual Adoption Assessment experiment demonstrating the operational feasibility and traceability of the provisional model.
+* Discovery documentation:
+  * `23_BACKEND_ADOPTION_DISCOVERY.md`
+  * `24_ADOPTION_MODEL_DISCOVERY.md`
+  * `25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`
+
+### Changed
+
+* Refined the understanding of Existing Repository Adoption from generation toward reconciliation of existing consumer responsibilities with Repository Template expectations.
+* Refined the boundary between deterministic evidence collection, semantic assessment, adoption decisions and future repository modification.
+
 ---
 
 ## [0.6.0] - 2026-09-21
