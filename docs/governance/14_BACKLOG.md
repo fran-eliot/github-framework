@@ -6,7 +6,7 @@
 | **Versión publicada**    | v0.6.0           |
 | **Versión objetivo**     | Por definir      |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-10-04       |
+| **Última actualización** | 2026-10-18       |
 
 ---
 
@@ -73,27 +73,31 @@ Las ideas recogidas en el Icebox permanecen sin priorizar y no constituyen compr
 
 ## Discovery Actual
 
-El proyecto se encuentra en Solution Shaping Discovery sobre Existing Repository Adoption.
+El proyecto continúa en Discovery sobre Existing Repository Adoption.
 
-La fase anterior ha producido:
+La fase de Solution Shaping ha comparado cinco representaciones posibles para ejecutar y conservar un adoption assessment:
 
-- un modelo provisional de adoption assessment;
-- cuatro consumer experiments sobre `TPL-BACKEND`;
-- un Manual Adoption Assessment operacionalmente viable y trazable;
-- Requirement Candidates consolidados;
-- Solution Hypotheses todavía no seleccionadas.
+- Markdown Guide;
+- Markdown Assessment;
+- Tabular Assessment;
+- Generated Report;
+- Structured Data Representation.
 
-Las hipótesis actualmente relevantes para la siguiente investigación son:
+La comparación identifica provisionalmente como Minimal Representation Candidate:
 
-- SH-01 — Manual Adoption Guide;
-- SH-02 — Adoption Checklist / Assessment;
-- SH-04 — Adoption Report;
-- SH-11 — Staged Adoption Process.
+```text
+Markdown Guide
+    +
+Structured Markdown Assessment
+        including
+            Summary Table
+            Responsibility Detail
+```
 
-Estas hipótesis no constituyen historias de Product Backlog, Delivery Scope ni compromiso de implementación.
+La representación candidata no constituye todavía Delivery Scope ni una solución implementada.
+El siguiente paso es un Repeatability Experiment destinado a comprobar si la misma guía y plantilla pueden utilizarse sobre un nuevo consumer sin modificar sustancialmente su estructura.
 
-La siguiente investigación comparará representaciones mínimas del assessment antes de decidir si alguna Solution Hypothesis debe
-promoverse a alcance de entrega.
+Las Solution Hypotheses continúan fuera del Product Backlog comprometido hasta que exista evidencia suficiente para promover alguna de ellas a alcance de entrega.
 
 ---
 
@@ -163,3 +167,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.5.6  | 2026-09-21 | Integración de Framework Automation en `main` mediante el PR #27 y preparación documental de la release v0.6.0. |
 | v0.6.0  | 2026-09-25 | Publicación de Framework Automation, cierre de Sprint 8 y transición del Product Backlog al discovery del siguiente incremento. |
 | v0.6.1 | 2026-10-04 | Actualización del Product Backlog tras Existing Repository Adoption Discovery y transición a Solution Shaping Discovery. |
+| v0.6.2 | 2026-10-18 | Solution Shaping identifica una representación mínima candidata y mantiene el trabajo en Discovery pendiente de validación de repetibilidad. |

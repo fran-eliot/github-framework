@@ -8,7 +8,7 @@
 | **Fase**                 | Solution Shaping Discovery — Existing Repository Adoption         |
 | **Sprint actual**        | Ninguno                                    |
 | **Versión objetivo**     | Por definir                                |
-| **Última actualización** | 2026-10-04                                 |
+| **Última actualización** | 2026-10-18                                 |
 
 ---
 
@@ -53,12 +53,35 @@ El Manual Adoption Assessment ha resultado operacionalmente viable y trazable du
 
 El resultado del Experimento #4 es `REFINEMENT NEEDED`: no se ha identificado una contradicción fundamental del modelo, pero el papel de `EVALUATE` y `JUSTIFY` requiere mayor refinamiento.
 
-La investigación entra ahora en **Solution Shaping Discovery** para comparar representaciones mínimas del assessment.
+La comparación de Solution Shaping ha evaluado cinco representaciones candidatas:
+
+- Markdown Guide;
+- Markdown Assessment;
+- Tabular Assessment;
+- Generated Report;
+- Structured Data Representation.
+
+El resultado provisional identifica como **Minimal Representation Candidate**:
+
+```text
+Markdown Guide
+    +
+Structured Markdown Assessment
+    including
+        Summary Table
+        Responsibility Detail
+```
+
+`Structured Markdown Assessment` representa una convención Markdown repetible para revisión humana y no implica todavía un schema, un contrato de datos formal ni tooling especializado.
+
+La comparación de Solution Shaping está completada provisionalmente, pero la representación candidata todavía no ha sido validada para repetibilidad.
+
+El siguiente paso de Discovery será comprobar si una guía mínima y una plantilla Markdown estructurada pueden utilizarse en un nuevo adoption assessment completo sin modificar sustancialmente su estructura.
 
 No existe todavía:
 
-- Solution seleccionada;
 - Delivery Scope;
+- Implementation Architecture;
 - Sprint;
 - milestone;
 - versión objetivo.
@@ -123,9 +146,9 @@ El siguiente Sprint se definirá después del discovery y priorización del pró
 
 # Próximo Hito
 
-## Solution Shaping Discovery — Existing Repository Adoption
+## Repeatability Experiment — Existing Repository Adoption
 
-¿Cuál es la representación mínima que permite ejecutar y conservar un adoption assessment sin introducir acoplamiento técnico prematuro?
+¿Puede una guía mínima y una plantilla Markdown estructurada utilizarse para ejecutar un nuevo adoption assessment completo sin modificar sustancialmente su estructura?
 
 ---
 
@@ -160,10 +183,11 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Comparar representaciones mínimas para ejecutar y conservar un adoption assessment.
-2. Evaluar las Solution Hypotheses relevantes sin seleccionar prematuramente una implementación.
-3. Refinar el papel de `EVALUATE` y `JUSTIFY` dentro del modelo provisional.
-4. Validar posteriormente la repetibilidad del assessment antes de promover una solución a Delivery Scope.
+1. Construir una guía mínima y una plantilla Structured Markdown Assessment para el experimento.
+2. Ejecutar un nuevo adoption assessment sin rediseñar previamente la representación.
+3. Evaluar repeatability, missing fields, redundant fields, review friction, verbosity, uncertainty handling, decision rationale y summary usefulness.
+4. Refinar el modelo y la representación únicamente cuando la evidencia del experimento lo justifique.
+5. Evaluar Delivery Scope solo después de validar suficientemente la repetibilidad.
 
 ---
 

@@ -11,11 +11,15 @@
   * `23_BACKEND_ADOPTION_DISCOVERY.md`
   * `24_ADOPTION_MODEL_DISCOVERY.md`
   * `25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`
+  * `26_ADOPTION_SOLUTION_SHAPING_DISCOVERY.md`
 
 ### Changed
 
 * Refined the understanding of Existing Repository Adoption from generation toward reconciliation of existing consumer responsibilities with Repository Template expectations.
 * Refined the boundary between deterministic evidence collection, semantic assessment, adoption decisions and future repository modification.
+* Compared Markdown Guide, Markdown Assessment, Tabular Assessment, Generated Report and Structured Data Representation as candidate representations for Existing Repository Adoption.
+* Identified `Markdown Guide + Structured Markdown Assessment` as the provisional minimal representation candidate, pending repeatability validation.
+* Deferred formal structured data, generated reporting and specialized tooling until further operational evidence justifies them.
 
 ---
 
