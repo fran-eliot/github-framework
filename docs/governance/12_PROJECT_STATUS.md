@@ -5,10 +5,10 @@
 | **Proyecto**             | GitHub Framework                           |
 | **Versión actual**       | v0.6.0                                     |
 | **Estado**               | En desarrollo                              |
-| **Fase**                 | Solution Shaping Discovery — Existing Repository Adoption         |
+| **Fase**                 | Discovery Synthesis — Existing Repository Adoption |
 | **Sprint actual**        | Ninguno                                    |
 | **Versión objetivo**     | Por definir                                |
-| **Última actualización** | 2026-10-18                                 |
+| **Última actualización** | 2026-10-19                                 |
 
 ---
 
@@ -22,20 +22,27 @@ Las versiones `v0.1.0` a `v0.6.0` han sido publicadas. La última versión publi
 
 ## Existing Repository Adoption Discovery
 
-La investigación sobre Existing Repository Adoption ha completado una primera fase de Problem Discovery y un experimento adicional de Manual Adoption Assessment.
+La investigación sobre Existing Repository Adoption ha completado provisionalmente las etapas de Problem Discovery, Manual Adoption Assessment, Solution Shaping y Repeatability Experiment.
 
 El trabajo se documenta en:
 
 - `docs/discovery/23_BACKEND_ADOPTION_DISCOVERY.md`;
 - `docs/discovery/24_ADOPTION_MODEL_DISCOVERY.md`;
-- `docs/discovery/25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`.
+- `docs/discovery/25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`;
+- `docs/discovery/26_ADOPTION_SOLUTION_SHAPING_DISCOVERY.md`;
+- `docs/discovery/27_ADOPTION_REPEATABILITY_EXPERIMENT.md`.
 
-La investigación ha contrastado `TPL-BACKEND v0.1.0` sobre cuatro consumers backend con tecnologías diferentes:
+La investigación ha utilizado cinco consumers backend representativos:
 
-- Java / Spring Boot;
-- TypeScript / NestJS;
-- Python / FastAPI;
-- PHP / Symfony.
+- Only Film — Java / Spring Boot;
+- Dental Back — TypeScript / NestJS;
+- Aula Robótica Platform — Python / FastAPI;
+- Apitimebank — PHP / Symfony;
+- Dental Back Spring — Java / Spring Boot.
+
+Los primeros experimentos proporcionaron diversidad tecnológica mediante cuatro stacks diferentes.
+
+El Repeatability Experiment utilizó posteriormente un consumer adicional profesionalmente relevante para evaluar específicamente la estabilidad de la representación del assessment.
 
 El modelo provisional distingue actualmente:
 
@@ -49,11 +56,11 @@ El modelo provisional distingue actualmente:
 - Adoption Decision;
 - Decision Rationale.
 
-El Manual Adoption Assessment ha resultado operacionalmente viable y trazable durante el experimento, aunque su repetibilidad no ha sido validada de forma independiente.
+El Manual Adoption Assessment demostró que el modelo provisional podía utilizarse de forma operacionalmente viable y trazable.
 
-El resultado del Experimento #4 es `REFINEMENT NEEDED`: no se ha identificado una contradicción fundamental del modelo, pero el papel de `EVALUATE` y `JUSTIFY` requiere mayor refinamiento.
+El resultado del Experimento #4 fue `REFINEMENT NEEDED`: no se identificó una contradicción fundamental del modelo, aunque el papel de `EVALUATE` y `JUSTIFY` quedó pendiente de refinamiento.
 
-La comparación de Solution Shaping ha evaluado cinco representaciones candidatas:
+La fase de Solution Shaping comparó cinco representaciones candidatas:
 
 - Markdown Guide;
 - Markdown Assessment;
@@ -61,7 +68,7 @@ La comparación de Solution Shaping ha evaluado cinco representaciones candidata
 - Generated Report;
 - Structured Data Representation.
 
-El resultado provisional identifica como **Minimal Representation Candidate**:
+La comparación identificó como **Minimal Representation Candidate**:
 
 ```text
 Markdown Guide
@@ -72,15 +79,49 @@ Structured Markdown Assessment
         Responsibility Detail
 ```
 
-`Structured Markdown Assessment` representa una convención Markdown repetible para revisión humana y no implica todavía un schema, un contrato de datos formal ni tooling especializado.
+El Repeatability Experiment materializó esta propuesta como:
 
-La comparación de Solution Shaping está completada provisionalmente, pero la representación candidata todavía no ha sido validada para repetibilidad.
+```text
+Minimal Adoption Guide — Version 0
+    +
+Structured Markdown Assessment Template — Version 0
+```
 
-El siguiente paso de Discovery será comprobar si una guía mínima y una plantilla Markdown estructurada pueden utilizarse en un nuevo adoption assessment completo sin modificar sustancialmente su estructura.
+y la utilizó para evaluar las 28 Responsibilities de `TPL-BACKEND v0.1.0` sobre `dental-back-spring`.
+
+El assessment completo pudo realizarse sin:
+- nuevas dimensiones esenciales;
+- cambios en State o Applicability;
+- cambios en la estructura Summary + Responsibility Detail;
+- Structured Data obligatorio;
+- tooling especializado;
+- workarounds de representación;
+- rediseño estructural.
+
+El resultado del Repeatability Experiment es:
+
+```text
+MODEL HOLDS
+```
+
+La representación mostró estabilidad suficiente para ser reutilizada sobre un consumer adicional completo.
+
+Esto proporciona evidencia favorable de repetibilidad de la representación, pero no demuestra validez universal ni identidad de resultados entre reviewers.
+
+El experimento también identificó refinamientos pendientes:
+
+- clarificar si `EVALUATE` debe mantenerse como Adoption Decision o tratarse como estado transicional de workflow;
+- reevaluar el papel independiente de `JUSTIFY`;
+- hacer explícita la diferencia entre Responsibility Applicability y Canonical Artifact Necessity;
+- reforzar que documentación existente no implica automáticamente Responsibility Satisfaction.
+
+La investigación entra ahora en **Discovery Synthesis**.
+
+El siguiente paso será reconciliar los resultados de los documentos 23–27 y evaluar si existe evidencia suficiente para promover una parte mínima de la solución hacia Delivery Scope.
 
 No existe todavía:
 
-- Delivery Scope;
+- Delivery Scope seleccionado;
 - Implementation Architecture;
 - Sprint;
 - milestone;
@@ -96,7 +137,7 @@ La revisión confirmó la ausencia de secretos o archivos sensibles detectables 
 
 Como parte de la preparación pública se configuraron la descripción y los topics del repositorio, se estableció un ruleset activo sobre `main` y se habilitó un baseline de seguridad compuesto por Dependency Graph, Dependabot Alerts, Dependabot Security Updates, Secret Protection y Push Protection.
 
-La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada y el proyecto se encuentra actualmente en Solution Shaping Discovery del siguiente incremento, sin Sprint ni versión objetivo activos.
+La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada y el proyecto se encuentra actualmente en Discovery Synthesis de Existing Repository Adoption, sin Sprint ni versión objetivo activos.
 
 ---
 
@@ -146,9 +187,9 @@ El siguiente Sprint se definirá después del discovery y priorización del pró
 
 # Próximo Hito
 
-## Repeatability Experiment — Existing Repository Adoption
+## Discovery Synthesis — Existing Repository Adoption
 
-¿Puede una guía mínima y una plantilla Markdown estructurada utilizarse para ejecutar un nuevo adoption assessment completo sin modificar sustancialmente su estructura?
+¿Existe evidencia suficiente para promover una parte mínima de la solución de Existing Repository Adoption desde Discovery hacia Delivery Scope sin introducir más complejidad de la necesaria?
 
 ---
 
@@ -183,11 +224,11 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Construir una guía mínima y una plantilla Structured Markdown Assessment para el experimento.
-2. Ejecutar un nuevo adoption assessment sin rediseñar previamente la representación.
-3. Evaluar repeatability, missing fields, redundant fields, review friction, verbosity, uncertainty handling, decision rationale y summary usefulness.
-4. Refinar el modelo y la representación únicamente cuando la evidencia del experimento lo justifique.
-5. Evaluar Delivery Scope solo después de validar suficientemente la repetibilidad.
+1. Sintetizar los hallazgos de `23_BACKEND_ADOPTION_DISCOVERY.md` a `27_ADOPTION_REPEATABILITY_EXPERIMENT.md`.
+2. Reconciliar Requirement Candidates, Solution Hypotheses y refinamientos detectados durante los experimentos.
+3. Clarificar el papel de `EVALUATE` y `JUSTIFY` dentro del modelo provisional.
+4. Determinar qué elementos de la representación mínima disponen de evidencia suficiente para considerarse candidatos a Delivery Scope.
+5. Evaluar Delivery Scope sin seleccionar todavía implementación, Sprint, milestone o versión salvo que la síntesis lo justifique explícitamente.
 
 ---
 

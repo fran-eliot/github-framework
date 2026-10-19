@@ -7,11 +7,15 @@
 * Existing Repository Adoption discovery using `TPL-BACKEND` against external consumer repositories.
 * Provisional adoption model separating detected facts, evidence, responsibility state, applicability, implementation characteristics, uncertainty, evaluation rationale and adoption decisions.
 * Manual Adoption Assessment experiment demonstrating the operational feasibility and traceability of the provisional model.
+* Repeatability Experiment validating reuse of the minimal adoption assessment representation against `dental-back-spring`.
+* `Minimal Adoption Guide — Version 0` and `Structured Markdown Assessment Template — Version 0` as the frozen representation used during the experiment.
+* Complete assessment of all 28 `TPL-BACKEND v0.1.0` Responsibilities on an additional real backend consumer.
 * Discovery documentation:
   * `23_BACKEND_ADOPTION_DISCOVERY.md`
   * `24_ADOPTION_MODEL_DISCOVERY.md`
   * `25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`
   * `26_ADOPTION_SOLUTION_SHAPING_DISCOVERY.md`
+  * `27_ADOPTION_REPEATABILITY_EXPERIMENT.md`
 
 ### Changed
 
@@ -20,6 +24,11 @@
 * Compared Markdown Guide, Markdown Assessment, Tabular Assessment, Generated Report and Structured Data Representation as candidate representations for Existing Repository Adoption.
 * Identified `Markdown Guide + Structured Markdown Assessment` as the provisional minimal representation candidate, pending repeatability validation.
 * Deferred formal structured data, generated reporting and specialized tooling until further operational evidence justifies them.
+* Validated that `Markdown Guide + Structured Markdown Assessment` can support a complete additional consumer assessment without material redesign.
+* Refined Responsibility Applicability as distinct from canonical artifact necessity.
+* Confirmed that documentation presence does not imply Responsibility Satisfaction.
+* Identified `EVALUATE` as potentially transitional and retained `JUSTIFY` as a provisional decision pending further synthesis.
+* Advanced Existing Repository Adoption from Solution Shaping / Repeatability Discovery into Discovery Synthesis before any Delivery Scope commitment.
 
 ---
 
