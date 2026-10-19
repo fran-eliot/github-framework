@@ -6,7 +6,7 @@
 | **Versión publicada**    | v0.6.0           |
 | **Versión objetivo**     | Por definir      |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-10-18       |
+| **Última actualización** | 2026-10-19       |
 
 ---
 
@@ -75,7 +75,7 @@ Las ideas recogidas en el Icebox permanecen sin priorizar y no constituyen compr
 
 El proyecto continúa en Discovery sobre Existing Repository Adoption.
 
-La fase de Solution Shaping ha comparado cinco representaciones posibles para ejecutar y conservar un adoption assessment:
+La fase de Solution Shaping comparó cinco representaciones posibles para ejecutar y conservar un adoption assessment:
 
 - Markdown Guide;
 - Markdown Assessment;
@@ -83,7 +83,7 @@ La fase de Solution Shaping ha comparado cinco representaciones posibles para ej
 - Generated Report;
 - Structured Data Representation.
 
-La comparación identifica provisionalmente como Minimal Representation Candidate:
+La comparación identificó como Minimal Representation Candidate:
 
 ```text
 Markdown Guide
@@ -94,10 +94,46 @@ Structured Markdown Assessment
             Responsibility Detail
 ```
 
-La representación candidata no constituye todavía Delivery Scope ni una solución implementada.
-El siguiente paso es un Repeatability Experiment destinado a comprobar si la misma guía y plantilla pueden utilizarse sobre un nuevo consumer sin modificar sustancialmente su estructura.
+El Repeatability Experiment materializó esta representación mediante:
 
-Las Solution Hypotheses continúan fuera del Product Backlog comprometido hasta que exista evidencia suficiente para promover alguna de ellas a alcance de entrega.
+```text
+Minimal Adoption Guide — Version 0
+    +
+Structured Markdown Assessment Template — Version 0
+```
+
+y la utilizó para ejecutar un assessment completo de las 28 Responsibilities de `TPL-BACKEND v0.1.0` sobre `dental-back-spring`.
+
+El experimento concluyó:
+
+```text
+MODEL HOLDS
+```
+
+La representación pudo reutilizarse sin rediseño estructural, tooling obligatorio ni workarounds.
+
+El resultado proporciona evidencia favorable de repetibilidad sobre un consumer adicional, aunque no demuestra validez universal ni equivalencia de juicio entre reviewers.
+
+Se mantienen abiertos varios refinamientos:
+
+- semántica de `EVALUATE`;
+- papel independiente de `JUSTIFY`;
+- distinción entre Responsibility Applicability y Canonical Artifact Necessity;
+- mayor explicitud sobre Presence vs Responsibility Satisfaction.
+
+El trabajo entra ahora en **Discovery Synthesis**.
+
+La siguiente actividad deberá sintetizar los resultados de Discovery y evaluar si alguna parte mínima de la solución dispone ya de evidencia suficiente para promoverse hacia Delivery Scope.
+
+Las Solution Hypotheses continúan fuera del Product Backlog comprometido hasta que esa evaluación justifique explícitamente su promoción.
+
+No existe todavía:
+
+- Sprint activo;
+- milestone del siguiente incremento;
+- versión objetivo;
+- Delivery Scope seleccionado;
+- Implementation Architecture seleccionada.
 
 ---
 
@@ -168,3 +204,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.6.0  | 2026-09-25 | Publicación de Framework Automation, cierre de Sprint 8 y transición del Product Backlog al discovery del siguiente incremento. |
 | v0.6.1 | 2026-10-04 | Actualización del Product Backlog tras Existing Repository Adoption Discovery y transición a Solution Shaping Discovery. |
 | v0.6.2 | 2026-10-18 | Solution Shaping identifica una representación mínima candidata y mantiene el trabajo en Discovery pendiente de validación de repetibilidad. |
+| v0.6.3 | 2026-10-19 | Repeatability Experiment completa un assessment de 28 Responsibilities con `MODEL HOLDS` y mueve Existing Repository Adoption hacia Discovery Synthesis. |
