@@ -6,7 +6,7 @@
 | **Versión publicada**    | v0.6.0           |
 | **Versión objetivo**     | Por definir      |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-10-19       |
+| **Última actualización** | 2026-10-20       |
 
 ---
 
@@ -57,36 +57,64 @@ Sprint 8 — Framework Automation finalizó con la publicación de `v0.6.0`.
 
 La milestone `v0.6.0 — Framework Automation` está cerrada y las cuatro historias previstas (#23–#26) están completadas.
 
-El siguiente Sprint se definirá después de realizar el discovery y priorizar el próximo incremento funcional del Framework.
+El siguiente Sprint solo se definirá después de completar y revisar el Delivery Scope del próximo incremento funcional del Framework.
 
 ---
 
 ## Product Backlog
 
-No existen actualmente historias funcionales priorizadas para el siguiente incremento.
+No existen todavía historias funcionales comprometidas para el siguiente incremento.
 
-El alcance del próximo Sprint se definirá mediante discovery antes de comprometer nuevas historias, milestone o trabajo de implementación.
+Discovery ha identificado un único candidate con evidencia suficiente para avanzar a **Delivery Scope Definition**:
 
-Las ideas recogidas en el Icebox permanecen sin priorizar y no constituyen compromisos de implementación.
+```text
+Existing Repository Adoption
+    Assessment Core
+```
+
+Esto no constituye todavía una historia priorizada, Sprint commitment, milestone ni versión objetivo.
+
+Las capacidades diferidas permanecen fuera del Product Backlog comprometido hasta que exista evidencia específica que justifique su promoción.
 
 ---
 
 ## Discovery Actual
 
-El proyecto continúa en Discovery sobre Existing Repository Adoption.
-
-La fase de Solution Shaping comparó cinco representaciones posibles para ejecutar y conservar un adoption assessment:
-
-- Markdown Guide;
-- Markdown Assessment;
-- Tabular Assessment;
-- Generated Report;
-- Structured Data Representation.
-
-La comparación identificó como Minimal Representation Candidate:
+La investigación de Existing Repository Adoption ha completado:
 
 ```text
-Markdown Guide
+Problem Discovery
+        ↓
+Adoption Model Discovery
+        ↓
+Manual Adoption Assessment
+        ↓
+Solution Shaping
+        ↓
+Repeatability Experiment
+        ↓
+Discovery Synthesis
+```
+
+La Discovery Synthesis consolida la evidencia de los documentos:
+
+- `23_BACKEND_ADOPTION_DISCOVERY.md`;
+- `24_ADOPTION_MODEL_DISCOVERY.md`;
+- `25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`;
+- `26_ADOPTION_SOLUTION_SHAPING_DISCOVERY.md`;
+- `27_ADOPTION_REPEATABILITY_EXPERIMENT.md`;
+- `28_ADOPTION_DISCOVERY_SYNTHESIS.md`.
+
+El resultado del Repeatability Experiment fue:
+
+```text
+MODEL HOLDS
+```
+
+La representación:
+
+```text
+Minimal Adoption Guide
     +
 Structured Markdown Assessment
         including
@@ -94,45 +122,92 @@ Structured Markdown Assessment
             Responsibility Detail
 ```
 
-El Repeatability Experiment materializó esta representación mediante:
+pudo reutilizarse sobre un consumer adicional sin rediseño material, tooling obligatorio ni workarounds.
+
+La Discovery Synthesis evaluó:
+
+- Core Model Findings;
+- los 15 Requirement Candidates;
+- las 11 Solution Hypotheses;
+- los refinamientos pendientes;
+- la frontera entre Assessment y Application;
+- Delivery Readiness del núcleo mínimo.
+
+El resultado es:
 
 ```text
-Minimal Adoption Guide — Version 0
-    +
-Structured Markdown Assessment Template — Version 0
+Existing Repository Adoption
+    Assessment Core
+        READY FOR DELIVERY SCOPE DEFINITION
 ```
 
-y la utilizó para ejecutar un assessment completo de las 28 Responsibilities de `TPL-BACKEND v0.1.0` sobre `dental-back-spring`.
-
-El experimento concluyó:
+El núcleo respaldado corresponde a:
 
 ```text
-MODEL HOLDS
+ANALYZE
+    ↓
+ASSESS
+    ↓
+REVIEW
+    ↓
+DECIDE
+    ↓
+REPORT
 ```
 
-La representación pudo reutilizarse sin rediseño estructural, tooling obligatorio ni workarounds.
+Las Solution Hypotheses con soporte suficiente para conformar un candidate mínimo son:
 
-El resultado proporciona evidencia favorable de repetibilidad sobre un consumer adicional, aunque no demuestra validez universal ni equivalencia de juicio entre reviewers.
+```text
+SH-01 Manual Adoption Guide
+        +
+SH-02 Adoption Checklist / Assessment
+        +
+SH-04 Adoption Report
+        as outcome of the assessment
+        +
+SH-11 Staged Adoption Process
+        limited to assessment stages
+```
 
-Se mantienen abiertos varios refinamientos:
+Esto converge en una única capability candidate y no en cuatro entregables separados.
+
+Se mantienen como refinamientos explícitos y no bloqueantes:
 
 - semántica de `EVALUATE`;
 - papel independiente de `JUSTIFY`;
-- distinción entre Responsibility Applicability y Canonical Artifact Necessity;
-- mayor explicitud sobre Presence vs Responsibility Satisfaction.
+- vocabulario exacto de Implementation Characteristics.
 
-El trabajo entra ahora en **Discovery Synthesis**.
+Quedan diferidos:
 
-La siguiente actividad deberá sintetizar los resultados de Discovery y evaluar si alguna parte mínima de la solución dispone ya de evidencia suficiente para promoverse hacia Delivery Scope.
+- `APPLY` / `VERIFY`;
+- Assisted Repository Analyzer;
+- Adoption Manifest;
+- Framework Validator Extension;
+- Adoption CLI;
+- Selective Component Application;
+- GitHub Actions Integration;
+- Structured Data;
+- generated report tooling;
+- continuous reassessment.
 
-Las Solution Hypotheses continúan fuera del Product Backlog comprometido hasta que esa evaluación justifique explícitamente su promoción.
+`Repository Generator` continúa siendo una hipótesis de baja adecuación para Existing Repository Adoption, aunque podría tener sentido futuro en el escenario distinto de Initialization.
 
-No existe todavía:
+La siguiente etapa es:
+
+```text
+Delivery Scope Definition
+```
+
+y deberá responder:
+
+> ¿Cuál es el Delivery Scope mínimo del Existing Repository Adoption Assessment Core y cómo debe integrarse en GitHub Framework sin formalizar prematuramente las capacidades diferidas?
+
+Todavía no existe:
 
 - Sprint activo;
 - milestone del siguiente incremento;
 - versión objetivo;
-- Delivery Scope seleccionado;
+- Delivery Scope aprobado;
 - Implementation Architecture seleccionada.
 
 ---
@@ -205,3 +280,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.6.1 | 2026-10-04 | Actualización del Product Backlog tras Existing Repository Adoption Discovery y transición a Solution Shaping Discovery. |
 | v0.6.2 | 2026-10-18 | Solution Shaping identifica una representación mínima candidata y mantiene el trabajo en Discovery pendiente de validación de repetibilidad. |
 | v0.6.3 | 2026-10-19 | Repeatability Experiment completa un assessment de 28 Responsibilities con `MODEL HOLDS` y mueve Existing Repository Adoption hacia Discovery Synthesis. |
+| v0.6.4 | 2026-10-20 | Discovery Synthesis consolida el Assessment Core y lo declara listo para Delivery Scope Definition, sin abrir todavía Sprint, milestone ni versión objetivo. |
