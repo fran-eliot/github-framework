@@ -5,10 +5,10 @@
 | **Proyecto**             | GitHub Framework                           |
 | **Versión actual**       | v0.6.0                                     |
 | **Estado**               | En desarrollo                              |
-| **Fase**                 | Discovery Synthesis — Existing Repository Adoption |
+| **Fase**                 | Delivery Scope Definition — Existing Repository Adoption |
 | **Sprint actual**        | Ninguno                                    |
 | **Versión objetivo**     | Por definir                                |
-| **Última actualización** | 2026-10-19                                 |
+| **Última actualización** | 2026-10-20                                 |
 
 ---
 
@@ -20,9 +20,9 @@ El Framework dispone de una arquitectura formal, estándares de repositorio, un 
 
 Las versiones `v0.1.0` a `v0.6.0` han sido publicadas. La última versión publicada es **`v0.6.0 — Framework Automation`**.
 
-## Existing Repository Adoption Discovery
+## Existing Repository Adoption
 
-La investigación sobre Existing Repository Adoption ha completado provisionalmente las etapas de Problem Discovery, Manual Adoption Assessment, Solution Shaping y Repeatability Experiment.
+La investigación sobre Existing Repository Adoption ha completado las etapas de Problem Discovery, Adoption Model Discovery, Manual Adoption Assessment, Solution Shaping, Repeatability Experiment y Discovery Synthesis.
 
 El trabajo se documenta en:
 
@@ -30,7 +30,8 @@ El trabajo se documenta en:
 - `docs/discovery/24_ADOPTION_MODEL_DISCOVERY.md`;
 - `docs/discovery/25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`;
 - `docs/discovery/26_ADOPTION_SOLUTION_SHAPING_DISCOVERY.md`;
-- `docs/discovery/27_ADOPTION_REPEATABILITY_EXPERIMENT.md`.
+- `docs/discovery/27_ADOPTION_REPEATABILITY_EXPERIMENT.md`;
+- `docs/discovery/28_ADOPTION_DISCOVERY_SYNTHESIS.md`.
 
 La investigación ha utilizado cinco consumers backend representativos:
 
@@ -44,7 +45,7 @@ Los primeros experimentos proporcionaron diversidad tecnológica mediante cuatro
 
 El Repeatability Experiment utilizó posteriormente un consumer adicional profesionalmente relevante para evaluar específicamente la estabilidad de la representación del assessment.
 
-El modelo provisional distingue actualmente:
+El modelo de assessment distingue actualmente:
 
 - Detected Facts;
 - Evidence;
@@ -56,9 +57,7 @@ El modelo provisional distingue actualmente:
 - Adoption Decision;
 - Decision Rationale.
 
-El Manual Adoption Assessment demostró que el modelo provisional podía utilizarse de forma operacionalmente viable y trazable.
-
-El resultado del Experimento #4 fue `REFINEMENT NEEDED`: no se identificó una contradicción fundamental del modelo, aunque el papel de `EVALUATE` y `JUSTIFY` quedó pendiente de refinamiento.
+El Manual Adoption Assessment demostró que el modelo podía utilizarse de forma operacionalmente viable y trazable.
 
 La fase de Solution Shaping comparó cinco representaciones candidatas:
 
@@ -89,16 +88,9 @@ Structured Markdown Assessment Template — Version 0
 
 y la utilizó para evaluar las 28 Responsibilities de `TPL-BACKEND v0.1.0` sobre `dental-back-spring`.
 
-El assessment completo pudo realizarse sin:
-- nuevas dimensiones esenciales;
-- cambios en State o Applicability;
-- cambios en la estructura Summary + Responsibility Detail;
-- Structured Data obligatorio;
-- tooling especializado;
-- workarounds de representación;
-- rediseño estructural.
+El assessment completo pudo realizarse sin nuevas dimensiones esenciales, cambios en State o Applicability, Structured Data obligatorio, tooling especializado, workarounds de representación ni rediseño estructural.
 
-El resultado del Repeatability Experiment es:
+El resultado del Repeatability Experiment fue:
 
 ```text
 MODEL HOLDS
@@ -108,20 +100,79 @@ La representación mostró estabilidad suficiente para ser reutilizada sobre un 
 
 Esto proporciona evidencia favorable de repetibilidad de la representación, pero no demuestra validez universal ni identidad de resultados entre reviewers.
 
-El experimento también identificó refinamientos pendientes:
+La Discovery Synthesis consolidó los hallazgos de los documentos 23–27 y concluyó que existe evidencia suficiente para promover una parte mínima de Existing Repository Adoption hacia **Delivery Scope Definition**.
 
-- clarificar si `EVALUATE` debe mantenerse como Adoption Decision o tratarse como estado transicional de workflow;
-- reevaluar el papel independiente de `JUSTIFY`;
-- hacer explícita la diferencia entre Responsibility Applicability y Canonical Artifact Necessity;
-- reforzar que documentación existente no implica automáticamente Responsibility Satisfaction.
+El resultado se limita expresamente a:
 
-La investigación entra ahora en **Discovery Synthesis**.
+```text
+Existing Repository Adoption
+    Assessment Core
+        READY FOR DELIVERY SCOPE DEFINITION
+```
 
-El siguiente paso será reconciliar los resultados de los documentos 23–27 y evaluar si existe evidencia suficiente para promover una parte mínima de la solución hacia Delivery Scope.
+El Assessment Core respaldado comprende:
+
+```text
+ANALYZE
+    ↓
+ASSESS
+    ↓
+REVIEW
+    ↓
+DECIDE
+    ↓
+REPORT
+```
+
+y se apoya en:
+
+```text
+Minimal Adoption Guide
+    +
+Structured Markdown Assessment
+        including
+            Summary Table
+            Responsibility Detail
+```
+
+La síntesis mantiene como principios respaldados:
+
+- Responsibility como unidad de assessment;
+- Existing Repository Adoption como reconciliación y no generación;
+- separación entre Evidence, Evaluation y Decision;
+- separación entre Responsibility State y Adoption Decision;
+- Applicability independiente de State y Requirement Level;
+- trazabilidad entre Evidence, Evaluation y Decision;
+- análisis separado de la aplicación de cambios;
+- frontera explícita entre detección determinista y evaluación semántica.
+
+La síntesis mantiene como refinamientos no bloqueantes:
+
+- semántica y ubicación de `EVALUATE`;
+- papel independiente de `JUSTIFY`;
+- vocabulario exacto de Implementation Characteristics.
+
+Quedan fuera del alcance respaldado y permanecen diferidos:
+
+- `APPLY` y `VERIFY`;
+- repository modification;
+- automatic remediation;
+- Structured Data;
+- Adoption Manifest;
+- Adoption CLI;
+- Framework Validator integration;
+- GitHub Actions integration;
+- Repository Generator como solución de Existing Repository Adoption;
+- generated report tooling;
+- continuous reassessment.
+
+El proyecto entra ahora en **Delivery Scope Definition — Existing Repository Adoption**.
+
+La siguiente etapa debe definir el alcance mínimo del `Assessment Core`, sus artifacts, integration points, acceptance criteria y delivery boundaries.
 
 No existe todavía:
 
-- Delivery Scope seleccionado;
+- Delivery Scope aprobado;
 - Implementation Architecture;
 - Sprint;
 - milestone;
@@ -137,7 +188,7 @@ La revisión confirmó la ausencia de secretos o archivos sensibles detectables 
 
 Como parte de la preparación pública se configuraron la descripción y los topics del repositorio, se estableció un ruleset activo sobre `main` y se habilitó un baseline de seguridad compuesto por Dependency Graph, Dependabot Alerts, Dependabot Security Updates, Secret Protection y Push Protection.
 
-La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada y el proyecto se encuentra actualmente en Discovery Synthesis de Existing Repository Adoption, sin Sprint ni versión objetivo activos.
+La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada y el proyecto se encuentra actualmente en Delivery Scope Definition de Existing Repository Adoption, sin Sprint ni versión objetivo activos.
 
 ---
 
@@ -181,15 +232,15 @@ Sprint 8 — Framework Automation finalizó con la publicación de `v0.6.0`.
 
 Las cuatro historias (#23–#26), su integración, la documentación de release y la milestone correspondiente están completadas y cerradas.
 
-El siguiente Sprint se definirá después del discovery y priorización del próximo incremento funcional.
+El siguiente Sprint solo se definirá después de completar y revisar el Delivery Scope del próximo incremento funcional.
 
 ---
 
 # Próximo Hito
 
-## Discovery Synthesis — Existing Repository Adoption
+## Delivery Scope Definition — Existing Repository Adoption Assessment Core
 
-¿Existe evidencia suficiente para promover una parte mínima de la solución de Existing Repository Adoption desde Discovery hacia Delivery Scope sin introducir más complejidad de la necesaria?
+> ¿Cuál es el Delivery Scope mínimo del Existing Repository Adoption Assessment Core y cómo debe integrarse en GitHub Framework sin formalizar prematuramente las capacidades diferidas?
 
 ---
 
@@ -203,8 +254,8 @@ Los principales riesgos para la evolución del Framework son:
 * Automatización de inconsistencias históricas en lugar de normalizar previamente los contratos.
 * Introducción de tooling más complejo que los problemas deterministas que pretende resolver.
 * Interpretación de una validación automatizada satisfactoria como sustituto de la revisión arquitectónica.
-
-La implementación de `v0.6.0` limita deliberadamente la automatización a reglas deterministas y evita introducir generación, corrección automática u orquestación CI.
+* Inflación del Delivery Scope incorporando Application, Automation o Structured Data antes de disponer de evidencia suficiente.
+* Formalización prematura de vocabularios todavía provisionales como `EVALUATE`, `JUSTIFY` o Implementation Characteristics.
 
 ---
 
@@ -219,16 +270,18 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 * Versionado continuo.
 * Documentación como soporte, no como fin.
 * Automatización posterior a la validación de los contratos arquitectónicos.
+* Promover únicamente capacidades respaldadas por evidencia suficiente.
 
 ---
 
 # Próximos Objetivos
 
-1. Sintetizar los hallazgos de `23_BACKEND_ADOPTION_DISCOVERY.md` a `27_ADOPTION_REPEATABILITY_EXPERIMENT.md`.
-2. Reconciliar Requirement Candidates, Solution Hypotheses y refinamientos detectados durante los experimentos.
-3. Clarificar el papel de `EVALUATE` y `JUSTIFY` dentro del modelo provisional.
-4. Determinar qué elementos de la representación mínima disponen de evidencia suficiente para considerarse candidatos a Delivery Scope.
-5. Evaluar Delivery Scope sin seleccionar todavía implementación, Sprint, milestone o versión salvo que la síntesis lo justifique explícitamente.
+1. Definir el Delivery Scope mínimo de `Existing Repository Adoption — Assessment Core`.
+2. Determinar explícitamente capacidades in-scope y out-of-scope.
+3. Definir los artifacts mínimos del delivery y sus integration points dentro de GitHub Framework.
+4. Convertir las expectativas de evidencia identificadas en Discovery en Acceptance Criteria verificables.
+5. Mantener `EVALUATE`, `JUSTIFY` e Implementation Characteristics como refinamientos explícitos sin congelarlos prematuramente.
+6. Revisar el Delivery Scope completo antes de decidir Sprint, milestone, versión objetivo o Implementation Architecture.
 
 ---
 

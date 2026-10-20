@@ -10,25 +10,31 @@
 * Repeatability Experiment validating reuse of the minimal adoption assessment representation against `dental-back-spring`.
 * `Minimal Adoption Guide — Version 0` and `Structured Markdown Assessment Template — Version 0` as the frozen representation used during the experiment.
 * Complete assessment of all 28 `TPL-BACKEND v0.1.0` Responsibilities on an additional real backend consumer.
+* Discovery Synthesis consolidating the Existing Repository Adoption evidence, Requirement Candidates, Solution Hypotheses, refinements and Delivery Readiness boundary.
+* `Existing Repository Adoption — Assessment Core` identified as ready for Delivery Scope Definition.
 * Discovery documentation:
   * `23_BACKEND_ADOPTION_DISCOVERY.md`
   * `24_ADOPTION_MODEL_DISCOVERY.md`
   * `25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`
   * `26_ADOPTION_SOLUTION_SHAPING_DISCOVERY.md`
   * `27_ADOPTION_REPEATABILITY_EXPERIMENT.md`
+  * `28_ADOPTION_DISCOVERY_SYNTHESIS.md`
 
 ### Changed
 
 * Refined the understanding of Existing Repository Adoption from generation toward reconciliation of existing consumer responsibilities with Repository Template expectations.
 * Refined the boundary between deterministic evidence collection, semantic assessment, adoption decisions and future repository modification.
 * Compared Markdown Guide, Markdown Assessment, Tabular Assessment, Generated Report and Structured Data Representation as candidate representations for Existing Repository Adoption.
-* Identified `Markdown Guide + Structured Markdown Assessment` as the provisional minimal representation candidate, pending repeatability validation.
-* Deferred formal structured data, generated reporting and specialized tooling until further operational evidence justifies them.
+* Identified `Markdown Guide + Structured Markdown Assessment` as the minimal representation with sufficient evidence to proceed toward Delivery Scope Definition.
 * Validated that `Markdown Guide + Structured Markdown Assessment` can support a complete additional consumer assessment without material redesign.
 * Refined Responsibility Applicability as distinct from canonical artifact necessity.
 * Confirmed that documentation presence does not imply Responsibility Satisfaction.
-* Identified `EVALUATE` as potentially transitional and retained `JUSTIFY` as a provisional decision pending further synthesis.
-* Advanced Existing Repository Adoption from Solution Shaping / Repeatability Discovery into Discovery Synthesis before any Delivery Scope commitment.
+* Consolidated `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT` and `OMIT` as the most strongly supported Adoption Decisions.
+* Classified `EVALUATE` as a non-blocking semantic refinement and `JUSTIFY` as a candidate for reassessment before formalization.
+* Consolidated the supported assessment process as `ANALYZE → ASSESS → REVIEW → DECIDE → REPORT`.
+* Deferred `APPLY`, `VERIFY`, repository modification, Structured Data, Adoption Manifest, Adoption CLI, Framework Validator integration, GitHub Actions integration, generated report tooling and continuous reassessment.
+* Advanced Existing Repository Adoption from Discovery Synthesis into Delivery Scope Definition for the Assessment Core only.
+* Kept Sprint, milestone, target version and Implementation Architecture undefined until the Delivery Scope is explicitly defined and reviewed.
 
 ---
 
