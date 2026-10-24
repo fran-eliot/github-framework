@@ -1,14 +1,14 @@
 # 12 - PROJECT STATUS
 
-| Campo                    | Valor                                      |
-| ------------------------ | ------------------------------------------ |
-| **Proyecto**             | GitHub Framework                           |
-| **Versión actual**       | v0.6.0                                     |
-| **Estado**               | En desarrollo                              |
-| **Fase**                 | Delivery Scope Definition — Existing Repository Adoption |
-| **Sprint actual**        | Ninguno                                    |
-| **Versión objetivo**     | Por definir                                |
-| **Última actualización** | 2026-10-20                                 |
+| Campo                    | Valor                                                     |
+| ------------------------ | --------------------------------------------------------- |
+| **Proyecto**             | GitHub Framework                                          |
+| **Versión actual**       | v0.6.0                                                    |
+| **Estado**               | En desarrollo                                             |
+| **Fase**                 | Implementation Planning — Existing Repository Adoption    |
+| **Sprint actual**        | Ninguno                                                   |
+| **Versión objetivo**     | Por definir                                               |
+| **Última actualización** | 2026-10-24                                                |
 
 ---
 
@@ -22,7 +22,7 @@ Las versiones `v0.1.0` a `v0.6.0` han sido publicadas. La última versión publi
 
 ## Existing Repository Adoption
 
-La investigación sobre Existing Repository Adoption ha completado las etapas de Problem Discovery, Adoption Model Discovery, Manual Adoption Assessment, Solution Shaping, Repeatability Experiment y Discovery Synthesis.
+La investigación sobre Existing Repository Adoption ha completado las etapas de Problem Discovery, Adoption Model Discovery, Manual Adoption Assessment, Solution Shaping, Repeatability Experiment, Discovery Synthesis y Delivery Scope Definition.
 
 El trabajo se documenta en:
 
@@ -31,7 +31,8 @@ El trabajo se documenta en:
 - `docs/discovery/25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`;
 - `docs/discovery/26_ADOPTION_SOLUTION_SHAPING_DISCOVERY.md`;
 - `docs/discovery/27_ADOPTION_REPEATABILITY_EXPERIMENT.md`;
-- `docs/discovery/28_ADOPTION_DISCOVERY_SYNTHESIS.md`.
+- `docs/discovery/28_ADOPTION_DISCOVERY_SYNTHESIS.md`;
+- `docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md`.
 
 La investigación ha utilizado cinco consumers backend representativos:
 
@@ -45,7 +46,7 @@ Los primeros experimentos proporcionaron diversidad tecnológica mediante cuatro
 
 El Repeatability Experiment utilizó posteriormente un consumer adicional profesionalmente relevante para evaluar específicamente la estabilidad de la representación del assessment.
 
-El modelo de assessment distingue actualmente:
+El modelo de assessment distingue:
 
 - Detected Facts;
 - Evidence;
@@ -54,6 +55,7 @@ El modelo de assessment distingue actualmente:
 - Implementation Characteristics;
 - Uncertainty;
 - Evaluation Rationale;
+- Decision Status;
 - Adoption Decision;
 - Decision Rationale.
 
@@ -100,9 +102,9 @@ La representación mostró estabilidad suficiente para ser reutilizada sobre un 
 
 Esto proporciona evidencia favorable de repetibilidad de la representación, pero no demuestra validez universal ni identidad de resultados entre reviewers.
 
-La Discovery Synthesis consolidó los hallazgos de los documentos 23–27 y concluyó que existe evidencia suficiente para promover una parte mínima de Existing Repository Adoption hacia **Delivery Scope Definition**.
+La Discovery Synthesis consolidó los hallazgos de los documentos 23–27 y concluyó que existía evidencia suficiente para promover una parte mínima de Existing Repository Adoption hacia Delivery Scope Definition.
 
-El resultado se limita expresamente a:
+El resultado se limitó expresamente a:
 
 ```text
 Existing Repository Adoption
@@ -110,7 +112,9 @@ Existing Repository Adoption
         READY FOR DELIVERY SCOPE DEFINITION
 ```
 
-El Assessment Core respaldado comprende:
+El Delivery Scope Definition posterior concretó el incremento mínimo respaldado y cerró la frontera funcional del Assessment Core.
+
+El proceso incluido es:
 
 ```text
 ANALYZE
@@ -124,59 +128,167 @@ DECIDE
 REPORT
 ```
 
-y se apoya en:
+El delivery definido se materializa mediante dos reusable artifacts:
 
 ```text
-Minimal Adoption Guide
-    +
-Structured Markdown Assessment
-        including
-            Summary Table
-            Responsibility Detail
+framework/adoption/README.md
+    reusable Adoption Guide
+
+framework/adoption/assessment-template.md
+    reusable Structured Markdown Assessment Template
 ```
 
-La síntesis mantiene como principios respaldados:
+El Assessment Core debe permanecer:
 
-- Responsibility como unidad de assessment;
-- Existing Repository Adoption como reconciliación y no generación;
-- separación entre Evidence, Evaluation y Decision;
-- separación entre Responsibility State y Adoption Decision;
-- Applicability independiente de State y Requirement Level;
-- trazabilidad entre Evidence, Evaluation y Decision;
-- análisis separado de la aplicación de cambios;
-- frontera explícita entre detección determinista y evaluación semántica.
+```text
+manual
+human-readable
+human-editable
+human-reviewed
+non-destructive
+low-coupling
+```
 
-La síntesis mantiene como refinamientos no bloqueantes:
+El vocabulario estable del delivery incluye:
 
-- semántica y ubicación de `EVALUATE`;
-- papel independiente de `JUSTIFY`;
-- vocabulario exacto de Implementation Characteristics.
+### Responsibility State
 
-Quedan fuera del alcance respaldado y permanecen diferidos:
+```text
+Satisfied
+Partial
+Missing
+```
 
-- `APPLY` y `VERIFY`;
-- repository modification;
-- automatic remediation;
-- Structured Data;
+### Applicability
+
+```text
+Applicable
+Not Applicable
+Uncertain
+```
+
+### Decision Status
+
+```text
+Resolved
+Needs Further Evaluation
+```
+
+### Adoption Decision
+
+```text
+PRESERVE
+ADAPT
+ADD
+ACCEPT
+OMIT
+```
+
+`EVALUATE` deja de formar parte del vocabulario estable de Adoption Decision.
+
+La necesidad que representaba se expresa mediante:
+
+```text
+Decision Status
+    Needs Further Evaluation
+```
+
+`JUSTIFY` tampoco se incorpora como Adoption Decision independiente.
+
+La justificación permanece representada mediante:
+
+```text
+Evaluation Rationale
++
+Decision Rationale
+```
+
+Implementation Characteristics conserva carácter provisional y descriptivo.
+
+El Delivery Scope establece además que:
+
+- Responsibility continúa siendo la unidad de assessment;
+- Existing Repository Adoption continúa siendo reconciliación y no generación;
+- Evidence, Evaluation y Decision permanecen separados;
+- Responsibility State y Adoption Decision permanecen independientes;
+- Applicability permanece independiente de State y Requirement Level;
+- las implementaciones equivalentes, especializadas o distribuidas pueden satisfacer una Responsibility;
+- la ausencia de un artifact canónico no implica automáticamente `Missing`;
+- la presencia física de documentación no implica automáticamente `Satisfied`;
+- la revisión humana sigue siendo obligatoria para evaluación semántica y decisiones de adopción.
+
+El modelo de integración seleccionado es híbrido:
+
+```text
+Reusable Framework Capability
+        +
+Discovery Evidence
+```
+
+Los reusable artifacts se integrarán en un namespace propio del Framework:
+
+```text
+framework/adoption/
+```
+
+mientras la evidencia experimental e histórica permanece en:
+
+```text
+docs/discovery/
+```
+
+No se requiere para este delivery:
+
+- nueva Component family;
+- metadata contract;
+- Component Catalog extension;
+- Framework Validator extension;
+- Structured Data contract;
 - Adoption Manifest;
 - Adoption CLI;
-- Framework Validator integration;
 - GitHub Actions integration;
-- Repository Generator como solución de Existing Repository Adoption;
 - generated report tooling;
-- continuous reassessment.
+- consumer storage standard.
 
-El proyecto entra ahora en **Delivery Scope Definition — Existing Repository Adoption**.
+También permanecen explícitamente fuera del alcance:
 
-La siguiente etapa debe definir el alcance mínimo del `Assessment Core`, sus artifacts, integration points, acceptance criteria y delivery boundaries.
+- `APPLY`;
+- `VERIFY`;
+- repository transformation;
+- automatic remediation;
+- automatic semantic assessment;
+- automatic Adoption Decisions;
+- continuous reassessment;
+- drift detection;
+- Repository Generator como solución de Existing Repository Adoption.
+
+El resultado de `29_ADOPTION_DELIVERY_SCOPE.md` es:
+
+```text
+Existing Repository Adoption
+    Assessment Core
+
+Delivery Scope
+    DEFINED
+
+Next Step
+    Implementation Planning
+```
+
+El Assessment Core está por tanto:
+
+```text
+READY FOR IMPLEMENTATION PLANNING
+```
 
 No existe todavía:
 
-- Delivery Scope aprobado;
-- Implementation Architecture;
-- Sprint;
-- milestone;
-- versión objetivo.
+- Sprint activo;
+- milestone del siguiente incremento;
+- versión objetivo;
+- implementation work iniciado.
+
+La Implementation Architecture no se ha formalizado como una fase independiente. El propio Delivery Scope determina un delivery documental mínimo basado en dos artifacts Markdown reutilizables y sin tooling adicional.
 
 ---
 
@@ -188,39 +300,41 @@ La revisión confirmó la ausencia de secretos o archivos sensibles detectables 
 
 Como parte de la preparación pública se configuraron la descripción y los topics del repositorio, se estableció un ruleset activo sobre `main` y se habilitó un baseline de seguridad compuesto por Dependency Graph, Dependabot Alerts, Dependabot Security Updates, Secret Protection y Push Protection.
 
-La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada y el proyecto se encuentra actualmente en Delivery Scope Definition de Existing Repository Adoption, sin Sprint ni versión objetivo activos.
+La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada y el proyecto se encuentra actualmente en Implementation Planning de Existing Repository Adoption, sin Sprint ni versión objetivo activos.
 
 ---
 
 # Estado por Áreas
 
-| Área                                         | Estado |
-| -------------------------------------------- | :----: |
-| Arquitectura del Framework                   |    ✅   |
-| GitHub Repository Standards (GRS)            |    ✅   |
-| Repository Design System (RDS)               |    ✅   |
-| Component Catalog                            |    ✅   |
-| Componentes README                           |    ✅   |
-| Open Source Readiness                        |    ✅   |
-| Documentation Component Architecture         |    ✅   |
-| Core Documentation Components                |    ✅   |
-| Documentation Reference Implementation       |    ✅   |
-| Documentation Writing Standards              |    ✅   |
-| Repository Template Architecture             |    ✅   |
-| Core Repository Templates                    |    ✅   |
-| Repository Template Reference Implementation |    ✅   |
-| Repository Template Standards                |    ✅   |
-| Workflow Component Architecture              |    ✅   |
-| Core Workflow Components                     |    ✅   |
-| Workflow Reference Implementation            |    ✅   |
-| Workflow Component Standards                 |    ✅   |
-| Component Metadata Standard                  |    ✅   |
-| Component Metadata Normalization             |    ✅   |
-| Framework Validator                          |    ✅   |
-| Automation Reference Implementation          |    ✅   |
-| Integración de Framework Automation en `main` |    ✅   |
-| Publicación de v0.6.0                         |    ✅   |
-| Publicación pública del repositorio           |    ✅   |
+| Área                                          | Estado |
+| --------------------------------------------- | :----: |
+| Arquitectura del Framework                    |   ✅   |
+| GitHub Repository Standards (GRS)             |   ✅   |
+| Repository Design System (RDS)                |   ✅   |
+| Component Catalog                             |   ✅   |
+| Componentes README                            |   ✅   |
+| Open Source Readiness                         |   ✅   |
+| Documentation Component Architecture          |   ✅   |
+| Core Documentation Components                 |   ✅   |
+| Documentation Reference Implementation        |   ✅   |
+| Documentation Writing Standards               |   ✅   |
+| Repository Template Architecture              |   ✅   |
+| Core Repository Templates                     |   ✅   |
+| Repository Template Reference Implementation  |   ✅   |
+| Repository Template Standards                 |   ✅   |
+| Workflow Component Architecture               |   ✅   |
+| Core Workflow Components                      |   ✅   |
+| Workflow Reference Implementation             |   ✅   |
+| Workflow Component Standards                  |   ✅   |
+| Component Metadata Standard                   |   ✅   |
+| Component Metadata Normalization              |   ✅   |
+| Framework Validator                           |   ✅   |
+| Automation Reference Implementation           |   ✅   |
+| Integración de Framework Automation en `main` |   ✅   |
+| Publicación de v0.6.0                         |   ✅   |
+| Publicación pública del repositorio            |   ✅   |
+| Existing Repository Adoption Discovery        |   ✅   |
+| Existing Repository Adoption Delivery Scope   |   ✅   |
 
 ---
 
@@ -232,15 +346,33 @@ Sprint 8 — Framework Automation finalizó con la publicación de `v0.6.0`.
 
 Las cuatro historias (#23–#26), su integración, la documentación de release y la milestone correspondiente están completadas y cerradas.
 
-El siguiente Sprint solo se definirá después de completar y revisar el Delivery Scope del próximo incremento funcional.
+El siguiente Sprint solo se definirá después de completar la planificación del incremento `Existing Repository Adoption — Assessment Core`.
 
 ---
 
 # Próximo Hito
 
-## Delivery Scope Definition — Existing Repository Adoption Assessment Core
+## Implementation Planning — Existing Repository Adoption Assessment Core
 
-> ¿Cuál es el Delivery Scope mínimo del Existing Repository Adoption Assessment Core y cómo debe integrarse en GitHub Framework sin formalizar prematuramente las capacidades diferidas?
+El Delivery Scope ya está definido.
+
+La siguiente etapa debe determinar:
+
+```text
+implementation units
+        ↓
+issue decomposition
+        ↓
+delivery sequencing
+        ↓
+Sprint suitability
+        ↓
+milestone
+        ↓
+target version
+```
+
+sin ampliar la frontera funcional establecida en `29_ADOPTION_DELIVERY_SCOPE.md`.
 
 ---
 
@@ -255,7 +387,9 @@ Los principales riesgos para la evolución del Framework son:
 * Introducción de tooling más complejo que los problemas deterministas que pretende resolver.
 * Interpretación de una validación automatizada satisfactoria como sustituto de la revisión arquitectónica.
 * Inflación del Delivery Scope incorporando Application, Automation o Structured Data antes de disponer de evidencia suficiente.
-* Formalización prematura de vocabularios todavía provisionales como `EVALUATE`, `JUSTIFY` o Implementation Characteristics.
+* Conversión prematura de Existing Repository Adoption en una nueva Component family.
+* Semantic drift entre Adoption Guide y Assessment Template.
+* Ampliación incidental del alcance durante Implementation Planning.
 
 ---
 
@@ -271,17 +405,22 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 * Documentación como soporte, no como fin.
 * Automatización posterior a la validación de los contratos arquitectónicos.
 * Promover únicamente capacidades respaldadas por evidencia suficiente.
+* Evidence before Automation.
+* Reconciliation over Replacement.
+* Human Review for semantic assessment.
+* No ampliar un Delivery Scope aprobado sin revisión explícita.
 
 ---
 
 # Próximos Objetivos
 
-1. Definir el Delivery Scope mínimo de `Existing Repository Adoption — Assessment Core`.
-2. Determinar explícitamente capacidades in-scope y out-of-scope.
-3. Definir los artifacts mínimos del delivery y sus integration points dentro de GitHub Framework.
-4. Convertir las expectativas de evidencia identificadas en Discovery en Acceptance Criteria verificables.
-5. Mantener `EVALUATE`, `JUSTIFY` e Implementation Characteristics como refinamientos explícitos sin congelarlos prematuramente.
-6. Revisar el Delivery Scope completo antes de decidir Sprint, milestone, versión objetivo o Implementation Architecture.
+1. Descomponer `Existing Repository Adoption — Assessment Core` en unidades de implementación.
+2. Determinar las Issues necesarias para implementar Adoption Guide, Assessment Template y Verification / Integration.
+3. Revisar dependencias y orden de entrega entre las unidades.
+4. Evaluar si el incremento cabe razonablemente en un único Sprint.
+5. Determinar milestone y versión objetivo únicamente después de cerrar la planificación.
+6. Mantener fuera de la planificación cualquier capability expresamente excluida por `29_ADOPTION_DELIVERY_SCOPE.md`.
+7. Preservar la separación entre reusable capability y Discovery evidence.
 
 ---
 
