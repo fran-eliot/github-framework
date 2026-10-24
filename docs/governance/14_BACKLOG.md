@@ -57,56 +57,94 @@ Sprint 8 — Framework Automation finalizó con la publicación de `v0.6.0`.
 
 La milestone `v0.6.0 — Framework Automation` está cerrada y las cuatro historias previstas (#23–#26) están completadas.
 
-El siguiente Sprint solo se definirá después de completar la planificación del incremento:
+La planificación del siguiente incremento:
 
-```text id="h1a7os"
+```text
 Existing Repository Adoption
     Assessment Core
+```
+
+ya está definida.
+
+El siguiente Sprint solo se abrirá después de:
+
+```text
+crear las tres Issues de implementación
+        ↓
+asignar Acceptance Criteria
+        ↓
+definir la milestone
+        ↓
+seleccionar la versión objetivo
 ```
 
 ---
 
 ## Product Backlog
 
-No existen todavía historias funcionales comprometidas para el siguiente incremento.
+No existen todavía historias funcionales creadas y comprometidas para el siguiente incremento.
 
-Existe una capability con Discovery y Delivery Scope completados:
+Existe una capability con Discovery, Delivery Scope e Implementation Planning completados:
 
-```text id="rqmio8"
+```text
 Existing Repository Adoption
     Assessment Core
 ```
 
 Su estado es:
 
-```text id="2l5geq"
-READY FOR IMPLEMENTATION PLANNING
+```text
+IMPLEMENTATION PLANNING
+    DEFINED
+```
+
+La planificación se documenta en:
+
+```text
+docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md
+```
+
+y define:
+
+```text
+3 implementation units
+3 GitHub Issues
+dependency flow
+Acceptance Criteria allocation
+relative effort
+single-Sprint suitability
+Definition of Ready
+Definition of Done
 ```
 
 Esto significa que existe suficiente definición para:
 
-```text id="98um83"
-implementation task decomposition
-issue creation
-dependency analysis
-Sprint suitability assessment
-milestone evaluation
+```text
+formal Issue creation
+milestone definition
 target version evaluation
+Sprint opening
 ```
 
-pero no implica todavía:
+pero todavía no implica:
 
-```text id="j9kvsy"
+```text
 Sprint commitment
 milestone commitment
 release commitment
 implementation started
 ```
 
-La planificación deberá respetar estrictamente el alcance definido en:
+La implementación deberá respetar estrictamente el alcance definido en:
 
-```text id="8kbq0o"
+```text
 docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md
+```
+
+y la descomposición definida en:
+
+```text
+docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md
 ```
 
 ---
@@ -115,7 +153,7 @@ docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md
 
 El Delivery Scope define un incremento mínimo compuesto por dos reusable artifacts:
 
-```text id="meu8dn"
+```text
 framework/adoption/README.md
     reusable Adoption Guide
 
@@ -125,7 +163,7 @@ framework/adoption/assessment-template.md
 
 El proceso respaldado es:
 
-```text id="kk3vwj"
+```text
 ANALYZE
     ↓
 ASSESS
@@ -139,7 +177,7 @@ REPORT
 
 La capability debe permanecer:
 
-```text id="1t06yr"
+```text
 manual
 human-readable
 human-editable
@@ -150,7 +188,7 @@ low-coupling
 
 ### Stable Responsibility State
 
-```text id="nx4ut4"
+```text
 Satisfied
 Partial
 Missing
@@ -158,7 +196,7 @@ Missing
 
 ### Stable Applicability
 
-```text id="3abns3"
+```text
 Applicable
 Not Applicable
 Uncertain
@@ -166,14 +204,14 @@ Uncertain
 
 ### Decision Status
 
-```text id="q71kqp"
+```text
 Resolved
 Needs Further Evaluation
 ```
 
 ### Stable Adoption Decisions
 
-```text id="emr3zu"
+```text
 PRESERVE
 ADAPT
 ADD
@@ -185,7 +223,7 @@ OMIT
 
 La necesidad de evaluación adicional se representa mediante:
 
-```text id="wy9x4p"
+```text
 Decision Status
     Needs Further Evaluation
 ```
@@ -194,7 +232,7 @@ Decision Status
 
 La justificación se conserva mediante:
 
-```text id="gv2f8t"
+```text
 Evaluation Rationale
 +
 Decision Rationale
@@ -204,11 +242,11 @@ Implementation Characteristics permanece como vocabulario provisional y descript
 
 ---
 
-## Delivery Scope Completed
+## Delivery Scope and Implementation Planning Completed
 
-La secuencia de investigación y definición ha completado:
+La secuencia de investigación, definición y planificación ha completado:
 
-```text id="7r9vq1"
+```text
 Problem Discovery
         ↓
 Adoption Model Discovery
@@ -222,6 +260,8 @@ Repeatability Experiment
 Discovery Synthesis
         ↓
 Delivery Scope Definition
+        ↓
+Implementation Planning
 ```
 
 La documentación principal es:
@@ -232,11 +272,12 @@ La documentación principal es:
 - `26_ADOPTION_SOLUTION_SHAPING_DISCOVERY.md`;
 - `27_ADOPTION_REPEATABILITY_EXPERIMENT.md`;
 - `28_ADOPTION_DISCOVERY_SYNTHESIS.md`;
-- `29_ADOPTION_DELIVERY_SCOPE.md`.
+- `29_ADOPTION_DELIVERY_SCOPE.md`;
+- `30_ADOPTION_IMPLEMENTATION_PLAN.md`.
 
 La Discovery Synthesis concluyó:
 
-```text id="7kzida"
+```text
 Existing Repository Adoption
     Assessment Core
         READY FOR DELIVERY SCOPE DEFINITION
@@ -244,15 +285,37 @@ Existing Repository Adoption
 
 El Delivery Scope posterior concluyó:
 
-```text id="4mgdad"
+```text
 Existing Repository Adoption
     Assessment Core
 
 Delivery Scope
     DEFINED
+```
 
-Next Step
-    Implementation Planning
+El Implementation Plan concluye:
+
+```text
+Existing Repository Adoption
+    Assessment Core
+
+Implementation Planning
+    DEFINED
+
+Implementation Units
+    3
+
+Issue Decomposition
+    DEFINED
+
+Dependencies
+    DEFINED
+
+Acceptance Criteria Allocation
+    DEFINED
+
+Single-Sprint Suitability
+    SUPPORTED
 ```
 
 ---
@@ -261,7 +324,7 @@ Next Step
 
 El incremento incluye:
 
-```text id="f7xsrk"
+```text
 Adoption Guide
 
 Assessment Template
@@ -307,7 +370,7 @@ Persistent Markdown Outcome
 
 El incremento excluye expresamente:
 
-```text id="t0mdpd"
+```text
 APPLY
 VERIFY
 
@@ -356,7 +419,7 @@ Estas capacidades no deben aparecer incidentalmente en las Issues de implementac
 
 El modelo seleccionado es híbrido:
 
-```text id="dl6h3x"
+```text
 Reusable Framework Capability
         +
 Discovery Evidence
@@ -364,19 +427,19 @@ Discovery Evidence
 
 La capability reusable se integrará en:
 
-```text id="0f5xv4"
+```text
 framework/adoption/
 ```
 
 La evidencia histórica permanece en:
 
-```text id="p5e6fa"
+```text
 docs/discovery/
 ```
 
 No se requiere:
 
-```text id="xov3uv"
+```text
 new Component family
 Component metadata
 Component Catalog update
@@ -387,21 +450,21 @@ para completar el primer delivery.
 
 ---
 
-## Candidate Implementation Units
+## Planned Implementation Units
 
-El Delivery Scope sugiere tres unidades naturales de planificación.
+El Implementation Plan define tres unidades de trabajo.
 
 ### Unit A — Adoption Guide
 
 Objetivo:
 
-```text id="p4zkkm"
+```text
 implement reusable guidance
 ```
 
 Artifact principal:
 
-```text id="ms37k9"
+```text
 framework/adoption/README.md
 ```
 
@@ -417,25 +480,37 @@ Responsabilidad:
 - dejar explícito el Out of Scope;
 - explicar cómo utilizar el Assessment Template.
 
+Esfuerzo relativo:
+
+```text
+Medium
+```
+
+Issue prevista:
+
+```text
+Implement Existing Repository Adoption Guide
+```
+
 ---
 
 ### Unit B — Assessment Template
 
 Objetivo:
 
-```text id="cw72ut"
+```text
 implement reusable Markdown assessment template
 ```
 
 Artifact principal:
 
-```text id="jk5e0u"
+```text
 framework/adoption/assessment-template.md
 ```
 
 Debe incluir como mínimo:
 
-```text id="c0rtrv"
+```text
 Assessment Context
 Assessment Summary
 Responsibility Details
@@ -444,7 +519,7 @@ Assessment Conclusion
 
 y permitir registrar:
 
-```text id="dk0bk9"
+```text
 Responsibility
 Requirement Level
 State
@@ -459,20 +534,32 @@ Adoption Decision
 Decision Rationale
 ```
 
+Esfuerzo relativo:
+
+```text
+Small / Medium
+```
+
+Issue prevista:
+
+```text
+Implement Existing Repository Adoption Assessment Template
+```
+
 ---
 
 ### Unit C — Verification and Integration
 
 Objetivo:
 
-```text id="dm8j9f"
+```text
 validate final reusable artifacts
 against existing evidence
 ```
 
 Debe incluir:
 
-```text id="1d6vxm"
+```text
 representative replay
 scope compliance review
 Guide / Template consistency review
@@ -482,7 +569,7 @@ governance synchronization
 
 El representative replay debe cubrir al menos:
 
-```text id="tzf8er"
+```text
 canonical implementation
 
 equivalent implementation
@@ -502,70 +589,232 @@ inaccurate documentation
 
 Esta unidad no constituye un nuevo Discovery experiment.
 
----
+Esfuerzo relativo:
 
-## Planning Boundary
-
-Implementation Planning podrá convertir las unidades anteriores en Issues concretas.
-
-La planificación deberá evaluar:
-
-```text id="rv0zkq"
-task boundaries
-dependencies
-sequencing
-review points
-estimated effort
-Sprint suitability
+```text
+Small
 ```
 
-sin rediseñar el Delivery Scope.
+Issue prevista:
 
-La regla de control será:
-
-```text id="rawa0r"
-If a planned task introduces
-a capability currently Out of Scope
-
-then
-    scope review is required
-before implementation
+```text
+Validate and integrate Existing Repository Adoption Assessment Core
 ```
 
 ---
 
-## Candidate Dependency Flow
+## Implementation Dependency Flow
 
-La dependencia natural candidata es:
+La dependencia definida es:
 
-```text id="t5eq3e"
-Adoption Guide
-        ↘
-          Verification and Integration
-        ↗
-Assessment Template
+```text
+Adoption Guide ───────┐
+                      ├──► Verification and Integration
+Assessment Template ──┘
 ```
 
-Guide y Template pueden desarrollarse parcialmente en paralelo porque comparten semántica, pero deben revisarse conjuntamente para evitar semantic drift.
+Unit C depende de A y B.
 
-La unidad de Verification and Integration depende de que ambos artifacts dispongan de una versión suficientemente completa.
+Guide y Template pueden desarrollarse parcialmente en paralelo, pero deben revisarse conjuntamente para evitar semantic drift.
+
+El orden recomendado para el flujo actual del proyecto es:
+
+```text
+Unit A
+    ↓
+Unit B
+    ↓
+Unit C
+```
+
+La secuencia responde a:
+
+```text
+define semantics
+    ↓
+encode structure
+    ↓
+verify both
+```
 
 ---
 
-## Planning Questions
+## Issue Decomposition Decision
 
-Implementation Planning deberá responder:
+Las tres unidades se consideran suficientemente independientes y verificables para convertirse directamente en:
 
-1. ¿Deben Unit A, Unit B y Unit C convertirse directamente en tres GitHub Issues?
-2. ¿Necesitan subdivisión adicional para mantener cada Issue pequeña y verificable?
-3. ¿Qué dependencias reales existen entre Guide y Template?
-4. ¿Cuál es el esfuerzo estimado de cada unidad?
-5. ¿Puede completarse el incremento en un único Sprint?
-6. ¿Qué milestone representa correctamente el incremento?
-7. ¿Existe evidencia suficiente para asignar una target version?
-8. ¿Qué Acceptance Criteria del Delivery Scope corresponden a cada Issue?
-9. ¿Qué cambios de documentación general del Framework deben acompañar la implementación?
-10. ¿Qué validación final debe completarse antes de considerar el incremento Done?
+```text
+3 Implementation Units
+    =
+3 GitHub Issues
+```
+
+No se recomienda subdivisión adicional.
+
+La planificación prevista es:
+
+```text
+Issue A
+    Implement Existing Repository Adoption Guide
+
+Issue B
+    Implement Existing Repository Adoption Assessment Template
+
+Issue C
+    Validate and integrate Existing Repository Adoption Assessment Core
+```
+
+Dependencias:
+
+```text
+Issue A ───────┐
+               ├──► Issue C
+Issue B ───────┘
+```
+
+---
+
+## Acceptance Criteria Allocation
+
+### Issue A — Adoption Guide
+
+Responsabilidad primaria sobre:
+
+```text
+AC-01
+AC-02
+AC-03
+AC-04
+
+AC-12
+
+AC-17
+AC-18
+AC-19
+AC-20
+
+semantic part of AC-35
+```
+
+### Issue B — Assessment Template
+
+Responsabilidad primaria sobre:
+
+```text
+AC-05
+AC-06
+AC-07
+AC-08
+AC-09
+AC-10
+AC-11
+
+AC-13
+AC-14
+AC-15
+AC-16
+
+AC-31
+AC-33
+
+structural part of AC-35
+```
+
+### Issue C — Verification and Integration
+
+Responsabilidad primaria sobre:
+
+```text
+AC-21
+AC-22
+AC-23
+AC-24
+AC-25
+AC-26
+AC-27
+AC-28
+AC-29
+AC-30
+
+AC-32
+AC-34
+```
+
+y verificación final de:
+
+```text
+AC-01
+through
+AC-35
+```
+
+Esta asignación representa primary implementation ownership y no exclusive semantic ownership.
+
+---
+
+## Sprint Suitability
+
+El incremento incluye:
+
+```text
+2 reusable Markdown artifacts
++
+1 verification / integration unit
+```
+
+y no incorpora:
+
+```text
+code
+schema
+CLI
+validator
+workflow
+consumer mutation
+```
+
+Por tanto:
+
+```text
+Existing Repository Adoption
+    Assessment Core
+
+SUITABLE FOR A SINGLE SPRINT
+```
+
+La viabilidad en un único Sprint está respaldada por tamaño, cohesión y dependencias.
+
+Esto no significa todavía que exista un Sprint abierto.
+
+---
+
+## Release Planning Pending
+
+Implementation Planning ya ha respondido las preguntas de descomposición, dependencias, esfuerzo y Sprint suitability.
+
+Permanecen pendientes únicamente:
+
+```text
+formal Issue creation
+        ↓
+milestone definition
+        ↓
+target version evaluation
+        ↓
+Sprint opening
+```
+
+No se seleccionará una versión únicamente por ser el siguiente número disponible.
+
+La target version deberá reflejar:
+
+```text
+delivered capability
++
+release significance
++
+Roadmap coherence
+```
 
 ---
 
@@ -575,7 +824,7 @@ Las capacidades excluidas no se consideran rechazadas permanentemente.
 
 ### Application
 
-```text id="pd8xvt"
+```text
 APPLY
 VERIFY
 Selective Component Application
@@ -585,7 +834,7 @@ requieren Application Discovery.
 
 ### Assisted Analysis
 
-```text id="imsp3m"
+```text
 repository scanning
 deterministic evidence collection
 ```
@@ -594,7 +843,7 @@ requieren evidencia de necesidad operacional.
 
 ### Automation
 
-```text id="u31ywj"
+```text
 CLI
 GitHub Actions
 continuous reassessment
@@ -604,7 +853,7 @@ requieren evidencia suficiente para justificar automatización.
 
 ### Formal Representation
 
-```text id="demlu0"
+```text
 Structured Data
 Schema
 Manifest
@@ -616,7 +865,7 @@ requieren una necesidad real de procesamiento machine-readable.
 
 La promoción futura de Adoption artifacts a Components requiere evidencia de que:
 
-```text id="8lksgo"
+```text
 Component contracts
 metadata
 catalog integration
@@ -629,8 +878,8 @@ aportan valor proporcional.
 
 ## Roadmap Alignment
 
-| Milestone                        | Estado     |
-| -------------------------------- | :--------: |
+| Milestone                        | Estado      |
+| -------------------------------- | :---------: |
 | v0.3.0 — Documentation Framework | ✅ Released |
 | v0.4.0 — Repository Templates    | ✅ Released |
 | v0.5.0 — Workflow Framework      | ✅ Released |
@@ -639,7 +888,7 @@ aportan valor proporcional.
 
 No se añade todavía una nueva milestone al Roadmap.
 
-La definición del Delivery Scope no implica por sí sola un compromiso de release.
+Implementation Planning no implica por sí solo un compromiso de release.
 
 ---
 
@@ -666,7 +915,7 @@ No se desarrollarán funcionalidades sin un caso de uso real.
 
 El próximo incremento deberá mantener como restricción principal:
 
-```text id="8pbt5r"
+```text
 no additional capability
 without explicit scope review
 ```
@@ -685,6 +934,30 @@ Una tarea podrá incorporarse a un Sprint cuando:
 * pueda completarse dentro del Sprint;
 * aporte valor al Framework;
 * no introduzca capabilities Out of Scope sin revisión explícita.
+
+Para el Assessment Core, cada una de las tres Issues deberá además cumplir las condiciones específicas definidas en `30_ADOPTION_IMPLEMENTATION_PLAN.md`.
+
+---
+
+# Definition of Done — Assessment Core
+
+Existing Repository Adoption Assessment Core podrá considerarse implementado cuando:
+
+1. exista `framework/adoption/README.md`;
+2. exista `framework/adoption/assessment-template.md`;
+3. ambos sean coherentes semánticamente;
+4. Guide documente el proceso completo;
+5. Template represente todos los campos requeridos;
+6. `EVALUATE` no sea una Adoption Decision estable;
+7. `JUSTIFY` no sea requerido;
+8. Decision Status esté implementado;
+9. stable vocabulary esté documentado;
+10. provisional vocabulary esté identificado como provisional;
+11. representative replay confirme suficiencia;
+12. los AC-01 a AC-35 aplicables estén satisfechos;
+13. no exista capability Out of Scope introducida;
+14. documentación general necesaria esté sincronizada;
+15. governance refleje correctamente el estado final.
 
 ---
 
@@ -712,3 +985,4 @@ Una tarea podrá incorporarse a un Sprint cuando:
 | v0.6.3  | 2026-10-19  | Repeatability Experiment completa un assessment de 28 Responsibilities con `MODEL HOLDS` y mueve Existing Repository Adoption hacia Discovery Synthesis. |
 | v0.6.4  | 2026-10-20  | Discovery Synthesis consolida el Assessment Core y lo declara listo para Delivery Scope Definition, sin abrir todavía Sprint, milestone ni versión objetivo. |
 | v0.6.5  | 2026-10-24  | Delivery Scope Definition completa el alcance del Assessment Core y lo declara listo para Implementation Planning, sin abrir todavía Sprint, milestone ni versión objetivo. |
+| v0.6.6  | 2026-10-24  | Implementation Planning define tres Issues, dependencias, Acceptance Criteria, esfuerzo relativo y viabilidad en un único Sprint; milestone, target version y apertura del Sprint permanecen pendientes. |
