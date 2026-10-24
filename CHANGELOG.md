@@ -12,6 +12,13 @@
 * Complete assessment of all 28 `TPL-BACKEND v0.1.0` Responsibilities on an additional real backend consumer.
 * Discovery Synthesis consolidating the Existing Repository Adoption evidence, Requirement Candidates, Solution Hypotheses, refinements and Delivery Readiness boundary.
 * `Existing Repository Adoption — Assessment Core` identified as ready for Delivery Scope Definition.
+* Delivery Scope Definition for `Existing Repository Adoption — Assessment Core`.
+* Delivery Scope Acceptance Criteria covering capability, representation, traceability, integration and scope boundaries.
+* Hybrid integration model separating reusable adoption artifacts from historical Discovery evidence.
+* Delivery Scope defining the planned reusable adoption artifacts:
+  * `framework/adoption/README.md` — reusable Adoption Guide.
+  * `framework/adoption/assessment-template.md` — reusable Structured Markdown Assessment Template.
+* `Decision Status` introduced to distinguish resolved Adoption Decisions from Responsibilities requiring further evaluation.
 * Discovery documentation:
   * `23_BACKEND_ADOPTION_DISCOVERY.md`
   * `24_ADOPTION_MODEL_DISCOVERY.md`
@@ -19,6 +26,7 @@
   * `26_ADOPTION_SOLUTION_SHAPING_DISCOVERY.md`
   * `27_ADOPTION_REPEATABILITY_EXPERIMENT.md`
   * `28_ADOPTION_DISCOVERY_SYNTHESIS.md`
+  * `29_ADOPTION_DELIVERY_SCOPE.md`
 
 ### Changed
 
@@ -29,12 +37,19 @@
 * Validated that `Markdown Guide + Structured Markdown Assessment` can support a complete additional consumer assessment without material redesign.
 * Refined Responsibility Applicability as distinct from canonical artifact necessity.
 * Confirmed that documentation presence does not imply Responsibility Satisfaction.
-* Consolidated `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT` and `OMIT` as the most strongly supported Adoption Decisions.
-* Classified `EVALUATE` as a non-blocking semantic refinement and `JUSTIFY` as a candidate for reassessment before formalization.
+* Consolidated `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT` and `OMIT` as the stable Adoption Decision vocabulary for the first Assessment Core delivery.
+* Replaced `EVALUATE` as a stable Adoption Decision with:
+  * `Decision Status: Resolved`
+  * `Decision Status: Needs Further Evaluation`
+* Removed `JUSTIFY` from the stable Adoption Decision vocabulary for the first delivery; justification remains represented through `Evaluation Rationale` and `Decision Rationale`.
+* Kept Implementation Characteristics as provisional descriptive vocabulary rather than a closed contract.
 * Consolidated the supported assessment process as `ANALYZE → ASSESS → REVIEW → DECIDE → REPORT`.
-* Deferred `APPLY`, `VERIFY`, repository modification, Structured Data, Adoption Manifest, Adoption CLI, Framework Validator integration, GitHub Actions integration, generated report tooling and continuous reassessment.
-* Advanced Existing Repository Adoption from Discovery Synthesis into Delivery Scope Definition for the Assessment Core only.
-* Kept Sprint, milestone, target version and Implementation Architecture undefined until the Delivery Scope is explicitly defined and reviewed.
+* Defined the Assessment Core as a manual, human-readable, human-editable and human-reviewed capability.
+* Defined the initial integration boundary as reusable Framework artifacts under `framework/adoption/`, while preserving experimental and historical evidence under `docs/discovery/`.
+* Confirmed that the first delivery does not require a new Component family, Component metadata, Component Catalog changes or Framework Validator integration.
+* Deferred `APPLY`, `VERIFY`, repository modification, automatic remediation, Structured Data, Adoption Manifest, Adoption CLI, Framework Validator integration, GitHub Actions integration, generated report tooling, continuous reassessment and drift detection.
+* Advanced Existing Repository Adoption from Delivery Scope Definition into Implementation Planning for the Assessment Core only.
+* Kept Sprint, milestone and target version undefined until Implementation Planning is completed and reviewed.
 
 ---
 
