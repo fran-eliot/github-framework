@@ -27,6 +27,12 @@
   * relative effort;
   * single-Sprint suitability;
   * Definition of Ready and Definition of Done.
+* GitHub Issues created for the Assessment Core implementation:
+  * `#40` — Existing Repository Adoption Guide.
+  * `#41` — Existing Repository Adoption Assessment Template.
+  * `#42` — Existing Repository Adoption Assessment Core Verification and Integration.
+* Milestone `v0.7.0 — Existing Repository Adoption`.
+* Sprint 9 — Existing Repository Adoption.
 * Discovery and implementation planning documentation:
   * `23_BACKEND_ADOPTION_DISCOVERY.md`
   * `24_ADOPTION_MODEL_DISCOVERY.md`
@@ -59,7 +65,12 @@
 * Deferred `APPLY`, `VERIFY`, repository modification, automatic remediation, Structured Data, Adoption Manifest, Adoption CLI, Framework Validator integration, GitHub Actions integration, generated report tooling, continuous reassessment and drift detection.
 * Advanced Existing Repository Adoption from Delivery Scope Definition to planned implementation decomposition for the Assessment Core.
 * Defined the implementation sequence as Adoption Guide → Assessment Template → Verification and Integration.
-* Confirmed that the Assessment Core is suitable for a single Sprint while keeping Sprint, milestone and target version unassigned pending Issue creation and release planning.
+* Confirmed that the Assessment Core is suitable for a single Sprint.
+* Selected `v0.7.0` as the target version for the first reusable Existing Repository Adoption capability.
+* Opened milestone `v0.7.0 — Existing Repository Adoption` and assigned Issues `#40`–`#42`.
+* Opened Sprint 9 — Existing Repository Adoption with scope limited to the Assessment Core.
+* Kept `v0.6.0 — Framework Automation` as the latest published release while `v0.7.0` remains in progress.
+* Preserved the Assessment Core scope boundary: the `v0.7.0` release name does not imply delivery of Application, Automation, Structured Data or Componentization capabilities.
 
 ---
 

@@ -155,6 +155,197 @@ La release `v0.6.0` cierra Sprint 8 y constituye la versión publicada actual de
 
 ---
 
+# v0.7.0 — Existing Repository Adoption
+
+**Estado:** 🟡 In Progress
+
+## Objetivo
+
+Introducir la primera capability reusable de **Existing Repository Adoption** mediante un Assessment Core manual, trazable y human-reviewed que permita reconciliar repositorios existentes con las Responsibilities definidas por los Repository Templates sin sustituir automáticamente sus implementaciones.
+
+## Alcance
+
+La release está limitada al **Existing Repository Adoption — Assessment Core**.
+
+El proceso soportado es:
+
+```text
+ANALYZE
+    ↓
+ASSESS
+    ↓
+REVIEW
+    ↓
+DECIDE
+    ↓
+REPORT
+```
+
+El delivery se materializa mediante:
+
+```text
+framework/adoption/README.md
+    reusable Adoption Guide
+
+framework/adoption/assessment-template.md
+    reusable Structured Markdown Assessment Template
+```
+
+### Adoption Guide
+
+* Explicar propósito, alcance e inputs del assessment.
+* Establecer Responsibility como unidad de evaluación.
+* Documentar State, Applicability, Implementation Characteristics y Uncertainty.
+* Separar Detected Facts, Evidence, Evaluation Rationale y Adoption Decision.
+* Documentar Decision Status y Decision Rationale.
+* Explicar completion rules y human review.
+* Mantener explícitos los límites del Assessment Core.
+
+### Assessment Template
+
+* Proporcionar una representación Markdown reutilizable y human-editable.
+* Incluir Assessment Context, Assessment Summary, Responsibility Details y Assessment Conclusion.
+* Permitir registrar Requirement Level, State, Applicability, Implementation Characteristics y Uncertainty.
+* Permitir registrar Detected Facts, Evidence, Evaluation Rationale, Decision Status, Adoption Decision y Decision Rationale.
+* Mantener la representación libre de schema, parser o Structured Data obligatorio.
+
+### Verification and Integration
+
+* Validar conjuntamente Guide y Template.
+* Ejecutar representative replay sobre casos ya observados durante Discovery.
+* Verificar consistencia semántica y cumplimiento de AC-01 a AC-35.
+* Confirmar que no se introduce capability fuera del Delivery Scope.
+* Integrar la capability reusable bajo `framework/adoption/`.
+* Mantener la evidencia histórica y experimental bajo `docs/discovery/`.
+* Sincronizar la documentación general y governance necesaria.
+
+## Vocabulario estable
+
+### Responsibility State
+
+```text
+Satisfied
+Partial
+Missing
+```
+
+### Applicability
+
+```text
+Applicable
+Not Applicable
+Uncertain
+```
+
+### Decision Status
+
+```text
+Resolved
+Needs Further Evaluation
+```
+
+### Adoption Decision
+
+```text
+PRESERVE
+ADAPT
+ADD
+ACCEPT
+OMIT
+```
+
+`EVALUATE` no forma parte del stable Adoption Decision vocabulary.
+
+`JUSTIFY` tampoco constituye una Adoption Decision independiente.
+
+La justificación permanece representada mediante:
+
+```text
+Evaluation Rationale
++
+Decision Rationale
+```
+
+Implementation Characteristics permanece como vocabulario provisional y descriptivo.
+
+## Fuera de alcance
+
+La release no incluye:
+
+* `APPLY`;
+* `VERIFY`;
+* repository transformation;
+* automatic remediation;
+* automatic semantic assessment;
+* automatic Adoption Decisions;
+* CLI;
+* parser;
+* schema;
+* Structured Data contract;
+* Adoption Manifest;
+* Framework Validator integration;
+* GitHub Actions integration;
+* continuous reassessment;
+* drift detection;
+* Repository Generator;
+* nueva Component family;
+* mandatory metadata contract;
+* consumer storage standard;
+* completed assessment filename standard.
+
+Estas capacidades podrán evaluarse en incrementos posteriores únicamente si existe evidencia suficiente.
+
+## Principio de la Release
+
+> Reconciliation before automation: assess existing repositories through explicit evidence and human review before introducing repository modification or automated decisions.
+
+---
+
+## Sprint 9 — Existing Repository Adoption
+
+**Estado:** In Progress.
+
+Milestone:
+
+```text
+v0.7.0 — Existing Repository Adoption
+```
+
+Issues comprometidas:
+
+| Issue | Entregable                                                    | Estado |
+| ----- | ------------------------------------------------------------- | :----: |
+| #40   | Existing Repository Adoption Guide                            |  Open  |
+| #41   | Existing Repository Adoption Assessment Template              |  Open  |
+| #42   | Existing Repository Adoption Assessment Core Verification     |  Open  |
+
+Dependencias:
+
+```text
+#40 ───────┐
+           ├──► #42
+#41 ───────┘
+```
+
+Secuencia recomendada:
+
+```text
+#40 Adoption Guide
+        ↓
+#41 Assessment Template
+        ↓
+#42 Verification and Integration
+```
+
+El Sprint está respaldado por:
+
+* `docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md`;
+* `docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md`.
+
+La apertura de Sprint 9 no amplía la frontera funcional definida por esos documentos.
+
+---
+
 # v1.0.0 — Stable Release
 
 **Estado:** ⚪ Planned

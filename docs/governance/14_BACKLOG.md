@@ -4,7 +4,7 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Versión publicada**    | v0.6.0           |
-| **Versión objetivo**     | Por definir      |
+| **Versión objetivo**     | v0.7.0           |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-10-24       |
 
@@ -51,51 +51,66 @@ Las historias de `v0.6.0` están implementadas, integradas y publicadas como par
 
 ## Sprint Actual
 
-No existe actualmente un Sprint activo.
+### Sprint 9 — Existing Repository Adoption
 
-Sprint 8 — Framework Automation finalizó con la publicación de `v0.6.0`.
+Sprint 9 está activo.
 
-La milestone `v0.6.0 — Framework Automation` está cerrada y las cuatro historias previstas (#23–#26) están completadas.
-
-La planificación del siguiente incremento:
+Objetivo:
 
 ```text
-Existing Repository Adoption
-    Assessment Core
+Deliver the first reusable Existing Repository Adoption
+capability through the Assessment Core.
 ```
 
-ya está definida.
-
-El siguiente Sprint solo se abrirá después de:
+Versión objetivo:
 
 ```text
-crear las tres Issues de implementación
-        ↓
-asignar Acceptance Criteria
-        ↓
-definir la milestone
-        ↓
-seleccionar la versión objetivo
+v0.7.0
 ```
+
+Milestone:
+
+```text
+v0.7.0 — Existing Repository Adoption
+```
+
+Issues comprometidas:
+
+| Issue | Entregable                                                    | Estado |
+| ----- | ------------------------------------------------------------- | :----: |
+| #40   | Existing Repository Adoption Guide                            |  Open  |
+| #41   | Existing Repository Adoption Assessment Template              |  Open  |
+| #42   | Existing Repository Adoption Assessment Core Verification     |  Open  |
+
+Dependencias:
+
+```text
+#40 ───────┐
+           ├──► #42
+#41 ───────┘
+```
+
+Secuencia recomendada:
+
+```text
+#40
+    ↓
+#41
+    ↓
+#42
+```
+
+La apertura de Sprint 9 no amplía el Delivery Scope definido en `29_ADOPTION_DELIVERY_SCOPE.md`.
 
 ---
 
 ## Product Backlog
 
-No existen todavía historias funcionales creadas y comprometidas para el siguiente incremento.
-
-Existe una capability con Discovery, Delivery Scope e Implementation Planning completados:
+El siguiente incremento está comprometido en Sprint 9:
 
 ```text
 Existing Repository Adoption
     Assessment Core
-```
-
-Su estado es:
-
-```text
-IMPLEMENTATION PLANNING
-    DEFINED
 ```
 
 La planificación se documenta en:
@@ -104,35 +119,40 @@ La planificación se documenta en:
 docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md
 ```
 
-y define:
+y se ha materializado mediante tres GitHub Issues:
 
 ```text
-3 implementation units
-3 GitHub Issues
-dependency flow
-Acceptance Criteria allocation
-relative effort
-single-Sprint suitability
-Definition of Ready
-Definition of Done
+#40
+    Implement Existing Repository Adoption Guide
+
+#41
+    Implement Existing Repository Adoption Assessment Template
+
+#42
+    Validate and integrate Existing Repository Adoption Assessment Core
 ```
 
-Esto significa que existe suficiente definición para:
+Las tres Issues están asociadas a:
 
 ```text
-formal Issue creation
-milestone definition
-target version evaluation
-Sprint opening
+Milestone
+    v0.7.0 — Existing Repository Adoption
 ```
 
-pero todavía no implica:
+La target version es:
 
 ```text
-Sprint commitment
-milestone commitment
-release commitment
-implementation started
+v0.7.0
+```
+
+El estado actual es:
+
+```text
+SPRINT 9
+    ACTIVE
+
+IMPLEMENTATION
+    NOT STARTED
 ```
 
 La implementación deberá respetar estrictamente el alcance definido en:
@@ -486,10 +506,10 @@ Esfuerzo relativo:
 Medium
 ```
 
-Issue prevista:
+Issue comprometida:
 
 ```text
-Implement Existing Repository Adoption Guide
+#40 — Implement Existing Repository Adoption Guide
 ```
 
 ---
@@ -540,10 +560,10 @@ Esfuerzo relativo:
 Small / Medium
 ```
 
-Issue prevista:
+Issue comprometida:
 
 ```text
-Implement Existing Repository Adoption Assessment Template
+#41 — Implement Existing Repository Adoption Assessment Template
 ```
 
 ---
@@ -595,10 +615,10 @@ Esfuerzo relativo:
 Small
 ```
 
-Issue prevista:
+Issue comprometida:
 
 ```text
-Validate and integrate Existing Repository Adoption Assessment Core
+#42 — Validate and integrate Existing Repository Adoption Assessment Core
 ```
 
 ---
@@ -651,25 +671,25 @@ Las tres unidades se consideran suficientemente independientes y verificables pa
 
 No se recomienda subdivisión adicional.
 
-La planificación prevista es:
+La descomposición está materializada como:
 
 ```text
-Issue A
+#40
     Implement Existing Repository Adoption Guide
 
-Issue B
+#41
     Implement Existing Repository Adoption Assessment Template
 
-Issue C
+#42
     Validate and integrate Existing Repository Adoption Assessment Core
 ```
 
 Dependencias:
 
 ```text
-Issue A ───────┐
-               ├──► Issue C
-Issue B ───────┘
+#40 ───────┐
+           ├──► #42
+#41 ───────┘
 ```
 
 ---
@@ -784,37 +804,47 @@ SUITABLE FOR A SINGLE SPRINT
 
 La viabilidad en un único Sprint está respaldada por tamaño, cohesión y dependencias.
 
-Esto no significa todavía que exista un Sprint abierto.
+Esta conclusión se ha materializado mediante la apertura de Sprint 9 — Existing Repository Adoption.
 
 ---
 
-## Release Planning Pending
+## Release Planning Completed
 
-Implementation Planning ya ha respondido las preguntas de descomposición, dependencias, esfuerzo y Sprint suitability.
+Release Planning está completado para el Assessment Core.
 
-Permanecen pendientes únicamente:
-
-```text
-formal Issue creation
-        ↓
-milestone definition
-        ↓
-target version evaluation
-        ↓
-Sprint opening
-```
-
-No se seleccionará una versión únicamente por ser el siguiente número disponible.
-
-La target version deberá reflejar:
+Se han definido:
 
 ```text
-delivered capability
-+
-release significance
-+
-Roadmap coherence
+3 GitHub Issues
+        ↓
+milestone
+        ↓
+target version
+        ↓
+Sprint
 ```
+
+Resultado:
+
+```text
+Issues
+    #40
+    #41
+    #42
+
+Milestone
+    v0.7.0 — Existing Repository Adoption
+
+Target Version
+    v0.7.0
+
+Sprint
+    Sprint 9 — Existing Repository Adoption
+```
+
+La selección de `v0.7.0` responde a que el incremento introduce una nueva capability reusable del Framework y no constituye una corrección de `v0.6.0`.
+
+El nombre de la release no amplía el Delivery Scope: el contenido comprometido de `v0.7.0` continúa limitado al **Assessment Core**.
 
 ---
 
@@ -878,17 +908,16 @@ aportan valor proporcional.
 
 ## Roadmap Alignment
 
-| Milestone                        | Estado      |
-| -------------------------------- | :---------: |
-| v0.3.0 — Documentation Framework | ✅ Released |
-| v0.4.0 — Repository Templates    | ✅ Released |
-| v0.5.0 — Workflow Framework      | ✅ Released |
-| v0.6.0 — Framework Automation    | ✅ Released |
-| v1.0.0 — Stable Release          | ⚪ Planned  |
+| Milestone                               | Estado         |
+| --------------------------------------- | :------------: |
+| v0.3.0 — Documentation Framework        | ✅ Released    |
+| v0.4.0 — Repository Templates           | ✅ Released    |
+| v0.5.0 — Workflow Framework             | ✅ Released    |
+| v0.6.0 — Framework Automation           | ✅ Released    |
+| v0.7.0 — Existing Repository Adoption   | 🟡 In Progress |
+| v1.0.0 — Stable Release                 | ⚪ Planned     |
 
-No se añade todavía una nueva milestone al Roadmap.
-
-Implementation Planning no implica por sí solo un compromiso de release.
+`v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.
 
 ---
 
@@ -913,7 +942,7 @@ Las prioridades se revisarán al comienzo de cada Sprint.
 
 No se desarrollarán funcionalidades sin un caso de uso real.
 
-El próximo incremento deberá mantener como restricción principal:
+Sprint 9 deberá mantener como restricción principal:
 
 ```text
 no additional capability
@@ -986,3 +1015,4 @@ Existing Repository Adoption Assessment Core podrá considerarse implementado cu
 | v0.6.4  | 2026-10-20  | Discovery Synthesis consolida el Assessment Core y lo declara listo para Delivery Scope Definition, sin abrir todavía Sprint, milestone ni versión objetivo. |
 | v0.6.5  | 2026-10-24  | Delivery Scope Definition completa el alcance del Assessment Core y lo declara listo para Implementation Planning, sin abrir todavía Sprint, milestone ni versión objetivo. |
 | v0.6.6  | 2026-10-24  | Implementation Planning define tres Issues, dependencias, Acceptance Criteria, esfuerzo relativo y viabilidad en un único Sprint; milestone, target version y apertura del Sprint permanecen pendientes. |
+| v0.6.7  | 2026-10-24  | Release Planning define `v0.7.0 — Existing Repository Adoption`, crea la milestone, compromete #40–#42 y abre Sprint 9 para implementar el Assessment Core. |
