@@ -32,7 +32,8 @@ El trabajo se documenta en:
 - `docs/discovery/26_ADOPTION_SOLUTION_SHAPING_DISCOVERY.md`;
 - `docs/discovery/27_ADOPTION_REPEATABILITY_EXPERIMENT.md`;
 - `docs/discovery/28_ADOPTION_DISCOVERY_SYNTHESIS.md`;
-- `docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md`.
+- `docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md`;
+- `docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md`.
 
 La investigación ha utilizado cinco consumers backend representativos:
 
@@ -270,25 +271,86 @@ Existing Repository Adoption
 
 Delivery Scope
     DEFINED
-
-Next Step
-    Implementation Planning
 ```
 
-El Assessment Core está por tanto:
+La planificación de implementación se documenta en:
 
 ```text
-READY FOR IMPLEMENTATION PLANNING
+docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md
+```
+
+y define tres unidades:
+
+```text
+Unit A
+    Adoption Guide
+
+Unit B
+    Assessment Template
+
+Unit C
+    Verification and Integration
+```
+
+La dependencia establecida es:
+
+```text
+Adoption Guide ───────┐
+                      ├──► Verification and Integration
+Assessment Template ──┘
+```
+
+El orden recomendado de ejecución es:
+
+```text
+Adoption Guide
+    ↓
+Assessment Template
+    ↓
+Verification and Integration
+```
+
+La planificación concluye además que el incremento es:
+
+```text
+SUITABLE FOR A SINGLE SPRINT
+```
+
+desde el punto de vista de tamaño, cohesión y dependencias.
+
+Esto no implica todavía la apertura de un Sprint.
+
+El estado actual es:
+
+```text
+Implementation Planning
+    DEFINED
+
+Implementation Units
+    3
+
+Issue Decomposition
+    DEFINED
+
+Dependencies
+    DEFINED
+
+Acceptance Criteria Allocation
+    DEFINED
+
+Single-Sprint Suitability
+    SUPPORTED
 ```
 
 No existe todavía:
 
 - Sprint activo;
+- Issues de implementación creadas;
 - milestone del siguiente incremento;
 - versión objetivo;
 - implementation work iniciado.
 
-La Implementation Architecture no se ha formalizado como una fase independiente. El propio Delivery Scope determina un delivery documental mínimo basado en dos artifacts Markdown reutilizables y sin tooling adicional.
+La Implementation Architecture no se ha formalizado como una fase independiente. El Delivery Scope y el Implementation Plan mantienen un delivery documental mínimo basado en dos artifacts Markdown reutilizables y sin tooling adicional.
 
 ---
 
@@ -306,35 +368,36 @@ La publicación pública no introduce una nueva versión funcional del Framework
 
 # Estado por Áreas
 
-| Área                                          | Estado |
-| --------------------------------------------- | :----: |
-| Arquitectura del Framework                    |   ✅   |
-| GitHub Repository Standards (GRS)             |   ✅   |
-| Repository Design System (RDS)                |   ✅   |
-| Component Catalog                             |   ✅   |
-| Componentes README                            |   ✅   |
-| Open Source Readiness                         |   ✅   |
-| Documentation Component Architecture          |   ✅   |
-| Core Documentation Components                 |   ✅   |
-| Documentation Reference Implementation        |   ✅   |
-| Documentation Writing Standards               |   ✅   |
-| Repository Template Architecture              |   ✅   |
-| Core Repository Templates                     |   ✅   |
-| Repository Template Reference Implementation  |   ✅   |
-| Repository Template Standards                 |   ✅   |
-| Workflow Component Architecture               |   ✅   |
-| Core Workflow Components                      |   ✅   |
-| Workflow Reference Implementation             |   ✅   |
-| Workflow Component Standards                  |   ✅   |
-| Component Metadata Standard                   |   ✅   |
-| Component Metadata Normalization              |   ✅   |
-| Framework Validator                           |   ✅   |
-| Automation Reference Implementation           |   ✅   |
-| Integración de Framework Automation en `main` |   ✅   |
-| Publicación de v0.6.0                         |   ✅   |
-| Publicación pública del repositorio            |   ✅   |
-| Existing Repository Adoption Discovery        |   ✅   |
-| Existing Repository Adoption Delivery Scope   |   ✅   |
+| Área                                                  | Estado |
+| ----------------------------------------------------- | :----: |
+| Arquitectura del Framework                            |   ✅   |
+| GitHub Repository Standards (GRS)                     |   ✅   |
+| Repository Design System (RDS)                        |   ✅   |
+| Component Catalog                                     |   ✅   |
+| Componentes README                                    |   ✅   |
+| Open Source Readiness                                 |   ✅   |
+| Documentation Component Architecture                  |   ✅   |
+| Core Documentation Components                         |   ✅   |
+| Documentation Reference Implementation                |   ✅   |
+| Documentation Writing Standards                       |   ✅   |
+| Repository Template Architecture                      |   ✅   |
+| Core Repository Templates                             |   ✅   |
+| Repository Template Reference Implementation          |   ✅   |
+| Repository Template Standards                         |   ✅   |
+| Workflow Component Architecture                       |   ✅   |
+| Core Workflow Components                              |   ✅   |
+| Workflow Reference Implementation                     |   ✅   |
+| Workflow Component Standards                          |   ✅   |
+| Component Metadata Standard                           |   ✅   |
+| Component Metadata Normalization                      |   ✅   |
+| Framework Validator                                   |   ✅   |
+| Automation Reference Implementation                   |   ✅   |
+| Integración de Framework Automation en `main`         |   ✅   |
+| Publicación de v0.6.0                                 |   ✅   |
+| Publicación pública del repositorio                   |   ✅   |
+| Existing Repository Adoption Discovery                |   ✅   |
+| Existing Repository Adoption Delivery Scope           |   ✅   |
+| Existing Repository Adoption Implementation Planning  |   ✅   |
 
 ---
 
@@ -346,33 +409,58 @@ Sprint 8 — Framework Automation finalizó con la publicación de `v0.6.0`.
 
 Las cuatro historias (#23–#26), su integración, la documentación de release y la milestone correspondiente están completadas y cerradas.
 
-El siguiente Sprint solo se definirá después de completar la planificación del incremento `Existing Repository Adoption — Assessment Core`.
+La planificación del incremento `Existing Repository Adoption — Assessment Core` ya está definida.
+
+El siguiente Sprint solo se abrirá después de crear formalmente las tres Issues de implementación, definir la milestone y seleccionar la versión objetivo.
 
 ---
 
 # Próximo Hito
 
-## Implementation Planning — Existing Repository Adoption Assessment Core
+## Issue Creation and Release Planning — Existing Repository Adoption Assessment Core
 
-El Delivery Scope ya está definido.
+El Delivery Scope y el Implementation Plan ya están definidos.
 
-La siguiente etapa debe determinar:
+La siguiente etapa debe materializar:
 
 ```text
-implementation units
+3 implementation units
         ↓
-issue decomposition
+3 GitHub Issues
         ↓
-delivery sequencing
+Acceptance Criteria assignment
         ↓
-Sprint suitability
+milestone definition
         ↓
-milestone
+target version evaluation
         ↓
-target version
+Sprint opening
 ```
 
-sin ampliar la frontera funcional establecida en `29_ADOPTION_DELIVERY_SCOPE.md`.
+La planificación establece:
+
+```text
+Issue A
+    Adoption Guide
+
+Issue B
+    Assessment Template
+
+Issue C
+    Verification and Integration
+```
+
+con dependencia:
+
+```text
+Issue A ───────┐
+               ├──► Issue C
+Issue B ───────┘
+```
+
+El incremento se considera adecuado para un único Sprint, pero todavía no existe Sprint activo, milestone ni target version.
+
+La siguiente etapa no podrá ampliar la frontera funcional definida en `29_ADOPTION_DELIVERY_SCOPE.md`.
 
 ---
 
@@ -389,7 +477,7 @@ Los principales riesgos para la evolución del Framework son:
 * Inflación del Delivery Scope incorporando Application, Automation o Structured Data antes de disponer de evidencia suficiente.
 * Conversión prematura de Existing Repository Adoption en una nueva Component family.
 * Semantic drift entre Adoption Guide y Assessment Template.
-* Ampliación incidental del alcance durante Implementation Planning.
+* Ampliación incidental del alcance durante Issue Creation o implementación.
 
 ---
 
@@ -414,13 +502,15 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Descomponer `Existing Repository Adoption — Assessment Core` en unidades de implementación.
-2. Determinar las Issues necesarias para implementar Adoption Guide, Assessment Template y Verification / Integration.
-3. Revisar dependencias y orden de entrega entre las unidades.
-4. Evaluar si el incremento cabe razonablemente en un único Sprint.
-5. Determinar milestone y versión objetivo únicamente después de cerrar la planificación.
-6. Mantener fuera de la planificación cualquier capability expresamente excluida por `29_ADOPTION_DELIVERY_SCOPE.md`.
-7. Preservar la separación entre reusable capability y Discovery evidence.
+1. Crear las tres Issues definidas por `30_ADOPTION_IMPLEMENTATION_PLAN.md`.
+2. Asignar a cada Issue sus Acceptance Criteria y límites de alcance.
+3. Representar las dependencias `Issue A + Issue B → Issue C`.
+4. Definir la milestone del incremento.
+5. Evaluar y seleccionar la versión objetivo conforme al alcance real del delivery y al Roadmap.
+6. Abrir el siguiente Sprint únicamente después de cerrar Issues, milestone y target version.
+7. Implementar primero Adoption Guide, después Assessment Template y finalmente Verification / Integration.
+8. Mantener fuera del incremento cualquier capability expresamente excluida por `29_ADOPTION_DELIVERY_SCOPE.md`.
+9. Preservar la separación entre reusable capability y Discovery evidence.
 
 ---
 

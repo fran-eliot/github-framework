@@ -19,7 +19,15 @@
   * `framework/adoption/README.md` — reusable Adoption Guide.
   * `framework/adoption/assessment-template.md` — reusable Structured Markdown Assessment Template.
 * `Decision Status` introduced to distinguish resolved Adoption Decisions from Responsibilities requiring further evaluation.
-* Discovery documentation:
+* Implementation Plan for `Existing Repository Adoption — Assessment Core`, defining:
+  * three implementation units;
+  * GitHub Issue decomposition;
+  * dependency flow;
+  * Acceptance Criteria allocation;
+  * relative effort;
+  * single-Sprint suitability;
+  * Definition of Ready and Definition of Done.
+* Discovery and implementation planning documentation:
   * `23_BACKEND_ADOPTION_DISCOVERY.md`
   * `24_ADOPTION_MODEL_DISCOVERY.md`
   * `25_MANUAL_ADOPTION_ASSESSMENT_DISCOVERY.md`
@@ -27,6 +35,7 @@
   * `27_ADOPTION_REPEATABILITY_EXPERIMENT.md`
   * `28_ADOPTION_DISCOVERY_SYNTHESIS.md`
   * `29_ADOPTION_DELIVERY_SCOPE.md`
+  * `30_ADOPTION_IMPLEMENTATION_PLAN.md`
 
 ### Changed
 
@@ -48,8 +57,9 @@
 * Defined the initial integration boundary as reusable Framework artifacts under `framework/adoption/`, while preserving experimental and historical evidence under `docs/discovery/`.
 * Confirmed that the first delivery does not require a new Component family, Component metadata, Component Catalog changes or Framework Validator integration.
 * Deferred `APPLY`, `VERIFY`, repository modification, automatic remediation, Structured Data, Adoption Manifest, Adoption CLI, Framework Validator integration, GitHub Actions integration, generated report tooling, continuous reassessment and drift detection.
-* Advanced Existing Repository Adoption from Delivery Scope Definition into Implementation Planning for the Assessment Core only.
-* Kept Sprint, milestone and target version undefined until Implementation Planning is completed and reviewed.
+* Advanced Existing Repository Adoption from Delivery Scope Definition to planned implementation decomposition for the Assessment Core.
+* Defined the implementation sequence as Adoption Guide → Assessment Template → Verification and Integration.
+* Confirmed that the Assessment Core is suitable for a single Sprint while keeping Sprint, milestone and target version unassigned pending Issue creation and release planning.
 
 ---
 
