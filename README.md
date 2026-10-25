@@ -39,6 +39,7 @@ The goal is to reduce repetitive decisions while allowing each project to remain
 - Reusable workflow components
 - Common component metadata contract
 - Deterministic Framework Validator
+- Existing Repository Adoption Assessment Core
 - Reference implementations and dogfooding
 - Framework evolution
 
@@ -68,6 +69,8 @@ Templates assemble components into reusable repository structures.
 
 Reference implementations validate the Framework through real-world usage.
 
+Existing Repository Adoption complements these building blocks with a human-reviewed way to reconcile an existing repository with Repository Template Responsibilities without forcing canonical files or automatic repository modification.
+
 For a complete architectural description, see the [Architecture documentation](docs/architecture/).
 
 ---
@@ -89,6 +92,7 @@ We recommend the following path:
 ## 🔗 Quick Links
 
 - 📚 [Documentation](docs/)
+- 🔄 [Existing Repository Adoption](framework/adoption/README.md)
 - 🗺️ [Roadmap](ROADMAP.md)
 - 🤝 [Contributing](CONTRIBUTING.md)
 - 📄 [License](LICENSE)
@@ -106,8 +110,9 @@ Project documentation is organized into focused areas.
 | [`design-system/`](docs/design-system/) | Repository Design System and component catalog. |
 | [`implementation/`](docs/implementation/) | Reference implementations and implementation guides. |
 | [`governance/`](docs/governance/) | Project governance and planning documents. |
+| [`framework/adoption/`](framework/adoption/) | Reusable Existing Repository Adoption Assessment Core. |
 
-For detailed information, explore the `docs/` directory.
+For detailed information, explore the `docs/` directory and the reusable Framework artifacts under `framework/`.
 
 ---
 
@@ -139,6 +144,45 @@ The validator checks deterministic rules; it does not replace architectural revi
 
 ---
 
+## 🔄 Existing Repository Adoption
+
+GitHub Framework includes a reusable **Existing Repository Adoption Assessment Core** for evaluating an existing repository against the Responsibilities defined by a Repository Template.
+
+The supported process is:
+
+```text
+ANALYZE
+    ↓
+ASSESS
+    ↓
+REVIEW
+    ↓
+DECIDE
+    ↓
+REPORT
+```
+
+The Assessment Core is:
+
+```text
+manual
+human-readable
+human-editable
+human-reviewed
+non-destructive
+```
+
+It supports non-canonical, equivalent and distributed implementations and keeps Evidence, evaluation and Adoption Decisions explicitly separated.
+
+The reusable artifacts are:
+
+- [Adoption Guide](framework/adoption/README.md)
+- [Assessment Template](framework/adoption/assessment-template.md)
+
+This capability does not modify consumer repositories and does not introduce automatic remediation or automatic adoption decisions.
+
+---
+
 ## 🗺️ Roadmap
 
 GitHub Framework evolves through incremental releases.
@@ -150,6 +194,7 @@ Current milestones include:
 - **v0.4.0** — Repository Templates
 - **v0.5.0** — Workflow Framework
 - **v0.6.0** — Framework Automation
+- **v0.7.0** — Existing Repository Adoption
 - **v1.0.0** — Stable Release
 
 For the complete roadmap, see [ROADMAP.md](ROADMAP.md).
@@ -174,11 +219,15 @@ This project is released under the MIT License.
 
 GitHub Framework is currently evolving through incremental releases.
 
-The project has established its core architecture and is now evolving the Framework through incremental implementation, validation and dogfooding.
-
-Latest milestone:
+The latest published release is:
 
 **v0.6.0 — Framework Automation**
+
+The current target release is:
+
+**v0.7.0 — Existing Repository Adoption**
+
+The Assessment Core artifacts are implemented and under final verification and integration in Sprint 9.
 
 ---
 

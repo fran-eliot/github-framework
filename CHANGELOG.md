@@ -33,6 +33,10 @@
   * `#42` — Existing Repository Adoption Assessment Core Verification and Integration.
 * Milestone `v0.7.0 — Existing Repository Adoption`.
 * Sprint 9 — Existing Repository Adoption.
+* Reusable Existing Repository Adoption artifacts implemented:
+  * `framework/adoption/README.md` — Adoption Guide.
+  * `framework/adoption/assessment-template.md` — Structured Markdown Assessment Template.
+* `docs/implementation/31_ADOPTION_CORE_VERIFICATION.md` documenting representative replay, semantic consistency, scope compliance and AC-01 through AC-35 verification.
 * Discovery and implementation planning documentation:
   * `23_BACKEND_ADOPTION_DISCOVERY.md`
   * `24_ADOPTION_MODEL_DISCOVERY.md`
@@ -69,6 +73,10 @@
 * Selected `v0.7.0` as the target version for the first reusable Existing Repository Adoption capability.
 * Opened milestone `v0.7.0 — Existing Repository Adoption` and assigned Issues `#40`–`#42`.
 * Opened Sprint 9 — Existing Repository Adoption with scope limited to the Assessment Core.
+* Implemented #40 — Existing Repository Adoption Guide.
+* Implemented #41 — Existing Repository Adoption Assessment Template.
+* Verified the final Guide + Template representation against canonical, equivalent, distributed, partial, missing applicable, missing non-applicable, uncertain and inaccurate-documentation cases.
+* Confirmed semantic consistency, scope compliance and AC-01 through AC-35 as part of #42 Verification and Integration.
 * Kept `v0.6.0 — Framework Automation` as the latest published release while `v0.7.0` remains in progress.
 * Preserved the Assessment Core scope boundary: the `v0.7.0` release name does not imply delivery of Application, Automation, Structured Data or Componentization capabilities.
 

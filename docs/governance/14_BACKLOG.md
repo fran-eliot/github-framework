@@ -6,7 +6,7 @@
 | **Versión publicada**    | v0.6.0           |
 | **Versión objetivo**     | v0.7.0           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-10-24       |
+| **Última actualización** | 2026-10-25       |
 
 ---
 
@@ -44,8 +44,12 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 | #24    | Component Metadata Normalization             | v0.6.0  | Done   |
 | #25    | Framework Validator                          | v0.6.0  | Done   |
 | #26    | Automation Reference Implementation          | v0.6.0  | Done   |
+| #40    | Existing Repository Adoption Guide           | v0.7.0  | Done   |
+| #41    | Existing Repository Adoption Assessment Template | v0.7.0 | Done   |
 
 Las historias de `v0.6.0` están implementadas, integradas y publicadas como parte de Framework Automation.
+
+Las Issues #40 y #41 de `v0.7.0` están implementadas. La Issue #42 permanece activa para completar Verification and Integration.
 
 ---
 
@@ -78,9 +82,9 @@ Issues comprometidas:
 
 | Issue | Entregable                                                    | Estado |
 | ----- | ------------------------------------------------------------- | :----: |
-| #40   | Existing Repository Adoption Guide                            |  Open  |
-| #41   | Existing Repository Adoption Assessment Template              |  Open  |
-| #42   | Existing Repository Adoption Assessment Core Verification     |  Open  |
+| #40   | Existing Repository Adoption Guide                            |  Done  |
+| #41   | Existing Repository Adoption Assessment Template              |  Done  |
+| #42   | Existing Repository Adoption Assessment Core Verification     | In Progress |
 
 Dependencias:
 
@@ -151,8 +155,30 @@ El estado actual es:
 SPRINT 9
     ACTIVE
 
-IMPLEMENTATION
-    NOT STARTED
+#40 Adoption Guide
+    DONE
+
+#41 Assessment Template
+    DONE
+
+#42 Verification and Integration
+    IN PROGRESS
+```
+
+La verificación conjunta documentada en `docs/implementation/31_ADOPTION_CORE_VERIFICATION.md` confirma:
+
+```text
+Representative Replay
+    PASS
+
+Guide / Template Consistency
+    PASS
+
+Scope Compliance
+    PASS
+
+AC-01 through AC-35
+    PASS
 ```
 
 La implementación deberá respetar estrictamente el alcance definido en:
@@ -293,7 +319,8 @@ La documentación principal es:
 - `27_ADOPTION_REPEATABILITY_EXPERIMENT.md`;
 - `28_ADOPTION_DISCOVERY_SYNTHESIS.md`;
 - `29_ADOPTION_DELIVERY_SCOPE.md`;
-- `30_ADOPTION_IMPLEMENTATION_PLAN.md`.
+- `30_ADOPTION_IMPLEMENTATION_PLAN.md`;
+- `31_ADOPTION_CORE_VERIFICATION.md`.
 
 La Discovery Synthesis concluyó:
 
@@ -445,7 +472,7 @@ Reusable Framework Capability
 Discovery Evidence
 ```
 
-La capability reusable se integrará en:
+La capability reusable se integra en:
 
 ```text
 framework/adoption/
@@ -1016,3 +1043,4 @@ Existing Repository Adoption Assessment Core podrá considerarse implementado cu
 | v0.6.5  | 2026-10-24  | Delivery Scope Definition completa el alcance del Assessment Core y lo declara listo para Implementation Planning, sin abrir todavía Sprint, milestone ni versión objetivo. |
 | v0.6.6  | 2026-10-24  | Implementation Planning define tres Issues, dependencias, Acceptance Criteria, esfuerzo relativo y viabilidad en un único Sprint; milestone, target version y apertura del Sprint permanecen pendientes. |
 | v0.6.7  | 2026-10-24  | Release Planning define `v0.7.0 — Existing Repository Adoption`, crea la milestone, compromete #40–#42 y abre Sprint 9 para implementar el Assessment Core. |
+| v0.6.8  | 2026-10-25  | #40 y #41 completadas; representative replay, semantic consistency, scope compliance y AC-01–AC-35 verificados dentro de #42; integración documental final en curso. |

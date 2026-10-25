@@ -32,7 +32,7 @@ Complete
 |---|---|---|---|---|---|
 | `<Responsibility>` | `<level>` | `<Satisfied / Partial / Missing>` | `<Applicable / Not Applicable / Uncertain>` | `<Resolved / Needs Further Evaluation>` | `<PRESERVE / ADAPT / ADD / ACCEPT / OMIT / —>` |
 
-Add one row for every Responsibility included in the selected Repository Template.
+Add one row for every Responsibility defined by the selected Repository Template.
 
 When:
 
@@ -203,7 +203,14 @@ This section is optional.
 | Not Applicable | `<count>` |
 | Uncertain | `<count>` |
 
-### Decision Totals
+### Decision Status Totals
+
+| Decision Status | Count |
+|---|---:|
+| Resolved | `<count>` |
+| Needs Further Evaluation | `<count>` |
+
+### Adoption Decision Totals
 
 | Adoption Decision | Count |
 |---|---:|
@@ -212,7 +219,6 @@ This section is optional.
 | ADD | `<count>` |
 | ACCEPT | `<count>` |
 | OMIT | `<count>` |
-| Needs Further Evaluation | `<count>` |
 
 The aggregate counts are informational only and are not required for a valid assessment.
 
@@ -226,7 +232,7 @@ An assessment may be marked:
 Complete
 ```
 
-when every Responsibility in scope has been assessed.
+when every Responsibility defined by the selected Repository Template has been assessed.
 
 Each Responsibility must record:
 
