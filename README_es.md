@@ -41,6 +41,7 @@ Su objetivo es reducir las decisiones repetitivas, permitiendo al mismo tiempo q
 - Componentes reutilizables de Workflow
 - Contrato común de metadata para Components
 - Framework Validator con reglas de validación deterministas
+- Existing Repository Adoption Assessment Core
 - Implementaciones de referencia y dogfooding
 - Evolución versionada del Framework
 
@@ -70,6 +71,8 @@ Las **Templates** ensamblan componentes para crear estructuras reutilizables de 
 
 Las **Reference Implementations** validan el Framework mediante su utilización en proyectos reales.
 
+Existing Repository Adoption complementa estos bloques con un mecanismo de revisión humana para reconciliar un repositorio existente con las Responsibilities de un Repository Template sin forzar artifacts canónicos ni modificar automáticamente el consumer.
+
 Para una descripción arquitectónica completa, consulta la [documentación de arquitectura](docs/architecture/).
 
 ---
@@ -91,6 +94,7 @@ Recomendamos el siguiente recorrido:
 ## 🔗 Enlaces rápidos
 
 - 📚 [Documentación](docs/)
+- 🔄 [Existing Repository Adoption](framework/adoption/README.md)
 - 🗺️ [Roadmap](ROADMAP.md)
 - 🤝 [Guía de contribución](CONTRIBUTING.md)
 - 📄 [Licencia](LICENSE)
@@ -108,8 +112,9 @@ La documentación del proyecto está organizada en áreas especializadas.
 | [`design-system/`](docs/design-system/) | Repository Design System y catálogo de componentes. |
 | [`implementation/`](docs/implementation/) | Implementaciones de referencia y guías de implementación. |
 | [`governance/`](docs/governance/) | Gobierno del proyecto y documentación de planificación. |
+| [`framework/adoption/`](framework/adoption/) | Existing Repository Adoption Assessment Core reutilizable. |
 
-Para información detallada, explora el directorio `docs/`.
+Para información detallada, explora el directorio `docs/` y los artifacts reutilizables bajo `framework/`.
 
 ---
 
@@ -141,6 +146,45 @@ El validador comprueba reglas deterministas; no sustituye la revisión arquitect
 
 ---
 
+## 🔄 Existing Repository Adoption
+
+GitHub Framework incorpora un **Existing Repository Adoption Assessment Core** reutilizable para evaluar un repositorio existente frente a las Responsibilities definidas por un Repository Template.
+
+El proceso soportado es:
+
+```text
+ANALYZE
+    ↓
+ASSESS
+    ↓
+REVIEW
+    ↓
+DECIDE
+    ↓
+REPORT
+```
+
+El Assessment Core es:
+
+```text
+manual
+human-readable
+human-editable
+human-reviewed
+non-destructive
+```
+
+Permite reconocer implementaciones no canónicas, equivalentes y distribuidas, manteniendo explícitamente separadas la Evidence, la evaluación y las Adoption Decisions.
+
+Los artifacts reutilizables son:
+
+- [Adoption Guide](framework/adoption/README.md)
+- [Assessment Template](framework/adoption/assessment-template.md)
+
+Esta capability no modifica los repositorios consumer ni introduce remediación automática o decisiones automáticas de adopción.
+
+---
+
 ## 🗺️ Roadmap
 
 GitHub Framework evoluciona mediante versiones incrementales.
@@ -152,6 +196,7 @@ El roadmap de versiones incluye:
 - **v0.4.0** — Repository Templates
 - **v0.5.0** — Workflow Framework
 - **v0.6.0** — Framework Automation
+- **v0.7.0** — Existing Repository Adoption
 - **v1.0.0** — Versión estable
 
 Para consultar el roadmap completo, visita [ROADMAP.md](ROADMAP.md).
@@ -176,11 +221,15 @@ Este proyecto se distribuye bajo la licencia MIT.
 
 GitHub Framework evoluciona mediante versiones incrementales.
 
-El proyecto ha establecido su arquitectura principal y actualmente continúa evolucionando el Framework mediante implementación incremental, validación y dogfooding.
-
-Último hito:
+La última release publicada es:
 
 **v0.6.0 — Framework Automation**
+
+La versión objetivo actual es:
+
+**v0.7.0 — Existing Repository Adoption**
+
+Los artifacts del Assessment Core están implementados y se encuentran en verificación e integración final dentro de Sprint 9.
 
 ---
 

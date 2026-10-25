@@ -775,7 +775,7 @@ Un assessment puede marcarse:
 Complete
 ```
 
-cuando todas las Responsibilities del Repository Template incluidas en el assessment hayan sido evaluadas.
+cuando todas las Responsibilities definidas por el Repository Template seleccionado hayan sido evaluadas.
 
 Cada Responsibility debe disponer de:
 

@@ -8,7 +8,7 @@
 | **Fase**                 | Implementation — Existing Repository Adoption             |
 | **Sprint actual**        | Sprint 9 — Existing Repository Adoption                   |
 | **Versión objetivo**     | v0.7.0                                                    |
-| **Última actualización** | 2026-10-24                                                |
+| **Última actualización** | 2026-10-25                                                |
 
 ---
 
@@ -35,7 +35,8 @@ El trabajo se documenta en:
 - `docs/discovery/27_ADOPTION_REPEATABILITY_EXPERIMENT.md`;
 - `docs/discovery/28_ADOPTION_DISCOVERY_SYNTHESIS.md`;
 - `docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md`;
-- `docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md`.
+- `docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md`;
+- `docs/implementation/31_ADOPTION_CORE_VERIFICATION.md`.
 
 La investigación ha utilizado cinco consumers backend representativos:
 
@@ -228,7 +229,7 @@ Reusable Framework Capability
 Discovery Evidence
 ```
 
-Los reusable artifacts se integrarán en un namespace propio del Framework:
+Los reusable artifacts se integran en un namespace propio del Framework:
 
 ```text
 framework/adoption/
@@ -392,7 +393,49 @@ El orden recomendado de ejecución se mantiene:
 #42 Verification and Integration
 ```
 
-La implementación funcional del Assessment Core todavía no ha comenzado.
+La implementación funcional del Assessment Core está avanzada.
+
+Estado actual:
+
+```text
+#40 Adoption Guide
+    DONE
+
+#41 Assessment Template
+    DONE
+
+#42 Verification and Integration
+    IN PROGRESS
+```
+
+Los dos reusable artifacts existen ya en:
+
+```text
+framework/adoption/README.md
+framework/adoption/assessment-template.md
+```
+
+La verificación conjunta se documenta en:
+
+```text
+docs/implementation/31_ADOPTION_CORE_VERIFICATION.md
+```
+
+El representative replay cubre los ocho casos exigidos por el Implementation Plan y confirma:
+
+```text
+Representative Replay
+    PASS
+
+Guide / Template Consistency
+    PASS
+
+Scope Compliance
+    PASS
+
+AC-01 through AC-35
+    PASS
+```
 
 La Implementation Architecture no se ha formalizado como una fase independiente. El Delivery Scope y el Implementation Plan mantienen un delivery documental mínimo basado en dos artifacts Markdown reutilizables y sin tooling adicional.
 
@@ -446,6 +489,9 @@ El siguiente incremento está planificado como `v0.7.0 — Existing Repository A
 | Existing Repository Adoption Implementation Planning   |   ✅   |
 | Existing Repository Adoption Release Planning          |   ✅   |
 | Existing Repository Adoption Assessment Core           |   🟡   |
+| Existing Repository Adoption Guide                     |   ✅   |
+| Existing Repository Adoption Assessment Template       |   ✅   |
+| Existing Repository Adoption Verification & Integration|   🟡   |
 
 ---
 
@@ -478,9 +524,9 @@ Issues comprometidas:
 
 | Issue | Entregable                                                    | Estado |
 | ----- | ------------------------------------------------------------- | :----: |
-| #40   | Existing Repository Adoption Guide                            |  Open  |
-| #41   | Existing Repository Adoption Assessment Template              |  Open  |
-| #42   | Existing Repository Adoption Assessment Core Verification     |  Open  |
+| #40   | Existing Repository Adoption Guide                            |  Done  |
+| #41   | Existing Repository Adoption Assessment Template              |  Done  |
+| #42   | Existing Repository Adoption Assessment Core Verification     | In Progress |
 
 La dependencia es:
 
@@ -508,69 +554,51 @@ Cualquier tarea que introduzca una capability actualmente Out of Scope requiere 
 
 # Próximo Hito
 
-## Implement #40 — Existing Repository Adoption Guide
+## Complete #42 — Verification and Integration
 
-El siguiente trabajo funcional es implementar:
-
-```text
-framework/adoption/README.md
-```
-
-como reusable Adoption Guide.
-
-La Issue #40 debe materializar la semántica estable definida por Discovery, Delivery Scope e Implementation Planning, incluyendo:
+El trabajo funcional pendiente de Sprint 9 se concentra en completar:
 
 ```text
-Assessment purpose and inputs
-
-Responsibility as assessment unit
-
-ANALYZE
-    ↓
-ASSESS
-    ↓
-REVIEW
-    ↓
-DECIDE
-    ↓
-REPORT
-
-State
-
-Applicability
-
-Implementation Characteristics
-
-Uncertainty
-
-Detected Facts
-
-Evidence
-
-Evaluation Rationale
-
-Decision Status
-
-Adoption Decision
-
-Decision Rationale
-
-Completion rules
-
-Human review
-
-Out-of-Scope boundary
+#42
+    Validate and integrate
+    Existing Repository Adoption Assessment Core
 ```
 
-La implementación deberá permanecer alineada con:
+La verificación principal ya ha confirmado:
 
 ```text
-docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md
-+
-docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md
+Representative Replay
+    PASS
+
+Guide / Template Consistency
+    PASS
+
+Scope Compliance
+    PASS
+
+AC-01 through AC-35
+    PASS
 ```
 
-Una vez completada #40, el siguiente paso será #41 — Assessment Template.
+Antes de cerrar #42 deben quedar integrados y sincronizados:
+
+```text
+README.md
+README_es.md
+CHANGELOG.md
+ROADMAP.md
+docs/governance/12_PROJECT_STATUS.md
+docs/governance/14_BACKLOG.md
+docs/implementation/31_ADOPTION_CORE_VERIFICATION.md
+```
+
+Una vez integrada #42, el siguiente paso será preparar la publicación de:
+
+```text
+v0.7.0 — Existing Repository Adoption
+```
+
+manteniendo `v0.6.0 — Framework Automation` como última release publicada hasta que la nueva versión sea efectivamente etiquetada y publicada.
 
 ---
 
@@ -613,16 +641,16 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Implementar #40 — Existing Repository Adoption Guide.
-2. Implementar #41 — Existing Repository Adoption Assessment Template.
-3. Mantener alineados Guide y Template para evitar semantic drift.
-4. Ejecutar #42 — Verification and Integration después de disponer de ambos artifacts.
-5. Realizar representative replay sobre los casos definidos por el Implementation Plan.
-6. Verificar AC-01 a AC-35 antes de considerar el Assessment Core completado.
-7. Mantener fuera de Sprint 9 cualquier capability expresamente excluida por `29_ADOPTION_DELIVERY_SCOPE.md`.
-8. Sincronizar documentación general y governance durante #42.
-9. Preparar `v0.7.0 — Existing Repository Adoption` únicamente después de completar y validar #40–#42.
-10. Preservar la separación entre reusable capability y Discovery evidence.
+1. Completar #42 — Verification and Integration.
+2. Integrar `docs/implementation/31_ADOPTION_CORE_VERIFICATION.md`.
+3. Mantener sincronizados Guide, Template y documentación general.
+4. Confirmar que ningún cambio de integración introduce capability fuera de `29_ADOPTION_DELIVERY_SCOPE.md`.
+5. Cerrar Sprint 9 únicamente después de integrar #42.
+6. Preparar la documentación final de release de `v0.7.0 — Existing Repository Adoption`.
+7. Crear tag y GitHub Release solo después de completar la preparación de release.
+8. Mantener `v0.6.0` como última release publicada hasta ese momento.
+9. Preservar la separación entre reusable capability y Discovery evidence.
+10. Mantener fuera de `v0.7.0` Application, Automation, Structured Data y Componentization no incluidas en el Assessment Core.
 
 ---
 
