@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.6.0-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-v0.7.0-blue" alt="Version" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Status" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
 </p>
@@ -221,13 +221,11 @@ GitHub Framework is currently evolving through incremental releases.
 
 The latest published release is:
 
-**v0.6.0 — Framework Automation**
-
-The current target release is:
-
 **v0.7.0 — Existing Repository Adoption**
 
-The Assessment Core artifacts are implemented and under final verification and integration in Sprint 9.
+The Existing Repository Adoption Assessment Core is implemented, verified, integrated and published.
+
+The next Framework increment has not yet been committed to a release.
 
 ---
 
