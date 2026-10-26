@@ -77,7 +77,10 @@
 * Implemented #41 — Existing Repository Adoption Assessment Template.
 * Verified the final Guide + Template representation against canonical, equivalent, distributed, partial, missing applicable, missing non-applicable, uncertain and inaccurate-documentation cases.
 * Confirmed semantic consistency, scope compliance and AC-01 through AC-35 as part of #42 Verification and Integration.
-* Kept `v0.6.0 — Framework Automation` as the latest published release while `v0.7.0` remains in progress.
+* Completed #42 — Existing Repository Adoption Assessment Core Verification and Integration.
+* Closed the functional scope of Sprint 9 with #40, #41 and #42 completed.
+* Advanced `v0.7.0 — Existing Repository Adoption` to release preparation after the Assessment Core was implemented, verified and integrated.
+* Kept `v0.6.0 — Framework Automation` as the latest published release until `v0.7.0` is tagged and published.
 * Preserved the Assessment Core scope boundary: the `v0.7.0` release name does not imply delivery of Application, Automation, Structured Data or Componentization capabilities.
 
 ---

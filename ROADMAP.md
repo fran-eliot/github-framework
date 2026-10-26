@@ -157,7 +157,7 @@ La release `v0.6.0` cierra Sprint 8 y constituye la versión publicada actual de
 
 # v0.7.0 — Existing Repository Adoption
 
-**Estado:** 🟡 In Progress
+**Estado:** 🟢 Ready for Release
 
 ## Objetivo
 
@@ -303,7 +303,7 @@ Estas capacidades podrán evaluarse en incrementos posteriores únicamente si ex
 
 ## Sprint 9 — Existing Repository Adoption
 
-**Estado:** In Progress.
+**Estado:** Completed.
 
 Milestone:
 
@@ -317,7 +317,7 @@ Issues comprometidas:
 | ----- | ------------------------------------------------------------- | :----: |
 | #40   | Existing Repository Adoption Guide                            |  Done  |
 | #41   | Existing Repository Adoption Assessment Template              |  Done  |
-| #42   | Existing Repository Adoption Assessment Core Verification     | In Progress |
+| #42   | Existing Repository Adoption Assessment Core Verification     |  Done  |
 
 Dependencias:
 
@@ -353,7 +353,12 @@ Estado funcional actual:
     DONE
 
 #42 Verification and Integration
-    IN PROGRESS
+    DONE
+
+Assessment Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
 ```
 
 El representative replay y la revisión semántica confirman:
@@ -372,7 +377,7 @@ AC-01 through AC-35
     PASS
 ```
 
-La release continúa en estado `In Progress` hasta completar la integración de #42 y la preparación de publicación de `v0.7.0`.
+Sprint 9 ha completado su alcance funcional. La release se encuentra en estado `Ready for Release` pendiente únicamente de la preparación final, etiquetado y publicación de `v0.7.0`.
 
 La apertura de Sprint 9 no amplía la frontera funcional definida por esos documentos.
 

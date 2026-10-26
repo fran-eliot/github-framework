@@ -5,10 +5,10 @@
 | **Proyecto**             | GitHub Framework                                          |
 | **Versión actual**       | v0.6.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Implementation — Existing Repository Adoption             |
-| **Sprint actual**        | Sprint 9 — Existing Repository Adoption                   |
+| **Fase**                 | Release Preparation — Existing Repository Adoption        |
+| **Sprint actual**        | Sprint 9 — Existing Repository Adoption (Completed)       |
 | **Versión objetivo**     | v0.7.0                                                    |
-| **Última actualización** | 2026-10-25                                                |
+| **Última actualización** | 2026-10-26                                                |
 
 ---
 
@@ -20,7 +20,7 @@ El Framework dispone de una arquitectura formal, estándares de repositorio, un 
 
 Las versiones `v0.1.0` a `v0.6.0` han sido publicadas. La última versión publicada es **`v0.6.0 — Framework Automation`**.
 
-El siguiente incremento está planificado como **`v0.7.0 — Existing Repository Adoption`** y se encuentra actualmente en Sprint 9.
+El siguiente incremento está planificado como **`v0.7.0 — Existing Repository Adoption`** y se encuentra actualmente en Release Preparation.
 
 ## Existing Repository Adoption
 
@@ -393,7 +393,7 @@ El orden recomendado de ejecución se mantiene:
 #42 Verification and Integration
 ```
 
-La implementación funcional del Assessment Core está avanzada.
+La implementación, verificación e integración del Assessment Core están completadas.
 
 Estado actual:
 
@@ -405,7 +405,12 @@ Estado actual:
     DONE
 
 #42 Verification and Integration
-    IN PROGRESS
+    DONE
+
+Assessment Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
 ```
 
 Los dos reusable artifacts existen ya en:
@@ -451,7 +456,7 @@ Como parte de la preparación pública se configuraron la descripción y los top
 
 La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada.
 
-El siguiente incremento está planificado como `v0.7.0 — Existing Repository Adoption` y se desarrolla mediante Sprint 9, limitado al Assessment Core definido por `29_ADOPTION_DELIVERY_SCOPE.md`.
+El siguiente incremento está planificado como `v0.7.0 — Existing Repository Adoption`; Sprint 9 ha completado el Assessment Core definido por `29_ADOPTION_DELIVERY_SCOPE.md` y la release se encuentra en preparación.
 
 ---
 
@@ -488,10 +493,10 @@ El siguiente incremento está planificado como `v0.7.0 — Existing Repository A
 | Existing Repository Adoption Delivery Scope            |   ✅   |
 | Existing Repository Adoption Implementation Planning   |   ✅   |
 | Existing Repository Adoption Release Planning          |   ✅   |
-| Existing Repository Adoption Assessment Core           |   🟡   |
+| Existing Repository Adoption Assessment Core           |   ✅   |
 | Existing Repository Adoption Guide                     |   ✅   |
 | Existing Repository Adoption Assessment Template       |   ✅   |
-| Existing Repository Adoption Verification & Integration|   🟡   |
+| Existing Repository Adoption Verification & Integration|   ✅   |
 
 ---
 
@@ -499,7 +504,7 @@ El siguiente incremento está planificado como `v0.7.0 — Existing Repository A
 
 ## Sprint 9 — Existing Repository Adoption
 
-Sprint 9 está activo.
+Sprint 9 está completado.
 
 Objetivo:
 
@@ -526,7 +531,7 @@ Issues comprometidas:
 | ----- | ------------------------------------------------------------- | :----: |
 | #40   | Existing Repository Adoption Guide                            |  Done  |
 | #41   | Existing Repository Adoption Assessment Template              |  Done  |
-| #42   | Existing Repository Adoption Assessment Core Verification     | In Progress |
+| #42   | Existing Repository Adoption Assessment Core Verification     |  Done  |
 
 La dependencia es:
 
@@ -554,51 +559,43 @@ Cualquier tarea que introduzca una capability actualmente Out of Scope requiere 
 
 # Próximo Hito
 
-## Complete #42 — Verification and Integration
+## Prepare v0.7.0 — Existing Repository Adoption
 
-El trabajo funcional pendiente de Sprint 9 se concentra en completar:
-
-```text
-#42
-    Validate and integrate
-    Existing Repository Adoption Assessment Core
-```
-
-La verificación principal ya ha confirmado:
+Sprint 9 ha completado las tres Issues comprometidas:
 
 ```text
-Representative Replay
-    PASS
+#40 Adoption Guide
+    DONE
 
-Guide / Template Consistency
-    PASS
+#41 Assessment Template
+    DONE
 
-Scope Compliance
-    PASS
-
-AC-01 through AC-35
-    PASS
+#42 Verification and Integration
+    DONE
 ```
 
-Antes de cerrar #42 deben quedar integrados y sincronizados:
+El Assessment Core queda:
 
 ```text
-README.md
-README_es.md
-CHANGELOG.md
-ROADMAP.md
-docs/governance/12_PROJECT_STATUS.md
-docs/governance/14_BACKLOG.md
-docs/implementation/31_ADOPTION_CORE_VERIFICATION.md
+IMPLEMENTED
+VERIFIED
+INTEGRATED
 ```
 
-Una vez integrada #42, el siguiente paso será preparar la publicación de:
+La siguiente fase es preparar la publicación de:
 
 ```text
 v0.7.0 — Existing Repository Adoption
 ```
 
-manteniendo `v0.6.0 — Framework Automation` como última release publicada hasta que la nueva versión sea efectivamente etiquetada y publicada.
+Estado de release:
+
+```text
+v0.7.0
+    READY FOR RELEASE
+```
+
+`v0.6.0 — Framework Automation` continúa siendo la última release publicada hasta que `v0.7.0` sea efectivamente etiquetada y publicada.
 
 ---
 
@@ -641,16 +638,15 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Completar #42 — Verification and Integration.
-2. Integrar `docs/implementation/31_ADOPTION_CORE_VERIFICATION.md`.
-3. Mantener sincronizados Guide, Template y documentación general.
-4. Confirmar que ningún cambio de integración introduce capability fuera de `29_ADOPTION_DELIVERY_SCOPE.md`.
-5. Cerrar Sprint 9 únicamente después de integrar #42.
-6. Preparar la documentación final de release de `v0.7.0 — Existing Repository Adoption`.
-7. Crear tag y GitHub Release solo después de completar la preparación de release.
-8. Mantener `v0.6.0` como última release publicada hasta ese momento.
-9. Preservar la separación entre reusable capability y Discovery evidence.
-10. Mantener fuera de `v0.7.0` Application, Automation, Structured Data y Componentization no incluidas en el Assessment Core.
+1. Preparar la documentación final de release de `v0.7.0 — Existing Repository Adoption`.
+2. Verificar el estado final de `main` antes del versionado.
+3. Confirmar que milestone e Issues #40–#42 reflejan el cierre funcional del Sprint.
+4. Crear el tag `v0.7.0` únicamente después de completar la preparación de release.
+5. Publicar `v0.7.0 — Existing Repository Adoption` como GitHub Release.
+6. Cerrar la milestone después de verificar la publicación.
+7. Mantener `v0.6.0` como última release publicada hasta ese momento.
+8. Preservar la separación entre reusable capability y Discovery evidence.
+9. Mantener fuera de `v0.7.0` Application, Automation, Structured Data y Componentization no incluidas en el Assessment Core.
 
 ---
 
