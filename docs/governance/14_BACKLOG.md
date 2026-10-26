@@ -3,8 +3,8 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión publicada**    | v0.6.0           |
-| **Versión objetivo**     | v0.7.0           |
+| **Versión publicada**    | v0.7.0           |
+| **Versión objetivo**     | Pendiente         |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-10-26       |
 
@@ -54,7 +54,7 @@ Las Issues #40, #41 y #42 de `v0.7.0` están implementadas, verificadas e integr
 
 ---
 
-## Sprint Actual
+## Último Sprint
 
 ### Sprint 9 — Existing Repository Adoption
 
@@ -111,7 +111,7 @@ La apertura de Sprint 9 no amplía el Delivery Scope definido en `29_ADOPTION_DE
 
 ## Product Backlog
 
-El siguiente incremento está comprometido en Sprint 9:
+El último incremento comprometido en Sprint 9 fue:
 
 ```text
 Existing Repository Adoption
@@ -947,7 +947,7 @@ aportan valor proporcional.
 | v0.4.0 — Repository Templates           | ✅ Released    |
 | v0.5.0 — Workflow Framework             | ✅ Released    |
 | v0.6.0 — Framework Automation           | ✅ Released    |
-| v0.7.0 — Existing Repository Adoption   | 🟢 Ready for Release |
+| v0.7.0 — Existing Repository Adoption   | ✅ Released    |
 | v1.0.0 — Stable Release                 | ⚪ Planned     |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.
@@ -1051,3 +1051,4 @@ Existing Repository Adoption Assessment Core podrá considerarse implementado cu
 | v0.6.7  | 2026-10-24  | Release Planning define `v0.7.0 — Existing Repository Adoption`, crea la milestone, compromete #40–#42 y abre Sprint 9 para implementar el Assessment Core. |
 | v0.6.8  | 2026-10-25  | #40 y #41 completadas; representative replay, semantic consistency, scope compliance y AC-01–AC-35 verificados dentro de #42; integración documental final en curso. |
 | v0.6.9  | 2026-10-26  | Sprint 9 completado con #40–#42 cerradas; Assessment Core implementado, verificado e integrado; `v0.7.0` pasa a Ready for Release. |
+| v0.7.0  | 2026-10-26  | Publicación de Existing Repository Adoption, cierre de Sprint 9 y transición del Product Backlog a priorización del siguiente incremento. |

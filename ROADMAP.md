@@ -151,13 +151,13 @@ La implementación de referencia y sus limitaciones están documentadas en `docs
 * La milestone `v0.6.0 — Framework Automation` fue cerrada.
 * Las ramas de trabajo de Sprint 8 fueron eliminadas tras verificar su integración.
 
-La release `v0.6.0` cierra Sprint 8 y constituye la versión publicada actual del Framework.
+La release `v0.6.0` cerró Sprint 8 y fue la versión publicada del Framework hasta la publicación de `v0.7.0`.
 
 ---
 
 # v0.7.0 — Existing Repository Adoption
 
-**Estado:** 🟢 Ready for Release
+**Estado:** ✅ Released
 
 ## Objetivo
 
@@ -377,9 +377,11 @@ AC-01 through AC-35
     PASS
 ```
 
-Sprint 9 ha completado su alcance funcional. La release se encuentra en estado `Ready for Release` pendiente únicamente de la preparación final, etiquetado y publicación de `v0.7.0`.
+Sprint 9 ha completado su alcance funcional. El tag `v0.7.0` y la GitHub Release `v0.7.0 — Existing Repository Adoption` han sido publicados.
 
 La apertura de Sprint 9 no amplía la frontera funcional definida por esos documentos.
+
+La milestone `v0.7.0 — Existing Repository Adoption` se cierra tras completar las Issues #40–#42 y publicar la release.
 
 ---
 

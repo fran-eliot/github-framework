@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.6.0-blue" alt="Versión" />
+  <img src="https://img.shields.io/badge/version-v0.7.0-blue" alt="Versión" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Estado" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="Licencia" />
 </p>
@@ -223,13 +223,11 @@ GitHub Framework evoluciona mediante versiones incrementales.
 
 La última release publicada es:
 
-**v0.6.0 — Framework Automation**
-
-La versión objetivo actual es:
-
 **v0.7.0 — Existing Repository Adoption**
 
-Los artifacts del Assessment Core están implementados y se encuentran en verificación e integración final dentro de Sprint 9.
+El Existing Repository Adoption Assessment Core está implementado, verificado, integrado y publicado.
+
+El siguiente incremento del Framework todavía no está comprometido en una release.
 
 ---
 

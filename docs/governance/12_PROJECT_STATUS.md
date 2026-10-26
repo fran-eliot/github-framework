@@ -3,11 +3,11 @@
 | Campo                    | Valor                                                     |
 | ------------------------ | --------------------------------------------------------- |
 | **Proyecto**             | GitHub Framework                                          |
-| **Versión actual**       | v0.6.0                                                    |
+| **Versión actual**       | v0.7.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Release Preparation — Existing Repository Adoption        |
-| **Sprint actual**        | Sprint 9 — Existing Repository Adoption (Completed)       |
-| **Versión objetivo**     | v0.7.0                                                    |
+| **Fase**                 | Post-Release — Existing Repository Adoption               |
+| **Sprint actual**        | Ninguno activo                                            |
+| **Versión objetivo**     | Pendiente de definición                                   |
 | **Última actualización** | 2026-10-26                                                |
 
 ---
@@ -18,9 +18,9 @@ GitHub Framework ha completado las fases de arquitectura, Open Source Readiness,
 
 El Framework dispone de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno, una biblioteca de Documentation Components, tres Repository Templates y una primera familia de Core Workflow Components.
 
-Las versiones `v0.1.0` a `v0.6.0` han sido publicadas. La última versión publicada es **`v0.6.0 — Framework Automation`**.
+Las versiones `v0.1.0` a `v0.7.0` han sido publicadas. La última versión publicada es **`v0.7.0 — Existing Repository Adoption`**.
 
-El siguiente incremento está planificado como **`v0.7.0 — Existing Repository Adoption`** y se encuentra actualmente en Release Preparation.
+Sprint 9 ha finalizado y no existe todavía un siguiente incremento comprometido en una versión o Sprint.
 
 ## Existing Repository Adoption
 
@@ -454,9 +454,9 @@ La revisión confirmó la ausencia de secretos o archivos sensibles detectables 
 
 Como parte de la preparación pública se configuraron la descripción y los topics del repositorio, se estableció un ruleset activo sobre `main` y se habilitó un baseline de seguridad compuesto por Dependency Graph, Dependabot Alerts, Dependabot Security Updates, Secret Protection y Push Protection.
 
-La publicación pública no introduce una nueva versión funcional del Framework. `v0.6.0` continúa siendo la última release publicada.
+La publicación pública inicial no introdujo una nueva versión funcional del Framework.
 
-El siguiente incremento está planificado como `v0.7.0 — Existing Repository Adoption`; Sprint 9 ha completado el Assessment Core definido por `29_ADOPTION_DELIVERY_SCOPE.md` y la release se encuentra en preparación.
+`v0.7.0 — Existing Repository Adoption` es ahora la última release publicada. Sprint 9 completó el Assessment Core definido por `29_ADOPTION_DELIVERY_SCOPE.md`.
 
 ---
 
@@ -488,6 +488,7 @@ El siguiente incremento está planificado como `v0.7.0 — Existing Repository A
 | Automation Reference Implementation                    |   ✅   |
 | Integración de Framework Automation en `main`          |   ✅   |
 | Publicación de v0.6.0                                  |   ✅   |
+| Publicación de v0.7.0                                  |   ✅   |
 | Publicación pública del repositorio                    |   ✅   |
 | Existing Repository Adoption Discovery                 |   ✅   |
 | Existing Repository Adoption Delivery Scope            |   ✅   |
@@ -500,7 +501,7 @@ El siguiente incremento está planificado como `v0.7.0 — Existing Repository A
 
 ---
 
-# Sprint Actual
+# Último Sprint
 
 ## Sprint 9 — Existing Repository Adoption
 
@@ -559,43 +560,29 @@ Cualquier tarea que introduzca una capability actualmente Out of Scope requiere 
 
 # Próximo Hito
 
-## Prepare v0.7.0 — Existing Repository Adoption
+## Define the next Framework increment
 
-Sprint 9 ha completado las tres Issues comprometidas:
+`v0.7.0 — Existing Repository Adoption` ha sido publicada.
 
-```text
-#40 Adoption Guide
-    DONE
-
-#41 Assessment Template
-    DONE
-
-#42 Verification and Integration
-    DONE
-```
-
-El Assessment Core queda:
+Estado actual:
 
 ```text
-IMPLEMENTED
-VERIFIED
-INTEGRATED
-```
+Sprint 9
+    COMPLETED
 
-La siguiente fase es preparar la publicación de:
+Assessment Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
+    RELEASED
 
-```text
-v0.7.0 — Existing Repository Adoption
-```
-
-Estado de release:
-
-```text
 v0.7.0
-    READY FOR RELEASE
+    RELEASED
 ```
 
-`v0.6.0 — Framework Automation` continúa siendo la última release publicada hasta que `v0.7.0` sea efectivamente etiquetada y publicada.
+No existe todavía un siguiente Sprint ni una versión objetivo comprometida.
+
+El próximo incremento deberá partir de nueva priorización y, cuando corresponda, Discovery suficiente antes de ampliar Existing Repository Adoption más allá del Assessment Core.
 
 ---
 
@@ -638,15 +625,12 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Preparar la documentación final de release de `v0.7.0 — Existing Repository Adoption`.
-2. Verificar el estado final de `main` antes del versionado.
-3. Confirmar que milestone e Issues #40–#42 reflejan el cierre funcional del Sprint.
-4. Crear el tag `v0.7.0` únicamente después de completar la preparación de release.
-5. Publicar `v0.7.0 — Existing Repository Adoption` como GitHub Release.
-6. Cerrar la milestone después de verificar la publicación.
-7. Mantener `v0.6.0` como última release publicada hasta ese momento.
-8. Preservar la separación entre reusable capability y Discovery evidence.
-9. Mantener fuera de `v0.7.0` Application, Automation, Structured Data y Componentization no incluidas en el Assessment Core.
+1. Confirmar el cierre de la milestone `v0.7.0 — Existing Repository Adoption`.
+2. Mantener `v0.7.0` como última release publicada.
+3. No abrir un nuevo Sprint hasta definir el siguiente incremento.
+4. Priorizar el siguiente trabajo desde el Product Backlog y nueva evidencia.
+5. Preservar la separación entre reusable capability y Discovery evidence.
+6. Mantener Application, Automation, Structured Data y Componentization fuera del Assessment Core salvo nueva Discovery y Delivery Scope explícitos.
 
 ---
 
@@ -660,3 +644,4 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 | v0.4.0  | 2026-08-18 | Repository Templates completado                                    |
 | v0.5.0  | 2026-09-14 | Workflow Framework publicado                                       |
 | v0.6.0  | 2026-09-25 | Framework Automation publicado                                     |
+| v0.7.0  | 2026-10-26 | Existing Repository Adoption publicado                             |

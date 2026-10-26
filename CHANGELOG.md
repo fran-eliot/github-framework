@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+No unreleased changes yet.
+
+---
+
+## [0.7.0] - 2026-10-26
+
 ### Added
 
 * Existing Repository Adoption discovery using `TPL-BACKEND` against external consumer repositories.
@@ -80,7 +86,7 @@
 * Completed #42 — Existing Repository Adoption Assessment Core Verification and Integration.
 * Closed the functional scope of Sprint 9 with #40, #41 and #42 completed.
 * Advanced `v0.7.0 — Existing Repository Adoption` to release preparation after the Assessment Core was implemented, verified and integrated.
-* Kept `v0.6.0 — Framework Automation` as the latest published release until `v0.7.0` is tagged and published.
+* Published `v0.7.0 — Existing Repository Adoption` after the Assessment Core was implemented, verified and integrated.
 * Preserved the Assessment Core scope boundary: the `v0.7.0` release name does not imply delivery of Application, Automation, Structured Data or Componentization capabilities.
 
 ---
