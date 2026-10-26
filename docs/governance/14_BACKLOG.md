@@ -6,7 +6,7 @@
 | **Versión publicada**    | v0.6.0           |
 | **Versión objetivo**     | v0.7.0           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-10-25       |
+| **Última actualización** | 2026-10-26       |
 
 ---
 
@@ -46,10 +46,11 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 | #26    | Automation Reference Implementation          | v0.6.0  | Done   |
 | #40    | Existing Repository Adoption Guide           | v0.7.0  | Done   |
 | #41    | Existing Repository Adoption Assessment Template | v0.7.0 | Done   |
+| #42    | Existing Repository Adoption Assessment Core Verification | v0.7.0 | Done |
 
 Las historias de `v0.6.0` están implementadas, integradas y publicadas como parte de Framework Automation.
 
-Las Issues #40 y #41 de `v0.7.0` están implementadas. La Issue #42 permanece activa para completar Verification and Integration.
+Las Issues #40, #41 y #42 de `v0.7.0` están implementadas, verificadas e integradas. Sprint 9 ha completado su alcance comprometido.
 
 ---
 
@@ -57,7 +58,7 @@ Las Issues #40 y #41 de `v0.7.0` están implementadas. La Issue #42 permanece ac
 
 ### Sprint 9 — Existing Repository Adoption
 
-Sprint 9 está activo.
+Sprint 9 está completado.
 
 Objetivo:
 
@@ -84,7 +85,7 @@ Issues comprometidas:
 | ----- | ------------------------------------------------------------- | :----: |
 | #40   | Existing Repository Adoption Guide                            |  Done  |
 | #41   | Existing Repository Adoption Assessment Template              |  Done  |
-| #42   | Existing Repository Adoption Assessment Core Verification     | In Progress |
+| #42   | Existing Repository Adoption Assessment Core Verification     |  Done  |
 
 Dependencias:
 
@@ -153,7 +154,7 @@ El estado actual es:
 
 ```text
 SPRINT 9
-    ACTIVE
+    COMPLETED
 
 #40 Adoption Guide
     DONE
@@ -162,7 +163,12 @@ SPRINT 9
     DONE
 
 #42 Verification and Integration
-    IN PROGRESS
+    DONE
+
+Assessment Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
 ```
 
 La verificación conjunta documentada en `docs/implementation/31_ADOPTION_CORE_VERIFICATION.md` confirma:
@@ -181,7 +187,7 @@ AC-01 through AC-35
     PASS
 ```
 
-La implementación deberá respetar estrictamente el alcance definido en:
+La implementación ha respetado estrictamente el alcance definido en:
 
 ```text
 docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md
@@ -941,7 +947,7 @@ aportan valor proporcional.
 | v0.4.0 — Repository Templates           | ✅ Released    |
 | v0.5.0 — Workflow Framework             | ✅ Released    |
 | v0.6.0 — Framework Automation           | ✅ Released    |
-| v0.7.0 — Existing Repository Adoption   | 🟡 In Progress |
+| v0.7.0 — Existing Repository Adoption   | 🟢 Ready for Release |
 | v1.0.0 — Stable Release                 | ⚪ Planned     |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.
@@ -969,7 +975,7 @@ Las prioridades se revisarán al comienzo de cada Sprint.
 
 No se desarrollarán funcionalidades sin un caso de uso real.
 
-Sprint 9 deberá mantener como restricción principal:
+Sprint 9 mantuvo como restricción principal:
 
 ```text
 no additional capability
@@ -1044,3 +1050,4 @@ Existing Repository Adoption Assessment Core podrá considerarse implementado cu
 | v0.6.6  | 2026-10-24  | Implementation Planning define tres Issues, dependencias, Acceptance Criteria, esfuerzo relativo y viabilidad en un único Sprint; milestone, target version y apertura del Sprint permanecen pendientes. |
 | v0.6.7  | 2026-10-24  | Release Planning define `v0.7.0 — Existing Repository Adoption`, crea la milestone, compromete #40–#42 y abre Sprint 9 para implementar el Assessment Core. |
 | v0.6.8  | 2026-10-25  | #40 y #41 completadas; representative replay, semantic consistency, scope compliance y AC-01–AC-35 verificados dentro de #42; integración documental final en curso. |
+| v0.6.9  | 2026-10-26  | Sprint 9 completado con #40–#42 cerradas; Assessment Core implementado, verificado e integrado; `v0.7.0` pasa a Ready for Release. |
