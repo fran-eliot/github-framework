@@ -126,7 +126,7 @@ Application Core
     INTEGRATED
 ```
 
-La versión `v0.8.0` está preparada para publicación.
+La versión `v0.8.0 — Existing Repository Adoption Application Core` ha sido publicada.
 
 ## Fuera de alcance
 
@@ -413,7 +413,7 @@ La milestone `v0.7.0 — Existing Repository Adoption` se cierra tras completar 
 
 # v0.8.0 — Existing Repository Adoption Application Core
 
-**Estado:** 🟠 Release Preparation
+**Estado:** ✅ Released
 
 ## Objetivo
 

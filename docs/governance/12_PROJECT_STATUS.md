@@ -3,11 +3,11 @@
 | Campo                    | Valor                                                     |
 | ------------------------ | --------------------------------------------------------- |
 | **Proyecto**             | GitHub Framework                                          |
-| **Versión actual**       | v0.7.0                                                    |
+| **Versión actual**       | v0.8.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Release Preparation — v0.8.0                               |
+| **Fase**                 | Post-Release — Application Core                            |
 | **Sprint actual**        | Ninguno activo                                            |
-| **Versión objetivo**     | v0.8.0                                                    |
+| **Versión objetivo**     | Pendiente de definición                                   |
 | **Última actualización** | 2026-10-31                                                |
 
 ---
@@ -18,9 +18,9 @@ GitHub Framework ha completado las fases de arquitectura, Open Source Readiness,
 
 El Framework dispone de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno, una biblioteca de Documentation Components, tres Repository Templates y una primera familia de Core Workflow Components.
 
-Las versiones `v0.1.0` a `v0.7.0` han sido publicadas. La última versión publicada es **`v0.7.0 — Existing Repository Adoption`**.
+Las versiones `v0.1.0` a `v0.8.0` han sido publicadas. La última versión publicada es **`v0.8.0 — Existing Repository Adoption Application Core`**.
 
-Sprint 10 ha finalizado funcionalmente. **Existing Repository Adoption Application Core** está implementado, verificado e integrado en `main`; la versión objetivo **`v0.8.0`** se encuentra en preparación de release.
+Sprint 10 ha finalizado y **`v0.8.0 — Existing Repository Adoption Application Core`** ha sido publicada. No existe todavía un siguiente incremento comprometido.
 
 ## Existing Repository Adoption
 
@@ -456,7 +456,7 @@ Como parte de la preparación pública se configuraron la descripción y los top
 
 La publicación pública inicial no introdujo una nueva versión funcional del Framework.
 
-`v0.7.0 — Existing Repository Adoption` es ahora la última release publicada. Sprint 9 completó el Assessment Core definido por `29_ADOPTION_DELIVERY_SCOPE.md`.
+`v0.8.0 — Existing Repository Adoption Application Core` es ahora la última release publicada. Sprint 10 completó el Application Core definido por `35_APPLICATION_DELIVERY_SCOPE.md`.
 
 ---
 
@@ -489,6 +489,7 @@ La publicación pública inicial no introdujo una nueva versión funcional del F
 | Integración de Framework Automation en `main`          |   ✅   |
 | Publicación de v0.6.0                                  |   ✅   |
 | Publicación de v0.7.0                                  |   ✅   |
+| Publicación de v0.8.0                                  |   ✅   |
 | Publicación pública del repositorio                    |   ✅   |
 | Existing Repository Adoption Discovery                 |   ✅   |
 | Existing Repository Adoption Delivery Scope            |   ✅   |
@@ -628,7 +629,7 @@ Application Core
     INTEGRATED
 ```
 
-La release `v0.8.0` está pendiente de publicación.
+La release `v0.8.0 — Existing Repository Adoption Application Core` ha sido publicada.
 
 ---
 
@@ -671,12 +672,12 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Publicar `v0.8.0 — Existing Repository Adoption Application Core`.
-2. Crear el tag `v0.8.0` sobre el commit de release.
-3. Crear la GitHub Release correspondiente.
-4. Cerrar la milestone `v0.8.0 — Existing Repository Adoption Application Core`.
+1. Mantener `v0.8.0` como última release publicada.
+2. Confirmar el cierre de la milestone `v0.8.0 — Existing Repository Adoption Application Core`.
+3. No abrir un nuevo Sprint hasta definir el siguiente incremento.
+4. Priorizar el siguiente trabajo desde el Product Backlog y nueva evidencia.
 5. Mantener los límites del Application Core tras la publicación.
-6. Definir el siguiente incremento solo después del cierre de release.
+6. Evaluar por separado futuras capacidades como Integration, Assisted Analysis, Automation o Structured Representation.
 
 ---
 

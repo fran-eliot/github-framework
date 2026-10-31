@@ -41,6 +41,7 @@ No unreleased changes yet.
 * Confirmed representative replay for ADAPT / MODIFY, ADD / CREATE / REFINE and ADAPT / NO CHANGE / REPLAN.
 * Integrated the Application Core into `framework/adoption/README.md` as an optional downstream capability of the Assessment Core.
 * Completed the functional scope of Sprint 10 and advanced `v0.8.0` to release preparation.
+* Published `v0.8.0 — Existing Repository Adoption Application Core` as a GitHub Release.
 
 ---
 
