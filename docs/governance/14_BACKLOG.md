@@ -4,9 +4,9 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Versión publicada**    | v0.7.0           |
-| **Versión objetivo**     | Pendiente         |
+| **Versión objetivo**     | v0.8.0            |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-10-26       |
+| **Última actualización** | 2026-10-31       |
 
 ---
 
@@ -887,13 +887,40 @@ Las capacidades excluidas no se consideran rechazadas permanentemente.
 
 ### Application
 
+Application Discovery, Repeatability, Delivery Scope e Implementation Planning han sido completados.
+
+El siguiente incremento comprometido es:
+
 ```text
-APPLY
-VERIFY
-Selective Component Application
+v0.8.0
+    Existing Repository Adoption Application Core
 ```
 
-requieren Application Discovery.
+Issues:
+
+```text
+#50
+    Application Guide
+
+#51
+    Application Template
+
+#52
+    Verification and Integration
+```
+
+El Delivery Scope incluye Application manual, human-reviewed y bounded hasta `VERIFY`.
+
+Permanecen deferred:
+
+```text
+INTEGRATE
+automatic remediation
+automatic conflict resolution
+DELETE
+MOVE
+RENAME
+```
 
 ### Assisted Analysis
 
@@ -948,6 +975,7 @@ aportan valor proporcional.
 | v0.5.0 — Workflow Framework             | ✅ Released    |
 | v0.6.0 — Framework Automation           | ✅ Released    |
 | v0.7.0 — Existing Repository Adoption   | ✅ Released    |
+| v0.8.0 — Adoption Application Core       | 🟡 In Progress |
 | v1.0.0 — Stable Release                 | ⚪ Planned     |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.
@@ -975,7 +1003,7 @@ Las prioridades se revisarán al comienzo de cada Sprint.
 
 No se desarrollarán funcionalidades sin un caso de uso real.
 
-Sprint 9 mantuvo como restricción principal:
+Sprint 10 mantiene como restricción principal:
 
 ```text
 no additional capability
@@ -998,6 +1026,26 @@ Una tarea podrá incorporarse a un Sprint cuando:
 * no introduzca capabilities Out of Scope sin revisión explícita.
 
 Para el Assessment Core, cada una de las tres Issues deberá además cumplir las condiciones específicas definidas en `30_ADOPTION_IMPLEMENTATION_PLAN.md`.
+
+Para el Application Core, #50–#52 deberán cumplir además las condiciones definidas en `36_APPLICATION_IMPLEMENTATION_PLAN.md`.
+
+---
+
+# Definition of Done — Application Core
+
+Existing Repository Adoption Application Core podrá considerarse implementado cuando:
+
+1. exista `framework/adoption/application/README.md`;
+2. exista `framework/adoption/application/application-template.md`;
+3. `framework/adoption/README.md` integre Application como capability downstream opcional;
+4. Guide y Template sean coherentes semánticamente;
+5. se representen `CREATE`, `MODIFY` y `NO CHANGE`;
+6. Evidence Refresh, Application Intent, Change Set y Preservation Scope estén cubiertos;
+7. VERIFY distinga `PASS / REFINE / FAIL`;
+8. los tres replay scenarios definidos en `35_APPLICATION_DELIVERY_SCOPE.md` pasen;
+9. AC-01 a AC-77 estén verificados;
+10. `INTEGRATE`, automatización, schema, manifest y operaciones no soportadas permanezcan fuera de alcance;
+11. governance y documentación general queden sincronizadas.
 
 ---
 
