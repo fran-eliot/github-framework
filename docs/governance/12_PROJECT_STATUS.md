@@ -5,8 +5,8 @@
 | **Proyecto**             | GitHub Framework                                          |
 | **Versión actual**       | v0.7.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Sprint 10 — Application Core                               |
-| **Sprint actual**        | Sprint 10 — Existing Repository Adoption Application Core  |
+| **Fase**                 | Release Preparation — v0.8.0                               |
+| **Sprint actual**        | Ninguno activo                                            |
 | **Versión objetivo**     | v0.8.0                                                    |
 | **Última actualización** | 2026-10-31                                                |
 
@@ -20,7 +20,7 @@ El Framework dispone de una arquitectura formal, estándares de repositorio, un 
 
 Las versiones `v0.1.0` a `v0.7.0` han sido publicadas. La última versión publicada es **`v0.7.0 — Existing Repository Adoption`**.
 
-Sprint 9 ha finalizado. El siguiente incremento ha sido formalizado como **Sprint 10 — Existing Repository Adoption Application Core**, con versión objetivo **`v0.8.0`**.
+Sprint 10 ha finalizado funcionalmente. **Existing Repository Adoption Application Core** está implementado, verificado e integrado en `main`; la versión objetivo **`v0.8.0`** se encuentra en preparación de release.
 
 ## Existing Repository Adoption
 
@@ -558,7 +558,7 @@ Cualquier tarea que introduzca una capability actualmente Out of Scope requiere 
 
 ---
 
-# Sprint actual
+# Último Sprint
 
 ## Sprint 10 — Existing Repository Adoption Application Core
 
@@ -585,9 +585,9 @@ Issues comprometidas:
 
 | Issue | Entregable                                                       | Estado |
 | ----- | ---------------------------------------------------------------- | :----: |
-| #50   | Existing Repository Adoption Application Guide                  |  Open  |
-| #51   | Existing Repository Adoption Application Template               |  Open  |
-| #52   | Existing Repository Adoption Application Core Verification      |  Open  |
+| #50   | Existing Repository Adoption Application Guide                  |  Done  |
+| #51   | Existing Repository Adoption Application Template               |  Done  |
+| #52   | Existing Repository Adoption Application Core Verification      |  Done  |
 
 Dependencia:
 
@@ -605,7 +605,30 @@ El Sprint está respaldado por:
 - `docs/discovery/35_APPLICATION_DELIVERY_SCOPE.md`;
 - `docs/discovery/36_APPLICATION_IMPLEMENTATION_PLAN.md`.
 
-El alcance queda limitado al Application Core definido en esos documentos. `INTEGRATE`, automatización, Structured Data, schema, manifest y operaciones `DELETE / MOVE / RENAME` permanecen fuera de alcance.
+El alcance quedó limitado al Application Core definido en esos documentos. `INTEGRATE`, automatización, Structured Data, schema, manifest y operaciones `DELETE / MOVE / RENAME` permanecen fuera de alcance.
+
+Resultado funcional:
+
+```text
+Application Guide
+    IMPLEMENTED
+
+Application Template
+    IMPLEMENTED
+
+Application Core Verification
+    PASS
+
+AC-01 through AC-77
+    PASS
+
+Application Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
+```
+
+La release `v0.8.0` está pendiente de publicación.
 
 ---
 
@@ -648,12 +671,12 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Implementar #50 — Existing Repository Adoption Application Guide.
-2. Implementar #51 — Existing Repository Adoption Application Template.
-3. Completar #52 — Verification and Integration del Application Core.
-4. Verificar AC-01 a AC-77 y los tres replay scenarios definidos en el Delivery Scope.
-5. Mantener `v0.7.0` como última release publicada hasta completar el incremento.
-6. Preservar los límites de `v0.8.0`: sin automatización, Structured Data, schema, manifest ni Integration automática.
+1. Publicar `v0.8.0 — Existing Repository Adoption Application Core`.
+2. Crear el tag `v0.8.0` sobre el commit de release.
+3. Crear la GitHub Release correspondiente.
+4. Cerrar la milestone `v0.8.0 — Existing Repository Adoption Application Core`.
+5. Mantener los límites del Application Core tras la publicación.
+6. Definir el siguiente incremento solo después del cierre de release.
 
 ---
 
