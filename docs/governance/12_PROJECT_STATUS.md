@@ -5,10 +5,10 @@
 | **Proyecto**             | GitHub Framework                                          |
 | **Versión actual**       | v0.7.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Post-Release — Existing Repository Adoption               |
-| **Sprint actual**        | Ninguno activo                                            |
-| **Versión objetivo**     | Pendiente de definición                                   |
-| **Última actualización** | 2026-10-26                                                |
+| **Fase**                 | Sprint 10 — Application Core                               |
+| **Sprint actual**        | Sprint 10 — Existing Repository Adoption Application Core  |
+| **Versión objetivo**     | v0.8.0                                                    |
+| **Última actualización** | 2026-10-31                                                |
 
 ---
 
@@ -20,7 +20,7 @@ El Framework dispone de una arquitectura formal, estándares de repositorio, un 
 
 Las versiones `v0.1.0` a `v0.7.0` han sido publicadas. La última versión publicada es **`v0.7.0 — Existing Repository Adoption`**.
 
-Sprint 9 ha finalizado y no existe todavía un siguiente incremento comprometido en una versión o Sprint.
+Sprint 9 ha finalizado. El siguiente incremento ha sido formalizado como **Sprint 10 — Existing Repository Adoption Application Core**, con versión objetivo **`v0.8.0`**.
 
 ## Existing Repository Adoption
 
@@ -558,31 +558,54 @@ Cualquier tarea que introduzca una capability actualmente Out of Scope requiere 
 
 ---
 
-# Próximo Hito
+# Sprint actual
 
-## Define the next Framework increment
+## Sprint 10 — Existing Repository Adoption Application Core
 
-`v0.7.0 — Existing Repository Adoption` ha sido publicada.
-
-Estado actual:
+Objetivo:
 
 ```text
-Sprint 9
-    COMPLETED
-
-Assessment Core
-    IMPLEMENTED
-    VERIFIED
-    INTEGRATED
-    RELEASED
-
-v0.7.0
-    RELEASED
+Deliver the first reusable Application Core
+for Existing Repository Adoption.
 ```
 
-No existe todavía un siguiente Sprint ni una versión objetivo comprometida.
+Versión objetivo:
 
-El próximo incremento deberá partir de nueva priorización y, cuando corresponda, Discovery suficiente antes de ampliar Existing Repository Adoption más allá del Assessment Core.
+```text
+v0.8.0
+```
+
+Milestone:
+
+```text
+v0.8.0 — Existing Repository Adoption Application Core
+```
+
+Issues comprometidas:
+
+| Issue | Entregable                                                       | Estado |
+| ----- | ---------------------------------------------------------------- | :----: |
+| #50   | Existing Repository Adoption Application Guide                  |  Open  |
+| #51   | Existing Repository Adoption Application Template               |  Open  |
+| #52   | Existing Repository Adoption Application Core Verification      |  Open  |
+
+Dependencia:
+
+```text
+#50 Application Guide ───────┐
+                             ├──► #52 Verification & Integration
+#51 Application Template ────┘
+```
+
+El Sprint está respaldado por:
+
+- `docs/discovery/32_APPLICATION_DISCOVERY.md`;
+- `docs/discovery/33_APPLICATION_DISCOVERY_SYNTHESIS.md`;
+- `docs/discovery/34_APPLICATION_REPEATABILITY_EXPERIMENT.md`;
+- `docs/discovery/35_APPLICATION_DELIVERY_SCOPE.md`;
+- `docs/discovery/36_APPLICATION_IMPLEMENTATION_PLAN.md`.
+
+El alcance queda limitado al Application Core definido en esos documentos. `INTEGRATE`, automatización, Structured Data, schema, manifest y operaciones `DELETE / MOVE / RENAME` permanecen fuera de alcance.
 
 ---
 
@@ -625,12 +648,12 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Confirmar el cierre de la milestone `v0.7.0 — Existing Repository Adoption`.
-2. Mantener `v0.7.0` como última release publicada.
-3. No abrir un nuevo Sprint hasta definir el siguiente incremento.
-4. Priorizar el siguiente trabajo desde el Product Backlog y nueva evidencia.
-5. Preservar la separación entre reusable capability y Discovery evidence.
-6. Mantener Application, Automation, Structured Data y Componentization fuera del Assessment Core salvo nueva Discovery y Delivery Scope explícitos.
+1. Implementar #50 — Existing Repository Adoption Application Guide.
+2. Implementar #51 — Existing Repository Adoption Application Template.
+3. Completar #52 — Verification and Integration del Application Core.
+4. Verificar AC-01 a AC-77 y los tres replay scenarios definidos en el Delivery Scope.
+5. Mantener `v0.7.0` como última release publicada hasta completar el incremento.
+6. Preservar los límites de `v0.8.0`: sin automatización, Structured Data, schema, manifest ni Integration automática.
 
 ---
 
