@@ -1,15 +1,19 @@
 # Existing Repository Adoption
 
-La capability **Existing Repository Adoption** proporciona una guía reutilizable para evaluar un repositorio existente frente a las Responsibilities definidas por un Repository Template de GitHub Framework.
+La capability **Existing Repository Adoption** proporciona una guía reutilizable para evaluar un repositorio existente frente a las Responsibilities definidas por un Repository Template de GitHub Framework y, opcionalmente, llevar una Adoption Decision resuelta hasta un candidate state verificado.
 
-Su primer delivery implementa exclusivamente:
+El delivery actual se divide en dos capabilities:
 
 ```text
 Existing Repository Adoption
     Assessment Core
+        ↓
+    optional Application Core
 ```
 
-El Assessment Core permite analizar, evaluar, revisar y documentar decisiones de adopción sin modificar automáticamente el repositorio consumidor.
+El Assessment Core permite analizar, evaluar, revisar y documentar decisiones de adopción.
+
+El Application Core permite planificar, aplicar de forma aislada y verificar cambios justificados sin convertir la capability en un mecanismo de automatic remediation o Integration.
 
 ---
 
@@ -82,6 +86,28 @@ Rationale
 ```
 
 El Assessment Core no modifica el consumer repository.
+
+Cuando una Adoption Decision está resuelta, el Application Core puede utilizarse opcionalmente para continuar con:
+
+```text
+SELECT
+    ↓
+REFRESH EVIDENCE
+    ↓
+DEFINE APPLICATION INTENT
+    ↓
+PLAN
+    ↓
+REVIEW PLAN
+    ↓
+APPLY IN ISOLATION
+    ↓
+VERIFY
+    ↓
+REVIEW RESULT
+```
+
+La frontera del Application Core termina en un verified candidate state. `INTEGRATE` permanece fuera del alcance actual.
 
 ---
 
@@ -942,20 +968,86 @@ why those decisions were made
 
 ---
 
-## 26. Out of Scope
+## 25.1 Application Core
 
-El Assessment Core no documenta ni implementa procedimientos para:
+El Application Core reutilizable se documenta en:
 
 ```text
-APPLY
-VERIFY
+framework/adoption/application/README.md
+```
 
-repository mutation
-repository transformation
+El artifact para registrar una Application concreta es:
 
+```text
+framework/adoption/application/application-template.md
+```
+
+La relación entre ambos cores es:
+
+```text
+Assessment Core
+    understands and decides
+        ↓
+optional Application Core
+    plans, applies in isolation and verifies
+```
+
+Application consume una Adoption Decision con:
+
+```text
+Decision Status
+    Resolved
+```
+
+y conserva como principios:
+
+```text
+Evidence before Mutation
+Reconciliation over Replacement
+Responsibility over Artifact
+Bounded Change
+Preservation
+Human Review
+No Mutation is a Valid Outcome
+```
+
+El Application Core soporta:
+
+```text
+CREATE
+MODIFY
+NO CHANGE
+REPLAN
+DEFER
+REJECTED
+```
+
+y Verification Results:
+
+```text
+PASS
+REFINE
+FAIL
+```
+
+---
+
+## 26. Out of Scope
+
+Existing Repository Adoption no documenta ni implementa procedimientos estables para:
+
+```text
+INTEGRATE
+
+automatic merge
 automatic remediation
 automatic semantic assessment
 automatic Adoption Decisions
+automatic semantic conflict resolution
+
+DELETE
+MOVE
+RENAME
 
 component installation
 
@@ -972,6 +1064,8 @@ repository generation
 
 continuous reassessment
 drift detection
+
+post-integration rollback
 ```
 
 Tampoco convierte Existing Repository Adoption en una nueva Component family.
@@ -1098,6 +1192,13 @@ La definición y planificación del Assessment Core se encuentran en:
 ```text
 docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md
 docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md
+```
+
+La definición y planificación del Application Core se encuentran en:
+
+```text
+docs/discovery/35_APPLICATION_DELIVERY_SCOPE.md
+docs/discovery/36_APPLICATION_IMPLEMENTATION_PLAN.md
 ```
 
 La evidencia experimental que fundamenta esta capability permanece en:
