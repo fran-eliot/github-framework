@@ -3,8 +3,8 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión publicada**    | v0.7.0           |
-| **Versión objetivo**     | v0.8.0            |
+| **Versión publicada**    | v0.8.0           |
+| **Versión objetivo**     | Pendiente         |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-10-31       |
 
@@ -975,7 +975,7 @@ aportan valor proporcional.
 | v0.5.0 — Workflow Framework             | ✅ Released    |
 | v0.6.0 — Framework Automation           | ✅ Released    |
 | v0.7.0 — Existing Repository Adoption   | ✅ Released    |
-| v0.8.0 — Adoption Application Core       | 🟠 Release Prep |
+| v0.8.0 — Adoption Application Core       | ✅ Released     |
 | v1.0.0 — Stable Release                 | ⚪ Planned     |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.
@@ -1021,7 +1021,7 @@ Application Core
     INTEGRATED
 ```
 
-La release `v0.8.0` se encuentra en preparación de publicación.
+La release `v0.8.0 — Existing Repository Adoption Application Core` ha sido publicada.
 
 ---
 
