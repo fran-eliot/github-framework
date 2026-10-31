@@ -2,7 +2,28 @@
 
 ## [Unreleased]
 
-No unreleased changes yet.
+### Added
+
+* Application Discovery documentation for Existing Repository Adoption:
+  * `32_APPLICATION_DISCOVERY.md`;
+  * `33_APPLICATION_DISCOVERY_SYNTHESIS.md`;
+  * `34_APPLICATION_REPEATABILITY_EXPERIMENT.md`;
+  * `35_APPLICATION_DELIVERY_SCOPE.md`;
+  * `36_APPLICATION_IMPLEMENTATION_PLAN.md`.
+* Application Core repeatability evidence across `dental-back-spring` and `aula-robotica-platform`.
+* Delivery Scope for the Application Core with AC-01 through AC-77.
+* Target milestone `v0.8.0 — Existing Repository Adoption Application Core`.
+* Sprint 10 — Existing Repository Adoption Application Core.
+* Implementation Issues:
+  * `#50` — Application Guide;
+  * `#51` — Application Template;
+  * `#52` — Application Core Verification and Integration.
+
+### Changed
+
+* Promoted the Application Core from Discovery to implementation-ready scope after the repeatability experiment concluded `MODEL HOLDS`.
+* Defined `CREATE`, `MODIFY` and `NO CHANGE` as evidence-backed Application outcomes.
+* Kept `INTEGRATE`, automation, Structured Data, schema, manifest and unsupported mutation operations outside the v0.8.0 Delivery Scope.
 
 ---
 
