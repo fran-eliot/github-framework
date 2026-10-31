@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+No unreleased changes yet.
+
+---
+
+## [0.8.0] - 2026-10-31
+
 ### Added
 
 * Application Discovery documentation for Existing Repository Adoption:
@@ -18,12 +24,23 @@
   * `#50` — Application Guide;
   * `#51` — Application Template;
   * `#52` — Application Core Verification and Integration.
+* Reusable Application Core artifacts:
+  * `framework/adoption/application/README.md` — Application Guide;
+  * `framework/adoption/application/application-template.md` — Application Template.
+* `docs/implementation/37_APPLICATION_CORE_VERIFICATION.md` documenting AC-01 through AC-77 verification and representative replay.
 
 ### Changed
 
 * Promoted the Application Core from Discovery to implementation-ready scope after the repeatability experiment concluded `MODEL HOLDS`.
 * Defined `CREATE`, `MODIFY` and `NO CHANGE` as evidence-backed Application outcomes.
 * Kept `INTEGRATE`, automation, Structured Data, schema, manifest and unsupported mutation operations outside the v0.8.0 Delivery Scope.
+* Implemented #50 — Existing Repository Adoption Application Guide.
+* Implemented #51 — Existing Repository Adoption Application Template.
+* Completed #52 — Application Core Verification and Integration.
+* Verified Guide / Template consistency, Assessment compatibility and AC-01 through AC-77.
+* Confirmed representative replay for ADAPT / MODIFY, ADD / CREATE / REFINE and ADAPT / NO CHANGE / REPLAN.
+* Integrated the Application Core into `framework/adoption/README.md` as an optional downstream capability of the Assessment Core.
+* Completed the functional scope of Sprint 10 and advanced `v0.8.0` to release preparation.
 
 ---
 

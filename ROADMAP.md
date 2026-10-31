@@ -102,6 +102,32 @@ Introducir capacidades de automatización deterministas sobre el modelo de compo
 * Proporcionar un punto de entrada CLI mínimo para la validación.
 * Documentar los patrones de automatización demostrados y sus límites.
 
+## Resultado — Sprint 10
+
+```text
+Application Guide
+    IMPLEMENTED
+
+Application Template
+    IMPLEMENTED
+
+Application Core Verification
+    PASS
+
+AC-01 through AC-77
+    PASS
+
+Representative Replay
+    PASS
+
+Application Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
+```
+
+La versión `v0.8.0` está preparada para publicación.
+
 ## Fuera de alcance
 
 * Generadores de componentes o repositorios.
@@ -387,7 +413,7 @@ La milestone `v0.7.0 — Existing Repository Adoption` se cierra tras completar 
 
 # v0.8.0 — Existing Repository Adoption Application Core
 
-**Estado:** 🟡 In Progress
+**Estado:** 🟠 Release Preparation
 
 ## Objetivo
 
@@ -440,9 +466,9 @@ Issues comprometidas:
 
 | Issue | Entregable                                                  | Estado |
 | ----- | ----------------------------------------------------------- | :----: |
-| #50   | Existing Repository Adoption Application Guide             |  Open  |
-| #51   | Existing Repository Adoption Application Template          |  Open  |
-| #52   | Existing Repository Adoption Application Core Verification |  Open  |
+| #50   | Existing Repository Adoption Application Guide             |  Done  |
+| #51   | Existing Repository Adoption Application Template          |  Done  |
+| #52   | Existing Repository Adoption Application Core Verification |  Done  |
 
 Dependencia:
 

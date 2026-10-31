@@ -975,7 +975,7 @@ aportan valor proporcional.
 | v0.5.0 — Workflow Framework             | ✅ Released    |
 | v0.6.0 — Framework Automation           | ✅ Released    |
 | v0.7.0 — Existing Repository Adoption   | ✅ Released    |
-| v0.8.0 — Adoption Application Core       | 🟡 In Progress |
+| v0.8.0 — Adoption Application Core       | 🟠 Release Prep |
 | v1.0.0 — Stable Release                 | ⚪ Planned     |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.
@@ -1003,12 +1003,25 @@ Las prioridades se revisarán al comienzo de cada Sprint.
 
 No se desarrollarán funcionalidades sin un caso de uso real.
 
-Sprint 10 mantiene como restricción principal:
+Sprint 10 ha completado su alcance funcional.
 
 ```text
-no additional capability
-without explicit scope review
+#50
+    DONE
+
+#51
+    DONE
+
+#52
+    DONE
+
+Application Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
 ```
+
+La release `v0.8.0` se encuentra en preparación de publicación.
 
 ---
 
