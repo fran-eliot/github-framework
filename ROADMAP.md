@@ -385,6 +385,95 @@ La milestone `v0.7.0 — Existing Repository Adoption` se cierra tras completar 
 
 ---
 
+# v0.8.0 — Existing Repository Adoption Application Core
+
+**Estado:** 🟡 In Progress
+
+## Objetivo
+
+Extender Existing Repository Adoption con un **Application Core** manual, bounded, human-reviewed y verificable que permita llevar una Adoption Decision resuelta hasta un candidate state verificado sin introducir automatización prematura.
+
+## Alcance
+
+Proceso objetivo:
+
+```text
+SELECT
+    ↓
+REFRESH EVIDENCE
+    ↓
+DEFINE APPLICATION INTENT
+    ↓
+PLAN
+    ↓
+REVIEW PLAN
+    ↓
+APPLY IN ISOLATION
+    ↓
+VERIFY
+    ↓
+REVIEW RESULT
+```
+
+Reusable artifacts previstos:
+
+```text
+framework/adoption/application/README.md
+framework/adoption/application/application-template.md
+```
+
+Integración mínima:
+
+```text
+framework/adoption/README.md
+```
+
+Verification artifact previsto:
+
+```text
+docs/implementation/37_APPLICATION_CORE_VERIFICATION.md
+```
+
+## Sprint 10
+
+Issues comprometidas:
+
+| Issue | Entregable                                                  | Estado |
+| ----- | ----------------------------------------------------------- | :----: |
+| #50   | Existing Repository Adoption Application Guide             |  Open  |
+| #51   | Existing Repository Adoption Application Template          |  Open  |
+| #52   | Existing Repository Adoption Application Core Verification |  Open  |
+
+Dependencia:
+
+```text
+#50 ───────┐
+           ├──► #52
+#51 ───────┘
+```
+
+## Fuera de alcance
+
+- `INTEGRATE`;
+- automatic remediation;
+- automatic conflict resolution;
+- CLI y GitHub Actions para Application;
+- Structured Data, schema o manifest;
+- `DELETE / MOVE / RENAME`;
+- post-integration rollback.
+
+## Evidencia
+
+El incremento está respaldado por:
+
+- `32_APPLICATION_DISCOVERY.md`;
+- `33_APPLICATION_DISCOVERY_SYNTHESIS.md`;
+- `34_APPLICATION_REPEATABILITY_EXPERIMENT.md`;
+- `35_APPLICATION_DELIVERY_SCOPE.md`;
+- `36_APPLICATION_IMPLEMENTATION_PLAN.md`.
+
+---
+
 # v1.0.0 — Stable Release
 
 **Estado:** ⚪ Planned
