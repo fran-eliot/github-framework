@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+No unreleased changes yet.
+
+---
+
+## [0.8.0] - 2026-10-31
+
 ### Added
 
 * Application Discovery documentation for Existing Repository Adoption:
