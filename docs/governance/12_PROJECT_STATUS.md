@@ -456,7 +456,7 @@ Como parte de la preparación pública se configuraron la descripción y los top
 
 La publicación pública inicial no introdujo una nueva versión funcional del Framework.
 
-`v0.8.0 — Existing Repository Adoption Application Core` es ahora la última release publicada. Sprint 10 completó el Application Core definido por `35_APPLICATION_DELIVERY_SCOPE.md`.
+Tras su publicación, `v0.8.0 — Existing Repository Adoption Application Core` cerró Sprint 10 y el Application Core definido por `35_APPLICATION_DELIVERY_SCOPE.md`. Posteriormente se publicaron `v0.9.0` y se abrió el incremento `v0.10.0`.
 
 ---
 
