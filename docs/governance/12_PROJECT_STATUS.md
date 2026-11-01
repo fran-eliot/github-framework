@@ -5,10 +5,10 @@
 | **Proyecto**             | GitHub Framework                                          |
 | **Versión actual**       | v0.8.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Post-Release — Application Core                            |
-| **Sprint actual**        | Ninguno activo                                            |
-| **Versión objetivo**     | Pendiente de definición                                   |
-| **Última actualización** | 2026-10-31                                                |
+| **Fase**                 | Sprint 11 — Integration Core                               |
+| **Sprint actual**        | Sprint 11 — Existing Repository Adoption Integration Core  |
+| **Versión objetivo**     | v0.9.0                                                    |
+| **Última actualización** | 2026-11-01                                                |
 
 ---
 
@@ -20,7 +20,7 @@ El Framework dispone de una arquitectura formal, estándares de repositorio, un 
 
 Las versiones `v0.1.0` a `v0.8.0` han sido publicadas. La última versión publicada es **`v0.8.0 — Existing Repository Adoption Application Core`**.
 
-Sprint 10 ha finalizado y **`v0.8.0 — Existing Repository Adoption Application Core`** ha sido publicada. No existe todavía un siguiente incremento comprometido.
+Sprint 10 ha finalizado y **`v0.8.0 — Existing Repository Adoption Application Core`** ha sido publicada. El siguiente incremento comprometido es **Sprint 11 — Existing Repository Adoption Integration Core**, con versión objetivo **`v0.9.0`**.
 
 ## Existing Repository Adoption
 
@@ -633,6 +633,55 @@ La release `v0.8.0 — Existing Repository Adoption Application Core` ha sido pu
 
 ---
 
+## Existing Repository Adoption — Integration Core
+
+Integration Discovery, Synthesis, Repeatability, Delivery Scope e Implementation Planning están completados.
+
+La evidencia se documenta en:
+
+- `docs/discovery/38_INTEGRATION_DISCOVERY.md`;
+- `docs/discovery/39_INTEGRATION_DISCOVERY_SYNTHESIS.md`;
+- `docs/discovery/40_INTEGRATION_REPEATABILITY_EXPERIMENT.md`;
+- `docs/discovery/41_INTEGRATION_DELIVERY_SCOPE.md`;
+- `docs/discovery/42_INTEGRATION_IMPLEMENTATION_PLAN.md`.
+
+Resultado:
+
+```text
+Integration Discovery
+    COMPLETED
+
+Integration Repeatability
+    MODEL HOLDS
+
+Integration Delivery Scope
+    DEFINED
+
+Integration Implementation Plan
+    DEFINED
+
+Integration Core
+    READY FOR IMPLEMENTATION
+```
+
+Sprint 11 compromete:
+
+| Issue | Entregable                                                       | Estado |
+| ----- | ---------------------------------------------------------------- | :----: |
+| #61   | Existing Repository Adoption Integration Guide                  |  Open  |
+| #62   | Existing Repository Adoption Integration Template               |  Open  |
+| #63   | Existing Repository Adoption Integration Core Verification      |  Open  |
+
+Milestone:
+
+```text
+v0.9.0 — Existing Repository Adoption Integration Core
+```
+
+El alcance permanece limitado a Integration manual, human-reviewed y verificable. Automatic merge, automatic rollback, automatic conflict resolution, release orchestration, branch protection configuration, CLI, GitHub Actions, Structured Data, Schema y Manifest permanecen fuera de alcance.
+
+---
+
 # Riesgos
 
 Los principales riesgos para la evolución del Framework son:
@@ -672,12 +721,12 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Mantener `v0.8.0` como última release publicada.
-2. Confirmar el cierre de la milestone `v0.8.0 — Existing Repository Adoption Application Core`.
-3. No abrir un nuevo Sprint hasta definir el siguiente incremento.
-4. Priorizar el siguiente trabajo desde el Product Backlog y nueva evidencia.
-5. Mantener los límites del Application Core tras la publicación.
-6. Evaluar por separado futuras capacidades como Integration, Assisted Analysis, Automation o Structured Representation.
+1. Implementar #61 — Existing Repository Adoption Integration Guide.
+2. Implementar #62 — Existing Repository Adoption Integration Template.
+3. Completar #63 — Verification and Integration del Integration Core.
+4. Verificar AC-01 a AC-73 y los dos replay scenarios definidos en el Delivery Scope.
+5. Mantener `v0.8.0` como última release publicada hasta completar el incremento.
+6. Preservar los límites de `v0.9.0`: sin automatic merge, automatic rollback, release orchestration, CLI, GitHub Actions ni Structured Representation.
 
 ---
 
@@ -692,3 +741,4 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 | v0.5.0  | 2026-09-14 | Workflow Framework publicado                                       |
 | v0.6.0  | 2026-09-25 | Framework Automation publicado                                     |
 | v0.7.0  | 2026-10-26 | Existing Repository Adoption publicado                             |
+| v0.8.0  | 2026-10-31 | Existing Repository Adoption Application Core publicado            |
