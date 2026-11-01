@@ -4,7 +4,7 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Versión publicada**    | v0.8.0           |
-| **Versión objetivo**     | Pendiente         |
+| **Versión objetivo**     | v0.9.0            |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-10-31       |
 
@@ -881,45 +881,123 @@ El nombre de la release no amplía el Delivery Scope: el contenido comprometido 
 
 ---
 
+## Sprint 11 — Existing Repository Adoption Integration Core
+
+**Estado:** Open.
+
+Objetivo:
+
+```text
+Deliver the first reusable Integration Core
+for Existing Repository Adoption.
+```
+
+Versión objetivo:
+
+```text
+v0.9.0
+```
+
+Milestone:
+
+```text
+v0.9.0 — Existing Repository Adoption Integration Core
+```
+
+Issues comprometidas:
+
+| Issue | Entregable                                                   | Estado |
+| ----- | ------------------------------------------------------------ | :----: |
+| #61   | Existing Repository Adoption Integration Guide              |  Open  |
+| #62   | Existing Repository Adoption Integration Template           |  Open  |
+| #63   | Existing Repository Adoption Integration Core Verification  |  Open  |
+
+Dependencia:
+
+```text
+#61 Integration Guide ───────┐
+                             ├──► #63 Verification & Integration
+#62 Integration Template ────┘
+```
+
+El Sprint está respaldado por:
+
+- `38_INTEGRATION_DISCOVERY.md`;
+- `39_INTEGRATION_DISCOVERY_SYNTHESIS.md`;
+- `40_INTEGRATION_REPEATABILITY_EXPERIMENT.md`;
+- `41_INTEGRATION_DELIVERY_SCOPE.md`;
+- `42_INTEGRATION_IMPLEMENTATION_PLAN.md`.
+
+Definition of Done principal:
+
+```text
+Integration Guide
+    delivered
+
+Integration Template
+    delivered
+
+Adoption integration
+    delivered
+
+Replay A
+    PASS
+
+Replay B
+    PASS
+
+AC-01 through AC-73
+    PASS
+
+Integration Core
+    IMPLEMENTATION VERIFIED
+```
+
+---
+
 ## Deferred Capabilities
 
 Las capacidades excluidas no se consideran rechazadas permanentemente.
 
-### Application
+### Integration
 
-Application Discovery, Repeatability, Delivery Scope e Implementation Planning han sido completados.
+Integration Discovery, Repeatability, Delivery Scope e Implementation Planning han sido completados.
 
 El siguiente incremento comprometido es:
 
 ```text
-v0.8.0
-    Existing Repository Adoption Application Core
+v0.9.0
+    Existing Repository Adoption Integration Core
 ```
 
 Issues:
 
 ```text
-#50
-    Application Guide
+#61
+    Integration Guide
 
-#51
-    Application Template
+#62
+    Integration Template
 
-#52
+#63
     Verification and Integration
 ```
 
-El Delivery Scope incluye Application manual, human-reviewed y bounded hasta `VERIFY`.
+El Delivery Scope incluye Integration manual, human-reviewed y verificable hasta stable-state verification.
 
 Permanecen deferred:
 
 ```text
-INTEGRATE
-automatic remediation
+automatic merge
+automatic rollback
 automatic conflict resolution
-DELETE
-MOVE
-RENAME
+release orchestration
+branch protection configuration
+CLI
+GitHub Actions
+Structured Data
+Schema
+Manifest
 ```
 
 ### Assisted Analysis
@@ -976,6 +1054,7 @@ aportan valor proporcional.
 | v0.6.0 — Framework Automation           | ✅ Released    |
 | v0.7.0 — Existing Repository Adoption   | ✅ Released    |
 | v0.8.0 — Adoption Application Core       | ✅ Released     |
+| v0.9.0 — Adoption Integration Core        | 🟡 In Progress  |
 | v1.0.0 — Stable Release                 | ⚪ Planned     |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.

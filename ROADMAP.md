@@ -500,6 +500,96 @@ El incremento está respaldado por:
 
 ---
 
+# v0.9.0 — Existing Repository Adoption Integration Core
+
+**Estado:** 🟡 In Progress
+
+## Objetivo
+
+Extender Existing Repository Adoption con un **Integration Core** manual, governance-aware, human-reviewed y verificable que permita llevar un verified candidate state hasta stable consumer state.
+
+## Alcance
+
+Proceso objetivo:
+
+```text
+Verified Candidate
+    ↓
+REFRESH STABLE BASE
+    ↓
+EVALUATE DRIFT
+    ↓
+CHECK INTEGRATION CONDITIONS
+    ↓
+REVIEW
+    ↓
+INTEGRATE
+    ↓
+VERIFY STABLE STATE
+    ↓
+CONFIRM
+```
+
+Reusable artifacts previstos:
+
+```text
+framework/adoption/integration/README.md
+framework/adoption/integration/integration-template.md
+```
+
+Integración mínima:
+
+```text
+framework/adoption/README.md
+```
+
+Verification artifact previsto:
+
+```text
+docs/implementation/43_INTEGRATION_CORE_VERIFICATION.md
+```
+
+## Sprint 11
+
+Issues comprometidas:
+
+| Issue | Entregable                                                   | Estado |
+| ----- | ------------------------------------------------------------ | :----: |
+| #61   | Existing Repository Adoption Integration Guide              |  Open  |
+| #62   | Existing Repository Adoption Integration Template           |  Open  |
+| #63   | Existing Repository Adoption Integration Core Verification  |  Open  |
+
+Dependencia:
+
+```text
+#61 ───────┐
+           ├──► #63
+#62 ───────┘
+```
+
+## Evidencia
+
+El incremento está respaldado por:
+
+- `38_INTEGRATION_DISCOVERY.md`;
+- `39_INTEGRATION_DISCOVERY_SYNTHESIS.md`;
+- `40_INTEGRATION_REPEATABILITY_EXPERIMENT.md`;
+- `41_INTEGRATION_DELIVERY_SCOPE.md`;
+- `42_INTEGRATION_IMPLEMENTATION_PLAN.md`.
+
+## Fuera de alcance
+
+- automatic merge;
+- automatic approval;
+- automatic conflict resolution;
+- automatic rollback;
+- release orchestration;
+- branch protection configuration;
+- CLI / GitHub Actions;
+- Structured Data, Schema o Manifest.
+
+---
+
 # v1.0.0 — Stable Release
 
 **Estado:** ⚪ Planned

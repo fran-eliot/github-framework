@@ -2,7 +2,28 @@
 
 ## [Unreleased]
 
-No unreleased changes yet.
+### Added
+
+* Integration Discovery documentation for Existing Repository Adoption:
+  * `38_INTEGRATION_DISCOVERY.md`;
+  * `39_INTEGRATION_DISCOVERY_SYNTHESIS.md`;
+  * `40_INTEGRATION_REPEATABILITY_EXPERIMENT.md`;
+  * `41_INTEGRATION_DELIVERY_SCOPE.md`;
+  * `42_INTEGRATION_IMPLEMENTATION_PLAN.md`.
+* Integration evidence from two real candidate integrations on `dental-back-spring`.
+* Delivery Scope for the Integration Core with AC-01 through AC-73.
+* Target milestone `v0.9.0 — Existing Repository Adoption Integration Core`.
+* Sprint 11 — Existing Repository Adoption Integration Core.
+* Implementation Issues:
+  * `#61` — Integration Guide;
+  * `#62` — Integration Template;
+  * `#63` — Integration Core Verification and Integration.
+
+### Changed
+
+* Promoted the Integration Core from Discovery to implementation-ready scope after repeatability concluded `MODEL HOLDS`.
+* Defined stable-base refresh, drift impact evaluation, Integration conditions and stable-state verification as evidence-backed lifecycle steps.
+* Kept automatic merge, automatic rollback, release orchestration, branch protection configuration, CLI, GitHub Actions and Structured Representation outside the v0.9.0 Delivery Scope.
 
 ---
 
