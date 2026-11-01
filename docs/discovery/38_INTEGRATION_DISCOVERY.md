@@ -1361,3 +1361,494 @@ without new mandatory dimension
 ```
 
 Do not open Sprint 11, milestone or target version yet.
+
+
+---
+
+## 51. Integration Experiment B — Execution
+
+Consumer:
+
+```text
+fran-eliot/dental-back-spring
+```
+
+Pull Request:
+
+```text
+#2
+docs(changelog): añade historial inicial de cambios
+```
+
+Candidate characteristics:
+
+```text
+Adoption Decision
+    ADD
+
+Application Operation
+    CREATE
+
+Application History
+    REFINE → PASS
+
+Commits
+    2
+
+Changed Artifacts
+    1
+
+Target
+    CHANGELOG.md
+```
+
+Pre-integration state:
+
+```text
+PR
+    OPEN
+    MERGEABLE
+
+reviews
+    NONE
+
+review threads
+    NONE
+
+workflow runs
+    NONE
+
+status checks
+    NONE
+```
+
+Unlike Experiment A, stable `main` had advanced since the PR base.
+
+Observed stable-base drift:
+
+```text
+main
+    +2 commits from original PR base
+
+changed artifact
+    README.md
+```
+
+Candidate artifact:
+
+```text
+CHANGELOG.md
+```
+
+The drift did not overlap the candidate target.
+
+---
+
+## 52. Evidence Refresh — Experiment B
+
+Current stable state confirmed:
+
+```text
+CHANGELOG.md
+    ABSENT
+```
+
+Candidate content:
+
+```text
+# Historial de cambios
+
+## [Sin publicar]
+
+Aún no hay cambios sin publicar documentados.
+```
+
+Consumer conventions:
+
+```text
+README language
+    Spanish
+
+Candidate language
+    Spanish
+```
+
+Therefore:
+
+```text
+Application Intent
+    STILL VALID
+
+Consumer Convention Preservation
+    PASS
+
+Candidate Scope
+    STILL BOUNDED
+```
+
+---
+
+## 53. Finding — Base Drift does not Automatically Require REPLAN
+
+Experiment B demonstrates:
+
+```text
+Stable Base Changed
+    YES
+
+Candidate Target Overlap
+    NO
+
+Application Intent Invalidated
+    NO
+
+Preservation Scope Invalidated
+    NO
+
+Integration
+    STILL SAFE
+```
+
+Therefore:
+
+> Stable-base drift must be evaluated semantically and operationally; drift alone is not sufficient reason to REPLAN.
+
+Refined candidate rule:
+
+```text
+base drift
+    ↓
+evaluate impact
+        ├── compatible → continue
+        └── invalidating → REPLAN / DEFER
+```
+
+This refines RC-I02 without weakening it.
+
+---
+
+## 54. Integration Result — Experiment B
+
+Integration Decision:
+
+```text
+INTEGRATE
+```
+
+Integration Method:
+
+```text
+merge commit
+```
+
+Merge Result:
+
+```text
+SUCCESS
+```
+
+Merge Commit:
+
+```text
+ddd09369b98d11da25525ae09bfdb840c3f4ce50
+```
+
+---
+
+## 55. Stable-State Verification — Experiment B
+
+After Integration:
+
+```text
+main
+    points to merge commit
+```
+
+New artifact verification:
+
+```text
+CHANGELOG.md
+    PRESENT
+```
+
+Content verification:
+
+```text
+Spanish title
+    PRESENT
+
+[Sin publicar]
+    PRESENT
+
+unsupported historical release claims
+    ABSENT
+```
+
+Preservation verification for prior integrated change:
+
+```text
+README localhost:8080
+    PRESENT
+
+README localhost:3000
+    ABSENT
+
+README cd backend
+    ABSENT
+```
+
+Therefore:
+
+```text
+Physical Verification
+    PASS
+
+Intent Verification
+    PASS
+
+Preservation Verification
+    PASS
+
+Stable-State Verification
+    PASS
+```
+
+---
+
+## 56. Finding — Prior Refinement does not Require a New Integration Model
+
+Experiment B had prior Application refinement:
+
+```text
+CREATE
+    ↓
+VERIFY
+    ↓
+REFINE
+    ↓
+VERIFY AGAIN
+    ↓
+PASS
+```
+
+Integration required no additional mandatory lifecycle dimension.
+
+The same Integration model held:
+
+```text
+Verified Candidate
+    ↓
+Refresh Stable Base
+    ↓
+Check Integration Conditions
+    ↓
+Review
+    ↓
+Integrate
+    ↓
+Verify Stable State
+```
+
+Therefore:
+
+> Application refinement history may be relevant evidence, but it does not require a different Integration lifecycle.
+
+---
+
+## 57. Finding — CREATE and MODIFY both Integrate through the Same Lifecycle
+
+Experiments now cover:
+
+```text
+Experiment A
+    ADAPT / MODIFY
+
+Experiment B
+    ADD / CREATE / REFINE
+```
+
+Both use the same Integration lifecycle.
+
+This provides initial cross-operation repeatability.
+
+---
+
+## 58. Experiment B Result
+
+```text
+Stable Base Refresh
+    PASS
+
+Drift Impact Evaluation
+    PASS
+
+Integration Conditions Review
+    PASS
+
+Consumer Convention Preservation
+    PASS
+
+Integration
+    PASS
+
+Stable-State Verification
+    PASS
+
+Recovery Required
+    NO
+
+Experiment B
+    PASS
+```
+
+No new lifecycle dimension was required.
+
+---
+
+## 59. Cross-Experiment Repeatability
+
+| Dimension | Experiment A | Experiment B |
+| --- | :---: | :---: |
+| Verified Candidate | PASS | PASS |
+| Stable Base Refresh | PASS | PASS |
+| Base Drift Present | NO | YES |
+| Drift Impact Evaluation | N/A | PASS |
+| Integration Conditions Review | PASS | PASS |
+| Integration | PASS | PASS |
+| Stable-State Verification | PASS | PASS |
+| Preservation Verification | PASS | PASS |
+| Recovery Required | NO | NO |
+
+Operations represented:
+
+```text
+MODIFY
+CREATE
+```
+
+Application histories represented:
+
+```text
+direct PASS
+REFINE → PASS
+```
+
+Result:
+
+```text
+Integration Lifecycle
+    MODEL HOLDS
+```
+
+---
+
+## 60. Delivery Readiness after Experiment B
+
+| Criterion | Result |
+| --- | :---: |
+| Observed Need | PASS |
+| Candidate States Available | PASS |
+| Actual Integration Evidence | PASS |
+| Repeated Integration Evidence | PASS |
+| Stable-State Verification | PASS |
+| Stable Representation | PASS |
+| Recovery Evidence | NOT OBSERVED |
+| Proportional Complexity | PASS |
+
+The only remaining evidence gap is post-integration failure and recovery.
+
+However:
+
+```text
+automatic rollback
+    already deferred
+
+recovery mechanism
+    not required
+    to describe successful Integration
+```
+
+This raises a scope question rather than an immediate implementation requirement:
+
+> Must Recovery be part of the first Integration Core, or can the first delivery stop at verified successful Integration while representing failure as RECOVERY REQUIRED?
+
+---
+
+## 61. Current Discovery Conclusion
+
+The repeated experiments support:
+
+```text
+Verified Candidate
+    ↓
+Refresh Stable Base
+    ↓
+Evaluate Drift Impact
+    ↓
+Check Integration Conditions
+    ↓
+Review
+    ↓
+Integrate
+    ↓
+Verify Stable State
+```
+
+Supported observations:
+
+```text
+mergeability
+    necessary but insufficient
+
+base drift
+    must be evaluated
+    not automatically rejected
+
+consumer governance
+    contextual
+
+stable-state verification
+    required
+
+CREATE and MODIFY
+    share Integration lifecycle
+
+prior Application refinement
+    does not require new lifecycle
+```
+
+Result:
+
+```text
+INTEGRATION DISCOVERY MODEL
+    HOLDS
+```
+
+---
+
+## 62. Recommended Next Step
+
+Create:
+
+```text
+39_INTEGRATION_DISCOVERY_SYNTHESIS.md
+```
+
+The synthesis should determine:
+
+```text
+what is evidence-backed
+what remains provisional
+whether Recovery blocks first delivery
+whether Integration Core is ready
+for Delivery Scope Definition
+```
+
+Do not yet open:
+
+```text
+Sprint 11
+milestone
+target version
+implementation issues
+```
