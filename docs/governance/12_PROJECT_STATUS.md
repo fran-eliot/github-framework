@@ -3,11 +3,11 @@
 | Campo                    | Valor                                                     |
 | ------------------------ | --------------------------------------------------------- |
 | **Proyecto**             | GitHub Framework                                          |
-| **Versión actual**       | v0.8.0                                                    |
+| **Versión actual**       | v0.9.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Release Preparation — v0.9.0                               |
+| **Fase**                 | Post-Release — Integration Core                            |
 | **Sprint actual**        | Ninguno activo                                            |
-| **Versión objetivo**     | v0.9.0                                                    |
+| **Versión objetivo**     | Pendiente de definición                                   |
 | **Última actualización** | 2026-11-01                                                |
 
 ---
@@ -18,9 +18,9 @@ GitHub Framework ha completado las fases de arquitectura, Open Source Readiness,
 
 El Framework dispone de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno, una biblioteca de Documentation Components, tres Repository Templates y una primera familia de Core Workflow Components.
 
-Las versiones `v0.1.0` a `v0.8.0` han sido publicadas. La última versión publicada es **`v0.8.0 — Existing Repository Adoption Application Core`**.
+Las versiones `v0.1.0` a `v0.9.0` han sido publicadas. La última versión publicada es **`v0.9.0 — Existing Repository Adoption Integration Core`**.
 
-Sprint 11 ha completado su alcance funcional. **`v0.9.0 — Existing Repository Adoption Integration Core`** está en preparación de release; `v0.8.0` continúa siendo la última release publicada hasta completar la publicación.
+Sprint 11 ha finalizado y **`v0.9.0 — Existing Repository Adoption Integration Core`** ha sido publicada. No existe todavía un siguiente incremento comprometido.
 
 ## Existing Repository Adoption
 
@@ -721,12 +721,12 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Preparar la publicación de `v0.9.0 — Existing Repository Adoption Integration Core`.
-2. Verificar que #61, #62 y #63 permanezcan cerradas como completadas.
-3. Confirmar que AC-01 a AC-73 y Replay A / Replay B permanecen verificados.
-4. Mantener `v0.8.0` como última release publicada hasta crear el tag y GitHub Release de `v0.9.0`.
-5. Preservar los límites de `v0.9.0`: sin automatic merge, automatic rollback, release orchestration, CLI, GitHub Actions ni Structured Representation.
-6. Tras la publicación, cerrar la milestone y sincronizar governance post-release.
+1. Mantener `v0.9.0` como última release publicada.
+2. Confirmar el cierre de la milestone `v0.9.0 — Existing Repository Adoption Integration Core`.
+3. No abrir un nuevo Sprint hasta definir el siguiente incremento.
+4. Priorizar el siguiente trabajo desde el Product Backlog y nueva evidencia.
+5. Mantener los límites del Integration Core tras la publicación.
+6. Evaluar por separado futuras capacidades como Assisted Analysis, Automation, Structured Representation o Componentization.
 
 ---
 
@@ -742,3 +742,4 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 | v0.6.0  | 2026-09-25 | Framework Automation publicado                                     |
 | v0.7.0  | 2026-10-26 | Existing Repository Adoption publicado                             |
 | v0.8.0  | 2026-10-31 | Existing Repository Adoption Application Core publicado            |
+| v0.9.0  | 2026-11-01 | Existing Repository Adoption Integration Core publicado            |
