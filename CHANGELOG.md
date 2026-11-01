@@ -2,7 +2,9 @@
 
 ## [Unreleased]
 
-No unreleased changes yet.
+### Changed
+
+* Synchronized project governance after publishing `v0.9.0 — Existing Repository Adoption Integration Core`.
 
 ---
 
@@ -37,7 +39,7 @@ No unreleased changes yet.
 * Integrated the Integration Core into `framework/adoption/README.md` as an optional downstream capability of Application.
 * Added `docs/implementation/43_INTEGRATION_CORE_VERIFICATION.md`.
 * Verified Replay A, Replay B and AC-01 through AC-73.
-* Completed the functional scope of Sprint 11 and advanced `v0.9.0` to release preparation.
+* Completed the functional scope of Sprint 11 and published `v0.9.0 — Existing Repository Adoption Integration Core` as a GitHub Release.
 ---
 
 ## [0.8.0] - 2026-10-31
