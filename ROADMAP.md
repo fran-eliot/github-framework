@@ -626,7 +626,7 @@ El incremento está respaldado por:
 
 # v0.10.0 — Existing Repository Adoption Assisted Analysis Core
 
-**Estado:** 🟠 In Progress
+**Estado:** 🟡 Release Preparation
 
 ## Objetivo
 
@@ -670,9 +670,9 @@ Issues comprometidas:
 
 | Issue | Entregable | Estado |
 | ----- | ---------- | :----: |
-| #78 | Existing Repository Adoption Assisted Analysis Guide | Open |
-| #79 | Existing Repository Adoption Evidence Snapshot Template | Open |
-| #80 | Existing Repository Adoption Assisted Analysis Core Verification | Open |
+| #78 | Existing Repository Adoption Assisted Analysis Guide | Done |
+| #79 | Existing Repository Adoption Evidence Snapshot Template | Done |
+| #80 | Existing Repository Adoption Assisted Analysis Core Verification | Done |
 
 Dependencia:
 
@@ -694,6 +694,38 @@ El incremento está respaldado por:
 - `49_ASSISTED_ANALYSIS_REPEATABILITY_EXPERIMENT.md`;
 - `50_ASSISTED_ANALYSIS_DELIVERY_SCOPE.md`;
 - `51_ASSISTED_ANALYSIS_IMPLEMENTATION_PLAN.md`.
+
+## Resultado — Sprint 12
+
+```text
+Assisted Analysis Guide
+    IMPLEMENTED
+
+Evidence Snapshot Template
+    IMPLEMENTED
+
+Root Adoption Integration
+    IMPLEMENTED
+
+Replay A
+    PASS
+
+Replay B
+    PASS
+
+Replay C
+    PASS
+
+AC-01 through AC-73
+    PASS
+
+Assisted Analysis Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
+```
+
+La versión `v0.10.0 — Existing Repository Adoption Assisted Analysis Core` está en preparación de release.
 
 ## Fuera de alcance
 

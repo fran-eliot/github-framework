@@ -20,14 +20,24 @@
   * `#78` — Assisted Analysis Guide;
   * `#79` — Evidence Snapshot Template;
   * `#80` — Assisted Analysis Core Verification and Integration.
+* Reusable Assisted Analysis Core artifacts:
+  * `framework/adoption/assisted-analysis/README.md` — Assisted Analysis Guide;
+  * `framework/adoption/assisted-analysis/evidence-snapshot-template.md` — Structured Markdown Evidence Snapshot Template.
+* `docs/implementation/52_ASSISTED_ANALYSIS_CORE_VERIFICATION.md` documenting Replay A, Replay B, Replay C and AC-01 through AC-73 verification.
 
 ### Changed
 
 * Confirmed the operational need for deterministic Evidence collection across Assessment, Application and Integration.
 * Validated `Assisted Analysis Guide + Structured Markdown Evidence Snapshot` as a repeatable representation with Assessment, Application and Integration replays passing.
 * Promoted Assisted Analysis from deferred capability to implementation-ready scope.
-* Opened Sprint 12 with scope limited to a read-only, human-reviewed Assisted Analysis Core.
+* Opened and completed Sprint 12 with scope limited to a read-only, human-reviewed Assisted Analysis Core.
 * Kept CLI, GitHub Actions, Structured Data, Schema, Manifest, decision automation, consumer mutation, Componentization and Framework Validator extension outside the v0.10.0 Delivery Scope.
+* Implemented #78 — Existing Repository Adoption Assisted Analysis Guide.
+* Implemented #79 — Existing Repository Adoption Evidence Snapshot Template.
+* Completed #80 — Assisted Analysis Core Verification and Integration.
+* Integrated Assisted Analysis into `framework/adoption/README.md` as optional transverse evidence support.
+* Verified Replay A, Replay B, Replay C and AC-01 through AC-73.
+* Completed the functional scope of Sprint 12 and advanced `v0.10.0` to release preparation.
 
 ---
 
