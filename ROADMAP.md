@@ -102,32 +102,6 @@ Introducir capacidades de automatización deterministas sobre el modelo de compo
 * Proporcionar un punto de entrada CLI mínimo para la validación.
 * Documentar los patrones de automatización demostrados y sus límites.
 
-## Resultado — Sprint 10
-
-```text
-Application Guide
-    IMPLEMENTED
-
-Application Template
-    IMPLEMENTED
-
-Application Core Verification
-    PASS
-
-AC-01 through AC-77
-    PASS
-
-Representative Replay
-    PASS
-
-Application Core
-    IMPLEMENTED
-    VERIFIED
-    INTEGRATED
-```
-
-La versión `v0.8.0 — Existing Repository Adoption Application Core` ha sido publicada.
-
 ## Fuera de alcance
 
 * Generadores de componentes o repositorios.
@@ -477,6 +451,32 @@ Dependencia:
            ├──► #52
 #51 ───────┘
 ```
+
+## Resultado — Sprint 10
+
+```text
+Application Guide
+    IMPLEMENTED
+
+Application Template
+    IMPLEMENTED
+
+Application Core Verification
+    PASS
+
+AC-01 through AC-77
+    PASS
+
+Representative Replay
+    PASS
+
+Application Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
+```
+
+La versión `v0.8.0 — Existing Repository Adoption Application Core` ha sido publicada.
 
 ## Fuera de alcance
 
