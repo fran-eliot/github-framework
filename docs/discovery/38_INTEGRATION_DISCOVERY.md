@@ -1065,3 +1065,299 @@ Next Version
 Next Sprint
     NOT OPENED
 ```
+
+
+---
+
+## 42. Integration Experiment A — Execution
+
+Consumer:
+
+```text
+fran-eliot/dental-back-spring
+```
+
+Pull Request:
+
+```text
+#1
+docs(readme): align backend execution instructions
+```
+
+Pre-integration state:
+
+```text
+PR
+    OPEN
+    MERGEABLE
+
+base
+    main
+
+base drift
+    NONE
+
+reviews
+    NONE
+
+review threads
+    NONE
+
+workflow runs
+    NONE
+
+status checks
+    NONE
+```
+
+Candidate scope:
+
+```text
+1 commit
+1 changed file
+README.md
+```
+
+Current Evidence refresh confirmed:
+
+```text
+src/main/resources/application.properties
+    server.port=8080
+```
+
+Candidate remained aligned with Application Intent.
+
+Result:
+
+```text
+Integration Decision
+    INTEGRATE
+
+Integration Method
+    merge commit
+
+Merge Result
+    SUCCESS
+
+Merge Commit
+    c61829ff27f1e6cb6fffc4210e224bd275c00139
+```
+
+---
+
+## 43. Stable-State Verification — Experiment A
+
+After Integration:
+
+```text
+main
+    points to merge commit
+```
+
+README verification:
+
+```text
+cd backend
+    ABSENT
+
+localhost:3000
+    ABSENT
+
+localhost:8080
+    PRESENT
+```
+
+Runtime configuration verification:
+
+```text
+server.port=8080
+    PRESENT
+```
+
+Therefore:
+
+```text
+Physical Verification
+    PASS
+
+Intent Verification
+    PASS
+
+Preservation Verification
+    PASS
+
+Stable-State Verification
+    PASS
+```
+
+---
+
+## 44. Finding — Stable Base Refresh is Operationally Necessary
+
+The PR base remained identical to current `main` before Integration.
+
+This allowed Integration without candidate drift.
+
+Observed rule:
+
+> A verified candidate should not be integrated without checking whether the stable base has changed since candidate verification.
+
+Requirement Candidate RC-I02 receives direct experimental support.
+
+---
+
+## 45. Finding — Mergeability is Necessary but Insufficient
+
+Experiment A had:
+
+```text
+mergeable = true
+```
+
+but Integration readiness was established only after also checking:
+
+```text
+base freshness
+candidate scope
+current runtime Evidence
+absence of conflicting review/check state
+Application Intent validity
+```
+
+Therefore:
+
+```text
+Git Mergeability
+    ≠
+Integration Readiness
+```
+
+RC-I05 receives direct support.
+
+---
+
+## 46. Finding — Stable-State Verification is Required
+
+The merge operation succeeded, but Integration was not considered verified until stable `main` was inspected.
+
+Observed chain:
+
+```text
+MERGE
+    ↓
+VERIFY STABLE STATE
+    ↓
+CONFIRM
+```
+
+This supports RC-I09 and SH-I05.
+
+---
+
+## 47. Finding — Consumer Governance may be Minimal
+
+For Experiment A, observable repository governance required no:
+
+```text
+formal approval
+review thread resolution
+workflow run
+status check
+```
+
+This does not imply those conditions are unnecessary generally.
+
+It demonstrates instead:
+
+> Integration conditions are consumer-contextual and may legitimately be minimal.
+
+A Framework Integration model must represent both constrained and unconstrained repositories without inventing mandatory controls.
+
+---
+
+## 48. Experiment A Result
+
+```text
+Stable Base Refresh
+    PASS
+
+Integration Conditions Review
+    PASS
+
+Integration
+    PASS
+
+Stable-State Verification
+    PASS
+
+Recovery Required
+    NO
+
+Experiment A
+    PASS
+```
+
+No new lifecycle dimension was required.
+
+---
+
+## 49. Delivery Readiness after Experiment A
+
+| Criterion | Result |
+| --- | :---: |
+| Observed Need | PASS |
+| Candidate States Available | PASS |
+| Actual Integration Evidence | PASS |
+| Stable-State Verification | PASS |
+| Repeated Integration Evidence | PARTIAL |
+| Stable Representation | PARTIAL |
+| Recovery Evidence | NOT OBSERVED |
+| Proportional Complexity | PASS |
+
+Therefore:
+
+```text
+Integration Core Candidate
+    NOT YET READY
+    FOR DELIVERY SCOPE DEFINITION
+```
+
+Reason:
+
+```text
+repeat Integration
+on a second candidate
+with prior refinement
+without material redesign
+```
+
+---
+
+## 50. Recommended Next Experiment
+
+Use:
+
+```text
+dental-back-spring
+PR #2
+DOC-CHANGELOG
+ADD / CREATE / REFINE
+```
+
+Experiment B should test whether the same Integration model holds when:
+
+```text
+candidate has multiple commits
+candidate required refinement before Verification
+new artifact is being integrated
+consumer conventions materially influenced Application
+```
+
+Success condition:
+
+```text
+same Integration lifecycle holds
+without new mandatory dimension
+```
+
+Do not open Sprint 11, milestone or target version yet.
