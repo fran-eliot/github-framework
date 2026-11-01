@@ -2,7 +2,7 @@
 
 La capability **Existing Repository Adoption** proporciona una guía reutilizable para evaluar un repositorio existente frente a las Responsibilities definidas por un Repository Template de GitHub Framework y, opcionalmente, llevar una Adoption Decision resuelta hasta un candidate state verificado y posteriormente integrarlo en stable consumer state.
 
-El delivery actual se divide en tres capabilities:
+El delivery actual mantiene tres lifecycle capabilities y una capability transversal opcional de soporte de Evidence:
 
 ```text
 Existing Repository Adoption
@@ -11,6 +11,10 @@ Existing Repository Adoption
     optional Application Core
         ↓
     optional Integration Core
+
+Assisted Analysis
+    optional evidence support
+    across Assessment / Application / Integration
 ```
 
 El Assessment Core permite analizar, evaluar, revisar y documentar decisiones de adopción.
@@ -18,6 +22,8 @@ El Assessment Core permite analizar, evaluar, revisar y documentar decisiones de
 El Application Core permite planificar, aplicar de forma aislada y verificar cambios justificados.
 
 El Integration Core permite revisar e integrar un verified candidate state en stable consumer state respetando la governance del repositorio y verificando el resultado estable.
+
+Assisted Analysis permite recopilar Evidence determinista, bounded, source-traceable y read-only para apoyar cualquiera de las tres lifecycle capabilities sin sustituir la evaluación semántica ni las decisiones humanas.
 
 ---
 
@@ -1125,6 +1131,80 @@ RECOVERY REQUIRED
 La capability no configura la governance del consumer, no prescribe una merge strategy universal y no automatiza recovery.
 
 
+## 25.3 Assisted Analysis Core
+
+El Assisted Analysis Core reutilizable se documenta en:
+
+```text
+framework/adoption/assisted-analysis/README.md
+```
+
+El artifact para registrar una Evidence Snapshot concreta es:
+
+```text
+framework/adoption/assisted-analysis/evidence-snapshot-template.md
+```
+
+Assisted Analysis no es una cuarta fase del lifecycle.
+
+Su relación con Existing Repository Adoption es transversal:
+
+```text
+                 Assisted Analysis
+                 ┌──────┼──────┐
+                 ↓      ↓      ↓
+Assessment    Application    Integration
+```
+
+Puede apoyar:
+
+```text
+Assessment
+    Detected Facts + Evidence
+
+Application
+    Evidence Refresh
+
+Integration
+    Stable Base Refresh Evidence
+    Integration-condition Evidence
+```
+
+Conserva como principios:
+
+```text
+Facts before Evaluation
+Evidence before Decision
+Read-Only before Mutation
+Explicit Collection Scope
+Source Traceability
+Collection Gaps are Visible
+Human Review owns Semantic Meaning
+Representation before Tooling
+```
+
+La representación reusable es:
+
+```text
+Structured Markdown Evidence Snapshot
+```
+
+Assisted Analysis no produce automáticamente:
+
+```text
+Responsibility State
+Applicability
+Adoption Decision
+Application Result
+Drift Impact
+Integration Review
+Integration Decision
+Final Integration State
+```
+
+Tampoco introduce CLI, GitHub Actions, consumer mutation, Schema, Manifest, Componentization ni Framework Validator extension.
+
+
 ## 26. Out of Scope
 
 Existing Repository Adoption no documenta ni implementa procedimientos estables para:
@@ -1290,6 +1370,20 @@ La definición y planificación del Application Core se encuentran en:
 ```text
 docs/discovery/35_APPLICATION_DELIVERY_SCOPE.md
 docs/discovery/36_APPLICATION_IMPLEMENTATION_PLAN.md
+```
+
+La definición y planificación del Integration Core se encuentran en:
+
+```text
+docs/discovery/41_INTEGRATION_DELIVERY_SCOPE.md
+docs/discovery/42_INTEGRATION_IMPLEMENTATION_PLAN.md
+```
+
+La definición y planificación del Assisted Analysis Core se encuentran en:
+
+```text
+docs/discovery/50_ASSISTED_ANALYSIS_DELIVERY_SCOPE.md
+docs/implementation/51_ASSISTED_ANALYSIS_IMPLEMENTATION_PLAN.md
 ```
 
 La evidencia experimental que fundamenta esta capability permanece en:
