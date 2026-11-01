@@ -5,9 +5,9 @@
 | **Proyecto**             | GitHub Framework                                          |
 | **Versión actual**       | v0.9.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Post-Release — Integration Core                            |
-| **Sprint actual**        | Ninguno activo                                            |
-| **Versión objetivo**     | Pendiente de definición                                   |
+| **Fase**                 | Sprint 12 — Assisted Analysis Core                         |
+| **Sprint actual**        | Sprint 12 — Existing Repository Adoption Assisted Analysis Core |
+| **Versión objetivo**     | v0.10.0                                                    |
 | **Última actualización** | 2026-11-01                                                |
 
 ---
@@ -20,7 +20,7 @@ El Framework dispone de una arquitectura formal, estándares de repositorio, un 
 
 Las versiones `v0.1.0` a `v0.9.0` han sido publicadas. La última versión publicada es **`v0.9.0 — Existing Repository Adoption Integration Core`**.
 
-Sprint 11 ha finalizado y **`v0.9.0 — Existing Repository Adoption Integration Core`** ha sido publicada. No existe todavía un siguiente incremento comprometido.
+Sprint 11 ha finalizado y **`v0.9.0 — Existing Repository Adoption Integration Core`** ha sido publicada. El siguiente incremento comprometido es **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`**, desarrollado en Sprint 12.
 
 ## Existing Repository Adoption
 
@@ -456,7 +456,7 @@ Como parte de la preparación pública se configuraron la descripción y los top
 
 La publicación pública inicial no introdujo una nueva versión funcional del Framework.
 
-`v0.8.0 — Existing Repository Adoption Application Core` es ahora la última release publicada. Sprint 10 completó el Application Core definido por `35_APPLICATION_DELIVERY_SCOPE.md`.
+Tras su publicación, `v0.8.0 — Existing Repository Adoption Application Core` cerró Sprint 10 y el Application Core definido por `35_APPLICATION_DELIVERY_SCOPE.md`. Posteriormente se publicaron `v0.9.0` y se abrió el incremento `v0.10.0`.
 
 ---
 
@@ -719,14 +719,71 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 ---
 
+## Existing Repository Adoption — Assisted Analysis Core
+
+Assisted Analysis Discovery, Repeatability, Delivery Scope e Implementation Planning están completados.
+
+La evidencia se documenta en:
+
+- `docs/discovery/44_ASSISTED_ANALYSIS_DISCOVERY.md`;
+- `docs/discovery/45_ASSISTED_ANALYSIS_EXPERIMENT_A.md`;
+- `docs/discovery/46_ASSISTED_ANALYSIS_EXPERIMENT_B.md`;
+- `docs/discovery/47_ASSISTED_ANALYSIS_EXPERIMENT_C.md`;
+- `docs/discovery/48_ASSISTED_ANALYSIS_DISCOVERY_SYNTHESIS.md`;
+- `docs/discovery/49_ASSISTED_ANALYSIS_REPEATABILITY_EXPERIMENT.md`;
+- `docs/discovery/50_ASSISTED_ANALYSIS_DELIVERY_SCOPE.md`;
+- `docs/implementation/51_ASSISTED_ANALYSIS_IMPLEMENTATION_PLAN.md`.
+
+Resultado:
+
+```text
+Operational Need
+    CONFIRMED
+
+Representation
+    MODEL HOLDS
+
+Delivery Scope
+    DEFINED
+
+Implementation Plan
+    DEFINED
+
+Assisted Analysis Core
+    IMPLEMENTATION READY
+```
+
+Sprint 12 compromete:
+
+```text
+#78
+    Assisted Analysis Guide
+
+#79
+    Evidence Snapshot Template
+
+#80
+    Verification and Integration
+```
+
+Versión objetivo:
+
+```text
+v0.10.0 — Existing Repository Adoption Assisted Analysis Core
+```
+
+El alcance permanece limitado a una capability read-only, human-reviewed y basada en Structured Markdown. CLI, GitHub Actions, Structured Data, Schema, Manifest, automatic decisions, consumer mutation, Componentization y Framework Validator extension permanecen fuera de alcance.
+
+---
+
 # Próximos Objetivos
 
-1. Mantener `v0.9.0` como última release publicada.
-2. Confirmar el cierre de la milestone `v0.9.0 — Existing Repository Adoption Integration Core`.
-3. No abrir un nuevo Sprint hasta definir el siguiente incremento.
-4. Priorizar el siguiente trabajo desde el Product Backlog y nueva evidencia.
-5. Mantener los límites del Integration Core tras la publicación.
-6. Evaluar por separado futuras capacidades como Assisted Analysis, Automation, Structured Representation o Componentization.
+1. Implementar #78 — Assisted Analysis Guide.
+2. Implementar #79 — Evidence Snapshot Template.
+3. Completar #80 — Assisted Analysis Core Verification and Integration.
+4. Verificar Replay A, Replay B, Replay C y AC-01 a AC-73.
+5. Preservar los límites del Delivery Scope: read-only, human-reviewed, sin tooling ejecutable ni decision automation.
+6. Mantener `v1.0.0` como Planned hasta disponer de evidencia específica de estabilidad global.
 
 ---
 

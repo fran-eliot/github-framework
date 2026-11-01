@@ -2,9 +2,32 @@
 
 ## [Unreleased]
 
+### Added
+
+* Assisted Analysis Discovery and delivery-planning documentation:
+  * `44_ASSISTED_ANALYSIS_DISCOVERY.md`;
+  * `45_ASSISTED_ANALYSIS_EXPERIMENT_A.md`;
+  * `46_ASSISTED_ANALYSIS_EXPERIMENT_B.md`;
+  * `47_ASSISTED_ANALYSIS_EXPERIMENT_C.md`;
+  * `48_ASSISTED_ANALYSIS_DISCOVERY_SYNTHESIS.md`;
+  * `49_ASSISTED_ANALYSIS_REPEATABILITY_EXPERIMENT.md`;
+  * `50_ASSISTED_ANALYSIS_DELIVERY_SCOPE.md`;
+  * `51_ASSISTED_ANALYSIS_IMPLEMENTATION_PLAN.md`.
+* Assisted Analysis Delivery Scope with AC-01 through AC-73.
+* Sprint 12 — Existing Repository Adoption Assisted Analysis Core.
+* Target version `v0.10.0 — Existing Repository Adoption Assisted Analysis Core`.
+* Implementation Issues:
+  * `#78` — Assisted Analysis Guide;
+  * `#79` — Evidence Snapshot Template;
+  * `#80` — Assisted Analysis Core Verification and Integration.
+
 ### Changed
 
-* Synchronized project governance after publishing `v0.9.0 — Existing Repository Adoption Integration Core`.
+* Confirmed the operational need for deterministic Evidence collection across Assessment, Application and Integration.
+* Validated `Assisted Analysis Guide + Structured Markdown Evidence Snapshot` as a repeatable representation with Assessment, Application and Integration replays passing.
+* Promoted Assisted Analysis from deferred capability to implementation-ready scope.
+* Opened Sprint 12 with scope limited to a read-only, human-reviewed Assisted Analysis Core.
+* Kept CLI, GitHub Actions, Structured Data, Schema, Manifest, decision automation, consumer mutation, Componentization and Framework Validator extension outside the v0.10.0 Delivery Scope.
 
 ---
 

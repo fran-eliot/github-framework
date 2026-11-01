@@ -4,7 +4,7 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Versión publicada**    | v0.9.0           |
-| **Versión objetivo**     | Pendiente         |
+| **Versión objetivo**     | v0.10.0           |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-10-31       |
 
@@ -995,6 +995,86 @@ Sprint 11 ha completado su alcance funcional. La release `v0.9.0 — Existing Re
 
 ---
 
+## Sprint 12 — Existing Repository Adoption Assisted Analysis Core
+
+**Estado:** Open.
+
+Objetivo:
+
+```text
+Deliver the first reusable Assisted Analysis Core
+for Existing Repository Adoption.
+```
+
+Versión objetivo:
+
+```text
+v0.10.0
+```
+
+Milestone prevista:
+
+```text
+v0.10.0 — Existing Repository Adoption Assisted Analysis Core
+```
+
+Issues comprometidas:
+
+| Issue | Entregable | Estado |
+| ----- | ---------- | :----: |
+| #78 | Existing Repository Adoption Assisted Analysis Guide | Open |
+| #79 | Existing Repository Adoption Evidence Snapshot Template | Open |
+| #80 | Existing Repository Adoption Assisted Analysis Core Verification | Open |
+
+Dependencia:
+
+```text
+#78 Assisted Analysis Guide ───────┐
+                                   ├──► #80 Verification & Integration
+#79 Evidence Snapshot Template ────┘
+```
+
+El Sprint está respaldado por:
+
+- `44_ASSISTED_ANALYSIS_DISCOVERY.md`;
+- `45_ASSISTED_ANALYSIS_EXPERIMENT_A.md`;
+- `46_ASSISTED_ANALYSIS_EXPERIMENT_B.md`;
+- `47_ASSISTED_ANALYSIS_EXPERIMENT_C.md`;
+- `48_ASSISTED_ANALYSIS_DISCOVERY_SYNTHESIS.md`;
+- `49_ASSISTED_ANALYSIS_REPEATABILITY_EXPERIMENT.md`;
+- `50_ASSISTED_ANALYSIS_DELIVERY_SCOPE.md`;
+- `51_ASSISTED_ANALYSIS_IMPLEMENTATION_PLAN.md`.
+
+Definition of Done principal:
+
+```text
+Assisted Analysis Guide
+    delivered
+
+Evidence Snapshot Template
+    delivered
+
+Root Adoption Integration
+    delivered
+
+Replay A
+    PASS
+
+Replay B
+    PASS
+
+Replay C
+    PASS
+
+AC-01 through AC-73
+    PASS
+
+Assisted Analysis Core
+    IMPLEMENTATION VERIFIED
+```
+
+---
+
 ## Deferred Capabilities
 
 Las capacidades excluidas no se consideran rechazadas permanentemente.
@@ -1042,12 +1122,32 @@ Manifest
 
 ### Assisted Analysis
 
+La necesidad operacional ha sido confirmada y el primer delivery bounded está comprometido en Sprint 12.
+
 ```text
 repository scanning
 deterministic evidence collection
+    ↓
+Assisted Analysis Guide
++
+Structured Markdown Evidence Snapshot
 ```
 
-requieren evidencia de necesidad operacional.
+Permanecen deferred para incrementos posteriores:
+
+```text
+CLI
+repository scanner executable
+GitHub Actions
+continuous reassessment
+Structured Data
+Schema
+Manifest
+automatic decisions
+consumer mutation
+Componentization
+Validator extension
+```
 
 ### Automation
 
@@ -1095,7 +1195,8 @@ aportan valor proporcional.
 | v0.7.0 — Existing Repository Adoption   | ✅ Released    |
 | v0.8.0 — Adoption Application Core       | ✅ Released     |
 | v0.9.0 — Adoption Integration Core        | ✅ Released     |
-| v1.0.0 — Stable Release                 | ⚪ Planned     |
+| v0.10.0 — Adoption Assisted Analysis Core  | 🟠 In Progress  |
+| v1.0.0 — Stable Release                   | ⚪ Planned      |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.
 

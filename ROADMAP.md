@@ -624,6 +624,90 @@ El incremento está respaldado por:
 
 ---
 
+# v0.10.0 — Existing Repository Adoption Assisted Analysis Core
+
+**Estado:** 🟠 In Progress
+
+## Objetivo
+
+Introducir una capability reusable de **Assisted Analysis** para recopilar Evidence determinista, bounded, source-traceable y read-only que pueda reutilizarse en Assessment, Application e Integration sin automatizar evaluación semántica ni decisiones.
+
+## Alcance
+
+Reusable artifacts previstos:
+
+```text
+framework/adoption/assisted-analysis/README.md
+framework/adoption/assisted-analysis/evidence-snapshot-template.md
+```
+
+Integración mínima:
+
+```text
+framework/adoption/README.md
+```
+
+Verification artifact previsto:
+
+```text
+docs/implementation/52_ASSISTED_ANALYSIS_CORE_VERIFICATION.md
+```
+
+Principios del incremento:
+
+```text
+Facts before Evaluation
+Evidence before Decision
+Read-Only before Mutation
+Source Traceability
+Human Review owns Semantic Meaning
+Representation before Tooling
+```
+
+## Sprint 12
+
+Issues comprometidas:
+
+| Issue | Entregable | Estado |
+| ----- | ---------- | :----: |
+| #78 | Existing Repository Adoption Assisted Analysis Guide | Open |
+| #79 | Existing Repository Adoption Evidence Snapshot Template | Open |
+| #80 | Existing Repository Adoption Assisted Analysis Core Verification | Open |
+
+Dependencia:
+
+```text
+#78 ───────┐
+           ├──► #80
+#79 ───────┘
+```
+
+## Evidencia
+
+El incremento está respaldado por:
+
+- `44_ASSISTED_ANALYSIS_DISCOVERY.md`;
+- `45_ASSISTED_ANALYSIS_EXPERIMENT_A.md`;
+- `46_ASSISTED_ANALYSIS_EXPERIMENT_B.md`;
+- `47_ASSISTED_ANALYSIS_EXPERIMENT_C.md`;
+- `48_ASSISTED_ANALYSIS_DISCOVERY_SYNTHESIS.md`;
+- `49_ASSISTED_ANALYSIS_REPEATABILITY_EXPERIMENT.md`;
+- `50_ASSISTED_ANALYSIS_DELIVERY_SCOPE.md`;
+- `51_ASSISTED_ANALYSIS_IMPLEMENTATION_PLAN.md`.
+
+## Fuera de alcance
+
+- CLI / repository scanner executable;
+- GitHub Actions / continuous reassessment;
+- Structured Data, Schema o Manifest;
+- automatic Assessment, Application or Integration decisions;
+- consumer mutation;
+- automatic PR creation, merge, rollback or recovery;
+- Componentization;
+- Framework Validator extension.
+
+---
+
 # v1.0.0 — Stable Release
 
 **Estado:** ⚪ Planned
