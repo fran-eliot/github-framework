@@ -502,7 +502,7 @@ El incremento está respaldado por:
 
 # v0.9.0 — Existing Repository Adoption Integration Core
 
-**Estado:** 🟡 In Progress
+**Estado:** 🟠 Release Preparation
 
 ## Objetivo
 
@@ -555,9 +555,9 @@ Issues comprometidas:
 
 | Issue | Entregable                                                   | Estado |
 | ----- | ------------------------------------------------------------ | :----: |
-| #61   | Existing Repository Adoption Integration Guide              |  Open  |
-| #62   | Existing Repository Adoption Integration Template           |  Open  |
-| #63   | Existing Repository Adoption Integration Core Verification  |  Open  |
+| #61   | Existing Repository Adoption Integration Guide              |  Done  |
+| #62   | Existing Repository Adoption Integration Template           |  Done  |
+| #63   | Existing Repository Adoption Integration Core Verification  |  Done  |
 
 Dependencia:
 
@@ -566,6 +566,38 @@ Dependencia:
            ├──► #63
 #62 ───────┘
 ```
+
+## Resultado — Sprint 11
+
+```text
+Integration Guide
+    IMPLEMENTED
+
+Integration Template
+    IMPLEMENTED
+
+Root Adoption Integration
+    IMPLEMENTED
+
+Integration Core Verification
+    PASS
+
+AC-01 through AC-73
+    PASS
+
+Replay A
+    PASS
+
+Replay B
+    PASS
+
+Integration Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
+```
+
+La versión `v0.9.0 — Existing Repository Adoption Integration Core` está en preparación de release.
 
 ## Evidencia
 

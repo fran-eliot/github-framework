@@ -5,8 +5,8 @@
 | **Proyecto**             | GitHub Framework                                          |
 | **Versión actual**       | v0.8.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Sprint 11 — Integration Core                               |
-| **Sprint actual**        | Sprint 11 — Existing Repository Adoption Integration Core  |
+| **Fase**                 | Release Preparation — v0.9.0                               |
+| **Sprint actual**        | Ninguno activo                                            |
 | **Versión objetivo**     | v0.9.0                                                    |
 | **Última actualización** | 2026-11-01                                                |
 
@@ -20,7 +20,7 @@ El Framework dispone de una arquitectura formal, estándares de repositorio, un 
 
 Las versiones `v0.1.0` a `v0.8.0` han sido publicadas. La última versión publicada es **`v0.8.0 — Existing Repository Adoption Application Core`**.
 
-Sprint 10 ha finalizado y **`v0.8.0 — Existing Repository Adoption Application Core`** ha sido publicada. El siguiente incremento comprometido es **Sprint 11 — Existing Repository Adoption Integration Core**, con versión objetivo **`v0.9.0`**.
+Sprint 11 ha completado su alcance funcional. **`v0.9.0 — Existing Repository Adoption Integration Core`** está en preparación de release; `v0.8.0` continúa siendo la última release publicada hasta completar la publicación.
 
 ## Existing Repository Adoption
 
@@ -668,9 +668,9 @@ Sprint 11 compromete:
 
 | Issue | Entregable                                                       | Estado |
 | ----- | ---------------------------------------------------------------- | :----: |
-| #61   | Existing Repository Adoption Integration Guide                  |  Open  |
-| #62   | Existing Repository Adoption Integration Template               |  Open  |
-| #63   | Existing Repository Adoption Integration Core Verification      |  Open  |
+| #61   | Existing Repository Adoption Integration Guide                  |  Done  |
+| #62   | Existing Repository Adoption Integration Template               |  Done  |
+| #63   | Existing Repository Adoption Integration Core Verification      |  Done  |
 
 Milestone:
 
@@ -721,12 +721,12 @@ Durante la evolución del proyecto se mantendrán los siguientes principios:
 
 # Próximos Objetivos
 
-1. Implementar #61 — Existing Repository Adoption Integration Guide.
-2. Implementar #62 — Existing Repository Adoption Integration Template.
-3. Completar #63 — Verification and Integration del Integration Core.
-4. Verificar AC-01 a AC-73 y los dos replay scenarios definidos en el Delivery Scope.
-5. Mantener `v0.8.0` como última release publicada hasta completar el incremento.
-6. Preservar los límites de `v0.9.0`: sin automatic merge, automatic rollback, release orchestration, CLI, GitHub Actions ni Structured Representation.
+1. Preparar la publicación de `v0.9.0 — Existing Repository Adoption Integration Core`.
+2. Verificar que #61, #62 y #63 permanezcan cerradas como completadas.
+3. Confirmar que AC-01 a AC-73 y Replay A / Replay B permanecen verificados.
+4. Mantener `v0.8.0` como última release publicada hasta crear el tag y GitHub Release de `v0.9.0`.
+5. Preservar los límites de `v0.9.0`: sin automatic merge, automatic rollback, release orchestration, CLI, GitHub Actions ni Structured Representation.
+6. Tras la publicación, cerrar la milestone y sincronizar governance post-release.
 
 ---
 

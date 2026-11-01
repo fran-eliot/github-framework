@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+No unreleased changes yet.
+
+---
+
+## [0.9.0] - 2026-11-01
+
 ### Added
 
 * Integration Discovery documentation for Existing Repository Adoption:
@@ -24,7 +30,14 @@
 * Promoted the Integration Core from Discovery to implementation-ready scope after repeatability concluded `MODEL HOLDS`.
 * Defined stable-base refresh, drift impact evaluation, Integration conditions and stable-state verification as evidence-backed lifecycle steps.
 * Kept automatic merge, automatic rollback, release orchestration, branch protection configuration, CLI, GitHub Actions and Structured Representation outside the v0.9.0 Delivery Scope.
-
+* Implemented #61 — Existing Repository Adoption Integration Guide.
+* Implemented #62 — Existing Repository Adoption Integration Template.
+* Completed #63 — Integration Core Verification and Integration.
+* Added `framework/adoption/integration/README.md` and `framework/adoption/integration/integration-template.md`.
+* Integrated the Integration Core into `framework/adoption/README.md` as an optional downstream capability of Application.
+* Added `docs/implementation/43_INTEGRATION_CORE_VERIFICATION.md`.
+* Verified Replay A, Replay B and AC-01 through AC-73.
+* Completed the functional scope of Sprint 11 and advanced `v0.9.0` to release preparation.
 ---
 
 ## [0.8.0] - 2026-10-31

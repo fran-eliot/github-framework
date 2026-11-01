@@ -883,7 +883,7 @@ El nombre de la release no amplía el Delivery Scope: el contenido comprometido 
 
 ## Sprint 11 — Existing Repository Adoption Integration Core
 
-**Estado:** Open.
+**Estado:** Completed.
 
 Objetivo:
 
@@ -908,9 +908,9 @@ Issues comprometidas:
 
 | Issue | Entregable                                                   | Estado |
 | ----- | ------------------------------------------------------------ | :----: |
-| #61   | Existing Repository Adoption Integration Guide              |  Open  |
-| #62   | Existing Repository Adoption Integration Template           |  Open  |
-| #63   | Existing Repository Adoption Integration Core Verification  |  Open  |
+| #61   | Existing Repository Adoption Integration Guide              |  Done  |
+| #62   | Existing Repository Adoption Integration Template           |  Done  |
+| #63   | Existing Repository Adoption Integration Core Verification  |  Done  |
 
 Dependencia:
 
@@ -952,6 +952,46 @@ AC-01 through AC-73
 Integration Core
     IMPLEMENTATION VERIFIED
 ```
+
+---
+
+## Sprint 11 Result
+
+```text
+#61 Integration Guide
+    DONE
+
+#62 Integration Template
+    DONE
+
+#63 Verification and Integration
+    DONE
+
+Integration Guide
+    IMPLEMENTED
+
+Integration Template
+    IMPLEMENTED
+
+Root Adoption Integration
+    IMPLEMENTED
+
+Replay A
+    PASS
+
+Replay B
+    PASS
+
+AC-01 through AC-73
+    PASS
+
+Integration Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
+```
+
+Sprint 11 ha completado su alcance funcional. La release `v0.9.0 — Existing Repository Adoption Integration Core` está en preparación.
 
 ---
 
@@ -1054,7 +1094,7 @@ aportan valor proporcional.
 | v0.6.0 — Framework Automation           | ✅ Released    |
 | v0.7.0 — Existing Repository Adoption   | ✅ Released    |
 | v0.8.0 — Adoption Application Core       | ✅ Released     |
-| v0.9.0 — Adoption Integration Core        | 🟡 In Progress  |
+| v0.9.0 — Adoption Integration Core        | 🟠 Release Prep |
 | v1.0.0 — Stable Release                 | ⚪ Planned     |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.
