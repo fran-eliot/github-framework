@@ -193,7 +193,7 @@ Que el stable base haya avanzado no implica automáticamente REPLAN.
 
 Debe evaluarse el impacto real.
 
-### 5.4 Consumer Governance over Framework Preference
+### 5.4 Consumer Governance over Framework Merge Preference
 
 La governance del consumer repository prevalece sobre cualquier preferencia del Framework.
 
