@@ -997,7 +997,7 @@ Sprint 11 ha completado su alcance funcional. La release `v0.9.0 — Existing Re
 
 ## Sprint 12 — Existing Repository Adoption Assisted Analysis Core
 
-**Estado:** Open.
+**Estado:** Completed.
 
 Objetivo:
 
@@ -1022,9 +1022,9 @@ Issues comprometidas:
 
 | Issue | Entregable | Estado |
 | ----- | ---------- | :----: |
-| #78 | Existing Repository Adoption Assisted Analysis Guide | Open |
-| #79 | Existing Repository Adoption Evidence Snapshot Template | Open |
-| #80 | Existing Repository Adoption Assisted Analysis Core Verification | Open |
+| #78 | Existing Repository Adoption Assisted Analysis Guide | Done |
+| #79 | Existing Repository Adoption Evidence Snapshot Template | Done |
+| #80 | Existing Repository Adoption Assisted Analysis Core Verification | Done |
 
 Dependencia:
 
@@ -1072,6 +1072,49 @@ AC-01 through AC-73
 Assisted Analysis Core
     IMPLEMENTATION VERIFIED
 ```
+
+---
+
+## Sprint 12 Result
+
+```text
+#78 Assisted Analysis Guide
+    DONE
+
+#79 Evidence Snapshot Template
+    DONE
+
+#80 Verification and Integration
+    DONE
+
+Assisted Analysis Guide
+    IMPLEMENTED
+
+Evidence Snapshot Template
+    IMPLEMENTED
+
+Root Adoption Integration
+    IMPLEMENTED
+
+Replay A
+    PASS
+
+Replay B
+    PASS
+
+Replay C
+    PASS
+
+AC-01 through AC-73
+    PASS
+
+Assisted Analysis Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
+```
+
+Sprint 12 ha completado su alcance funcional. La release `v0.10.0 — Existing Repository Adoption Assisted Analysis Core` está en preparación.
 
 ---
 
@@ -1195,7 +1238,7 @@ aportan valor proporcional.
 | v0.7.0 — Existing Repository Adoption   | ✅ Released    |
 | v0.8.0 — Adoption Application Core       | ✅ Released     |
 | v0.9.0 — Adoption Integration Core        | ✅ Released     |
-| v0.10.0 — Adoption Assisted Analysis Core  | 🟠 In Progress  |
+| v0.10.0 — Adoption Assisted Analysis Core  | 🟡 Release Prep |
 | v1.0.0 — Stable Release                   | ⚪ Planned      |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.
