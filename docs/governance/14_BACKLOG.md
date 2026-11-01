@@ -3,8 +3,8 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión publicada**    | v0.8.0           |
-| **Versión objetivo**     | v0.9.0            |
+| **Versión publicada**    | v0.9.0           |
+| **Versión objetivo**     | Pendiente         |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-10-31       |
 
@@ -991,7 +991,7 @@ Integration Core
     INTEGRATED
 ```
 
-Sprint 11 ha completado su alcance funcional. La release `v0.9.0 — Existing Repository Adoption Integration Core` está en preparación.
+Sprint 11 ha completado su alcance funcional. La release `v0.9.0 — Existing Repository Adoption Integration Core` ha sido publicada.
 
 ---
 
@@ -1001,16 +1001,16 @@ Las capacidades excluidas no se consideran rechazadas permanentemente.
 
 ### Integration
 
-Integration Discovery, Repeatability, Delivery Scope e Implementation Planning han sido completados.
+Integration Discovery, Repeatability, Delivery Scope, Implementation Planning e implementación han sido completados.
 
-El siguiente incremento comprometido es:
+La capability fue publicada en:
 
 ```text
 v0.9.0
     Existing Repository Adoption Integration Core
 ```
 
-Issues:
+Issues completadas:
 
 ```text
 #61
@@ -1023,7 +1023,7 @@ Issues:
     Verification and Integration
 ```
 
-El Delivery Scope incluye Integration manual, human-reviewed y verificable hasta stable-state verification.
+El Delivery Scope entregado cubre Integration manual, human-reviewed y verificable hasta stable-state verification.
 
 Permanecen deferred:
 
@@ -1094,7 +1094,7 @@ aportan valor proporcional.
 | v0.6.0 — Framework Automation           | ✅ Released    |
 | v0.7.0 — Existing Repository Adoption   | ✅ Released    |
 | v0.8.0 — Adoption Application Core       | ✅ Released     |
-| v0.9.0 — Adoption Integration Core        | 🟠 Release Prep |
+| v0.9.0 — Adoption Integration Core        | ✅ Released     |
 | v1.0.0 — Stable Release                 | ⚪ Planned     |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.

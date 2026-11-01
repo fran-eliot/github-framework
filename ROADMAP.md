@@ -502,7 +502,7 @@ El incremento está respaldado por:
 
 # v0.9.0 — Existing Repository Adoption Integration Core
 
-**Estado:** 🟠 Release Preparation
+**Estado:** ✅ Released
 
 ## Objetivo
 
@@ -597,7 +597,9 @@ Integration Core
     INTEGRATED
 ```
 
-La versión `v0.9.0 — Existing Repository Adoption Integration Core` está en preparación de release.
+La versión `v0.9.0 — Existing Repository Adoption Integration Core` ha sido publicada.
+
+La milestone `v0.9.0 — Existing Repository Adoption Integration Core` se cierra tras completar las Issues #61–#63 y publicar la release.
 
 ## Evidencia
 
