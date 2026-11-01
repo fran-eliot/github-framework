@@ -1,19 +1,23 @@
 # Existing Repository Adoption
 
-La capability **Existing Repository Adoption** proporciona una guía reutilizable para evaluar un repositorio existente frente a las Responsibilities definidas por un Repository Template de GitHub Framework y, opcionalmente, llevar una Adoption Decision resuelta hasta un candidate state verificado.
+La capability **Existing Repository Adoption** proporciona una guía reutilizable para evaluar un repositorio existente frente a las Responsibilities definidas por un Repository Template de GitHub Framework y, opcionalmente, llevar una Adoption Decision resuelta hasta un candidate state verificado y posteriormente integrarlo en stable consumer state.
 
-El delivery actual se divide en dos capabilities:
+El delivery actual se divide en tres capabilities:
 
 ```text
 Existing Repository Adoption
     Assessment Core
         ↓
     optional Application Core
+        ↓
+    optional Integration Core
 ```
 
 El Assessment Core permite analizar, evaluar, revisar y documentar decisiones de adopción.
 
-El Application Core permite planificar, aplicar de forma aislada y verificar cambios justificados sin convertir la capability en un mecanismo de automatic remediation o Integration.
+El Application Core permite planificar, aplicar de forma aislada y verificar cambios justificados.
+
+El Integration Core permite revisar e integrar un verified candidate state en stable consumer state respetando la governance del repositorio y verificando el resultado estable.
 
 ---
 
@@ -107,7 +111,27 @@ VERIFY
 REVIEW RESULT
 ```
 
-La frontera del Application Core termina en un verified candidate state. `INTEGRATE` permanece fuera del alcance actual.
+La frontera del Application Core termina en un verified candidate state.
+
+Cuando existe un verified candidate state, el Integration Core puede utilizarse opcionalmente para continuar con:
+
+```text
+REFRESH STABLE BASE
+    ↓
+EVALUATE DRIFT
+    ↓
+CHECK INTEGRATION CONDITIONS
+    ↓
+REVIEW
+    ↓
+INTEGRATE
+    ↓
+VERIFY STABLE STATE
+    ↓
+CONFIRM
+```
+
+La frontera del Integration Core termina en un verified stable state o en un safe-stop / recovery-required state.
 
 ---
 
@@ -1032,13 +1056,80 @@ FAIL
 
 ---
 
+
+## 25.2 Integration Core
+
+El Integration Core reutilizable se documenta en:
+
+```text
+framework/adoption/integration/README.md
+```
+
+El artifact para registrar una Integration concreta es:
+
+```text
+framework/adoption/integration/integration-template.md
+```
+
+La relación entre las tres capabilities es:
+
+```text
+Assessment Core
+    understands and decides
+        ↓
+optional Application Core
+    plans, applies in isolation and verifies
+        ↓
+optional Integration Core
+    accepts into stable state and verifies
+```
+
+Integration consume:
+
+```text
+verified candidate state
+```
+
+y conserva como principios:
+
+```text
+Verified Candidate before Integration
+Refresh Stable Base
+Evaluate Drift Impact
+Consumer Governance over Framework Merge Preference
+Mergeability is not Integration Readiness
+Human Review before Stable Integration
+Verify Stable State after Integration
+Represent Recovery without Automating it
+```
+
+El Integration Core soporta decisiones:
+
+```text
+INTEGRATE
+DEFER
+REPLAN
+REJECT
+```
+
+y final states:
+
+```text
+INTEGRATED
+DEFERRED
+REPLAN REQUIRED
+REJECTED
+RECOVERY REQUIRED
+```
+
+La capability no configura la governance del consumer, no prescribe una merge strategy universal y no automatiza recovery.
+
+
 ## 26. Out of Scope
 
 Existing Repository Adoption no documenta ni implementa procedimientos estables para:
 
 ```text
-INTEGRATE
-
 automatic merge
 automatic remediation
 automatic semantic assessment
@@ -1065,7 +1156,7 @@ repository generation
 continuous reassessment
 drift detection
 
-post-integration rollback
+automatic post-integration rollback
 ```
 
 Tampoco convierte Existing Repository Adoption en una nueva Component family.
