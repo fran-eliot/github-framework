@@ -5,8 +5,8 @@
 | **Proyecto**             | GitHub Framework                                          |
 | **Versión actual**       | v0.9.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Sprint 12 — Assisted Analysis Core                         |
-| **Sprint actual**        | Sprint 12 — Existing Repository Adoption Assisted Analysis Core |
+| **Fase**                 | Release Preparation — Assisted Analysis Core                |
+| **Sprint actual**        | Ninguno activo                                              |
 | **Versión objetivo**     | v0.10.0                                                    |
 | **Última actualización** | 2026-11-01                                                |
 
@@ -753,17 +753,20 @@ Assisted Analysis Core
     IMPLEMENTATION READY
 ```
 
-Sprint 12 compromete:
+Sprint 12 ha completado:
 
 ```text
 #78
     Assisted Analysis Guide
+    DONE
 
 #79
     Evidence Snapshot Template
+    DONE
 
 #80
     Verification and Integration
+    DONE
 ```
 
 Versión objetivo:
@@ -774,14 +777,46 @@ v0.10.0 — Existing Repository Adoption Assisted Analysis Core
 
 El alcance permanece limitado a una capability read-only, human-reviewed y basada en Structured Markdown. CLI, GitHub Actions, Structured Data, Schema, Manifest, automatic decisions, consumer mutation, Componentization y Framework Validator extension permanecen fuera de alcance.
 
+Resultado funcional:
+
+```text
+Assisted Analysis Guide
+    IMPLEMENTED
+
+Evidence Snapshot Template
+    IMPLEMENTED
+
+Root Adoption Integration
+    IMPLEMENTED
+
+Replay A
+    PASS
+
+Replay B
+    PASS
+
+Replay C
+    PASS
+
+AC-01 through AC-73
+    PASS
+
+Assisted Analysis Core
+    IMPLEMENTED
+    VERIFIED
+    INTEGRATED
+```
+
+Sprint 12 ha completado su alcance funcional y `v0.10.0` está en preparación de release.
+
 ---
 
 # Próximos Objetivos
 
-1. Implementar #78 — Assisted Analysis Guide.
-2. Implementar #79 — Evidence Snapshot Template.
-3. Completar #80 — Assisted Analysis Core Verification and Integration.
-4. Verificar Replay A, Replay B, Replay C y AC-01 a AC-73.
+1. Preparar la release `v0.10.0 — Existing Repository Adoption Assisted Analysis Core`.
+2. Verificar que la milestone #9 permanece con 0 Issues abiertas y 3 cerradas.
+3. Mantener Replay A, Replay B, Replay C y AC-01 a AC-73 como evidencia de implementación verificada.
+4. Publicar tag y GitHub Release únicamente tras completar la preparación de release.
 5. Preservar los límites del Delivery Scope: read-only, human-reviewed, sin tooling ejecutable ni decision automation.
 6. Mantener `v1.0.0` como Planned hasta disponer de evidencia específica de estabilidad global.
 
