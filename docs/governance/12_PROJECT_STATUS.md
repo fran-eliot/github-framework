@@ -3,12 +3,12 @@
 | Campo                    | Valor                                                     |
 | ------------------------ | --------------------------------------------------------- |
 | **Proyecto**             | GitHub Framework                                          |
-| **Versión actual**       | v0.9.0                                                    |
+| **Versión actual**       | v0.10.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Release Preparation — Assisted Analysis Core                |
+| **Fase**                 | Post-release — Assisted Analysis Core                |
 | **Sprint actual**        | Ninguno activo                                              |
-| **Versión objetivo**     | v0.10.0                                                    |
-| **Última actualización** | 2026-11-01                                                |
+| **Versión objetivo**     | Ninguna comprometida                                                    |
+| **Última actualización** | 2026-11-05                                                |
 
 ---
 
@@ -18,9 +18,9 @@ GitHub Framework ha completado las fases de arquitectura, Open Source Readiness,
 
 El Framework dispone de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno, una biblioteca de Documentation Components, tres Repository Templates y una primera familia de Core Workflow Components.
 
-Las versiones `v0.1.0` a `v0.9.0` han sido publicadas. La última versión publicada es **`v0.9.0 — Existing Repository Adoption Integration Core`**.
+Las versiones `v0.1.0` a `v0.10.0` han sido publicadas. La última versión publicada es **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`**.
 
-Sprint 11 ha finalizado y **`v0.9.0 — Existing Repository Adoption Integration Core`** ha sido publicada. El siguiente incremento comprometido es **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`**, desarrollado en Sprint 12.
+Sprint 12 ha finalizado y **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`** ha sido publicada. La milestone #9 está cerrada, con las Issues #78, #79 y #80 completadas. No hay Sprint activo ni nueva versión comprometida.
 
 ## Existing Repository Adoption
 
@@ -807,16 +807,16 @@ Assisted Analysis Core
     INTEGRATED
 ```
 
-Sprint 12 ha completado su alcance funcional y `v0.10.0` está en preparación de release.
+Sprint 12 ha completado su alcance y `v0.10.0` se ha publicado como GitHub Release. La milestone #9 está cerrada.
 
 ---
 
 # Próximos Objetivos
 
-1. Preparar la release `v0.10.0 — Existing Repository Adoption Assisted Analysis Core`.
-2. Verificar que la milestone #9 permanece con 0 Issues abiertas y 3 cerradas.
-3. Mantener Replay A, Replay B, Replay C y AC-01 a AC-73 como evidencia de implementación verificada.
-4. Publicar tag y GitHub Release únicamente tras completar la preparación de release.
+1. Completar la sincronización post-release de governance, roadmap, changelog y documentación pública.
+2. Preservar Replay A, Replay B, Replay C y AC-01 a AC-73 como evidencia de implementación verificada.
+3. Revisar la evolución global del Framework antes de comprometer un nuevo incremento o abrir un Sprint.
+4. Priorizar nuevas necesidades con evidencia, sin promover automáticamente hipótesis o capacidades diferidas.
 5. Preservar los límites del Delivery Scope: read-only, human-reviewed, sin tooling ejecutable ni decision automation.
 6. Mantener `v1.0.0` como Planned hasta disponer de evidencia específica de estabilidad global.
 
@@ -835,3 +835,4 @@ Sprint 12 ha completado su alcance funcional y `v0.10.0` está en preparación d
 | v0.7.0  | 2026-10-26 | Existing Repository Adoption publicado                             |
 | v0.8.0  | 2026-10-31 | Existing Repository Adoption Application Core publicado            |
 | v0.9.0  | 2026-11-01 | Existing Repository Adoption Integration Core publicado            |
+| v0.10.0 | 2026-11-05 | Existing Repository Adoption Assisted Analysis Core publicado |
