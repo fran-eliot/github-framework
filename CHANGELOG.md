@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+No unreleased changes recorded.
+
+---
+
+## [0.10.0] - 2026-11-05
+
 ### Added
 
 * Assisted Analysis Discovery and delivery-planning documentation:
@@ -37,7 +43,7 @@
 * Completed #80 — Assisted Analysis Core Verification and Integration.
 * Integrated Assisted Analysis into `framework/adoption/README.md` as optional transverse evidence support.
 * Verified Replay A, Replay B, Replay C and AC-01 through AC-73.
-* Completed the functional scope of Sprint 12 and advanced `v0.10.0` to release preparation.
+* Completed the functional scope of Sprint 12, published `v0.10.0` as a GitHub Release and closed milestone #9.
 
 ---
 
