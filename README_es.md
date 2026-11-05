@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.7.0-blue" alt="Versión" />
+  <img src="https://img.shields.io/badge/version-v0.10.0-blue" alt="Versión" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Estado" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="Licencia" />
 </p>
@@ -41,7 +41,8 @@ Su objetivo es reducir las decisiones repetitivas, permitiendo al mismo tiempo q
 - Componentes reutilizables de Workflow
 - Contrato común de metadata para Components
 - Framework Validator con reglas de validación deterministas
-- Existing Repository Adoption Assessment Core
+- Existing Repository Adoption Assessment, Application e Integration Cores
+- Assisted Analysis Core para recopilar Evidence read-only con revisión humana
 - Implementaciones de referencia y dogfooding
 - Evolución versionada del Framework
 
@@ -180,6 +181,10 @@ Los artifacts reutilizables son:
 
 - [Adoption Guide](framework/adoption/README.md)
 - [Assessment Template](framework/adoption/assessment-template.md)
+- [Application Guide](framework/adoption/application/README.md)
+- [Integration Guide](framework/adoption/integration/README.md)
+- [Assisted Analysis Guide](framework/adoption/assisted-analysis/README.md)
+- [Evidence Snapshot Template](framework/adoption/assisted-analysis/evidence-snapshot-template.md)
 
 Esta capability no modifica los repositorios consumer ni introduce remediación automática o decisiones automáticas de adopción.
 
@@ -189,14 +194,17 @@ Esta capability no modifica los repositorios consumer ni introduce remediación 
 
 GitHub Framework evoluciona mediante versiones incrementales.
 
-El roadmap de versiones incluye:
+Las versiones publicadas incluyen:
 
 - **v0.2.0** — Preparación Open Source
 - **v0.3.0** — Documentation Framework
 - **v0.4.0** — Repository Templates
 - **v0.5.0** — Workflow Framework
 - **v0.6.0** — Framework Automation
-- **v0.7.0** — Existing Repository Adoption
+- **v0.7.0** — Existing Repository Adoption Assessment Core
+- **v0.8.0** — Existing Repository Adoption Application Core
+- **v0.9.0** — Existing Repository Adoption Integration Core
+- **v0.10.0** — Existing Repository Adoption Assisted Analysis Core
 - **v1.0.0** — Versión estable
 
 Para consultar el roadmap completo, visita [ROADMAP.md](ROADMAP.md).
@@ -223,9 +231,9 @@ GitHub Framework evoluciona mediante versiones incrementales.
 
 La última release publicada es:
 
-**v0.7.0 — Existing Repository Adoption**
+**v0.10.0 — Existing Repository Adoption Assisted Analysis Core**
 
-El Existing Repository Adoption Assessment Core está implementado, verificado, integrado y publicado.
+Los Cores de Assessment, Application, Integration y Assisted Analysis están implementados, verificados, integrados y publicados. Assisted Analysis recopila Evidence delimitada y trazable a su fuente mediante un proceso read-only con revisión humana, sin automatizar decisiones de adopción ni modificar repositorios consumer.
 
 El siguiente incremento del Framework todavía no está comprometido en una release.
 

@@ -626,7 +626,7 @@ El incremento está respaldado por:
 
 # v0.10.0 — Existing Repository Adoption Assisted Analysis Core
 
-**Estado:** 🟡 Release Preparation
+**Estado:** ✅ Released
 
 ## Objetivo
 
@@ -725,7 +725,7 @@ Assisted Analysis Core
     INTEGRATED
 ```
 
-La versión `v0.10.0 — Existing Repository Adoption Assisted Analysis Core` está en preparación de release.
+La versión `v0.10.0 — Existing Repository Adoption Assisted Analysis Core` se ha publicado como GitHub Release y su milestone #9 está cerrada.
 
 ## Fuera de alcance
 

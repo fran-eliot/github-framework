@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.7.0-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-v0.10.0-blue" alt="Version" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Status" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
 </p>
@@ -39,7 +39,8 @@ The goal is to reduce repetitive decisions while allowing each project to remain
 - Reusable workflow components
 - Common component metadata contract
 - Deterministic Framework Validator
-- Existing Repository Adoption Assessment Core
+- Existing Repository Adoption Assessment, Application and Integration Cores
+- Assisted Analysis Core for read-only, human-reviewed Evidence collection
 - Reference implementations and dogfooding
 - Framework evolution
 
@@ -178,6 +179,10 @@ The reusable artifacts are:
 
 - [Adoption Guide](framework/adoption/README.md)
 - [Assessment Template](framework/adoption/assessment-template.md)
+- [Application Guide](framework/adoption/application/README.md)
+- [Integration Guide](framework/adoption/integration/README.md)
+- [Assisted Analysis Guide](framework/adoption/assisted-analysis/README.md)
+- [Evidence Snapshot Template](framework/adoption/assisted-analysis/evidence-snapshot-template.md)
 
 This capability does not modify consumer repositories and does not introduce automatic remediation or automatic adoption decisions.
 
@@ -187,14 +192,17 @@ This capability does not modify consumer repositories and does not introduce aut
 
 GitHub Framework evolves through incremental releases.
 
-Current milestones include:
+Published milestones include:
 
 - **v0.2.0** — Open Source Readiness
 - **v0.3.0** — Documentation Framework
 - **v0.4.0** — Repository Templates
 - **v0.5.0** — Workflow Framework
 - **v0.6.0** — Framework Automation
-- **v0.7.0** — Existing Repository Adoption
+- **v0.7.0** — Existing Repository Adoption Assessment Core
+- **v0.8.0** — Existing Repository Adoption Application Core
+- **v0.9.0** — Existing Repository Adoption Integration Core
+- **v0.10.0** — Existing Repository Adoption Assisted Analysis Core
 - **v1.0.0** — Stable Release
 
 For the complete roadmap, see [ROADMAP.md](ROADMAP.md).
@@ -221,9 +229,9 @@ GitHub Framework is currently evolving through incremental releases.
 
 The latest published release is:
 
-**v0.7.0 — Existing Repository Adoption**
+**v0.10.0 — Existing Repository Adoption Assisted Analysis Core**
 
-The Existing Repository Adoption Assessment Core is implemented, verified, integrated and published.
+Assessment, Application, Integration and Assisted Analysis Cores are implemented, verified, integrated and published. Assisted Analysis collects bounded, source-traceable Evidence through a read-only, human-reviewed process; it does not automate adoption decisions or modify consumer repositories.
 
 The next Framework increment has not yet been committed to a release.
 
