@@ -3,10 +3,10 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión publicada**    | v0.9.0           |
-| **Versión objetivo**     | v0.10.0           |
+| **Versión publicada**    | v0.10.0           |
+| **Versión objetivo**     | Ninguna comprometida           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-10-31       |
+| **Última actualización** | 2026-11-05       |
 
 ---
 
@@ -1012,7 +1012,7 @@ Versión objetivo:
 v0.10.0
 ```
 
-Milestone prevista:
+Milestone cerrada:
 
 ```text
 v0.10.0 — Existing Repository Adoption Assisted Analysis Core
@@ -1114,7 +1114,7 @@ Assisted Analysis Core
     INTEGRATED
 ```
 
-Sprint 12 ha completado su alcance funcional. La release `v0.10.0 — Existing Repository Adoption Assisted Analysis Core` está en preparación.
+Sprint 12 ha completado su alcance funcional y la release `v0.10.0 — Existing Repository Adoption Assisted Analysis Core` ha sido publicada. La milestone #9 está cerrada y no hay un nuevo Sprint ni una nueva versión comprometidos.
 
 ---
 
@@ -1238,7 +1238,7 @@ aportan valor proporcional.
 | v0.7.0 — Existing Repository Adoption   | ✅ Released    |
 | v0.8.0 — Adoption Application Core       | ✅ Released     |
 | v0.9.0 — Adoption Integration Core        | ✅ Released     |
-| v0.10.0 — Adoption Assisted Analysis Core  | 🟡 Release Prep |
+| v0.10.0 — Adoption Assisted Analysis Core  | ✅ Released |
 | v1.0.0 — Stable Release                   | ⚪ Planned      |
 
 `v0.7.0 — Existing Repository Adoption` representa el primer delivery reusable de esta capability y está limitado al Assessment Core.
