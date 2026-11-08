@@ -90,6 +90,11 @@ Recomendamos el siguiente recorrido:
 4. Revisar la arquitectura.
 5. Consultar el roadmap del proyecto.
 
+Si quieres utilizar el Framework, elige un punto de partida:
+
+- **Repositorio nuevo:** consulta la [biblioteca de Repository Templates](framework/templates/repositories/README.md) y selecciona una composición adecuada para tu proyecto. Los Templates no son generadores automáticos de repositorios.
+- **Repositorio existente:** sigue la [guía de Existing Repository Adoption](framework/adoption/README.md), elige un Repository Template de la [biblioteca](framework/templates/repositories/README.md), confirma su versión en el `metadata.yml` del Template y comienza con el [Assessment Template](framework/adoption/assessment-template.md).
+
 ---
 
 ## 🔗 Enlaces rápidos
