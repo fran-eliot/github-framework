@@ -274,3 +274,83 @@ La pregunta pendiente es si el recorrido inicial es suficientemente directo y co
 - No se abre Sprint, milestone ni release; no se autoriza una modificación del consumer.
 
 **Estado:** UX-01.6 completado; fricción de navegación delimitada e incertidumbre sobre la definición canónica resuelta.
+
+---
+
+## 13. UX-01.7 — Navigation Path Audit (2026-11-08)
+
+### 13.1 Pregunta de comprobación
+
+¿Ofrece la documentación pública un recorrido directo y explícito para que una persona que quiere evaluar un backend existente encuentre el Template apropiado, confirme su versión y comience el Assessment?
+
+Esta comprobación revisa **rutas documentales verificables**, no comportamiento de personas usuarias. No se midieron tiempos ni tasa de finalización y no se realizó una prueba de usabilidad externa.
+
+### 13.2 Puntos de entrada examinados
+
+| Fuente | Acceso que ofrece | Observación |
+|---|---|---|
+| [README (EN)](../../README.md), `Getting Started` | Leer README, explorar documentación y Components, consultar arquitectura y roadmap. | Recorrido de conocimiento general; no indica un primer resultado de Adoption. |
+| [README (ES)](../../README_es.md), `Primeros pasos` | Mismo recorrido exploratorio en español. | La oportunidad de mejora es equivalente en las dos versiones. |
+| README, `Quick Links` | Enlace directo a [Existing Repository Adoption](../../framework/adoption/README.md). | El usuario sí puede encontrar la capability de Adoption. |
+| README, `Existing Repository Adoption` | Enlaces al Assessment Template, Guide y tres guías complementarias. | Es posible encontrar el artifact a rellenar; no se ofrece un enlace directo al catálogo de Repository Templates. |
+| [Adoption Guide](../../framework/adoption/README.md), `Inputs del Assessment` | Describe Repository Template y Template Version como inputs. | No especifica una ruta directa para encontrar y elegir la definición canónica. |
+| [Repository Template Library](../../framework/templates/repositories/README.md) | Define ubicación, contrato, identidad, versionado y composición de Templates. | El recurso existe y documenta el modelo, pero no aparece enlazado desde los puntos anteriores. |
+| [Backend Template](../../framework/templates/repositories/backend/README.md) | Criterios de inclusión/exclusión y composición Required/Recommended/Optional. | Permite comprobar la idoneidad del caso backend. |
+| [Backend metadata](../../framework/templates/repositories/backend/metadata.yml) | Identidad y versión `TPL-BACKEND v0.1.0`, estado `Experimental`, madurez `L2`. | Permite fijar una baseline contractual verificable. |
+
+### 13.3 Recorrido observado y punto de fricción
+
+```text
+README / README_es
+    └── Existing Repository Adoption
+            └── Assessment Guide
+                    ├── [input] Repository Template
+                    ├── [input] Template Version
+                    └── [enlace no explícito aquí] Repository Template Library
+                              └── backend/README.md + backend/metadata.yml
+```
+
+La ruta completa **es posible mediante exploración manual de directorios**. La fricción identificada es la ausencia de una conexión documental explícita entre el proceso de Adoption y la fuente de la identidad/versionado del Template, no la ausencia de Templates ni la imposibilidad técnica de consultarlos.
+
+### 13.4 Recorrido de referencia para una validación futura
+
+Como hipótesis de diseño —**no como cambio aprobado**— puede probarse si las siguientes transiciones resultan comprensibles:
+
+```text
+I want to assess an existing repository
+    ↓
+Existing Repository Adoption
+    ↓
+Select appropriate Repository Template
+    ↓
+Confirm canonical template ID and version
+    ↓
+Copy Assessment Template
+    ↓
+Record Consumer Repository + immutable Consumer Reference
+    ↓
+Begin ANALYZE (facts and evidence only)
+```
+
+El recorrido para crear un repositorio nuevo debe examinarse por separado: no debe confundirse la composición de un Template con una funcionalidad de generación automática, que permanece fuera del scope actual.
+
+### 13.5 Criterios de validación antes de Solution Shaping
+
+Una prueba posterior con participantes ajenos al Framework debería observar, sin proporcionar rutas ni identificadores de antemano:
+
+1. Si distingue entre crear un repositorio y evaluar uno existente.
+2. Si localiza Adoption a partir del README.
+3. Si descubre los Repository Templates disponibles y selecciona uno justificadamente.
+4. Si identifica la versión desde la metadata canónica, no desde un Discovery histórico.
+5. Si localiza el Assessment Template y cumplimenta correctamente los inputs del contexto.
+6. Si distingue hechos observables de evaluaciones y Adoption Decisions.
+
+Registrar para cada paso el camino seguido, dudas expresadas, ayuda necesaria y éxito o bloqueo; evitar convertir simples clics o una simulación asistida en métricas de usabilidad humana.
+
+### 13.6 Conclusión y límites
+
+**Resultado de auditoría documental:** la documentación contiene los elementos necesarios para preparar el primer Assessment, pero la ruta hacia el catálogo de Templates no está explícitamente conectada desde los puntos de entrada de Adoption revisados. La simetría de ambos README exige considerar EN y ES juntos ante cualquier cambio futuro.
+
+**Pendiente:** contrastar esta fricción documental con al menos un recorrido de usuario no familiarizado con el Framework antes de decidir si basta mejorar enlaces, si se necesita un ejemplo guiado o si no resulta prioritario.
+
+No se modifica documentación pública de onboarding en este experimento, no se ejecuta Assessment de SeniorMeet, no se modifica consumer y no se abre Sprint ni release.
