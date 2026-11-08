@@ -221,3 +221,56 @@ UX-01 muestra que existe una experiencia documental que permite encontrar Adopti
 El modelo no se declara conforme ni no conforme en su totalidad; tampoco se propone una implementación.
 
 **Resultado:** evidencia preliminar apta para continuar Discovery; **no** Delivery Scope ni compromiso de implementación.
+
+---
+
+## 12. UX-01.6 — Verificación de Repository Template discoverability (2026-11-08)
+
+### 12.1 Corrección de incertidumbre anterior
+
+La búsqueda de UX-01.3 no había localizado la definición canónica del Template. Una exploración de los directorios reales de GitHub confirmó que **sí existe** y que su ubicación es:
+
+```text
+framework/templates/repositories/
+├── README.md
+├── backend/
+│   ├── README.md
+│   └── metadata.yml
+├── fullstack/
+└── documentation/
+```
+
+La [Repository Template Library](../../framework/templates/repositories/README.md) documenta expresamente la ubicación de los Templates y establece que la definición canónica está constituida por `README.md` y `metadata.yml` (más `template/` cuando corresponda).
+
+Para `TPL-BACKEND`, se verificaron:
+
+- [Definición y criterios de uso](../../framework/templates/repositories/backend/README.md): aplica a APIs, servicios y aplicaciones backend; explica cuándo no utilizarlo.
+- [Metadata canónica](../../framework/templates/repositories/backend/metadata.yml): `id: TPL-BACKEND`, `version: 0.1.0`, `status: Experimental`, `project_type: Backend`, `maturity: L2`.
+- Composición declarada: 8 Components `required`, 7 `recommended`, 13 `optional` (28 en total).
+
+**Resultado:** la definición canónica existe, la versión es verificable y el candidato seleccionado para SeniorMeet es coherente con su naturaleza técnica. Esto **no** equivale a verificar todas las Responsibilities del consumer.
+
+### 12.2 Revisión de UX-F02 y UX-F08
+
+| Hallazgo | Situación anterior | Verificación nueva | Estado actualizado |
+|---|---|---|---|
+| UX-F02 | La navegación de entrada no facilitaba identificar el catálogo de Templates. | El catálogo existe en `framework/templates/repositories/README.md`; el README principal y la introducción de Adoption no proporcionan un acceso directo y explícito a ese catálogo. | **Fricción de navegación acotada**, no falta de catálogo. |
+| UX-F08 | No se había localizado la definición canónica de `TPL-BACKEND`. | Se localizaron `backend/README.md` y `backend/metadata.yml`, ambos publicados. | **Incertidumbre resuelta**. No debe seguir tratándose como ausencia o problema de trazabilidad del artefacto. |
+
+Esta sección **actualiza y prevalece** sobre las afirmaciones de UX-01.3, UX-01.4 y el registro original de UX-F08 referidas a la ubicación no verificada. Se conservan sus formulaciones históricas para documentar qué ocurrió durante el recorrido inicial.
+
+### 12.3 Alcance del hallazgo de navegación
+
+Desde el README principal se puede llegar a Existing Repository Adoption; desde el navegador de directorios de GitHub también es posible encontrar `framework/templates/repositories/`. Por tanto, **no existe un bloqueo absoluto de acceso**.
+
+La pregunta pendiente es si el recorrido inicial es suficientemente directo y comprensible para una persona que desconoce la estructura del Framework. La mera existencia de un catálogo no demuestra ni descarta una fricción de usabilidad.
+
+### 12.4 Implicaciones para el próximo experimento
+
+- No es necesario crear ni reconstruir `TPL-BACKEND`.
+- La versión `TPL-BACKEND v0.1.0` queda confirmada como baseline del experimento.
+- Se puede iniciar una prueba independiente sobre navegación y comprensión del modelo sin repetir las 28 evaluaciones de Responsibilities.
+- Cualquier propuesta de enlace, tutorial o guía debe derivarse de evidencia adicional y conservar la distinción entre descubrimiento del Template y evaluación del consumer.
+- No se abre Sprint, milestone ni release; no se autoriza una modificación del consumer.
+
+**Estado:** UX-01.6 completado; fricción de navegación delimitada e incertidumbre sobre la definición canónica resuelta.
