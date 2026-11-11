@@ -129,6 +129,9 @@ def main(output_format: str = "text", output_path: Path | None = None) -> int:
             component_results.append(
                 {
                     "path": str(component_dir),
+                    "relative_path": component_dir.relative_to(
+                        COMPONENTS_ROOT
+                    ).as_posix(),
                     "id": metadata_by_path.get(metadata_path, {}).get("id"),
                     "status": "failed" if component_errors else "passed",
                     "errors": component_errors,

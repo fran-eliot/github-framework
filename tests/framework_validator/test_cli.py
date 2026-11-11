@@ -217,6 +217,10 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             })
             self.assertEqual(len(result["components"]), 1)
             self.assertEqual(result["components"][0]["id"], "DOC-ARCHITECTURE")
+            self.assertEqual(
+                result["components"][0]["relative_path"],
+                "documentation/architecture",
+            )
             self.assertEqual(result["components"][0]["status"], "passed")
             self.assertEqual(result["components"][0]["errors"], [])
             self.assertTrue(result["components"][0]["path"].endswith("architecture"))
@@ -241,6 +245,10 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             })
             self.assertEqual(len(result["components"]), 1)
             self.assertIsNone(result["components"][0]["id"])
+            self.assertEqual(
+                result["components"][0]["relative_path"],
+                "documentation/architecture",
+            )
             self.assertEqual(result["components"][0]["status"], "failed")
             self.assertEqual(result["components"][0]["errors"], result["errors"])
 
@@ -337,6 +345,10 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(components["architecture"]["status"], "passed")
             self.assertEqual(components["architecture"]["errors"], [])
             self.assertEqual(components["references"]["status"], "failed")
+            self.assertEqual(
+                components["references"]["relative_path"],
+                "documentation/references",
+            )
             self.assertIsNone(components["references"]["id"])
             self.assertEqual(components["references"]["errors"], result["errors"])
             self.assertEqual(result["summary"], {
@@ -467,3 +479,33 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertIn("Unable to write JSON report", stderr.getvalue())
             self.assertEqual(destination.read_text(encoding="utf-8"), previous_report)
             self.assertEqual(list(root.glob(".report.json.*.tmp")), [])
+
+    def test_json_relative_paths_across_component_families(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            doc_component = self.create_component(root)
+            (doc_component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            workflow_component = root / "workflow" / "issue"
+            workflow_component.mkdir(parents=True)
+            (workflow_component / "metadata.yml").write_text(
+                VALID_WORKFLOW_METADATA, encoding="utf-8"
+            )
+            (workflow_component / "README.md").write_text(
+                "# Issue\n", encoding="utf-8"
+            )
+
+            exit_code, result = self.run_validator_json(root)
+
+            self.assertEqual(exit_code, 1)
+            self.assertEqual(
+                {component["relative_path"] for component in result["components"]},
+                {"documentation/architecture", "workflow/issue"},
+            )
+            self.assertTrue(
+                all(
+                    component["path"] == str(root / component["relative_path"])
+                    for component in result["components"]
+                )
+            )
