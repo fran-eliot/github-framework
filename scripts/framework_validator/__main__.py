@@ -142,6 +142,11 @@ def main(
                 }
             )
 
+        selected_families = [
+            family
+            for family in COMPONENT_FAMILIES
+            if families is None or family in families
+        ]
         report = json.dumps(
             {
                 "status": "failed" if errors else "passed",
@@ -152,6 +157,10 @@ def main(
                 ],
                 "errors": errors,
                 "components": component_results,
+                "scope": {
+                    "families": selected_families,
+                    "filtered": len(selected_families) != len(COMPONENT_FAMILIES),
+                },
                 "summary": {
                     "passed_components": sum(
                         item["status"] == "passed" for item in component_results
