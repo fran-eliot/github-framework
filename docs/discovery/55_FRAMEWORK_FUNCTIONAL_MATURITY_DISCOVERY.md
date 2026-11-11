@@ -1,57 +1,57 @@
 # 55 — Framework Functional Maturity Discovery
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Proyecto | GitHub Framework |
-| Fecha | 2026-11-11 |
-| Versión publicada de referencia | `v0.10.0` |
-| Estado | Discovery — baseline documental y de código, no Delivery Scope |
-| Objeto | Repository Templates, Framework Validator y Existing Repository Adoption |
-| Investigación precedente | [54 — First-Time Usability Validation Protocol](54_FIRST_TIME_USABILITY_VALIDATION_PROTOCOL.md) |
-| Decisión de implementación | Ninguna |
-| Sprint / milestone / nueva versión | Ninguno comprometido |
+| Project | GitHub Framework |
+| Date | 2026-11-11 |
+| Published baseline version | `v0.10.0` |
+| Status | Discovery — documentation and code baseline, not Delivery Scope |
+| Focus | Repository Templates, Framework Validator, and Existing Repository Adoption |
+| Previous investigation | [54 — First-Time Usability Validation Protocol](54_FIRST_TIME_USABILITY_VALIDATION_PROTOCOL.md) |
+| Implementation decision | None |
+| Sprint / milestone / new version | None committed |
 
-> Este documento examina la **capacidad realmente observable en los artefactos publicados**, separándola de los contratos conceptuales y de las opciones futuras. La revisión de código es estática: no se ejecutó aquí la batería de tests ni el CLI.
+> This document examines **capabilities observable in published artifacts**, distinguishing them from conceptual contracts and future options. Code review is static: neither the test suite nor the CLI was executed during this investigation.
 
 ---
 
-## 1. Objetivo
+## 1. Objective
 
-Establecer una baseline contrastable para responder:
+Establish a verifiable baseline to answer:
 
-> ¿Qué puede utilizar realmente un desarrollador externo en GitHub Framework v0.10.0, qué requiere intervención humana y qué queda todavía como contrato conceptual?
+> What can an external developer actually use in GitHub Framework v0.10.0, what requires human involvement, and what remains a conceptual contract?
 
-Las tres áreas examinadas son:
+The three areas examined are:
 
-1. Repository Templates y disponibilidad material de Components.
-2. Framework Validator, cobertura y límites de ejecución.
-3. Existing Repository Adoption, desde Assessment hasta Integration, con soporte de Assisted Analysis.
+1. Repository Templates and actual Component availability.
+2. Framework Validator, its coverage, and execution boundaries.
+3. Existing Repository Adoption from Assessment to Integration, with Assisted Analysis support.
 
-La auditoría no presupone que deba crearse una CLI de adopción, un generador, un nuevo Template, un manifest o un sistema de remediación.
+The review does not assume that an adoption CLI, generator, new Template, manifest, or remediation system should be created.
 
-## 2. Método y fuentes
+## 2. Method and Sources
 
-Se examinaron archivos públicos de la rama `main` posterior a la PR #91, incluyendo:
+Public files from `main` after PR #91 were examined, including:
 
 - [Repository Template Library](../../framework/templates/repositories/README.md).
-- [Backend Template](../../framework/templates/repositories/backend/README.md) y su [metadata](../../framework/templates/repositories/backend/metadata.yml).
-- [FullStack Template](../../framework/templates/repositories/fullstack/README.md) y su [metadata](../../framework/templates/repositories/fullstack/metadata.yml).
-- [Documentation Template](../../framework/templates/repositories/documentation/README.md) y su [metadata](../../framework/templates/repositories/documentation/metadata.yml).
-- [Framework Validator, entry point](../../scripts/framework_validator/__main__.py).
+- [Backend Template](../../framework/templates/repositories/backend/README.md) and its [metadata](../../framework/templates/repositories/backend/metadata.yml).
+- [FullStack Template](../../framework/templates/repositories/fullstack/README.md) and its [metadata](../../framework/templates/repositories/fullstack/metadata.yml).
+- [Documentation Template](../../framework/templates/repositories/documentation/README.md) and its [metadata](../../framework/templates/repositories/documentation/metadata.yml).
+- [Framework Validator entry point](../../scripts/framework_validator/__main__.py).
 - [Automation Reference Implementation](../implementation/22_AUTOMATION_REFERENCE_IMPLEMENTATION.md).
-- [Assessment Guide](../../framework/adoption/README.md) y [Assessment Template](../../framework/adoption/assessment-template.md).
-- [Application Guide](../../framework/adoption/application/README.md) y [Application Record](../../framework/adoption/application/application-template.md).
-- [Integration Guide](../../framework/adoption/integration/README.md) y [Integration Record](../../framework/adoption/integration/integration-template.md).
-- [Assisted Analysis Guide](../../framework/adoption/assisted-analysis/README.md) y [Evidence Snapshot Template](../../framework/adoption/assisted-analysis/evidence-snapshot-template.md).
+- [Assessment Guide](../../framework/adoption/README.md) and [Assessment Template](../../framework/adoption/assessment-template.md).
+- [Application Guide](../../framework/adoption/application/README.md) and [Application Record](../../framework/adoption/application/application-template.md).
+- [Integration Guide](../../framework/adoption/integration/README.md) and [Integration Record](../../framework/adoption/integration/integration-template.md).
+- [Assisted Analysis Guide](../../framework/adoption/assisted-analysis/README.md) and [Evidence Snapshot Template](../../framework/adoption/assisted-analysis/evidence-snapshot-template.md).
 - [Assisted Analysis Core Verification](../implementation/52_ASSISTED_ANALYSIS_CORE_VERIFICATION.md).
 
-**Alcance de verificación:** existen y se han leído los artefactos indicados. Los resultados históricos de tests y replays se citan como evidencia previamente documentada, no como ejecuciones realizadas en esta auditoría.
+**Verification scope:** the listed artifacts exist and were read. Historical test and replay results are cited as previously documented Evidence, not as executions performed during this review.
 
-## 3. Repository Templates: capacidades y límites
+## 3. Repository Templates: Capabilities and Boundaries
 
-### 3.1 Disponibilidad comprobada
+### 3.1 Confirmed Availability
 
-La biblioteca canónica está en `framework/templates/repositories/` y define tres Templates:
+The canonical library is located at `framework/templates/repositories/` and defines three Templates:
 
 ```text
 TPL-BACKEND
@@ -59,142 +59,142 @@ TPL-FULLSTACK
 TPL-DOCUMENTATION
 ```
 
-Cada uno dispone de `README.md` y `metadata.yml`. La metadata identifica el Template, versión, estado, tipo de proyecto, madurez y Components clasificados en `required`, `recommended` y `optional`.
+Each provides a `README.md` and `metadata.yml`. Metadata identifies the Template, version, status, project type, maturity, and Components classified as `required`, `recommended`, and `optional`.
 
-Los Templates son **composiciones declarativas** de Components, no repositorios finalizados ni generadores ejecutables. El directorio físico `template/` es opcional y no debe crearse si no existen artefactos propios del Template que lo requieran.
+Templates are **declarative Component compositions**, not completed repositories or executable generators. The physical `template/` directory is optional and should not be created when the Template has no specific artifacts requiring it.
 
-### 3.2 Disponibilidad material comunicada
+### 3.2 Reported Material Availability
 
-| Template | Required implementados | Recommended implementados | Optional implementados | Total implementados |
+| Template | Required implemented | Recommended implemented | Optional implemented | Total implemented |
 |---|---:|---:|---:|---:|
 | `TPL-BACKEND` | 8/8 | 5/7 | 3/13 | 16/28 |
 | `TPL-FULLSTACK` | 9/9 | 4/8 | 3/11 | 16/28 |
 | `TPL-DOCUMENTATION` | 8/9 | 2/7 | 1/5 | 11/21 |
 
-**Procedencia:** secciones de disponibilidad declaradas en los README canónicos de los respectivos Templates. La cifra no equivale a ejecución actual del Validator ni a un recuento independiente de todo el inventario.
+**Source:** availability sections in the respective canonical Template READMEs. These figures do not constitute current Validator execution or an independent inventory-wide count.
 
-`TPL-DOCUMENTATION` identifica expresamente `README-LICENSE` como Required todavía `Conceptual`. Su contrato mínimo no es plenamente materializable solo con Components implementados. Los niveles `Required`, `Recommended` y `Optional` no deben confundirse con la clasificación física `Implemented` / `Conceptual`.
+`TPL-DOCUMENTATION` explicitly identifies `README-LICENSE` as a Required Component that remains `Conceptual`. Its minimum contract cannot be fully materialized using only implemented Components. The `Required`, `Recommended`, and `Optional` requirement levels must not be confused with the physical `Implemented` / `Conceptual` classification.
 
-### 3.3 Valor utilizable y límites
+### 3.3 Usable Value and Limitations
 
-**Disponible:** selección manual de composición según tipo de proyecto, consulta de contrato/versionado y referencia de Responsibilities para evaluación o construcción consciente.
+**Available:** manual composition selection by project type, consultation of versioned contracts, and Responsibility references for assessment or deliberate construction.
 
-**No implementado como herramienta:** generación automática de esqueleto, instanciación guiada y parametrización automática. Tampoco se ha observado un validador ejecutable específico para conformidad de Repository Templates en este análisis.
+**Not implemented as tooling:** automatic scaffolding generation, guided instantiation, or automatic parameterization. This review also found no executable validator specifically for Repository Template conformance.
 
-**Cuestión de madurez:** ¿es suficiente la composición declarativa para el público objetivo actual o existe una necesidad repetible de materialización/adopción más directa? No se decide aún.
+**Maturity question:** is a declarative composition sufficient for the current target audience, or is there a repeatable need for more direct materialization or adoption? No decision is made yet.
 
-## 4. Framework Validator: capacidades y límites
+## 4. Framework Validator: Capabilities and Boundaries
 
-### 4.1 Comportamiento verificable por código
+### 4.1 Behavior Verifiable from Code
 
-El entry point `scripts/framework_validator/__main__.py` define:
+The `scripts/framework_validator/__main__.py` entry point defines:
 
 ```text
 REPOSITORY_ROOT = path of this Framework checkout
 COMPONENTS_ROOT = REPOSITORY_ROOT / "framework" / "components"
 ```
 
-Su función `main()` descubre directorios de Component, lee `metadata.yml` y ejecuta validaciones de:
+Its `main()` function discovers Component directories, reads `metadata.yml`, and validates:
 
-- Common Core y campos opcionales;
-- identidad y unicidad de Component IDs;
-- maturity y dependencies;
-- extensiones Workflow: materialization, artifacts, artifact files, adoption y validation.
+- Common Core and optional fields;
+- Component ID identity and uniqueness;
+- maturity and dependencies;
+- Workflow extensions: materialization, artifacts, artifact files, adoption, and validation.
 
-El CLI imprime resultados y devuelve `0` cuando no encuentra errores, o `1` cuando encuentra errores. Se invoca desde la raíz del Framework mediante `python -m scripts.framework_validator`.
+The CLI prints results and returns `0` when no errors are found, or `1` when errors are found. It is invoked from the Framework root with `python -m scripts.framework_validator`.
 
-La Reference Implementation de v0.6.0 documenta una distribución de **21 Components físicos**: 4 Documentation, 12 README y 5 Workflow, junto con pruebas aisladas y dogfooding histórico.
+The v0.6.0 Reference Implementation documents **21 physical Components**: 4 Documentation, 12 README, and 5 Workflow, together with isolated tests and historical dogfooding.
 
-### 4.2 Límite estructural
+### 4.2 Structural Boundary
 
-El `COMPONENTS_ROOT` codificado apunta al propio checkout de GitHub Framework. El CLI no recibe en este entry point un consumer repository arbitrario como target de evaluación y **no** calcula automáticamente la satisfacción semántica de las Responsibilities de un consumer.
+The hard-coded `COMPONENTS_ROOT` points to the GitHub Framework checkout itself. This entry point does not accept an arbitrary consumer repository as the assessment target and **does not** automatically determine semantic Responsibility coverage for a consumer.
 
-Tampoco genera contenido, aplica cambios de Adoption ni valida Evidence Snapshots: este último límite se confirma en el documento de verificación del Assisted Analysis Core.
+It also does not generate content, apply Adoption changes, or validate Evidence Snapshots. The last boundary is confirmed by the Assisted Analysis Core verification document.
 
-**No inferir:** que el Validator esté defectuoso por no cumplir funciones que nunca pertenecieron a su alcance. Es una herramienta implementada de consistencia del catálogo del Framework, no un asesor automatizado de adopción.
+**Do not infer** that the Validator is defective because it does not perform functions outside its defined scope. It is an implemented consistency tool for the Framework catalog, not an automated adoption advisor.
 
-## 5. Existing Repository Adoption: capacidades y límites
+## 5. Existing Repository Adoption: Capabilities and Boundaries
 
-| Capacidad | Artifact principal | Trabajo que soporta | Boundary |
+| Capability | Primary artifact | Supported work | Boundary |
 |---|---|---|---|
-| Assessment Core | Guide + Structured Markdown Assessment Template | ANALYZE → ASSESS → REVIEW → DECIDE → REPORT | Resultado persistente, sin modificación del consumer |
-| Application Core | Guide + Application Record | SELECT, refresh Evidence, plan, review, apply in isolation y verify | Termina en verified candidate state; cambio humano y acotado |
-| Integration Core | Guide + Integration Record | Refresh stable base, drift, governance checks, review, integrate, verify stable state | Verified stable state o safe-stop/recovery-required state |
-| Assisted Analysis Core | Guide + Evidence Snapshot Template | Evidence determinista, bounded, source-traceable y read-only para las otras tres capabilities | No ejecuta evaluación semántica ni adopta decisiones |
+| Assessment Core | Guide + Structured Markdown Assessment Template | ANALYZE → ASSESS → REVIEW → DECIDE → REPORT | Persistent result without consumer modification |
+| Application Core | Guide + Application Record | SELECT, refresh Evidence, plan, review, apply in isolation, and verify | Ends at verified candidate state; bounded, human-directed change |
+| Integration Core | Guide + Integration Record | Refresh stable base, drift, governance checks, review, integrate, verify stable state | Verified stable state or safe-stop/recovery-required state |
+| Assisted Analysis Core | Guide + Evidence Snapshot Template | Deterministic, bounded, source-traceable, read-only Evidence for the other three capabilities | Does not perform semantic evaluation or make decisions |
 
-### 5.1 Estado de la implementación
+### 5.1 Implementation Status
 
-La documentación de implementación y verificación establece los cuatro Cores como entregados en las versiones publicadas, incluido el Assisted Analysis Core en v0.10.0. La verificación anterior registra replays A/B/C y AC-01…AC-73 como `PASS`.
+Implementation and verification documentation identifies all four Cores as delivered in published versions, including Assisted Analysis Core in v0.10.0. Earlier verification records A/B/C replays and AC-01…AC-73 as `PASS`.
 
-**Naturaleza de los entregables:** son guías y representaciones Markdown reutilizables. No hay un motor de ejecución de Assessment, Application o Integration demostrado por estos artifacts. El desarrollo humano debe recopilar evidencia, interpretarla y efectuar las operaciones permitidas respetando las condiciones de cada Guide.
+**Nature of the deliverables:** reusable Markdown guides and representations. These artifacts do not demonstrate an execution engine for Assessment, Application, or Integration. A human practitioner must collect Evidence, interpret it, and perform permitted operations under each Guide's conditions.
 
-`Application` puede contemplar cambios materiales **ejecutados por personas bajo revisión**; no debe describirse como necesariamente read-only. `Assisted Analysis` sí es explícitamente read-only.
+`Application` may include material changes **performed by people under review** and must not be described as necessarily read-only. `Assisted Analysis` is explicitly read-only.
 
-### 5.2 Valor y fricción potencial
+### 5.2 Value and Potential Friction
 
-**Valor actual:** modelo trazable, revisable, no destructivo por defecto, compatible con implementaciones no canónicas, decisiones humanas y gobierno del consumer.
+**Current value:** a traceable, reviewable model that is non-destructive by default, supports non-canonical implementations, preserves human decisions, and respects consumer governance.
 
-**Fricción candidata, no validada:** el tránsito manual entre cuatro Guides y sus registros puede exigir esfuerzo significativo para una primera adopción. UX-01 trató solo el punto de entrada; UX-02 tiene protocolo aprobado pero todavía no se ha ejecutado con participantes independientes.
+**Potential, unvalidated friction:** navigating between four Guides and their records may require significant effort for a first adoption. UX-01 covered only the entry point; UX-02 has an approved protocol but has not been executed with independent participants.
 
-**No asumir** que la longitud de las Guides demuestra por sí sola un fallo de usabilidad o justifica un motor automatizado.
+**Do not assume** that Guide length alone demonstrates a usability defect or justifies an automated engine.
 
-## 6. Mapa de madurez observable
+## 6. Observable Maturity Map
 
-| Área | Contrato documentado | Artifact reutilizable | Ejecución automatizada específica | Evidencia de uso |
+| Area | Documented contract | Reusable artifact | Dedicated automated execution | Usage Evidence |
 |---|---|---|---|---|
-| Repository Templates | Sí | Sí (metadata y README) | No documentada para instanciación | Reference Implementations / Discovery anteriores |
-| Framework Validator | Sí | Sí (código Python) | Sí, validación de Components del Framework | Tests y dogfooding de v0.6.0 documentados |
-| Assessment | Sí | Sí (Guide + Template) | No, evaluación humana | Experimentos y verificación de v0.7.0 |
-| Application | Sí | Sí (Guide + Record) | No, aplicación humana en aislamiento | Verificación de v0.8.0 |
-| Integration | Sí | Sí (Guide + Record) | No, integración bajo governance humana | Verificación de v0.9.0 |
-| Assisted Analysis | Sí | Sí (Guide + Snapshot) | No, recopilación documentada y humana | Replays y verificación de v0.10.0 |
+| Repository Templates | Yes | Yes (metadata and README) | Not documented for instantiation | Previous Reference Implementations / Discovery |
+| Framework Validator | Yes | Yes (Python code) | Yes, validation of Framework Components | Documented v0.6.0 tests and dogfooding |
+| Assessment | Yes | Yes (Guide + Template) | No; human evaluation | v0.7.0 experiments and verification |
+| Application | Yes | Yes (Guide + Record) | No; human application in isolation | v0.8.0 verification |
+| Integration | Yes | Yes (Guide + Record) | No; integration under human governance | v0.9.0 verification |
+| Assisted Analysis | Yes | Yes (Guide + Snapshot) | No; documented human collection | v0.10.0 replays and verification |
 
-Este mapa presenta la implementación **según lo leído**, no una certificación integral de ejecución de cada capability sobre cualquier repositorio externo.
+This map describes the implementation **as examined in the sources**, not an end-to-end execution certification for every capability against arbitrary external repositories.
 
-## 7. Hallazgos preliminares
+## 7. Preliminary Findings
 
-### FM-F01 — La composición y la materialización son dimensiones distintas
+### FM-F01 — Composition and Materialization Are Distinct Dimensions
 
-Los tres Repository Templates están especificados, pero no todos tienen disponibles todos sus Components. `TPL-DOCUMENTATION` contiene un gap material en Required. Esto no implica automáticamente falta de conformidad en un consumer con una implementación propia o equivalente.
+All three Repository Templates are specified, but not all their Components are available. `TPL-DOCUMENTATION` has a material gap among Required Components. That does not automatically imply non-conformance for a consumer with its own or an equivalent implementation.
 
-### FM-F02 — El Validator tiene un límite de objetivo deliberado
+### FM-F02 — The Validator Has a Deliberately Limited Target
 
-El CLI inspecciona metadata de `framework/components/` del proyecto, no Responsibilities en un consumer arbitrario. Una eventual ampliación requeriría justificar caso de uso, contrato y frontera semántica, no reutilizar el nombre del Validator para prometer conformidad automática.
+The CLI inspects metadata in this project's `framework/components/`, not Responsibilities in an arbitrary consumer. Any extension would require justification of its use case, contract, and semantic boundary rather than using the Validator's name to imply automatic conformance.
 
-### FM-F03 — Adoption es reutilizable sin ejecución automática
+### FM-F03 — Adoption Is Reusable Without Automatic Execution
 
-La cadena Assessment → Application → Integration está documentada y Assisted Analysis puede aportar Evidence. El valor actual está en las prácticas y los registros verificables; la automatización no forma parte del delivery publicado.
+The Assessment → Application → Integration chain is documented, and Assisted Analysis can supply Evidence. Current value lies in the practices and reviewable records; automation is not part of the published delivery.
 
-### FM-F04 — Hay una diferencia entre verificación arquitectónica y adopción autónoma
+### FM-F04 — Architectural Verification Does Not Establish Autonomous Adoption
 
-Las verificaciones históricas demuestran los límites y criterios del delivery correspondiente. No bastan por sí solas para concluir que una persona nueva pueda ejecutar todo el flujo sin acompañamiento. UX-02 permanece pendiente de ejecución.
+Historical verifications demonstrate the boundaries and criteria of their respective deliveries. On their own, they do not show that a new user can complete the entire workflow without guidance. UX-02 has yet to be executed.
 
-## 8. Hipótesis de investigación priorizadas
+## 8. Prioritized Research Hypotheses
 
-| Orden de investigación | Hipótesis | Evidencia necesaria antes de Solution Shaping |
+| Research order | Hypothesis | Evidence needed before Solution Shaping |
 |---|---|---|
-| 1 | La disponibilidad incompleta de Components en algunos Templates afecta al primer uso. | Escenarios reales de `TPL-DOCUMENTATION` y distinción entre implementación canónica y equivalente |
-| 2 | El recorrido manual de Adoption tiene puntos de fricción repetibles entre registros. | Observación de un consumer y trazabilidad entre Assessment, Application, Integration y Evidence Snapshot |
-| 3 | Los usuarios interpretan erróneamente el alcance del Framework Validator. | Tareas/documentación que muestren expectativas reales sobre qué valida y sobre qué repositorio |
-| 4 | Podría existir una necesidad de automatizar tareas deterministas concretas. | Repetición de operaciones, coste observado y límites semánticos; no derivarla solo de preferencias |
+| 1 | Incomplete Component availability in some Templates affects initial use. | Real `TPL-DOCUMENTATION` scenarios distinguishing canonical and equivalent implementations |
+| 2 | The manual Adoption workflow has repeatable friction points between records. | Observation of a consumer and traceability across Assessment, Application, Integration, and Evidence Snapshot |
+| 3 | Users misinterpret the scope of the Framework Validator. | Tasks or documentation exposing actual expectations about what it validates and which repository |
+| 4 | A need may exist to automate specific deterministic tasks. | Repeated operations, observed cost, and semantic boundaries; not preferences alone |
 
-El orden es **de investigación**, no de implementación, y no implica escoger un próximo producto, release o backlog item.
+This is an order **for investigation**, not implementation, and does not select the next product increment, release, or backlog item.
 
-## 9. Próxima comprobación recomendada
+## 9. Recommended Next Check
 
-Antes de crear funcionalidades, realizar un **Template Materialization Reality Check** acotado:
+Before building features, perform a bounded **Template Materialization Reality Check**:
 
-1. Revisar `TPL-DOCUMENTATION` y su gap `README-LICENSE`.
-2. Distinguir qué parte de ese gap afecta al Framework y cuál puede satisfacer un consumer con materialización propia.
-3. Examinar evidencia de casos reales ya documentados para evitar repetir experimentos.
-4. Determinar si aparece una necesidad reproducible de nuevo Component, cambio de requirement level o ninguna modificación.
+1. Review `TPL-DOCUMENTATION` and its `README-LICENSE` gap.
+2. Distinguish which part of the gap affects the Framework and which can be satisfied by a consumer-specific implementation.
+3. Examine Evidence from previously documented real cases to avoid repeating experiments.
+4. Determine whether a reproducible need arises for a new Component, a requirement-level change, or no change.
 
-La investigación debe mantenerse read-only respecto a los consumers y registrar cualquier incertidumbre. Si la evidencia apunta a un cambio, abrir Solution Shaping por separado antes de definir Delivery Scope.
+The investigation should remain read-only regarding consumers and explicitly record uncertainty. If Evidence supports a change, begin Solution Shaping separately before defining Delivery Scope.
 
-## 10. Conclusión
+## 10. Conclusion
 
-GitHub Framework v0.10.0 cuenta con Templates estructurados, un Validator ejecutable orientado a su propio catálogo y un modelo completo de Adoption con artefactos Markdown revisables. La ausencia de ejecución automática en determinadas capacidades es un límite **de alcance**, no necesariamente un defecto.
+GitHub Framework v0.10.0 provides structured Templates, an executable Validator focused on its own catalog, and a complete Adoption model with reviewable Markdown artifacts. The lack of automatic execution in certain capabilities is a **scope boundary**, not necessarily a defect.
 
-La siguiente cuestión de madurez con evidencia tangible es la diferencia entre contrato conceptual y disponibilidad material de Components, especialmente en `TPL-DOCUMENTATION`.
+The next maturity question with tangible Evidence concerns the difference between conceptual contracts and actual Component availability, particularly in `TPL-DOCUMENTATION`.
 
-**Estado:** Discovery inicial completado; sin aceptación de solución, sin Sprint y sin release comprometida.
+**Status:** initial Discovery completed; no solution approved, Sprint opened, or release committed.
