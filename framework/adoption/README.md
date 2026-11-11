@@ -846,15 +846,15 @@ OMIT
 
 ## 21. Assessment Completion
 
-Un assessment puede marcarse:
+An Assessment may be marked:
 
 ```text
 Complete
 ```
 
-cuando todas las Responsibilities definidas por el Repository Template seleccionado hayan sido evaluadas.
+when all Responsibilities defined by the selected Repository Template have been evaluated.
 
-Cada Responsibility debe disponer de:
+Each Responsibility must include:
 
 ```text
 State
@@ -864,28 +864,28 @@ Evaluation Rationale
 Decision Status
 ```
 
-Cuando:
+When:
 
 ```text
 Decision Status
     Resolved
 ```
 
-deben existir además:
+the following must also be present:
 
 ```text
 Adoption Decision
 Decision Rationale
 ```
 
-Cuando:
+When:
 
 ```text
 Decision Status
     Needs Further Evaluation
 ```
 
-deben existir:
+the following must be present:
 
 ```text
 Uncertainty
@@ -895,9 +895,9 @@ why the decision remains unresolved
 
 ---
 
-## 22. Complete no significa Fully Resolved
+## 22. Complete Does Not Mean Fully Resolved
 
-Debe mantenerse:
+Maintain the distinction:
 
 ```text
 Assessment Complete
@@ -905,53 +905,53 @@ Assessment Complete
 All Adoption Decisions Resolved
 ```
 
-Un assessment puede estar completo aunque contenga Responsibilities con:
+An Assessment may be complete while some Responsibilities remain:
 
 ```text
 Needs Further Evaluation
 ```
 
-si la incertidumbre y el motivo de la decisión no resuelta están correctamente documentados.
+provided that the uncertainty and the reason for each unresolved decision are adequately documented.
 
-`Complete` describe que el assessment ha recorrido todas las Responsibilities previstas.
+`Complete` indicates that the Assessment has evaluated all expected Responsibilities.
 
-No certifica que todas las decisiones estén cerradas.
+It does not certify that every decision is resolved.
 
 ---
 
 ## 23. Human Review
 
-Existing Repository Adoption Assessment registra una evaluación humana trazable.
+Existing Repository Adoption Assessment records a traceable human evaluation.
 
-No constituye:
+It is not:
 
 ```text
 automated certification
 ```
 
-La revisión debe comprobar especialmente:
+Review should specifically verify:
 
-- suficiencia de Evidence;
-- coherencia entre Evidence y State;
-- independencia entre State y Applicability;
-- reconocimiento de implementaciones equivalentes o distribuidas;
-- incertidumbre no resuelta;
-- coherencia entre evaluación y Adoption Decision;
-- suficiencia de Evaluation Rationale y Decision Rationale.
+- sufficiency of Evidence;
+- consistency between Evidence and State;
+- independence of State and Applicability;
+- recognition of equivalent or distributed implementations;
+- unresolved uncertainty;
+- consistency between evaluation and Adoption Decision;
+- sufficiency of Evaluation Rationale and Decision Rationale.
 
-Una validación futura podrá asistir en comprobaciones deterministas, pero no sustituye la revisión semántica definida por este Assessment Core.
+Future validation may assist with deterministic checks, but cannot replace the semantic review defined by this Assessment Core.
 
 ---
 
-## 24. Uso del Assessment Template
+## 24. Using the Assessment Template
 
-El artifact reutilizable para registrar el assessment es:
+The reusable artifact for recording an Assessment is:
 
 ```text
 framework/adoption/assessment-template.md
 ```
 
-La relación entre ambos artifacts es:
+The relationship between the two artifacts is:
 
 ```text
 Guide
@@ -963,7 +963,7 @@ Template
         what was assessed
 ```
 
-Flujo recomendado:
+Recommended workflow:
 
 ```text
 1. Copy the Assessment Template
@@ -983,7 +983,7 @@ Flujo recomendado:
 8. Preserve the assessment as the reviewable outcome
 ```
 
-El Framework no impone en este delivery:
+This delivery does not impose a:
 
 ```text
 consumer storage path
@@ -992,11 +992,11 @@ mandatory completed-assessment filename
 
 ---
 
-## 25. Resultado Persistente
+## 25. Persistent Outcome
 
-El assessment completado debe conservar suficiente contexto para ser interpretado posteriormente.
+A completed Assessment must preserve sufficient context to remain interpretable later.
 
-Como mínimo debe poder identificarse:
+At minimum, it must identify:
 
 ```text
 Consumer Repository
@@ -1007,7 +1007,7 @@ Assessment Date
 Assessment Status
 ```
 
-El resultado persistente documenta:
+The persistent outcome documents:
 
 ```text
 what was observed
@@ -1021,19 +1021,19 @@ why those decisions were made
 
 ## 25.1 Application Core
 
-El Application Core reutilizable se documenta en:
+The reusable Application Core is documented in:
 
 ```text
 framework/adoption/application/README.md
 ```
 
-El artifact para registrar una Application concreta es:
+The artifact for recording an individual Application is:
 
 ```text
 framework/adoption/application/application-template.md
 ```
 
-La relación entre ambos cores es:
+The relationship between these two cores is:
 
 ```text
 Assessment Core
@@ -1043,14 +1043,14 @@ optional Application Core
     plans, applies in isolation and verifies
 ```
 
-Application consume una Adoption Decision con:
+Application consumes an Adoption Decision with:
 
 ```text
 Decision Status
     Resolved
 ```
 
-y conserva como principios:
+and maintains the following principles:
 
 ```text
 Evidence before Mutation
@@ -1062,7 +1062,7 @@ Human Review
 No Mutation is a Valid Outcome
 ```
 
-El Application Core soporta:
+Application Core supports:
 
 ```text
 CREATE
@@ -1073,7 +1073,7 @@ DEFER
 REJECTED
 ```
 
-y Verification Results:
+and Verification Results:
 
 ```text
 PASS
@@ -1083,22 +1083,21 @@ FAIL
 
 ---
 
-
 ## 25.2 Integration Core
 
-El Integration Core reutilizable se documenta en:
+The reusable Integration Core is documented in:
 
 ```text
 framework/adoption/integration/README.md
 ```
 
-El artifact para registrar una Integration concreta es:
+The artifact for recording an individual Integration is:
 
 ```text
 framework/adoption/integration/integration-template.md
 ```
 
-La relación entre las tres capabilities es:
+The relationship between the three capabilities is:
 
 ```text
 Assessment Core
@@ -1111,13 +1110,13 @@ optional Integration Core
     accepts into stable state and verifies
 ```
 
-Integration consume:
+Integration consumes:
 
 ```text
 verified candidate state
 ```
 
-y conserva como principios:
+and maintains the following principles:
 
 ```text
 Verified Candidate before Integration
@@ -1130,7 +1129,7 @@ Verify Stable State after Integration
 Represent Recovery without Automating it
 ```
 
-El Integration Core soporta decisiones:
+Integration Core supports the following decisions:
 
 ```text
 INTEGRATE
@@ -1139,7 +1138,7 @@ REPLAN
 REJECT
 ```
 
-y final states:
+and final states:
 
 ```text
 INTEGRATED
@@ -1149,26 +1148,25 @@ REJECTED
 RECOVERY REQUIRED
 ```
 
-La capability no configura la governance del consumer, no prescribe una merge strategy universal y no automatiza recovery.
-
+This capability does not configure consumer governance, prescribe a universal merge strategy, or automate recovery.
 
 ## 25.3 Assisted Analysis Core
 
-El Assisted Analysis Core reutilizable se documenta en:
+The reusable Assisted Analysis Core is documented in:
 
 ```text
 framework/adoption/assisted-analysis/README.md
 ```
 
-El artifact para registrar una Evidence Snapshot concreta es:
+The artifact for recording an individual Evidence Snapshot is:
 
 ```text
 framework/adoption/assisted-analysis/evidence-snapshot-template.md
 ```
 
-Assisted Analysis no es una cuarta fase del lifecycle.
+Assisted Analysis is not a fourth lifecycle stage.
 
-Su relación con Existing Repository Adoption es transversal:
+Its relationship to Existing Repository Adoption is cross-cutting:
 
 ```text
                  Assisted Analysis
@@ -1177,7 +1175,7 @@ Su relación con Existing Repository Adoption es transversal:
 Assessment    Application    Integration
 ```
 
-Puede apoyar:
+It can support:
 
 ```text
 Assessment
@@ -1191,7 +1189,7 @@ Integration
     Integration-condition Evidence
 ```
 
-Conserva como principios:
+It maintains the following principles:
 
 ```text
 Facts before Evaluation
@@ -1204,13 +1202,13 @@ Human Review owns Semantic Meaning
 Representation before Tooling
 ```
 
-La representación reusable es:
+The reusable representation is:
 
 ```text
 Structured Markdown Evidence Snapshot
 ```
 
-Assisted Analysis no produce automáticamente:
+Assisted Analysis does not automatically produce:
 
 ```text
 Responsibility State
@@ -1223,8 +1221,7 @@ Integration Decision
 Final Integration State
 ```
 
-Tampoco introduce CLI, GitHub Actions, consumer mutation, Schema, Manifest, Componentization ni Framework Validator extension.
-
+Nor does it introduce a CLI, GitHub Actions, consumer mutation, Schema, Manifest, Componentization, or Framework Validator extension.
 
 ## 26. Out of Scope
 
