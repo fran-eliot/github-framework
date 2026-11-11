@@ -1,99 +1,99 @@
 # 59 — Existing Repository Adoption End-to-End Feasibility Check
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Proyecto | GitHub Framework |
-| Fecha | 2026-11-11 |
-| Fase | Discovery — bounded workflow check |
+| Project | GitHub Framework |
+| Date | 2026-11-11 |
+| Phase | Discovery — bounded workflow check |
 | Consumer | [fran-eliot/seniormeet](https://github.com/fran-eliot/seniormeet) |
 | Consumer reference | `b84b0de246d459caf594a5cdacbe8fccfa68698a` |
 | Template | `TPL-BACKEND v0.1.0` |
 | Responsibility | `README-QUICK-START` (`Required`) |
-| Assessment status | `In Progress`; solo una Responsibility explorada |
-| Application | Not Started — blocked by unresolved Decision and unverified runtime facts |
+| Assessment status | `In Progress`; only one Responsibility examined |
+| Application | Not Started — blocked by an unresolved Decision and unverified runtime facts |
 | Integration | Not Started — no verified candidate |
 | Consumer mutation | **NONE** |
 
-> Este trabajo recorre la lógica de las puertas de decisión entre Assessment, Application e Integration, pero no simula una Application completada ni una integración inexistente. No es un Assessment completo ni prueba de ejecución del consumer.
+> This study examines the decision gates between Assessment, Application, and Integration. It does not pretend that Application was completed or that an Integration occurred. It is neither a complete Assessment nor a runtime test of the consumer.
 
 ---
 
-## 1. Pregunta experimental
+## 1. Experimental Question
 
-¿Puede una adopción acotada detectar qué falta para avanzar desde evidencia objetiva hacia una Application revisable, y detenerse con seguridad antes de mutar un repositorio sin decisiones suficientes?
+Can a bounded adoption review identify what is missing before objective Evidence can support a reviewable Application, and stop safely before modifying a repository when the necessary decisions are unavailable?
 
-El objetivo es comprobar los **hand-offs y safe-stops** del Framework, no cumplir todas las Responsibilities de `TPL-BACKEND` ni corregir SeniorMeet.
+The goal is to examine the Framework's **hand-offs and safe-stops**, not to satisfy every `TPL-BACKEND` Responsibility or fix SeniorMeet.
 
-Se utilizan:
+The following sources are used:
 
-- [TPL-BACKEND](../../framework/templates/repositories/backend/README.md) y [metadata](../../framework/templates/repositories/backend/metadata.yml).
-- [Assessment Guide](../../framework/adoption/README.md) y [Assessment Template](../../framework/adoption/assessment-template.md).
-- [Application Guide](../../framework/adoption/application/README.md) y [Application Record](../../framework/adoption/application/application-template.md).
-- [Integration Guide](../../framework/adoption/integration/README.md) y [Integration Record](../../framework/adoption/integration/integration-template.md).
-- [Assisted Analysis Guide](../../framework/adoption/assisted-analysis/README.md) y [Evidence Snapshot Template](../../framework/adoption/assisted-analysis/evidence-snapshot-template.md).
+- [TPL-BACKEND](../../framework/templates/repositories/backend/README.md) and its [metadata](../../framework/templates/repositories/backend/metadata.yml).
+- [Assessment Guide](../../framework/adoption/README.md) and [Assessment Template](../../framework/adoption/assessment-template.md).
+- [Application Guide](../../framework/adoption/application/README.md) and [Application Record](../../framework/adoption/application/application-template.md).
+- [Integration Guide](../../framework/adoption/integration/README.md) and [Integration Record](../../framework/adoption/integration/integration-template.md).
+- [Assisted Analysis Guide](../../framework/adoption/assisted-analysis/README.md) and [Evidence Snapshot Template](../../framework/adoption/assisted-analysis/evidence-snapshot-template.md).
 
-## 2. Consumer baseline y alcance
+## 2. Consumer Baseline and Scope
 
-Se fija el estado de SeniorMeet en el commit:
+The SeniorMeet state is fixed at commit:
 
 ```text
 b84b0de246d459caf594a5cdacbe8fccfa68698a
 ```
 
-No se utiliza el estado mutable de `master` para inferir cómo se encuentra hoy el proyecto.
+The mutable state of `master` is not used to infer the project's current condition.
 
-El Template seleccionado es `TPL-BACKEND v0.1.0`, estado `Experimental`, madurez mínima recomendada `L2`. Su composición identifica `README-QUICK-START` entre los 8 Required Components.
+The selected Template is `TPL-BACKEND v0.1.0`, with status `Experimental` and recommended minimum maturity `L2`. Its composition includes `README-QUICK-START` among eight Required Components.
 
-En su README, la responsabilidad corresponde a permitir una primera ejecución documentada. Evaluamos únicamente esta responsabilidad; la idoneidad completa de `TPL-BACKEND` para SeniorMeet y el grado real de madurez del consumer no se determinan aquí.
+The Template describes this Responsibility as enabling a documented first run. Only this Responsibility is evaluated here; neither the Template's overall suitability for SeniorMeet nor the consumer's actual maturity is determined.
 
-## 3. Assessment — Detected Facts y Evidence
+## 3. Assessment — Detected Facts and Evidence
 
-| ID | Hecho verificado | Evidence |
+| ID | Verified Fact | Evidence |
 |---|---|---|
-| A-01 | `README.md` tiene el nombre `SENIOR MEET` y la descripción `Red Social para personas mayores`; no contiene pasos de instalación o ejecución. | [README del consumer](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/README.md) |
-| A-02 | `pom.xml` define un proyecto Maven/Spring Boot 3.2.2 con `java.version=21`. | [pom.xml](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/pom.xml) |
-| A-03 | `Dockerfile` utiliza `maven:3.8.3-openjdk-17` y contiene comentarios con ejemplos de `docker build` / `docker run`. | [Dockerfile](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/Dockerfile) |
-| A-04 | El mismo Dockerfile hace referencia a `target/backend-0.0.1-SNAPSHOT.jar`, mientras la metadata Maven declara `artifactId=seniormeet` y `version=0.0.1`. | [Dockerfile](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/Dockerfile) y [pom.xml](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/pom.xml) |
-| A-05 | `docker-compose.yml` declara servicios `mysql` y `spring-app`, pero el README no referencia ese archivo ni explica cómo utilizarlo. | [docker-compose.yml](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/docker-compose.yml) y [README](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/README.md) |
+| A-01 | `README.md` contains the name `SENIOR MEET` and the description `Red Social para personas mayores`; it has no installation or startup steps. | [Consumer README](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/README.md) |
+| A-02 | `pom.xml` defines a Maven/Spring Boot 3.2.2 project with `java.version=21`. | [pom.xml](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/pom.xml) |
+| A-03 | The `Dockerfile` uses `maven:3.8.3-openjdk-17` and contains commented examples of `docker build` / `docker run`. | [Dockerfile](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/Dockerfile) |
+| A-04 | The same Dockerfile references `target/backend-0.0.1-SNAPSHOT.jar`, while Maven metadata declares `artifactId=seniormeet` and `version=0.0.1`. | [Dockerfile](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/Dockerfile) and [pom.xml](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/pom.xml) |
+| A-05 | `docker-compose.yml` declares `mysql` and `spring-app` services, but the README neither references that file nor explains how to use it. | [docker-compose.yml](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/docker-compose.yml) and [README](https://github.com/fran-eliot/seniormeet/blob/b84b0de246d459caf594a5cdacbe8fccfa68698a/README.md) |
 
-Estos hechos son observaciones estáticas. Ni el build de Maven ni Docker fueron ejecutados. Las diferencias de Java y del nombre del artefacto son **riesgos a verificar**, no pruebas de que todos los caminos de ejecución fallen.
+These are static observations. Neither a Maven build nor Docker was executed. The Java-version and artifact-name discrepancies are **risks requiring verification**, not proof that all startup paths fail.
 
-## 4. Assessment — Evaluación limitada
+## 4. Assessment — Bounded Evaluation
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
 | Responsibility | `README-QUICK-START` |
 | Requirement Level | `Required` |
 | State | `Partial` — provisional |
 | Applicability | `Applicable` |
-| Implementation Characteristics | `Distributed`, `Own` (características descriptivas) |
-| Uncertainty | Comandos efectivos, prerequisites, compatibilidad de JDK y artifact de build, resultado reproducible |
+| Implementation Characteristics | `Distributed`, `Own` (descriptive characteristics) |
+| Uncertainty | Working commands, prerequisites, JDK and build-artifact compatibility, reproducible execution |
 | Decision Status | `Needs Further Evaluation` |
 | Adoption Decision | `—` |
 
-**Evaluation Rationale.** El README no ofrece una vía de inicio rápido. Existen indicios de ejecución en artefactos técnicos y comentarios, lo que constituye cobertura documental fragmentaria, pero no un Quick Start completo ni verificado. `Partial` se utiliza de manera **provisional** bajo el principio Responsibility over File; una revisión humana podría confirmar `Missing` si esos indicios no aportan cobertura utilizable.
+**Evaluation Rationale.** The README does not provide a quick-start procedure. Technical artifacts and comments contain some execution hints, providing fragmented documentation coverage rather than a complete, verified Quick Start. The `Partial` classification is **provisional** under the Responsibility over File principle; human review might instead confirm `Missing` if those hints do not provide usable coverage.
 
-La existencia de un `Dockerfile` no garantiza que los comandos funcionen, y la ausencia de instrucciones en README no autoriza por sí sola una decisión automática `ADD` o `ADAPT`.
+The existence of a `Dockerfile` does not ensure its commands work, and missing README instructions do not automatically authorize an `ADD` or `ADAPT` Decision.
 
-**Uncertainty pendiente:** identificar el método de ejecución soportado y verificarlo en entorno aislado antes de proponer instrucciones al consumer.
+**Outstanding Uncertainty:** identify the supported startup method and verify it in an isolated environment before proposing instructions to the consumer.
 
-### Decisión de Assessment
+### Assessment Decision
 
-El estado es `In Progress` para este ensayo acotado. La decisión permanece `Needs Further Evaluation` y no se crea un registro de Assessment completo de las 28 Responsibilities, ni una aprobación humana ficticia.
+This bounded exercise remains `In Progress`. Its Decision Status is `Needs Further Evaluation`. No complete Assessment record covering all 28 Responsibilities has been created, and no human approval is implied.
 
-## 5. Assisted Analysis — Alcance efectivo
+## 5. Assisted Analysis — Actual Scope
 
-Para esta comprobación se han recopilado datos **read-only** con referencias a los archivos y commit del consumer.
+This review collected **read-only** data with references to the consumer's files and pinned commit.
 
-La Evidence se presenta en una tabla de hechos y fuentes, pero **no se afirma haber ejecutado una herramienta automática de Assisted Analysis ni haber completado un Evidence Snapshot formal**.
+Evidence is recorded in a table of facts and sources, but **there is no claim that an automated Assisted Analysis tool was executed or that a formal Evidence Snapshot was completed**.
 
-Limitación detectada: pasar desde hechos observables a instrucciones de ejecución exige verificación técnica y evaluación semántica. El Framework permite preservar ambas como pendientes sin traducirlas a conclusiones automáticas.
+Identified limitation: moving from observed facts to working startup instructions requires technical verification and semantic evaluation. The Framework can keep both pending without converting them into automatic conclusions.
 
-## 6. Application — Gate de entrada
+## 6. Application — Entry Gate
 
-El Application Core requiere una **Adoption Decision resuelta** para la Responsibility seleccionada y recomienda refrescar Evidence antes de planificar operaciones.
+Application Core requires a **resolved Adoption Decision** for the selected Responsibility and recommends refreshing Evidence before planning operations.
 
-En este caso:
+In this case:
 
 ```text
 README-QUICK-START
@@ -106,26 +106,26 @@ README-QUICK-START
        STOP / DEFER
 ```
 
-No procede seleccionar `CREATE` ni `MODIFY` aún.
+Selecting `CREATE` or `MODIFY` is not yet justified.
 
-Un eventual Application Intent podría plantearse, **solo como hipótesis para revisión futura**, en términos de documentar un procedimiento de arranque reproducible compatible con el estado técnico real y preservando el README existente. No constituye un Change Set aprobado.
+A possible Application Intent could be considered **only as a hypothesis for future review**: document a reproducible startup process compatible with the actual technical state while preserving the existing README. This is not an approved Change Set.
 
-### Evidencia necesaria antes de retomar Application
+### Evidence Needed Before Resuming Application
 
-1. Determinar el flujo de ejecución recomendado por quien mantiene SeniorMeet.
-2. Verificar prerequisitos Java, base de datos y herramientas.
-3. Validar si el build produce el artefacto referenciado por Docker.
-4. Confirmar las instrucciones en una ejecución aislada, sin usar credenciales ni datos reales.
-5. Completar la Evaluation Rationale y resolver humanamente la Adoption Decision.
-6. Refrescar Evidence respecto al estado del consumer sobre el que se plantearía actuar.
+1. Determine the startup process recommended by the SeniorMeet maintainer.
+2. Verify Java, database, and tool prerequisites.
+3. Check whether the build produces the artifact referenced by Docker.
+4. Verify the instructions in an isolated execution without real credentials or data.
+5. Complete the Evaluation Rationale and resolve the Adoption Decision through human review.
+6. Refresh Evidence against the consumer state that would actually be modified.
 
-No se creó rama en SeniorMeet y no existe Application Result, verified candidate ni patch de adopción.
+No branch was created in SeniorMeet; there is no Application Result, verified candidate, or adoption patch.
 
-## 7. Integration — Gate de entrada
+## 7. Integration — Entry Gate
 
-El Integration Core necesita un `VERIFIED` candidate, Application Outcome, Candidate Reference y evidencias suficientes de verificación.
+Integration Core requires a `VERIFIED` candidate, an Application Outcome, a Candidate Reference, and sufficient verification Evidence.
 
-Aquí:
+Here:
 
 ```text
 Application not started
@@ -137,33 +137,33 @@ No Application verification
 Integration: NOT STARTED
 ```
 
-No procede consultar mergeability ni emitir una declaración de `INTEGRATED`, `VERIFIED STABLE STATE` o `RELEASE READY`.
+It would be premature to check mergeability or declare `INTEGRATED`, `VERIFIED STABLE STATE`, or `RELEASE READY`.
 
-Este **safe-stop** es un resultado válido del ensayo: la arquitectura impide dar por completada una integración sin su entrada verificable.
+This **safe-stop** is a valid experimental outcome: the architecture does not allow Integration to be treated as complete without verifiable input.
 
-## 8. Fricciones y hallazgos
+## 8. Friction and Findings
 
-| ID | Observación | Implicación |
+| ID | Observation | Implication |
 |---|---|---|
-| E2E-F01 | El modelo permite conservar hechos, interpretación provisional y decisión no resuelta de forma separada. | Fortaleza de trazabilidad |
-| E2E-F02 | Las instrucciones de ejecución no pueden inferirse de forma segura de comentarios Docker, metadata Maven o compose sin validación. | Necesidad de revisión técnica previa |
-| E2E-F03 | Una evaluación parcial no habilita Application. | Gate respetado; no autorizar mutaciones |
-| E2E-F04 | Sin candidate verificado no existe Integration válida. | Gate respetado |
-| E2E-F05 | Sigue sin existir evidencia empírica sobre tiempo o dificultad de uso para desarrolladores externos. | No justificar tooling únicamente por esta prueba |
-| E2E-F06 | La progresión práctica desde un Assessment incompleto puede terminar legítimamente en `STOP / DEFER`. | Resultado de investigación, no fallo de la capability |
+| E2E-F01 | The model preserves facts, provisional interpretation, and unresolved decisions separately. | Traceability strength |
+| E2E-F02 | Working startup instructions cannot safely be inferred from Docker comments, Maven metadata, or Compose without verification. | Prior technical review needed |
+| E2E-F03 | A partial evaluation does not authorize Application. | Entry gate respected; no mutation authorized |
+| E2E-F04 | Valid Integration requires a verified candidate. | Entry gate respected |
+| E2E-F05 | No empirical evidence yet measures the time or difficulty experienced by external developers. | Do not justify new tooling from this study alone |
+| E2E-F06 | Progress from an incomplete Assessment can legitimately end in `STOP / DEFER`. | Research outcome, not a capability failure |
 
-## 9. Resultado y próxima comprobación
+## 9. Result and Next Check
 
-**Resultado obtenido:** se ejecutó un análisis read-only acotado sobre un consumer real, se registró una evaluación provisional para una Responsibility Required y se aplicaron conceptualmente los gates de Application e Integration, que **detienen el recorrido correctamente por falta de precondiciones**.
+**Observed result:** a bounded read-only review was conducted against a real consumer; a provisional evaluation was recorded for one Required Responsibility; and the Application and Integration gates were considered conceptually. Both **stop the workflow because required preconditions are missing**.
 
-**No se completó** un Adoption end-to-end con cambios reales, candidate y verificación estable. Tampoco se demuestra que todo usuario pueda completar ese recorrido de forma autónoma.
+An end-to-end Adoption involving real changes, a candidate, and stable-state verification **was not completed** in this exercise. Nor does this demonstrate that any user can follow the workflow independently.
 
-El siguiente experimento útil requerirá un caso con Decision `Resolved` revisada y una Application suficientemente pequeña y segura para poder comprobar **plan → isolated change → verify → integration review**. Antes deberá acordarse expresamente la frontera de mutación del consumer y la disponibilidad de pruebas.
+A useful future experiment would require a human-reviewed `Resolved` Decision and an Application sufficiently small and safe to assess **plan → isolated change → verify → integration review**. The consumer mutation boundary and available checks would need explicit agreement first.
 
-No se abre Sprint, milestone, versión ni Delivery Scope. No se altera SeniorMeet.
+No Sprint, milestone, version, or Delivery Scope is opened. SeniorMeet remains unchanged.
 
-## 10. Conclusión
+## 10. Conclusion
 
-La investigación encuentra valor operativo en los safe-stops y la trazabilidad del modelo de Adoption, pero no aporta todavía evidencia de eficiencia end-to-end.
+The study finds operational value in the Adoption model's safe-stops and traceability, but provides no new evidence of end-to-end efficiency.
 
-La cuestión prioritaria ya no es redactar una nueva Guide genérica sino **conseguir un caso de Application verdaderamente verificable**, sin convertir una decisión provisional en automatización ni forzar una modificación de repositorio.
+The priority question is no longer whether to write another general-purpose Guide, but **how to obtain a genuinely verifiable Application case**, without turning a provisional Decision into automation or forcing a consumer modification.
