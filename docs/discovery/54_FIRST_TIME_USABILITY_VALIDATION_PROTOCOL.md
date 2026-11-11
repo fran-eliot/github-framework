@@ -1,30 +1,30 @@
 # 54 — First-Time Usability Validation Protocol
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Proyecto | GitHub Framework |
-| Fecha de preparación | 2026-11-11 |
-| Estado | Prepared — Not Executed |
-| Experimento | UX-02 — First-Time Usability Validation |
-| Referencia del Framework | `main` después de PR #90; fijar commit SHA al ejecutar |
-| Discovery precedente | [53_FIRST_TIME_USER_EXPERIENCE_DISCOVERY.md](53_FIRST_TIME_USER_EXPERIENCE_DISCOVERY.md) |
-| Consumer propuesto | [fran-eliot/seniormeet](https://github.com/fran-eliot/seniormeet) |
+| Project | GitHub Framework |
+| Preparation date | 2026-11-11 |
+| Status | Prepared — Not Executed |
+| Experiment | UX-02 — First-Time Usability Validation |
+| Framework reference | `main` after PR #90; pin a commit SHA at execution time |
+| Previous Discovery | [53_FIRST_TIME_USER_EXPERIENCE_DISCOVERY.md](53_FIRST_TIME_USER_EXPERIENCE_DISCOVERY.md) |
+| Proposed consumer | [fran-eliot/seniormeet](https://github.com/fran-eliot/seniormeet) |
 | Consumer reference | `b84b0de246d459caf594a5cdacbe8fccfa68698a` |
-| Baseline de Template | `TPL-BACKEND v0.1.0` (`Experimental`, `L2`) |
+| Template baseline | `TPL-BACKEND v0.1.0` (`Experimental`, `L2`) |
 
-> Este documento define un **protocolo de investigación**, no resultados de una prueba con participantes. No compromete Delivery Scope, Sprint, milestone, versión ni modificación del consumer.
+> This document defines a **research protocol**, not the results of testing with participants. It does not commit a Delivery Scope, Sprint, milestone, version, or consumer modification.
 
 ---
 
-## 1. Contexto y evidencia previa
+## 1. Context and Previous Evidence
 
-UX-01 identificó una ruta de entrada poco explícita entre el README, la biblioteca de Repository Templates y el Assessment Template. También confirmó que los Templates y su metadata canónica existen.
+UX-01 identified an insufficiently explicit entry path connecting the README, the Repository Template Library, and the Assessment Template. It also confirmed that the Templates and their canonical metadata exist.
 
-La PR #90 incorporó enlaces y orientación en ambos README públicos y en la Adoption Guide. UX-02 pretende **comprobar el recorrido después de ese cambio** sin dar por supuesto que la fricción ha desaparecido para personas nuevas.
+PR #90 added links and orientation to both public READMEs and the Adoption Guide. UX-02 aims to **check the user journey after that change**, without assuming that the friction has disappeared for newcomers.
 
-Referencias principales:
+Primary references:
 
-- [README (EN)](../../README.md) y [README (ES)](../../README_es.md)
+- [README (EN)](../../README.md) and [README (ES)](../../README_es.md)
 - [Repository Template Library](../../framework/templates/repositories/README.md)
 - [Existing Repository Adoption Guide](../../framework/adoption/README.md)
 - [Assessment Template](../../framework/adoption/assessment-template.md)
@@ -32,111 +32,111 @@ Referencias principales:
 - [TPL-BACKEND metadata](../../framework/templates/repositories/backend/metadata.yml)
 - [UX-01 Discovery](53_FIRST_TIME_USER_EXPERIENCE_DISCOVERY.md)
 
-## 2. Preguntas de investigación
+## 2. Research Questions
 
-**RQ-01 — Descubrimiento.** ¿Distingue una persona nueva entre crear un repositorio y evaluar uno existente?
+**RQ-01 — Discovery.** Can a newcomer distinguish between creating a repository and assessing an existing one?
 
-**RQ-02 — Navegación.** ¿Localiza, sin pistas del facilitador, la biblioteca de Templates y el camino hacia Existing Repository Adoption?
+**RQ-02 — Navigation.** Can they find the Template Library and the path to Existing Repository Adoption without facilitator hints?
 
-**RQ-03 — Selección.** ¿Elige un Repository Template justificadamente y obtiene su versión desde la metadata canónica?
+**RQ-03 — Selection.** Can they choose a Repository Template with a justification and obtain its version from canonical metadata?
 
-**RQ-04 — Preparación.** ¿Puede iniciar correctamente el Assessment Context con una referencia reproducible del consumer?
+**RQ-04 — Preparation.** Can they correctly start the Assessment Context using a reproducible consumer reference?
 
-**RQ-05 — Comprensión.** ¿Distingue Detected Facts, Evidence, Evaluated State y Adoption Decision?
+**RQ-05 — Comprehension.** Can they distinguish Detected Facts, Evidence, Evaluated State, and Adoption Decision?
 
-**RQ-06 — Esfuerzo.** ¿Qué dudas, retrocesos o ayudas aparecen realmente durante el recorrido?
+**RQ-06 — Effort.** What questions, backtracking, or requests for assistance actually arise during the journey?
 
-## 3. Diseño y límites
+## 3. Study Design and Boundaries
 
-### 3.1 Método
+### 3.1 Method
 
-Prueba observacional moderada, individual, con tareas basadas en un caso práctico. El participante navega por GitHub y explica qué está intentando hacer; el facilitador observa sin enseñarle rutas, respuestas o nombres de los archivos antes de completar las tareas.
+An individual, moderated observational study with tasks based on a practical case. Participants navigate GitHub and explain what they are trying to do; the facilitator observes without revealing paths, answers, or filenames before the tasks are completed.
 
-**Muestra exploratoria propuesta:** 2–3 desarrolladores con experiencia general en repositorios GitHub pero sin participación previa en GitHub Framework. Una persona aporta evidencia cualitativa; esta muestra pequeña no permite estimar tasas poblacionales ni demostrar ausencia de problemas.
+**Proposed exploratory sample:** 2–3 developers with general GitHub repository experience but no previous involvement in GitHub Framework. One participant can provide qualitative Evidence; this small sample cannot estimate population-level rates or demonstrate the absence of usability problems.
 
-Si no se dispone de participantes externos, el experimento permanece **Not Executed**. Una simulación del autor, una inspección documental o una sesión asistida no se registrará como resultado de usuario independiente.
+If independent participants are unavailable, the experiment remains **Not Executed**. An author simulation, document inspection, or guided session must not be recorded as independent user-study results.
 
-### 3.2 Preparación
+### 3.2 Preparation
 
-- Fijar commit SHA de `github-framework/main` al comenzar cada sesión para impedir que cambios posteriores alteren el recorrido.
-- Utilizar la misma versión pública de README y Adoption Guide para todos los participantes de una misma ronda.
-- Dar al participante el enlace raíz `https://github.com/fran-eliot/github-framework` y la URL del consumer; **no** proporcionar la ruta al Template, su ID, versión ni el Assessment Template.
-- Mantener `seniormeet` como consumer read-only y fijar su commit `b84b0de246d459caf594a5cdacbe8fccfa68698a`.
-- Evitar acceso de escritura al consumer; si se necesita registrar el contexto, hacerlo en una copia temporal privada o una hoja de notas de la sesión, no mediante commits.
-- Antes de participar, solicitar consentimiento para notas y, solo si se desea grabar, consentimiento adicional. No incluir nombres, datos personales o grabaciones en el repositorio público.
+- Pin the commit SHA of `github-framework/main` at the start of each session so subsequent changes do not alter the observed journey.
+- Use the same public README and Adoption Guide versions for all participants in a given round.
+- Give participants the root URL `https://github.com/fran-eliot/github-framework` and the consumer URL; **do not** provide the path to the Template, its ID, version, or the Assessment Template.
+- Keep `seniormeet` read-only, pinned to commit `b84b0de246d459caf594a5cdacbe8fccfa68698a`.
+- Avoid granting write access to the consumer. If context must be recorded, use a private temporary copy or session notes, not commits.
+- Obtain consent for note-taking before participation, and separate consent if recording is requested. Do not publish names, personal information, or recordings in the public repository.
 
-### 3.3 Exclusiones
+### 3.3 Exclusions
 
-No evaluar las 28 Responsibilities, ni realizar Application o Integration, ni ejecutar el Framework Validator como sustituto del Assessment. No medir calidad general del consumer. No modificar código, dependencias, README o configuración de SeniorMeet.
+Do not assess all 28 Responsibilities, perform Application or Integration, or run the Framework Validator as a substitute for an Assessment. Do not measure the consumer's overall quality. Do not modify SeniorMeet's code, dependencies, README, or configuration.
 
-## 4. Guion del facilitador
+## 4. Facilitator Script
 
-### Contexto presentado al participante
+### Context Provided to the Participant
 
-> Quieres utilizar GitHub Framework para entender cómo mejorar un repositorio backend que ya existe, sin modificarlo todavía. El repositorio que vas a examinar es SeniorMeet. Partes de la página principal de GitHub Framework. Utiliza únicamente la documentación pública para identificar el punto de partida y preparar el contexto de una evaluación inicial.
+> You want to use GitHub Framework to understand how to improve an existing backend repository, without modifying it yet. The repository you will examine is SeniorMeet. You start from the GitHub Framework homepage. Use only the public documentation to identify where to begin and prepare the context for an initial assessment.
 
-No mencionar de antemano `TPL-BACKEND`, `metadata.yml` ni las rutas que se pretende que descubra.
+Do not mention `TPL-BACKEND`, `metadata.yml`, or the paths that participants are expected to discover beforehand.
 
-### Tareas
+### Tasks
 
-| ID | Tarea para el participante | Evidencia de éxito |
+| ID | Participant Task | Evidence of Success |
 |---|---|---|
-| T1 | Identifica el recorrido adecuado para un repositorio ya existente. | Distingue Adoption de un recorrido para repositorios nuevos. |
-| T2 | Encuentra las opciones de Repository Templates y elige una para SeniorMeet. | Localiza Library y justifica el tipo backend a partir de criterios del Template. |
-| T3 | Indica el ID y la versión del Template seleccionado y muestra su fuente. | Consulta metadata canónica; no infiere versión desde la release global del Framework. |
-| T4 | Encuentra el artefacto para registrar el assessment y describe los datos iniciales. | Localiza Assessment Template e identifica sus campos contextuales. |
-| T5 | Registra, en notas de sesión, el consumer y una referencia reproducible. | Usa repo y commit SHA sin alterar el consumer. |
-| T6 | Formula dos observaciones verificables del consumer sin decidir qué cambios harías. | Separa hechos/evidencia de State, Applicability y Adoption Decision. |
+| T1 | Identify the appropriate path for an existing repository. | Distinguishes Adoption from the new-repository path. |
+| T2 | Find the Repository Template options and choose one for SeniorMeet. | Locates the Library and justifies the backend type using Template criteria. |
+| T3 | State the ID and version of the selected Template and show their source. | Consults canonical metadata; does not infer the version from the overall Framework release. |
+| T4 | Find the artifact for recording an assessment and describe its initial fields. | Locates the Assessment Template and identifies its context fields. |
+| T5 | Record the consumer and a reproducible reference in session notes. | Uses the repository and commit SHA without changing the consumer. |
+| T6 | Formulate two verifiable observations about the consumer without deciding what to change. | Separates facts/Evidence from State, Applicability, and Adoption Decision. |
 
-Las tareas pueden finalizar como completadas, completadas con ayuda, no completadas o no aplicables por un bloqueo anterior. Evitar introducir respuestas dentro de las instrucciones.
+Tasks may be marked completed, completed with assistance, incomplete, or not applicable due to an earlier blocker. Avoid embedding answers in the task instructions.
 
-### Intervención del facilitador
+### Facilitator Intervention
 
-- Permitir preguntas de aclaración del objetivo, sin indicar rutas.
-- Ante un bloqueo, registrar primero la dificultad y la ayuda solicitada.
-- Si es imprescindible dar una pista, indicar el momento y el contenido exactos de la ayuda; continuar marcando el resto de la sesión como **assisted**.
-- No corregir silenciosamente las respuestas; preguntar en qué fuente se fundamentan.
-- Al final, preguntar qué paso fue más confuso y qué documentación faltó, sin sugerir soluciones concretas.
+- Allow questions clarifying the objective without giving away paths.
+- If a participant becomes blocked, first record the difficulty and the help requested.
+- If a hint is essential, record exactly when and what assistance was provided; mark the remainder of the session as **assisted**.
+- Do not silently correct responses; ask what source supports each answer.
+- At the end, ask which step was most confusing and what documentation was missing, without suggesting specific solutions.
 
-## 5. Matriz de captura de evidencias
+## 5. Evidence Capture Matrix
 
-Repetir para cada sesión sin publicar información identificativa:
+Repeat for each session without publishing identifying information:
 
-| Campo | Valor de sesión |
+| Field | Session Value |
 |---|---|
-| Código de participante | `P01` / `P02` / `P03` |
-| Fecha / idioma | Pendiente |
-| Framework commit SHA | Pendiente |
-| Experiencia GitHub | Descripción general no identificativa |
-| Experiencia previa con Framework | Debe ser ninguna |
-| Consentimiento para notas | Pendiente |
-| ¿Se grabó? | No por defecto |
-| Resultado global | Pendiente |
+| Participant code | `P01` / `P02` / `P03` |
+| Date / language | Pending |
+| Framework commit SHA | Pending |
+| GitHub experience | General, non-identifying description |
+| Previous Framework experience | Must be none |
+| Consent for notes | Pending |
+| Recorded? | No by default |
+| Overall result | Pending |
 
-| Tarea | Estado (sin ayuda / con ayuda / bloqueo / N/A) | Ruta y evidencia observada | Duda / retroceso | Ayuda exacta | Comentarios |
+| Task | Status (unassisted / assisted / blocked / N/A) | Observed path and Evidence | Question / Backtracking | Exact Assistance | Comments |
 |---|---|---|---|---|---|
-| T1 | Pendiente | — | — | — | — |
-| T2 | Pendiente | — | — | — | — |
-| T3 | Pendiente | — | — | — | — |
-| T4 | Pendiente | — | — | — | — |
-| T5 | Pendiente | — | — | — | — |
-| T6 | Pendiente | — | — | — | — |
+| T1 | Pending | — | — | — | — |
+| T2 | Pending | — | — | — | — |
+| T3 | Pending | — | — | — | — |
+| T4 | Pending | — | — | — | — |
+| T5 | Pending | — | — | — | — |
+| T6 | Pending | — | — | — | — |
 
-Registrar citas breves solo cuando hayan sido realmente pronunciadas; nunca inventar testimonios, tiempos o participantes. El número de clics o minutos puede anotarse si se observa, pero no debe inferirse ni convertirse en umbral de éxito universal.
+Record short quotations only if they were actually spoken. Never invent participant testimony, timings, or participants. Click counts or elapsed minutes may be recorded if observed, but must not be inferred or turned into a universal success threshold.
 
-## 6. Criterios de interpretación
+## 6. Interpretation Criteria
 
-### 6.1 Clasificación de observaciones
+### 6.1 Observation Classification
 
-- **Navigation:** no encuentra un recurso o elige una ruta errónea.
-- **Terminology:** confunde conceptos o límites del Framework.
-- **Task support:** entiende el objetivo pero no sabe qué hacer a continuación.
-- **Artifact comprehension:** localiza un archivo pero interpreta incorrectamente su función.
-- **No issue observed:** tarea completada sin dificultad observable; no equivale a garantía de usabilidad.
+- **Navigation:** cannot find a resource or chooses an incorrect path.
+- **Terminology:** confuses Framework concepts or boundaries.
+- **Task support:** understands the objective but does not know what to do next.
+- **Artifact comprehension:** locates a file but incorrectly interprets its purpose.
+- **No issue observed:** completes the task without observable difficulty; this is not a usability guarantee.
 
-Cada observación debe incluir tarea, evidencia, contexto, intervención y grado de incertidumbre.
+Each observation must include the task, Evidence, context, facilitator intervention, and degree of uncertainty.
 
-### 6.2 Separación de resultados
+### 6.2 Separation of Outcomes
 
 ```text
 Observed behavior
@@ -150,39 +150,39 @@ Selected solution
 Committed delivery
 ```
 
-Una dificultad individual puede justificar investigación adicional. Su recurrencia en varias sesiones refuerza la hipótesis, pero no convierte automáticamente un cambio de documentación o código en requisito aprobado.
+One individual's difficulty may justify further investigation. Recurrence across sessions strengthens a hypothesis, but does not automatically turn a documentation or code change into an approved requirement.
 
-### 6.3 Comparación con UX-01
+### 6.3 Comparison with UX-01
 
-Contrastar principalmente UX-F01, UX-F02, UX-F03, UX-F05 y UX-F10. UX-F08 fue resuelto cuando se verificó la definición canónica del Template; no reabrirlo salvo evidencia nueva. La PR #90 resuelve el **enlace documental** observado, no demuestra por sí sola comprensión independiente del usuario.
+Compare UX-F01, UX-F02, UX-F03, UX-F05, and UX-F10 in particular. UX-F08 was resolved when the canonical Template definition was verified; do not reopen it without new Evidence. PR #90 addresses the observed **documentation link**, but does not by itself demonstrate independent user comprehension.
 
-## 7. Plantilla para síntesis posterior (vacía)
+## 7. Template for Subsequent Synthesis (Empty)
 
-**Estado de ejecución:** `Not Executed`
+**Execution status:** `Not Executed`
 
-**Sesiones realizadas:** `0`
+**Sessions completed:** `0`
 
-**Evidencia disponible:** protocolo y hallazgos históricos UX-01; no hay observaciones de usuarios nuevos.
+**Available Evidence:** protocol and historical UX-01 findings; no observations of new users.
 
-| Pregunta | Resultado | Evidencia | Confianza |
+| Question | Result | Evidence | Confidence |
 |---|---|---|---|
-| RQ-01 | Pendiente | — | — |
-| RQ-02 | Pendiente | — | — |
-| RQ-03 | Pendiente | — | — |
-| RQ-04 | Pendiente | — | — |
-| RQ-05 | Pendiente | — | — |
-| RQ-06 | Pendiente | — | — |
+| RQ-01 | Pending | — | — |
+| RQ-02 | Pending | — | — |
+| RQ-03 | Pending | — | — |
+| RQ-04 | Pending | — | — |
+| RQ-05 | Pending | — | — |
+| RQ-06 | Pending | — | — |
 
-**Hallazgos nuevos:** pendiente.
+**New findings:** Pending.
 
-**Necesidades validadas / no validadas / inciertas:** pendiente.
+**Validated / unvalidated / uncertain needs:** Pending.
 
-**Decisión posterior:** pendiente; no escoger soluciones antes de observar resultados.
+**Subsequent decision:** Pending; do not select solutions before observing results.
 
-## 8. Cierre y siguiente decisión
+## 8. Closing and Next Decision
 
-Este protocolo habilita una prueba pequeña y reproducible sin ampliar el alcance técnico de GitHub Framework. La ejecución exige contar realmente con participantes y conservar evidencias; el documento por sí solo **no valida la experiencia de usuario**.
+This protocol enables a small, reproducible study without expanding GitHub Framework's technical scope. Actual execution requires real participants and retained Evidence; the document alone **does not validate the user experience**.
 
-En ausencia de participantes, se puede realizar por separado una revisión documental interna, etiquetada como tal, pero no presentar esa revisión como ejecución de UX-02.
+If participants are unavailable, an internal document review may be conducted separately and labeled as such, but must not be presented as UX-02 execution.
 
-No se abre Sprint, milestone, release ni Delivery Scope como consecuencia de este protocolo.
+This protocol does not open a Sprint, milestone, release, or Delivery Scope.
