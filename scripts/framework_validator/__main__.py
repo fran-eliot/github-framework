@@ -3,6 +3,7 @@
 import argparse
 import json
 import os
+import re
 import sys
 import tempfile
 from pathlib import Path
@@ -35,6 +36,7 @@ def main(
     output_path: Path | None = None,
     components_root: Path | None = None,
     families: tuple[str, ...] | None = None,
+    component_paths: tuple[str, ...] | None = None,
 ) -> int:
     """Discover Components and check that their metadata can be loaded."""
     root = COMPONENTS_ROOT if components_root is None else components_root
@@ -43,6 +45,12 @@ def main(
         print()
 
     component_dirs = discover_components(root, families=families)
+    if component_paths is not None:
+        selected = set(component_paths)
+        component_dirs = [
+            component for component in component_dirs
+            if component.relative_to(root).as_posix() in selected
+        ]
     errors: list[str] = []
 
     if not component_dirs:
@@ -143,10 +151,23 @@ def main(
             )
 
         selected_families = [
-            family
-            for family in COMPONENT_FAMILIES
-            if families is None or family in families
+            family for family in COMPONENT_FAMILIES
+            if (
+                (component_paths is None and (families is None or family in families))
+                or (component_paths is not None and any(
+                    path.startswith(f"{family}/") for path in component_paths
+                ))
+            )
         ]
+        scope = {
+            "families": selected_families,
+            "filtered": (
+                component_paths is not None
+                or len(selected_families) != len(COMPONENT_FAMILIES)
+            ),
+        }
+        if component_paths is not None:
+            scope["component_paths"] = sorted(set(component_paths))
         report = json.dumps(
             {
                 "status": "failed" if errors else "passed",
@@ -157,10 +178,7 @@ def main(
                 ],
                 "errors": errors,
                 "components": component_results,
-                "scope": {
-                    "families": selected_families,
-                    "filtered": len(selected_families) != len(COMPONENT_FAMILIES),
-                },
+                "scope": scope,
                 "summary": {
                     "passed_components": sum(
                         item["status"] == "passed" for item in component_results
@@ -241,16 +259,39 @@ if __name__ == "__main__":
         metavar="{readme,documentation,workflow}",
         help="Validate only this Component family (repeatable; default: all).",
     )
+    parser.add_argument(
+        "--component",
+        action="append",
+        metavar="FAMILY/NAME",
+        help="Validate only this Component (repeatable; cannot combine with --family).",
+    )
     arguments = parser.parse_args()
+    if arguments.component and arguments.family:
+        parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
         parser.error("--output requires --format json")
     if arguments.components_root is not None and not arguments.components_root.is_dir():
         parser.error("--components-root must be an existing directory")
+    if arguments.component:
+        root = arguments.components_root or COMPONENTS_ROOT
+        for component_path in arguments.component:
+            parts = component_path.split("/")
+            if (
+                len(parts) != 2
+                or parts[0] not in COMPONENT_FAMILIES
+                or not re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_-]*", parts[1])
+            ):
+                parser.error("--component must use FAMILY/NAME with a known family")
+            if not (root / parts[0] / parts[1]).is_dir():
+                parser.error(f"--component directory does not exist: {component_path}")
     raise SystemExit(
         main(
             output_format=arguments.format,
             output_path=arguments.output,
             components_root=arguments.components_root,
             families=tuple(dict.fromkeys(arguments.family)) if arguments.family else None,
+            component_paths=(
+                tuple(dict.fromkeys(arguments.component)) if arguments.component else None
+            ),
         )
     )
