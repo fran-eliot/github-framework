@@ -44,26 +44,26 @@ To get started with an existing repository **without modifying it**:
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
-## 1. Propósito
+## 1. Purpose
 
-Existing Repository Adoption responde a un problema distinto de la creación de un repositorio nuevo.
+Existing Repository Adoption addresses a different problem from creating a new repository.
 
-Un repositorio existente puede:
+An existing repository may:
 
-- implementar ya una Responsibility mediante un artifact canónico;
-- satisfacerla mediante una implementación equivalente;
-- distribuirla entre varios artifacts;
-- cubrirla parcialmente;
-- no implementarla;
-- no necesitarla en su contexto.
+- already implement a Responsibility through a canonical artifact;
+- satisfy it through an equivalent implementation;
+- distribute it across several artifacts;
+- cover it only partially;
+- not implement it;
+- not require it in its specific context.
 
-Por tanto, Existing Repository Adoption se basa en:
+Existing Repository Adoption therefore emphasizes:
 
 ```text
 reconciliation
 ```
 
-y no en:
+rather than:
 
 ```text
 generation
@@ -71,7 +71,7 @@ replacement
 automatic remediation
 ```
 
-El objetivo del Assessment Core es producir una evaluación:
+Assessment Core aims to produce an evaluation that is:
 
 ```text
 usable
@@ -81,13 +81,13 @@ reviewable
 persistent
 ```
 
-manteniendo explícita la revisión humana.
+while explicitly retaining human review.
 
 ---
 
-## 2. Alcance
+## 2. Scope
 
-El proceso soportado es:
+The supported process is:
 
 ```text
 ANALYZE
@@ -101,7 +101,7 @@ DECIDE
 REPORT
 ```
 
-El resultado es un assessment Markdown persistente que conserva:
+The outcome is a persistent Markdown Assessment preserving:
 
 ```text
 Detected Facts
@@ -112,9 +112,9 @@ Adoption Decisions
 Rationale
 ```
 
-El Assessment Core no modifica el consumer repository.
+Assessment Core does not modify the consumer repository.
 
-Cuando una Adoption Decision está resuelta, el Application Core puede utilizarse opcionalmente para continuar con:
+Once an Adoption Decision is resolved, Application Core may optionally continue with:
 
 ```text
 SELECT
@@ -134,9 +134,9 @@ VERIFY
 REVIEW RESULT
 ```
 
-La frontera del Application Core termina en un verified candidate state.
+The Application Core boundary is a verified candidate state.
 
-Cuando existe un verified candidate state, el Integration Core puede utilizarse opcionalmente para continuar con:
+When a verified candidate state exists, Integration Core may optionally continue with:
 
 ```text
 REFRESH STABLE BASE
@@ -154,13 +154,13 @@ VERIFY STABLE STATE
 CONFIRM
 ```
 
-La frontera del Integration Core termina en un verified stable state o en un safe-stop / recovery-required state.
+The Integration Core boundary is a verified stable state or a safe-stop / recovery-required state.
 
 ---
 
-## 3. Inputs del Assessment
+## 3. Assessment Inputs
 
-Todo assessment parte de cuatro inputs conceptuales:
+Every Assessment starts with four conceptual inputs:
 
 ```text
 Existing Consumer Repository
@@ -174,9 +174,9 @@ Consumer Reference
 
 ### Existing Consumer Repository
 
-Es el repositorio que se desea evaluar.
+The repository to be assessed.
 
-Actúa como:
+It serves as the:
 
 ```text
 evidence source
@@ -184,11 +184,11 @@ evidence source
 
 ### Repository Template
 
-Es el Repository Template seleccionado como referencia para el assessment.
+The Repository Template selected as the Assessment reference.
 
-Para seleccionarlo, consulta la [Repository Template Library](../templates/repositories/README.md) y los criterios de uso del Template elegido. Por ejemplo, [TPL-BACKEND](../templates/repositories/backend/README.md) está orientado a servicios y aplicaciones backend. El tipo de proyecto no demuestra por sí solo que sus Responsibilities estén satisfechas.
+For selection, consult the [Repository Template Library](../templates/repositories/README.md) and the intended usage criteria of the chosen Template. For example, [TPL-BACKEND](../templates/repositories/backend/README.md) targets backend services and applications. The project type alone does not establish that the Template's Responsibilities have been satisfied.
 
-Actúa como:
+It serves as the:
 
 ```text
 assessment baseline
@@ -196,17 +196,17 @@ assessment baseline
 
 ### Repository Template Version
 
-Identifica la versión concreta del Template utilizada.
+Identifies the specific Template version used.
 
-Confirma el identificador y la versión en la metadata canónica del Template seleccionado; para el ejemplo backend, consulta [`TPL-BACKEND/metadata.yml`](../templates/repositories/backend/metadata.yml). La versión del Template es independiente de la versión publicada de GitHub Framework.
+Confirm the ID and version in the selected Template's canonical metadata. For the backend example, see [`TPL-BACKEND/metadata.yml`](../templates/repositories/backend/metadata.yml). The Template version is independent of the published GitHub Framework version.
 
-El assessment debe interpretarse siempre respecto a esa versión.
+The Assessment must always be interpreted against that version.
 
 ### Consumer Reference
 
-Identifica el estado concreto del consumer evaluado.
+Identifies the exact consumer state being evaluated.
 
-Puede ser, por ejemplo:
+For example:
 
 ```text
 branch
@@ -214,15 +214,15 @@ commit SHA
 tag
 ```
 
-La referencia debe ser suficientemente precisa para evitar interpretar un assessment histórico como válido automáticamente para cualquier estado futuro del repositorio.
+The reference must be precise enough to avoid treating a historical Assessment as automatically valid for any future state of the repository.
 
 ---
 
-## 4. Principios del Assessment
+## 4. Assessment Principles
 
 ### 4.1 Evidence before Automation
 
-El Assessment Core prioriza evidencia explícita y revisión humana antes de cualquier automatización futura.
+Assessment Core prioritizes explicit Evidence and human review over any future automation.
 
 ```text
 Evidence
@@ -232,19 +232,19 @@ Automation
 
 ### 4.2 Responsibility over File
 
-La unidad de evaluación es:
+The evaluation unit is:
 
 ```text
 Responsibility
 ```
 
-y no:
+not:
 
 ```text
 File
 ```
 
-Por tanto:
+Therefore:
 
 ```text
 Canonical Artifact Missing
@@ -252,11 +252,11 @@ Canonical Artifact Missing
 Responsibility Missing
 ```
 
-Una Responsibility puede estar satisfecha mediante una implementación no canónica.
+A Responsibility may be satisfied by a non-canonical implementation.
 
-### 4.3 Human Review remains explicit
+### 4.3 Human Review Remains Explicit
 
-El assessment mantiene separadas las observaciones, la evaluación y la decisión:
+The Assessment keeps observation, evaluation, and decision separate:
 
 ```text
 Detected Fact
@@ -266,19 +266,19 @@ Evaluated State
 Adoption Decision
 ```
 
-Una comprobación determinista puede aportar Evidence, pero no sustituye la evaluación semántica.
+A deterministic check may provide Evidence, but it cannot replace semantic evaluation.
 
 ### 4.4 Reconciliation over Replacement
 
-Existing Repository Adoption debe interpretar primero lo que el consumer ya hace.
+Existing Repository Adoption must first interpret what the consumer already does.
 
-No debe asumir que la ausencia de una estructura canónica obliga a reemplazar una solución existente.
+The absence of a canonical structure does not, by itself, require replacing an existing solution.
 
 ---
 
-## 5. Modelo del Assessment
+## 5. Assessment Model
 
-Por cada Responsibility se registran y evalúan las siguientes dimensiones:
+For each Responsibility, the following dimensions are recorded and evaluated:
 
 ```text
 Responsibility
@@ -295,9 +295,9 @@ Adoption Decision
 Decision Rationale
 ```
 
-Estas dimensiones no deben colapsarse entre sí.
+These dimensions must not be collapsed into one another.
 
-En particular:
+In particular:
 
 ```text
 State
