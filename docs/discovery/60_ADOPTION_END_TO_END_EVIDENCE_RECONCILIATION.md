@@ -1,108 +1,108 @@
 # 60 — Adoption End-to-End Evidence Reconciliation
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Proyecto | GitHub Framework |
-| Fecha | 2026-11-11 |
-| Estado | Discovery — historical evidence reconciliation |
+| Project | GitHub Framework |
+| Date | 2026-11-11 |
+| Status | Discovery — historical evidence reconciliation |
 | Framework version | v0.10.0 (published baseline) |
-| Consumer histórico | [fran-eliot/dental-back-spring](https://github.com/fran-eliot/dental-back-spring) |
-| Nuevo consumer examinado en #59 | [fran-eliot/seniormeet](https://github.com/fran-eliot/seniormeet) |
+| Historical consumer | [fran-eliot/dental-back-spring](https://github.com/fran-eliot/dental-back-spring) |
+| New consumer examined in #59 | [fran-eliot/seniormeet](https://github.com/fran-eliot/seniormeet) |
 | Scope | Reconcile prior real Application/Integration evidence against current end-to-end research |
 | Delivery / Sprint / Release | None committed |
 
-> Este documento revisa evidencias históricas y los estados actuales de las PR originales. No constituye una nueva ejecución, un Assessment completo, una prueba con usuarios externos ni una autorización para alterar ningún consumer.
+> This document reviews historical evidence and the current states of the original pull requests. It is not a new execution, a complete Assessment, an independent user study, or authorization to modify any consumer.
 
 ---
 
-## 1. Pregunta y motivo
+## 1. Research Question and Rationale
 
-El [Discovery #59](59_ADOPTION_END_TO_END_FEASIBILITY_CHECK.md) examinó la responsabilidad `README-QUICK-START` de SeniorMeet. Las evidencias permitieron registrar una evaluación provisional, pero no una Adoption Decision resuelta ni un candidate verificado. El recorrido se detuvo antes de Application e Integration.
+[Discovery #59](59_ADOPTION_END_TO_END_FEASIBILITY_CHECK.md) examined SeniorMeet's `README-QUICK-START` Responsibility. The Evidence supported a provisional evaluation, but neither a resolved Adoption Decision nor a verified candidate. The workflow stopped before Application and Integration.
 
-Antes de abrir otro experimento con mutación, hay que responder:
+Before starting another experiment involving mutation, we need to ask:
 
-> ¿Disponemos ya en el historial del Framework de evidencia de Application e Integration ejecutadas realmente sobre un consumer?
+> Does the Framework's history already contain evidence of Application and Integration actually performed on a consumer?
 
-**Respuesta:** sí, existen dos casos con cambios y PRs reales. La necesidad pendiente no es demostrar desde cero que las operaciones `MODIFY` y `CREATE` se pueden integrar, sino investigar el **valor y la autonomía del flujo completo** bajo condiciones nuevas.
+**Answer:** yes. Two cases already include real changes and merged PRs. The remaining need is not to demonstrate again that `MODIFY` and `CREATE` can be integrated, but to investigate the **value and autonomy of the complete workflow** under new conditions.
 
-## 2. Fuentes
+## 2. Sources
 
-Fuentes internas históricas:
+Historical internal sources:
 
-- [32_APPLICATION_DISCOVERY.md](32_APPLICATION_DISCOVERY.md) — Cases A y B, cambios físicos, preservación y verificaciones.
-- [38_INTEGRATION_DISCOVERY.md](38_INTEGRATION_DISCOVERY.md) — integración real, drift y verificación en stable state.
-- [40_INTEGRATION_REPEATABILITY_EXPERIMENT.md](40_INTEGRATION_REPEATABILITY_EXPERIMENT.md) — replay de ambos casos y estabilidad de representación.
-- [59_ADOPTION_END_TO_END_FEASIBILITY_CHECK.md](59_ADOPTION_END_TO_END_FEASIBILITY_CHECK.md) — safe-stop actual en SeniorMeet.
+- [32_APPLICATION_DISCOVERY.md](32_APPLICATION_DISCOVERY.md) — Cases A and B, physical changes, preservation, and verification.
+- [38_INTEGRATION_DISCOVERY.md](38_INTEGRATION_DISCOVERY.md) — actual integration, drift, and stable-state verification.
+- [40_INTEGRATION_REPEATABILITY_EXPERIMENT.md](40_INTEGRATION_REPEATABILITY_EXPERIMENT.md) — replay of both cases and representation stability.
+- [59_ADOPTION_END_TO_END_FEASIBILITY_CHECK.md](59_ADOPTION_END_TO_END_FEASIBILITY_CHECK.md) — current SeniorMeet safe-stop.
 
-Fuentes verificadas de GitHub:
+GitHub sources verified:
 
 - [dental-back-spring PR #1](https://github.com/fran-eliot/dental-back-spring/pull/1).
 - [dental-back-spring PR #2](https://github.com/fran-eliot/dental-back-spring/pull/2).
 
-Se comprobaron el estado `merged` y los archivos cambiados de ambas PR con el conector de GitHub el 11 de noviembre de 2026. **No** se reejecutaron tests, build o verificación funcional independiente en este análisis.
+The `merged` state and changed filenames of both PRs were checked through the GitHub connector on November 11, 2026. Tests, builds, and independent functional verification were **not** rerun for this review.
 
-## 3. Caso A — README-QUICK-START
+## 3. Case A — README-QUICK-START
 
-| Dimensión | Evidencia |
+| Dimension | Evidence |
 |---|---|
 | Consumer | `fran-eliot/dental-back-spring` |
 | Responsibility | `README-QUICK-START` |
-| Decision histórica | `ADAPT` |
+| Historical Decision | `ADAPT` |
 | Application operation | `MODIFY` |
-| Artifact modificado | `README.md` |
-| Candidate commit documentado | `6706d6dd6d9c4952fe7f8192eb07922b2ac82f4f` |
+| Modified artifact | `README.md` |
+| Documented candidate commit | `6706d6dd6d9c4952fe7f8192eb07922b2ac82f4f` |
 | PR | [#1](https://github.com/fran-eliot/dental-back-spring/pull/1) |
 | Merge commit | `c61829ff27f1e6cb6fffc4210e224bd275c00139` |
 | GitHub PR state | `MERGED` |
-| Integration verification | `PASS` en el Discovery histórico #38 |
+| Integration verification | `PASS` in historical Discovery #38 |
 
-### Evidencia operacional
+### Operational Evidence
 
-Según #32, el cambio sustituyó referencias obsoletas al puerto 3000 por puerto 8080 y eliminó una instrucción no aplicable `cd backend`. La verificación comparó el README con la propiedad `server.port=8080` del consumer.
+According to #32, the change replaced obsolete port 3000 references with port 8080 and removed an inapplicable `cd backend` instruction. Verification compared the README with the consumer's `server.port=8080` property.
 
-Según #38, la PR se integró después de revisar el estado de la base, y la comprobación posterior a la fusión registró `Physical`, `Intent`, `Preservation` y `Stable-State Verification` como `PASS`.
+According to #38, the PR was integrated after reviewing the stable base, and post-merge verification recorded `Physical`, `Intent`, `Preservation`, and `Stable-State Verification` as `PASS`.
 
-La consulta actual a GitHub confirma que la PR #1 está fusionada y que modificó solo `README.md`. Los resultados históricos de verificación se atribuyen a #32/#38; no se presentan como mediciones nuevas.
+The current GitHub check confirms that PR #1 was merged and changed only `README.md`. Historical verification results are attributed to #32/#38 and are not presented as new measurements.
 
-## 4. Caso B — DOC-CHANGELOG
+## 4. Case B — DOC-CHANGELOG
 
-| Dimensión | Evidencia |
+| Dimension | Evidence |
 |---|---|
 | Consumer | `fran-eliot/dental-back-spring` |
 | Responsibility | `DOC-CHANGELOG` |
-| Decision histórica | `ADD` |
+| Historical Decision | `ADD` |
 | Application operation | `CREATE` |
-| Artifact creado | `CHANGELOG.md` |
-| Commits candidatos documentados | `f00fac8770fa70d455f51cf31dd10d6951732a81`, `c209c82965f4510fef8a60df5210ce75c7689439` |
+| Created artifact | `CHANGELOG.md` |
+| Documented candidate commits | `f00fac8770fa70d455f51cf31dd10d6951732a81`, `c209c82965f4510fef8a60df5210ce75c7689439` |
 | PR | [#2](https://github.com/fran-eliot/dental-back-spring/pull/2) |
 | Merge commit | `ddd09369b98d11da25525ae09bfdb840c3f4ce50` |
 | GitHub PR state | `MERGED` |
-| Integration verification | `PASS` en el Discovery histórico #38 |
+| Integration verification | `PASS` in historical Discovery #38 |
 
-### Evidencia operacional
+### Operational Evidence
 
-El caso B documenta un ciclo `REFINE → PASS` para conservar convenciones de idioma y no inventar versiones históricas. Se creó un Changelog sin modificar otros archivos, según #32.
+Case B documents a `REFINE → PASS` cycle to preserve the consumer's language conventions and avoid inventing historical versions. According to #32, a Changelog was created without modifying other files.
 
-El experimento #38 registró que `main` había avanzado desde la base original de la PR, con cambios en README. La integración revisó ese drift y lo consideró compatible con la incorporación de `CHANGELOG.md`, en lugar de tratar cualquier drift como motivo automático para descartar el candidate.
+Experiment #38 recorded that `main` had advanced beyond the PR's original base, with changes to README. Integration reviewed the drift and found it compatible with adding `CHANGELOG.md`, rather than automatically rejecting the candidate merely because drift existed.
 
-La consulta actual confirma que la PR #2 está fusionada y que su archivo modificado fue `CHANGELOG.md`.
+The current check confirms that PR #2 was merged and that its changed file was `CHANGELOG.md`.
 
-## 5. Qué demuestra el conjunto
+## 5. What the Combined Evidence Demonstrates
 
-| Pregunta | Evidencia | Conclusión |
+| Question | Evidence | Conclusion |
 |---|---|---|
-| ¿Es posible planificar cambios acotados sobre una Responsibility? | #32: casos A/B | Sí, en los experimentos documentados |
-| ¿Puede aplicarse `MODIFY` preservando otros artefactos? | #32 y PR #1 | Sí, en el caso observado |
-| ¿Puede aplicarse `CREATE` con revisión de convenciones? | #32 y PR #2 | Sí, en el caso observado |
-| ¿Puede revisarse drift antes de Integration? | #38, caso B | Sí, en la evidencia histórica |
-| ¿Se produjo una Integration real? | PR #1 y PR #2, ambas `MERGED` | Confirmado por GitHub |
-| ¿Se verificó stable state después? | #38, verificaciones históricas | Documentado; no reejecutado aquí |
-| ¿El mismo registro admite ambas operaciones? | #40, replays A/B | Documentado como estable |
-| ¿Puede frenarse una Application sin Decision? | #59, SeniorMeet | Sí, como análisis de precondiciones |
-| ¿Una persona externa puede utilizar el flujo autónomamente? | Sin observación independiente | No demostrado |
-| ¿Cuál es el coste de completar el proceso? | Sin medición comparable | No demostrado |
+| Can bounded changes be planned for a Responsibility? | #32: Cases A/B | Yes, in the documented experiments |
+| Can `MODIFY` preserve unrelated artifacts? | #32 and PR #1 | Yes, in the observed case |
+| Can `CREATE` include a review of consumer conventions? | #32 and PR #2 | Yes, in the observed case |
+| Can drift be reviewed before Integration? | #38, Case B | Yes, in the historical Evidence |
+| Did real Integration take place? | PR #1 and PR #2, both `MERGED` | Confirmed by GitHub |
+| Was stable state verified afterward? | #38, historical verification | Documented; not rerun here |
+| Can one record represent both operations? | #40, replays A/B | Documented as stable |
+| Can Application stop without a Decision? | #59, SeniorMeet | Yes, through a precondition review |
+| Can an independent developer use the workflow autonomously? | No independent observation | Not demonstrated |
+| What does completing the workflow cost? | No comparable measurements | Not demonstrated |
 
-## 6. Distinción entre tipos de evidencia
+## 6. Distinguishing Types of Evidence
 
 ```text
 Historical real consumer changes
@@ -113,36 +113,36 @@ New execution of the Framework
 Independent usability or efficiency validation
 ```
 
-Los cambios reales muestran viabilidad operacional en dos operaciones concretas. El examen de SeniorMeet #59, por su parte, muestra que un caso incompleto se puede detener sin forzar una mutación.
+The real changes demonstrate operational feasibility for two specific operations. The SeniorMeet review in #59, meanwhile, demonstrates that an incomplete case can stop without forcing a mutation.
 
-No resulta correcto afirmar que **ningún** flujo end-to-end ha sido ejecutado: sí hay integración histórica. Tampoco es correcto afirmar que la experiencia completa está validada para nuevos usuarios o para cualquier consumer.
+It would be inaccurate to claim that **no** end-to-end workflow has been executed: historical integrations exist. It would also be inaccurate to claim that the entire experience has been validated for new users or arbitrary consumers.
 
-## 7. Decisión para la siguiente iteración
+## 7. Decision for the Next Iteration
 
-**No repetir por defecto** una mutación sobre SeniorMeet solo para volver a demostrar `ADAPT / MODIFY` o `ADD / CREATE`.
+**Do not repeat a mutation by default** on SeniorMeet merely to demonstrate `ADAPT / MODIFY` or `ADD / CREATE` again.
 
-En su lugar, centrar la investigación en una incertidumbre todavía no resuelta:
+Instead, focus the research on an uncertainty that remains unresolved:
 
-> ¿Puede un desarrollador que no conoce el Framework convertir un Assessment revisado en una Application acotada, verificarla e integrarla siguiendo los registros existentes, con un esfuerzo razonable?
+> Can a developer unfamiliar with the Framework take a reviewed Assessment through a bounded Application, verify it, and integrate it using the existing records, with reasonable effort?
 
-Esta pregunta conecta con el [protocolo UX-02](54_FIRST_TIME_USABILITY_VALIDATION_PROTOCOL.md), pero implica un estudio distinto, más largo y con control explícito de mutaciones.
+This question relates to the [UX-02 protocol](54_FIRST_TIME_USABILITY_VALIDATION_PROTOCOL.md) but calls for a separate, longer study with explicit mutation controls.
 
-### Condiciones mínimas de ese estudio
+### Minimum Conditions for That Study
 
-1. Consumer y referencia fijados, con permiso de escritura solo si realmente se necesita.
-2. Assessment y Adoption Decision revisados humanamente.
-3. Application Plan y Preservation Scope aprobados antes de cualquier cambio.
-4. Branch aislada, tests o verificaciones acordes a los artifacts afectados.
-5. Integration respetando governance, sin merge automático o decisiones semánticas inferidas.
-6. Medición observada de ayudas, pasos bloqueados, artefactos necesarios y retrabajo.
-7. Posibilidad de terminar en `NO CHANGE`, `DEFER` o `REPLAN` sin considerar el experimento fallido.
+1. Identify the consumer and immutable reference; grant write permissions only if truly required.
+2. Obtain a human-reviewed Assessment and Adoption Decision.
+3. Approve an Application Plan and Preservation Scope before any changes.
+4. Use an isolated branch and tests or checks appropriate to the affected artifacts.
+5. Perform Integration under the consumer's governance without automatic merge or inferred semantic decisions.
+6. Observe assistance needed, blocked steps, required artifacts, and rework.
+7. Allow `NO CHANGE`, `DEFER`, or `REPLAN` as valid outcomes rather than treating them as failures.
 
-**No se crea aquí ese estudio ni se compromete una nueva mutación**. Si no hay participantes disponibles, pueden investigarse otras capacidades reales, sin equiparar replays internos a validación independiente.
+**This study is not initiated here, and no new mutation is committed.** If participants are unavailable, other real capabilities may be investigated without presenting internal replays as independent validation.
 
-## 8. Cierre
+## 8. Closing Status
 
-La evidencia de Application e Integration sobre `dental-back-spring` ya está documentada y confirma dos PRs reales fusionadas. #59 complementa este historial al mostrar una puerta de entrada que legítimamente detiene el recorrido.
+Application and Integration evidence for `dental-back-spring` is already documented and confirms two real merged PRs. #59 complements that history by showing an entry gate that legitimately stops the workflow.
 
-El gap de conocimiento prioritario pasa de **«¿se pueden realizar e integrar cambios acotados?»** a **«¿se puede usar el proceso de forma autónoma y con coste proporcionado?»**.
+The priority knowledge gap shifts from **“Can bounded changes be applied and integrated?”** to **“Can the process be used autonomously and at a proportionate cost?”**
 
-**Estado:** reconciliación completada; no hay nueva implementación, cambio de consumer, Delivery Scope, Sprint, milestone ni release comprometido.
+**Status:** evidence reconciliation complete. No new implementation, consumer change, Delivery Scope, Sprint, milestone, or release is committed.
