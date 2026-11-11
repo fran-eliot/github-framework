@@ -293,3 +293,29 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                 )
             )
             self.assertEqual(len(result["errors"]), 1)
+
+    def test_json_output_mixed_valid_and_missing_metadata(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            valid_component = self.create_component(root)
+            (valid_component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            missing_component = root / "documentation" / "references"
+            missing_component.mkdir(parents=True)
+
+            exit_code, result = self.run_validator_json(root)
+
+            self.assertEqual(exit_code, 1)
+            self.assertEqual(result["components_discovered"], 2)
+            self.assertEqual(result["component_ids"], ["DOC-ARCHITECTURE"])
+            self.assertEqual(len(result["errors"]), 1)
+            components = {
+                Path(component["path"]).name: component
+                for component in result["components"]
+            }
+            self.assertEqual(components["architecture"]["status"], "passed")
+            self.assertEqual(components["architecture"]["errors"], [])
+            self.assertEqual(components["references"]["status"], "failed")
+            self.assertIsNone(components["references"]["id"])
+            self.assertEqual(components["references"]["errors"], result["errors"])
