@@ -260,12 +260,22 @@ if __name__ == "__main__":
         help="Validate only this Component family (repeatable; default: all).",
     )
     parser.add_argument(
+        "--list-components",
+        action="store_true",
+        help="Print available family/name Component paths without validation.",
+    )
+    parser.add_argument(
         "--component",
         action="append",
         metavar="FAMILY/NAME",
         help="Validate only this Component (repeatable; cannot combine with --family).",
     )
     arguments = parser.parse_args()
+    if arguments.list_components:
+        if arguments.component:
+            parser.error("--list-components cannot be combined with --component")
+        if arguments.format != "text" or arguments.output is not None:
+            parser.error("--list-components supports text output only")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
@@ -284,6 +294,18 @@ if __name__ == "__main__":
                 parser.error("--component must use FAMILY/NAME with a known family")
             if not (root / parts[0] / parts[1]).is_dir():
                 parser.error(f"--component directory does not exist: {component_path}")
+    if arguments.list_components:
+        root = arguments.components_root or COMPONENTS_ROOT
+        family_filter = (
+            tuple(dict.fromkeys(arguments.family)) if arguments.family else None
+        )
+        available = discover_components(root, families=family_filter)
+        if not available:
+            print("No Components discovered.", file=sys.stderr)
+            raise SystemExit(1)
+        for component in available:
+            print(component.relative_to(root).as_posix())
+        raise SystemExit(0)
     raise SystemExit(
         main(
             output_format=arguments.format,
