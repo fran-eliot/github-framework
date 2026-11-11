@@ -150,7 +150,7 @@ Para guardar el informe JSON en un archivo UTF-8 (también si falla la validaci�
 python -m scripts.framework_validator --format json --output validation-report.json
 ```
 
-La salida JSON incluye el estado de validación, el número de Components detectados, sus identificadores cargados, los errores globales y un array `components` con la ruta, el ID, el estado y los errores de cada Component. El alcance y los códigos de salida no cambian.
+La salida JSON incluye el estado de validación, el número de Components detectados, sus identificadores cargados, los errores globales y un array `components` con la ruta, el ID, el estado y los errores de cada Component. El objeto `summary` incorpora los recuentos de Components válidos, Components con errores y errores totales. El alcance y los códigos de salida no cambian.
 
 Para ejecutar la batería de tests automatizados:
 
