@@ -103,3 +103,99 @@ class FrameworkValidatorSummaryTests(unittest.TestCase):
                 "No JSON report was produced",
                 target.read_text(encoding="utf-8"),
             )
+
+    def test_failed_components_are_listed_with_error_counts(self) -> None:
+        report = {
+            "status": "failed",
+            "scope": {"families": ["documentation"], "filtered": True},
+            "summary": {
+                "passed_components": 1,
+                "failed_components": 2,
+                "error_count": 3,
+            },
+            "components": [
+                {
+                    "relative_path": "documentation/architecture",
+                    "status": "passed",
+                    "errors": [],
+                },
+                {
+                    "relative_path": "documentation/references",
+                    "status": "failed",
+                    "errors": ["missing metadata.yml"],
+                },
+                {
+                    "relative_path": "documentation/samples",
+                    "status": "failed",
+                    "errors": ["error one", "error two"],
+                },
+            ],
+        }
+        result = render_summary(report)
+        self.assertIn("### Failed Components", result)
+        self.assertIn("| documentation/references | 1 |", result)
+        self.assertIn("| documentation/samples | 2 |", result)
+        self.assertNotIn("| documentation/architecture |", result)
+
+    def test_success_summary_does_not_include_failed_table(self) -> None:
+        report = {
+            "status": "passed",
+            "scope": {"families": ["workflow"], "filtered": True},
+            "summary": {
+                "passed_components": 1,
+                "failed_components": 0,
+                "error_count": 0,
+            },
+            "components": [
+                {
+                    "relative_path": "workflow/issue",
+                    "status": "passed",
+                    "errors": [],
+                },
+            ],
+        }
+        self.assertNotIn("### Failed Components", render_summary(report))
+
+    def test_failed_components_list_is_limited_to_ten(self) -> None:
+        components = [
+            {
+                "relative_path": f"documentation/component-{i:02}",
+                "status": "failed",
+                "errors": ["invalid metadata"],
+            }
+            for i in range(12)
+        ]
+        report = {
+            "status": "failed",
+            "scope": {"families": ["documentation"], "filtered": True},
+            "summary": {
+                "passed_components": 0,
+                "failed_components": 12,
+                "error_count": 12,
+            },
+            "components": components,
+        }
+        result = render_summary(report)
+        self.assertIn("| documentation/component-09 | 1 |", result)
+        self.assertNotIn("| documentation/component-10 | 1 |", result)
+        self.assertIn("2 more failed Component(s)", result)
+
+    def test_failed_component_paths_are_escaped(self) -> None:
+        report = {
+            "status": "failed",
+            "scope": {"families": ["documentation"], "filtered": True},
+            "summary": {
+                "passed_components": 0,
+                "failed_components": 1,
+                "error_count": 1,
+            },
+            "components": [
+                {
+                    "relative_path": "documentation/invalid|line\nbreak",
+                    "status": "failed",
+                    "errors": ["invalid metadata"],
+                },
+            ],
+        }
+        result = render_summary(report)
+        self.assertIn(r"| documentation/invalid\|line break | 1 |", result)

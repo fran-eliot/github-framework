@@ -7,14 +7,14 @@ from pathlib import Path
 
 
 def render_summary(report: dict) -> str:
-    """Render trusted aggregate report fields as a Markdown table."""
+    """Render aggregate results and a bounded list of failed Components."""
     summary = report["summary"]
     scope = report["scope"]
     families = ", ".join(scope["families"])
     scope_label = "Partial" if scope["filtered"] else "Full"
     status = "Passed" if report["status"] == "passed" else "Failed"
 
-    return (
+    result = (
         "## Framework Validator\n\n"
         "| Result | Value |\n"
         "| --- | --- |\n"
@@ -23,8 +23,31 @@ def render_summary(report: dict) -> str:
         f"| Passed Components | {summary['passed_components']} |\n"
         f"| Failed Components | {summary['failed_components']} |\n"
         f"| Validation errors | {summary['error_count']} |\n"
-        "\nThe full JSON report is available in the workflow artifacts.\n"
     )
+
+    failed_components = [
+        component
+        for component in report.get("components", [])
+        if component["status"] == "failed"
+    ]
+    if failed_components:
+        result += (
+            "\n### Failed Components\n\n"
+            "| Component | Errors |\n"
+            "| --- | ---: |\n"
+        )
+        for component in failed_components[:10]:
+            # Evitar que las rutas alteren las columnas de la tabla Markdown.
+            path = str(component["relative_path"]).replace("\\", "\\\\")
+            path = path.replace("|", "\\|").replace("\n", " ").replace("\r", " ")
+            result += f"| {path} | {len(component['errors'])} |\n"
+        if len(failed_components) > 10:
+            result += (
+                f"\n{len(failed_components) - 10} more failed Component(s) "
+                "are listed in the JSON artifact.\n"
+            )
+
+    return result + "\nThe full JSON report is available in the workflow artifacts.\n"
 
 
 def main() -> None:
