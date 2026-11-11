@@ -879,3 +879,78 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             )
             self.assertEqual(conflict.returncode, 2)
             self.assertIn("cannot be combined", conflict.stderr)
+
+    def test_cli_list_components_without_loading_metadata(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for family, name in (
+                ("workflow", "issue"),
+                ("documentation", "architecture"),
+                ("readme", "author"),
+            ):
+                (root / family / name).mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout.splitlines(), [
+                "documentation/architecture",
+                "readme/author",
+                "workflow/issue",
+            ])
+
+    def test_cli_list_components_with_family_filter(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "documentation" / "architecture").mkdir(parents=True)
+            (root / "workflow" / "issue").mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root),
+                    "--list-components", "--family", "workflow",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout.splitlines(), ["workflow/issue"])
+
+    def test_cli_list_components_empty_directory(self) -> None:
+        with TemporaryDirectory() as directory:
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(Path(directory)), "--list-components",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 1)
+            self.assertIn("No Components discovered", result.stderr)
+
+    def test_cli_list_components_rejects_incompatible_arguments(self) -> None:
+        with TemporaryDirectory() as directory:
+            common = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(Path(directory)),
+                "--list-components",
+            ]
+            for options in (
+                ["--component", "documentation/architecture"],
+                ["--format", "json"],
+                ["--output", "report.json"],
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(
+                        common + options,
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn("--list-components", result.stderr)
