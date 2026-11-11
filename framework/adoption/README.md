@@ -1019,7 +1019,7 @@ why those decisions were made
 
 ---
 
-## 25.1 Application Core
+### 25.1 Application Core
 
 The reusable Application Core is documented in:
 
@@ -1083,7 +1083,7 @@ FAIL
 
 ---
 
-## 25.2 Integration Core
+### 25.2 Integration Core
 
 The reusable Integration Core is documented in:
 
@@ -1150,7 +1150,7 @@ RECOVERY REQUIRED
 
 This capability does not configure consumer governance, prescribe a universal merge strategy, or automate recovery.
 
-## 25.3 Assisted Analysis Core
+### 25.3 Assisted Analysis Core
 
 The reusable Assisted Analysis Core is documented in:
 
