@@ -389,3 +389,56 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(exit_code, 2)
             self.assertEqual(stdout.getvalue(), "")
             self.assertIn("Unable to write JSON report", stderr.getvalue())
+
+    def test_json_report_replaces_existing_file(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            destination = root / "report.json"
+            destination.write_text("previous report", encoding="utf-8")
+
+            with patch.object(validator_cli, "COMPONENTS_ROOT", root):
+                exit_code = validator_cli.main(
+                    output_format="json", output_path=destination
+                )
+
+            self.assertEqual(exit_code, 0)
+            report = json.loads(destination.read_text(encoding="utf-8"))
+            self.assertEqual(report["status"], "passed")
+            self.assertEqual(list(root.glob(".report.json.*.tmp")), [])
+
+    def test_json_report_replace_failure_preserves_existing_file(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            destination = root / "report.json"
+            previous_report = '{"status": "previous"}\n'
+            destination.write_text(previous_report, encoding="utf-8")
+            stdout = io.StringIO()
+            stderr = io.StringIO()
+
+            with (
+                patch.object(validator_cli, "COMPONENTS_ROOT", root),
+                patch.object(
+                    validator_cli.os,
+                    "replace",
+                    side_effect=OSError("simulated replace failure"),
+                ),
+                redirect_stdout(stdout),
+                redirect_stderr(stderr),
+            ):
+                exit_code = validator_cli.main(
+                    output_format="json", output_path=destination
+                )
+
+            self.assertEqual(exit_code, 2)
+            self.assertEqual(stdout.getvalue(), "")
+            self.assertIn("Unable to write JSON report", stderr.getvalue())
+            self.assertEqual(destination.read_text(encoding="utf-8"), previous_report)
+            self.assertEqual(list(root.glob(".report.json.*.tmp")), [])
