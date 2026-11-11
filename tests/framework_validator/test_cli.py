@@ -3,6 +3,8 @@
 
 import io
 import json
+import subprocess
+import sys
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
@@ -509,3 +511,67 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                     for component in result["components"]
                 )
             )
+
+    def test_explicit_components_root_json(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory) / "custom-components"
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            output = io.StringIO()
+
+            with redirect_stdout(output):
+                exit_code = validator_cli.main(
+                    output_format="json", components_root=root
+                )
+
+            result = json.loads(output.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(result["components_discovered"], 1)
+            self.assertEqual(result["components"][0]["relative_path"], "documentation/architecture")
+            self.assertEqual(result["components"][0]["path"], str(component))
+
+    def test_explicit_components_root_text_with_missing_metadata(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory) / "custom-components"
+            self.create_component(root)
+            output = io.StringIO()
+
+            with redirect_stdout(output):
+                exit_code = validator_cli.main(components_root=root)
+
+            self.assertEqual(exit_code, 1)
+            self.assertIn(str(root), output.getvalue())
+            self.assertIn("missing metadata.yml", output.getvalue())
+
+    def test_cli_components_root_argument_and_invalid_path(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory) / "custom-components"
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--format", "json", "--components-root", str(root),
+            ]
+            result = subprocess.run(
+                command,
+                capture_output=True,
+                text=True,
+                check=False,
+                cwd=validator_cli.REPOSITORY_ROOT,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(json.loads(result.stdout)["components_discovered"], 1)
+
+            invalid = subprocess.run(
+                command[:-1] + [str(root / "missing")],
+                capture_output=True,
+                text=True,
+                check=False,
+                cwd=validator_cli.REPOSITORY_ROOT,
+            )
+            self.assertEqual(invalid.returncode, 2)
+            self.assertIn("--components-root must be an existing directory", invalid.stderr)
