@@ -138,6 +138,14 @@ python -m scripts.framework_validator
 
 El CLI genera un informe legible y devuelve el código de salida `0` cuando la validación es satisfactoria o `1` cuando se detectan errores de validación.
 
+Para obtener una salida legible por herramientas:
+
+```bash
+python -m scripts.framework_validator --format json
+```
+
+La salida JSON incluye el estado de validación, el número de Components detectados, sus identificadores cargados y los errores. El alcance y los códigos de salida no cambian.
+
 Para ejecutar la batería de tests automatizados:
 
 ```bash
