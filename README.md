@@ -172,6 +172,8 @@ Run the automated test suite with:
 python -m unittest discover -s tests/framework_validator -p "test_*.py"
 ```
 
+GitHub Actions also runs the Validator test suite and checks the repository Components on pull requests and pushes to `main` via `.github/workflows/framework-validator.yml`.
+
 The v0.6.0 reference implementation validates 21 Components and includes 109 automated tests.
 
 For details, see the [Component Metadata Standard](docs/standards/21_COMPONENT_METADATA_STANDARD.md) and [Automation Reference Implementation](docs/implementation/22_AUTOMATION_REFERENCE_IMPLEMENTATION.md).
