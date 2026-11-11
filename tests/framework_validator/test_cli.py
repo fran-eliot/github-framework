@@ -943,7 +943,6 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             ]
             for options in (
                 ["--component", "documentation/architecture"],
-                ["--format", "json"],
                 ["--output", "report.json"],
             ):
                 with self.subTest(options=options):
@@ -954,3 +953,69 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                     )
                     self.assertEqual(result.returncode, 2)
                     self.assertIn("--list-components", result.stderr)
+
+    def test_cli_list_components_json_catalog(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for family, name in (
+                ("workflow", "issue"),
+                ("documentation", "architecture"),
+                ("readme", "author"),
+            ):
+                (root / family / name).mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root),
+                    "--list-components", "--format", "json",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(json.loads(result.stdout), {
+                "components": [
+                    "documentation/architecture",
+                    "readme/author",
+                    "workflow/issue",
+                ],
+                "count": 3,
+                "scope": {"families": ["readme", "documentation", "workflow"]},
+            })
+
+    def test_cli_list_components_json_scoped_catalog(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "documentation" / "architecture").mkdir(parents=True)
+            (root / "workflow" / "issue").mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--family", "workflow",
+                    "--family", "workflow",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(json.loads(result.stdout), {
+                "components": ["workflow/issue"],
+                "count": 1,
+                "scope": {"families": ["workflow"]},
+            })
+
+    def test_cli_list_components_json_empty_directory_fails(self) -> None:
+        with TemporaryDirectory() as directory:
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(Path(directory)),
+                    "--list-components", "--format", "json",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 1)
+            self.assertEqual(result.stdout, "")
+            self.assertIn("No Components discovered", result.stderr)
