@@ -39,6 +39,8 @@ Para comenzar sobre un repositorio existente **sin modificarlo**:
 
 **¿Qué hacer después?** Solo una Adoption Decision resuelta y revisada puede seleccionarse para [Application](application/README.md), que refresca Evidence y exige plan y verificación antes de modificar en aislamiento. [Integration](integration/README.md) requiere posteriormente un candidate verificado y revisión de la base estable. [Assisted Analysis](assisted-analysis/README.md) ofrece soporte opcional de Evidence read-only, no decisiones automáticas.
 
+**Ejemplo cumplimentado:** consulta el [primer Assessment guiado](examples/first-assessment-example.md), basado en evidencias de un consumer real y mantenido en estado `In Progress`. Es un extracto de una Responsibility, no un Assessment completo.
+
 Este recorrido es una guía de orientación; no genera repositorios, no ejecuta assessments ni sustituye la revisión humana.
 
 ---
