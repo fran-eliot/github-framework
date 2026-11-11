@@ -25,6 +25,22 @@ El Integration Core permite revisar e integrar un verified candidate state en st
 
 Assisted Analysis permite recopilar Evidence determinista, bounded, source-traceable y read-only para apoyar cualquiera de las tres lifecycle capabilities sin sustituir la evaluación semántica ni las decisiones humanas.
 
+### Primer Assessment: recorrido mínimo
+
+Para comenzar sobre un repositorio existente **sin modificarlo**:
+
+1. **Seleccionar el Template.** Consultar la [Repository Template Library](../templates/repositories/README.md) y elegir el Template según la naturaleza del consumer. Por ejemplo, [TPL-BACKEND](../templates/repositories/backend/README.md) para un servicio backend.
+2. **Fijar el contrato.** Leer los criterios del Template y obtener su `id` y `version` de la metadata canónica (por ejemplo, [TPL-BACKEND metadata](../templates/repositories/backend/metadata.yml)). No confundir esa versión con la versión del Framework.
+3. **Fijar el consumer.** Anotar la URL del repositorio y un commit SHA concreto. Una rama mutable sin SHA no basta para reproducir indefinidamente la evidencia.
+4. **Preparar el registro.** Copiar el [Assessment Template](assessment-template.md) a un archivo de trabajo propio y rellenar `Consumer Repository`, `Consumer Reference`, `Repository Template`, `Template Version`, fecha y `Assessment Status: In Progress`.
+5. **Empezar con hechos.** Elegir una Responsibility declarada por el Template, localizar los artefactos relevantes y registrar `Detected Facts` y referencias de `Evidence` al commit fijado. No inferir una decisión a partir del nombre o la ausencia de un archivo.
+6. **Evaluar con incertidumbre explícita.** Registrar `State`, `Applicability`, `Implementation Characteristics`, `Uncertainty` y `Evaluation Rationale`. Si no hay evidencia o revisión suficiente, mantener `Decision Status: Needs Further Evaluation` y `Adoption Decision: —`.
+7. **Conservar el resultado parcial.** Una primera Responsibility documentada es un **inicio**, no un Assessment completo. Para marcar `Complete` deben cubrirse y revisarse las Responsibilities del Template según los criterios de esta guía.
+
+**¿Qué hacer después?** Solo una Adoption Decision resuelta y revisada puede seleccionarse para [Application](application/README.md), que refresca Evidence y exige plan y verificación antes de modificar en aislamiento. [Integration](integration/README.md) requiere posteriormente un candidate verificado y revisión de la base estable. [Assisted Analysis](assisted-analysis/README.md) ofrece soporte opcional de Evidence read-only, no decisiones automáticas.
+
+Este recorrido es una guía de orientación; no genera repositorios, no ejecuta assessments ni sustituye la revisión humana.
+
 ---
 
 ## 1. Propósito
