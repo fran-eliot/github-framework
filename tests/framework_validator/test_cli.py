@@ -210,6 +210,11 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(result["components_discovered"], 1)
             self.assertEqual(result["component_ids"], ["DOC-ARCHITECTURE"])
             self.assertEqual(result["errors"], [])
+            self.assertEqual(len(result["components"]), 1)
+            self.assertEqual(result["components"][0]["id"], "DOC-ARCHITECTURE")
+            self.assertEqual(result["components"][0]["status"], "passed")
+            self.assertEqual(result["components"][0]["errors"], [])
+            self.assertTrue(result["components"][0]["path"].endswith("architecture"))
 
     def test_json_output_missing_metadata(self) -> None:
         with TemporaryDirectory() as directory:
@@ -224,6 +229,10 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(result["component_ids"], [])
             self.assertEqual(len(result["errors"]), 1)
             self.assertIn("missing metadata.yml", result["errors"][0])
+            self.assertEqual(len(result["components"]), 1)
+            self.assertIsNone(result["components"][0]["id"])
+            self.assertEqual(result["components"][0]["status"], "failed")
+            self.assertEqual(result["components"][0]["errors"], result["errors"])
 
     def test_json_output_empty_components_root(self) -> None:
         with TemporaryDirectory() as directory:
@@ -233,6 +242,54 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(result["status"], "failed")
             self.assertEqual(result["components_discovered"], 0)
             self.assertEqual(result["component_ids"], [])
+            self.assertEqual(result["components"], [])
             self.assertTrue(
                 any("no Components discovered" in error for error in result["errors"])
             )
+
+    def test_json_output_invalid_metadata(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA.replace("status: Experimental", "status: Unknown"),
+                encoding="utf-8",
+            )
+
+            exit_code, result = self.run_validator_json(root)
+
+            self.assertEqual(exit_code, 1)
+            self.assertEqual(result["status"], "failed")
+            self.assertEqual(result["component_ids"], ["DOC-ARCHITECTURE"])
+            self.assertEqual(len(result["components"]), 1)
+            self.assertEqual(result["components"][0]["status"], "failed")
+            self.assertTrue(
+                any("status:" in error for error in result["components"][0]["errors"])
+            )
+
+    def test_json_output_duplicate_component_id(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ("architecture", "references"):
+                component = root / "documentation" / name
+                component.mkdir(parents=True)
+                (component / "metadata.yml").write_text(
+                    VALID_METADATA, encoding="utf-8"
+                )
+
+            exit_code, result = self.run_validator_json(root)
+
+            self.assertEqual(exit_code, 1)
+            self.assertEqual(result["status"], "failed")
+            self.assertEqual(result["components_discovered"], 2)
+            self.assertEqual(len(result["components"]), 2)
+            self.assertTrue(
+                all(component["status"] == "failed" for component in result["components"])
+            )
+            self.assertTrue(
+                all(
+                    any("id: duplicate" in error for error in component["errors"])
+                    for component in result["components"]
+                )
+            )
+            self.assertEqual(len(result["errors"]), 1)
