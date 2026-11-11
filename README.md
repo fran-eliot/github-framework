@@ -142,6 +142,12 @@ For machine-readable output, use:
 python -m scripts.framework_validator --format json
 ```
 
+To save the JSON report as a UTF-8 file (including when validation fails):
+
+```bash
+python -m scripts.framework_validator --format json --output validation-report.json
+```
+
 JSON output includes validation status, discovered Component count, loaded Component IDs, global errors, and a `components` array with each Component's path, ID, status, and related errors. The validation scope and exit codes remain unchanged.
 
 Run the automated test suite with:
