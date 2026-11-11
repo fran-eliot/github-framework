@@ -1225,7 +1225,7 @@ Nor does it introduce a CLI, GitHub Actions, consumer mutation, Schema, Manifest
 
 ## 26. Out of Scope
 
-Existing Repository Adoption no documenta ni implementa procedimientos estables para:
+Existing Repository Adoption does not document or implement stable procedures for:
 
 ```text
 automatic merge
@@ -1257,9 +1257,9 @@ drift detection
 automatic post-integration rollback
 ```
 
-Tampoco convierte Existing Repository Adoption en una nueva Component family.
+Nor does it turn Existing Repository Adoption into a new Component family.
 
-Este delivery no requiere:
+This delivery does not require:
 
 ```text
 metadata.yml
@@ -1267,13 +1267,13 @@ Component Catalog integration
 mandatory metadata contract
 ```
 
-Las capacidades excluidas podrán volver a Discovery si aparece evidencia suficiente que justifique su incorporación.
+Excluded capabilities may return to Discovery if sufficient Evidence emerges to justify including them.
 
 ---
 
-## 27. Límites de Interpretación
+## 27. Interpretation Boundaries
 
-Existing Repository Adoption Assessment debe evitar las siguientes inferencias automáticas:
+Existing Repository Adoption Assessment must avoid the following automatic inferences:
 
 ```text
 file exists
@@ -1305,13 +1305,13 @@ assessment result
 automatic conformance certification
 ```
 
-Cada conclusión debe permanecer respaldada por Evidence y rationale explícitos.
+Every conclusion must remain supported by explicit Evidence and rationale.
 
 ---
 
-## 28. Resumen Operativo
+## 28. Operational Summary
 
-El Assessment Core puede resumirse como:
+Assessment Core can be summarized as:
 
 ```text
 Existing Consumer Repository
@@ -1331,7 +1331,7 @@ REPORT
 Persistent Human-Reviewed Assessment
 ```
 
-La secuencia conceptual por Responsibility es:
+The conceptual sequence for each Responsibility is:
 
 ```text
 Detected Facts
@@ -1355,9 +1355,9 @@ Adoption Decision
 Decision Rationale
 ```
 
-cuando la decisión puede resolverse.
+when the decision can be resolved.
 
-Si no puede resolverse:
+If it cannot be resolved:
 
 ```text
 Decision Status
@@ -1370,47 +1370,47 @@ Uncertainty
 Rationale
 ```
 
-sin forzar una Adoption Decision.
+without forcing an Adoption Decision.
 
 ---
 
-## 29. Referencias
+## 29. References
 
-La definición y planificación del Assessment Core se encuentran en:
+Assessment Core definition and planning are documented in:
 
 ```text
 docs/discovery/29_ADOPTION_DELIVERY_SCOPE.md
 docs/implementation/30_ADOPTION_IMPLEMENTATION_PLAN.md
 ```
 
-La definición y planificación del Application Core se encuentran en:
+Application Core definition and planning are documented in:
 
 ```text
 docs/discovery/35_APPLICATION_DELIVERY_SCOPE.md
 docs/discovery/36_APPLICATION_IMPLEMENTATION_PLAN.md
 ```
 
-La definición y planificación del Integration Core se encuentran en:
+Integration Core definition and planning are documented in:
 
 ```text
 docs/discovery/41_INTEGRATION_DELIVERY_SCOPE.md
 docs/discovery/42_INTEGRATION_IMPLEMENTATION_PLAN.md
 ```
 
-La definición y planificación del Assisted Analysis Core se encuentran en:
+Assisted Analysis Core definition and planning are documented in:
 
 ```text
 docs/discovery/50_ASSISTED_ANALYSIS_DELIVERY_SCOPE.md
 docs/implementation/51_ASSISTED_ANALYSIS_IMPLEMENTATION_PLAN.md
 ```
 
-La evidencia experimental que fundamenta esta capability permanece en:
+The experimental Evidence supporting this capability remains in:
 
 ```text
 docs/discovery/
 ```
 
-Los artifacts reutilizables de Existing Repository Adoption se integran en:
+Reusable Existing Repository Adoption artifacts are located in:
 
 ```text
 framework/adoption/
