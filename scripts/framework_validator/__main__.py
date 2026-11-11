@@ -117,6 +117,7 @@ def main(output_format: str = "text") -> int:
                 error
                 for error in errors
                 if error.startswith(f"{metadata_path}:")
+                or error.startswith(f"{component_dir}:")
                 or (
                     "id: duplicate " in error
                     and f"first declared in {metadata_path}" in error
