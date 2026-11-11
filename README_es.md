@@ -164,7 +164,15 @@ Para validar únicamente determinadas familias de Components, se puede repetir `
 python -m scripts.framework_validator --family documentation --family workflow
 ```
 
-Las familias disponibles son `readme`, `documentation` y `workflow`. Sin filtro se validan todas. Una ejecución filtrada comprueba únicamente los Components seleccionados, incluida la unicidad entre ellos; no equivale a una validación completa de la biblioteca. Los informes JSON incluyen `scope.families` (familias seleccionadas en orden canónico) y `scope.filtered` (`true` para validaciones parciales), de modo que CI puede distinguirlas de una comprobación completa.
+Las familias disponibles son `readme`, `documentation` y `workflow`. Sin filtro se validan todas. Una ejecución filtrada comprueba únicamente los Components seleccionados, incluida la unicidad entre ellos; no equivale a una validación completa de la biblioteca.
+
+Para comprobar un único Component, indica su ruta relativa `familia/nombre` (repite `--component` si necesitas varios):
+
+```bash
+python -m scripts.framework_validator --component documentation/architecture --format json
+```
+
+La selección de Components no puede combinarse con `--family` y los directorios indicados deben existir. En los informes JSON, `scope.component_paths` identifica la selección y `scope.filtered` vale `true`, aunque estén representadas todas las familias. Los demás Components no se validan. Los informes JSON incluyen `scope.families` (familias seleccionadas en orden canónico) y `scope.filtered` (`true` para validaciones parciales), de modo que CI puede distinguirlas de una comprobación completa.
 
 La salida JSON incluye el estado de validación, el número de Components detectados, sus identificadores cargados, los errores globales y un array `components` con la ruta, el ID, el estado y los errores de cada Component. El objeto `summary` incorpora los recuentos de Components válidos, Components con errores y errores totales. Cada Component incluye también una ruta portable `relative_path` (por ejemplo, `documentation/architecture`) además de su `path` original. El alcance y los códigos de salida no cambian.
 
