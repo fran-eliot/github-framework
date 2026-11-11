@@ -2,7 +2,9 @@
 
 import argparse
 import json
+import os
 import sys
+import tempfile
 from pathlib import Path
 
 import yaml
@@ -149,11 +151,29 @@ def main(output_format: str = "text", output_path: Path | None = None) -> int:
         if output_path is None:
             print(report)
         else:
+            temporary_path = None
             try:
-                output_path.write_text(report + "\n", encoding="utf-8")
+                with tempfile.NamedTemporaryFile(
+                    mode="w",
+                    encoding="utf-8",
+                    newline="\n",
+                    dir=output_path.parent,
+                    prefix=f".{output_path.name}.",
+                    suffix=".tmp",
+                    delete=False,
+                ) as temporary_file:
+                    temporary_path = Path(temporary_file.name)
+                    temporary_file.write(report + "\n")
+                os.replace(temporary_path, output_path)
             except OSError as exc:
-                print(f"Unable to write JSON report to {output_path}: {exc}", file=sys.stderr)
+                print(
+                    f"Unable to write JSON report to {output_path}: {exc}",
+                    file=sys.stderr,
+                )
                 return 2
+            finally:
+                if temporary_path is not None:
+                    temporary_path.unlink(missing_ok=True)
     else:
         print()
         if errors:
