@@ -173,7 +173,13 @@ python -m scripts.framework_validator --list-components
 python -m scripts.framework_validator --list-components --family documentation
 ```
 
-El listado devuelve una ruta portable por línea y admite `--components-root`. Solo ofrece salida de texto y no puede combinarse con `--component`, `--format json` ni `--output`.
+Por defecto, el listado devuelve una ruta portable por línea. Para integraciones, `--list-components --format json` devuelve un objeto con `components` ordenados, `count` y `scope.families`:
+
+```bash
+python -m scripts.framework_validator --list-components --format json
+```
+
+Ambos formatos admiten `--family` y `--components-root`. El listado no puede combinarse con `--component` ni `--output`. Si no hay Components, devuelve código de salida 1.
 
 Para comprobar un único Component, indica su ruta relativa `familia/nombre` (repite `--component` si necesitas varios):
 

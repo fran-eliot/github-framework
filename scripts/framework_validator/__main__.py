@@ -262,7 +262,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--list-components",
         action="store_true",
-        help="Print available family/name Component paths without validation.",
+        help="List available family/name Component paths without validation.",
     )
     parser.add_argument(
         "--component",
@@ -274,8 +274,8 @@ if __name__ == "__main__":
     if arguments.list_components:
         if arguments.component:
             parser.error("--list-components cannot be combined with --component")
-        if arguments.format != "text" or arguments.output is not None:
-            parser.error("--list-components supports text output only")
+        if arguments.output is not None:
+            parser.error("--list-components does not support --output")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
@@ -303,8 +303,20 @@ if __name__ == "__main__":
         if not available:
             print("No Components discovered.", file=sys.stderr)
             raise SystemExit(1)
-        for component in available:
-            print(component.relative_to(root).as_posix())
+        paths = [component.relative_to(root).as_posix() for component in available]
+        if arguments.format == "json":
+            families = [
+                family for family in COMPONENT_FAMILIES
+                if family_filter is None or family in family_filter
+            ]
+            print(json.dumps({
+                "components": paths,
+                "count": len(paths),
+                "scope": {"families": families},
+            }, indent=2))
+        else:
+            for path in paths:
+                print(path)
         raise SystemExit(0)
     raise SystemExit(
         main(

@@ -171,7 +171,13 @@ python -m scripts.framework_validator --list-components
 python -m scripts.framework_validator --list-components --family documentation
 ```
 
-The listing prints one portable path per line and can use `--components-root`. Listing is text-only and cannot be combined with `--component`, `--format json`, or `--output`.
+The default listing prints one portable path per line. For scripts, use `--list-components --format json` to get an object with sorted `components`, `count`, and `scope.families`:
+
+```bash
+python -m scripts.framework_validator --list-components --format json
+```
+
+Both modes support `--family` and `--components-root`. Listing cannot be combined with `--component` or `--output`. An empty catalog returns exit code 1.
 
 For a single Component, use its relative `family/name` path (repeat `--component` to select several):
 
