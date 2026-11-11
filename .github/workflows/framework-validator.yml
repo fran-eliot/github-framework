@@ -42,3 +42,7 @@ jobs:
           path: validator-report.json
           if-no-files-found: warn
           retention-days: 7
+
+      - name: Summarize Validator results
+        if: ${{ always() }}
+        run: python -m scripts.framework_validator.ci_summary validator-report.json
