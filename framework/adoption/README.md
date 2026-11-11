@@ -309,22 +309,22 @@ Adoption Decision
 
 ---
 
-## 6. Proceso
+## 6. Process
 
 ### 6.1 ANALYZE
 
-El objetivo de ANALYZE es identificar información observable del consumer.
+The purpose of ANALYZE is to identify observable information about the consumer.
 
-Se registran:
+Record:
 
 ```text
 Detected Facts
 Evidence
 ```
 
-sin decidir todavía qué acción de adopción corresponde.
+without deciding which Adoption action is appropriate yet.
 
-Ejemplos de Detected Facts:
+Examples of Detected Facts:
 
 ```text
 README.md exists
@@ -336,9 +336,9 @@ OpenAPI configuration exposes API documentation
 repository-level LICENSE file is not present
 ```
 
-Un Detected Fact debe ser verificable.
+A Detected Fact must be verifiable.
 
-No debe contener una conclusión semántica.
+It must not contain a semantic conclusion.
 
 ```text
 Fact
@@ -348,9 +348,9 @@ Evaluation
 
 ### 6.2 ASSESS
 
-El objetivo de ASSESS es interpretar la Evidence respecto a la Responsibility.
+The purpose of ASSESS is to interpret Evidence against the Responsibility.
 
-Se evalúan:
+Evaluate:
 
 ```text
 State
@@ -362,9 +362,9 @@ Evaluation Rationale
 
 ### 6.3 REVIEW
 
-El objetivo de REVIEW es comprobar que la evaluación es defendible.
+The purpose of REVIEW is to determine whether the evaluation can be justified.
 
-La revisión debe considerar:
+The review must consider:
 
 ```text
 evidence sufficiency
@@ -374,13 +374,13 @@ uncertainty
 applicability
 ```
 
-La revisión es especialmente importante cuando una Responsibility está implementada mediante estructuras distintas de las previstas canónicamente por el Template.
+Review is particularly important when a Responsibility is implemented using structures that differ from those defined canonically by the Template.
 
 ### 6.4 DECIDE
 
-El objetivo de DECIDE es registrar si puede cerrarse una decisión y, cuando sea posible, cuál es la disposición adecuada.
+The purpose of DECIDE is to record whether a decision can be resolved and, when possible, which disposition is appropriate.
 
-Se registran:
+Record:
 
 ```text
 Decision Status
@@ -390,13 +390,13 @@ Decision Rationale
 
 ### 6.5 REPORT
 
-El assessment completo se conserva como:
+Preserve the completed Assessment as a:
 
 ```text
 persistent Markdown outcome
 ```
 
-El mismo artifact puede funcionar como:
+The same artifact can serve as:
 
 ```text
 working assessment
@@ -406,15 +406,15 @@ review artifact
 persistent report
 ```
 
-No se requiere un Generated Report separado.
+No separate Generated Report is required.
 
 ---
 
 ## 7. Detected Facts
 
-Detected Facts contienen observaciones verificables sobre el consumer.
+Detected Facts contain verifiable observations about the consumer.
 
-Deben describir:
+They must describe:
 
 ```text
 what exists
@@ -423,7 +423,7 @@ what configuration is present
 what repository structure is observable
 ```
 
-No deben expresar:
+They must not express:
 
 ```text
 whether the Responsibility is satisfied
@@ -435,9 +435,9 @@ which Adoption Decision should be selected
 
 ## 8. Evidence
 
-Evidence vincula el assessment con material observable del consumer.
+Evidence connects the Assessment to observable consumer material.
 
-Puede referenciar:
+It may reference:
 
 ```text
 file paths
@@ -448,43 +448,43 @@ generated documentation
 repository structure
 ```
 
-La regla general es:
+The general rule is:
 
 ```text
 minimal sufficient evidence
 ```
 
-Debe conservarse evidencia suficiente para que otra persona pueda revisar la evaluación sin copiar innecesariamente grandes cantidades de contenido del consumer.
+Preserve enough Evidence for another person to review the evaluation without unnecessarily copying large amounts of consumer content.
 
 ---
 
 ## 9. Responsibility State
 
-State representa únicamente:
+State represents only:
 
 ```text
 current responsibility coverage
 ```
 
-El vocabulario estable es:
+The stable vocabulary is:
 
 ### `Satisfied`
 
-La Responsibility está suficientemente cubierta en el consumer.
+The Responsibility is sufficiently covered in the consumer.
 
-Esto puede ocurrir mediante una implementación canónica o no canónica.
+This may be achieved through a canonical or non-canonical implementation.
 
 ### `Partial`
 
-La Responsibility está cubierta solo parcialmente.
+The Responsibility is only partially covered.
 
-Puede existir implementación relevante, pero falta parte de la cobertura necesaria.
+A relevant implementation may exist, but some required coverage is missing.
 
 ### `Missing`
 
-La Responsibility no está cubierta por la Evidence observada.
+The Responsibility is not covered by the observed Evidence.
 
-State no representa:
+State does not represent:
 
 ```text
 future action
@@ -496,25 +496,25 @@ priority
 
 ## 10. Applicability
 
-Applicability indica si una Responsibility resulta pertinente para el consumer concreto.
+Applicability indicates whether a Responsibility is relevant to the specific consumer.
 
-El vocabulario estable es:
+The stable vocabulary is:
 
 ### `Applicable`
 
-La Responsibility es relevante para el consumer.
+The Responsibility is relevant to the consumer.
 
 ### `Not Applicable`
 
-La Responsibility no resulta necesaria en el contexto evaluado.
+The Responsibility is not needed in the evaluated context.
 
 ### `Uncertain`
 
-No existe evidencia o contexto suficiente para determinar todavía su aplicabilidad.
+There is insufficient Evidence or context to determine applicability yet.
 
-Applicability debe evaluarse independientemente de State.
+Applicability must be evaluated independently from State.
 
-Por ejemplo:
+For example:
 
 ```text
 State
@@ -527,7 +527,7 @@ Decision
     OMIT
 ```
 
-es un resultado válido.
+is a valid outcome.
 
 ---
 
