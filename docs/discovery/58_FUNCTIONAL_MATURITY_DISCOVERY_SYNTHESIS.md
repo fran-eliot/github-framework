@@ -1,60 +1,60 @@
 # 58 — Functional Maturity Discovery Synthesis
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Proyecto | GitHub Framework |
-| Fecha | 2026-11-11 |
-| Estado | Discovery Synthesis — Concluded for current evidence |
-| Versión publicada | `v0.10.0` |
-| Alcance | Functional maturity / Template materialization / `README-LICENSE` |
-| Fuentes principales | [55 — Functional Maturity](55_FRAMEWORK_FUNCTIONAL_MATURITY_DISCOVERY.md), [56 — Materialization Reality Check](56_DOCUMENTATION_TEMPLATE_MATERIALIZATION_REALITY_CHECK.md), [57 — Documentation Consumer Case](57_DOCUMENTATION_LICENSE_CONSUMER_CASE_STUDY.md) |
-| Solution Shaping | No iniciado |
-| Delivery Scope | No definido |
-| Sprint / milestone / versión objetivo | Ninguno comprometido |
+| Project | GitHub Framework |
+| Date | 2026-11-11 |
+| Status | Discovery Synthesis — Concluded for current evidence |
+| Published version | `v0.10.0` |
+| Scope | Functional maturity / Template materialization / `README-LICENSE` |
+| Primary sources | [55 — Functional Maturity](55_FRAMEWORK_FUNCTIONAL_MATURITY_DISCOVERY.md), [56 — Materialization Reality Check](56_DOCUMENTATION_TEMPLATE_MATERIALIZATION_REALITY_CHECK.md), [57 — Documentation Consumer Case](57_DOCUMENTATION_LICENSE_CONSUMER_CASE_STUDY.md) |
+| Solution Shaping | Not started |
+| Delivery Scope | Not defined |
+| Sprint / milestone / target version | None committed |
 
-> Esta síntesis cierra el ciclo de investigación acotado a la evidencia actual. Cerrar Discovery no convierte los hallazgos en requisitos de implementación ni implica que todos los aspectos de madurez funcional estén resueltos.
+> This synthesis concludes the bounded investigation based on currently available evidence. Closing Discovery does not turn findings into implementation requirements or imply that all functional maturity concerns have been resolved.
 
 ---
 
-## 1. Objetivo
+## 1. Objective
 
-Consolidar lo aprendido sobre la diferencia entre:
+Consolidate what has been learned about the differences between:
 
-- contratos y responsabilidades definidos por GitHub Framework;
-- Components canónicos realmente disponibles;
-- capacidad de un consumer para satisfacer responsabilidades con soluciones propias;
-- automatización ejecutable frente a procesos manuales revisables.
+- contracts and Responsibilities defined by GitHub Framework;
+- Canonical Components that are actually available;
+- a consumer's ability to satisfy Responsibilities using its own implementations;
+- executable automation versus manual, reviewable processes.
 
-La pregunta de decisión es:
+The decision question is:
 
-> ¿Existe evidencia suficiente para promover la materialización de `README-LICENSE`, modificar `TPL-DOCUMENTATION` o extender las herramientas del Framework como siguiente incremento?
+> Is there sufficient evidence to prioritize materializing `README-LICENSE`, changing `TPL-DOCUMENTATION`, or extending Framework tooling as the next increment?
 
-## 2. Evidencia sintetizada
+## 2. Synthesized Evidence
 
-### 2.1 Madurez funcional (Discovery #55)
+### 2.1 Functional Maturity (Discovery #55)
 
-- **Repository Templates:** la biblioteca dispone de composiciones versionadas `TPL-BACKEND`, `TPL-FULLSTACK` y `TPL-DOCUMENTATION`. Son contratos declarativos, no generadores automáticos.
-- **Framework Validator:** su entry point en Python descubre y valida `metadata.yml` dentro de `framework/components/` del propio Framework; no ejecuta por sí solo un Assessment semántico de consumidores externos.
-- **Existing Repository Adoption:** Assessment, Application e Integration proporcionan Guides y registros Markdown para operaciones humanas y revisables; Assisted Analysis ofrece soporte de Evidence read-only y source-traceable mediante Guide y Snapshot Template. No hay motor de adopción automatizada entregado por estos artefactos.
+- **Repository Templates:** the library contains versioned compositions `TPL-BACKEND`, `TPL-FULLSTACK`, and `TPL-DOCUMENTATION`. These are declarative contracts, not automatic repository generators.
+- **Framework Validator:** its Python entry point discovers and validates `metadata.yml` within the Framework's own `framework/components/` directory. It does not independently perform a semantic Assessment of external consumers.
+- **Existing Repository Adoption:** Assessment, Application, and Integration provide Guides and Markdown records for human, reviewable operations. Assisted Analysis provides read-only, source-traceable Evidence support through a Guide and Snapshot Template. These artifacts do not deliver an automated adoption engine.
 
-Los documentos de verificación de releases anteriores respaldan los límites y deliverables de esas capabilities. Esta síntesis no reproduce su ejecución ni afirma haber reejecutado tests.
+Prior release verification documents support the boundaries and deliverables of these capabilities. This synthesis does not reproduce those executions or claim that tests were rerun.
 
-### 2.2 Contrato de TPL-DOCUMENTATION (Discovery #56)
+### 2.2 TPL-DOCUMENTATION Contract (Discovery #56)
 
-Según la definición canónica de `TPL-DOCUMENTATION v0.1.0`, estado `Experimental` y madurez `L2`:
+According to the canonical definition of `TPL-DOCUMENTATION v0.1.0`, with status `Experimental` and maturity `L2`:
 
-| Requirement Level | Declarados | Implementados según README canónico |
+| Requirement Level | Declared | Implemented according to canonical README |
 |---|---:|---:|
 | Required | 9 | 8 |
 | Recommended | 7 | 2 |
 | Optional | 5 | 1 |
 | **Total** | **21** | **11** |
 
-`README-LICENSE` es el único Component `Required` clasificado como `Conceptual`.
+`README-LICENSE` is the only `Required` Component classified as `Conceptual`.
 
-La ausencia de su materialización canónica significa que **no se puede materializar exclusivamente con Components implementados el contrato mínimo completo**. No significa que todo consumer documental incumpla su responsabilidad de comunicar licencias.
+The absence of its canonical materialization means that **the complete minimum contract cannot be materialized exclusively from implemented Components**. It does not mean that every documentation consumer fails to communicate its license.
 
-La biblioteca y el Component Catalog distinguen:
+The library and Component Catalog distinguish:
 
 ```text
 Component availability
@@ -64,35 +64,35 @@ Consumer responsibility coverage
 Consumer Adoption Decision
 ```
 
-### 2.3 Consumer documental externo (Discovery #57)
+### 2.3 External Documentation Consumer (Discovery #57)
 
-El caso `github/docs`, fijado en el commit `2b4f2c7398e04ee8d02adca7440e4286d20c78b9`, muestra:
+The `github/docs` case, pinned to commit `2b4f2c7398e04ee8d02adca7440e4286d20c78b9`, shows:
 
-- sección `License` en el README;
-- comunicación diferenciada de CC BY 4.0 para documentación/contenidos y MIT para código;
-- enlaces a `LICENSE` y `LICENSE-CODE`, que incluyen sus textos correspondientes.
+- a `License` section in the README;
+- distinct license communication for documentation/content under CC BY 4.0 and code under MIT;
+- links to `LICENSE` and `LICENSE-CODE`, which contain the corresponding license texts.
 
-Para la Responsibility `README-LICENSE`, definida como comunicación de la licencia aplicable desde el README, se registró una cobertura **provisional `Satisfied`**, con Applicability `Applicable`, implementación `Own / Specialized / Distributed` y `Decision Status: Needs Further Evaluation`.
+For the `README-LICENSE` Responsibility, understood as communicating the applicable license from the README, the case recorded **provisional `Satisfied`** coverage, with Applicability `Applicable`, implementation characteristics `Own / Specialized / Distributed`, and `Decision Status: Needs Further Evaluation`.
 
-La evaluación es **parcial y documental**. No se realizó el Assessment completo de `TPL-DOCUMENTATION`, no hubo revisión formal del consumer, no se comprobó cumplimiento legal de licencias ni se seleccionó una Adoption Decision.
+This evaluation is **partial and document-based**. No complete `TPL-DOCUMENTATION` Assessment was performed, no formal consumer review took place, legal license compliance was not verified, and no Adoption Decision was selected.
 
-## 3. Hallazgos finales
+## 3. Final Findings
 
-| ID | Conclusión | Nivel de apoyo | Implicación |
+| ID | Conclusion | Evidence strength | Implication |
 |---|---|---|---|
-| FM-S01 | Hay una diferencia real entre contrato declarativo y disponibilidad material de Components. | Confirmada en los artefactos canónicos | Conservar la distinción al comunicar la madurez |
-| FM-S02 | `TPL-DOCUMENTATION` tiene un gap de materialización canónica en `README-LICENSE`. | Confirmada | No presentarlo como totalmente materializable solo desde el catálogo |
-| FM-S03 | Un consumer documental puede comunicar licencias sin un Component canónico del Framework. | Respaldada por un caso externo | No deducir State `Missing` de `Conceptual` |
-| FM-S04 | El gap provoca un obstáculo significativo de adopción para usuarios reales. | No demostrado | Requiere observación específica |
-| FM-S05 | Materializar `README-LICENSE` es la siguiente inversión de mayor valor. | No demostrado | No abrir Delivery Scope por inercia |
-| FM-S06 | Rebajar `README-LICENSE` de Required sería correcto. | No demostrado | Conservar el contrato hasta disponer de evidencia contraria |
-| FM-S07 | Hay que extender el Framework Validator o crear un generador para resolver el caso. | No demostrado | No ampliar tooling sin una necesidad repetible y acotada |
+| FM-S01 | Declarative contracts and actual Component availability are distinct. | Confirmed in canonical artifacts | Keep this distinction when describing maturity |
+| FM-S02 | `TPL-DOCUMENTATION` has a canonical materialization gap in `README-LICENSE`. | Confirmed | Do not present the Template as fully materializable from the catalog alone |
+| FM-S03 | A documentation consumer can communicate licensing without a canonical Framework Component. | Supported by one external case | Do not infer `Missing` from `Conceptual` |
+| FM-S04 | The gap creates a significant adoption obstacle for real users. | Not demonstrated | Requires targeted observation |
+| FM-S05 | Materializing `README-LICENSE` is the next highest-value investment. | Not demonstrated | Do not open Delivery Scope by default |
+| FM-S06 | Downgrading `README-LICENSE` from Required would be appropriate. | Not demonstrated | Preserve the contract until contrary evidence is available |
+| FM-S07 | The Framework Validator must be extended or a generator created to address this case. | Not demonstrated | Do not expand tooling without a bounded, repeatable need |
 
-## 4. Decisión de Discovery
+## 4. Discovery Decision
 
-**Decisión propuesta:** concluir la investigación actual y **no promover** el gap de `README-LICENSE` a Solution Shaping ni al Product Backlog con la evidencia disponible.
+**Proposed decision:** conclude the current investigation and **do not promote** the `README-LICENSE` gap to Solution Shaping or the Product Backlog based on existing evidence.
 
-Se preservan:
+Preserve:
 
 ```text
 TPL-DOCUMENTATION v0.1.0
@@ -101,50 +101,50 @@ TPL-DOCUMENTATION v0.1.0
         Framework Component Availability: Conceptual
 ```
 
-No se crean nuevos Components, no se cambia metadata, no se modifica el Validator y no se alteran los consumers examinados.
+No new Components are created, metadata is not changed, the Validator is not modified, and the examined consumers remain unchanged.
 
-Esta decisión es **reversible**. Concluir este experimento no significa prohibir la futura implementación del Component; significa no autorizarla todavía.
+This decision is **reversible**. Concluding the experiment does not prohibit future implementation of the Component; it means that such work is not yet authorized.
 
-## 5. Criterios para reabrir la investigación
+## 5. Criteria for Reopening the Investigation
 
-Reabrir este tema si aparece al menos una de las siguientes evidencias verificables:
+Reopen the topic if at least one of the following forms of verifiable evidence emerges:
 
-1. Un consumer documental encuentra una dificultad concreta para aplicar el contrato por no existir `README-LICENSE` canónico.
-2. Varios consumers necesitan resolver repetidamente el mismo problema y aparece un patrón reusable con límites claros.
-3. Una prueba de uso muestra confusión recurrente entre `Required`, `Conceptual` y `Satisfied`.
-4. Un caso de implementación representativo demuestra que materializar `README-LICENSE` aporta valor superior a conservar una solución propia del consumer.
-5. Evidencia de diseño cuestiona justificadamente el requirement level actual, **independientemente** de la disponibilidad del Component.
+1. A documentation consumer encounters a specific difficulty applying the contract because the canonical `README-LICENSE` Component is unavailable.
+2. Multiple consumers repeatedly need to solve the same problem, revealing a reusable pattern with clear boundaries.
+3. A usability test shows recurring confusion among `Required`, `Conceptual`, and `Satisfied`.
+4. A representative implementation case demonstrates that materializing `README-LICENSE` delivers greater value than keeping a consumer-specific solution.
+5. Design evidence provides a justified reason to question the current requirement level, **independently** of Component availability.
 
-En ese caso, iniciar **Solution Shaping** de forma explícita y comparar alternativas antes de comprometer un Delivery Scope.
+If so, begin **Solution Shaping** explicitly and compare alternatives before committing a Delivery Scope.
 
-## 6. Prioridad recomendada para la evolución del proyecto
+## 6. Recommended Priority for Project Evolution
 
-Con esta investigación acotada, el siguiente esfuerzo debe buscar evidencia de **valor de uso del Framework**, no aumentar automáticamente el catálogo documental.
+Given the bounded findings of this investigation, the next effort should seek evidence of **actual Framework usage value**, rather than automatically expanding the documentation catalog.
 
-Candidatos de investigación, sin orden de implementación comprometido:
+Potential research directions, without a committed implementation order:
 
-| Línea | Pregunta concreta | Posible evidencia |
+| Area | Concrete question | Potential evidence |
 |---|---|---|
-| Adoption end-to-end | ¿Puede un consumer completar Assessment y, si procede, Application e Integration con registros trazables y coste razonable? | Recorrido observable sobre un caso pequeño; decisiones humanas explícitas |
-| Templates en uso | ¿Qué trabajo manual debe repetir un usuario al partir de una composición existente? | Pasos reales, bloqueos, repetición y materiales consumidos |
-| Validator y expectativas | ¿Los usuarios comprenden qué valida el CLI y sobre qué repositorio? | Lectura del entry point, ejecución controlada y tareas de comprensión |
-| UX-02 pendiente | ¿La navegación inicial posterior a PR #90 funciona para personas nuevas? | Sesiones reales conforme al protocolo #54 |
+| Adoption end-to-end | Can a consumer complete Assessment and, where appropriate, Application and Integration using traceable records at reasonable cost? | Observable walkthrough on a small case; explicit human decisions |
+| Templates in practice | What manual work must a user repeat when starting from an existing composition? | Actual steps, blockers, repetition, and artifacts used |
+| Validator expectations | Do users understand what the CLI validates and which repository it applies to? | Entry-point inspection, controlled execution, and comprehension tasks |
+| Pending UX-02 | Does the initial navigation after PR #90 work for new users? | Real participant sessions following protocol #54 |
 
-La línea UX-02 permanece en estado **Prepared — Not Executed** hasta disponer de participantes independientes. No debe bloquear investigaciones técnicas distintas.
+UX-02 remains **Prepared — Not Executed** until independent participants are available. This need not prevent separate technical investigations.
 
-## 7. Estado de cierre
+## 7. Closing Status
 
-| Elemento | Estado |
+| Item | Status |
 |---|---|
-| Discovery #55 — Functional maturity baseline | Completado |
-| Discovery #56 — Materialization reality check | Completado |
-| Discovery #57 — External consumer license case | Completado, acotado a una Responsibility |
-| Discovery #58 — Synthesis and decision boundary | Completado |
-| `README-LICENSE` materialización | No comprometida |
-| `TPL-DOCUMENTATION` contract changes | No comprometidos |
-| Nuevo Product Backlog item | No creado |
-| Sprint / milestone / release | Ninguno abierto por este trabajo |
+| Discovery #55 — Functional maturity baseline | Completed |
+| Discovery #56 — Materialization reality check | Completed |
+| Discovery #57 — External consumer license case | Completed, bounded to one Responsibility |
+| Discovery #58 — Synthesis and decision boundary | Completed |
+| `README-LICENSE` materialization | Not committed |
+| `TPL-DOCUMENTATION` contract changes | Not committed |
+| New Product Backlog item | Not created |
+| Sprint / milestone / release | None opened for this work |
 
-**Resultado final:** la evidencia justifica mantener la distinción entre disponibilidad de Components y cobertura de responsabilidades, pero **no justifica todavía ninguna modificación funcional**. El siguiente trabajo deberá proporcionar evidencia directa de una necesidad de uso antes de seleccionar solución.
+**Final result:** the evidence supports maintaining the distinction between Component availability and Responsibility coverage, but **does not yet justify any functional modification**. Future work should provide direct evidence of a user need before selecting a solution.
 
-Este documento es una síntesis y una frontera de decisión de Discovery; **no constituye un Delivery Scope, plan de implementación, verificación de código ni aprobación de release**.
+This document is a Discovery synthesis and decision boundary; **it is not a Delivery Scope, implementation plan, code verification, or release approval**.
