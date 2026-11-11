@@ -9,7 +9,7 @@ from pathlib import Path
 
 import yaml
 
-from .discovery import discover_components, load_metadata
+from .discovery import COMPONENT_FAMILIES, discover_components, load_metadata
 
 from .validation import (
     validate_common_core,
@@ -34,6 +34,7 @@ def main(
     output_format: str = "text",
     output_path: Path | None = None,
     components_root: Path | None = None,
+    families: tuple[str, ...] | None = None,
 ) -> int:
     """Discover Components and check that their metadata can be loaded."""
     root = COMPONENTS_ROOT if components_root is None else components_root
@@ -41,7 +42,7 @@ def main(
         print("GitHub Framework Validator")
         print()
 
-    component_dirs = discover_components(root)
+    component_dirs = discover_components(root, families=families)
     errors: list[str] = []
 
     if not component_dirs:
@@ -224,6 +225,13 @@ if __name__ == "__main__":
         metavar="PATH",
         help="Component library directory (default: repository framework/components).",
     )
+    parser.add_argument(
+        "--family",
+        action="append",
+        choices=COMPONENT_FAMILIES,
+        metavar="{readme,documentation,workflow}",
+        help="Validate only this Component family (repeatable; default: all).",
+    )
     arguments = parser.parse_args()
     if arguments.output is not None and arguments.format != "json":
         parser.error("--output requires --format json")
@@ -234,5 +242,6 @@ if __name__ == "__main__":
             output_format=arguments.format,
             output_path=arguments.output,
             components_root=arguments.components_root,
+            families=tuple(dict.fromkeys(arguments.family)) if arguments.family else None,
         )
     )
