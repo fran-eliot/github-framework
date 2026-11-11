@@ -1,129 +1,129 @@
 # 57 — Documentation Consumer License Responsibility Case Study
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Proyecto | GitHub Framework |
-| Fecha | 2026-11-11 |
-| Estado | Discovery — bounded evidence review |
-| Experimento precedente | [56 — Documentation Template Materialization Reality Check](56_DOCUMENTATION_TEMPLATE_MATERIALIZATION_REALITY_CHECK.md) |
+| Project | GitHub Framework |
+| Date | 2026-11-11 |
+| Status | Discovery — bounded evidence review |
+| Previous experiment | [56 — Documentation Template Materialization Reality Check](56_DOCUMENTATION_TEMPLATE_MATERIALIZATION_REALITY_CHECK.md) |
 | Consumer | [github/docs](https://github.com/github/docs) |
 | Consumer Reference | `2b4f2c7398e04ee8d02adca7440e4286d20c78b9` (`main`) |
 | Repository Template | `TPL-DOCUMENTATION` |
 | Template Version | `0.1.0` |
-| Responsibility observada | `README-LICENSE` (`Required`) |
-| Cobertura de Assessment | Una Responsibility; no es Assessment completo |
-| Consumer mutation | Ninguna |
+| Responsibility examined | `README-LICENSE` (`Required`) |
+| Assessment coverage | One Responsibility; not a complete Assessment |
+| Consumer mutation | None |
 
-> Los resultados de este caso solo se aplican a la evidencia observada en la referencia fijada. El consumer se utiliza como ejemplo documental independiente; no se sostiene que adopte formalmente GitHub Framework.
+> The results of this case apply only to the Evidence observed at the pinned reference. The consumer is used as an independent documentation example; there is no claim that it has formally adopted GitHub Framework.
 
 ---
 
-## 1. Objetivo y pregunta
+## 1. Objective and Research Question
 
-Continuar la investigación de #56 con evidencia de un repositorio cuyo producto principal es documentación y que no haya sido construido explícitamente para satisfacer los contratos de GitHub Framework.
+Continue the research from #56 using Evidence from a repository whose primary product is documentation and which was not explicitly built to satisfy GitHub Framework contracts.
 
-Pregunta:
+Question:
 
-> ¿Puede observarse en un consumer documental real una implementación propia de la responsabilidad `README-LICENSE` pese a que el Framework Component permanezca clasificado como `Conceptual`?
+> Can a real documentation consumer implement the `README-LICENSE` Responsibility independently even though the Framework Component remains classified as `Conceptual`?
 
-No se intenta determinar la conformidad global del consumer, ni el cumplimiento de las otras 20 Responsibilities del Template, ni las obligaciones jurídicas de las licencias.
+This review does not attempt to determine the consumer's overall conformance, coverage of the Template's other 20 Responsibilities, or legal compliance with license obligations.
 
-## 2. Criterio de selección
+## 2. Selection Criteria
 
-Se selecciona [github/docs](https://github.com/github/docs), repositorio abierto de documentación de GitHub, porque:
+[github/docs](https://github.com/github/docs), GitHub's public documentation repository, was selected because:
 
-- El [README](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/README.md) declara expresamente que contiene documentación abierta a contribuciones.
-- La estructura de la raíz contiene `content/`, `data/`, `assets/` y también código de publicación en `src/`.
-- Es un caso **documentation-first**, aunque no exclusivamente documental: la presencia de tooling y código requiere mantener explícito ese matiz.
-- Dispone de información observable sobre licencias tanto de documentación como de código.
+- Its [README](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/README.md) explicitly identifies the repository as documentation open to contributions.
+- Its root structure includes `content/`, `data/`, and `assets/`, as well as publishing code under `src/`.
+- It is a **documentation-first** case, although not exclusively documentation: the presence of tooling and code makes that distinction important.
+- Its licensing information is observable for both documentation and code.
 
-La selección se fundamenta en la orientación del producto y los artefactos publicados. No implica una asignación formal del Template al consumer.
+Selection is based on the repository's purpose and published artifacts. It does not formally assign the Template to the consumer.
 
-## 3. Baselines y contrato
+## 3. Baselines and Contract
 
-La referencia del consumer es el commit inmutable:
+The consumer reference is the immutable commit:
 
 ```text
 github/docs
 2b4f2c7398e04ee8d02adca7440e4286d20c78b9
 ```
 
-El contrato de comparación es `TPL-DOCUMENTATION v0.1.0`:
+The comparison contract is `TPL-DOCUMENTATION v0.1.0`:
 
-- [metadata canónica](../../framework/templates/repositories/documentation/metadata.yml).
-- [README canónico](../../framework/templates/repositories/documentation/README.md).
-- [definición conceptual de README-LICENSE](../design-system/09_COMPONENT_CATALOG.md), sección 48.
+- [Canonical metadata](../../framework/templates/repositories/documentation/metadata.yml).
+- [Canonical README](../../framework/templates/repositories/documentation/README.md).
+- [Conceptual definition of README-LICENSE](../design-system/09_COMPONENT_CATALOG.md), section 48.
 
-La metadata del Template declara `README-LICENSE` entre los 9 Components `Required`. El catálogo lo clasifica como `Conceptual`; la responsabilidad reconocida es **comunicar desde el README la licencia aplicable al proyecto**.
+The Template metadata declares `README-LICENSE` among its nine `Required` Components. The Catalog classifies it as `Conceptual`; the recognized Responsibility is **communicating the project's applicable license from its README**.
 
-## 4. Detected Facts y Evidence
+## 4. Detected Facts and Evidence
 
-| ID | Detected Fact | Evidence fijada |
+| ID | Detected Fact | Pinned Evidence |
 |---|---|---|
-| E-01 | El README presenta el repositorio como documentación de GitHub, abierta a contribuciones. | [`README.md`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/README.md), inicio |
-| E-02 | El README contiene una sección `License`. | [`README.md`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/README.md), sección final |
-| E-03 | La sección `License` distingue una licencia Creative Commons Attribution 4.0 para documentación/contenido y MIT para código. | [`README.md`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/README.md), sección `License` |
-| E-04 | El README enlaza explícitamente a `LICENSE` y `LICENSE-CODE`. | [`README.md`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/README.md), enlaces relativos |
-| E-05 | `LICENSE` contiene el texto de Creative Commons Attribution 4.0 International. | [`LICENSE`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/LICENSE), encabezado |
-| E-06 | `LICENSE-CODE` contiene el texto de la licencia MIT. | [`LICENSE-CODE`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/LICENSE-CODE), encabezado |
+| E-01 | The README presents the repository as GitHub documentation open to contributions. | [`README.md`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/README.md), introduction |
+| E-02 | The README includes a `License` section. | [`README.md`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/README.md), final section |
+| E-03 | The `License` section distinguishes Creative Commons Attribution 4.0 for documentation/content from MIT for code. | [`README.md`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/README.md), `License` section |
+| E-04 | The README explicitly links to `LICENSE` and `LICENSE-CODE`. | [`README.md`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/README.md), relative links |
+| E-05 | `LICENSE` contains the Creative Commons Attribution 4.0 International text. | [`LICENSE`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/LICENSE), heading |
+| E-06 | `LICENSE-CODE` contains the MIT License text. | [`LICENSE-CODE`](https://github.com/github/docs/blob/2b4f2c7398e04ee8d02adca7440e4286d20c78b9/LICENSE-CODE), heading |
 
-No se reproduce el texto de las licencias: los enlaces son las fuentes revisables.
+The license texts are not reproduced; the links provide reviewable sources.
 
-## 5. Evaluación acotada de la Responsibility
+## 5. Bounded Responsibility Evaluation
 
-| Campo | Evaluación del caso |
+| Field | Case Evaluation |
 |---|---|
 | Responsibility | `README-LICENSE` |
 | Requirement Level | `Required` |
 | Applicability | `Applicable` |
-| State provisional | `Satisfied` — solo para la responsabilidad de comunicar la licencia desde README |
-| Implementation Characteristics | `Own`, `Specialized`, `Distributed` (descriptivas) |
+| Provisional State | `Satisfied` — only for communicating licenses from the README |
+| Implementation Characteristics | `Own`, `Specialized`, `Distributed` (descriptive) |
 | Decision Status | `Needs Further Evaluation` |
 | Adoption Decision | `—` |
 | Framework Component availability | `Conceptual` |
-| Full Template conformance | **No evaluada** |
+| Full Template conformance | **Not evaluated** |
 
 ### Evaluation Rationale
 
-El README comunica explícitamente las licencias aplicables a dos conjuntos de artefactos y proporciona enlaces a las fuentes correspondientes. Para el propósito acotado de `README-LICENSE` descrito por el catálogo, esa evidencia **sustenta una evaluación provisional `Satisfied`**, aunque no exista un componente canónico reutilizable dentro del Framework.
+The README explicitly communicates the applicable licenses for two sets of artifacts and links to their respective sources. For the bounded `README-LICENSE` purpose described in the Catalog, this Evidence **supports a provisional `Satisfied` evaluation**, despite the absence of a reusable canonical Framework Component.
 
-Se registra `Applicable` por la distribución declarada de contenido y código bajo licencias explícitas. La implementación es `Own` al estar definida en el consumer, `Specialized` por distinguir tipos de artefactos y `Distributed` por repartir comunicación y textos jurídicos entre README y archivos de licencia.
+`Applicable` is recorded because the consumer declares the distribution of content and code under explicit licenses. The implementation is `Own` because it is defined in the consumer, `Specialized` because it distinguishes artifact types, and `Distributed` because it separates license communication and license texts across README and license files.
 
-La evaluación es **documental, no legal**: no verifica exhaustivamente titularidad, licencias de recursos de terceros ni suficiencia jurídica de cada declaración.
+The evaluation concerns **documentation, not legal compliance**: it does not exhaustively verify ownership, third-party resource licenses, or the legal sufficiency of each declaration.
 
-### Uncertainty y revisión
+### Uncertainty and Review
 
-- No se ha realizado una revisión humana formal dentro de un Assessment completo.
-- No se ha comprobado si el consumer presenta otros mecanismos complementarios de información sobre licencias.
-- No se han contrastado todas las condiciones de `TPL-DOCUMENTATION`.
-- Las características descriptivas no constituyen una clasificación contractual cerrada.
-- No consta decisión del equipo de `github/docs` de adoptar GitHub Framework.
+- No formal human review has been conducted within a complete Assessment.
+- Additional licensing information mechanisms in the consumer have not been examined.
+- Not all `TPL-DOCUMENTATION` conditions have been assessed.
+- Descriptive characteristics do not constitute a closed contractual classification.
+- There is no evidence of a decision by the `github/docs` team to adopt GitHub Framework.
 
-Por estos motivos, **no se elige `PRESERVE`, `ACCEPT` ni otra Adoption Decision**. La evidencia del caso no debe utilizarse para autorizar cambios en el repositorio consumidor.
+For these reasons, **neither `PRESERVE`, `ACCEPT`, nor any other Adoption Decision is selected**. This case's Evidence must not be used to authorize changes to the consumer repository.
 
-## 6. Contraste de hipótesis
+## 6. Hypothesis Comparison
 
-| Hipótesis de #56 | Resultado del caso | Límite |
+| Hypothesis from #56 | Case Result | Limitation |
 |---|---|---|
-| Un consumer puede cubrir `README-LICENSE` mediante implementación propia. | **Respaldada** por evidencia concreta de comunicación de licencias en README. | Se ha revisado una sola Responsibility y un consumer. |
-| La clasificación `Conceptual` implica `Missing` en todo consumer. | **No respaldada**: el caso proporciona cobertura documental observable. | No sustituye el Assessment del consumer. |
-| Es necesario materializar ahora el Component canónico. | **No demostrado**. | No se observó a un usuario intentando adoptar este Template. |
-| Conviene rebajar `README-LICENSE` de Required. | **No demostrado**. | La exigencia de comunicar licencia tiene utilidad observable; cambiar requirement level requiere evidencia propia. |
-| El gap canónico impide utilizar el Template. | **No demostrado**. | El caso muestra evidencia de una Responsibility, no una adopción completa. |
+| A consumer can cover `README-LICENSE` through its own implementation. | **Supported** by concrete README license-communication Evidence. | One Responsibility and one consumer were reviewed. |
+| A `Conceptual` classification implies `Missing` for every consumer. | **Not supported**: the case shows observable documentation coverage. | This does not replace the consumer Assessment. |
+| The canonical Component must now be materialized. | **Not demonstrated**. | No user attempting to adopt this Template was observed. |
+| The `README-LICENSE` requirement level should be downgraded. | **Not demonstrated**. | Communicating licenses has observable value; changing the requirement level needs its own Evidence. |
+| The canonical gap makes the Template unusable. | **Not demonstrated**. | This case examines one Responsibility, not complete adoption. |
 
-## 7. Hallazgos
+## 7. Findings
 
-**LC-F01 — La cobertura de una Responsibility no depende exclusivamente de la biblioteca materializada.** El caso muestra una comunicación propia y diferenciada de licencias en el README.
+**LC-F01 — Responsibility coverage does not depend exclusively on the materialized Component library.** The case demonstrates the consumer's own differentiated license communication in its README.
 
-**LC-F02 — La implementación observada puede ser distribuida y especializada.** README, `LICENSE` y `LICENSE-CODE` desempeñan funciones distintas y complementarias.
+**LC-F02 — The observed implementation may be distributed and specialized.** README, `LICENSE`, and `LICENSE-CODE` perform different, complementary functions.
 
-**LC-F03 — La disponibilidad de un Component y el State de un consumer son ejes independientes.** La evidencia es compatible con `Conceptual` a nivel Framework y `Satisfied` provisional a nivel consumer.
+**LC-F03 — Component availability and consumer State are independent dimensions.** The Evidence is compatible with `Conceptual` at the Framework level and provisional `Satisfied` at the consumer level.
 
-**LC-F04 — No se ha observado fricción de adopción.** Una inspección documental puede demostrar que existe una implementación; no mide la dificultad de consumirla ni de producirla desde el Framework.
+**LC-F04 — No adoption friction was observed.** Document inspection can demonstrate that an implementation exists; it does not measure the difficulty of using or creating it through the Framework.
 
-## 8. Decisión de Discovery y próximos pasos
+## 8. Discovery Decision and Next Steps
 
-Se conserva el contrato actual:
+Keep the current contract:
 
 ```text
 TPL-DOCUMENTATION v0.1.0
@@ -131,16 +131,16 @@ TPL-DOCUMENTATION v0.1.0
     Component classification: Conceptual
 ```
 
-No se propone automáticamente crear `README-LICENSE`, reclasificarlo, alterar el Template o declarar un nuevo release.
+This case does not automatically justify creating `README-LICENSE`, reclassifying it, changing the Template, or announcing a new release.
 
-**Siguiente comprobación útil:** estudiar cómo un usuario de `TPL-DOCUMENTATION` interpretaría la coexistencia de `Required` y `Conceptual`, o contrastar un segundo consumer documental si aparece una incertidumbre específica. La inexistencia de una implementación canónica solo se convierte en necesidad de producto cuando hay evidencia de fricción, repetibilidad o beneficio de reutilización.
+**Useful next check:** investigate how a `TPL-DOCUMENTATION` user interprets the coexistence of `Required` and `Conceptual`, or review a second documentation consumer if a specific uncertainty arises. The absence of a canonical implementation becomes a product need only with Evidence of friction, repeatability, or reuse benefits.
 
-No se modifica `github/docs`, ni el Framework fuera de este documento. No hay Sprint ni versión comprometida.
+Neither `github/docs` nor the Framework outside this document is modified. No Sprint or version is committed.
 
-## 9. Conclusión
+## 9. Conclusion
 
-En `github/docs`, la evidencia visible del README y sus dos archivos de licencia respalda **provisionalmente** la cobertura de `README-LICENSE` mediante una implementación propia, especializada y distribuida.
+For `github/docs`, observable Evidence in its README and two license files **provisionally** supports coverage of `README-LICENSE` through an own, specialized, distributed implementation.
 
-Esto distingue **conformance de un consumer** de **materialización canónica disponible en GitHub Framework** y evita inferir un nuevo desarrollo a partir de un gap de catálogo.
+This separates **consumer conformance** from **canonical materialization availability in GitHub Framework**, avoiding the assumption that a Catalog gap automatically requires development.
 
-**Resultado:** evidencia de un consumer documental real, acotada a una Responsibility y sin decisión de implementación.
+**Result:** Evidence from a real documentation consumer, bounded to one Responsibility, with no implementation decision.
