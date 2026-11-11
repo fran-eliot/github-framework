@@ -6,6 +6,16 @@ import os
 from pathlib import Path
 
 
+def _markdown_cell(value: str) -> str:
+    """Escape a value so it remains in one Markdown table cell."""
+    return (
+        value.replace("\\", "\\\\")
+        .replace("|", "\\|")
+        .replace("\r", " ")
+        .replace("\n", " ")
+    )
+
+
 def render_summary(report: dict) -> str:
     """Render aggregate results and a bounded list of failed Components."""
     summary = report["summary"]
@@ -33,14 +43,20 @@ def render_summary(report: dict) -> str:
     if failed_components:
         result += (
             "\n### Failed Components\n\n"
-            "| Component | Errors |\n"
-            "| --- | ---: |\n"
+            "| Component | Errors | First diagnostic |\n"
+            "| --- | ---: | --- |\n"
         )
         for component in failed_components[:10]:
-            # Evitar que las rutas alteren las columnas de la tabla Markdown.
-            path = str(component["relative_path"]).replace("\\", "\\\\")
-            path = path.replace("|", "\\|").replace("\n", " ").replace("\r", " ")
-            result += f"| {path} | {len(component['errors'])} |\n"
+            # Evitar que el contenido del informe altere la tabla Markdown.
+            path = _markdown_cell(str(component["relative_path"]))
+            diagnostic = (
+                _markdown_cell(str(component["errors"][0]))
+                if component["errors"]
+                else "No diagnostic available"
+            )
+            if len(diagnostic) > 160:
+                diagnostic = diagnostic[:157] + "..."
+            result += f"| {path} | {len(component['errors'])} | {diagnostic} |\n"
         if len(failed_components) > 10:
             result += (
                 f"\n{len(failed_components) - 10} more failed Component(s) "
