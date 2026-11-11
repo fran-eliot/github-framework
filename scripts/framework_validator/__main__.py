@@ -30,18 +30,23 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 COMPONENTS_ROOT = REPOSITORY_ROOT / "framework" / "components"
 
 
-def main(output_format: str = "text", output_path: Path | None = None) -> int:
+def main(
+    output_format: str = "text",
+    output_path: Path | None = None,
+    components_root: Path | None = None,
+) -> int:
     """Discover Components and check that their metadata can be loaded."""
+    root = COMPONENTS_ROOT if components_root is None else components_root
     if output_format == "text":
         print("GitHub Framework Validator")
         print()
 
-    component_dirs = discover_components(COMPONENTS_ROOT)
+    component_dirs = discover_components(root)
     errors: list[str] = []
 
     if not component_dirs:
         errors.append(
-            f"{COMPONENTS_ROOT}: no Components discovered"
+            f"{root}: no Components discovered"
         )
 
     if output_format == "text":
@@ -129,9 +134,7 @@ def main(output_format: str = "text", output_path: Path | None = None) -> int:
             component_results.append(
                 {
                     "path": str(component_dir),
-                    "relative_path": component_dir.relative_to(
-                        COMPONENTS_ROOT
-                    ).as_posix(),
+                    "relative_path": component_dir.relative_to(root).as_posix(),
                     "id": metadata_by_path.get(metadata_path, {}).get("id"),
                     "status": "failed" if component_errors else "passed",
                     "errors": component_errors,
@@ -215,7 +218,21 @@ if __name__ == "__main__":
         metavar="PATH",
         help="Write the JSON report to PATH (requires --format json).",
     )
+    parser.add_argument(
+        "--components-root",
+        type=Path,
+        metavar="PATH",
+        help="Component library directory (default: repository framework/components).",
+    )
     arguments = parser.parse_args()
     if arguments.output is not None and arguments.format != "json":
         parser.error("--output requires --format json")
-    raise SystemExit(main(output_format=arguments.format, output_path=arguments.output))
+    if arguments.components_root is not None and not arguments.components_root.is_dir():
+        parser.error("--components-root must be an existing directory")
+    raise SystemExit(
+        main(
+            output_format=arguments.format,
+            output_path=arguments.output,
+            components_root=arguments.components_root,
+        )
+    )
