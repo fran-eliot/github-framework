@@ -762,3 +762,120 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                 "families": ["documentation"],
                 "filtered": True,
             })
+
+    def test_component_filter_selects_only_requested_directory(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            documentation = self.create_component(root)
+            (documentation / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            other = root / "documentation" / "references"
+            other.mkdir(parents=True)
+            output = io.StringIO()
+            with redirect_stdout(output):
+                exit_code = validator_cli.main(
+                    output_format="json",
+                    components_root=root,
+                    component_paths=("documentation/architecture",),
+                )
+            result = json.loads(output.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(result["components_discovered"], 1)
+            self.assertEqual(
+                result["components"][0]["relative_path"], "documentation/architecture"
+            )
+            self.assertEqual(result["scope"], {
+                "families": ["documentation"],
+                "filtered": True,
+                "component_paths": ["documentation/architecture"],
+            })
+
+    def test_component_filter_detects_missing_metadata(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            missing = root / "documentation" / "references"
+            missing.mkdir(parents=True)
+            output = io.StringIO()
+            with redirect_stdout(output):
+                exit_code = validator_cli.main(
+                    output_format="json",
+                    components_root=root,
+                    component_paths=("documentation/references",),
+                )
+            result = json.loads(output.getvalue())
+            self.assertEqual(exit_code, 1)
+            self.assertEqual(result["components_discovered"], 1)
+            self.assertEqual(result["components"][0]["status"], "failed")
+            self.assertTrue(any(
+                "missing metadata.yml" in error
+                for error in result["components"][0]["errors"]
+            ))
+
+    def test_cli_component_filter_repeated_and_cross_family(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            documentation = self.create_component(root)
+            (documentation / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            workflow = root / "workflow" / "issue"
+            workflow.mkdir(parents=True)
+            (workflow / "metadata.yml").write_text(
+                VALID_WORKFLOW_METADATA, encoding="utf-8"
+            )
+            args = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--format", "json",
+                "--component", "workflow/issue",
+                "--component", "documentation/architecture",
+                "--component", "workflow/issue",
+            ]
+            result = subprocess.run(
+                args, cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 1)
+            report = json.loads(result.stdout)
+            self.assertEqual(report["components_discovered"], 2)
+            self.assertEqual(report["scope"], {
+                "families": ["documentation", "workflow"],
+                "filtered": True,
+                "component_paths": [
+                    "documentation/architecture", "workflow/issue",
+                ],
+            })
+
+    def test_cli_component_filter_rejects_invalid_or_missing_paths(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "documentation").mkdir()
+            common = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root),
+            ]
+            for selection, message in (
+                ("../outside", "must use FAMILY/NAME"),
+                ("documentation/../outside", "must use FAMILY/NAME"),
+                ("unknown/example", "must use FAMILY/NAME"),
+                ("documentation/missing", "directory does not exist"),
+            ):
+                with self.subTest(selection=selection):
+                    result = subprocess.run(
+                        common + ["--component", selection],
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn(message, result.stderr)
+
+            conflict = subprocess.run(
+                common + [
+                    "--component", "documentation/architecture",
+                    "--family", "documentation",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(conflict.returncode, 2)
+            self.assertIn("cannot be combined", conflict.stderr)
