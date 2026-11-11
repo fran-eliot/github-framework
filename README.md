@@ -136,6 +136,14 @@ python -m scripts.framework_validator
 
 The CLI produces a human-readable report and returns exit code `0` on success or `1` when validation fails.
 
+For machine-readable output, use:
+
+```bash
+python -m scripts.framework_validator --format json
+```
+
+JSON output includes validation status, discovered Component count, loaded Component IDs, and errors. The validation scope and exit codes remain unchanged.
+
 Run the automated test suite with:
 
 ```bash
