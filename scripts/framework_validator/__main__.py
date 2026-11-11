@@ -145,6 +145,15 @@ def main(output_format: str = "text", output_path: Path | None = None) -> int:
                 ],
                 "errors": errors,
                 "components": component_results,
+                "summary": {
+                    "passed_components": sum(
+                        item["status"] == "passed" for item in component_results
+                    ),
+                    "failed_components": sum(
+                        item["status"] == "failed" for item in component_results
+                    ),
+                    "error_count": len(errors),
+                },
             },
             indent=2,
         )
