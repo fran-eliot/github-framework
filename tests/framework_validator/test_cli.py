@@ -321,11 +321,17 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                     for component in result["components"]
                 )
             )
-            self.assertEqual(len(result["errors"]), 1)
+            self.assertEqual(len(result["errors"]), 2)
+            self.assertTrue(
+                any("id: expected" in error for error in result["errors"])
+            )
+            self.assertTrue(
+                any("id: duplicate" in error for error in result["errors"])
+            )
             self.assertEqual(result["summary"], {
                 "passed_components": 0,
                 "failed_components": 2,
-                "error_count": 1,
+                "error_count": 2,
             })
 
     def test_json_output_mixed_valid_and_missing_metadata(self) -> None:
