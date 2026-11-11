@@ -164,6 +164,15 @@ python -m scripts.framework_validator --family documentation --family workflow
 
 Available families are `readme`, `documentation`, and `workflow`. With no filter, all are validated. A filtered run checks only the selected Components, including uniqueness among those selected; it is not a full-library validation.
 
+To discover the available Component paths without running validation (even for directories missing `metadata.yml`):
+
+```bash
+python -m scripts.framework_validator --list-components
+python -m scripts.framework_validator --list-components --family documentation
+```
+
+The listing prints one portable path per line and can use `--components-root`. Listing is text-only and cannot be combined with `--component`, `--format json`, or `--output`.
+
 For a single Component, use its relative `family/name` path (repeat `--component` to select several):
 
 ```bash
