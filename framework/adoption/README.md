@@ -533,9 +533,9 @@ is a valid outcome.
 
 ## 11. Implementation Characteristics
 
-Implementation Characteristics permite describir implementaciones no canónicas cuando esta información ayuda a interpretar correctamente una Responsibility.
+Implementation Characteristics describe non-canonical implementations when that information helps interpret a Responsibility correctly.
 
-El vocabulario provisional observado durante Discovery es:
+The provisional vocabulary observed during Discovery is:
 
 ```text
 Canonical
@@ -545,7 +545,7 @@ Specialized
 Distributed
 ```
 
-Este vocabulario es:
+This vocabulary is:
 
 ```text
 provisional
@@ -553,7 +553,7 @@ descriptive
 non-exclusive
 ```
 
-Una Responsibility puede presentar:
+A Responsibility may have:
 
 ```text
 zero
@@ -563,18 +563,18 @@ or several
 
 Implementation Characteristics.
 
-Estas categorías ayudan a describir cómo está materializada una Responsibility, especialmente cuando la implementación difiere de la materialización canónica esperada por el Repository Template.
+These categories help describe how a Responsibility is implemented, especially when its implementation differs from the canonical materialization expected by the Repository Template.
 
-No constituyen una taxonomía cerrada ni un contrato de conformance.
+They are not a closed taxonomy or a conformance contract.
 
-Por tanto:
+Therefore:
 
 ```text
 Implementation Characteristic
     supports interpretation
 ```
 
-pero no determina por sí sola:
+but does not, on its own, determine:
 
 ```text
 State
@@ -582,15 +582,15 @@ Applicability
 Adoption Decision
 ```
 
-La Evidence y el Evaluation Rationale deben conservar el contexto necesario para interpretar cualquier Implementation Characteristic utilizada.
+Evidence and Evaluation Rationale must preserve enough context to interpret any Implementation Characteristic used.
 
 ---
 
-## 12. Evaluación de Documentación
+## 12. Documentation Evaluation
 
-La presencia física de documentación no demuestra por sí sola que una Responsibility esté satisfecha.
+The physical presence of documentation does not, by itself, demonstrate that a Responsibility is satisfied.
 
-Debe mantenerse la regla:
+The following distinction must be preserved:
 
 ```text
 Documentation Exists
@@ -598,7 +598,7 @@ Documentation Exists
 Responsibility Satisfied
 ```
 
-Según la Responsibility, la evaluación puede requerir revisar:
+Depending on the Responsibility, evaluation may require checking:
 
 ```text
 presence
@@ -607,13 +607,13 @@ coverage
 current relevance
 ```
 
-Un archivo existente pero incorrecto, incompleto u obsoleto puede producir un State distinto de `Satisfied`.
+An existing but incorrect, incomplete, or outdated file may result in a State other than `Satisfied`.
 
 ---
 
 ## 13. Uncertainty
 
-Uncertainty debe registrar, cuando corresponda:
+Where applicable, Uncertainty must record:
 
 ```text
 what is unknown
@@ -621,7 +621,7 @@ why it cannot currently be resolved
 what evidence would resolve it
 ```
 
-No se utilizan:
+Do not use:
 
 ```text
 confidence score
@@ -629,49 +629,49 @@ probability
 Low / Medium / High
 ```
 
-La incertidumbre debe expresarse mediante información concreta y revisable.
+Uncertainty must be expressed through concrete, reviewable information.
 
 ---
 
 ## 14. Evaluation Rationale
 
-Evaluation Rationale responde:
+Evaluation Rationale answers:
 
-> ¿Por qué la Evidence observada conduce al State, Applicability e interpretación registrados?
+> Why does the observed Evidence support the recorded State, Applicability, and interpretation?
 
-Debe explicar la evaluación sin anticipar la acción futura.
+It must explain the evaluation without anticipating any future action.
 
-Por tanto:
+Therefore:
 
 ```text
 Evaluation Rationale
     explains the assessment
 ```
 
-mientras:
+while:
 
 ```text
 Decision Rationale
     explains the adoption decision
 ```
 
-Ambos conceptos deben permanecer separados.
+These concepts must remain separate.
 
 ---
 
 ## 15. Decision Status
 
-Decision Status indica si una Adoption Decision puede cerrarse en el momento del assessment.
+Decision Status indicates whether an Adoption Decision can be resolved at the time of the Assessment.
 
-El vocabulario estable es:
+The stable vocabulary is:
 
 ### `Resolved`
 
-Existe evidencia y contexto suficiente para registrar una Adoption Decision.
+There is sufficient Evidence and context to record an Adoption Decision.
 
 ### `Needs Further Evaluation`
 
-La decisión no puede cerrarse de forma segura con la información disponible.
+The decision cannot be safely resolved using the available information.
 
 Decision Status:
 
@@ -680,7 +680,7 @@ is not
 an Adoption Decision
 ```
 
-Cuando una Responsibility requiere evaluación adicional, deben conservarse:
+When a Responsibility requires additional evaluation, preserve:
 
 ```text
 Evidence
@@ -689,7 +689,7 @@ Evaluation Rationale
 reason for unresolved decision
 ```
 
-sin forzar una Adoption Decision ficticia.
+without forcing an artificial Adoption Decision.
 
 ---
 
