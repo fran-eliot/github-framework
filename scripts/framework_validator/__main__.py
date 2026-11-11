@@ -108,6 +108,29 @@ def main(output_format: str = "text") -> int:
     errors.extend(validate_unique_ids(loaded_components))
 
     if output_format == "json":
+        metadata_by_path = dict(loaded_components)
+        component_results = []
+
+        for component_dir in component_dirs:
+            metadata_path = component_dir / "metadata.yml"
+            component_errors = [
+                error
+                for error in errors
+                if error.startswith(f"{metadata_path}:")
+                or (
+                    "id: duplicate " in error
+                    and f"first declared in {metadata_path}" in error
+                )
+            ]
+            component_results.append(
+                {
+                    "path": str(component_dir),
+                    "id": metadata_by_path.get(metadata_path, {}).get("id"),
+                    "status": "failed" if component_errors else "passed",
+                    "errors": component_errors,
+                }
+            )
+
         print(
             json.dumps(
                 {
@@ -118,6 +141,7 @@ def main(output_format: str = "text") -> int:
                         for _, metadata in loaded_components
                     ],
                     "errors": errors,
+                    "components": component_results,
                 },
                 indent=2,
             )
