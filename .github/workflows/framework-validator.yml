@@ -31,4 +31,14 @@ jobs:
         run: python -m unittest discover -s tests/framework_validator -p "test_*.py"
 
       - name: Validate Framework Components
-        run: python -m scripts.framework_validator
+        if: ${{ always() }}
+        run: python -m scripts.framework_validator --format json --output validator-report.json
+
+      - name: Upload Validator report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: framework-validator-report
+          path: validator-report.json
+          if-no-files-found: warn
+          retention-days: 7
