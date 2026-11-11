@@ -4,7 +4,7 @@
 import io
 import json
 import unittest
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
@@ -319,3 +319,73 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(components["references"]["status"], "failed")
             self.assertIsNone(components["references"]["id"])
             self.assertEqual(components["references"]["errors"], result["errors"])
+
+    def test_json_report_file_on_success(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            destination = root / "report.json"
+            stdout = io.StringIO()
+
+            with (
+                patch.object(validator_cli, "COMPONENTS_ROOT", root),
+                redirect_stdout(stdout),
+            ):
+                exit_code = validator_cli.main(
+                    output_format="json", output_path=destination
+                )
+
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(stdout.getvalue(), "")
+            result = json.loads(destination.read_text(encoding="utf-8"))
+            self.assertEqual(result["status"], "passed")
+            self.assertEqual(result["component_ids"], ["DOC-ARCHITECTURE"])
+            self.assertEqual(result["errors"], [])
+
+    def test_json_report_file_on_validation_failure(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.create_component(root)
+            destination = root / "report.json"
+            stdout = io.StringIO()
+
+            with (
+                patch.object(validator_cli, "COMPONENTS_ROOT", root),
+                redirect_stdout(stdout),
+            ):
+                exit_code = validator_cli.main(
+                    output_format="json", output_path=destination
+                )
+
+            self.assertEqual(exit_code, 1)
+            self.assertEqual(stdout.getvalue(), "")
+            result = json.loads(destination.read_text(encoding="utf-8"))
+            self.assertEqual(result["status"], "failed")
+            self.assertIn("missing metadata.yml", result["errors"][0])
+            self.assertEqual(result["components"][0]["status"], "failed")
+
+    def test_json_report_file_write_failure(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            stdout = io.StringIO()
+            stderr = io.StringIO()
+
+            with (
+                patch.object(validator_cli, "COMPONENTS_ROOT", root),
+                redirect_stdout(stdout),
+                redirect_stderr(stderr),
+            ):
+                exit_code = validator_cli.main(
+                    output_format="json", output_path=root
+                )
+
+            self.assertEqual(exit_code, 2)
+            self.assertEqual(stdout.getvalue(), "")
+            self.assertIn("Unable to write JSON report", stderr.getvalue())

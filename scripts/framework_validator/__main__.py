@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import sys
 from pathlib import Path
 
 import yaml
@@ -27,7 +28,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 COMPONENTS_ROOT = REPOSITORY_ROOT / "framework" / "components"
 
 
-def main(output_format: str = "text") -> int:
+def main(output_format: str = "text", output_path: Path | None = None) -> int:
     """Discover Components and check that their metadata can be loaded."""
     if output_format == "text":
         print("GitHub Framework Validator")
@@ -132,21 +133,27 @@ def main(output_format: str = "text") -> int:
                 }
             )
 
-        print(
-            json.dumps(
-                {
-                    "status": "failed" if errors else "passed",
-                    "components_discovered": len(component_dirs),
-                    "component_ids": [
-                        metadata.get("id")
-                        for _, metadata in loaded_components
-                    ],
-                    "errors": errors,
-                    "components": component_results,
-                },
-                indent=2,
-            )
+        report = json.dumps(
+            {
+                "status": "failed" if errors else "passed",
+                "components_discovered": len(component_dirs),
+                "component_ids": [
+                    metadata.get("id")
+                    for _, metadata in loaded_components
+                ],
+                "errors": errors,
+                "components": component_results,
+            },
+            indent=2,
         )
+        if output_path is None:
+            print(report)
+        else:
+            try:
+                output_path.write_text(report + "\n", encoding="utf-8")
+            except OSError as exc:
+                print(f"Unable to write JSON report to {output_path}: {exc}", file=sys.stderr)
+                return 2
     else:
         print()
         if errors:
@@ -170,5 +177,13 @@ if __name__ == "__main__":
         default="text",
         help="Output format (default: text).",
     )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        metavar="PATH",
+        help="Write the JSON report to PATH (requires --format json).",
+    )
     arguments = parser.parse_args()
-    raise SystemExit(main(output_format=arguments.format))
+    if arguments.output is not None and arguments.format != "json":
+        parser.error("--output requires --format json")
+    raise SystemExit(main(output_format=arguments.format, output_path=arguments.output))
