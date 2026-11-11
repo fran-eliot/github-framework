@@ -91,7 +91,7 @@ We recommend the following path:
 If you want to use the Framework, choose a starting point:
 
 - **New repository:** explore the [Repository Template Library](framework/templates/repositories/README.md) and choose a composition appropriate to your project. Templates are not automatic repository generators.
-- **Existing repository:** follow the [Existing Repository Adoption Guide](framework/adoption/README.md), select a Repository Template from the [library](framework/templates/repositories/README.md), confirm its version in the template's `metadata.yml`, and start with the [Assessment Template](framework/adoption/assessment-template.md).
+- **Existing repository:** follow the [Existing Repository Adoption Guide](framework/adoption/README.md), select a Repository Template from the [library](framework/templates/repositories/README.md), confirm its version in the template's `metadata.yml`, and use the [first Assessment walkthrough](framework/adoption/README.md#primer-assessment-recorrido-mínimo) to start with the [Assessment Template](framework/adoption/assessment-template.md).
 
 ---
 
