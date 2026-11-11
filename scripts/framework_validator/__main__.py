@@ -265,12 +265,21 @@ if __name__ == "__main__":
         help="List available family/name Component paths without validation.",
     )
     parser.add_argument(
+        "--details",
+        action="store_true",
+        help="Include basic metadata in the JSON Component catalog.",
+    )
+    parser.add_argument(
         "--component",
         action="append",
         metavar="FAMILY/NAME",
         help="Validate only this Component (repeatable; cannot combine with --family).",
     )
     arguments = parser.parse_args()
+    if arguments.details and (
+        not arguments.list_components or arguments.format != "json"
+    ):
+        parser.error("--details requires --list-components --format json")
     if arguments.list_components:
         if arguments.component:
             parser.error("--list-components cannot be combined with --component")
@@ -309,11 +318,36 @@ if __name__ == "__main__":
                 family for family in COMPONENT_FAMILIES
                 if family_filter is None or family in family_filter
             ]
-            print(json.dumps({
+            catalog: dict = {
                 "components": paths,
                 "count": len(paths),
                 "scope": {"families": families},
-            }, indent=2))
+            }
+            if arguments.details:
+                entries = []
+                for component in available:
+                    metadata_path = component / "metadata.yml"
+                    entry = {
+                        "path": component.relative_to(root).as_posix(),
+                        "id": None,
+                        "name": None,
+                        "version": None,
+                        "status": None,
+                        "metadata_status": "missing",
+                    }
+                    if metadata_path.is_file():
+                        try:
+                            metadata = load_metadata(metadata_path)
+                        except (OSError, yaml.YAMLError, ValueError):
+                            entry["metadata_status"] = "invalid"
+                        else:
+                            entry["metadata_status"] = "loaded"
+                            for field in ("id", "name", "version", "status"):
+                                value = metadata.get(field)
+                                entry[field] = value if isinstance(value, str) else None
+                    entries.append(entry)
+                catalog["details"] = entries
+            print(json.dumps(catalog, indent=2))
         else:
             for path in paths:
                 print(path)

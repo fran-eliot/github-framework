@@ -177,7 +177,13 @@ The default listing prints one portable path per line. For scripts, use `--list-
 python -m scripts.framework_validator --list-components --format json
 ```
 
-Both modes support `--family` and `--components-root`. Listing cannot be combined with `--component` or `--output`. An empty catalog returns exit code 1.
+For a basic inventory that also includes each Component's ID, name, version, status, and metadata loading state, add `--details`:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --details
+```
+
+The original `components` list remains unchanged; detailed entries appear under `details`. Missing or unreadable/invalid metadata is reported as `missing` or `invalid`, without running semantic validation. Both listing modes support `--family` and `--components-root`. Listing cannot be combined with `--component` or `--output`. An empty catalog returns exit code 1.
 
 For a single Component, use its relative `family/name` path (repeat `--component` to select several):
 

@@ -179,7 +179,13 @@ Por defecto, el listado devuelve una ruta portable por línea. Para integracione
 python -m scripts.framework_validator --list-components --format json
 ```
 
-Ambos formatos admiten `--family` y `--components-root`. El listado no puede combinarse con `--component` ni `--output`. Si no hay Components, devuelve código de salida 1.
+Para obtener también el ID, nombre, versión, estado y situación de lectura de la metadata de cada Component, utiliza `--details`:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --details
+```
+
+Se mantiene intacta la lista original `components` y los registros detallados aparecen en `details`. La metadata ausente, ilegible o inválida se señala como `missing` o `invalid`, sin validación semántica. Ambos modos admiten `--family` y `--components-root`. El listado no puede combinarse con `--component` ni `--output`. Si no hay Components, devuelve código de salida 1.
 
 Para comprobar un único Component, indica su ruta relativa `familia/nombre` (repite `--component` si necesitas varios):
 

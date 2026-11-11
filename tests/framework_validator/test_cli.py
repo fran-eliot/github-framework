@@ -1019,3 +1019,82 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(result.returncode, 1)
             self.assertEqual(result.stdout, "")
             self.assertIn("No Components discovered", result.stderr)
+
+    def test_cli_detailed_catalog_includes_metadata_and_missing_files(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            valid = self.create_component(root)
+            (valid / "metadata.yml").write_text(VALID_METADATA, encoding="utf-8")
+            (root / "documentation" / "references").mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            catalog = json.loads(result.stdout)
+            self.assertEqual(catalog["count"], 2)
+            self.assertEqual(catalog["components"], [
+                "documentation/architecture", "documentation/references",
+            ])
+            self.assertEqual(catalog["details"], [
+                {
+                    "path": "documentation/architecture",
+                    "id": "DOC-ARCHITECTURE",
+                    "name": "Architecture",
+                    "version": "0.1.0",
+                    "status": "Experimental",
+                    "metadata_status": "loaded",
+                },
+                {
+                    "path": "documentation/references",
+                    "id": None, "name": None, "version": None, "status": None,
+                    "metadata_status": "missing",
+                },
+            ])
+
+    def test_cli_detailed_catalog_handles_invalid_yaml(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                "family: [unclosed", encoding="utf-8"
+            )
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--family", "documentation",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            catalog = json.loads(result.stdout)
+            self.assertEqual(catalog["details"][0]["metadata_status"], "invalid")
+            self.assertIsNone(catalog["details"][0]["id"])
+
+    def test_cli_details_requires_json_catalog(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            common = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root),
+            ]
+            for options in (
+                ["--details"],
+                ["--list-components", "--details"],
+                ["--format", "json", "--details"],
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(
+                        common + options,
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn("--details requires", result.stderr)
