@@ -174,7 +174,7 @@ Para ejecutar la batería de tests automatizados:
 python -m unittest discover -s tests/framework_validator -p "test_*.py"
 ```
 
-GitHub Actions también ejecuta los tests del Validator y valida los Components del repositorio en cada pull request y push a `main`, mediante `.github/workflows/framework-validator.yml`. Cada ejecución adjunta el artefacto JSON `framework-validator-report` (conservado durante 7 días), incluso si fallan las comprobaciones. El resumen del job muestra el estado, las familias comprobadas y el recuento de Components y errores. Si hay Components fallidos, incluye hasta diez rutas relativas afectadas y sus cantidades de errores; el informe completo permanece en el artefacto JSON.
+GitHub Actions también ejecuta los tests del Validator y valida los Components del repositorio en cada pull request y push a `main`, mediante `.github/workflows/framework-validator.yml`. Cada ejecución adjunta el artefacto JSON `framework-validator-report` (conservado durante 7 días), incluso si fallan las comprobaciones. El resumen del job muestra el estado, las familias comprobadas y el recuento de Components y errores. Si hay Components fallidos, incluye hasta diez rutas relativas afectadas, sus cantidades de errores y el primer diagnóstico abreviado de cada Component; el informe completo permanece en el artefacto JSON.
 
 La implementación de referencia de `v0.6.0` valida 21 Components e incluye 109 tests automatizados.
 
