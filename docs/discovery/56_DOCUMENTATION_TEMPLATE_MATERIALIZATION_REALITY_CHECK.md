@@ -1,42 +1,42 @@
 # 56 — Documentation Template Materialization Reality Check
 
-| Campo | Valor |
+| Field | Value |
 |---|---|
-| Proyecto | GitHub Framework |
-| Fecha | 2026-11-11 |
-| Estado | Discovery — bounded reality check |
+| Project | GitHub Framework |
+| Date | 2026-11-11 |
+| Status | Discovery — bounded reality check |
 | Framework baseline | v0.10.0 |
 | Template | `TPL-DOCUMENTATION v0.1.0` |
 | Template status / maturity | `Experimental` / `L2` |
-| Referencia previa | [55 — Framework Functional Maturity Discovery](55_FRAMEWORK_FUNCTIONAL_MATURITY_DISCOVERY.md) |
-| Delivery / Sprint / milestone | No comprometidos |
+| Previous reference | [55 — Framework Functional Maturity Discovery](55_FRAMEWORK_FUNCTIONAL_MATURITY_DISCOVERY.md) |
+| Delivery / Sprint / milestone | None committed |
 
-> Este documento comprueba la distinción entre disponibilidad canónica de Components y satisfacción de Responsibilities por parte de un consumer. No es una evaluación completa de conformidad, un Delivery Scope ni una autorización para cambiar el Template o materializar Components.
+> This document examines the distinction between canonical Component availability and a consumer's coverage of Responsibilities. It is not a complete conformance Assessment, a Delivery Scope, or authorization to change the Template or materialize Components.
 
 ---
 
-## 1. Pregunta de investigación
+## 1. Research Question
 
-El análisis funcional #55 observó un gap en `TPL-DOCUMENTATION`: uno de sus nueve Components `Required` figura como `Conceptual`. Se investiga:
+The functional analysis in #55 identified a gap in `TPL-DOCUMENTATION`: one of its nine `Required` Components is classified as `Conceptual`. The question is:
 
-> ¿Impide realmente el estado conceptual de `README-LICENSE` utilizar `TPL-DOCUMENTATION` en un repositorio documental existente, o solo limita la reutilización de una implementación canónica desde el Framework?
+> Does the conceptual status of `README-LICENSE` actually prevent use of `TPL-DOCUMENTATION` in an existing documentation repository, or does it only limit reuse of a canonical Framework implementation?
 
-**Hipótesis:** el gap corresponde a la disponibilidad de un Component canónico, no necesariamente a la satisfacción de la responsabilidad por cualquier consumer.
+**Hypothesis:** the gap concerns availability of a canonical Component, not necessarily whether any particular consumer can satisfy the Responsibility.
 
-## 2. Fuentes revisadas
+## 2. Sources Reviewed
 
-- [TPL-DOCUMENTATION metadata](../../framework/templates/repositories/documentation/metadata.yml) — fuente canónica del contrato.
-- [TPL-DOCUMENTATION README](../../framework/templates/repositories/documentation/README.md) — alcance, disponibilidad y límites.
-- [Repository Template Library](../../framework/templates/repositories/README.md) — clasificación, versión y conformance.
-- [Component Catalog](../design-system/09_COMPONENT_CATALOG.md), secciones 19 y 48 — distinción conceptual y definición de `README-LICENSE`.
-- [Framework README](../../README.md), sección `License`, y [LICENSE](../../LICENSE) — ejemplo observable dentro del propio Framework.
-- [Adoption Assessment Guide](../../framework/adoption/README.md) — principios `Responsibility over File` y revisión humana.
+- [TPL-DOCUMENTATION metadata](../../framework/templates/repositories/documentation/metadata.yml) — canonical contract source.
+- [TPL-DOCUMENTATION README](../../framework/templates/repositories/documentation/README.md) — scope, availability, and boundaries.
+- [Repository Template Library](../../framework/templates/repositories/README.md) — classification, version, and conformance.
+- [Component Catalog](../design-system/09_COMPONENT_CATALOG.md), sections 19 and 48 — conceptual distinction and definition of `README-LICENSE`.
+- [Framework README](../../README.md), `License` section, and [LICENSE](../../LICENSE) — observable example within the Framework itself.
+- [Adoption Assessment Guide](../../framework/adoption/README.md) — `Responsibility over File` and human-review principles.
 
-Estos son resultados de **inspección documental de los artefactos publicados**, no de ejecución del Framework Validator o de un Assessment externo.
+These findings come from **document inspection of published artifacts**, not from executing the Framework Validator or an external Assessment.
 
-## 3. Contrato canónico de TPL-DOCUMENTATION
+## 3. Canonical TPL-DOCUMENTATION Contract
 
-La metadata declara:
+The metadata declares:
 
 ```yaml
 id: TPL-DOCUMENTATION
@@ -46,37 +46,37 @@ project_type: Documentation
 maturity: L2
 ```
 
-Su composición incluye **9 Required, 7 Recommended y 5 Optional** (21 Responsibilities / Components referenciados). La sección de disponibilidad de su README registra:
+Its composition contains **9 Required, 7 Recommended, and 5 Optional** Components (21 referenced Responsibilities / Components). Its README availability section records:
 
-| Requirement level | Implemented | Declarados |
+| Requirement level | Implemented | Declared |
 |---|---:|---:|
 | Required | 8 | 9 |
 | Recommended | 2 | 7 |
 | Optional | 1 | 5 |
 | **Total** | **11** | **21** |
 
-El único gap identificado entre los Required es:
+The only identified gap among Required Components is:
 
 ```text
 README-LICENSE → Conceptual
 ```
 
-La clasificación no modifica automáticamente el requirement level `Required`; tampoco significa que el Template completo esté ausente o no se pueda utilizar para razonar sobre Responsibilities.
+This classification does not automatically change the `Required` requirement level. Nor does it mean the entire Template is absent or unusable as a basis for reasoning about Responsibilities.
 
-## 4. Significado de README-LICENSE
+## 4. Meaning of README-LICENSE
 
-El catálogo define `README-LICENSE` como **responsabilidad de comunicar desde el README la licencia aplicable al proyecto**.
+The Catalog defines `README-LICENSE` as the **Responsibility to communicate the project's applicable license from the README**.
 
-Su clasificación publicada es:
+Its published classification is:
 
 ```text
 Family: README
 Implementation: Conceptual
 ```
 
-El catálogo precisa que un archivo `LICENSE` en un consumer cubre una responsabilidad relacionada, pero **no constituye por sí solo la implementación canónica reutilizable** del Component `README-LICENSE`.
+The Catalog clarifies that a consumer's `LICENSE` file covers a related Responsibility, but **does not by itself constitute a reusable canonical implementation** of the `README-LICENSE` Component.
 
-No se deben equiparar las siguientes afirmaciones:
+The following statements must not be treated as equivalent:
 
 ```text
 LICENSE file exists
@@ -86,27 +86,27 @@ README communicates applicable license
 Framework provides a canonical reusable README-LICENSE Component
 ```
 
-El contrato de `TPL-DOCUMENTATION` exige la responsabilidad correspondiente; la disponibilidad de un Component físico reusable constituye otra dimensión.
+The `TPL-DOCUMENTATION` contract requires the corresponding Responsibility; availability of a physical reusable Component is a separate dimension.
 
-## 5. Caso observable: el propio GitHub Framework
+## 5. Observable Case: GitHub Framework Itself
 
-El repositorio `fran-eliot/github-framework` incluye:
+The `fran-eliot/github-framework` repository includes:
 
-- Una sección `## 📄 License` en el [README](../../README.md), con la frase que comunica que el proyecto se distribuye bajo licencia MIT.
-- Un archivo [LICENSE](../../LICENSE) que contiene el texto de la licencia MIT y su copyright.
+- A `## 📄 License` section in its [README](../../README.md), stating that the project is distributed under the MIT license.
+- A [LICENSE](../../LICENSE) file containing the MIT license text and copyright notice.
 
-Estos son **Detected Facts** obtenidos directamente de la documentación. Apoyan la hipótesis de que un consumer puede comunicar su licencia sin materializar previamente `README-LICENSE` como Framework Component.
+These are **Detected Facts** drawn directly from documentation. They support the hypothesis that a consumer can communicate its license without first materializing `README-LICENSE` as a Framework Component.
 
-### Límites del ejemplo
+### Limitations of the Example
 
-- No se declara que `github-framework` sea un consumer formal de `TPL-DOCUMENTATION`; el repositorio combina documentación y tooling ejecutable.
-- No se ha completado un Assessment de la Responsibility `README-LICENSE` en un consumer documental independiente.
-- La presencia de una sección de licencia y de `LICENSE` constituye evidencia, no una decisión automática `Satisfied` ni una `Adoption Decision`.
-- El ejemplo no demuestra que la implementación observada deba convertirse en el contenido canónico de un nuevo Component.
+- `github-framework` is not claimed to be a formal `TPL-DOCUMENTATION` consumer; the repository combines documentation and executable tooling.
+- No `README-LICENSE` Responsibility Assessment has been completed on an independent documentation consumer.
+- A license section and a `LICENSE` file constitute Evidence, not an automatic `Satisfied` State or an `Adoption Decision`.
+- The example does not demonstrate that the observed implementation should become the canonical content of a new Component.
 
-## 6. Distinción arquitectónica confirmada
+## 6. Confirmed Architectural Distinction
 
-El Component Catalog y la Template Library mantienen la regla:
+The Component Catalog and Template Library maintain the rule:
 
 ```text
 Component availability
@@ -114,53 +114,53 @@ Component availability
 Consumer conformance
 ```
 
-Un consumer puede satisfacer una Responsibility mediante una implementación propia, distribuida o equivalente mientras el Framework Component permanece `Conceptual`.
+A consumer may satisfy a Responsibility through an own, distributed, or equivalent implementation while the Framework Component remains `Conceptual`.
 
-Por tanto, dos afirmaciones pueden ser simultáneamente verdaderas:
+Consequently, both of the following statements can be true at the same time:
 
-1. `TPL-DOCUMENTATION` **no es plenamente materializable usando únicamente Components canónicos implementados** del Framework en su versión actual.
-2. Un consumer **podría cumplir la responsabilidad de comunicar la licencia** mediante artefactos propios sin esperar a que exista un Component canónico.
+1. `TPL-DOCUMENTATION` **cannot be fully materialized using only the Framework's currently implemented canonical Components**.
+2. A consumer **may satisfy the license-communication Responsibility** through its own artifacts without waiting for a canonical Component to exist.
 
-La conformidad concreta requiere evaluación frente a la Responsibility, Evidence y revisión humana. No se deduce de la presencia de un archivo aislado.
+Actual conformance requires evaluation against the Responsibility, Evidence, and human review. It cannot be inferred from the mere presence of an individual file.
 
-## 7. Revisión de alternativas, sin decisión de solución
+## 7. Alternatives Reviewed, Without a Solution Decision
 
-| Alternativa | Qué resolvería | Qué falta demostrar |
+| Alternative | What It Would Address | What Still Needs to Be Demonstrated |
 |---|---|---|
-| A. Mantener contrato y clasificación | Conserva el modelo actual y permite implementaciones propias | Que la limitación de disponibilidad sea aceptable para consumidores documentales reales |
-| B. Materializar `README-LICENSE` como Component | Haría disponible una implementación canónica reusable y podría cerrar el gap de Required materializados | Necesidad real, definición de contrato, mínima composición, variabilidad de licencias y costes de mantenimiento |
-| C. Revisar el requirement level de `README-LICENSE` | Cambiaría el mínimo contractual de `TPL-DOCUMENTATION` | Evidencia de que comunicar la licencia no sea Required para el tipo de repositorio; no basta con que falte una implementación |
-| D. Documentar una vía de composición propia para consumidores | Aclara las opciones cuando la Responsibility existe sin Component canónico | Dudas observadas de usuarios y ausencia de información equivalente en las guías actuales |
+| A. Preserve the contract and classification | Retains the current model and permits consumer-specific implementations | That the availability limitation is acceptable for real documentation consumers |
+| B. Materialize `README-LICENSE` as a Component | Provides a reusable canonical implementation and could close the Required materialization gap | Real need, contract definition, minimal composition, license variability, and maintenance costs |
+| C. Review the requirement level of `README-LICENSE` | Changes the minimum `TPL-DOCUMENTATION` contract | Evidence that license communication should not be Required for this repository type; implementation absence alone is insufficient |
+| D. Document a consumer-specific composition path | Clarifies options when a Responsibility exists without a canonical Component | Observed user confusion and lack of equivalent information in current guides |
 
-Ninguna alternativa se selecciona aquí; en especial, **un gap de materialización no autoriza a rebajar un Requirement Level**.
+No alternative is selected here. In particular, **a materialization gap does not justify downgrading a Requirement Level**.
 
-## 8. Registro de hallazgos
+## 8. Findings Register
 
-| ID | Hallazgo | Estado |
+| ID | Finding | Status |
 |---|---|---|
-| TM-F01 | `TPL-DOCUMENTATION v0.1.0` referencia `README-LICENSE` como Required y Conceptual. | Confirmado |
-| TM-F02 | El Component Catalog diferencia explícitamente comunicar la licencia en README de poseer un archivo LICENSE. | Confirmado |
-| TM-F03 | El Framework mismo contiene comunicación de licencia en README y un archivo LICENSE. | Confirmado como caso observable |
-| TM-F04 | El estado `Conceptual` limita disponibilidad canónica, pero no determina automáticamente la conformidad de un consumer. | Confirmado en contratos publicados |
-| TM-F05 | La falta de un Component canónico provoca una barrera significativa para consumidores documentales reales. | **No demostrado** |
-| TM-F06 | Es necesario materializar `README-LICENSE` o cambiar su requirement level. | **No demostrado** |
+| TM-F01 | `TPL-DOCUMENTATION v0.1.0` references `README-LICENSE` as Required and Conceptual. | Confirmed |
+| TM-F02 | The Component Catalog explicitly distinguishes communicating license information in README from having a LICENSE file. | Confirmed |
+| TM-F03 | The Framework itself communicates its license in README and contains a LICENSE file. | Confirmed as observable case |
+| TM-F04 | `Conceptual` limits canonical availability but does not automatically determine consumer conformance. | Confirmed in published contracts |
+| TM-F05 | The lack of a canonical Component creates a substantial barrier for real documentation consumers. | **Not demonstrated** |
+| TM-F06 | `README-LICENSE` must be materialized or its requirement level changed. | **Not demonstrated** |
 
-## 9. Investigación pendiente
+## 9. Outstanding Research
 
-Antes de Solution Shaping o Product Backlog:
+Before Solution Shaping or Product Backlog work:
 
-1. Seleccionar un repositorio **primariamente documental**, con identidad y reference inmutables, que no haya sido construido para satisfacer deliberadamente el contrato de este Template.
-2. Registrar solo la Evidence necesaria para la responsabilidad `README-LICENSE` (sección del README, enlace o texto de licencia, archivo relacionado, aclaraciones y contexto), sin deducir conformidad de un nombre de archivo.
-3. Clasificar la cobertura de la Responsibility mediante revisión humana, dejando incertidumbres explícitas.
-4. Comprobar si la ausencia de Component canónico genera fricción real para adoptar el Template, independientemente de la cobertura observada.
-5. Repetir o contrastar con otro consumer únicamente si el primer caso no permite distinguir las hipótesis.
+1. Select a **documentation-first repository** with an immutable identity and reference, not deliberately built to satisfy this Template's contract.
+2. Record only the Evidence needed for `README-LICENSE` (README section, license link or text, related file, clarifications, and context), without inferring conformance from a filename.
+3. Classify Responsibility coverage through human review, preserving explicit uncertainties.
+4. Check whether the absence of the canonical Component creates actual adoption friction, independently of the observed coverage.
+5. Repeat or compare with another consumer only if the first case cannot distinguish the hypotheses.
 
-Si no aparece una necesidad reproducible, **no materializar ni reclasificar por inercia**.
+If no repeatable need appears, **do not materialize or reclassify by default**.
 
-## 10. Resultado y frontera de decisión
+## 10. Result and Decision Boundary
 
-**Resultado del Reality Check:** se ha confirmado un gap de **materialización canónica**, no una imposibilidad universal de uso ni un defecto probado del contrato de `TPL-DOCUMENTATION`.
+**Reality Check result:** a **canonical materialization** gap was confirmed, not a universal inability to use the Template or a proven defect in the `TPL-DOCUMENTATION` contract.
 
-El siguiente trabajo requiere evidencia específica de un consumer documental. No se han modificado Templates, Components, Validator ni consumers. No se ejecutó Assessment completo ni se realizó promoción a `Stable`.
+The next investigation requires evidence from a specific documentation consumer. Templates, Components, Validator, and consumers have not been modified. No complete Assessment was run and the Template was not promoted to `Stable`.
 
-**Decisión:** mantener abiertas las alternativas y continuar Discovery, sin comprometer implementación, Sprint, milestone o release.
+**Decision:** keep the alternatives open and continue Discovery without committing an implementation, Sprint, milestone, or release.
