@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
-from scripts.framework_validator.ci_summary import render_summary
+from scripts.framework_validator.ci_summary import render_annotations, render_summary
 from scripts.framework_validator.__main__ import REPOSITORY_ROOT
 
 
@@ -266,3 +266,107 @@ class FrameworkValidatorSummaryTests(unittest.TestCase):
             "| documentation/references | 0 | No diagnostic available |",
             render_summary(report),
         )
+
+    def test_annotations_include_component_file_and_escape_diagnostics(self) -> None:
+        report = {
+            "status": "failed",
+            "components": [
+                {
+                    "status": "passed",
+                    "relative_path": "documentation/architecture",
+                    "errors": [],
+                },
+                {
+                    "status": "failed",
+                    "relative_path": "documentation/odd,name:section",
+                    "errors": ["Unexpected 100% \n::warning::injection\r", "second error"],
+                },
+            ],
+        }
+        commands = render_annotations(report)
+        self.assertIn(
+            "::error file=framework/components/documentation/odd%2Cname%3Asection/"
+            "metadata.yml,title=Component validation::"
+            "Unexpected 100%25 %0A::warning::injection%0D",
+            commands,
+        )
+        self.assertEqual(commands.count("::error "), 2)
+        self.assertNotIn("\n::warning::injection", commands)
+
+    def test_annotations_are_bounded_and_report_remaining_count(self) -> None:
+        report = {
+            "status": "failed",
+            "components": [{
+                "status": "failed",
+                "relative_path": "workflow/issue",
+                "errors": [f"failure-{i}" for i in range(4)],
+            }],
+        }
+        commands = render_annotations(report, limit=2)
+        self.assertEqual(commands.count("::error "), 2)
+        self.assertIn("::notice::2 additional validation errors", commands)
+        self.assertNotIn("failure-2", commands)
+
+    def test_annotations_for_global_discovery_failure(self) -> None:
+        report = {
+            "status": "failed",
+            "components": [],
+            "errors": ["no Components discovered"],
+        }
+        self.assertEqual(
+            render_annotations(report),
+            "::error title=Component validation::no Components discovered\n",
+        )
+
+    def test_annotations_success_and_missing_report(self) -> None:
+        self.assertEqual(
+            render_annotations({"status": "passed", "components": [], "errors": []}),
+            "",
+        )
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m",
+                    "scripts.framework_validator.ci_summary",
+                    str(root / "missing.json"), "--annotations",
+                ],
+                cwd=REPOSITORY_ROOT,
+                env={key: value for key, value in os.environ.items()
+                     if key != "GITHUB_STEP_SUMMARY"},
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+
+    def test_annotations_cli_prints_commands_only(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / "validator-report.json"
+            source.write_text(json.dumps({
+                "status": "failed",
+                "components": [{
+                    "status": "failed",
+                    "relative_path": "documentation/references",
+                    "errors": ["missing metadata.yml"],
+                }],
+            }), encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable, "-m",
+                    "scripts.framework_validator.ci_summary",
+                    str(source), "--annotations",
+                ],
+                cwd=REPOSITORY_ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(
+                result.stdout,
+                "::error file=framework/components/documentation/references/"
+                "metadata.yml,title=Component validation::missing metadata.yml\n",
+            )

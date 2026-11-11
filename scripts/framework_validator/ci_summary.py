@@ -66,11 +66,64 @@ def render_summary(report: dict) -> str:
     return result + "\nThe full JSON report is available in the workflow artifacts.\n"
 
 
+def _workflow_escape(value: str, property_value: bool = False) -> str:
+    """Encode content for GitHub Actions workflow commands."""
+    escaped = (
+        value.replace("%", "%25")
+        .replace("\r", "%0D")
+        .replace("\n", "%0A")
+    )
+    if property_value:
+        escaped = escaped.replace(":", "%3A").replace(",", "%2C")
+    return escaped
+
+
+def render_annotations(report: dict, limit: int = 25) -> str:
+    """Emit bounded file-linked errors from a Validator JSON report."""
+    diagnostics: list[tuple[str | None, str]] = []
+    for component in report.get("components", []):
+        if component["status"] != "failed":
+            continue
+        path = "framework/components/" + component["relative_path"] + "/metadata.yml"
+        for error in component["errors"]:
+            diagnostics.append((path, str(error)))
+
+    if not diagnostics and report.get("status") == "failed":
+        diagnostics.extend((None, str(error)) for error in report.get("errors", []))
+
+    commands = []
+    for path, message in diagnostics[:limit]:
+        detail = _workflow_escape(message[:500])
+        properties = (
+            " file=" + _workflow_escape(path, property_value=True) + ",title=Component validation"
+            if path is not None
+            else " title=Component validation"
+        )
+        commands.append(f"::error{properties}::{detail}")
+
+    remaining = len(diagnostics) - limit
+    if remaining > 0:
+        commands.append(
+            f"::notice::{remaining} additional validation errors are in the JSON artifact."
+        )
+    return "\n".join(commands) + ("\n" if commands else "")
+
+
 def main() -> None:
     """Append a report summary to the file provided by GitHub Actions."""
     parser = argparse.ArgumentParser(description="Summarize a Validator JSON report.")
     parser.add_argument("report_path", type=Path)
+    parser.add_argument(
+        "--annotations", action="store_true",
+        help="Print GitHub Actions error annotations instead of a job summary.",
+    )
     arguments = parser.parse_args()
+
+    if arguments.annotations:
+        if arguments.report_path.is_file():
+            report = json.loads(arguments.report_path.read_text(encoding="utf-8"))
+            print(render_annotations(report), end="")
+        return
 
     destination = Path(os.environ["GITHUB_STEP_SUMMARY"])
     if arguments.report_path.is_file():

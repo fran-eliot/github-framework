@@ -172,7 +172,7 @@ Run the automated test suite with:
 python -m unittest discover -s tests/framework_validator -p "test_*.py"
 ```
 
-GitHub Actions also runs the Validator test suite and checks the repository Components on pull requests and pushes to `main` via `.github/workflows/framework-validator.yml`, on both Ubuntu and Windows (Python 3.11). Each operating-system job uploads a separate `framework-validator-report-<os>` JSON artifact (retained for 7 days), including when the checks fail. The job summary also displays validation status, selected families, and aggregate Component/error counts. If Components fail, it lists up to ten affected relative paths, their error counts, and a truncated first diagnostic per Component; the complete report remains in the JSON artifact.
+GitHub Actions also runs the Validator test suite and checks the repository Components on pull requests and pushes to `main` via `.github/workflows/framework-validator.yml`, on both Ubuntu and Windows (Python 3.11). Each operating-system job uploads a separate `framework-validator-report-<os>` JSON artifact (retained for 7 days), including when the checks fail. The job summary also displays validation status, selected families, and aggregate Component/error counts. If Components fail, it lists up to ten affected relative paths, their error counts, and a truncated first diagnostic per Component; the complete report remains in the JSON artifact. When Component validation fails, GitHub Actions also emits file-linked error annotations (limited to 25) for quicker PR review.
 
 The v0.6.0 reference implementation validates 21 Components and includes 109 automated tests.
 
