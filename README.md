@@ -162,7 +162,7 @@ To validate only selected Component families, repeat `--family` as needed:
 python -m scripts.framework_validator --family documentation --family workflow
 ```
 
-Available families are `readme`, `documentation`, and `workflow`. With no filter, all are validated. A filtered run checks only the selected Components, including uniqueness among those selected; it is not a full-library validation.
+Available families are `readme`, `documentation`, and `workflow`. With no filter, all are validated. A filtered run checks only the selected Components, including uniqueness among those selected; it is not a full-library validation. JSON reports include `scope.families` (selected families in canonical order) and `scope.filtered` (`true` for partial-family validation), so CI can distinguish partial results from full-library checks.
 
 JSON output includes validation status, discovered Component count, loaded Component IDs, global errors, and a `components` array with each Component's path, ID, status, and related errors. The `summary` object provides counts of passed and failed Components and total validation errors. Each Component also includes a portable `relative_path` (for example, `documentation/architecture`) alongside its existing filesystem `path`. The validation scope and exit codes remain unchanged.
 
