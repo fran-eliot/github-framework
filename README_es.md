@@ -150,6 +150,14 @@ Para guardar el informe JSON en un archivo UTF-8 (también si falla la validaci�
 python -m scripts.framework_validator --format json --output validation-report.json
 ```
 
+Para validar otra biblioteca de Components del Framework, indica su directorio raíz (que contiene los directorios de las distintas familias):
+
+```bash
+python -m scripts.framework_validator --components-root ruta/al/framework/components
+```
+
+La opción también funciona con `--format json` y `--output`. El directorio indicado debe existir.
+
 La salida JSON incluye el estado de validación, el número de Components detectados, sus identificadores cargados, los errores globales y un array `components` con la ruta, el ID, el estado y los errores de cada Component. El objeto `summary` incorpora los recuentos de Components válidos, Components con errores y errores totales. Cada Component incluye también una ruta portable `relative_path` (por ejemplo, `documentation/architecture`) además de su `path` original. El alcance y los códigos de salida no cambian.
 
 Para ejecutar la batería de tests automatizados:
