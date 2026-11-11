@@ -18,6 +18,14 @@ Contributions should follow these principles:
 - Validate changes through real usage.
 - Keep documentation aligned with implementation.
 
+## Documentation Language
+
+English is the primary language for public documentation, technical guides, templates, examples, Discovery, and implementation records. Keep the English `README.md` and Spanish `README_es.md` aligned when changing shared entry points. Additional translations may be maintained separately.
+
+Preserve stable identifiers, metadata keys, file paths, code examples, and source references when translating existing material. Avoid mixing languages within a document; legacy documents may be normalized in focused follow-up changes.
+
+New code comments may use Spanish in accordance with the project's internal conventions. This exception does not apply to public documentation or commit messages.
+
 ## Before Opening an Issue
 
 Before opening an Issue:
