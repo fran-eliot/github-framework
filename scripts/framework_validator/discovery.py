@@ -9,11 +9,14 @@ import yaml
 COMPONENT_FAMILIES = ("readme", "documentation", "workflow")
 
 
-def discover_components(components_root: Path) -> list[Path]:
-    """Return the directories of implemented Components."""
+def discover_components(
+    components_root: Path,
+    families: tuple[str, ...] | None = None,
+) -> list[Path]:
+    """Return Component directories from the selected families."""
     component_dirs: list[Path] = []
 
-    for family in COMPONENT_FAMILIES:
+    for family in COMPONENT_FAMILIES if families is None else families:
         family_dir = components_root / family
 
         if not family_dir.is_dir():
