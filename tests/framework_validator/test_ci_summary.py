@@ -133,8 +133,8 @@ class FrameworkValidatorSummaryTests(unittest.TestCase):
         }
         result = render_summary(report)
         self.assertIn("### Failed Components", result)
-        self.assertIn("| documentation/references | 1 |", result)
-        self.assertIn("| documentation/samples | 2 |", result)
+        self.assertIn("| documentation/references | 1 | missing metadata.yml |", result)
+        self.assertIn("| documentation/samples | 2 | error one |", result)
         self.assertNotIn("| documentation/architecture |", result)
 
     def test_success_summary_does_not_include_failed_table(self) -> None:
@@ -176,8 +176,8 @@ class FrameworkValidatorSummaryTests(unittest.TestCase):
             "components": components,
         }
         result = render_summary(report)
-        self.assertIn("| documentation/component-09 | 1 |", result)
-        self.assertNotIn("| documentation/component-10 | 1 |", result)
+        self.assertIn("| documentation/component-09 | 1 | invalid metadata |", result)
+        self.assertNotIn("| documentation/component-10 | 1 | invalid metadata |", result)
         self.assertIn("2 more failed Component(s)", result)
 
     def test_failed_component_paths_are_escaped(self) -> None:
@@ -198,4 +198,71 @@ class FrameworkValidatorSummaryTests(unittest.TestCase):
             ],
         }
         result = render_summary(report)
-        self.assertIn(r"| documentation/invalid\|line break | 1 |", result)
+        self.assertIn(r"| documentation/invalid\|line break | 1 | invalid metadata |", result)
+
+    def test_first_diagnostic_is_escaped(self) -> None:
+        report = {
+            "status": "failed",
+            "scope": {"families": ["documentation"], "filtered": True},
+            "summary": {
+                "passed_components": 0,
+                "failed_components": 1,
+                "error_count": 1,
+            },
+            "components": [
+                {
+                    "relative_path": "documentation/references",
+                    "status": "failed",
+                    "errors": ["field|value\non next line\\detail"],
+                },
+            ],
+        }
+        result = render_summary(report)
+        self.assertIn(
+            r"| documentation/references | 1 | field\|value on next line\\detail |",
+            result,
+        )
+
+    def test_first_diagnostic_is_truncated(self) -> None:
+        diagnostic = "x" * 200
+        report = {
+            "status": "failed",
+            "scope": {"families": ["documentation"], "filtered": True},
+            "summary": {
+                "passed_components": 0,
+                "failed_components": 1,
+                "error_count": 1,
+            },
+            "components": [
+                {
+                    "relative_path": "documentation/references",
+                    "status": "failed",
+                    "errors": [diagnostic],
+                },
+            ],
+        }
+        result = render_summary(report)
+        self.assertIn(f"| 1 | {'x' * 157}... |", result)
+        self.assertNotIn(diagnostic, result)
+
+    def test_failed_component_without_diagnostics_has_fallback(self) -> None:
+        report = {
+            "status": "failed",
+            "scope": {"families": ["documentation"], "filtered": True},
+            "summary": {
+                "passed_components": 0,
+                "failed_components": 1,
+                "error_count": 0,
+            },
+            "components": [
+                {
+                    "relative_path": "documentation/references",
+                    "status": "failed",
+                    "errors": [],
+                },
+            ],
+        }
+        self.assertIn(
+            "| documentation/references | 0 | No diagnostic available |",
+            render_summary(report),
+        )
