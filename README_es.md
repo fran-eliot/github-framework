@@ -166,6 +166,15 @@ python -m scripts.framework_validator --family documentation --family workflow
 
 Las familias disponibles son `readme`, `documentation` y `workflow`. Sin filtro se validan todas. Una ejecución filtrada comprueba únicamente los Components seleccionados, incluida la unicidad entre ellos; no equivale a una validación completa de la biblioteca.
 
+Para consultar las rutas disponibles sin ejecutar la validación (también en directorios sin `metadata.yml`):
+
+```bash
+python -m scripts.framework_validator --list-components
+python -m scripts.framework_validator --list-components --family documentation
+```
+
+El listado devuelve una ruta portable por línea y admite `--components-root`. Solo ofrece salida de texto y no puede combinarse con `--component`, `--format json` ni `--output`.
+
 Para comprobar un único Component, indica su ruta relativa `familia/nombre` (repite `--component` si necesitas varios):
 
 ```bash
