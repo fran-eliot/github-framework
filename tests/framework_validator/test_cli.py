@@ -575,3 +575,125 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             )
             self.assertEqual(invalid.returncode, 2)
             self.assertIn("--components-root must be an existing directory", invalid.stderr)
+
+    def test_json_filter_one_component_family(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            documentation = self.create_component(root)
+            (documentation / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            workflow = root / "workflow" / "issue"
+            workflow.mkdir(parents=True)
+            (workflow / "metadata.yml").write_text(
+                VALID_WORKFLOW_METADATA, encoding="utf-8"
+            )
+            output = io.StringIO()
+            with redirect_stdout(output):
+                exit_code = validator_cli.main(
+                    output_format="json",
+                    components_root=root,
+                    families=("documentation",),
+                )
+
+            result = json.loads(output.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(result["components_discovered"], 1)
+            self.assertEqual(
+                result["components"][0]["relative_path"], "documentation/architecture"
+            )
+            self.assertEqual(result["summary"]["passed_components"], 1)
+
+    def test_json_filter_multiple_component_families(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            documentation = self.create_component(root)
+            (documentation / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            workflow = root / "workflow" / "issue"
+            workflow.mkdir(parents=True)
+            (workflow / "metadata.yml").write_text(
+                VALID_WORKFLOW_METADATA, encoding="utf-8"
+            )
+            output = io.StringIO()
+            with redirect_stdout(output):
+                exit_code = validator_cli.main(
+                    output_format="json",
+                    components_root=root,
+                    families=("documentation", "workflow"),
+                )
+
+            result = json.loads(output.getvalue())
+            self.assertEqual(exit_code, 1)
+            self.assertEqual(result["components_discovered"], 2)
+            self.assertEqual(
+                {item["relative_path"] for item in result["components"]},
+                {"documentation/architecture", "workflow/issue"},
+            )
+
+    def test_family_filter_scopes_duplicate_ids(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            documentation = self.create_component(root)
+            (documentation / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            readme = root / "readme" / "architecture"
+            readme.mkdir(parents=True)
+            (readme / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            output = io.StringIO()
+            with redirect_stdout(output):
+                exit_code = validator_cli.main(
+                    output_format="json",
+                    components_root=root,
+                    families=("documentation",),
+                )
+
+            result = json.loads(output.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(result["summary"]["error_count"], 0)
+            self.assertEqual(result["components_discovered"], 1)
+
+    def test_cli_family_argument_rejects_unknown_family(self) -> None:
+        result = subprocess.run(
+            [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--family", "unknown",
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+            cwd=validator_cli.REPOSITORY_ROOT,
+        )
+
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("invalid choice", result.stderr)
+
+    def test_cli_repeated_family_filter(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            documentation = self.create_component(root)
+            (documentation / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root),
+                "--format", "json",
+                "--family", "documentation",
+                "--family", "documentation",
+            ]
+            result = subprocess.run(
+                command,
+                capture_output=True,
+                text=True,
+                check=False,
+                cwd=validator_cli.REPOSITORY_ROOT,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            report = json.loads(result.stdout)
+            self.assertEqual(report["components_discovered"], 1)
