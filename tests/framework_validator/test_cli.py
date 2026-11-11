@@ -211,6 +211,10 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(result["status"], "passed")
             self.assertEqual(result["components_discovered"], 1)
             self.assertEqual(result["component_ids"], ["DOC-ARCHITECTURE"])
+            self.assertEqual(result["scope"], {
+                "families": ["readme", "documentation", "workflow"],
+                "filtered": False,
+            })
             self.assertEqual(result["errors"], [])
             self.assertEqual(result["summary"], {
                 "passed_components": 1,
@@ -603,6 +607,10 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                 result["components"][0]["relative_path"], "documentation/architecture"
             )
             self.assertEqual(result["summary"]["passed_components"], 1)
+            self.assertEqual(result["scope"], {
+                "families": ["documentation"],
+                "filtered": True,
+            })
 
     def test_json_filter_multiple_component_families(self) -> None:
         with TemporaryDirectory() as directory:
@@ -656,6 +664,7 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(exit_code, 0)
             self.assertEqual(result["summary"]["error_count"], 0)
             self.assertEqual(result["components_discovered"], 1)
+            self.assertEqual(result["scope"]["filtered"], True)
 
     def test_cli_family_argument_rejects_unknown_family(self) -> None:
         result = subprocess.run(
@@ -697,3 +706,53 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             report = json.loads(result.stdout)
             self.assertEqual(report["components_discovered"], 1)
+
+    def test_json_explicit_all_families_is_unfiltered(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            output = io.StringIO()
+            with redirect_stdout(output):
+                exit_code = validator_cli.main(
+                    output_format="json",
+                    components_root=root,
+                    families=("workflow", "documentation", "readme"),
+                )
+
+            result = json.loads(output.getvalue())
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(result["scope"], {
+                "families": ["readme", "documentation", "workflow"],
+                "filtered": False,
+            })
+
+    def test_json_scope_repeated_family_appears_once(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root),
+                "--format", "json",
+                "--family", "documentation",
+                "--family", "documentation",
+            ]
+            result = subprocess.run(
+                command,
+                capture_output=True,
+                text=True,
+                check=False,
+                cwd=validator_cli.REPOSITORY_ROOT,
+            )
+
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(json.loads(result.stdout)["scope"], {
+                "families": ["documentation"],
+                "filtered": True,
+            })
