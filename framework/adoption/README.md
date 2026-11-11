@@ -695,7 +695,7 @@ without forcing an artificial Adoption Decision.
 
 ## 16. Adoption Decisions
 
-El vocabulario estable de Adoption Decision es:
+The stable Adoption Decision vocabulary is:
 
 ```text
 PRESERVE
@@ -707,29 +707,29 @@ OMIT
 
 ### `PRESERVE`
 
-Mantener la implementación existente porque satisface adecuadamente la Responsibility y no requiere modificación para el propósito evaluado.
+Retain the existing implementation because it adequately satisfies the Responsibility and does not require modification for the purpose being assessed.
 
 ### `ADAPT`
 
-Modificar una implementación existente para cubrir adecuadamente la Responsibility.
+Modify an existing implementation to cover the Responsibility adequately.
 
 ### `ADD`
 
-Añadir una implementación o artifact necesario porque la Responsibility requiere cobertura adicional.
+Add a necessary implementation or artifact because the Responsibility requires additional coverage.
 
 ### `ACCEPT`
 
-Aceptar conscientemente una implementación existente no canónica cuando resulta adecuada para la Responsibility y el contexto.
+Consciously accept an existing non-canonical implementation when it is appropriate for the Responsibility and its context.
 
 ### `OMIT`
 
-No incorporar la materialización esperada porque la Responsibility no resulta aplicable o existe una razón explícita y revisada para omitirla.
+Do not introduce the expected materialization because the Responsibility is not applicable or because there is an explicit, reviewed reason for omitting it.
 
 ---
 
-## 17. No existe mapeo automático State → Decision
+## 17. No Automatic State → Decision Mapping
 
-Una misma combinación de State y Applicability puede conducir a distintas decisiones según:
+The same State and Applicability combination may lead to different decisions depending on:
 
 ```text
 Requirement Level
@@ -739,7 +739,7 @@ Context
 Rationale
 ```
 
-Por tanto:
+Therefore:
 
 ```text
 State
@@ -759,7 +759,7 @@ Rationale
 Adoption Decision
 ```
 
-No deben aplicarse reglas automáticas como:
+Automatic rules such as:
 
 ```text
 Satisfied → PRESERVE
@@ -769,30 +769,30 @@ Partial → ADAPT
 Missing → ADD
 ```
 
-sin evaluación contextual.
+must not be applied without contextual evaluation.
 
 ---
 
 ## 18. `EVALUATE`
 
-`EVALUATE` no forma parte del vocabulario estable de Adoption Decision.
+`EVALUATE` is not part of the stable Adoption Decision vocabulary.
 
-La necesidad que anteriormente representaba se expresa mediante:
+The need it previously represented is expressed through:
 
 ```text
 Decision Status
     Needs Further Evaluation
 ```
 
-Esto permite conservar una Responsibility evaluada sin inventar una disposición final.
+This allows an evaluated Responsibility to be retained without inventing a final disposition.
 
 ---
 
 ## 19. `JUSTIFY`
 
-`JUSTIFY` tampoco forma parte del vocabulario estable de Adoption Decision.
+`JUSTIFY` is likewise not part of the stable Adoption Decision vocabulary.
 
-La necesidad de conservar justificación queda cubierta mediante:
+The need to preserve justification is covered by:
 
 ```text
 Evaluation Rationale
@@ -800,17 +800,17 @@ Evaluation Rationale
 Decision Rationale
 ```
 
-No se requiere una decisión adicional para representar que una conclusión necesita estar razonada.
+No additional decision type is needed to represent that a conclusion requires justification.
 
 ---
 
 ## 20. Decision Rationale
 
-Decision Rationale responde:
+Decision Rationale answers:
 
-> ¿Por qué esta Adoption Decision es apropiada dado el assessment?
+> Why is this Adoption Decision appropriate given the Assessment?
 
-Debe relacionar la decisión con:
+It must connect the decision with:
 
 ```text
 State
@@ -820,9 +820,9 @@ Evidence
 context
 ```
 
-sin convertir esas dimensiones en reglas automáticas.
+without turning these dimensions into automatic rules.
 
-Ejemplos válidos:
+Valid examples:
 
 ```text
 Satisfied
@@ -832,7 +832,7 @@ Equivalent
 ACCEPT
 ```
 
-y:
+and:
 
 ```text
 Missing
