@@ -169,6 +169,8 @@ evidence source
 
 Es el Repository Template seleccionado como referencia para el assessment.
 
+Para seleccionarlo, consulta la [Repository Template Library](../templates/repositories/README.md) y los criterios de uso del Template elegido. Por ejemplo, [TPL-BACKEND](../templates/repositories/backend/README.md) está orientado a servicios y aplicaciones backend. El tipo de proyecto no demuestra por sí solo que sus Responsibilities estén satisfechas.
+
 Actúa como:
 
 ```text
@@ -178,6 +180,8 @@ assessment baseline
 ### Repository Template Version
 
 Identifica la versión concreta del Template utilizada.
+
+Confirma el identificador y la versión en la metadata canónica del Template seleccionado; para el ejemplo backend, consulta [`TPL-BACKEND/metadata.yml`](../templates/repositories/backend/metadata.yml). La versión del Template es independiente de la versión publicada de GitHub Framework.
 
 El assessment debe interpretarse siempre respecto a esa versión.
 
