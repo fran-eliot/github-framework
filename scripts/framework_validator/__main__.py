@@ -134,18 +134,18 @@ def main(output_format: str = "text", output_path: Path | None = None) -> int:
             )
 
         report = json.dumps(
-                {
-                    "status": "failed" if errors else "passed",
-                    "components_discovered": len(component_dirs),
-                    "component_ids": [
-                        metadata.get("id")
-                        for _, metadata in loaded_components
-                    ],
-                    "errors": errors,
-                    "components": component_results,
-                },
-                indent=2,
-            )
+            {
+                "status": "failed" if errors else "passed",
+                "components_discovered": len(component_dirs),
+                "component_ids": [
+                    metadata.get("id")
+                    for _, metadata in loaded_components
+                ],
+                "errors": errors,
+                "components": component_results,
+            },
+            indent=2,
+        )
         if output_path is None:
             print(report)
         else:
