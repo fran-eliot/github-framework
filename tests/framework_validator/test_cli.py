@@ -2,6 +2,7 @@
 """Integration tests for the Framework Validator CLI."""
 
 import io
+import json
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
@@ -60,6 +61,17 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             exit_code = validator_cli.main()
 
         return exit_code, output.getvalue()
+
+    def run_validator_json(self, root: Path) -> tuple[int, dict]:
+        output = io.StringIO()
+
+        with (
+            patch.object(validator_cli, "COMPONENTS_ROOT", root),
+            redirect_stdout(output),
+        ):
+            exit_code = validator_cli.main(output_format="json")
+
+        return exit_code, json.loads(output.getvalue())
 
     def create_component(self, root: Path) -> Path:
         component = root / "documentation" / "architecture"
@@ -183,3 +195,44 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertIn("duplicate 'DOC-ARCHITECTURE'", output)
             self.assertIn("first declared in", output)
             self.assertIn("Validation failed:", output)
+    def test_json_output_valid_component(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+
+            exit_code, result = self.run_validator_json(root)
+
+            self.assertEqual(exit_code, 0)
+            self.assertEqual(result["status"], "passed")
+            self.assertEqual(result["components_discovered"], 1)
+            self.assertEqual(result["component_ids"], ["DOC-ARCHITECTURE"])
+            self.assertEqual(result["errors"], [])
+
+    def test_json_output_missing_metadata(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.create_component(root)
+
+            exit_code, result = self.run_validator_json(root)
+
+            self.assertEqual(exit_code, 1)
+            self.assertEqual(result["status"], "failed")
+            self.assertEqual(result["components_discovered"], 1)
+            self.assertEqual(result["component_ids"], [])
+            self.assertEqual(len(result["errors"]), 1)
+            self.assertIn("missing metadata.yml", result["errors"][0])
+
+    def test_json_output_empty_components_root(self) -> None:
+        with TemporaryDirectory() as directory:
+            exit_code, result = self.run_validator_json(Path(directory))
+
+            self.assertEqual(exit_code, 1)
+            self.assertEqual(result["status"], "failed")
+            self.assertEqual(result["components_discovered"], 0)
+            self.assertEqual(result["component_ids"], [])
+            self.assertTrue(
+                any("no Components discovered" in error for error in result["errors"])
+            )

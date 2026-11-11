@@ -1,5 +1,7 @@
 """Command-line entry point for the Framework Validator."""
 
+import argparse
+import json
 from pathlib import Path
 
 import yaml
@@ -25,10 +27,11 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 COMPONENTS_ROOT = REPOSITORY_ROOT / "framework" / "components"
 
 
-def main() -> int:
+def main(output_format: str = "text") -> int:
     """Discover Components and check that their metadata can be loaded."""
-    print("GitHub Framework Validator")
-    print()
+    if output_format == "text":
+        print("GitHub Framework Validator")
+        print()
 
     component_dirs = discover_components(COMPONENTS_ROOT)
     errors: list[str] = []
@@ -38,7 +41,8 @@ def main() -> int:
             f"{COMPONENTS_ROOT}: no Components discovered"
         )
 
-    print(f"Components discovered: {len(component_dirs)}")
+    if output_format == "text":
+        print(f"Components discovered: {len(component_dirs)}")
 
     loaded_components: list[tuple[Path, dict]] = []
 
@@ -98,25 +102,48 @@ def main() -> int:
         for error in validate_workflow_validation(metadata):
             errors.append(f"{metadata_path}: {error}")
 
-        print(f"  {component_id}: {component_dir.name}")
+        if output_format == "text":
+            print(f"  {component_id}: {component_dir.name}")
 
     errors.extend(validate_unique_ids(loaded_components))
-    print()
 
-    if errors:
-        print(f"Validation failed: {len(errors)} error(s)")
+    if output_format == "json":
+        print(
+            json.dumps(
+                {
+                    "status": "failed" if errors else "passed",
+                    "components_discovered": len(component_dirs),
+                    "component_ids": [
+                        metadata.get("id")
+                        for _, metadata in loaded_components
+                    ],
+                    "errors": errors,
+                },
+                indent=2,
+            )
+        )
+    else:
+        print()
+        if errors:
+            print(f"Validation failed: {len(errors)} error(s)")
+            for error in errors:
+                print(f"  ERROR: {error}")
+        else:
+            print(
+                "Validation passed: discovery, metadata loading, Common Core, "
+                "identity, uniqueness, maturity, dependencies and Workflow extensions."
+            )
 
-        for error in errors:
-            print(f"  ERROR: {error}")
-
-        return 1
-
-    print(
-        "Validation passed: discovery, metadata loading, Common Core, "
-        "identity, uniqueness, maturity, dependencies and Workflow extensions."
-    )
-    return 0
+    return 1 if errors else 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    parser = argparse.ArgumentParser(description="Validate Framework Component metadata.")
+    parser.add_argument(
+        "--format",
+        choices=("text", "json"),
+        default="text",
+        help="Output format (default: text).",
+    )
+    arguments = parser.parse_args()
+    raise SystemExit(main(output_format=arguments.format))
