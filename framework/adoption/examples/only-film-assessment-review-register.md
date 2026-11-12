@@ -76,6 +76,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Propuesta E3 Optional de presentación:** la [revisión semántica de Demo, Highlights y Diagrams](only-film-optional-showcase-semantic-review.md) establece hechos, límites y gates de reviewer, sin equiparar capturas con una demo ejecutada ni forzar diagramas para el consumer.
 
+**Cobertura E3 propuesta 28/28:** la [revisión de las cinco Optional técnicas restantes](only-film-optional-final-semantic-review.md) completa las propuestas para todas las Responsibilities de TPL-BACKEND. No equivale a States aprobados ni a Assessment Complete; se prioriza ahora validar las propuestas y resolver incertidumbres mediante reviewer.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.
