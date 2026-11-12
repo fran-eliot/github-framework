@@ -65,6 +65,8 @@ To get started with an existing repository **without modifying it**:
 
 **Required semantic review proposal:** the [Only Film Quick Start and Changelog assessment proposal](examples/only-film-required-semantic-review.md) examines two Required responsibilities with commit-pinned Evidence, distinguishing a provisional Quick Start assessment from unresolved Changelog alternatives. Neither proposal constitutes human approval or a final Adoption Decision.
 
+**Required identity and features review:** the [Only Film Hero, Overview and Features semantic proposal](examples/only-film-required-identity-semantic-review.md) compares the pinned consumer README with the three Component responsibilities; all suggested States and applicability assessments remain pending human review and do not resolve Adoption Decisions.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
