@@ -75,6 +75,8 @@ La evidencia necesaria para resolver esta **laguna de ejecución** debe correspo
 
 En una ejecución de GitHub Actions sobre otro SHA, el reviewer debe comprobar qué commit y qué artefactos se ensayaron. Un resultado exitoso de un commit distinto **no se puede atribuir automáticamente** al commit fijado.
 
+**Revisión semántica posterior:** la [propuesta E3 de Quick Start y Changelog](only-film-required-semantic-review.md) recoge esta laguna de Compose y conserva `Partial` como interpretación provisional de README-QUICK-START; ninguna ejecución de Compose se ha añadido a las evidencias.
+
 ## 5. Impacto en el Assessment
 
 | Campo / cuestión | Situación |
