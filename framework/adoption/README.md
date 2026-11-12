@@ -47,6 +47,8 @@ To get started with an existing repository **without modifying it**:
 
 **Human review consolidation:** the [Only Film evidence-gap and review register](examples/only-film-assessment-review-register.md) prioritizes checks needed after the 28/28 documentary exploration: evidence freshness, reproducibility, semantic interpretation and decision rationale. It records work still required rather than treating documentary coverage as assessment completion.
 
+**Pinned evidence verification:** the [Only Film Quick Start and CI verification](examples/only-film-pinned-quickstart-ci-verification.md) checks Docker/Compose/Spring configuration against the same consumer SHA and identifies a successful three-job GitHub Actions run. It is scoped execution evidence, not a reproducible Compose smoke test, full test coverage, or a resolved Adoption Decision.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 

@@ -16,6 +16,8 @@ Este documento consolida los siguientes pasos de revisión del Assessment de `fr
 | Assessment Status | `In Progress` |
 | Mutation | `NONE` |
 
+**Primera verificación E2:** [Quick Start y CI en el commit fijado](only-film-pinned-quickstart-ci-verification.md). Incluye revisión de Docker/Compose/variables y una ejecución GitHub Actions satisfactoria del SHA evaluado; no cierra el Quick Start reproducible ni las decisiones semánticas.
+
 **Fuentes de partida:** [matriz de cobertura](only-film-assessment-coverage.md), [walkthrough de Quick Start y Testing](only-film-two-responsibilities.md), [lotes Required](only-film-required-readme-batch-1.md), [lote Required restante](only-film-required-readme-batch-2.md), [Recommended README](only-film-recommended-readme-batch.md), [Recommended Documentation](only-film-recommended-documentation-batch.md), [Optional governance](only-film-optional-readme-governance.md), [Optional showcase](only-film-optional-showcase-diagrams.md) y [Optional technical](only-film-optional-technical-batch.md).
 
 El inventario al 100 % **solo significa que hay un punto de partida documental para cada Responsibility**. No es un resultado de conformidad ni permite escribir `State: Satisfied` para ninguna de ellas.
