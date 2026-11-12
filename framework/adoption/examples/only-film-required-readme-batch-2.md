@@ -115,6 +115,8 @@ Se comparan hechos observables con las responsabilidades definidas por [Tech Sta
 
 **Decision Status:** `Needs Further Evaluation`. **Adoption Decision:** `—`.
 
+**Evidence follow-up — DOC-CHANGELOG:** el [examen específico de Changelog y versiones](only-film-changelog-evidence-review.md) contrasta README, POM, árbol, commits y GitHub Releases del consumidor, señalando expresamente que la consulta de tags no se pudo completar. No altera el `State` ni la `Adoption Decision` pendientes.
+
 ## 7. Conclusión y siguientes verificaciones
 
 | Verificación | Resultado |
