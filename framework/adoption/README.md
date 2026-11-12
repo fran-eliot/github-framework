@@ -59,6 +59,8 @@ To get started with an existing repository **without modifying it**:
 
 **Verified CI logs:** the [Only Film pinned Surefire and Sonar results](examples/only-film-verified-surefire-sonar-logs.md) establish 329 successful H2-regression tests, individual class totals, historical JaCoCo artifact publication and a completed Sonar analysis. They do not establish overall test coverage, Quality Gate approval or completed Adoption Decisions.
 
+**Provisional semantic review:** the [Only Film Testing semantic review proposal](examples/only-film-testing-semantic-review.md) applies the Assessment Template fields to `README-TESTING` and `DOC-TESTING` with verified CI evidence, keeping reviewer approval, resolved decisions, and the historical Sonar Quality Gate explicitly open.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
