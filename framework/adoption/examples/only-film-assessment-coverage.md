@@ -31,9 +31,9 @@ La lista se transcribe del bloque `components` de la metadata canónica de `TPL-
 | `README-DOCUMENTATION` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-2.md) | Pending semantic review |
 | `README-FOOTER` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-2.md) | Pending semantic review |
 | `DOC-CHANGELOG` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-2.md) | Pending semantic review |
-| `README-STATUS` | `Recommended` | Not assessed | — | Not started |
-| `README-ARCHITECTURE` | `Recommended` | Not assessed | — | Not started |
-| `README-REPOSITORY-STRUCTURE` | `Recommended` | Not assessed | — | Not started |
+| `README-STATUS` | `Recommended` | Explored — provisional | [Read-only Evidence](only-film-recommended-readme-batch.md) | Pending semantic review |
+| `README-ARCHITECTURE` | `Recommended` | Explored — provisional | [Read-only Evidence](only-film-recommended-readme-batch.md) | Pending semantic review |
+| `README-REPOSITORY-STRUCTURE` | `Recommended` | Explored — provisional | [Read-only Evidence](only-film-recommended-readme-batch.md) | Pending semantic review |
 | `README-TESTING` | `Recommended` | Explored — provisional | [Evidence and provisional interpretation](only-film-two-responsibilities.md) | Pending verification |
 | `DOC-ARCHITECTURE` | `Recommended` | Not assessed | — | Not started |
 | `DOC-PROJECT-STATUS` | `Recommended` | Not assessed | — | Not started |
@@ -57,15 +57,15 @@ La lista se transcribe del bloque `components` de la metadata canónica de `TPL-
 | Requirement Level | Total del contrato | Explored — provisional | Not assessed |
 | --- | ---: | ---: | ---: |
 | `Required` | 8 | 8 | 0 |
-| `Recommended` | 7 | 1 | 6 |
+| `Recommended` | 7 | 4 | 3 |
 | `Optional` | 13 | 0 | 13 |
-| **Total** | **28** | **9** | **19** |
+| **Total** | **28** | **12** | **16** |
 
-Las nueve Responsibilities exploradas documentalmente incluyen las dos del [walkthrough inicial](only-film-two-responsibilities.md), las tres del [primer lote Required](only-film-required-readme-batch-1.md) y las cuatro del [segundo lote Required](only-film-required-readme-batch-2.md). En los ejemplos de Quick Start y Testing, `State: Partial` y `Applicability: Applicable` siguen siendo provisionales. Las siete Responsibilities adicionales mantienen `State` y `Applicability` pendientes de revisión semántica. Todas conservan `Decision Status: Needs Further Evaluation` y `Adoption Decision: —`. **Exploración no equivale a cumplimiento.**
+Las doce Responsibilities exploradas documentalmente comprenden las dos del [walkthrough inicial](only-film-two-responsibilities.md), las tres del [primer lote Required](only-film-required-readme-batch-1.md), las cuatro del [segundo lote Required](only-film-required-readme-batch-2.md) y las tres del [primer lote Recommended](only-film-recommended-readme-batch.md). Quick Start y Testing conservan `State: Partial` y `Applicability: Applicable` como interpretaciones provisionales en su ejemplo; las diez restantes mantienen `State` y `Applicability` pendientes de revisión semántica. Todas conservan `Decision Status: Needs Further Evaluation` y `Adoption Decision: —`. **Exploración no equivale a cumplimiento.**
 
 **Cobertura de inventario:** 28/28 Responsibilities enumeradas según el contrato.
 
-**Cobertura de exploración documental:** 9/28 Responsibilities (no equivale a cumplimiento).
+**Cobertura de exploración documental:** 12/28 Responsibilities (no equivale a cumplimiento).
 
 **Cobertura de evaluación concluida:** no demostrada; ninguna Adoption Decision se considera resuelta mediante esta matriz.
 
@@ -83,7 +83,7 @@ Revisar semánticamente las ocho Responsibilities `Required` exploradas, con sus
 
 ### Fase B — Recommended
 
-Aplicar el mismo procedimiento a las seis `Recommended` pendientes y revisar las incertidumbres de `README-TESTING`. Las responsabilidades recomendadas no se convierten en obligatorias por la presencia de un archivo relacionado.
+Aplicar el mismo procedimiento a las tres `Recommended` pendientes y revisar las incertidumbres de `README-TESTING`. Las responsabilidades recomendadas no se convierten en obligatorias por la presencia de un archivo relacionado.
 
 ### Fase C — Optional
 
