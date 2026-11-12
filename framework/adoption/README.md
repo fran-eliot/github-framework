@@ -55,6 +55,8 @@ To get started with an existing repository **without modifying it**:
 
 **Security and testing reconciliation:** the [Only Film pinned-code review](examples/only-film-security-testing-reconciliation.md) contrasts historical security audits with source files and scoped CI outcomes, without claiming a fresh security audit or full test coverage.
 
+**Negative-test evidence:** the [Only Film test assertion and CI selector review](examples/only-film-negative-security-test-evidence.md) examines pinned authorization, CSRF, upload and environment tests, distinguishing selected test classes from individually verified Surefire results.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
