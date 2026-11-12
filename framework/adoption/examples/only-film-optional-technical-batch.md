@@ -157,6 +157,8 @@ Las seis Responsibilities son `Optional` **en el Template**. Su aplicabilidad de
 
 **Seguimiento de DOC-SECURITY:** la [reconciliación de seguridad y Testing](only-film-security-testing-reconciliation.md) compara directamente controles del commit fijado con hallazgos históricos, sin declarar una auditoría de seguridad nueva ni resolver la Adoption Decision.
 
+**Propuesta de evaluación de DOC-SECURITY:** la [revisión semántica provisional](only-film-security-semantic-review.md) ofrece `State`, `Applicability`, Characteristics, Evidence, Evaluation Rationale, Uncertainty y gates de aprobación humana. Las propuestas no cambian la situación `In Progress` ni la decisión pendiente.
+
 ## 9. Resultado global de la exploración documental
 
 | Comprobación | Resultado |

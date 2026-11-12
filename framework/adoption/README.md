@@ -61,6 +61,8 @@ To get started with an existing repository **without modifying it**:
 
 **Provisional semantic review:** the [Only Film Testing semantic review proposal](examples/only-film-testing-semantic-review.md) applies the Assessment Template fields to `README-TESTING` and `DOC-TESTING` with verified CI evidence, keeping reviewer approval, resolved decisions, and the historical Sonar Quality Gate explicitly open.
 
+**Provisional security review:** the [Only Film DOC-SECURITY semantic review proposal](examples/only-film-security-semantic-review.md) evaluates the documentary responsibility against pinned source, historical audit context and verified negative tests, while leaving approval and Adoption Decision explicitly pending.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
