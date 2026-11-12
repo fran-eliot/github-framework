@@ -60,6 +60,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Inicio de revisión semántica E3:** la [propuesta de evaluación de README-TESTING y DOC-TESTING](only-film-testing-semantic-review.md) conserva `Partial`/`Applicable` como hipótesis sujetas a reviewer y registra el identificador CE de SonarCloud sin fingir un Quality Gate histórico. Los 329 tests H2 verificados no implican aprobación del Assessment.
 
+**Propuesta E3 para DOC-SECURITY:** la [revisión semántica provisional](only-film-security-semantic-review.md) reúne fuentes históricas, código del commit fijado y resultados individuales de pruebas de seguridad. Propone `Partial` / `Applicable` como hipótesis explícitamente pendiente de reviewer, sin resolver la Adoption Decision.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.
