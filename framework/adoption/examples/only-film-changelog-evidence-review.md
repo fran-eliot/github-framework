@@ -81,3 +81,23 @@ Si se obtienen nuevos datos sobre tags, releases o fuentes equivalentes, se debe
 | Assessment Status | `In Progress` |
 
 **Conclusión:** esta verificación reduce y delimita la incertidumbre sobre las fuentes, pero **no resuelve `DOC-CHANGELOG`**, no autoriza modificar Only Film y no convierte el Assessment en `Complete`.
+
+## 6. Revisión dirigida de DOC-CHANGELOG — 2026-11-12
+
+Esta actualización contrasta de nuevo las fuentes **sin cambiar la referencia del consumer** (`28d75a50e0a178954dd46acc23300d9dd327843c`). Se conserva la separación entre hechos observados, límites de la consulta y juicio semántico.
+
+| Fuente / gate | Observación y límite |
+| --- | --- |
+| `CHANGELOG.md` en el SHA | La consulta directa de la ruta devolvió `404 Not Found`; solo acredita ausencia de **esa ruta exacta**. |
+| README fijado | La sección «Origen, créditos y evolución» señala commits y PRs para atribuir cambios; no incluye una relación de cambios **agrupados por versiones publicadas**. |
+| GitHub Releases | La revisión E2 anterior registró una respuesta vacía del endpoint. Una consulta independiente el 2026-11-12 no pudo completarse con las herramientas disponibles; **no se eleva** esa observación anterior a comprobación actual. |
+| Tags (C1) | La consulta de tags sigue **sin verificarse**: los intentos de acceso público y de consulta Git remota no devolvieron un inventario utilizable. **No afirmar que los tags no existen**. |
+| Historial y `0.0.1-SNAPSHOT` | Identifican cambios de desarrollo y versión de artefacto; no sustituyen un registro curado de cambios ni prueban releases publicadas. |
+
+### Propuesta semántica acotada
+
+- **Proposed State: `Missing`** (**hipótesis E3**, no `State` aprobado). No se identificó en las fuentes documentales examinadas un changelog orientado a versiones o una implementación distribuida que cumpla esa función. La alternativa `Partial` requeriría localizar y valorar una fuente concreta con información parcial de cambios por versión, no solo una lista de commits o PRs.
+- **Proposed Applicability: `Applicable`** (pendiente de revisión humana), por la Responsibility `Required` del Template y la necesidad de explicar evolución del proyecto; esto no equivale a imponer una cadencia de releases.
+- **Decision Status: `Needs Further Evaluation`**; **Adoption Decision: `—`**. No recomendar automáticamente crear `CHANGELOG.md` antes de decidir si ya hay fuente equivalente y qué alcance necesita el consumer.
+
+**Gate final para aprobar el State:** el reviewer debe comprobar [tags](https://github.com/fran-eliot/only_film/tags), [releases](https://github.com/fran-eliot/only_film/releases) y cualquier fuente alternativa versionada. Registrar fecha, referencia y resultado; si aparece una fuente de cambios por versión, reabrir la comparación `Missing` / `Partial` / `Satisfied`. Si no aparece, `Missing` resulta la propuesta mejor sustentada. Esta tarea es una **revisión de la responsabilidad**, no una modificación de Only Film.
