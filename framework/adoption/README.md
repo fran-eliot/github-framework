@@ -43,6 +43,8 @@ To get started with an existing repository **without modifying it**:
 
 **Repeatability replay:** the [cross-consumer Assessment comparison](examples/cross-consumer-repeatability-replay.md) applies the same `README-QUICK-START` review structure to both examples, with explicit documentary acceptance checks and outstanding operational verifications. It does not certify either consumer or resolve Adoption Decisions.
 
+**Assessment coverage:** the [Only Film TPL-BACKEND coverage matrix](examples/only-film-assessment-coverage.md) inventories all 28 Template Responsibilities and separates two provisional explorations from 26 not-yet-assessed items. It is a planning aid, not a complete Assessment.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 

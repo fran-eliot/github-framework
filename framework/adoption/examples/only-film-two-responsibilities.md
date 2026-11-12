@@ -131,4 +131,4 @@ Se inspeccionaron contenido de `README.md` y `pom.xml`, y estructura de archivos
 
 **No se ejecutaron builds ni tests, no se realizó despliegue, no se cambió ningún archivo del consumer, no se creó un candidato de Application ni se emitió una Adoption Decision.**
 
-La inspección de dos Responsibilities no permite declarar `Assessment Complete`. Para continuar, utilizar el [Assessment Template](../assessment-template.md) y las reglas de cierre de la [guía de adopción](../README.md).
+La inspección de dos Responsibilities no permite declarar `Assessment Complete`. Para continuar, utilizar el [Assessment Template](../assessment-template.md) y las reglas de cierre de la [guía de adopción](../README.md). La [matriz de cobertura de TPL-BACKEND](only-film-assessment-coverage.md) enumera las 28 Responsibilities y hace explícitas las 26 todavía no exploradas; no establece nuevas evaluaciones ni decisiones.
