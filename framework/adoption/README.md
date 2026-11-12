@@ -75,6 +75,8 @@ To get started with an existing repository **without modifying it**:
 
 **Optional governance proposal:** the [Only Film Roadmap, Contributing, Author and License semantic review](examples/only-film-optional-governance-semantic-review.md) distinguishes README evidence from unverified contribution policies and legal permissions; hypotheses remain subject to human review, not automatic decisions.
 
+**Optional showcase proposals:** the [Only Film Demo, Highlights and Diagrams semantic review](examples/only-film-optional-showcase-semantic-review.md) separates screenshots from an executable demo, tested capabilities from complete functional verification and textual architecture from unverified technical diagrams.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
