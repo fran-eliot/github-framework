@@ -111,6 +111,8 @@ Existe una descripción textual de arquitectura, pero no se ha verificado un art
 
 **Decision Status:** `Needs Further Evaluation`. **Adoption Decision:** `—`.
 
+**Propuesta semántica posterior:** la [revisión E3 de Demo, Highlights y Diagrams](only-film-optional-showcase-semantic-review.md) distingue recursos de presentación de una demo operativa, evidencias parciales de funcionalidades y diagramas técnicos no verificados. Los estados y aplicabilidades siguen sujetos a reviewer, sin resolver Adoption Decisions.
+
 ## 6. Resultado y continuación
 
 | Verificación | Resultado |

@@ -83,6 +83,8 @@ Las veintiocho Responsibilities cuentan con una exploración documental vinculad
 
 **Cuatro propuestas E3 Optional adicionales:** la [revisión de Roadmap, Contributing, Author y License](only-film-optional-governance-semantic-review.md), unida a la propuesta de DOC-SECURITY, deja **5/13 Optional** con interpretación preliminar; 28/28 sigue significando exclusivamente exploración documental.
 
+**Ocho Optional con propuesta E3:** la [revisión de Demo, Highlights y Diagrams](only-film-optional-showcase-semantic-review.md) amplía a **8/13** las propuestas semánticas Optional; las 28/28 exploradas documentalmente aún no representan cumplimiento ni decisiones aprobadas.
+
 ## 4. Protocolo para continuar el Assessment
 
 ### Fase A — Required
