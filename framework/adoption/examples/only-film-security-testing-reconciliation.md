@@ -89,6 +89,8 @@ Véanse las revisiones de [Quick Start y CI](only-film-pinned-quickstart-ci-veri
 
 Estas comprobaciones pueden generar más Evidence pero **no autorizan por sí solas** una Adoption Decision.
 
+**Verificación adicional de pruebas negativas:** el [análisis de asertos y selectores del workflow](only-film-negative-security-test-evidence.md) examina directamente `ReviewControllerTest`, `MutationCsrfSecurityTest`, `TicketSecurityRegressionTest`, `EnvironmentHardeningTest` y `FileServiceTest`, sin confundir su selección en CI con resultados individuales auditados.
+
 ## 5. Impacto en el Assessment
 
 | Aspecto | Resultado |
