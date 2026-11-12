@@ -41,6 +41,8 @@ To get started with an existing repository **without modifying it**:
 
 **Worked examples:** the [first Assessment example](examples/first-assessment-example.md) covers one Responsibility in SeniorMeet. The [Only Film two-Responsibility walkthrough](examples/only-film-two-responsibilities.md) demonstrates commit-pinned Evidence for Quick Start and Testing in a second consumer. Both remain `In Progress`; neither is a complete Assessment or a validated Adoption Decision.
 
+**Repeatability replay:** the [cross-consumer Assessment comparison](examples/cross-consumer-repeatability-replay.md) applies the same `README-QUICK-START` review structure to both examples, with explicit documentary acceptance checks and outstanding operational verifications. It does not certify either consumer or resolve Adoption Decisions.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
