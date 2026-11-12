@@ -58,6 +58,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Nueva evidencia E2 de Testing:** la [lectura de logs Surefire y Sonar del SHA fijado](only-film-verified-surefire-sonar-logs.md) confirma 329 tests H2 sin fallos/errores/omisiones, resultados por clase, generación y publicación histórica de JaCoCo y análisis Sonar ejecutado. Los artefactos no aparecen ahora disponibles, no hay porcentaje de cobertura verificado y Quality Gate/Selenium permanecen pendientes. Las lagunas del registro se interpretan conforme a esta comprobación más reciente.
 
+**Inicio de revisión semántica E3:** la [propuesta de evaluación de README-TESTING y DOC-TESTING](only-film-testing-semantic-review.md) conserva `Partial`/`Applicable` como hipótesis sujetas a reviewer y registra el identificador CE de SonarCloud sin fingir un Quality Gate histórico. Los 329 tests H2 verificados no implican aprobación del Assessment.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.

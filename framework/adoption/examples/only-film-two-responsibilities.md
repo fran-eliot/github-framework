@@ -113,6 +113,8 @@ Existen instrucciones y artefactos relacionados con testing. Queda por verificar
 
 **Actualización de Evidence:** la [verificación estática y CI del commit fijado](only-film-pinned-quickstart-ci-verification.md) contrasta Compose, Dockerfile, perfiles y una ejecución exitosa de tres jobs PostgreSQL/H2. Esta evidencia posterior **no** convierte los States provisionales de Quick Start o Testing en resultados definitivos ni acredita un smoke Compose completo.
 
+**Evidencia y evaluación propuestas posteriores (2026-11-12):** la [revisión semántica preliminar de Testing](only-film-testing-semantic-review.md) utiliza logs CI verificados para proponer `State: Partial` y `Applicability: Applicable` en `README-TESTING`, junto con `DOC-TESTING`. La afirmación histórica de esta ficha de que no se había verificado ninguna ejecución ya ha quedado superada por la evidencia del [run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407). No se ha aprobado aún una decisión de adopción.
+
 ## 5. Assessment Conclusion (partial)
 
 **Assessment Status:** `In Progress`.

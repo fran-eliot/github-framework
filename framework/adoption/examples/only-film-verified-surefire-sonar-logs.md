@@ -89,6 +89,8 @@ Esto **no acredita** por sí mismo un `Quality Gate: Passed`, ausencia de incide
 | `State` / `Applicability` definitivos | Pendientes | **Pendientes de revisión semántica** |
 | `Adoption Decision` | `—` | `—` |
 
+**Trazabilidad posterior del procesamiento Sonar:** la [revisión semántica preliminar de Testing](only-film-testing-semantic-review.md) documenta el CE Task ID `AaFU8vS6n_jCCWP5LQvY` extraído del log y deja explícita la imposibilidad de consultar la tarea histórica y su Quality Gate con el acceso disponible.
+
 ## 6. Siguientes pasos
 
 1. Para `README-TESTING` y `DOC-TESTING`, incorporar estos datos en la evaluación humana de suficiencia y alcance, incluyendo las diferencias entre regresión H2, PostgreSQL, Selenium y Compose.
