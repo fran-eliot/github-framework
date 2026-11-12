@@ -63,6 +63,8 @@ No sería válido reconstruir una lista de releases a partir de los commits y pr
 
 Si se obtienen nuevos datos sobre tags, releases o fuentes equivalentes, se deben registrar con **fecha de consulta y referencia comprobable** antes de evaluar la Responsibility.
 
+**Revisión semántica posterior:** la [propuesta E3 para Required Quick Start y Changelog](only-film-required-semantic-review.md) conserva `DOC-CHANGELOG` sin `State` formal aprobado y explica por qué las hipótesis `Missing` y `Partial` exigen descartar o identificar fuentes equivalentes; los tags continúan sin verificarse.
+
 ## 5. Resultado para el Assessment
 
 | Campo | Resultado |
