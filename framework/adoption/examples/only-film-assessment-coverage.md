@@ -77,6 +77,8 @@ Las veintiocho Responsibilities cuentan con una exploración documental vinculad
 
 **Ocho Required con propuesta E3:** el [lote de Tech Stack, Documentation y Footer](only-film-required-final-semantic-review.md) completa las propuestas de interpretación de las ocho Responsibilities Required. Todas siguen sin aprobación humana; el State de DOC-CHANGELOG continúa sin determinar y la cobertura 28/28 sigue siendo documental.
 
+**Propuestas Recommended README:** la [revisión semántica de Status, Architecture y Repository Structure](only-film-recommended-readme-semantic-review.md) aporta tres propuestas E3 adicionales. La cobertura global continúa en 28/28 **exploradas**, sin aprobación de States ni Adoption Decisions.
+
 ## 4. Protocolo para continuar el Assessment
 
 ### Fase A — Required
