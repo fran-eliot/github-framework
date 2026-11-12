@@ -91,6 +91,8 @@ Estas comprobaciones pueden generar más Evidence pero **no autorizan por sí so
 
 **Verificación adicional de pruebas negativas:** el [análisis de asertos y selectores del workflow](only-film-negative-security-test-evidence.md) examina directamente `ReviewControllerTest`, `MutationCsrfSecurityTest`, `TicketSecurityRegressionTest`, `EnvironmentHardeningTest` y `FileServiceTest`, sin confundir su selección en CI con resultados individuales auditados.
 
+**Seguimiento con logs reales:** la [verificación de Surefire y Sonar](only-film-verified-surefire-sonar-logs.md) acredita 329 pruebas H2 satisfactorias y resultados concretos de cinco clases de seguridad, además de `ANALYSIS SUCCESSFUL` del scanner. Estos datos actualizan las incertidumbres anteriores sobre ejecución individual y Sonar para **ese run**; no prueban Quality Gate, cobertura global ni Selenium.
+
 ## 5. Impacto en el Assessment
 
 | Aspecto | Resultado |
