@@ -56,6 +56,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Actualización E2 de casos negativos:** el [registro de pruebas de seguridad y selectores](only-film-negative-security-test-evidence.md) concreta casos de autorización, CSRF, validación de archivos y su inclusión en el job H2, dejando pendiente la verificación individual de Surefire y la evaluación semántica.
 
+**Nueva evidencia E2 de Testing:** la [lectura de logs Surefire y Sonar del SHA fijado](only-film-verified-surefire-sonar-logs.md) confirma 329 tests H2 sin fallos/errores/omisiones, resultados por clase, generación y publicación histórica de JaCoCo y análisis Sonar ejecutado. Los artefactos no aparecen ahora disponibles, no hay porcentaje de cobertura verificado y Quality Gate/Selenium permanecen pendientes. Las lagunas del registro se interpretan conforme a esta comprobación más reciente.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.
