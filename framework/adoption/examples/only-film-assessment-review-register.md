@@ -62,6 +62,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Propuesta E3 para DOC-SECURITY:** la [revisión semántica provisional](only-film-security-semantic-review.md) reúne fuentes históricas, código del commit fijado y resultados individuales de pruebas de seguridad. Propone `Partial` / `Applicable` como hipótesis explícitamente pendiente de reviewer, sin resolver la Adoption Decision.
 
+**Revisión semántica E3 de Required:** la [propuesta para README-QUICK-START y DOC-CHANGELOG](only-film-required-semantic-review.md) evalúa evidencias y límites; Quick Start conserva `Partial` provisional, mientras que Changelog requiere discriminar `Missing` frente a `Partial` tras verificar fuentes alternativas y tags. Ninguna hipótesis está aprobada ni resuelve Adoption Decisions.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.

@@ -63,6 +63,8 @@ To get started with an existing repository **without modifying it**:
 
 **Provisional security review:** the [Only Film DOC-SECURITY semantic review proposal](examples/only-film-security-semantic-review.md) evaluates the documentary responsibility against pinned source, historical audit context and verified negative tests, while leaving approval and Adoption Decision explicitly pending.
 
+**Required semantic review proposal:** the [Only Film Quick Start and Changelog assessment proposal](examples/only-film-required-semantic-review.md) examines two Required responsibilities with commit-pinned Evidence, distinguishing a provisional Quick Start assessment from unresolved Changelog alternatives. Neither proposal constitutes human approval or a final Adoption Decision.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
