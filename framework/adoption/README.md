@@ -69,6 +69,8 @@ To get started with an existing repository **without modifying it**:
 
 **Final Required proposal batch:** the [Only Film Tech Stack, Documentation and Footer semantic review](examples/only-film-required-final-semantic-review.md) completes proposals for all eight Required responsibilities, without converting documentary exploration into approved Assessment States or resolved Adoption Decisions.
 
+**Recommended README proposals:** the [Only Film Status, Architecture and Repository Structure semantic review](examples/only-film-recommended-readme-semantic-review.md) offers three reviewer-pending interpretations; it distinguishes technology badges from operational maturity and notes that Repository Structure has no separately identified Component specification.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 

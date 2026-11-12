@@ -121,6 +121,8 @@ La estructura descrita en el README puede ayudar a navegar el repositorio y se r
 
 **Adoption Decision:** `—`.
 
+**Revisión semántica posterior:** la [propuesta E3 de Status, Architecture y Repository Structure](only-film-recommended-readme-semantic-review.md) presenta evaluaciones provisionales con rationale, incertidumbres y gates de reviewer. Este lote histórico continúa siendo la exploración documental original, no una aprobación de States o decisiones.
+
 ## 6. Conclusión y siguientes pasos
 
 | Check | Resultado |

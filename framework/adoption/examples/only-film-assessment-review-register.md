@@ -68,6 +68,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Último lote E3 de Required:** la [propuesta semántica de Tech Stack, Documentation y Footer](only-film-required-final-semantic-review.md) completa las fichas de interpretación de las ocho Required, todas pendientes de reviewer. El caso DOC-CHANGELOG sigue con hipótesis de State por discriminar; no hay decisiones aprobadas.
 
+**Propuesta E3 de Recommended README:** la [revisión semántica de Status, Architecture y Repository Structure](only-film-recommended-readme-semantic-review.md) distingue badges tecnológicos de estado/madurez, contrasta el flujo arquitectónico con una auditoría histórica y evalúa el árbol resumido, dejando todas las hipótesis pendientes de reviewer.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.
