@@ -85,6 +85,8 @@ Las veintiocho Responsibilities cuentan con una exploración documental vinculad
 
 **Ocho Optional con propuesta E3:** la [revisión de Demo, Highlights y Diagrams](only-film-optional-showcase-semantic-review.md) amplía a **8/13** las propuestas semánticas Optional; las 28/28 exploradas documentalmente aún no representan cumplimiento ni decisiones aprobadas.
 
+**Propuestas E3 para las 28 Responsibilities:** la [revisión semántica de las Optional técnicas restantes](only-film-optional-final-semantic-review.md) incluye una tabla de cobertura 8 Required + 7 Recommended + 13 Optional. Las 28 fichas son propuestas sujetas a revisión; existen States/Applicability no discriminados y ninguna Adoption Decision resuelta.
+
 ## 4. Protocolo para continuar el Assessment
 
 ### Fase A — Required
