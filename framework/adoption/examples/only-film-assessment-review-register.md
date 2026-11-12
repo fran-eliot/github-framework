@@ -70,6 +70,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Propuesta E3 de Recommended README:** la [revisión semántica de Status, Architecture y Repository Structure](only-film-recommended-readme-semantic-review.md) distingue badges tecnológicos de estado/madurez, contrasta el flujo arquitectónico con una auditoría histórica y evalúa el árbol resumido, dejando todas las hipótesis pendientes de reviewer.
 
+**Propuestas E3 de las siete Recommended:** la [revisión de DOC-ARCHITECTURE y DOC-PROJECT-STATUS](only-film-recommended-docs-semantic-review.md) completa las propuestas semánticas de Recommended, junto con [README Recommended](only-film-recommended-readme-semantic-review.md) y [Testing](only-film-testing-semantic-review.md). Todas las hipótesis siguen pendientes de reviewer; no hay Adoption Decisions resueltas.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.

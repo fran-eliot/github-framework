@@ -71,6 +71,8 @@ To get started with an existing repository **without modifying it**:
 
 **Recommended README proposals:** the [Only Film Status, Architecture and Repository Structure semantic review](examples/only-film-recommended-readme-semantic-review.md) offers three reviewer-pending interpretations; it distinguishes technology badges from operational maturity and notes that Repository Structure has no separately identified Component specification.
 
+**Recommended documentation proposals:** the [Only Film Architecture and Project Status semantic review](examples/only-film-recommended-docs-semantic-review.md) completes the seven Recommended proposals alongside the README and Testing reviews. Historical audit findings remain distinguished from the pinned consumer state; reviewer approval and adoption decisions remain open.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 

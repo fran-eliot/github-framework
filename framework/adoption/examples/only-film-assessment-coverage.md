@@ -79,6 +79,8 @@ Las veintiocho Responsibilities cuentan con una exploración documental vinculad
 
 **Propuestas Recommended README:** la [revisión semántica de Status, Architecture y Repository Structure](only-film-recommended-readme-semantic-review.md) aporta tres propuestas E3 adicionales. La cobertura global continúa en 28/28 **exploradas**, sin aprobación de States ni Adoption Decisions.
 
+**Siete Recommended con propuesta E3:** la [revisión de Architecture y Project Status](only-film-recommended-docs-semantic-review.md) completa las fichas propuestas para las siete Responsibilities Recommended. No se ha aprobado ninguna evaluación ni decisión; la cobertura de 28/28 sigue siendo documental.
+
 ## 4. Protocolo para continuar el Assessment
 
 ### Fase A — Required
