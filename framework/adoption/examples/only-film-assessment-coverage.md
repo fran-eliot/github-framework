@@ -69,6 +69,8 @@ Las veintiocho Responsibilities cuentan con una exploración documental vinculad
 
 **Cobertura de evaluación concluida:** no demostrada; ninguna Adoption Decision se considera resuelta mediante esta matriz.
 
+**Consolidación de revisión:** el [registro de lagunas de evidencia y revisión humana](only-film-assessment-review-register.md) prioriza las verificaciones pendientes y define las condiciones necesarias para avanzar desde la exploración documental hacia una evaluación semántica. No añade decisiones ni da por concluido el Assessment.
+
 ## 4. Protocolo para continuar el Assessment
 
 ### Fase A — Required
