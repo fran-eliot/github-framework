@@ -77,6 +77,8 @@ To get started with an existing repository **without modifying it**:
 
 **Optional showcase proposals:** the [Only Film Demo, Highlights and Diagrams semantic review](examples/only-film-optional-showcase-semantic-review.md) separates screenshots from an executable demo, tested capabilities from complete functional verification and textual architecture from unverified technical diagrams.
 
+**All 28 semantic proposals prepared:** the [Only Film final Optional technical review](examples/only-film-optional-final-semantic-review.md) covers ADR, API, Database, Deployment and References, completing the proposed E3 review of all TPL-BACKEND responsibilities. None is human-approved or a resolved Adoption Decision; Assessment remains In Progress.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 

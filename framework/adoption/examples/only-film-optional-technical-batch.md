@@ -159,6 +159,8 @@ Las seis Responsibilities son `Optional` **en el Template**. Su aplicabilidad de
 
 **Propuesta de evaluación de DOC-SECURITY:** la [revisión semántica provisional](only-film-security-semantic-review.md) ofrece `State`, `Applicability`, Characteristics, Evidence, Evaluation Rationale, Uncertainty y gates de aprobación humana. Las propuestas no cambian la situación `In Progress` ni la decisión pendiente.
 
+**Propuesta semántica E3 posterior:** la [revisión de ADR, API, Database, Deployment y References](only-film-optional-final-semantic-review.md) completa las fichas de propuesta para las 28 Responsibilities del Template. DOC-SECURITY ya tiene una [evaluación propuesta independiente](only-film-security-semantic-review.md). Persisten hipótesis sin discriminar, aprobaciones pendientes y Adoption Decisions no resueltas.
+
 ## 9. Resultado global de la exploración documental
 
 | Comprobación | Resultado |
