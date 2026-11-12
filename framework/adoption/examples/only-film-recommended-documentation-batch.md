@@ -122,6 +122,8 @@ Se observan guías técnicas especializadas y distinciones útiles entre integra
 
 **Decision Status:** `Needs Further Evaluation`. **Adoption Decision:** `—`.
 
+**Seguimiento de DOC-TESTING:** la [reconciliación de seguridad y Testing](only-film-security-testing-reconciliation.md) identifica archivos de tests y resultados de tres checks del SHA fijado, pero conserva pendientes Selenium, informes JaCoCo y evaluación semántica.
+
 ## 6. Resultado y continuación
 
 | Check | Resultado |
