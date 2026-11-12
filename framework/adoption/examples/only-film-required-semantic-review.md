@@ -1,135 +1,136 @@
 # Only Film — Provisional Semantic Review of Required Quick Start and Changelog
 
-## 1. Contexto
+## 1. Context
 
-Este documento prepara una propuesta E3 para dos Responsibilities **Required** de `TPL-BACKEND` 0.1.0, utilizando evidencias E2 trazadas al commit fijado de Only Film. **No constituye aprobación humana ni decisión de adopción**.
+This document prepares E3 semantic proposals for two **Required** Responsibilities of `TPL-BACKEND` 0.1.0, using E2 evidence traceable to the pinned Only Film commit. **It is not a human approval or an Adoption Decision.**
 
-| Campo | Valor |
+| Field | Value |
 | --- | --- |
 | Consumer Repository | [fran-eliot/only_film](https://github.com/fran-eliot/only_film) |
 | Consumer Reference | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | [TPL-BACKEND 0.1.0](../../templates/repositories/backend/metadata.yml) |
-| Scope | `README-QUICK-START` y `DOC-CHANGELOG` |
+| Scope | `README-QUICK-START` and `DOC-CHANGELOG` |
 | Review Status | `Proposal — pending human review` |
-| Reviewer / Approval | Sin asignar / no aprobada |
+| Reviewer / Approval | Not assigned / not approved |
 | Assessment Status | `In Progress` |
 | Consumer Mutation | `NONE` |
 
-La obligatoriedad deriva del Template; **no** impone automáticamente `State: Missing` cuando una ruta canónica no existe. La presencia de un archivo tampoco acredita `Satisfied`.
+The `Required` level comes from the Template. It does **not** automatically entail `State: Missing` when a canonical file is absent; conversely, file presence does not prove `Satisfied`.
 
-## 2. Resumen de propuestas
+## 2. Proposal summary
 
 | Responsibility | Requirement Level | Proposed State | Proposed Applicability | Decision Status | Adoption Decision |
 | --- | --- | --- | --- | --- | --- |
 | `README-QUICK-START` | `Required` | `Partial` — provisional | `Applicable` — provisional | `Needs Further Evaluation` | `—` |
-| `DOC-CHANGELOG` | `Required` | **`Missing` — hipótesis E3 preferida tras revisión dirigida, pendiente de tags y aprobación** | `Applicable` — provisional | `Needs Further Evaluation` | `—` |
+| `DOC-CHANGELOG` | `Required` | **`Missing` — preferred E3 hypothesis following targeted evidence review; tags and approval pending** | `Applicable` — provisional | `Needs Further Evaluation` | `—` |
 
-Para `DOC-CHANGELOG`, no se asigna un `State` definitivo ni se afirma una fuente equivalente no identificada. El reviewer debe completar la investigación de tags y publicaciones y determinar qué fuentes cumplen realmente la Responsibility antes de elegir entre las hipótesis. La ausencia de datos no debe ocultarse con un `Partial` arbitrario.
+For `DOC-CHANGELOG`, the revised evidence favors `Missing` over the previously undiscriminated `Missing / Partial` alternatives. **No State has been formally approved**; substantive alternative sources must still be checked, especially tags.
 
 ## 3. Responsibility — README-QUICK-START
 
 **Requirement Level:** `Required`.
 
-**Proposed State:** `Partial` (hipótesis inicial, requiere confirmación).
+**Proposed State:** `Partial` (initial hypothesis, not confirmed).
 
-**Proposed Applicability:** `Applicable` (hipótesis inicial).
+**Proposed Applicability:** `Applicable` (provisional).
 
-**Implementation Characteristics (proposed):** `Own`, `Distributed` — README con instrucciones propias y soporte en guías de PostgreSQL y Docker.
+**Implementation Characteristics (proposed):** `Own`, `Distributed` — proprietary README instructions supported by PostgreSQL and Docker guides.
 
 ### Detected Facts
 
-- [README.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md) contiene una secuencia de `git clone`, `cp .env.example .env`, definición de contraseña privada, `docker compose up --build -d`, `docker compose ps` y URL local `/movies`.
-- [Dockerfile](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/Dockerfile) usa build Maven/Temurin 25 y JRE Temurin 25; [pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml) fija Java 25 y parent Spring Boot 4.0.5.
-- [compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml) incluye `app` + PostgreSQL 17, perfil `postgres`, volúmenes para base y uploads, dependencia de healthcheck y puertos en `127.0.0.1`; [application-postgres.properties](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/resources/application-postgres.properties) utiliza `DB_URL`, `DB_USERNAME` y `DB_PASSWORD`.
-- [`.env.example`](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.env.example) declara variables de puerto, usuario y contraseña; el README advierte que hay que reemplazar el valor de ejemplo y que Compose está destinado al desarrollo local.
-- El job `postgres-schema` de [run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) terminó `success` para el SHA evaluado. Según [postgres-migration.yml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.github/workflows/postgres-migration.yml), prueba el arranque del **JAR** sobre PostgreSQL de CI, migraciones y reinicio: **no** ejecuta el Quick Start Compose.
-- Existe un workflow [compose-smoke.yml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.github/workflows/compose-smoke.yml) con `docker compose config`, build, arranque y comprobaciones HTTP y persistencia; **no se localizó un check Compose directamente asociado al SHA fijado** en los checks consultados.
+- [README.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md) provides `git clone`, `cp .env.example .env`, a private password setup, `docker compose up --build -d`, `docker compose ps`, and the local `/movies` URL.
+- [Dockerfile](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/Dockerfile) uses Maven/Temurin 25 for build and Temurin 25 JRE; [pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml) specifies Java 25 and Spring Boot parent 4.0.5.
+- [compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml) defines `app` and PostgreSQL 17, a `postgres` Spring profile, database/uploads volumes, healthcheck dependency, and localhost-bound ports. [application-postgres.properties](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/resources/application-postgres.properties) uses `DB_URL`, `DB_USERNAME`, and `DB_PASSWORD`.
+- [`.env.example`](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.env.example) provides port, username, and password variables. The README requires replacing the sample password and limits Compose to local development.
+- The `postgres-schema` job in [run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) succeeded for the pinned SHA. According to [postgres-migration.yml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.github/workflows/postgres-migration.yml), it starts the **JAR** against CI PostgreSQL and checks migrations and restart; it does **not** execute the documented Compose Quick Start.
+- A [compose-smoke.yml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.github/workflows/compose-smoke.yml) workflow exists, with `docker compose config`, build, container startup, HTTP checks, and persistence tests. **No Compose check directly associated with the pinned SHA was found** among the reviewed checks.
 
 ### Evidence
 
-- [Verificación de configuración y CI](only-film-pinned-quickstart-ci-verification.md)
-- [Laguna y gates Q1–Q8 de Compose](only-film-compose-evidence-gap.md)
-- [Walkthrough inicial](only-film-two-responsibilities.md)
-- [README y guía de PostgreSQL](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
+- [Pinned Quick Start configuration and CI verification](only-film-pinned-quickstart-ci-verification.md)
+- [Compose evidence gap and gates Q1–Q8](only-film-compose-evidence-gap.md)
+- [Initial two-Responsibility walkthrough](only-film-two-responsibilities.md)
+- [README and PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
 
-### Evaluation Rationale — propuesta
+### Evaluation Rationale — proposal
 
-Existe un procedimiento de arranque identificable, con versiones, variables, perfiles y restricciones de seguridad que resultan coherentes en las fuentes examinadas. El arranque de un JAR en CI aporta confianza limitada sobre el código, pero **no verifica la reproducibilidad** del flujo Docker documentado. La propuesta `Partial` mantiene abierta la cuestión de si las instrucciones son suficientes y reproducibles para el público objetivo. No es un fallo de ejecución demostrado.
+The examined sources provide an identifiable startup procedure with consistent versions, variables, profiles, and security limits. Starting a JAR in CI provides limited confidence in the code but **does not verify reproducibility of the documented Docker workflow**. The `Partial` proposal keeps open whether the instructions meet the intended audience's needs. There is no demonstrated execution failure.
 
 ### Uncertainty
 
-- ¿El Quick Start funciona desde clon limpio, con credenciales sintéticas y entorno desechable, según gates Q1–Q8?
-- ¿El usuario puede verificar fácilmente que la aplicación está lista y dispone de datos o cuentas demo cuando las necesita?
-- ¿Las instrucciones alternativas con JDK/Maven y cambios de puerto explican las diferencias de entorno suficientemente?
-- ¿Qué umbral de reproducibilidad exige esta Responsibility **documental** para ser `Satisfied`?
+- Does Quick Start work from a clean clone with synthetic credentials and a disposable environment, under gates Q1–Q8?
+- Can users verify application readiness and access demo accounts/data if needed?
+- Are JDK/Maven alternatives and port overrides sufficiently explained?
+- What reproducibility threshold should a **documentation** Responsibility meet to qualify as `Satisfied`?
 
 **Decision Status:** `Needs Further Evaluation`.
 
 **Adoption Decision:** `—`.
 
-**Decision Rationale (unresolved):** antes de elegir `PRESERVE` o `ADAPT` el reviewer debe comprobar la suficiencia de las instrucciones e interpretar la evidencia operativa pendiente. Una ejecución de CI distinta del procedimiento documentado no resuelve por sí sola la cuestión.
+**Decision Rationale (unresolved):** before selecting `PRESERVE` or `ADAPT`, the reviewer must evaluate documentary sufficiency and the missing operational evidence. A different CI execution does not settle reproducibility.
 
 ## 4. Responsibility — DOC-CHANGELOG
 
 **Requirement Level:** `Required`.
 
-**Proposed State:** **`Missing` (propuesto, no aprobado)**, al no identificarse una fuente de cambios publicados por versión. La existencia y contenido de tags siguen sin acreditarse; `Partial` o `Satisfied` requerirían evidencia de una fuente equivalente.
+**Proposed State:** **`Missing` (proposed, not approved)**; no version-published changelog was identified in the examined sources. Tag inventory remains unverified, and `Partial` or `Satisfied` would require evidence of a substantive equivalent source.
 
-**Proposed Applicability:** `Applicable` (provisional; el Template lo declara Required, sin asumir que todas las políticas de publicación del consumer estén definidas).
+**Proposed Applicability:** `Applicable` (provisional).
 
-**Implementation Characteristics (proposed):** `Distributed` como **posible** trazabilidad de cambios mediante commits y PRs; no se acredita que constituyan una implementación equivalente a un changelog orientado a versiones.
+**Implementation Characteristics (proposed):** `Distributed` as a **possible** form of change traceability through commits and PRs. These are not proven equivalent to a version-oriented changelog.
 
 ### Detected Facts
 
-- En el árbol del commit no se identificaron **rutas por nombre** de Changelog, Changes, History o Release. No equivale a una revisión exhaustiva de cualquier contenido documental.
-- [README.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md) describe la evolución del proyecto y remite al historial Git/PRs para atribución de cambios. No expone una lista de cambios publicados por versión en las secciones examinadas.
-- [pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml) declara `0.0.1-SNAPSHOT`: esto no es por sí solo una prueba de publicaciones.
-- El historial alcanzable desde el SHA registra cambios y PRs, incluidos #489, #491 y #493; historial granular de commits **no equivale** automáticamente a notas de release o changelog.
-- La consulta al endpoint de GitHub Releases devolvió lista vacía **en el momento de la revisión**; no demuestra la inexistencia histórica de releases. La consulta de **tags no pudo completarse**, de modo que su ausencia **no está acreditada**. Una nueva revisión dirigida el 2026-11-12 confirma la ausencia de la ruta exacta `CHANGELOG.md` en el SHA y mantiene el inventario de tags como **no verificado**; véase la sección 6 de la [revisión E2 actualizada](only-film-changelog-evidence-review.md).
-- [F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md) documenta hallazgos y planes, no una fuente de cambios publicados confirmada.
+- The pinned Git tree inspection did not identify paths **by name** containing Changelog, Changes, History, or Release. This was not a complete semantic content review.
+- The [pinned README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md) describes the project's evolution and points to Git/PR history for attribution. Inspected sections do not present a version-by-version published change list.
+- [pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml) declares `0.0.1-SNAPSHOT`, which does not prove a release.
+- Git history reachable from the SHA includes features and PRs such as #489, #491, and #493. Granular commit history is **not automatically** release notes or a changelog.
+- An earlier GitHub Releases endpoint query returned an empty list; this does not demonstrate that no release ever existed. The **tags check remains incomplete**; tag absence is **not established**.
+- [F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md) records findings and plans, not a confirmed publication history.
+- A targeted review on 2026-11-12 found no `CHANGELOG.md` **at that exact path** in the pinned tree and could not obtain a usable tag inventory. See [updated changelog evidence review, section 6](only-film-changelog-evidence-review.md).
 
 ### Evidence
 
-- [Revisión de Changelog y fuentes de publicación](only-film-changelog-evidence-review.md)
-- [README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
-- [Historial Git hasta el SHA](https://github.com/fran-eliot/only_film/commits/28d75a50e0a178954dd46acc23300d9dd327843c/)
-- [Página actual de Releases](https://github.com/fran-eliot/only_film/releases) — recurso **mutable**, no un snapshot del commit evaluado
+- [Changelog and release evidence review](only-film-changelog-evidence-review.md)
+- [Pinned README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
+- [Git history at the pinned SHA](https://github.com/fran-eliot/only_film/commits/28d75a50e0a178954dd46acc23300d9dd327843c/)
+- [Mutable GitHub Releases page](https://github.com/fran-eliot/only_film/releases)
 
-### Evaluation Rationale — propuesta
+### Evaluation Rationale — proposal
 
-No se ha encontrado en las fuentes inspeccionadas un registro de cambios **orientado a versiones publicadas** que desempeñe claramente `DOC-CHANGELOG`. No obstante, una conclusión de `Missing` requeriría descartar fuentes alternativas relevantes o documentar de manera explícita los límites de la investigación. Tampoco puede atribuirse `Partial` automáticamente a un historial Git/PRs que no se haya validado como fuente equivalente.
+No inspected source establishes a **version-oriented record of published changes** fulfilling `DOC-CHANGELOG`. Absence of a canonical filename alone is insufficient; alternative sources must be examined. A raw Git/PR listing cannot be assigned `Partial` merely as a precaution.
 
-Con la revisión dirigida, **`Missing` es la hipótesis preferida** por ausencia de un changelog identificado, pero **no constituye un State formal aprobado**: quedan por comprobar tags y fuentes equivalentes. Una fuente sustantiva de cambios publicados podría justificar `Partial` o `Satisfied`. Una vez comprobadas las fuentes, el reviewer elegirá un valor admitido por el Assessment Template (`Satisfied`, `Partial` o `Missing`) y lo justificará.
+Following the targeted check, **`Missing` is the preferred hypothesis, not an approved State**. Tags and other substantive alternatives remain an explicit reviewer gate. If such a source is found, reconsider `Partial` or `Satisfied`.
 
 ### Uncertainty
 
-- ¿Existen tags, notas de release u otra fuente oficial y accesible que resuma cambios por versión?
-- ¿Hay un procedimiento de publicación real o el repositorio utiliza únicamente builds de desarrollo?
-- ¿Qué información sobre cambios relevantes necesitan los destinatarios del repositorio?
-- ¿La Responsibility exige un changelog incluso sin releases formales y qué política de secciones `Unreleased` sería razonable?
-- ¿Puede justificarse `Missing` tras completar las comprobaciones C1–C6, o hay una implementación alternativa `Partial`/`Satisfied`?
+- Are there tags, release notes, or other accessible official sources summarizing changes per version?
+- Does the repository have a publication process, or only development builds?
+- What information do its intended users need about relevant changes?
+- Does this Required Responsibility warrant an `Unreleased` change log even without formal releases?
+- After completing C1–C6, can `Missing` be justified, or is an equivalent `Partial`/`Satisfied` implementation present?
 
 **Decision Status:** `Needs Further Evaluation`.
 
 **Adoption Decision:** `—`.
 
-**Decision Rationale (unresolved):** la evidencia no autoriza todavía decidir entre `ADD`, `ADAPT`, `ACCEPT`, `PRESERVE` u otra opción. No se genera un changelog ni se inventan versiones históricas.
+**Decision Rationale (unresolved):** no Adoption Decision (`ADD`, `ADAPT`, `ACCEPT`, `PRESERVE`, or another valid option) is warranted yet. No changelog or fictitious historical versions have been created.
 
-## 5. Gates de revisión humana
+## 5. Human review gates
 
-| Gate | Criterio | Estado |
+| Gate | Criterion | Status |
 | --- | --- | --- |
-| RQ-1 | Confirmar el contexto del consumidor y propósito de ambas Responsibilities Required | Pendiente |
-| RQ-2 | Reproducir el Quick Start Compose o justificar con evidencia equivalente el umbral documental | Pendiente |
-| RQ-3 | Corroborar versiones, variables y advertencias vigentes en el SHA | Evidencia estática preparada; pendiente de reviewer |
-| RQ-4 | Verificar tags, releases y fuentes alternativas de historial de cambios según C1–C6 | Pendiente |
-| RQ-5 | Seleccionar `State` válido para cada Responsibility, con `Applicability` y rationale | Pendiente |
-| RQ-6 | Mantener `Needs Further Evaluation` si hay incertidumbres materiales | Preparado; pendiente de reviewer |
-| RQ-7 | Resolver Adoption Decision solo con rationale y autorización humana | Pendiente |
+| RQ-1 | Confirm the consumer context and purpose of both Required Responsibilities | Pending |
+| RQ-2 | Reproduce Compose Quick Start or justify an equivalent documentation-evidence threshold | Pending |
+| RQ-3 | Corroborate versions, variables, and safeguards at the pinned SHA | Static evidence prepared; reviewer pending |
+| RQ-4 | Verify tags, releases, and alternative records according to C1–C6 | Pending |
+| RQ-5 | Select a valid `State` for each Responsibility, with `Applicability` and rationale | Pending |
+| RQ-6 | Keep `Needs Further Evaluation` where material uncertainty remains | Prepared; reviewer pending |
+| RQ-7 | Resolve an Adoption Decision only with rationale and human authorization | Pending |
 
-## 6. Conclusión
+## 6. Conclusion
 
-Se han preparado propuestas semánticas para dos Responsibilities `Required` de Only Film con evidencia versionada y límites explícitos. `README-QUICK-START` mantiene una hipótesis `Partial` y `DOC-CHANGELOG` dispone de una hipótesis preferida `Missing`, condicionada a revisión de tags y fuentes equivalentes, antes de registrar un `State` formal.
+E3 proposals exist for both Required Responsibilities at the pinned Only Film SHA. `README-QUICK-START` retains a `Partial` hypothesis. `DOC-CHANGELOG` now has a preferred `Missing` hypothesis, **conditional on tag and equivalent-source verification**, before any formal `State` is recorded.
 
-**No se ha completado una evaluación E3 aprobada**, no hay Adoption Decision resuelta y el Assessment permanece `In Progress`. No se ejecuta Docker ni se modifica el repositorio consumidor.
+**No E3 semantic assessment has been approved**, no Adoption Decision has been resolved, and the overall Assessment remains `In Progress`. Docker has not been executed, and the consumer has not been modified.
