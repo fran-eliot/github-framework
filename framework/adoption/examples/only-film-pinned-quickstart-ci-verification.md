@@ -97,6 +97,8 @@ El workflow `compose-smoke.yml` **sí contiene** instrucciones para `docker comp
 
 La nueva evidencia refuerza la revisión de `README-QUICK-START` y `README-TESTING`, pero no obliga a reclasificar el provisional `Partial` ni autoriza una Adoption Decision sin revisión semántica.
 
+**Comprobación adicional de checks:** [Compose smoke — laguna de evidencia y criterios de reproducción](only-film-compose-evidence-gap.md). La consulta de check-runs del SHA fijado solo devolvió los tres jobs H2/PostgreSQL citados; no se encontró un check Compose directamente asociado a ese SHA.
+
 ## 6. Próxima revisión verificable
 
 1. Examinar los logs y artefactos de [run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) cuando estén disponibles, distinguiendo tests efectivamente ejecutados, información de cobertura y análisis Sonar opcional.
