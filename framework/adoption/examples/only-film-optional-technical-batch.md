@@ -155,6 +155,8 @@ Las seis Responsibilities son `Optional` **en el Template**. Su aplicabilidad de
 
 **State / Applicability:** pendientes de revisión semántica. **Decision Status:** `Needs Further Evaluation`. **Adoption Decision:** `—`.
 
+**Seguimiento de DOC-SECURITY:** la [reconciliación de seguridad y Testing](only-film-security-testing-reconciliation.md) compara directamente controles del commit fijado con hallazgos históricos, sin declarar una auditoría de seguridad nueva ni resolver la Adoption Decision.
+
 ## 9. Resultado global de la exploración documental
 
 | Comprobación | Resultado |
