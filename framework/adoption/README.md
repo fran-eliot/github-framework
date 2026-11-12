@@ -79,6 +79,8 @@ To get started with an existing repository **without modifying it**:
 
 **All 28 semantic proposals prepared:** the [Only Film final Optional technical review](examples/only-film-optional-final-semantic-review.md) covers ADR, API, Database, Deployment and References, completing the proposed E3 review of all TPL-BACKEND responsibilities. None is human-approved or a resolved Adoption Decision; Assessment remains In Progress.
 
+**Consolidated review entry point:** the [Only Film 28-responsibility human review matrix](examples/only-film-consolidated-review-matrix.md) links each proposed E3 assessment, prioritizes specific evidence gaps and identifies unresolved State/Applicability hypotheses. It is not an approved Assessment or a resolved Adoption Decision.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
