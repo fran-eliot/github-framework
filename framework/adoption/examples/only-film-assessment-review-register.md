@@ -48,6 +48,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 7. **Decisión:** solo registrar `PRESERVE / ADAPT / ADD / ACCEPT / OMIT` cuando la decisión esté revisada; si no, `Needs Further Evaluation` y `—`, con incertidumbre y razón.
 8. **Cierre global:** no marcar `Assessment Complete` hasta revisar todas las Responsibilities conforme a la guía y plantilla. `28/28` de exploración **no cumple esta condición**.
 
+**Actualización Quick Start:** la [comprobación específica de Compose](only-film-compose-evidence-gap.md) delimita qué verifica `postgres-schema` y qué queda sin acreditar del smoke `docker compose up --build`, con criterios Q1–Q8 de reproducción. La laguna sigue abierta.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.
