@@ -1,8 +1,8 @@
 # Only Film — Consolidated Assessment Human Review Matrix
 
-## 1. Contexto, finalidad y distinciones
+## 1. Context, purpose, and distinctions
 
-Esta matriz **consolida** las 28 propuestas E3 existentes para `TPL-BACKEND` 0.1.0 en un punto único de revisión. Se ha obtenido de las fichas previas **sin elevar hipótesis a Estados evaluados ni registrar aprobación humana**. Facilita seleccionar qué evidencia falta, quién debe valorar cada caso y qué resultado registrar después en un [Assessment Template](../assessment-template.md) conforme a su contrato.
+This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting hypotheses to evaluated States or recording human approval**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
 
 | Field | Value |
 | --- | --- |
@@ -15,101 +15,101 @@ Esta matriz **consolida** las 28 propuestas E3 existentes para `TPL-BACKEND` 0.1
 | Assessment Status | `In Progress` |
 | Consumer Mutation | `NONE` |
 
-**Leyenda:**
+**Legend:**
 
-- `Proposed State` y `Proposed Applicability` son **hipótesis para el reviewer** y no campos de un Assessment aprobado. Donde aparece `Missing / Partial` son alternativas no discriminadas, **no** un valor contractual `State`. `Uncertain` para Applicability representa correctamente una incertidumbre aún abierta, no una resolución de Not Applicable.
-- `P1/P2/P3` son prioridades **de revisión de evidencia**, no severidades de seguridad, defectos confirmados ni tareas que obliguen a modificar Only Film.
-- `E3` enlaza la ficha detallada que contiene Detected Facts, Evidence, Evaluation Rationale, Uncertainty y Decision Status. Las propuestas originales mantienen `Needs Further Evaluation` y `Adoption Decision: —`.
-- El orden de filas y Requirement Levels procede de la [metadata canónica del Template](../../templates/repositories/backend/metadata.yml), no de los niveles de prioridad de los Components.
+- `Proposed State` and `Proposed Applicability` are **reviewer-facing hypotheses**, not approved Assessment fields. `Missing / Partial` identifies alternatives not yet discriminated; it is **not** a contractual `State`. `Uncertain` for Applicability preserves an unresolved question rather than claiming `Not Applicable`.
+- `P1/P2/P3` prioritize **evidence review**, not confirmed defects, security severity, or mandatory changes to Only Film.
+- Each `E3` link opens the underlying record with Detected Facts, Evidence, Evaluation Rationale, Uncertainty, and Decision Status. Original proposals retain `Needs Further Evaluation` and `Adoption Decision: —`.
+- Row order and Requirement Levels follow the [canonical Template metadata](../../templates/repositories/backend/metadata.yml), not Component-level priorities.
 
-## 2. Matriz única de propuestas y próximo gate
+## 2. Consolidated proposals and next review gates
 
-| Responsibility | Level | Proposed State | Proposed Applicability | Prioridad | Ficha de evidencia | Gate de revisión concreto |
+| Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
 | --- | --- | --- | --- | --- | --- | --- |
-| `README-HERO` | Required | `Partial` | `Applicable` | **P3** | [E3](only-film-required-identity-semantic-review.md) | Contrastar encabezado, badges y legibilidad; decidir suficiencia de identidad. |
-| `README-OVERVIEW` | Required | `Partial` | `Applicable` | **P3** | [E3](only-film-required-identity-semantic-review.md) | Evaluar claridad del propósito y diferenciación frente a Hero. |
-| `README-FEATURES` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-identity-semantic-review.md) | Validar afirmaciones de capacidades y separar detalles de implementación. |
-| `README-TECH-STACK` | Required | `Partial` | `Applicable` | **P3** | [E3](only-film-required-final-semantic-review.md) | Contrastar tecnologías clave y contextos de uso con POM/Compose. |
-| `README-QUICK-START` | Required | `Partial` | `Applicable` | **P1** | [E3](only-film-required-semantic-review.md) | Reproducir Compose desde clon limpio o justificar umbral documental; gates Q1–Q8. |
-| `README-DOCUMENTATION` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-final-semantic-review.md) | Comprobar enlaces principales y localización de documentación útil. |
-| `README-FOOTER` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-final-semantic-review.md) | Valorar créditos y nota de licencia sin atribuir permisos jurídicos. |
-| `DOC-CHANGELOG` | Required | `Missing` *(propuesto; no aprobado)* | `Applicable` | **P1** | [E3](only-film-required-semantic-review.md) | Comprobar tags y fuentes equivalentes; confirmar o revisar la hipótesis antes de aprobar el State. |
-| `README-STATUS` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Definir estado/madurez del repositorio en el SHA, no confundir badges de tecnología. |
-| `README-ARCHITECTURE` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Reconciliar resumen MVC/JPA con código y auditoría histórica. |
-| `README-REPOSITORY-STRUCTURE` | Recommended | `Partial` | `Applicable` | **P3** | [E3](only-film-recommended-readme-semantic-review.md) | Verificar árbol, facilidad de navegación y precisión del resumen. |
-| `README-TESTING` | Recommended | `Partial` | `Applicable` | **P1** | [E3](only-film-testing-semantic-review.md) | Contrastar comandos locales y CI; delimitar H2, PostgreSQL, Selenium y JaCoCo. |
-| `DOC-ARCHITECTURE` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Identificar estructura vigente; no trasladar defectos de auditorías históricas. |
-| `DOC-PROJECT-STATUS` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Reconstruir hitos y estado por áreas con referencias fechadas. |
-| `DOC-TESTING` | Recommended | `Partial` | `Applicable` | **P1** | [E3](only-film-testing-semantic-review.md) | Evaluar suficiencia de guías, CI Surefire y límites de cobertura y Sonar. |
-| `README-ROADMAP` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-governance-semantic-review.md) | Verificar vigencia de propuestas F3; valorar si resumen es suficiente. |
-| `README-CONTRIBUTING` | Optional | `Missing / Partial` | `Uncertain` | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Determinar política de colaboración y fuentes; decidir Applicability y State. |
-| `README-DEMO` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Comprobar representatividad de capturas y necesidad de demo reproducible. |
-| `README-AUTHOR` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Revisar atribución del equipo y evolución posterior sin inferir titularidad. |
-| `README-HIGHLIGHTS` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Valorar valor editorial y evidencia de destacados sin duplicar Features. |
-| `README-LICENSE` | Optional | `Partial` | `Applicable` | **P1** | [E3](only-film-optional-governance-semantic-review.md) | Aclarar información de derechos/uso con fuentes apropiadas, sin conceder licencia. |
-| `DOC-ADR` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-final-semantic-review.md) | Valorar decisiones documentadas y utilidad de registro ADR frente a redundancia. |
-| `DOC-API` | Optional | `Missing / Partial` | `Uncertain` | **P2** | [E3](only-film-optional-final-semantic-review.md) | Verificar si hay contrato API pública; no confundir MVC con REST. |
-| `DOC-DATABASE` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-final-semantic-review.md) | Valorar modelo de datos, invariantes y migraciones contra fuentes del SHA. |
-| `DOC-DEPLOYMENT` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-final-semantic-review.md) | Delimitar uso local; aclarar advertencia de uploads y evidencia Compose. |
-| `DOC-SECURITY` | Optional | `Partial` | `Applicable` | **P1** | [E3](only-film-security-semantic-review.md) | Contrastar guía vigente y controles; no generalizar 329 tests a seguridad total. |
-| `DOC-DIAGRAMS` | Optional | `Missing / Partial` | `Uncertain` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Buscar diagramas embebidos y valorar aplicabilidad antes de recomendar crearlos. |
-| `DOC-REFERENCES` | Optional | `Partial` | `Uncertain` | **P3** | [E3](only-film-optional-final-semantic-review.md) | Decidir si referencias dispersas bastan o si índice añade valor. |
+| `README-HERO` | Required | `Partial` | `Applicable` | **P3** | [E3](only-film-required-identity-semantic-review.md) | Check heading, badges, and readability; decide whether identity is conveyed sufficiently. |
+| `README-OVERVIEW` | Required | `Partial` | `Applicable` | **P3** | [E3](only-film-required-identity-semantic-review.md) | Evaluate clarity of purpose and distinction from Hero. |
+| `README-FEATURES` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-identity-semantic-review.md) | Validate capability claims and distinguish them from implementation details. |
+| `README-TECH-STACK` | Required | `Partial` | `Applicable` | **P3** | [E3](only-film-required-final-semantic-review.md) | Cross-check key technologies and use contexts against POM/Compose. |
+| `README-QUICK-START` | Required | `Partial` | `Applicable` | **P1** | [E3](only-film-required-semantic-review.md) | Reproduce Compose from a clean clone or justify a documentary threshold; gates Q1–Q8. |
+| `README-DOCUMENTATION` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-final-semantic-review.md) | Check key links and discoverability of useful documentation. |
+| `README-FOOTER` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-final-semantic-review.md) | Evaluate attribution and license notices without asserting legal permissions. |
+| `DOC-CHANGELOG` | Required | `Missing` *(proposed; not approved)* | `Applicable` | **P1** | [E3](only-film-required-semantic-review.md) | Check tags and equivalent sources; confirm or revise the hypothesis before approving a State. |
+| `README-STATUS` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Establish repository maturity at the pinned SHA; do not confuse technology badges with status. |
+| `README-ARCHITECTURE` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Reconcile MVC/JPA overview with code and dated audit material. |
+| `README-REPOSITORY-STRUCTURE` | Recommended | `Partial` | `Applicable` | **P3** | [E3](only-film-recommended-readme-semantic-review.md) | Check tree accuracy and navigability. |
+| `README-TESTING` | Recommended | `Partial` | `Applicable` | **P1** | [E3](only-film-testing-semantic-review.md) | Reconcile local commands and CI; distinguish H2, PostgreSQL, Selenium, and JaCoCo. |
+| `DOC-ARCHITECTURE` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Identify the current architecture; do not treat historical audit findings as automatically current. |
+| `DOC-PROJECT-STATUS` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Reconstruct milestones and status by area using dated references. |
+| `DOC-TESTING` | Recommended | `Partial` | `Applicable` | **P1** | [E3](only-film-testing-semantic-review.md) | Assess guidance, Surefire CI evidence, coverage, and Sonar limitations. |
+| `README-ROADMAP` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-governance-semantic-review.md) | Check currency of F3 proposals and whether a concise summary suffices. |
+| `README-CONTRIBUTING` | Optional | `Missing / Partial` | `Uncertain` | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Determine collaboration policy and sources; decide Applicability and State. |
+| `README-DEMO` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Check screenshot representativeness and whether reproducible demo access is needed. |
+| `README-AUTHOR` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Review team attribution and later development without presuming ownership rights. |
+| `README-HIGHLIGHTS` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Evaluate editorial value of highlights without duplicating Features. |
+| `README-LICENSE` | Optional | `Partial` | `Applicable` | **P1** | [E3](only-film-optional-governance-semantic-review.md) | Clarify rights/use from appropriate sources without granting a license. |
+| `DOC-ADR` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-final-semantic-review.md) | Evaluate documented decisions and the value of an ADR log versus redundancy. |
+| `DOC-API` | Optional | `Missing / Partial` | `Uncertain` | **P2** | [E3](only-film-optional-final-semantic-review.md) | Check for a public API contract; do not conflate MVC with REST. |
+| `DOC-DATABASE` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-final-semantic-review.md) | Evaluate data model, invariants, and migrations against pinned sources. |
+| `DOC-DEPLOYMENT` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-final-semantic-review.md) | Delimit local use; clarify uploads guidance and Compose evidence. |
+| `DOC-SECURITY` | Optional | `Partial` | `Applicable` | **P1** | [E3](only-film-security-semantic-review.md) | Review current security guidance and controls; 329 tests do not establish full security assurance. |
+| `DOC-DIAGRAMS` | Optional | `Missing / Partial` | `Uncertain` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Search for embedded diagrams and evaluate applicability before recommending additions. |
+| `DOC-REFERENCES` | Optional | `Partial` | `Uncertain` | **P3** | [E3](only-film-optional-final-semantic-review.md) | Decide whether distributed references suffice or an index adds value. |
 
-**Resumen de hipótesis**, que no deben copiarse como recuentos de Estados evaluados:
+**Hypothesis counts** — do **not** copy these as approved assessment results:
 
-| Aspecto | Conteo |
+| Measure | Count |
 | --- | ---: |
-| Propuestas E3 referenciadas | **28/28** |
-| State `Partial` como hipótesis única | **24** |
-| State `Missing` como hipótesis preferida (DOC-CHANGELOG) | **1** |
-| State alternativo `Missing / Partial` sin discriminar | **3** |
-| Applicability `Applicable` como hipótesis | **24** |
-| Applicability pendiente / `Uncertain` | **4** |
-| States formalmente aprobados | **0 acreditados** |
-| Adoption Decisions resueltas | **0 acreditadas** |
+| E3 proposals referenced | **28/28** |
+| `Partial` as the sole State hypothesis | **24** |
+| `Missing` as the preferred State hypothesis (`DOC-CHANGELOG`) | **1** |
+| Undiscriminated `Missing / Partial` State | **3** |
+| `Applicable` as proposed Applicability | **24** |
+| Pending / `Uncertain` Applicability | **4** |
+| Formally approved States | **0 recorded** |
+| Resolved Adoption Decisions | **0 recorded** |
 
-`0` aprobados se refiere al **registro de este Assessment**, no a la inexistencia de revisiones externas no incorporadas aquí.
+The absence of recorded approvals refers to **this Assessment**, not to possible external reviews absent from these records.
 
-## 3. Hallazgos consolidados de calidad de evidencia
+## 3. Consolidated evidence-quality findings
 
-### E0/E1 — Inventario y exploración documental
+### E0/E1 — Inventory and documentary exploration
 
-- Las **28/28 Responsibilities** del Template están enumeradas y cuentan con fuentes inspeccionadas o identificadas con límites explícitos. Esto **no** equivale a conformidad.
-- Para el mismo SHA del consumer hay un [run de GitHub Actions](https://github.com/fran-eliot/only_film/actions/runs/39283862407) con tres checks `success`. El log de `h2-regression` acredita **329 tests, 0 failures, 0 errors, 0 skipped**, y resultados individuales de clases relevantes de seguridad. La generación y publicación histórica de JaCoCo y un `ANALYSIS SUCCESSFUL` del scanner Sonar están registradas, **pero no** el porcentaje de cobertura ni la aprobación del Quality Gate. [Evidencia E2](only-film-verified-surefire-sonar-logs.md).
-- El `postgres-schema` comprueba arranque de JAR + PostgreSQL del workflow; **no verifica el flujo Docker Compose del README**. No se identificó un check `compose-smoke` directamente asociado al commit en los resultados consultados. [Evidencia Quick Start](only-film-compose-evidence-gap.md).
-- Las auditorías de arquitectura, seguridad, madurez y roadmap tienen **commits base distintos**: sus hallazgos no son automáticamente vigentes en el SHA evaluado.
-- La [revisión dirigida de cambios/release](only-film-changelog-evidence-review.md) favorece `Missing` como **hipótesis no aprobada** para `DOC-CHANGELOG`; el inventario de tags sigue **sin verificar**, por lo que no se cierra el gate humano.
-- El [aviso de licencia del README](only-film-optional-governance-semantic-review.md) no establece permisos de reutilización ni sustituye la determinación de derechos del trabajo académico.
-- Algunas Responsibilities de `TPL-BACKEND` carecen de Component autónomo localizado en el catálogo inspeccionado. La discrepancia es un **asunto de definición del Framework** y no un incumplimiento automático del consumer.
+- All **28/28 Template Responsibilities** have been enumerated and associated with reviewed sources or explicit evidence limits. This does **not** establish compliance.
+- At the consumer SHA, [GitHub Actions run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) recorded three successful checks. The `h2-regression` log establishes **329 tests, 0 failures, 0 errors, 0 skipped**, including relevant security test classes. Historical JaCoCo report creation/upload and Sonar scanner `ANALYSIS SUCCESSFUL` were observed, **not** a coverage percentage or Quality Gate approval. [E2 source](only-film-verified-surefire-sonar-logs.md).
+- The `postgres-schema` check runs a JAR against CI PostgreSQL; it **does not run the README's Docker Compose flow**. No `compose-smoke` check tied directly to the pinned SHA was found in the reviewed results. [Quick Start evidence](only-film-compose-evidence-gap.md).
+- Architecture, security, maturity, and roadmap audits use **different base commits**. Their findings cannot automatically be applied to the pinned SHA.
+- The [targeted changelog/release review](only-film-changelog-evidence-review.md) favors `Missing` as an **unapproved** `DOC-CHANGELOG` hypothesis. The tag inventory remains **unverified**, so the human gate stays open.
+- The [README license notice](only-film-optional-governance-semantic-review.md) does not itself grant reuse permissions or establish ownership of the academic collaboration.
+- Some `TPL-BACKEND` Responsibilities lack independently located Components in the inspected library. This is a **Framework definition issue**, not automatically a consumer defect.
 
-### E2/E3 — Dónde está el trabajo pendiente
+### E2/E3 — Outstanding review work
 
-1. **P1 — Gates materiales:** `README-QUICK-START` (reproducibilidad Compose), `DOC-CHANGELOG` (tags, releases y fuentes equivalentes), `README-TESTING` y `DOC-TESTING` (suficiencia y límites de lo verificado), `DOC-SECURITY` (calidad documental frente a hallazgos históricos) y `README-LICENSE` (claridad jurídica sin licencias inventadas).
-2. **P2 — Precisión y contexto:** contrato API o no aplicabilidad, política de contribución, vigencia de arquitectura y estado, integridad documental de datos, operaciones locales y navegación.
-3. **P3 — Suficiencia editorial:** presentación, demos, destacados, diagramas, ADR y referencias, sin imponer nuevos documentos si lo existente es funcionalmente equivalente.
+1. **P1 — Material gates:** `README-QUICK-START` (Compose reproducibility), `DOC-CHANGELOG` (tags, releases, and equivalents), `README-TESTING` and `DOC-TESTING` (coverage and evidence limits), `DOC-SECURITY` (current documentation versus historical findings), and `README-LICENSE` (legal clarity without invented rights).
+2. **P2 — Accuracy and context:** API contract or non-applicability, contribution policy, current architecture/status, database documentation, local operations, and navigation.
+3. **P3 — Editorial sufficiency:** presentation, demos, highlights, diagrams, ADRs, and references, without requiring additional documents when existing equivalents serve the same function.
 
-Estos grupos marcan **orden de revisión**, no un supuesto automatizado de que cualquier Responsibility P1 deba quedar `Partial` o recibir una decisión `ADD`.
+These are **review priorities**, not a declaration that every P1 Responsibility is `Partial` or requires an `ADD` decision.
 
-## 4. Procedimiento para validar la matriz sin fabricar aprobaciones
+## 4. Procedure for approving the matrix without fabricating decisions
 
-1. **Fijar reviewer, fecha y referencia.** Confirmar quién aprueba cada Responsibility y que se está revisando el SHA concreto. Si se quiere evaluar `main` actual del consumer, iniciar refresco de Evidence, no reutilizar sin más conclusiones del snapshot histórico.
-2. **Resolver los casos con State/Applicability alternativos.** Priorizar `README-CONTRIBUTING`, `DOC-API`, `DOC-DIAGRAMS` y la Applicability de `DOC-REFERENCES`. Un campo de Applicability `Uncertain` es válido en el contrato; `Missing / Partial` no es un `State` válido y **debe discriminarse** antes de completar una ficha formal.
-3. **Valorar calidad documental y evidencia suficiente.** Confirmar que cada ficha cita fuentes pertinentes y que el rationale sustenta el `State` finalmente elegido, en vez de perpetuar `Partial` por precaución. Una Responsibility documental no necesita que se reproduzca cada test del sistema, pero sí límites explícitos cuando su afirmación es operativa.
-4. **Registrar el resultado en el Assessment.** Elegir para cada Responsibility `State: Satisfied / Partial / Missing`, `Applicability: Applicable / Not Applicable / Uncertain`, `Evidence`, `Evaluation Rationale`, `Uncertainty` y `Decision Status`. Las sugerencias de esta matriz no se copian como si hubieran sido aprobadas.
-5. **Resolver decisiones solamente donde esté justificado.** `Decision Status: Resolved` exige `Adoption Decision` estable y su rationale. Para `Needs Further Evaluation`, mantener `Adoption Decision: —` junto con incertidumbre y razón concreta.
-6. **Aplicar Completion Check del Template.** El Assessment puede quedar `Complete` con decisiones no resueltas, pero **solo** después de registrar y revisar todos los campos requeridos por Responsibility. No autoriza automáticamente `Application` o `Integration`.
+1. **Set reviewer, date, and reference.** Name the approving reviewer and confirm the pinned SHA. To assess a newer consumer `main`, refresh evidence rather than reusing the old snapshot as current.
+2. **Resolve remaining alternatives.** Check tags and equivalent sources for the proposed `Missing` on `DOC-CHANGELOG`. Distinguish `Missing / Partial` for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`; decide Applicability for `DOC-REFERENCES`. `Uncertain` is a supported Applicability value; `Missing / Partial` is not a valid final State.
+3. **Evaluate evidence sufficiency.** Ensure each record supports the selected `State` and does not default to `Partial` merely from caution. A documentation Responsibility does not require rerunning every system test, but any operational claim must be scoped accurately.
+4. **Record formal Assessment results.** For each Responsibility, enter `State: Satisfied / Partial / Missing`, `Applicability: Applicable / Not Applicable / Uncertain`, `Evidence`, `Evaluation Rationale`, `Uncertainty`, and `Decision Status`. Do not treat proposals as approved facts.
+5. **Resolve decisions only when justified.** `Decision Status: Resolved` requires a valid Adoption Decision and rationale. Otherwise keep `Needs Further Evaluation`, `Adoption Decision: —`, and an explicit unresolved question.
+6. **Apply the Assessment Template completion check.** The Assessment can become `Complete` even with unresolved decisions, but only after all required fields are recorded and reviewed. Completion does **not** automatically authorize Application or Integration.
 
-## 5. Registro de sesiones del reviewer
+## 5. Human reviewer session register
 
-| Campo | Valor |
+| Field | Value |
 | --- | --- |
-| Reviewer | Pendiente de asignación |
-| Reference aceptada | `28d75a50e0a178954dd46acc23300d9dd327843c` (propuesta) |
-| Fecha y alcance de aprobación | Pendiente |
-| Responsabilidades con ficha E3 propuesta | `28` |
-| Responsabilidades con evaluación aprobada | `0` acreditadas |
-| Primer bloque recomendado | P1: Quick Start, Changelog, Testing, Security y License |
-| Siguiente salida requerida | Actualizar registro real del [Assessment Template](../assessment-template.md) con aprobación y rationale por Responsibility |
+| Reviewer | Not assigned |
+| Accepted Reference | `28d75a50e0a178954dd46acc23300d9dd327843c` (proposed) |
+| Approval date and scope | Pending |
+| Responsibilities with proposed E3 records | `28` |
+| Responsibilities with approved evaluations | `0` recorded |
+| First recommended set | P1: Quick Start, Changelog, Testing, Security, and License |
+| Required next output | Update a genuine [Assessment Template](../assessment-template.md) record with reviewer-approved State, Applicability, and rationale |
 | Assessment Status | `In Progress` |
 
-**Resultado:** esta matriz reduce dispersión y prioriza la revisión de evidencia. **No sustituye el Assessment humano**, no constituye una decisión de aplicación y no modifica el repositorio consumidor.
+**Outcome:** the matrix reduces evidence fragmentation and makes review priorities explicit. It **does not replace human Assessment**, constitute an Adoption Decision, or modify the consumer.
