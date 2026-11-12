@@ -74,6 +74,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Propuestas E3 Optional de gobernanza:** la [revisión semántica de Roadmap, Contributing, Author y License](only-film-optional-governance-semantic-review.md) deja sin resolver derechos de reutilización, política de contribuciones y aplicabilidad, sin imponer componentes Optional ni aprobar Adoption Decisions.
 
+**Propuesta E3 Optional de presentación:** la [revisión semántica de Demo, Highlights y Diagrams](only-film-optional-showcase-semantic-review.md) establece hechos, límites y gates de reviewer, sin equiparar capturas con una demo ejecutada ni forzar diagramas para el consumer.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.
