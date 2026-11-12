@@ -45,6 +45,8 @@ To get started with an existing repository **without modifying it**:
 
 **Assessment coverage:** the [Only Film TPL-BACKEND coverage matrix](examples/only-film-assessment-coverage.md) now links documentary explorations for all 28 Template Responsibilities (eight Required, seven Recommended, thirteen Optional). These are detailed in the [first Required batch](examples/only-film-required-readme-batch-1.md), [second Required batch](examples/only-film-required-readme-batch-2.md), [Recommended README batch](examples/only-film-recommended-readme-batch.md), [Recommended Documentation batch](examples/only-film-recommended-documentation-batch.md), [Optional governance batch](examples/only-film-optional-readme-governance.md), [Optional showcase batch](examples/only-film-optional-showcase-diagrams.md), and [Optional technical batch](examples/only-film-optional-technical-batch.md). All 28 have been explored **documentally only**; semantic States, Applicability and Adoption Decisions still need review. The Assessment remains `In Progress` and the collection is not a conformance certification.
 
+**Human review consolidation:** the [Only Film evidence-gap and review register](examples/only-film-assessment-review-register.md) prioritizes checks needed after the 28/28 documentary exploration: evidence freshness, reproducibility, semantic interpretation and decision rationale. It records work still required rather than treating documentary coverage as assessment completion.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
