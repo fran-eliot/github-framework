@@ -75,6 +75,8 @@ Las veintiocho Responsibilities cuentan con una exploración documental vinculad
 
 **Propuesta E3 para Hero, Overview y Features:** la [revisión semántica de las tres Responsibilities Required](only-film-required-identity-semantic-review.md) presenta criterios, evidencias y clasificaciones pendientes de reviewer. Su existencia no cambia las 28 filas de cobertura documental a evaluaciones aprobadas.
 
+**Ocho Required con propuesta E3:** el [lote de Tech Stack, Documentation y Footer](only-film-required-final-semantic-review.md) completa las propuestas de interpretación de las ocho Responsibilities Required. Todas siguen sin aprobación humana; el State de DOC-CHANGELOG continúa sin determinar y la cobertura 28/28 sigue siendo documental.
+
 ## 4. Protocolo para continuar el Assessment
 
 ### Fase A — Required

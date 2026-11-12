@@ -67,6 +67,8 @@ To get started with an existing repository **without modifying it**:
 
 **Required identity and features review:** the [Only Film Hero, Overview and Features semantic proposal](examples/only-film-required-identity-semantic-review.md) compares the pinned consumer README with the three Component responsibilities; all suggested States and applicability assessments remain pending human review and do not resolve Adoption Decisions.
 
+**Final Required proposal batch:** the [Only Film Tech Stack, Documentation and Footer semantic review](examples/only-film-required-final-semantic-review.md) completes proposals for all eight Required responsibilities, without converting documentary exploration into approved Assessment States or resolved Adoption Decisions.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 

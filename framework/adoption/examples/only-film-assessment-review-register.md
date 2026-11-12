@@ -66,6 +66,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Revisión semántica E3 de identidad y funcionalidades:** la [propuesta para README-HERO, README-OVERVIEW y README-FEATURES](only-film-required-identity-semantic-review.md) contrasta las descripciones del consumer con los Components del Framework y formula hipótesis editoriales sujetas a aprobación, sin resolver Adoption Decisions.
 
+**Último lote E3 de Required:** la [propuesta semántica de Tech Stack, Documentation y Footer](only-film-required-final-semantic-review.md) completa las fichas de interpretación de las ocho Required, todas pendientes de reviewer. El caso DOC-CHANGELOG sigue con hipótesis de State por discriminar; no hay decisiones aprobadas.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.
