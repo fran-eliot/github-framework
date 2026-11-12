@@ -40,16 +40,16 @@ La lista se transcribe del bloque `components` de la metadata canónica de `TPL-
 | `DOC-TESTING` | `Recommended` | Explored — provisional | [Read-only Evidence](only-film-recommended-documentation-batch.md) | Pending semantic review |
 | `README-ROADMAP` | `Optional` | Explored — provisional | [Read-only Evidence](only-film-optional-readme-governance.md) | Pending semantic review |
 | `README-CONTRIBUTING` | `Optional` | Explored — provisional | [Read-only Evidence](only-film-optional-readme-governance.md) | Pending semantic review |
-| `README-DEMO` | `Optional` | Not assessed | — | Not started |
+| `README-DEMO` | `Optional` | Explored — provisional | [Read-only Evidence](only-film-optional-showcase-diagrams.md) | Pending semantic review |
 | `README-AUTHOR` | `Optional` | Explored — provisional | [Read-only Evidence](only-film-optional-readme-governance.md) | Pending semantic review |
-| `README-HIGHLIGHTS` | `Optional` | Not assessed | — | Not started |
+| `README-HIGHLIGHTS` | `Optional` | Explored — provisional | [Read-only Evidence](only-film-optional-showcase-diagrams.md) | Pending semantic review |
 | `README-LICENSE` | `Optional` | Explored — provisional | [Read-only Evidence](only-film-optional-readme-governance.md) | Pending semantic review |
 | `DOC-ADR` | `Optional` | Not assessed | — | Not started |
 | `DOC-API` | `Optional` | Not assessed | — | Not started |
 | `DOC-DATABASE` | `Optional` | Not assessed | — | Not started |
 | `DOC-DEPLOYMENT` | `Optional` | Not assessed | — | Not started |
 | `DOC-SECURITY` | `Optional` | Not assessed | — | Not started |
-| `DOC-DIAGRAMS` | `Optional` | Not assessed | — | Not started |
+| `DOC-DIAGRAMS` | `Optional` | Explored — provisional | [Read-only Evidence](only-film-optional-showcase-diagrams.md) | Pending semantic review |
 | `DOC-REFERENCES` | `Optional` | Not assessed | — | Not started |
 
 ## 3. Cobertura actual
@@ -58,14 +58,14 @@ La lista se transcribe del bloque `components` de la metadata canónica de `TPL-
 | --- | ---: | ---: | ---: |
 | `Required` | 8 | 8 | 0 |
 | `Recommended` | 7 | 7 | 0 |
-| `Optional` | 13 | 4 | 9 |
-| **Total** | **28** | **19** | **9** |
+| `Optional` | 13 | 7 | 6 |
+| **Total** | **28** | **22** | **6** |
 
-Las diecinueve Responsibilities exploradas documentalmente comprenden el [walkthrough inicial](only-film-two-responsibilities.md), los [lotes Required 1](only-film-required-readme-batch-1.md) y [2](only-film-required-readme-batch-2.md), el [lote Recommended README](only-film-recommended-readme-batch.md), el [lote Recommended Documentation](only-film-recommended-documentation-batch.md) y el [primer lote Optional](only-film-optional-readme-governance.md). Quick Start y Testing conservan `State: Partial` y `Applicability: Applicable` como interpretaciones provisionales en el ejemplo inicial; las diecisiete restantes mantienen `State` y `Applicability` pendientes de revisión semántica. Todas conservan `Decision Status: Needs Further Evaluation` y `Adoption Decision: —`. **Exploración no equivale a cumplimiento.**
+Las veintidós Responsibilities exploradas documentalmente comprenden el [walkthrough inicial](only-film-two-responsibilities.md), los [lotes Required 1](only-film-required-readme-batch-1.md) y [2](only-film-required-readme-batch-2.md), el [lote Recommended README](only-film-recommended-readme-batch.md), el [lote Recommended Documentation](only-film-recommended-documentation-batch.md), el [primer lote Optional](only-film-optional-readme-governance.md) y el [segundo lote Optional](only-film-optional-showcase-diagrams.md). Quick Start y Testing conservan `State: Partial` y `Applicability: Applicable` como interpretaciones provisionales en el ejemplo inicial; las otras veinte mantienen `State` y `Applicability` pendientes de revisión semántica. Todas conservan `Decision Status: Needs Further Evaluation` y `Adoption Decision: —`. **Exploración no equivale a cumplimiento.**
 
 **Cobertura de inventario:** 28/28 Responsibilities enumeradas según el contrato.
 
-**Cobertura de exploración documental:** 19/28 Responsibilities (no equivale a cumplimiento).
+**Cobertura de exploración documental:** 22/28 Responsibilities (no equivale a cumplimiento).
 
 **Cobertura de evaluación concluida:** no demostrada; ninguna Adoption Decision se considera resuelta mediante esta matriz.
 
@@ -87,7 +87,7 @@ Revisar semánticamente las siete `Recommended` ya exploradas, en especial las i
 
 ### Fase C — Optional
 
-Revisar individualmente las nueve `Optional` pendientes desde el punto de vista de `Applicability`, evitando asignar `Not Applicable` por defecto. El carácter opcional del Template no es una conclusión automática sobre su aplicabilidad.
+Revisar individualmente las seis `Optional` pendientes desde el punto de vista de `Applicability`, evitando asignar `Not Applicable` por defecto. El carácter opcional del Template no es una conclusión automática sobre su aplicabilidad.
 
 ### Fase D — Revisión transversal
 
