@@ -73,6 +73,8 @@ To get started with an existing repository **without modifying it**:
 
 **Recommended documentation proposals:** the [Only Film Architecture and Project Status semantic review](examples/only-film-recommended-docs-semantic-review.md) completes the seven Recommended proposals alongside the README and Testing reviews. Historical audit findings remain distinguished from the pinned consumer state; reviewer approval and adoption decisions remain open.
 
+**Optional governance proposal:** the [Only Film Roadmap, Contributing, Author and License semantic review](examples/only-film-optional-governance-semantic-review.md) distinguishes README evidence from unverified contribution policies and legal permissions; hypotheses remain subject to human review, not automatic decisions.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
