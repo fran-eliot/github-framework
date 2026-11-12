@@ -111,6 +111,8 @@ Existen instrucciones y artefactos relacionados con testing. Queda por verificar
 
 **Decision Rationale:** No se ha verificado ejecución alguna de la suite; por ello no se registra una decisión de conservación o adaptación de la documentación.
 
+**Actualización de Evidence:** la [verificación estática y CI del commit fijado](only-film-pinned-quickstart-ci-verification.md) contrasta Compose, Dockerfile, perfiles y una ejecución exitosa de tres jobs PostgreSQL/H2. Esta evidencia posterior **no** convierte los States provisionales de Quick Start o Testing en resultados definitivos ni acredita un smoke Compose completo.
+
 ## 5. Assessment Conclusion (partial)
 
 **Assessment Status:** `In Progress`.
