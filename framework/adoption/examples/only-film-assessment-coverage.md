@@ -23,9 +23,9 @@ La lista se transcribe del bloque `components` de la metadata canónica de `TPL-
 
 | Responsibility | Requirement Level | Cobertura documental | Referencia / Evidence | Próxima acción |
 | --- | --- | --- | --- | --- |
-| `README-HERO` | `Required` | Not assessed | — | Not started |
-| `README-OVERVIEW` | `Required` | Not assessed | — | Not started |
-| `README-FEATURES` | `Required` | Not assessed | — | Not started |
+| `README-HERO` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-1.md) | Pending semantic review |
+| `README-OVERVIEW` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-1.md) | Pending semantic review |
+| `README-FEATURES` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-1.md) | Pending semantic review |
 | `README-TECH-STACK` | `Required` | Not assessed | — | Not started |
 | `README-QUICK-START` | `Required` | Explored — provisional | [Evidence and provisional interpretation](only-film-two-responsibilities.md) | Pending verification |
 | `README-DOCUMENTATION` | `Required` | Not assessed | — | Not started |
@@ -56,16 +56,16 @@ La lista se transcribe del bloque `components` de la metadata canónica de `TPL-
 
 | Requirement Level | Total del contrato | Explored — provisional | Not assessed |
 | --- | ---: | ---: | ---: |
-| `Required` | 8 | 1 | 7 |
+| `Required` | 8 | 4 | 4 |
 | `Recommended` | 7 | 1 | 6 |
 | `Optional` | 13 | 0 | 13 |
-| **Total** | **28** | **2** | **26** |
+| **Total** | **28** | **5** | **23** |
 
-Las dos Responsibilities exploradas son `README-QUICK-START` y `README-TESTING`, procedentes del [walkthrough de Only Film](only-film-two-responsibilities.md). Ambas conservan `State: Partial` **provisional**, `Applicability: Applicable`, `Decision Status: Needs Further Evaluation` y `Adoption Decision: —` en aquel ejemplo. No se añaden aquí nuevos resultados semánticos.
+Las cinco Responsibilities exploradas son `README-QUICK-START` y `README-TESTING`, procedentes del [walkthrough inicial](only-film-two-responsibilities.md), más `README-HERO`, `README-OVERVIEW` y `README-FEATURES`, recogidas en el [primer lote Required](only-film-required-readme-batch-1.md). Las dos primeras conservan `State: Partial` **provisional** y `Applicability: Applicable` en su ejemplo; para las otras tres ambos campos permanecen pendientes de revisión semántica. Todas mantienen `Decision Status: Needs Further Evaluation` y `Adoption Decision: —`. No se añaden decisiones definitivas.
 
 **Cobertura de inventario:** 28/28 Responsibilities enumeradas según el contrato.
 
-**Cobertura de exploración documental:** 2/28 Responsibilities (no equivale a cumplimiento).
+**Cobertura de exploración documental:** 5/28 Responsibilities (no equivale a cumplimiento).
 
 **Cobertura de evaluación concluida:** no demostrada; ninguna Adoption Decision se considera resuelta mediante esta matriz.
 
@@ -73,7 +73,7 @@ Las dos Responsibilities exploradas son `README-QUICK-START` y `README-TESTING`,
 
 ### Fase A — Required
 
-Recorrer las siete Responsibilities `Required` todavía no exploradas. Para cada una:
+Recorrer las cuatro Responsibilities `Required` todavía no exploradas. Para cada una:
 
 1. Confirmar el requirement level contra el Template fijado.
 2. Definir el ámbito de inspección y localizar fuentes del consumer en el SHA de referencia, señalando también las fuentes no accesibles.
