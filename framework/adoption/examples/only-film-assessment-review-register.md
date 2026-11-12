@@ -64,6 +64,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Revisión semántica E3 de Required:** la [propuesta para README-QUICK-START y DOC-CHANGELOG](only-film-required-semantic-review.md) evalúa evidencias y límites; Quick Start conserva `Partial` provisional, mientras que Changelog requiere discriminar `Missing` frente a `Partial` tras verificar fuentes alternativas y tags. Ninguna hipótesis está aprobada ni resuelve Adoption Decisions.
 
+**Revisión semántica E3 de identidad y funcionalidades:** la [propuesta para README-HERO, README-OVERVIEW y README-FEATURES](only-film-required-identity-semantic-review.md) contrasta las descripciones del consumer con los Components del Framework y formula hipótesis editoriales sujetas a aprobación, sin resolver Adoption Decisions.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.
