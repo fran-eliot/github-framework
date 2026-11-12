@@ -56,7 +56,7 @@ Estos asertos son evidencia precisa de **qué comportamiento espera el repositor
 
 El [`FileService.java`](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/service/FileService.java) valida el contenido mediante `ImageIO`, limita el tamaño y normaliza el formato y nombre de salida.
 
-**Diferencia importante:** el selector de `h2-regression` no contiene `*FileServiceTest`, `*ServiceTest` sí lo contiene? **Sí: `FileServiceTest` termina en `ServiceTest`**, por lo que el patrón `*ServiceTest` puede seleccionar esa clase. No debe clasificarse como excluida por no aparecer literalmente. El análisis de ejecución individual sigue pendiente de los informes Surefire.
+**Selección del workflow:** aunque no se cita `FileServiceTest` por nombre, su nombre **coincide con el patrón `*ServiceTest`** incluido en el selector de `h2-regression`. Por tanto, la clase está comprendida en la selección configurada; los informes Surefire permitirían confirmar su ejecución individual y resultado.
 
 ## 5. Contraste con el job ejecutado
 
