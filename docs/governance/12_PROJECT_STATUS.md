@@ -8,7 +8,7 @@
 | **Fase**                 | Post-release — Assisted Analysis Core                |
 | **Sprint actual**        | Ninguno activo                                              |
 | **Versión objetivo**     | Ninguna comprometida                                                    |
-| **Última actualización** | 2026-11-05                                                |
+| **Última actualización** | 2026-11-12                                                |
 
 ---
 
@@ -21,6 +21,21 @@ El Framework dispone de una arquitectura formal, estándares de repositorio, un 
 Las versiones `v0.1.0` a `v0.10.0` han sido publicadas. La última versión publicada es **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`**.
 
 Sprint 12 ha finalizado y **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`** ha sido publicada. La milestone #9 está cerrada, con las Issues #78, #79 y #80 completadas. No hay Sprint activo ni nueva versión comprometida.
+
+## Evolución post-release del Framework Validator (noviembre de 2026)
+
+Tras publicar `v0.10.0`, se ha ampliado el Framework Validator en `main` mediante incrementos independientes y todavía no incluidos en una nueva release:
+
+- CI automático en Pull Requests y en `main`, con validación y tests sobre Ubuntu y Windows.
+- Informes JSON por plataforma, resúmenes de ejecución y anotaciones limitadas para facilitar el diagnóstico.
+- CLI con validación parcial por Component (`--component`), exploración de rutas (`--list-components`) y exportación de inventario JSON con detalles opcionales (`--details`).
+- Mejoras del contrato de informes JSON para ofrecer resultados por Component, conteos, rutas relativas y alcance de selección.
+
+**Estado:** integrado en `main` y verificado por CI; no publicado en una nueva versión etiquetada. La versión publicada continúa siendo `v0.10.0`. No hay Sprint activo, milestone nueva ni versión objetivo comprometida.
+
+**Siguiente decisión:** concretar un incremento centrado en la aplicación práctica del Framework por consumidores y verificarlo antes de comprometer una release. No convertir estas mejoras del Validator en automatización semántica de Existing Repository Adoption.
+
+---
 
 ## Existing Repository Adoption
 
