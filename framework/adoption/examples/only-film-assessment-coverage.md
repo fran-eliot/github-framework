@@ -26,11 +26,11 @@ La lista se transcribe del bloque `components` de la metadata canónica de `TPL-
 | `README-HERO` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-1.md) | Pending semantic review |
 | `README-OVERVIEW` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-1.md) | Pending semantic review |
 | `README-FEATURES` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-1.md) | Pending semantic review |
-| `README-TECH-STACK` | `Required` | Not assessed | — | Not started |
+| `README-TECH-STACK` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-2.md) | Pending semantic review |
 | `README-QUICK-START` | `Required` | Explored — provisional | [Evidence and provisional interpretation](only-film-two-responsibilities.md) | Pending verification |
-| `README-DOCUMENTATION` | `Required` | Not assessed | — | Not started |
-| `README-FOOTER` | `Required` | Not assessed | — | Not started |
-| `DOC-CHANGELOG` | `Required` | Not assessed | — | Not started |
+| `README-DOCUMENTATION` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-2.md) | Pending semantic review |
+| `README-FOOTER` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-2.md) | Pending semantic review |
+| `DOC-CHANGELOG` | `Required` | Explored — provisional | [Read-only Evidence](only-film-required-readme-batch-2.md) | Pending semantic review |
 | `README-STATUS` | `Recommended` | Not assessed | — | Not started |
 | `README-ARCHITECTURE` | `Recommended` | Not assessed | — | Not started |
 | `README-REPOSITORY-STRUCTURE` | `Recommended` | Not assessed | — | Not started |
@@ -56,16 +56,16 @@ La lista se transcribe del bloque `components` de la metadata canónica de `TPL-
 
 | Requirement Level | Total del contrato | Explored — provisional | Not assessed |
 | --- | ---: | ---: | ---: |
-| `Required` | 8 | 4 | 4 |
+| `Required` | 8 | 8 | 0 |
 | `Recommended` | 7 | 1 | 6 |
 | `Optional` | 13 | 0 | 13 |
-| **Total** | **28** | **5** | **23** |
+| **Total** | **28** | **9** | **19** |
 
-Las cinco Responsibilities exploradas son `README-QUICK-START` y `README-TESTING`, procedentes del [walkthrough inicial](only-film-two-responsibilities.md), más `README-HERO`, `README-OVERVIEW` y `README-FEATURES`, recogidas en el [primer lote Required](only-film-required-readme-batch-1.md). Las dos primeras conservan `State: Partial` **provisional** y `Applicability: Applicable` en su ejemplo; para las otras tres ambos campos permanecen pendientes de revisión semántica. Todas mantienen `Decision Status: Needs Further Evaluation` y `Adoption Decision: —`. No se añaden decisiones definitivas.
+Las nueve Responsibilities exploradas documentalmente incluyen las dos del [walkthrough inicial](only-film-two-responsibilities.md), las tres del [primer lote Required](only-film-required-readme-batch-1.md) y las cuatro del [segundo lote Required](only-film-required-readme-batch-2.md). En los ejemplos de Quick Start y Testing, `State: Partial` y `Applicability: Applicable` siguen siendo provisionales. Las siete Responsibilities adicionales mantienen `State` y `Applicability` pendientes de revisión semántica. Todas conservan `Decision Status: Needs Further Evaluation` y `Adoption Decision: —`. **Exploración no equivale a cumplimiento.**
 
 **Cobertura de inventario:** 28/28 Responsibilities enumeradas según el contrato.
 
-**Cobertura de exploración documental:** 5/28 Responsibilities (no equivale a cumplimiento).
+**Cobertura de exploración documental:** 9/28 Responsibilities (no equivale a cumplimiento).
 
 **Cobertura de evaluación concluida:** no demostrada; ninguna Adoption Decision se considera resuelta mediante esta matriz.
 
@@ -73,7 +73,7 @@ Las cinco Responsibilities exploradas son `README-QUICK-START` y `README-TESTING
 
 ### Fase A — Required
 
-Recorrer las cuatro Responsibilities `Required` todavía no exploradas. Para cada una:
+Revisar semánticamente las ocho Responsibilities `Required` exploradas, con sus incertidumbres y fuentes pendientes de comprobar. Para cada una:
 
 1. Confirmar el requirement level contra el Template fijado.
 2. Definir el ámbito de inspección y localizar fuentes del consumer en el SHA de referencia, señalando también las fuentes no accesibles.
