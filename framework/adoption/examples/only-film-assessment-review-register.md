@@ -50,6 +50,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Actualización Quick Start:** la [comprobación específica de Compose](only-film-compose-evidence-gap.md) delimita qué verifica `postgres-schema` y qué queda sin acreditar del smoke `docker compose up --build`, con criterios Q1–Q8 de reproducción. La laguna sigue abierta.
 
+**Verificación E2 de DOC-CHANGELOG:** el [examen de versiones, historial Git y fuentes de releases](only-film-changelog-evidence-review.md) confirma que no hay Changelog identificable por nombre en el árbol inspeccionado, el endpoint de Releases devolvió una lista vacía y los tags **no pudieron comprobarse**. La revisión semántica de la Responsibility continúa pendiente.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.
