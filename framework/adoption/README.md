@@ -57,6 +57,8 @@ To get started with an existing repository **without modifying it**:
 
 **Negative-test evidence:** the [Only Film test assertion and CI selector review](examples/only-film-negative-security-test-evidence.md) examines pinned authorization, CSRF, upload and environment tests, distinguishing selected test classes from individually verified Surefire results.
 
+**Verified CI logs:** the [Only Film pinned Surefire and Sonar results](examples/only-film-verified-surefire-sonar-logs.md) establish 329 successful H2-regression tests, individual class totals, historical JaCoCo artifact publication and a completed Sonar analysis. They do not establish overall test coverage, Quality Gate approval or completed Adoption Decisions.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
