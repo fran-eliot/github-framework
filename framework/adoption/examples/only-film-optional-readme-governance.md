@@ -113,6 +113,8 @@ El requirement level `Optional` procede del Template. **No implica automáticame
 
 **Decision Status:** `Needs Further Evaluation`. **Adoption Decision:** `—`.
 
+**Propuesta E3 posterior:** la [revisión semántica de Roadmap, Contributing, Author y License](only-film-optional-governance-semantic-review.md) incorpora hipótesis y criterios de decisión específicos. CONTRIBUTING conserva State y Applicability sin discriminar, y LICENSE se trata como aviso informativo, no como permisos jurídicos otorgados. Ninguna propuesta está aprobada.
+
 ## 7. Resultado del lote
 
 | Comprobación | Resultado |
