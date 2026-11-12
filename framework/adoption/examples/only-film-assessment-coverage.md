@@ -73,6 +73,8 @@ Las veintiocho Responsibilities cuentan con una exploración documental vinculad
 
 **Propuesta E3 para las Required prioritarias:** [Quick Start y Changelog](only-film-required-semantic-review.md) documenta interpretaciones e incertidumbres pendientes de aprobación. No modifica la etiqueta de cobertura `Explored — provisional` ni convierte las propuestas en `State` formal.
 
+**Propuesta E3 para Hero, Overview y Features:** la [revisión semántica de las tres Responsibilities Required](only-film-required-identity-semantic-review.md) presenta criterios, evidencias y clasificaciones pendientes de reviewer. Su existencia no cambia las 28 filas de cobertura documental a evaluaciones aprobadas.
+
 ## 4. Protocolo para continuar el Assessment
 
 ### Fase A — Required
