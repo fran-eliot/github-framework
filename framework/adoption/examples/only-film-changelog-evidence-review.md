@@ -1,103 +1,104 @@
 # Only Film — Pinned Changelog and Release Evidence Review
 
-## 1. Contexto y objetivo
+## 1. Context and objective
 
-Esta revisión **E2 de calidad de evidencia** se centra en `DOC-CHANGELOG`, Responsibility `Required` de `TPL-BACKEND` 0.1.0. No supone una nueva clasificación semántica ni una decisión de adopción.
+This **E2 evidence-quality review** concerns `DOC-CHANGELOG`, a `Required` Responsibility of `TPL-BACKEND` 0.1.0. It does not constitute an approved semantic classification or an Adoption Decision.
 
-| Campo | Valor |
+| Field | Value |
 | --- | --- |
 | Consumer | [fran-eliot/only_film](https://github.com/fran-eliot/only_film) |
 | Consumer Reference | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | [TPL-BACKEND 0.1.0](../../templates/repositories/backend/metadata.yml) |
 | Responsibility | `DOC-CHANGELOG` (`Required`) |
-| Método | Inspección read-only del árbol Git, README, POM, commits accesibles y GitHub Releases |
+| Method | Read-only inspection of the Git tree, README, POM, accessible commits, and GitHub Releases |
 | Assessment Status | `In Progress` |
-| Mutation | `NONE` |
+| Consumer Mutation | `NONE` |
 
-**Pregunta:** ¿Existe una fuente de cambios *publicados entre versiones* que desempeñe la función documental de `DOC-CHANGELOG`, aunque no se llame `CHANGELOG.md`?
+**Question:** Is there a source documenting changes *published between versions* that fulfills the `DOC-CHANGELOG` Responsibility, even if it is not named `CHANGELOG.md`?
 
-El [Component DOC-CHANGELOG](../../components/documentation/changelog/README.md) diferencia expresamente un Changelog del historial exhaustivo de Git, PRs, Issues, release notes y estado del proyecto. No puede resolverse esta Responsibility simplemente buscando un archivo canónico.
+The [DOC-CHANGELOG Component](../../components/documentation/changelog/README.md) distinguishes a changelog from exhaustive Git history, pull requests, issues, release notes, and project status. A canonical filename is neither mandatory nor sufficient evidence of Responsibility satisfaction.
 
-## 2. Comprobaciones realizadas y fuentes
+## 2. Checks performed and sources
 
-| Comprobación | Resultado observado | Alcance y límites |
+| Check | Observation | Scope and limitations |
 | --- | --- | --- |
-| Árbol Git del SHA fijado | No se identificaron rutas cuyo nombre incluyese `changelog`, `changes`, `history` o `release` | Evidencia de **nombres de rutas** en el commit, no evaluación exhaustiva de todo el contenido |
-| README del SHA | Describe evolución técnica, contexto académico y futuras líneas de trabajo; remite al historial Git y a PR para atribución de cambios | No muestra una cronología de cambios **publicados entre versiones** |
-| POM del SHA | Versión del proyecto `0.0.1-SNAPSHOT`; parent Spring Boot `4.0.5` | Una versión de artefacto de desarrollo y la versión de una dependencia **no son un historial de releases** |
-| Auditoría funcional | Existe `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md` con roadmap y revisión de cambios/hallazgos históricos | Documenta evolución y propuestas, pero no se ha acreditado su condición de fuente oficial de cambios publicados |
-| Historial Git hasta el SHA | Commits de features, tests y PRs fusionadas, incluidos #493, #491 y #489, identificados en los 30 commits recientes consultados | Evidencia de actividad de desarrollo; no demuestra por sí sola publicación de versiones |
-| GitHub Releases | La consulta al endpoint de releases del repositorio devolvió **lista vacía en el momento de la revisión** | Consulta del estado del endpoint; no demuestra por sí sola que jamás existieron releases ni prueba el estado histórico exacto de una referencia Git |
-| Tags | **No verificados:** la consulta de tags fue rechazada por las restricciones del acceso disponible | **No concluir que no existen tags**; pendiente comprobación independiente |
+| Git tree at the pinned SHA | No paths were identified with names containing `changelog`, `changes`, `history`, or `release` | Filename inspection, not a complete semantic audit of document contents |
+| README at the pinned SHA | Explains technical evolution, academic origins, and future work; points to Git history and PRs for change attribution | No version-by-version list of published changes in the inspected sections |
+| POM at the pinned SHA | Project version `0.0.1-SNAPSHOT`; Spring Boot parent `4.0.5` | Neither a development artifact version nor a dependency version establishes a release history |
+| Functional audit | `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md` contains roadmap information and historical findings | Not shown to be the official record of published changes |
+| Git history up to the SHA | Feature and test commits and merged PRs, including #493, #491, and #489, appeared among 30 recent commits inspected | Development activity does not prove version publication |
+| GitHub Releases | An earlier review obtained an empty list from the releases endpoint | This is a time-dependent endpoint result, not proof that no releases ever existed |
+| Tags | **Not verified:** the prior tag query was rejected by available access restrictions | Do **not** conclude that tags are absent |
 
-**Fuentes fijadas al commit**
+**Sources pinned to the consumer commit:**
 
 - [README.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
 - [pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
-- [Auditoría funcional y roadmap](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
-- [Árbol de Only Film en el SHA](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
-- [Historial hasta el commit evaluado](https://github.com/fran-eliot/only_film/commits/28d75a50e0a178954dd46acc23300d9dd327843c/)
-- [Página de releases del repositorio](https://github.com/fran-eliot/only_film/releases) — recurso **mutable**, consultado en esta revisión; no es evidencia versionada en el SHA
+- [Functional audit and roadmap](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
+- [Repository tree at the pinned SHA](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
+- [Git history up to the pinned SHA](https://github.com/fran-eliot/only_film/commits/28d75a50e0a178954dd46acc23300d9dd327843c/)
+- [Current GitHub Releases page](https://github.com/fran-eliot/only_film/releases) — a **mutable** resource, not evidence pinned to the consumer SHA
 
-## 3. Interpretación acotada
+## 3. Bounded interpretation
 
-Los archivos versionados y el historial Git **sí permiten rastrear cambios individuales**. Sin embargo, en las fuentes inspeccionadas **no se ha identificado** una secuencia consolidada que comunique a usuarios y mantenedores qué cambios relevantes fueron publicados por versión.
+The versioned files, Git history, and PRs **do** enable tracing individual development changes. However, the inspected sources have **not identified** a consolidated, user-facing record explaining which relevant changes were published in each version.
 
-Esto **no equivale** a declarar `State: Missing`, porque siguen abiertas al menos dos cuestiones:
+This does **not**, by itself, establish an approved `State: Missing`, because two questions remain:
 
-1. **Fuentes alternativas:** podrían existir tags, notas de release externas, documentación equivalente o una política de versionado no incluida en los artefactos inspeccionados.
-2. **Adecuación y aplicabilidad:** el reviewer debe definir el contexto real del consumidor y valorar si un mecanismo de registro de cambios es necesario y qué evidencia satisface la Responsibility `Required` del Template.
+1. **Alternative sources:** tags, external release notes, equivalent documentation, or a versioning policy might exist outside the reviewed material.
+2. **Suitability and applicability:** the reviewer must establish the consumer's audience and the level of change communication needed for a `Required` Responsibility.
 
-No sería válido reconstruir una lista de releases a partir de los commits y presentarla como si esos cambios se hubieran publicado formalmente. Tampoco procede recomendar automáticamente añadir `CHANGELOG.md` antes de terminar la evaluación.
+Do not reconstruct release notes from commits and misrepresent them as officially published versions. Likewise, do not automatically prescribe a new `CHANGELOG.md` before examining existing equivalents.
 
-## 4. Verificaciones necesarias para una revisión semántica
+## 4. Checks required for semantic review
 
-| Gate | Acción de revisión | Criterio observable |
+| Gate | Review action | Observable acceptance criterion |
 | --- | --- | --- |
-| C1 — Tags | Consultar tags alcanzables desde el commit fijado, incluyendo fechas y destinos de referencia | Registro verificable de existencia/ausencia **con alcance limitado al snapshot** |
-| C2 — Releases | Reconfirmar publicaciones y notas de release, distinguiendo consulta actual de historia al SHA | Evidencia de fechas, versiones, contenido y vínculo al commit cuando existan |
-| C3 — Fuente equivalente | Localizar documentación o registros distintos de Git history / PR list | Una fuente legible que resuma cambios relevantes publicados y sus versiones, o constancia de que aún no se ha identificado |
-| C4 — Política de versiones | Revisar si `0.0.1-SNAPSHOT` representa solo desarrollo o si hay un procedimiento de publicación formal | Conclusión explícita sustentada en evidencias, sin deducir releases del POM |
-| C5 — Contexto de uso | Determinar destinatarios y necesidades de comunicación de cambios | Justificación documentada de Applicability y expectativas de la Responsibility |
-| C6 — Evaluación individual | Registrar en el Assessment `State`, `Applicability`, `Evidence`, `Evaluation Rationale`, `Uncertainty`, `Decision Status` | Reviewer identificado y razonamiento trazable; decisión solo cuando corresponda |
+| C1 — Tags | Inspect tags reachable from the pinned commit, including reference destinations and dates | Verifiable record with explicit historical/snapshot scope |
+| C2 — Releases | Recheck publications and release notes, separating current API state from history at the pinned SHA | Versions, dates, contents, and commit association where available |
+| C3 — Equivalent source | Look for curated change records beyond raw Git history and PR listings | Evidence of a source recording relevant versioned changes, or an explicit scoped finding that none was identified |
+| C4 — Version policy | Examine whether `0.0.1-SNAPSHOT` represents development only or whether a formal publication process exists | Evidence-backed interpretation, with no inferred releases |
+| C5 — Consumer context | Identify users, maintainers, and change-communication requirements | Rationale for Applicability and the Responsibility's expected scope |
+| C6 — Individual assessment | Record `State`, `Applicability`, `Evidence`, `Evaluation Rationale`, `Uncertainty`, and `Decision Status` in the Assessment | Named reviewer and traceable reasoning; Adoption Decision only when justified |
 
-Si se obtienen nuevos datos sobre tags, releases o fuentes equivalentes, se deben registrar con **fecha de consulta y referencia comprobable** antes de evaluar la Responsibility.
+Record the verification date and reference before using any newly discovered tags, releases, or equivalent documents in the assessment.
 
-**Revisión semántica posterior:** la [propuesta E3 para Required Quick Start y Changelog](only-film-required-semantic-review.md) conserva `DOC-CHANGELOG` sin `State` formal aprobado y explica por qué las hipótesis `Missing` y `Partial` exigen descartar o identificar fuentes equivalentes; los tags continúan sin verificarse.
+The [provisional E3 review](only-film-required-semantic-review.md) now prefers `Missing` as an **unapproved hypothesis**, while preserving the open tag check.
 
-## 5. Resultado para el Assessment
+## 5. Assessment implications
 
-| Campo | Resultado |
+| Field | Result |
 | --- | --- |
-| `DOC-CHANGELOG` — requirement level | `Required`, confirmado en TPL-BACKEND 0.1.0 |
-| Archivo canónico de Changelog | No identificado en las rutas del árbol consultado |
-| Historia de cambios técnicos | Existe en commits y PRs accesibles |
-| Cambios publicados por versión | No acreditados en las fuentes inspeccionadas |
-| GitHub Releases | Lista vacía al consultar el endpoint |
-| Tags | Sin comprobar |
-| State y Applicability | Pendientes de evaluación semántica |
+| Requirement Level | `Required` under TPL-BACKEND 0.1.0 |
+| Canonical Changelog file | Not identified among inspected paths |
+| Technical change history | Available through accessible commits and PRs |
+| Version-published changes | Not established in inspected sources |
+| GitHub Releases | Earlier endpoint query returned an empty list |
+| Tags | Not verified |
+| Proposed State | `Missing` — **unapproved E3 hypothesis** |
+| Proposed Applicability | `Applicable` — pending human review |
 | Decision Status | `Needs Further Evaluation` |
 | Adoption Decision | `—` |
 | Assessment Status | `In Progress` |
 
-**Conclusión:** esta verificación reduce y delimita la incertidumbre sobre las fuentes, pero **no resuelve `DOC-CHANGELOG`**, no autoriza modificar Only Film y no convierte el Assessment en `Complete`.
+**Outcome:** the evidence narrows the alternatives but does not close the Responsibility, authorize consumer changes, or make the overall Assessment `Complete`.
 
-## 6. Revisión dirigida de DOC-CHANGELOG — 2026-11-12
+## 6. Targeted DOC-CHANGELOG review — 2026-11-12
 
-Esta actualización contrasta de nuevo las fuentes **sin cambiar la referencia del consumer** (`28d75a50e0a178954dd46acc23300d9dd327843c`). Se conserva la separación entre hechos observados, límites de la consulta y juicio semántico.
+This update revisits the sources **without changing the pinned consumer reference** (`28d75a50e0a178954dd46acc23300d9dd327843c`). Observations, access limitations, and semantic judgment remain separate.
 
-| Fuente / gate | Observación y límite |
+| Source / gate | Observation and limitation |
 | --- | --- |
-| `CHANGELOG.md` en el SHA | La consulta directa de la ruta devolvió `404 Not Found`; solo acredita ausencia de **esa ruta exacta**. |
-| README fijado | La sección «Origen, créditos y evolución» señala commits y PRs para atribuir cambios; no incluye una relación de cambios **agrupados por versiones publicadas**. |
-| GitHub Releases | La revisión E2 anterior registró una respuesta vacía del endpoint. Una consulta independiente el 2026-11-12 no pudo completarse con las herramientas disponibles; **no se eleva** esa observación anterior a comprobación actual. |
-| Tags (C1) | La consulta de tags sigue **sin verificarse**: los intentos de acceso público y de consulta Git remota no devolvieron un inventario utilizable. **No afirmar que los tags no existen**. |
-| Historial y `0.0.1-SNAPSHOT` | Identifican cambios de desarrollo y versión de artefacto; no sustituyen un registro curado de cambios ni prueban releases publicadas. |
+| `CHANGELOG.md` at the pinned SHA | Direct file lookup returned `404 Not Found`; this establishes absence of **that exact path only** |
+| Pinned README | The "Origin, credits and evolution" section refers to commits and PRs for attribution, but does not list **published changes grouped by version** |
+| GitHub Releases | The earlier E2 review recorded an empty endpoint response. An independent recheck on 2026-11-12 could not be completed with available tools; the earlier observation is **not** presented as a fresh result |
+| Tags (C1) | **Still unverified:** public-access and remote Git attempts did not return a usable tag inventory. **Do not claim that no tags exist** |
+| Git history and `0.0.1-SNAPSHOT` | Show development activity and an artifact version; neither replaces a curated change record nor proves published releases |
 
-### Propuesta semántica acotada
+### Bounded semantic proposal
 
-- **Proposed State: `Missing`** (**hipótesis E3**, no `State` aprobado). No se identificó en las fuentes documentales examinadas un changelog orientado a versiones o una implementación distribuida que cumpla esa función. La alternativa `Partial` requeriría localizar y valorar una fuente concreta con información parcial de cambios por versión, no solo una lista de commits o PRs.
-- **Proposed Applicability: `Applicable`** (pendiente de revisión humana), por la Responsibility `Required` del Template y la necesidad de explicar evolución del proyecto; esto no equivale a imponer una cadencia de releases.
-- **Decision Status: `Needs Further Evaluation`**; **Adoption Decision: `—`**. No recomendar automáticamente crear `CHANGELOG.md` antes de decidir si ya hay fuente equivalente y qué alcance necesita el consumer.
+- **Proposed State: `Missing`** (**E3 hypothesis**, not an approved `State`). No version-oriented changelog or equivalent distributed implementation was identified in the sources inspected. `Partial` would require an actual source recording at least some versioned changes, not merely a commit or PR list.
+- **Proposed Applicability: `Applicable`** (human review pending), given the Template's `Required` Responsibility and the benefit of explaining the project's evolution. This does not mandate a release schedule.
+- **Decision Status: `Needs Further Evaluation`**; **Adoption Decision: `—`**. Do not prescribe creating `CHANGELOG.md` until equivalent sources and the consumer's needs have been reviewed.
 
-**Gate final para aprobar el State:** el reviewer debe comprobar [tags](https://github.com/fran-eliot/only_film/tags), [releases](https://github.com/fran-eliot/only_film/releases) y cualquier fuente alternativa versionada. Registrar fecha, referencia y resultado; si aparece una fuente de cambios por versión, reabrir la comparación `Missing` / `Partial` / `Satisfied`. Si no aparece, `Missing` resulta la propuesta mejor sustentada. Esta tarea es una **revisión de la responsabilidad**, no una modificación de Only Film.
+**Final approval gate:** the reviewer must inspect [tags](https://github.com/fran-eliot/only_film/tags), [releases](https://github.com/fran-eliot/only_film/releases), and any alternative versioned-change source. Record the date, reference, and findings. If a substantive source exists, reconsider `Missing` against `Partial` and `Satisfied`. Otherwise, `Missing` remains the best-supported proposal. This is a **Responsibility review**, not a modification to Only Film.
