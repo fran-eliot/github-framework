@@ -117,6 +117,8 @@ Se comparan hechos observables con las responsabilidades definidas por [Tech Sta
 
 **Evidence follow-up — DOC-CHANGELOG:** el [examen específico de Changelog y versiones](only-film-changelog-evidence-review.md) contrasta README, POM, árbol, commits y GitHub Releases del consumidor, señalando expresamente que la consulta de tags no se pudo completar. No altera el `State` ni la `Adoption Decision` pendientes.
 
+**Revisión semántica posterior:** la [propuesta E3 de Tech Stack, Documentation y Footer](only-film-required-final-semantic-review.md) aporta interpretaciones individuales, evidencias, incertidumbres y criterios de reviewer. Junto con [Quick Start y Changelog](only-film-required-semantic-review.md), existen propuestas para las ocho Required, pero ninguna está aprobada y Changelog no dispone aún de State formal.
+
 ## 7. Conclusión y siguientes verificaciones
 
 | Verificación | Resultado |
