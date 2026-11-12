@@ -39,7 +39,7 @@ To get started with an existing repository **without modifying it**:
 
 **What's next?** Only a reviewed, resolved Adoption Decision may proceed to [Application](application/README.md), which refreshes Evidence and requires a plan and verification before isolated changes. [Integration](integration/README.md) subsequently requires a verified candidate and stable-base review. [Assisted Analysis](assisted-analysis/README.md) optionally supports read-only Evidence collection, not automated decisions.
 
-**Worked example:** see the [first Assessment example](examples/first-assessment-example.md), which uses Evidence from a real consumer and remains `In Progress`. It covers one Responsibility, not a complete Assessment.
+**Worked examples:** the [first Assessment example](examples/first-assessment-example.md) covers one Responsibility in SeniorMeet. The [Only Film two-Responsibility walkthrough](examples/only-film-two-responsibilities.md) demonstrates commit-pinned Evidence for Quick Start and Testing in a second consumer. Both remain `In Progress`; neither is a complete Assessment or a validated Adoption Decision.
 
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
