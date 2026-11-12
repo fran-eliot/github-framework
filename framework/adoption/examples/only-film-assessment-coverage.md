@@ -81,6 +81,8 @@ Las veintiocho Responsibilities cuentan con una exploración documental vinculad
 
 **Siete Recommended con propuesta E3:** la [revisión de Architecture y Project Status](only-film-recommended-docs-semantic-review.md) completa las fichas propuestas para las siete Responsibilities Recommended. No se ha aprobado ninguna evaluación ni decisión; la cobertura de 28/28 sigue siendo documental.
 
+**Cuatro propuestas E3 Optional adicionales:** la [revisión de Roadmap, Contributing, Author y License](only-film-optional-governance-semantic-review.md), unida a la propuesta de DOC-SECURITY, deja **5/13 Optional** con interpretación preliminar; 28/28 sigue significando exclusivamente exploración documental.
+
 ## 4. Protocolo para continuar el Assessment
 
 ### Fase A — Required
