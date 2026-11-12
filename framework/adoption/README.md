@@ -43,7 +43,7 @@ To get started with an existing repository **without modifying it**:
 
 **Repeatability replay:** the [cross-consumer Assessment comparison](examples/cross-consumer-repeatability-replay.md) applies the same `README-QUICK-START` review structure to both examples, with explicit documentary acceptance checks and outstanding operational verifications. It does not certify either consumer or resolve Adoption Decisions.
 
-**Assessment coverage:** the [Only Film TPL-BACKEND coverage matrix](examples/only-film-assessment-coverage.md) inventories all 28 Template Responsibilities and separates five provisional documentary explorations from 23 not-yet-assessed items. The [first required-README batch](examples/only-film-required-readme-batch-1.md) documents observed facts for Hero, Overview, and Features without resolving semantic decisions. These are planning and review aids, not a complete Assessment.
+**Assessment coverage:** the [Only Film TPL-BACKEND coverage matrix](examples/only-film-assessment-coverage.md) inventories all 28 Template Responsibilities: nine have been explored documentally, including all eight Required, while 19 remain unexplored. The [first required-README batch](examples/only-film-required-readme-batch-1.md) covers Hero, Overview and Features; the [second required batch](examples/only-film-required-readme-batch-2.md) covers Tech Stack, Documentation, Footer and Changelog. All interpretations remain provisional or pending human review; documentary coverage is not a completed Assessment or conformance certification.
 
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
