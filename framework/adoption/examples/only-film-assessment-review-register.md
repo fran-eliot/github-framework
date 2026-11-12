@@ -10,7 +10,7 @@ Este documento consolida los siguientes pasos de revisión del Assessment de `fr
 | Consumer Reference | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | [TPL-BACKEND 0.1.0](../../templates/repositories/backend/metadata.yml) |
 | Exploration Coverage | 28/28 Responsibilities |
-| Semantic Review Completed | **No acreditada** |
+| Semantic Review Completed | **Sin aprobación humana acreditada; 28/28 propuestas E3 disponibles** |
 | Operational Verification | **No ejecutada en este Assessment** |
 | Adoption Decisions | **Ninguna resuelta** |
 | Assessment Status | `In Progress` |
@@ -77,6 +77,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 **Propuesta E3 Optional de presentación:** la [revisión semántica de Demo, Highlights y Diagrams](only-film-optional-showcase-semantic-review.md) establece hechos, límites y gates de reviewer, sin equiparar capturas con una demo ejecutada ni forzar diagramas para el consumer.
 
 **Cobertura E3 propuesta 28/28:** la [revisión de las cinco Optional técnicas restantes](only-film-optional-final-semantic-review.md) completa las propuestas para todas las Responsibilities de TPL-BACKEND. No equivale a States aprobados ni a Assessment Complete; se prioriza ahora validar las propuestas y resolver incertidumbres mediante reviewer.
+
+**Registro consolidado para el reviewer:** la [matriz de las 28 propuestas semánticas](only-film-consolidated-review-matrix.md) reúne State/Applicability provisionales, fuentes E3 y gates ordenados por necesidad de comprobación. Es el punto de entrada para validar hipótesis, no una aprobación o decisión de adopción.
 
 ## 4. Bloqueos prioritarios de evidencia
 
