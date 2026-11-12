@@ -49,6 +49,8 @@ To get started with an existing repository **without modifying it**:
 
 **Pinned evidence verification:** the [Only Film Quick Start and CI verification](examples/only-film-pinned-quickstart-ci-verification.md) checks Docker/Compose/Spring configuration against the same consumer SHA and identifies a successful three-job GitHub Actions run. It is scoped execution evidence, not a reproducible Compose smoke test, full test coverage, or a resolved Adoption Decision.
 
+**Compose execution boundary:** the [Only Film pinned Compose smoke evidence gap](examples/only-film-compose-evidence-gap.md) confirms three successful H2/PostgreSQL checks on the target commit but no directly associated Compose smoke check in the inspected check-runs; it defines reproducible acceptance gates without claiming the gap is closed.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
