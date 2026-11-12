@@ -71,6 +71,8 @@ Las veintiocho Responsibilities cuentan con una exploración documental vinculad
 
 **Consolidación de revisión:** el [registro de lagunas de evidencia y revisión humana](only-film-assessment-review-register.md) prioriza las verificaciones pendientes y define las condiciones necesarias para avanzar desde la exploración documental hacia una evaluación semántica. No añade decisiones ni da por concluido el Assessment.
 
+**Propuesta E3 para las Required prioritarias:** [Quick Start y Changelog](only-film-required-semantic-review.md) documenta interpretaciones e incertidumbres pendientes de aprobación. No modifica la etiqueta de cobertura `Explored — provisional` ni convierte las propuestas en `State` formal.
+
 ## 4. Protocolo para continuar el Assessment
 
 ### Fase A — Required
@@ -100,7 +102,7 @@ Comprobar cobertura, trazabilidad a referencias inmutables, vigencia de evidenci
 | Check | Condición | Situación actual |
 | --- | --- | --- |
 | Contract inventory | Todas las Responsibilities enumeradas con requirement levels correctos | **Completado documentalmente** |
-| Evidence coverage | Fuentes examinadas y trazadas por cada Responsibility requerida para el Assessment | **Pendiente** — solo dos exploradas |
+| Evidence coverage | Fuentes examinadas y trazadas por cada Responsibility requerida para el Assessment | **28/28 exploradas documentalmente**; revisión E2/E3 y suficiencia pendientes |
 | Semantic review | Evaluación explícita por Responsibility, con incertidumbres y justificaciones | **Pendiente** |
 | Operational verification | Procedimientos de arranque y pruebas reproducidos cuando sea necesario | **No realizado** |
 | Adoption Decisions | Resolución humana, o decisión expresamente pendiente si corresponde | **Sin decisiones resueltas en los ejemplos** |
