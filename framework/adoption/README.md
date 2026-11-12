@@ -51,6 +51,8 @@ To get started with an existing repository **without modifying it**:
 
 **Compose execution boundary:** the [Only Film pinned Compose smoke evidence gap](examples/only-film-compose-evidence-gap.md) confirms three successful H2/PostgreSQL checks on the target commit but no directly associated Compose smoke check in the inspected check-runs; it defines reproducible acceptance gates without claiming the gap is closed.
 
+**Changelog evidence review:** the [Only Film pinned changelog and release evidence review](examples/only-film-changelog-evidence-review.md) checks canonical file names, project version, commit history and the GitHub Releases endpoint while clearly marking tags as unverified. It documents an unresolved evidence gap, not a conformance decision.
+
 This walkthrough is guidance only. It does not generate repositories, execute assessments, or replace human review.
 ---
 
