@@ -2,7 +2,19 @@
 
 ## [Unreleased]
 
-No unreleased changes recorded.
+### Added
+
+* Framework Validator automation for pull requests and pushes to `main`, with Python 3.11 test and Component validation jobs on Ubuntu and Windows.
+* Downloadable per-platform JSON reports, GitHub Actions job summaries, bounded failed-Component diagnostics and file-linked error annotations.
+* Targeted Component validation through repeatable `--component FAMILY/NAME` selection.
+* Read-only Component discovery via `--list-components`, including family filters, JSON output, and optional basic metadata inventory with `--details`.
+
+### Changed
+
+* Expanded Framework Validator JSON reporting with per-Component errors, aggregate counts, portable relative paths, and explicit filtered validation scope.
+* Improved CLI reporting and file output for local developer workflows while preserving whole-library validation as the default.
+
+These changes are integrated after v0.10.0 and have not yet been assigned to a new release.
 
 ---
 

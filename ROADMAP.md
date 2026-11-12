@@ -740,6 +740,25 @@ La versión `v0.10.0 — Existing Repository Adoption Assisted Analysis Core` se
 
 ---
 
+# Post-release — Framework Validator CLI y CI (sin versión comprometida)
+
+**Estado:** ✅ Integrado en `main`, pendiente de asignación a una futura release
+
+Tras la publicación de `v0.10.0` se han incorporado mejoras de Framework Automation independientes del alcance del Assisted Analysis Core publicado:
+
+- Validación continua del repositorio en Pull Requests y cambios de `main`, con tests en Ubuntu y Windows.
+- Informes JSON descargables por plataforma, resumen de resultados y anotaciones de errores en GitHub Actions.
+- Selección de Components concretos mediante `--component`.
+- Listado de rutas mediante `--list-components`, con salida de texto o JSON y catálogo de metadata básica opcional (`--details`).
+
+Estas capacidades amplían el Framework Validator del `v0.6.0`, pero **no forman parte de la release `v0.10.0`**. No se ha abierto un nuevo Sprint, milestone ni versión objetivo.
+
+## Próxima decisión de planificación
+
+Antes de comprometer una nueva versión, priorizar un incremento de funcionalidad observable para consumidores del Framework (por ejemplo, uso efectivo de Components o tooling de adopción con alcance acotado) y definir sus criterios de aceptación y verificación. El trabajo de CI debe continuar orientado a sostener ese objetivo.
+
+---
+
 # v1.0.0 — Stable Release
 
 **Estado:** ⚪ Planned

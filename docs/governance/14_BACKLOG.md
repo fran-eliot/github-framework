@@ -6,7 +6,7 @@
 | **Versión publicada**    | v0.10.0           |
 | **Versión objetivo**     | Ninguna comprometida           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-11-05       |
+| **Última actualización** | 2026-11-12       |
 
 ---
 
@@ -17,6 +17,27 @@ Este documento recoge el Product Backlog del proyecto.
 Su finalidad es priorizar el trabajo pendiente y servir como referencia para la planificación de futuros Sprints.
 
 El backlog está vivo y evolucionará conforme madure el Framework.
+
+---
+
+## Incrementos post-release integrados — Framework Validator
+
+Los trabajos posteriores a `v0.10.0` que ya están fusionados en `main` se registran como **Unreleased**, no como una nueva versión:
+
+| Issues | Resultado integrado | Estado |
+| --- | --- | --- |
+| #135, #137, #139, #141, #143, #145, #147 | CI de Validator, informes JSON, resúmenes, diagnóstico, matriz Ubuntu/Windows y anotaciones | Done — Unreleased |
+| #149, #151, #153, #155 | Validación por Component, listado de rutas, catálogo JSON y detalles de metadata | Done — Unreleased |
+
+Se mantiene `v0.10.0` como **última versión publicada** y no existe un Sprint activo ni una versión objetivo comprometida.
+
+### Priorización siguiente (propuesta, no comprometida)
+
+1. Definir un incremento de uso real de los Components o una capacidad práctica para consumidores, con criterios observables.
+2. Verificar el incremento en uno o más repositorios consumidores sin modificar su contenido automáticamente.
+3. Revisar estabilidad y documentación para decidir el próximo alcance de release.
+
+No se considera incluida ni autorizada la evaluación semántica automática de Existing Repository Adoption.
 
 ---
 
