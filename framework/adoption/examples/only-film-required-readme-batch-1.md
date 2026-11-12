@@ -94,6 +94,8 @@ Se utilizan las descripciones de los Components [Hero](../../components/readme/h
 
 **Adoption Decision:** `—`.
 
+**Revisión semántica posterior:** la [propuesta E3 de Hero, Overview y Features](only-film-required-identity-semantic-review.md) incorpora States y Applicability provisionales, justificaciones por Responsibility y gates de revisión. Esta exploración original permanece como evidencia histórica y no acredita aprobación humana.
+
 ## 6. Resultado del lote y próximos pasos
 
 | Check | Resultado |
