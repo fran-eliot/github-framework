@@ -22,7 +22,7 @@ La obligatoriedad deriva del Template; **no** impone automáticamente `State: Mi
 | Responsibility | Requirement Level | Proposed State | Proposed Applicability | Decision Status | Adoption Decision |
 | --- | --- | --- | --- | --- | --- |
 | `README-QUICK-START` | `Required` | `Partial` — provisional | `Applicable` — provisional | `Needs Further Evaluation` | `—` |
-| `DOC-CHANGELOG` | `Required` | **`Missing` o `Partial` — hipótesis alternativas aún no discriminadas** | `Applicable` — provisional | `Needs Further Evaluation` | `—` |
+| `DOC-CHANGELOG` | `Required` | **`Missing` — hipótesis E3 preferida tras revisión dirigida, pendiente de tags y aprobación** | `Applicable` — provisional | `Needs Further Evaluation` | `—` |
 
 Para `DOC-CHANGELOG`, no se asigna un `State` definitivo ni se afirma una fuente equivalente no identificada. El reviewer debe completar la investigación de tags y publicaciones y determinar qué fuentes cumplen realmente la Responsibility antes de elegir entre las hipótesis. La ausencia de datos no debe ocultarse con un `Partial` arbitrario.
 
@@ -73,7 +73,7 @@ Existe un procedimiento de arranque identificable, con versiones, variables, per
 
 **Requirement Level:** `Required`.
 
-**Proposed State:** **sin seleccionar** entre `Missing` y `Partial`, ambas hipótesis de trabajo pendientes de comprobación de fuentes equivalentes; no representa un `State` formal aprobado.
+**Proposed State:** **`Missing` (propuesto, no aprobado)**, al no identificarse una fuente de cambios publicados por versión. La existencia y contenido de tags siguen sin acreditarse; `Partial` o `Satisfied` requerirían evidencia de una fuente equivalente.
 
 **Proposed Applicability:** `Applicable` (provisional; el Template lo declara Required, sin asumir que todas las políticas de publicación del consumer estén definidas).
 
@@ -85,7 +85,7 @@ Existe un procedimiento de arranque identificable, con versiones, variables, per
 - [README.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md) describe la evolución del proyecto y remite al historial Git/PRs para atribución de cambios. No expone una lista de cambios publicados por versión en las secciones examinadas.
 - [pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml) declara `0.0.1-SNAPSHOT`: esto no es por sí solo una prueba de publicaciones.
 - El historial alcanzable desde el SHA registra cambios y PRs, incluidos #489, #491 y #493; historial granular de commits **no equivale** automáticamente a notas de release o changelog.
-- La consulta al endpoint de GitHub Releases devolvió lista vacía **en el momento de la revisión**; no demuestra la inexistencia histórica de releases. La consulta de **tags no pudo completarse**, de modo que su ausencia **no está acreditada**.
+- La consulta al endpoint de GitHub Releases devolvió lista vacía **en el momento de la revisión**; no demuestra la inexistencia histórica de releases. La consulta de **tags no pudo completarse**, de modo que su ausencia **no está acreditada**. Una nueva revisión dirigida el 2026-11-12 confirma la ausencia de la ruta exacta `CHANGELOG.md` en el SHA y mantiene el inventario de tags como **no verificado**; véase la sección 6 de la [revisión E2 actualizada](only-film-changelog-evidence-review.md).
 - [F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md) documenta hallazgos y planes, no una fuente de cambios publicados confirmada.
 
 ### Evidence
@@ -100,7 +100,7 @@ Existe un procedimiento de arranque identificable, con versiones, variables, per
 
 No se ha encontrado en las fuentes inspeccionadas un registro de cambios **orientado a versiones publicadas** que desempeñe claramente `DOC-CHANGELOG`. No obstante, una conclusión de `Missing` requeriría descartar fuentes alternativas relevantes o documentar de manera explícita los límites de la investigación. Tampoco puede atribuirse `Partial` automáticamente a un historial Git/PRs que no se haya validado como fuente equivalente.
 
-Por ello el trabajo semántico útil **es acotar dos hipótesis y definir qué evidencia permite decidir**, en vez de inventar un estado final. Una vez comprobadas las fuentes, el reviewer elegirá un valor admitido por el Assessment Template (`Satisfied`, `Partial` o `Missing`) y lo justificará.
+Con la revisión dirigida, **`Missing` es la hipótesis preferida** por ausencia de un changelog identificado, pero **no constituye un State formal aprobado**: quedan por comprobar tags y fuentes equivalentes. Una fuente sustantiva de cambios publicados podría justificar `Partial` o `Satisfied`. Una vez comprobadas las fuentes, el reviewer elegirá un valor admitido por el Assessment Template (`Satisfied`, `Partial` o `Missing`) y lo justificará.
 
 ### Uncertainty
 
@@ -130,6 +130,6 @@ Por ello el trabajo semántico útil **es acotar dos hipótesis y definir qué e
 
 ## 6. Conclusión
 
-Se han preparado propuestas semánticas para dos Responsibilities `Required` de Only Film con evidencia versionada y límites explícitos. `README-QUICK-START` mantiene una hipótesis `Partial` y `DOC-CHANGELOG` exige discriminar `Missing` frente a `Partial` antes de registrar un `State` formal.
+Se han preparado propuestas semánticas para dos Responsibilities `Required` de Only Film con evidencia versionada y límites explícitos. `README-QUICK-START` mantiene una hipótesis `Partial` y `DOC-CHANGELOG` dispone de una hipótesis preferida `Missing`, condicionada a revisión de tags y fuentes equivalentes, antes de registrar un `State` formal.
 
 **No se ha completado una evaluación E3 aprobada**, no hay Adoption Decision resuelta y el Assessment permanece `In Progress`. No se ejecuta Docker ni se modifica el repositorio consumidor.

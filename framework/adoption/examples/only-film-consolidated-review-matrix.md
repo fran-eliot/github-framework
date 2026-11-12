@@ -33,7 +33,7 @@ Esta matriz **consolida** las 28 propuestas E3 existentes para `TPL-BACKEND` 0.1
 | `README-QUICK-START` | Required | `Partial` | `Applicable` | **P1** | [E3](only-film-required-semantic-review.md) | Reproducir Compose desde clon limpio o justificar umbral documental; gates Q1–Q8. |
 | `README-DOCUMENTATION` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-final-semantic-review.md) | Comprobar enlaces principales y localización de documentación útil. |
 | `README-FOOTER` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-final-semantic-review.md) | Valorar créditos y nota de licencia sin atribuir permisos jurídicos. |
-| `DOC-CHANGELOG` | Required | `Missing / Partial` | `Applicable` | **P1** | [E3](only-film-required-semantic-review.md) | Verificar tags, releases y fuentes equivalentes; seleccionar State conforme a evidencia. |
+| `DOC-CHANGELOG` | Required | `Missing` *(propuesto; no aprobado)* | `Applicable` | **P1** | [E3](only-film-required-semantic-review.md) | Comprobar tags y fuentes equivalentes; confirmar o revisar la hipótesis antes de aprobar el State. |
 | `README-STATUS` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Definir estado/madurez del repositorio en el SHA, no confundir badges de tecnología. |
 | `README-ARCHITECTURE` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Reconciliar resumen MVC/JPA con código y auditoría histórica. |
 | `README-REPOSITORY-STRUCTURE` | Recommended | `Partial` | `Applicable` | **P3** | [E3](only-film-recommended-readme-semantic-review.md) | Verificar árbol, facilidad de navegación y precisión del resumen. |
@@ -61,7 +61,8 @@ Esta matriz **consolida** las 28 propuestas E3 existentes para `TPL-BACKEND` 0.1
 | --- | ---: |
 | Propuestas E3 referenciadas | **28/28** |
 | State `Partial` como hipótesis única | **24** |
-| State alternativo `Missing / Partial` sin discriminar | **4** |
+| State `Missing` como hipótesis preferida (DOC-CHANGELOG) | **1** |
+| State alternativo `Missing / Partial` sin discriminar | **3** |
 | Applicability `Applicable` como hipótesis | **24** |
 | Applicability pendiente / `Uncertain` | **4** |
 | States formalmente aprobados | **0 acreditados** |
@@ -77,7 +78,7 @@ Esta matriz **consolida** las 28 propuestas E3 existentes para `TPL-BACKEND` 0.1
 - Para el mismo SHA del consumer hay un [run de GitHub Actions](https://github.com/fran-eliot/only_film/actions/runs/39283862407) con tres checks `success`. El log de `h2-regression` acredita **329 tests, 0 failures, 0 errors, 0 skipped**, y resultados individuales de clases relevantes de seguridad. La generación y publicación histórica de JaCoCo y un `ANALYSIS SUCCESSFUL` del scanner Sonar están registradas, **pero no** el porcentaje de cobertura ni la aprobación del Quality Gate. [Evidencia E2](only-film-verified-surefire-sonar-logs.md).
 - El `postgres-schema` comprueba arranque de JAR + PostgreSQL del workflow; **no verifica el flujo Docker Compose del README**. No se identificó un check `compose-smoke` directamente asociado al commit en los resultados consultados. [Evidencia Quick Start](only-film-compose-evidence-gap.md).
 - Las auditorías de arquitectura, seguridad, madurez y roadmap tienen **commits base distintos**: sus hallazgos no son automáticamente vigentes en el SHA evaluado.
-- El [reconocimiento de cambios/release](only-film-changelog-evidence-review.md) no encontró una fuente inequívoca de changelog de versiones publicadas; los tags siguen **sin verificar**.
+- La [revisión dirigida de cambios/release](only-film-changelog-evidence-review.md) favorece `Missing` como **hipótesis no aprobada** para `DOC-CHANGELOG`; el inventario de tags sigue **sin verificar**, por lo que no se cierra el gate humano.
 - El [aviso de licencia del README](only-film-optional-governance-semantic-review.md) no establece permisos de reutilización ni sustituye la determinación de derechos del trabajo académico.
 - Algunas Responsibilities de `TPL-BACKEND` carecen de Component autónomo localizado en el catálogo inspeccionado. La discrepancia es un **asunto de definición del Framework** y no un incumplimiento automático del consumer.
 
@@ -92,7 +93,7 @@ Estos grupos marcan **orden de revisión**, no un supuesto automatizado de que c
 ## 4. Procedimiento para validar la matriz sin fabricar aprobaciones
 
 1. **Fijar reviewer, fecha y referencia.** Confirmar quién aprueba cada Responsibility y que se está revisando el SHA concreto. Si se quiere evaluar `main` actual del consumer, iniciar refresco de Evidence, no reutilizar sin más conclusiones del snapshot histórico.
-2. **Resolver los casos con State/Applicability alternativos.** Priorizar `DOC-CHANGELOG`, `README-CONTRIBUTING`, `DOC-API`, `DOC-DIAGRAMS` y la Applicability de `DOC-REFERENCES`. Un campo de Applicability `Uncertain` es válido en el contrato; `Missing / Partial` no es un `State` válido y **debe discriminarse** antes de completar una ficha formal.
+2. **Resolver los casos con State/Applicability alternativos.** Priorizar `README-CONTRIBUTING`, `DOC-API`, `DOC-DIAGRAMS` y la Applicability de `DOC-REFERENCES`. Un campo de Applicability `Uncertain` es válido en el contrato; `Missing / Partial` no es un `State` válido y **debe discriminarse** antes de completar una ficha formal.
 3. **Valorar calidad documental y evidencia suficiente.** Confirmar que cada ficha cita fuentes pertinentes y que el rationale sustenta el `State` finalmente elegido, en vez de perpetuar `Partial` por precaución. Una Responsibility documental no necesita que se reproduzca cada test del sistema, pero sí límites explícitos cuando su afirmación es operativa.
 4. **Registrar el resultado en el Assessment.** Elegir para cada Responsibility `State: Satisfied / Partial / Missing`, `Applicability: Applicable / Not Applicable / Uncertain`, `Evidence`, `Evaluation Rationale`, `Uncertainty` y `Decision Status`. Las sugerencias de esta matriz no se copian como si hubieran sido aprobadas.
 5. **Resolver decisiones solamente donde esté justificado.** `Decision Status: Resolved` exige `Adoption Decision` estable y su rationale. Para `Needs Further Evaluation`, mantener `Adoption Decision: —` junto con incertidumbre y razón concreta.
