@@ -54,6 +54,8 @@ Antes de incorporar un resultado semántico al [Assessment Template](../assessme
 
 **Reconciliación E2 de Testing y seguridad:** la [revisión de código fijado y checks CI](only-film-security-testing-reconciliation.md) contrasta los hallazgos de auditorías históricas con controladores, configuración y tests disponibles en el SHA del consumidor, distinguiendo patrones corregidos de verificación operativa todavía no acreditada.
 
+**Actualización E2 de casos negativos:** el [registro de pruebas de seguridad y selectores](only-film-negative-security-test-evidence.md) concreta casos de autorización, CSRF, validación de archivos y su inclusión en el job H2, dejando pendiente la verificación individual de Surefire y la evaluación semántica.
+
 ## 4. Bloqueos prioritarios de evidencia
 
 La prioridad indica **orden sugerido para revisar incertidumbres**, no severidad comprobada del proyecto ni obligación de aplicar un cambio.
