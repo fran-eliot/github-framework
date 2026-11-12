@@ -124,6 +124,8 @@ Se observan guías técnicas especializadas y distinciones útiles entre integra
 
 **Seguimiento de DOC-TESTING:** la [reconciliación de seguridad y Testing](only-film-security-testing-reconciliation.md) identifica archivos de tests y resultados de tres checks del SHA fijado, pero conserva pendientes Selenium, informes JaCoCo y evaluación semántica.
 
+**Propuesta E3 posterior para Architecture y Project Status:** la [revisión semántica de las dos Responsibilities](only-film-recommended-docs-semantic-review.md) contrasta el propósito documental del Framework con fuentes históricas del consumer y conserva las interpretaciones provisionales, sin convertir auditorías antiguas en un estado vigente ni aprobar Adoption Decisions. `DOC-TESTING` ya tiene una [propuesta E3 propia](only-film-testing-semantic-review.md).
+
 ## 6. Resultado y continuación
 
 | Check | Resultado |
