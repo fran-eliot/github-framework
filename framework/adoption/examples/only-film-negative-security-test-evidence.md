@@ -74,6 +74,8 @@ La definición de [`postgres-migration.yml`](https://github.com/fran-eliot/only_
 
 **Sonar/JaCoCo:** no se infieren porcentajes, Quality Gate aprobado ni ejecución de análisis Sonar a partir del estado del job. En el workflow, el scanner puede omitirse sin hacer fallar el job si no existe `SONAR_TOKEN`.
 
+**Resultado posterior verificado:** el [registro de logs Surefire y Sonar](only-film-verified-surefire-sonar-logs.md) confirma que el job H2 del SHA ejecutó 329 pruebas (0 fallos, 0 errores, 0 omitidas), incluidas las cinco clases destacadas en este documento. También consta un análisis Sonar `ANALYSIS SUCCESSFUL`; el Quality Gate y el porcentaje JaCoCo siguen sin verificarse. Las preguntas NT-1 y NT-4 deben interpretarse ahora a la luz de estos resultados: los recuentos individuales de cinco clases ya se han obtenido del log, pero aún falta el detalle de métodos y el informe XML de cobertura.
+
 ## 6. Evidencias aún necesarias para cerrar revisión E2/E3
 
 | Gate | Verificación pendiente | Resultado requerido |
