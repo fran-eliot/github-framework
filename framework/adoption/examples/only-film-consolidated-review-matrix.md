@@ -2,7 +2,7 @@
 
 ## 1. Context, purpose, and distinctions
 
-The [Only Film Assessment working record](only-film-assessment.md) now contains eight structured, **unapproved** Responsibility evaluations (`README-QUICK-START`, `DOC-CHANGELOG`, `README-TESTING`, `DOC-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `README-LICENSE`, and `DOC-SECURITY`). This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
+The [Only Film Assessment working record](only-film-assessment.md) now contains ten structured, **unapproved** Responsibility evaluations (`README-QUICK-START`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-LICENSE`, and `DOC-SECURITY`). This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
 
 This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting hypotheses to evaluated States or recording human approval**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
 
