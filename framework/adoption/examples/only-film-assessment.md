@@ -46,10 +46,14 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `DOC-DEPLOYMENT` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(local environment; proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-ADR` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Uncertain` *(applicability pending review)* | `Needs Further Evaluation` | `—` |
+| `README-DEMO` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-AUTHOR` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-HIGHLIGHTS` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-DIAGRAMS` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** twenty-two Responsibilities have selected **proposed States** (including one with Applicability `Uncertain`); two additional Responsibilities have structured entries with State **not selected** and Applicability `Uncertain`; the other **4/28** have not been entered in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** twenty-five Responsibilities have selected **proposed States** (including one with Applicability `Uncertain`); three additional Responsibilities have structured entries with State **not selected** and Applicability `Uncertain`. All **28/28** Responsibilities now have structured working entries, but the three unresolved States and outstanding human review prevent completion. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -1396,6 +1400,230 @@ The reviewer should determine whether references need consolidation or can remai
 
 ---
 
+### README-DEMO
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — screenshots embedded in the README and a documented local startup path, rather than an independently verified public demo.
+
+**Uncertainty**
+
+- Whether the screenshots accurately represent the behavior and appearance at the pinned consumer SHA; image presence was checked, but visual fidelity and freshness were not.
+- Whether screenshots satisfy the portfolio audience or a reproducible local demonstration is also needed.
+- Whether demo-data prerequisites and the absence of an online demo are communicated sufficiently; no public demo is established by a localhost URL.
+- Whether Docker Compose startup can be reproduced at the pinned SHA; a passing Compose smoke execution linked to that reference was not verified.
+
+**Detected Facts**
+
+- The pinned README includes `Capturas de la aplicación` with images of the movie listing, movie details, seat selection, and a QR ticket.
+- Other versioned interface screenshots appear in `docs/screenshots/`; their quality and representativeness were not visually audited in the prior semantic review.
+- The README describes Docker Compose startup and `http://localhost:8080/movies`, which is a **local address**, not a hosted demonstration.
+- A Compose smoke workflow definition exists, but the previously reviewed CI checks did not establish successful execution of that workflow for the pinned commit.
+
+**Evidence**
+
+- [Pinned README — screenshots and local startup](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned screenshots directory](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c/docs/screenshots)
+- [Optional Demo, Highlights and Diagrams E3 semantic review](only-film-optional-showcase-semantic-review.md)
+- [Compose smoke evidence gap](only-film-compose-evidence-gap.md)
+
+**Evaluation Rationale**
+
+The repository already shows the application through documented screenshots, so the Responsibility is not automatically `Missing` merely because no public live demo was verified. `Partial` is a **provisional judgment of demo clarity and reproducibility** rather than an observed broken workflow or an obligation to deploy the project publicly. The reviewer may find the existing visual examples sufficient for this Optional Responsibility.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Decide whether to `PRESERVE` the current screenshot-based presentation or `ADAPT` its explanation after validating the screenshots and audience needs. No demo deployment or consumer edit is authorized.
+
+---
+
+### README-AUTHOR
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Equivalent` — attribution and credits are embedded in `Origen, créditos y evolución`, not in a separately titled Author block.
+
+**Uncertainty**
+
+- Whether all material original contributors and later maintainers are credited accurately and with an appropriate distinction of roles.
+- Whether an additional author/contact link would improve clarity, without implying exclusive authorship of academic group work.
+- Whether any licensing or intellectual-property rights can be substantiated; attribution does **not** independently verify code ownership or permissions.
+
+**Detected Facts**
+
+- At the pinned SHA, the README credits four members of the academic collaboration and links their profiles and the original `certidevs/g1_testing` repository.
+- The narrative distinguishes the original collaborative creation from subsequent evolution under `fran-eliot/only_film`, without representing the entire initial project as one person's exclusive work.
+- The [README-AUTHOR Component](../../components/readme/author/README.md) permits an author or team to be identified through names and links; a literal `Author` heading is not required.
+
+**Evidence**
+
+- [Pinned README — origins and credits](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [README-AUTHOR Component](../../components/readme/author/README.md)
+- [Original academic repository](https://github.com/certidevs/g1_testing)
+- [Optional README governance E3 semantic review](only-film-optional-governance-semantic-review.md)
+
+**Evaluation Rationale**
+
+Authorship and project-origin attribution are already present and directly relevant to the Responsibility; the lack of an exact heading does not make the section `Missing`. `Partial` is a **conservative editorial hypothesis** until the clarity and completeness of original and later contributions are reviewed. This is not a legal judgment or an inference of ownership. A reviewer may justify `Satisfied` if the existing credits fulfill the Component's communication purpose.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The maintainer must assess whether to `PRESERVE` the existing balanced attribution or `ADAPT` specific wording/links with verified facts. No retroactive attribution change or license claim is authorized.
+
+---
+
+### README-HIGHLIGHTS
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — notable implementation choices are already described within `Funcionalidades` and `Seguridad y límites actuales`, without a distinct Highlights section.
+
+**Uncertainty**
+
+- Whether a small selection of highlights would materially clarify this portfolio project's differentiators instead of repeating Features.
+- Which of the stated technical qualities are sufficiently supported at the pinned commit and should be presented prominently.
+- Whether the README already balances domain features, security limitations and implementation details for its audience.
+
+**Detected Facts**
+
+- The pinned README describes measures against duplicate seat sales, transactional checkout, role-based access, review authorization, image validation, and PostgreSQL/Flyway migration support.
+- `Funcionalidades` describes visitor, user and administrator capabilities; `Seguridad y límites actuales` explicitly qualifies the checkout as simulated, not a real payment gateway.
+- [GitHub Actions run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) records 329 successful H2 tests and three successful checks for the pinned SHA, providing **bounded** regression support rather than complete validation of every feature or user experience.
+- No literal `Highlights` heading appears in the inspected README; that absence alone is not a failure of this Optional Responsibility.
+
+**Evidence**
+
+- [Pinned README — Features and security limitations](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Verified Surefire and Sonar log evidence](only-film-verified-surefire-sonar-logs.md)
+- [Optional showcase E3 semantic review](only-film-optional-showcase-semantic-review.md)
+
+**Evaluation Rationale**
+
+Differentiating qualities are communicated through existing sections and some claims have bounded technical support. A dedicated Highlights block may improve portfolio readability, but could also duplicate Features without adding information. `Partial` is a **provisional editorial interpretation**, not proof that the current README lacks compelling highlights or that a dedicated block is required. A reviewer can approve `Satisfied` if the distributed presentation already meets the consumer's needs.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+A future `PRESERVE` or `ADAPT` choice should follow an editorial review of actual value, factual support and duplication, not a requirement to manufacture showcase text.
+
+---
+
+### DOC-DIAGRAMS
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+**Not selected** — `Missing` or `Partial` remain hypotheses requiring evidence and reviewer judgment. This is an **incomplete contractual State**, not an approved finding.
+
+**Applicability**
+
+`Uncertain` — whether diagrams provide necessary or worthwhile technical explanation for this consumer is not yet established.
+
+**Implementation Characteristics**
+
+No maintained technical diagram artifact was confirmed in the bounded prior inspection. The README provides a **textual** architecture flow; interface screenshots and decorative SVG assets do not automatically constitute architecture, data-model, or deployment diagrams.
+
+**Uncertainty**
+
+- Whether diagrams are embedded in the pinned Markdown documents but were missed by the earlier filename/path inspection.
+- Whether important entity relationships, checkout flows, or local deployment topology would be materially clearer with a version-controlled diagram.
+- Whether the existing textual explanation is sufficient for the project's scope, so that diagrams would merely duplicate information.
+- The earlier Framework catalog check did not locate a standalone `DOC-DIAGRAMS` Component. The [DOC-ARCHITECTURE Component](../../components/documentation/architecture/README.md) states that diagrams are optional to architectural explanation; no nonexistent Component contract is imposed here.
+
+**Detected Facts**
+
+- The pinned README gives the textual flow `MVC controller → service / business rules → JPA repository → database`, not an explicit architecture or data diagram.
+- The pinned repository contains interface screenshots in `docs/screenshots/` and an avatar SVG asset; neither filename confirms technical diagram documentation.
+- Prior path inspection did not identify `.drawio`, `.puml`, named Mermaid artifacts, or obviously diagram-specific filenames; **embedded diagrams in Markdown were not exhaustively checked**.
+- The Template lists `DOC-DIAGRAMS` as `Optional`, and the documentation architecture Component cautions that diagrams should have a specific purpose, represent current architecture and remain maintainable.
+
+**Evidence**
+
+- [Pinned README — textual architecture description](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned consumer tree](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
+- [DOC-ARCHITECTURE Component](../../components/documentation/architecture/README.md)
+- [Optional showcase E3 semantic review](only-film-optional-showcase-semantic-review.md)
+
+**Evaluation Rationale**
+
+The available evidence does not establish a maintained technical diagram, but neither does it show that diagrams are needed for the consumer's actual purpose. Absence of a diagram-named file is not proof that all diagrams are missing, and a high-level textual flow can be sufficient for a relatively simple explanation. `Missing` versus `Partial` cannot be selected without clarifying the required documentary scope and searching for embedded artifacts; `Not Applicable` must also be evaluated on the merits, not inferred from Optional level. This record deliberately leaves State unselected and Applicability `Uncertain`.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Confirm whether diagrams already exist, decide whether any are useful, then select the contractual State and Applicability with human review. No diagram generation or change to Only Film is authorized.
+
+---
+
 ### DOC-CHANGELOG
 
 **Requirement Level**
@@ -1463,30 +1691,30 @@ The recommended `State` can be assessed without selecting an implementation acti
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and twenty-four have structured entries in this Assessment working record (including two with State deliberately unselected): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-ADR`, `DOC-REFERENCES`, `README-LICENSE`, and `DOC-SECURITY`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and all twenty-eight have structured entries in this Assessment working record (including three with State deliberately unselected): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-ADR`, `DOC-REFERENCES`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-DIAGRAMS`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on all twenty-four structured entries, including contractual State selection for the two unresolved entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Formal Assessment entries for the other 4 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Human sign-off on all twenty-eight structured entries, including contractual State selection for the three unresolved entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
+- Contractual State selection for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`, Applicability review for these three plus `DOC-REFERENCES`, and human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the twenty-four structured entries, including the applicability of `DOC-REFERENCES`, plus unresolved `README-CONTRIBUTING` and `DOC-API` State selection before approval. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
+Review the full 28-Responsibility working Assessment against Template metadata, first resolving the three unselected States and four open Applicability judgments. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `24/28` structured entries (`22` with proposed State, one of those with Applicability `Uncertain`; `2` with State unselected), `4/28` not yet entered.
+- **Responsibility coverage in this working artifact:** `28/28` structured entries (`25` with proposed State, one of those with Applicability `Uncertain`; `3` with State unselected), `0/28` not entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for twenty Responsibilities; the two entries with unselected State remain incomplete. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; the three entries with unselected State remain incomplete. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
