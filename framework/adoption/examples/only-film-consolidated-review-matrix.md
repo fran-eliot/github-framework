@@ -150,7 +150,7 @@ These three unselected States **cannot** be copied into a final contractual Asse
 | --- | --- | --- | --- |
 | 1 | `README-QUICK-START` | [Compose evidence gap](only-film-compose-evidence-gap.md): decide whether static documentary sufficiency is enough, or Q1–Q8 reproduction on the pinned SHA is required | Pending reviewer |
 | 2 | `DOC-CHANGELOG` | [Changelog evidence review](only-film-changelog-evidence-review.md): examine equivalence of change records, distinguish Git history from curated change communication, and preserve the maintainer-report versus independent-verification distinction | Pending reviewer |
-| 3 | `README-TESTING` / `DOC-TESTING` | Are commands, suite boundaries, known JaCoCo/Quality Gate limitations, and verified Surefire results accurately communicated? | Pending reviewer |
+| 3 | `README-TESTING` / `DOC-TESTING` | [Testing semantic review](only-film-testing-semantic-review.md) and [verified Surefire/JaCoCo/Sonar logs](only-film-verified-surefire-sonar-logs.md): check general vs selected commands, workflow triggers, distributed guide sufficiency, and historical artifact/Quality Gate evidence limits | Pending reviewer |
 | 4 | `DOC-SECURITY` | Are current guidance and documented controls distinguished from historical findings without presenting CI as security certification? | Pending reviewer |
 | 5 | `README-LICENSE` | Does the notice describe reuse-rights uncertainty without asserting exclusive ownership or granting permissions? | Pending reviewer |
 
@@ -169,7 +169,31 @@ These three unselected States **cannot** be copied into a final contractual Asse
 
 A documentation Responsibility can be evaluated on documentary evidence without asserting every runtime path was executed. Conversely, if reproducibility is the agreed acceptance criterion, do not replace the required Compose evidence with an unrelated successful job. These gates may be accepted, revised, or deferred only with rationale; a merged PR **does not approve** either State or authorize consumer changes.
 
-### 6.4 Review recording protocol
+### 6.4 Testing evidence and reviewer sign-off
+
+| Evidence dimension | Verified for pinned SHA | Not established by the reviewed evidence |
+| --- | --- | --- |
+| H2 Surefire regression | `329 tests, 0 failures, 0 errors, 0 skipped` in job `h2-regression` of [run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) | Full suite execution or reproduction of generic `./mvnw test` from a clean clone |
+| PostgreSQL CI | `postgres-schema` and `PostgreSQL JPA and concurrent checkout` jobs succeeded | Selenium, manual workflow or Docker Compose smoke success at the same SHA |
+| JaCoCo | Report generation and historical upload of artifact `jacoco-h2-regression` (ID `12201642997`) appear in logs | XML/HTML contents, numeric coverage percentage, global project coverage |
+| SonarCloud | Scanner `ANALYSIS SUCCESSFUL` and JaCoCo import documented; CE task `AaFU8vS6n_jCCWP5LQvY` captured | CE task final status, historical `analysisId`, Quality Gate result |
+| Documentary suitability | README and specialized guides exist with scope descriptions | Reviewer acceptance of guidance clarity, correct prerequisites and sufficient navigation |
+
+These observations are from the [Testing E3 review](only-film-testing-semantic-review.md) and [verified run log report](only-film-verified-surefire-sonar-logs.md). A scanner's successful submission is not a passed Quality Gate, and successful selected tests are not a statement that every available suite ran.
+
+| Reviewer sign-off item | `README-TESTING` | `DOC-TESTING` |
+| --- | --- | --- |
+| Consumer reference accepted | Pinned SHA; confirmation pending | Pinned SHA; confirmation pending |
+| Review focus | Commands, test selection and workflow trigger clarity | PostgreSQL, JaCoCo and Sonar documentation accuracy and discoverability |
+| Proposed State | `Partial`, not approved | `Partial`, not approved |
+| Evidence acceptance threshold | Documentation scope/reproducibility: **pending** | Historical artifact/Quality Gate limits: **pending** |
+| Reviewer and date | Not recorded | Not recorded |
+| Formal State approval | **No** | **No** |
+| Decision Status / Adoption Decision | `Needs Further Evaluation` / `—` | `Needs Further Evaluation` / `—` |
+
+A reviewer may accept a documentation Responsibility without demanding all tests or metrics, but must record the basis. Unverified Selenium, coverage and Quality Gate results must remain **unknown**, not be converted to passing or failing results.
+
+### 6.5 Review recording protocol
 
 For each Responsibility, a reviewer should confirm the pinned reference, inspect the minimum linked evidence, and **explicitly approve or revise** State, Applicability, and Evaluation Rationale. Record the reviewer and date on the Assessment (or a directly linked review record) before counting an evaluation as approved. Leave `Decision Status: Needs Further Evaluation` and `Adoption Decision: —` when no adoption action has been authorized.
 
