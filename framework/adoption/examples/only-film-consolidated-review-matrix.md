@@ -2,7 +2,7 @@
 
 ## 1. Context, purpose, and distinctions
 
-The [Only Film Assessment working record](only-film-assessment.md) now contains twenty-two structured, **unapproved** Responsibility records: twenty with a proposed State, and two (`README-CONTRIBUTING`, `DOC-API`) with State intentionally unselected and Applicability `Uncertain` pending review. This is incomplete assessment coverage, not twenty-two approved evaluations. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
+The [Only Film Assessment working record](only-film-assessment.md) now contains twenty-four structured, **unapproved** Responsibility records: twenty-two with a proposed State (including `DOC-REFERENCES` with Applicability `Uncertain`), and two (`README-CONTRIBUTING`, `DOC-API`) with State intentionally unselected and Applicability `Uncertain` pending review. This is incomplete assessment coverage, not twenty-four approved evaluations. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
 
 This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting hypotheses to evaluated States or recording human approval**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
 

@@ -44,10 +44,12 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `DOC-API` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
 | `DOC-DATABASE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-DEPLOYMENT` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(local environment; proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-ADR` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Uncertain` *(applicability pending review)* | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** twenty Responsibilities have selected **proposed States**; two additional Responsibilities have structured entries with State **not selected** and Applicability `Uncertain`; the other **6/28** have not been entered in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** twenty-two Responsibilities have selected **proposed States** (including one with Applicability `Uncertain`); two additional Responsibilities have structured entries with State **not selected** and Applicability `Uncertain`; the other **4/28** have not been entered in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -1278,6 +1280,122 @@ Review local operational scope, the uploads warning, and the threshold for repro
 
 ---
 
+### DOC-ADR
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — technical decisions and operational constraints are explained within specialized documents, but a consolidated ADR convention or inventory was not established in the bounded earlier review.
+
+**Uncertainty**
+
+- Whether important, durable architectural decisions are sufficiently documented with context, alternatives, decision, consequences, and present validity.
+- Whether a formal ADR index would add useful traceability, or simply duplicate existing, task-specific documents.
+- Which recommendations in earlier architecture audits still correspond to current, accepted decisions at the pinned SHA.
+
+**Detected Facts**
+
+- The pinned `docs/FLYWAY_V2_SEAT_UNIQUENESS.md` explains `UNIQUE(session_id, fila, seat)`, preservation of existing V1 migration history, duplicate-data checks, `NULL` considerations, and careful non-destructive handling of collisions.
+- The pinned `docs/DEPENDENCY_MAINTENANCE.md` explains weekly Dependabot updates, review of major versions separately, and avoidance of unattended auto-merge.
+- The pinned `docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md` contains historical options and risks. It uses a different baseline and must not be read as a current approved ADR inventory.
+- The earlier inspected tree did not identify an `adr/` directory or `ADR-*` filenames; this does **not** establish the absence of documented decisions in other forms.
+- The prior Framework catalog review did not identify a separate `DOC-ADR` Component specification. The Template metadata does include the `Optional` Responsibility; no absent Component rule is imposed on the consumer.
+
+**Evidence**
+
+- [Pinned Flyway V2 seat uniqueness document](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/FLYWAY_V2_SEAT_UNIQUENESS.md)
+- [Pinned dependency maintenance document](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/DEPENDENCY_MAINTENANCE.md)
+- [Historical architecture audit in pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md)
+- [Canonical Template metadata](../../templates/repositories/backend/metadata.yml)
+- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+The consumer already documents reasons and operational consequences of meaningful technical choices. Therefore the Responsibility is not necessarily `Missing` merely because there is no folder named `adr`. The existing documents do not yet demonstrate a maintained, comparable record of the main architectural decisions and their current status. `Partial` is a **conservative proposed documentary interpretation**, not proof that an ADR register must be introduced. The reviewer should assess whether an optional formal register is valuable given the project's size and existing documentation.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The maintainer must decide whether to `PRESERVE` the existing decision explanations or `ADAPT` their organization after considering value and duplication. No new ADR process or consumer edit is authorized.
+
+---
+
+### DOC-REFERENCES
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Uncertain` — whether a consolidated references Responsibility is useful for this consumer remains unresolved; this is **not** a decision of `Not Applicable`.
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — references to the academic source repository, internal guides, and development tools appear in context rather than as a separately maintained references catalog.
+
+**Uncertainty**
+
+- Whether stable external technical standards or authoritative sources are needed for readers beyond the existing contextual links.
+- Whether meaningful links are out of date, repeated, or difficult to discover. A comprehensive reference URL audit has not been performed.
+- Whether a central References document would improve the user journey or create redundant maintenance; the Framework Component explicitly permits contextual linking.
+- If the reviewer determines the Responsibility is `Not Applicable`, the proposed `State` must be reconciled with the Template's contractual rules before declaring this entry complete.
+
+**Detected Facts**
+
+- The pinned README links to the original academic repository, selected technical documentation, and GitHub Actions workflows.
+- Specialized guides mention PostgreSQL, Flyway, Maven, SonarCloud, and Dependabot; their mention does **not** establish that authoritative external reference URLs for each are provided or required.
+- The Framework [DOC-REFERENCES Component](../../components/documentation/references/README.md) recommends primary sources with clear purpose and context and explicitly allows no standalone references catalog where contextual links are easier to use.
+- The earlier filename/path review did not identify a separate `REFERENCES` document. Absence of that filename alone is not a finding of deficient referencing.
+
+**Evidence**
+
+- [Pinned Only Film README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
+- [Pinned dependency maintenance guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/DEPENDENCY_MAINTENANCE.md)
+- [DOC-REFERENCES Component](../../components/documentation/references/README.md)
+- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+Contextual links already exist, and a standalone index is not required by the References Component. Whether the existing collection adequately addresses the intended reader's need for external source traceability has not been assessed exhaustively. `Partial` is a **proposed documentary State conditional on an applicable references scope**; Applicability remains `Uncertain` and may prove `Not Applicable` following human review. It is not a claim that a new References file is mandatory or that existing links are broken.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The reviewer should determine whether references need consolidation or can remain contextual, then confirm Applicability and State under the Template's allowed values. No addition of a References index, external citations, or consumer changes is authorized.
+
+---
+
 ### DOC-CHANGELOG
 
 **Requirement Level**
@@ -1345,28 +1463,28 @@ The recommended `State` can be assessed without selecting an implementation acti
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and twenty-two have structured entries in this Assessment working record (including two with State deliberately unselected): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-LICENSE`, and `DOC-SECURITY`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and twenty-four have structured entries in this Assessment working record (including two with State deliberately unselected): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-ADR`, `DOC-REFERENCES`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on all twenty-two structured entries, including contractual State selection for the two unresolved entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Formal Assessment entries for the other 6 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Human sign-off on all twenty-four structured entries, including contractual State selection for the two unresolved entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
+- Formal Assessment entries for the other 4 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the twenty-two structured entries; assess the new database and local deployment guidance, and discriminate `README-CONTRIBUTING` and `DOC-API` applicability and State before approval. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
+Review the twenty-four structured entries, including the applicability of `DOC-REFERENCES`, plus unresolved `README-CONTRIBUTING` and `DOC-API` State selection before approval. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `22/28` structured entries (`20` with proposed State; `2` with State unselected), `6/28` not yet entered.
+- **Responsibility coverage in this working artifact:** `24/28` structured entries (`22` with proposed State, one of those with Applicability `Uncertain`; `2` with State unselected), `4/28` not yet entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
