@@ -219,7 +219,29 @@ A reviewer may accept a documentation Responsibility without demanding all tests
 
 These are the final two **P1 evidence-disposition gates**. All six P1 Responsibilities now have an explicit reviewer-facing gate, but **none has formal approval** and no adoption action is authorized.
 
-### 6.6 Review recording protocol
+### 6.6 Optional applicability and State discrimination — reviewer session
+
+This is a **review preparation gate**, not an approval. The prior E3 reviews support only bounded facts: onboarding instructions without a confirmed collaboration policy, MVC interfaces without a confirmed public REST contract, a textual architecture flow without exhaustive embedded-diagram inspection, and references present in context without a confirmed need for an index. Do not infer `Not Applicable` merely because an item is Optional.
+
+| Priority | Responsibility | Evidence to establish | Conditional reviewer conclusion | Status |
+| --- | --- | --- | --- | --- |
+| P2 | `README-CONTRIBUTING` | Maintainer contribution policy, equivalent PR/review rules and actual onboarding guidance | Choose an applicable `Satisfied / Partial / Missing` State **or** justify `Not Applicable`; present `Missing / Partial` is not final | State unselected; Applicability `Uncertain` |
+| P2 | `DOC-API` | Actual JSON/REST or programmatic consumer contracts at pinned SHA and intended audience | Scope the real API documentation need; choose evidence-based State or justify non-applicability of an API contract | State unselected; Applicability `Uncertain` |
+| P3 | `DOC-DIAGRAMS` | Search embedded diagrams in pinned Markdown/assets and establish comprehension need | Select State only for the agreed diagram purpose, or justify non-applicability without manufacturing diagrams | State unselected; Applicability `Uncertain` |
+| P3 | `DOC-REFERENCES` | Relevance, validity and discoverability of existing contextual source links | Confirm that contextual references already suffice, identify a concrete gap, or justify non-applicability of centralization | Proposed `Partial`; Applicability `Uncertain` |
+
+**Acceptance protocol:** Record the exact pinned reference, evidence checked, intended reader/use case, chosen allowed `State` (`Satisfied`, `Partial`, or `Missing`), supported `Applicability` (`Applicable`, `Not Applicable`, or `Uncertain`), rationale, reviewer and date. `Uncertain` is a supported final Applicability **when justified**; leaving State unselected is **not** sufficient for a completed Assessment. Resolving these fields must not be confused with authorizing `ADD`, `ADAPT`, `PRESERVE`, `ACCEPT` or `OMIT`.
+
+| Reviewer sign-off | `README-CONTRIBUTING` | `DOC-API` | `DOC-DIAGRAMS` | `DOC-REFERENCES` |
+| --- | --- | --- | --- | --- |
+| Evidence need | Collaboration policy | Actual interface and consumers | Embedded-diagram search and utility | Contextual link adequacy |
+| State proposal | **Unselected** | **Unselected** | **Unselected** | `Partial` (unapproved) |
+| Applicability | `Uncertain` | `Uncertain` | `Uncertain` | `Uncertain` |
+| Reviewer / date | Pending | Pending | Pending | Pending |
+| Approved result | **None** | **None** | **None** | **None** |
+| Adoption Decision | `—` | `—` | `—` | `—` |
+
+### 6.7 Review recording protocol
 
 For each Responsibility, a reviewer should confirm the pinned reference, inspect the minimum linked evidence, and **explicitly approve or revise** State, Applicability, and Evaluation Rationale. Record the reviewer and date on the Assessment (or a directly linked review record) before counting an evaluation as approved. Leave `Decision Status: Needs Further Evaluation` and `Adoption Decision: —` when no adoption action has been authorized.
 
