@@ -36,10 +36,12 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `README-FEATURES` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-DOCUMENTATION` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-FOOTER` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-TECH-STACK` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-HERO` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** fourteen Responsibilities have completed **proposed assessment entries**; the other **14/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** sixteen Responsibilities have completed **proposed assessment entries**; the other **12/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -810,6 +812,122 @@ A human reviewer must determine whether to `PRESERVE` the current closing materi
 
 ---
 
+### README-TECH-STACK
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Canonical` in the documentary sense: a project-specific `Tecnologías y arquitectura` section groups technologies by functional layer, rather than mechanically reproducing the Framework Component's suggested categories.
+
+**Uncertainty**
+
+- Whether every technology listed is actually used in the described runtime, development, or test context at the pinned consumer commit.
+- Whether the technological inventory and architecture summary remain sufficiently easy to navigate without forcing generic Cloud categories onto a consumer with no verified cloud deployment.
+- Whether additional evidence is needed for the less directly inspected dependencies and tools beyond the already corroborated Java, Spring Boot, and PostgreSQL versions.
+
+**Detected Facts**
+
+- The pinned README's technology table distinguishes backend, security, frontend, local persistence, durable persistence, testing, and infrastructure.
+- It identifies Java 25, Spring Boot 4.0.5, Spring MVC, Spring Data JPA, Hibernate, Spring Security, BCrypt, Thymeleaf, Bootstrap 5, H2, PostgreSQL 17, Flyway, JUnit 5, Mockito, MockMvc, Selenium, Docker Compose, GitHub Actions, and JaCoCo.
+- The pinned `pom.xml` declares `java.version=25` and Spring Boot parent version `4.0.5`, corroborating the prominent Java and Spring Boot version claims.
+- The pinned `compose.yaml` uses `postgres:17-alpine` and defines `app` and `postgres` services, corroborating PostgreSQL 17 and Docker Compose configuration **statically**, not demonstrating successful deployment.
+- The [README-TECH-STACK Component](../../components/readme/tech-stack/README.md) suggests categories for orientation but does not require every possible environment category.
+
+**Evidence**
+
+- [Pinned Only Film README — technology and architecture table](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
+- [Pinned compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml)
+- [README-TECH-STACK Component](../../components/readme/tech-stack/README.md)
+- [Tech Stack, Documentation, and Footer E3 semantic review](only-film-required-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+A clearly identified, categorized technology table exists, and the most salient version claims were cross-checked against versioned POM and Compose configuration. Consequently, absence of a specific suggested category or a differently named heading would not justify `Missing`. `Partial` is a **conservative proposed judgment** about complete inventory accuracy and editorial sufficiency; no comprehensive audit of all dependencies and uses has been performed. Human review may reasonably confirm `Satisfied` if the table is accurate and adequate for the README's audience, without demanding a Cloud section unrelated to this application.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The reviewer must determine whether the table warrants `PRESERVE` or a specific `ADAPT` for inaccurate or confusing entries. This proposed record does not authorize new infrastructure or revisions to Only Film.
+
+---
+
+### README-HERO
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Canonical` in the functional sense: the README opens with an explicit project heading, short introductory description, and a limited group of technology badges.
+
+**Uncertainty**
+
+- Whether the opening introduction is sufficiently distinct from the later overview and adequately conveys the project identity and intended audience.
+- Whether the badges and heading remain legible and visually coherent on the intended screen sizes and light/dark themes; no responsive rendering review is recorded.
+- Whether the headline technology versions are current at the pinned SHA beyond those already checked against POM and Compose.
+
+**Detected Facts**
+
+- The pinned README begins with `# 🎬 Only Film`, followed by a brief description identifying the project and its principal technologies.
+- An additional paragraph introduces the academic collaboration from which the project originated and its subsequent technical development.
+- Five badges identify Java 25, Spring Boot 4.0.5, PostgreSQL 17, Flyway, and Docker Compose.
+- The [README-HERO Component](../../components/readme/hero/README.md) describes clear naming, tagline, structure, and restrained badge use. A decorative banner is **optional**, and the absence of one is not a defect.
+- Java, Spring Boot, and PostgreSQL versions have supporting pinned configuration evidence; the prior semantic review did not verify every visual rendering context.
+
+**Evidence**
+
+- [Pinned README — heading, introduction, badges](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [README-HERO Component](../../components/readme/hero/README.md)
+- [Required identity and overview E3 semantic review](only-film-required-identity-semantic-review.md)
+- [Pinned pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
+- [Pinned compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml)
+
+**Evaluation Rationale**
+
+The main heading, short introduction, and five badges visibly serve the Hero Responsibility; a banner or a separately titled tagline is not a mandatory prerequisite. The remaining questions are editorial distinction from Overview, reader clarity, and display compatibility, which were not reviewed as completed. `Partial` remains a **proposed editorial hypothesis**, not a documented visual failure or absent identity. A human reviewer can select `Satisfied` if the present introduction is sufficiently clear and readable.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The reviewer must decide whether `PRESERVE` or a bounded `ADAPT` is appropriate once the actual README appearance and clarity are considered. No change to the consumer is authorized.
+
+---
+
 ### DOC-CHANGELOG
 
 **Requirement Level**
@@ -877,30 +995,30 @@ The recommended `State` can be assessed without selecting an implementation acti
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and fourteen are now transcribed into this Assessment working record: `README-FEATURES`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-LICENSE`, and `DOC-SECURITY`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and sixteen are now transcribed into this Assessment working record: `README-HERO`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on all fourteen proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Formal Assessment entries for the other 14 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Human sign-off on all sixteen proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
+- Formal Assessment entries for the other 12 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the fourteen structured entries, including `README-DOCUMENTATION` and `README-FOOTER`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
+Review the sixteen structured entries, including `README-TECH-STACK` and `README-HERO`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `14/28` proposed, `14/28` not yet entered.
+- **Responsibility coverage in this working artifact:** `16/28` proposed, `12/28` not yet entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for the first fourteen Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for the first sixteen Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
