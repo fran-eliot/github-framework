@@ -42,10 +42,12 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `README-ROADMAP` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-CONTRIBUTING` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
 | `DOC-API` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
+| `DOC-DATABASE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-DEPLOYMENT` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(local environment; proposed)* | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** eighteen Responsibilities have selected **proposed States**; two additional Responsibilities have structured entries with State **not selected** and Applicability `Uncertain`; the other **8/28** have not been entered in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** twenty Responsibilities have selected **proposed States**; two additional Responsibilities have structured entries with State **not selected** and Applicability `Uncertain`; the other **6/28** have not been entered in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -1158,6 +1160,124 @@ Review the actual supported interfaces and intended consumers. If API documentat
 
 ---
 
+### DOC-DATABASE
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Specialized`, `Distributed` — PostgreSQL setup instructions, a focused Flyway V2 integrity document, versioned SQL migration sources, and the README's domain overview.
+
+**Uncertainty**
+
+- Whether a new contributor can understand the essential entity relationships, data lifecycle, constraints, and supported profile differences without reconstructing them from JPA classes and SQL.
+- Whether the migration documentation accurately describes the current V1/V2 relationship and constraints at the pinned consumer SHA.
+- Whether a conceptual data-model summary is needed or the existing focused guides sufficiently serve this portfolio application's audience; an ER diagram is not automatically mandatory.
+
+**Detected Facts**
+
+- The pinned `docs/POSTGRESQL_SETUP.md` distinguishes quick H2 development, `dev`, `postgres`, and `postgres,demo` profiles, database environment variables, Flyway migrations, and Hibernate `ddl-auto=validate`.
+- The pinned `docs/FLYWAY_V2_SEAT_UNIQUENESS.md` describes `UNIQUE(session_id, fila, seat)`, the decision to preserve V1, preflight collision checking, `NULL` considerations, and non-destructive handling of existing duplicates.
+- The README identifies domain entities such as `Movie`, `Room`, `Session`, `Ticket`, `Review`, and `User`, and distinguishes H2 from PostgreSQL persistence.
+- At the pinned SHA, [GitHub Actions run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) reports successful `postgres-schema` and `PostgreSQL JPA and concurrent checkout` jobs. These confirm bounded CI checks, **not** completeness of database documentation or every schema invariant.
+
+**Evidence**
+
+- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
+- [Pinned Flyway V2 seat uniqueness document](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/FLYWAY_V2_SEAT_UNIQUENESS.md)
+- [Pinned README — domain entities and persistence](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned PostgreSQL CI run](https://github.com/fran-eliot/only_film/actions/runs/39283862407)
+- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+Database-specific operational and schema-integrity documentation exists, so `Missing` would not reflect the available evidence. These sources explain profiles, migration procedures, and at least one important uniqueness constraint, but the prior review has not demonstrated a sufficiently accessible conceptual model of all material relationships and invariants. `Partial` is a **conservative, unapproved documentary-sufficiency proposal**; it does not mean migrations or schema are defective. The reviewer may accept `Satisfied` if focused documentation sufficiently meets the intended user's needs without extra diagrams.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The reviewer should establish the data-model documentation threshold and choose `PRESERVE` or a bounded `ADAPT` only if a material navigation or explanation gap is confirmed. No migration changes or data-model refactoring are authorized.
+
+---
+
+### DOC-DEPLOYMENT
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed for the documented local Compose development environment only; no production deployment is asserted**
+
+**Implementation Characteristics**
+
+`Own`, `Specialized`, `Distributed` — local startup and operation instructions in the README and PostgreSQL guide, plus the pinned Dockerfile and Compose configuration.
+
+**Uncertainty**
+
+- Whether the README and PostgreSQL guide consistently describe the intended persistence of uploaded files. The guide contains a warning suggesting the absence of a definitive upload-persistence strategy even though it also describes a named `uploads_data` volume; local volume persistence is not equivalent to production backup/durability.
+- Whether the documented Docker Compose route has been successfully reproduced at the pinned SHA; the earlier checks did **not** establish an associated successful Compose smoke run.
+- Whether the consumer supports only local development or a separate deployed demo, and what startup, verification, backup, recovery, and operational guidance is appropriate for that actual supported scope.
+- No evidence of production readiness, public exposure, disaster recovery, or production rollback is claimed.
+
+**Detected Facts**
+
+- The pinned README and `docs/POSTGRESQL_SETUP.md` describe preparing private `.env` settings, running `docker compose up --build -d`, connecting to PostgreSQL, accessing the local web application, and avoiding inadvertent data loss with `docker compose down -v`.
+- The pinned `compose.yaml` defines `app` and `postgres`, PostgreSQL health checks, `postgres_data` and `uploads_data` volumes, and application/DB ports bound to `127.0.0.1`.
+- The README explicitly warns that its Compose setup is not production deployment configuration for exposure to the Internet.
+- The pinned `compose-smoke.yml` **defines** build/start, web, migrations, and persistence checks. A successful execution of that workflow **for the same pinned SHA was not identified** in the earlier reviewed check set.
+- The PostgreSQL guide contains potentially inconsistent descriptions of uploads persistence; the difference may be between local operational persistence and the lack of a complete production file-storage strategy, and requires review instead of assuming a confirmed runtime bug.
+
+**Evidence**
+
+- [Pinned README — local Compose startup and limitations](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
+- [Pinned compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml)
+- [Pinned Dockerfile](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/Dockerfile)
+- [Pinned Compose smoke workflow definition](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.github/workflows/compose-smoke.yml)
+- [Compose smoke execution evidence gap](only-film-compose-evidence-gap.md)
+- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+The consumer has a documented operational route for a **local** Compose deployment and provides explicit safeguards and limitations, so the Responsibility is not absent. The semantic assessment must match the environment the project actually supports rather than imposing production requirements it does not claim to meet. The unverified Compose execution and potentially inconsistent uploads warning leave real documentation questions. `Partial` is a **proposed documentary assessment**, not proof that the Compose stack fails or that production deployment is expected. The reviewer should decide whether `Satisfied` is appropriate for local-only guidance or whether specific clarification is needed.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Review local operational scope, the uploads warning, and the threshold for reproduction evidence before choosing `PRESERVE` or `ADAPT`. No workflow trigger, deployed service, production plan, or change to Only Film is authorized.
+
+---
+
 ### DOC-CHANGELOG
 
 **Requirement Level**
@@ -1225,28 +1345,28 @@ The recommended `State` can be assessed without selecting an implementation acti
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and twenty have structured entries in this Assessment working record (including two with State deliberately unselected): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `README-LICENSE`, and `DOC-SECURITY`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and twenty-two have structured entries in this Assessment working record (including two with State deliberately unselected): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on all twenty structured entries, including contractual State selection for the two unresolved entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Formal Assessment entries for the other 8 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Human sign-off on all twenty-two structured entries, including contractual State selection for the two unresolved entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
+- Formal Assessment entries for the other 6 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the twenty structured entries; first discriminate `README-CONTRIBUTING` and `DOC-API` applicability and State, then approve or correct the proposals. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
+Review the twenty-two structured entries; assess the new database and local deployment guidance, and discriminate `README-CONTRIBUTING` and `DOC-API` applicability and State before approval. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `20/28` structured entries (`18` with proposed State; `2` with State unselected), `8/28` not yet entered.
+- **Responsibility coverage in this working artifact:** `22/28` structured entries (`20` with proposed State; `2` with State unselected), `6/28` not yet entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
