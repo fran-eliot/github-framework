@@ -782,6 +782,15 @@ No rewrite or new Component is authorized. The reviewer must evaluate whether to
 
 The README offers useful, discoverable testing instructions, links to the relevant CI workflows, and distinguishes common PR checks from manual testing. Execution evidence confirms that a substantial selected H2 regression ran successfully on the pinned SHA. Nevertheless, the README's broad local test command has not been independently reproduced here, and some workflow paths are conditional or manual. `Partial` is therefore a conservative **proposed assessment of the clarity and completeness of testing guidance**, not a conclusion that the tests themselves are deficient. A reviewer may instead approve `Satisfied` if the documentation Responsibility's scope is sufficiently met.
 
+**P1 Reviewer Disposition**
+
+**Pending — the proposed `Partial` State has not been approved.** Review the README as an **onboarding and test-selection guide**, separate from asserting complete test success:
+
+- **Scope of commands:** `./mvnw test` is a documented general local command; the pinned CI `h2-regression` executes a selected test set. A passing filtered CI job does not demonstrate that a clean-clone invocation of the general command works.
+- **Scope of execution:** [run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) supports 329 H2 regression tests with zero failures, errors or skips, and two successful PostgreSQL jobs. It does **not** establish successful Selenium, manual-suite or Compose execution at the pinned SHA.
+- **Documentation acceptance threshold:** confirm that prerequisites, appropriate local commands, workflow trigger conditions, test boundaries and limitations are discoverable without presenting optional/manual jobs as obligatory PR checks. If the README already meets that purpose, the reviewer may justify `Satisfied` even though not every suite has been executed. Retain `Partial` only for a concrete material guidance gap.
+
+**Acceptance record:** Reviewer: *unassigned*; pinned SHA: `28d75a50e0a178954dd46acc23300d9dd327843c`; command/trigger accuracy: *pending*; documentary sufficiency decision: *pending*; approved State and review date: *none recorded*; Adoption Decision: `—`.
 **Decision Status**
 
 `Needs Further Evaluation`
@@ -966,6 +975,16 @@ The maintainer must establish the relevant reporting audience and verify present
 
 The consumer has substantive specialized documentation and independently identified execution evidence. The guides provide context for PostgreSQL tests, selected JaCoCo reports, and SonarCloud CI. However, those materials are distributed across different files and were not validated as a complete, current, reproducible contributor workflow. `Partial` is an **unapproved documentary sufficiency hypothesis**; it does not mean that the project lacks tests or that SonarCloud failed. A reviewer must decide whether these documents satisfy the Responsibility without requiring a single consolidated guide or full suite execution.
 
+**P1 Reviewer Disposition**
+
+**Pending — the proposed `Partial` State has not been approved.** Review the specialized guides as a **maintainable, discoverable testing reference**, with evidence claims explicitly bounded:
+
+- **Protocol and reproducibility:** confirm the PostgreSQL, JaCoCo and SonarCloud guides describe supported prerequisites, command selection, CI triggers, artifact inspection, and expected limits. A distributed collection is not automatically defective if it is navigable and accurate.
+- **JaCoCo evidence:** the pinned run log confirms `jacoco:report` and a historically successful artifact upload (`jacoco-h2-regression`, ID `12201642997`). Later artifact listing returned no copies; report XML/HTML and any coverage percentage were **not verified**. Do not calculate coverage from 329 Surefire tests or imply whole-project coverage.
+- **Sonar evidence:** the scanner log shows `ANALYSIS SUCCESSFUL` and JaCoCo import. The historical CE task `AaFU8vS6n_jCCWP5LQvY` did not yield a verified final processing status, `analysisId`, or Quality Gate. The present `main` dashboard is not a substitute for that historical result.
+- **Verdict threshold:** the reviewer should approve `Satisfied` if the documents accurately meet the testing-documentation purpose even with a historical coverage/Quality Gate caveat, or justify `Partial` with a specific usability or accuracy deficiency. Do not treat unavailable metrics as evidence of test failure.
+
+**Acceptance record:** Reviewer: *unassigned*; pinned SHA: `28d75a50e0a178954dd46acc23300d9dd327843c`; guide coverage and navigation: *pending*; JaCoCo/Quality Gate evidence threshold: *pending*; approved State and review date: *none recorded*; Adoption Decision: `—`.
 **Decision Status**
 
 `Needs Further Evaluation`
