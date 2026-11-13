@@ -34,10 +34,12 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `README-ARCHITECTURE` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-REPOSITORY-STRUCTURE` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-FEATURES` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-DOCUMENTATION` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-FOOTER` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** twelve Responsibilities have completed **proposed assessment entries**; the other **16/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** fourteen Responsibilities have completed **proposed assessment entries**; the other **14/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -691,6 +693,123 @@ The maintainer must confirm feature accuracy and select `PRESERVE` or `ADAPT` on
 
 ---
 
+### README-DOCUMENTATION
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — the README links to relevant project documentation in task-oriented sections rather than providing a standalone documentation index.
+
+**Uncertainty**
+
+- Whether important source documents are discoverable by new contributors from the README's dispersed links.
+- Whether any critical links are stale, important documents lack entry points, or existing navigation creates material duplication; a comprehensive link audit has not been performed.
+- Whether a documentation index would add measurable value or the current task-oriented layout already meets the Component's purpose.
+
+**Detected Facts**
+
+- The pinned README links to `docs/screenshots/`, `docs/POSTGRESQL_SETUP.md`, `docs/SECURITY_HARDENING_AUDIT.md`, `docs/POSTGRESQL_INTEGRATION_TESTS.md`, and project GitHub Actions workflows.
+- Its `Organización del repositorio` section outlines `src/main`, `src/test`, `docs/`, `.github/workflows/`, and key Docker and configuration files.
+- The PostgreSQL setup and integration-testing documents were observed at the pinned consumer SHA. Their existence does not guarantee that every documentation link remains current.
+- The Framework's [README-DOCUMENTATION Component](../../components/readme/documentation/README.md) encourages grouping important resources. Architecture, ADR, Roadmap, API, and Deployment are examples; this does not mandate every documentation category for every consumer.
+- There is no literal `## Documentation` heading in the inspected README. The Responsibility can nevertheless be fulfilled through distributed links, so absence of that heading is **not** proof of `Missing`.
+
+**Evidence**
+
+- [Pinned README — linked documentation and repository organization](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
+- [Pinned PostgreSQL integration testing guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_INTEGRATION_TESTS.md)
+- [README-DOCUMENTATION Component](../../components/readme/documentation/README.md)
+- [Required Tech Stack, Documentation, and Footer E3 review](only-film-required-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+The README offers concrete navigation to important project resources. Therefore the documentation Responsibility is not absent merely because there is no canonical index heading. The question is whether the distributed organization is discoverable, complete enough for the intended audience, and consistent with the repository at the pinned SHA. `Partial` remains a **conservative, unapproved navigation-sufficiency hypothesis**, not a verified broken-link finding. A human reviewer may select `Satisfied` if the task-based references are demonstrably useful without an extra index.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The reviewer must establish whether to `PRESERVE` the distributed navigation or `ADAPT` any concrete gaps, based on link validation and audience needs. This record does not authorize a new documentation index or consumer edits.
+
+---
+
+### README-FOOTER
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Equivalent` — concluding attribution and license-context material appears in the final README sections instead of a separate canonical Footer block.
+
+**Uncertainty**
+
+- Whether the credit statement comprehensively and accurately represents the original collaborators and subsequent maintainers.
+- Whether the final license notice is clearly understandable without implying reuse permission that has not been legally established.
+- Whether the concluding section arrangement communicates an effective close to the README, given that future-work material follows the origin/credits section.
+- Whether additional related links or contact information would serve the audience; the Component does not require every optional Footer element.
+
+**Detected Facts**
+
+- The pinned README includes `Origen, créditos y evolución`, attributing the academic origins to multiple contributors and linking the original [certidevs/g1_testing](https://github.com/certidevs/g1_testing) repository.
+- The text distinguishes later work on `fran-eliot/only_film` from exclusive authorship of the original collaborative project.
+- `Próximas líneas de evolución` follows, listing potential future improvements rather than implemented features.
+- The final README line contains a `Licencia` note referring to the academic origin and the original repository; it explicitly does **not** establish an additional license through the README itself.
+- The Framework [README-FOOTER Component](../../components/readme/footer/README.md) allows license, acknowledgments, related links, and contact information but does not require all of them.
+- The existence of a credit and license notice is **documentary evidence**, not a verified legal determination of rights, ownership, or permitted reuse.
+
+**Evidence**
+
+- [Pinned README — credits, evolution, and license notice](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [README-FOOTER Component](../../components/readme/footer/README.md)
+- [Required Tech Stack, Documentation, and Footer E3 review](only-film-required-final-semantic-review.md)
+- [Original academic repository, linked as background](https://github.com/certidevs/g1_testing)
+
+**Evaluation Rationale**
+
+The README already contains attribution, project history, and cautious license information, satisfying identifiable Footer functions. The remaining review concerns editorial composition and clarity, not whether the document has a literal Footer heading or a specific contact block. `Partial` is a **provisional assessment of documentary suitability**, not a finding that credit is incorrect or a statement that the project is licensed for reuse. If the present closing text is clear and appropriate for the consumer's audience, a reviewer may justify `Satisfied`.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+A human reviewer must determine whether to `PRESERVE` the current closing material or `ADAPT` its organization or wording without introducing unauthorized legal or ownership claims. No modifications to Only Film are approved.
+
+---
+
 ### DOC-CHANGELOG
 
 **Requirement Level**
@@ -758,30 +877,30 @@ The recommended `State` can be assessed without selecting an implementation acti
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and twelve are now transcribed into this Assessment working record: `README-FEATURES`, `README-QUICK-START`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-LICENSE`, and `DOC-SECURITY`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and fourteen are now transcribed into this Assessment working record: `README-FEATURES`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on all twelve proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Formal Assessment entries for the other 16 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Human sign-off on all fourteen proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
+- Formal Assessment entries for the other 14 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the twelve structured entries, including `README-REPOSITORY-STRUCTURE` and `README-FEATURES`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
+Review the fourteen structured entries, including `README-DOCUMENTATION` and `README-FOOTER`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `12/28` proposed, `16/28` not yet entered.
+- **Responsibility coverage in this working artifact:** `14/28` proposed, `14/28` not yet entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for the first twelve Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for the first fourteen Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
