@@ -2,7 +2,7 @@
 
 ## 1. Context, purpose, and distinctions
 
-The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured, **unapproved** Responsibility records: twenty-five with a proposed State (including `DOC-REFERENCES` with Applicability `Uncertain`), and three (`README-CONTRIBUTING`, `DOC-API`, `DOC-DIAGRAMS`) with State intentionally unselected and Applicability `Uncertain` pending review. Full structural coverage does not constitute an approved or completed Assessment. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
+The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured, **unapproved** Responsibility records: twenty-five with a proposed State (including `DOC-REFERENCES` with Applicability `Uncertain`), and three (`README-CONTRIBUTING`, `DOC-API`, `DOC-DIAGRAMS`) with State intentionally unselected and Applicability `Uncertain` pending review. Full structural coverage does not constitute an approved or completed Assessment. The working Assessment's summary and detail blocks follow canonical `TPL-BACKEND` metadata order for reviewer comparison. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
 
 This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting hypotheses to evaluated States or recording human approval**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
 
@@ -115,3 +115,49 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 | Assessment Status | `In Progress` |
 
 **Outcome:** the matrix reduces evidence fragmentation and makes review priorities explicit. It **does not replace human Assessment**, constitute an Adoption Decision, or modify the consumer.
+
+
+## 6. Review readiness and handoff gates
+
+The working Assessment has **28/28 structural entries**, but only **25/28 proposed States** and **0 recorded human approvals**. The tables below describe **questions to decide**, not decisions taken. A merged PR recording this checklist does **not** approve any assessment value.
+
+### 6.1 Contract and evidence checkpoints
+
+| Checkpoint | Expected review outcome | Current status |
+| --- | --- | --- |
+| Canonical responsibility coverage | Exactly 8 Required, 7 Recommended, and 13 Optional entries, in Template metadata order | Structured: 28/28; values unapproved |
+| State contract | Each entry reviewed against `Satisfied / Partial / Missing`; no `Missing / Partial` combined State | 3 States unselected |
+| Applicability contract | `Applicable / Not Applicable / Uncertain` with justification for uncertainty | 4 `Uncertain` entries |
+| Evidence and rationale | Bounded source citation, interpretation, and uncertainty per Responsibility | Prepared as proposals; reviewer validation pending |
+| Decision handling | `Needs Further Evaluation` may retain `Adoption Decision: —`; `Resolved` must have rationale | 0 resolved |
+| Reviewer attribution | Named reviewer, reference confirmation, review scope and date | Not assigned |
+| Completion | Apply [Assessment Template Completion Check](../assessment-template.md) to reviewed contractual fields | `In Progress` |
+
+### 6.2 Explicit unresolved State and Applicability gates
+
+| Responsibility | Current working record | Evidence or policy question for reviewer |
+| --- | --- | --- |
+| `README-CONTRIBUTING` | State unselected (`Missing / Partial`); Applicability `Uncertain` | Confirm contributor acceptance policy and whether onboarding instructions partly satisfy it |
+| `DOC-API` | State unselected (`Missing / Partial`); Applicability `Uncertain` | Check pinned controllers and intended integration consumers before treating MVC routes as an API contract |
+| `DOC-DIAGRAMS` | State unselected (`Missing / Partial`); Applicability `Uncertain` | Check for embedded diagrams and whether diagrams serve a concrete documentation purpose |
+| `DOC-REFERENCES` | Proposed State `Partial`; Applicability `Uncertain` | Determine whether contextual references suffice or a maintained index is actually useful |
+
+These three unselected States **cannot** be copied into a final contractual Assessment as `Missing / Partial`. The Template **does allow** `Uncertain` Applicability when its basis and unresolved question are documented. Reviewers should not force `Applicable` or `Not Applicable` solely to eliminate uncertainty.
+
+### 6.3 P1 evidence acceptance sequence
+
+| Review sequence | Responsibility | Reviewer acceptance question |
+| --- | --- | --- |
+| 1 | `README-QUICK-START` | Is the documentation sufficient on its own, or is a successful clean Compose run at the pinned SHA needed before approving the proposed State? |
+| 2 | `DOC-CHANGELOG` | Does any curated equivalent exist beyond the examined README, commit history, and maintainer-reported absence of tags/Releases? |
+| 3 | `README-TESTING` / `DOC-TESTING` | Are commands, suite boundaries, known JaCoCo/Quality Gate limitations, and the verified Surefire results communicated accurately? |
+| 4 | `DOC-SECURITY` | Are the current guidance and documented controls sufficiently distinguished from historical audit findings, without presenting CI as a security certification? |
+| 5 | `README-LICENSE` | Does the notice correctly communicate the unverified reuse-rights situation without granting permissions or assuming sole ownership? |
+
+These review gates may be accepted, refined, or deferred individually with written rationale. **Do not** convert each proposed `Partial` into a final result merely because the record is well formatted.
+
+### 6.4 Review recording protocol
+
+For each Responsibility, a reviewer should confirm the pinned reference, inspect the minimum linked evidence, and **explicitly approve or revise** State, Applicability, and Evaluation Rationale. Record the reviewer and date on the Assessment (or a directly linked review record) before counting an evaluation as approved. Leave `Decision Status: Needs Further Evaluation` and `Adoption Decision: —` when no adoption action has been authorized.
+
+Once the three unselected States have contractual values and every Responsibility has been reviewed against the [Completion Check](../assessment-template.md), `Complete` may be considered **even if some Adoption Decisions remain unresolved**. That status does not authorize modifications to Only Film or imply conformance certification.
