@@ -1102,6 +1102,16 @@ A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descrip
 
 The README contains actionable technical onboarding information, but those instructions are not automatically a policy on who may contribute, how changes are proposed and reviewed, and how contributions are accepted. `Partial` would require treating technical onboarding as an adequate subset of the intended Responsibility; `Missing` would require establishing that no substantive contributing guidance is present. Neither conclusion has been human-reviewed, and whether the Responsibility is applicable to this consumer's collaboration model is unresolved. Recording `Uncertain` Applicability and leaving State unselected is more traceable than manufacturing a contractual answer.
 
+**Reviewer Discrimination Gate — State and Applicability**
+
+**Open; no State or Applicability approval recorded.** Decide the intended contribution model first. Technical setup, tests and CI instructions in the pinned README support onboarding but do not themselves establish who may propose changes, review expectations or acceptance policy.
+
+- **If the repository accepts contributions:** inspect maintained contribution policy or equivalent repository/project guidance. Choose `Partial` only if the existing guidance demonstrably fulfills a meaningful subset of that applicable purpose; choose `Missing` if no substantive contributing guidance meets it. `Satisfied` also requires sufficient evidence, not just an expected filename.
+- **If external contributions are not intended:** document the audience and whether this Optional Responsibility is `Not Applicable`; do not infer that solely from the absence of `CONTRIBUTING.md` or from the Template's Optional level.
+- **Evidence needed:** maintainer's current contribution policy, the pinned README, any equivalent instructions or GitHub collaboration settings, and an explicit review of which obligations are in scope.
+
+**Disposition record:** Accepted contribution model: *pending*; equivalent governance evidence: *unverified*; proposed contractual State: *unselected*; Applicability: `Uncertain`; reviewer/date: *not recorded*. `Needs Further Evaluation` and `Adoption Decision: —` remain unchanged.
+
 **Decision Status**
 
 `Needs Further Evaluation`
@@ -1464,6 +1474,16 @@ No public API contract implementation was verified in the prior evidence. Spring
 
 An API documentation Responsibility should be evaluated against an actual interface and its consumers, not a generic expectation that every backend publishes REST endpoints. The README treats REST as future work, and the currently reviewed routes relate to server-rendered MVC. `Missing` would need a confirmed applicable API-documentation requirement that is unmet; `Partial` would need demonstrable partial coverage of that requirement. Neither is established by the available bounded review. The State is intentionally unselected and Applicability `Uncertain` pending a decision on scope and further endpoint evidence.
 
+**Reviewer Discrimination Gate — State and Applicability**
+
+**Open; no State or Applicability approval recorded.** A server-rendered Spring MVC controller is not automatically a public REST API, and the pinned README lists an API REST as **possible future work**.
+
+- **Determine the contract and audience:** inspect the pinned controllers for consumer-facing JSON, programmatic HTTP contracts, or integrations. Decide whether documentation of any actual interface is materially needed for the intended consumer; do not classify a prospective feature as already implemented.
+- **If an applicable interface exists:** identify concrete endpoints and existing contractual documentation before judging `Satisfied`, `Partial` or `Missing`. A lack of OpenAPI/Swagger filenames alone does not demonstrate absence.
+- **If no API documentation purpose applies today:** explain `Not Applicable` based on the project's present supported interfaces and users. Optionality by itself does not settle the issue.
+
+**Disposition record:** Supported interface contract: *unverified beyond bounded MVC inspection*; consumer need: *pending*; proposed contractual State: *unselected*; Applicability: `Uncertain`; reviewer/date: *not recorded*. No API specification, new endpoint, or adoption action is authorized.
+
 **Decision Status**
 
 `Needs Further Evaluation`
@@ -1720,6 +1740,16 @@ No maintained technical diagram artifact was confirmed in the bounded prior insp
 
 The available evidence does not establish a maintained technical diagram, but neither does it show that diagrams are needed for the consumer's actual purpose. Absence of a diagram-named file is not proof that all diagrams are missing, and a high-level textual flow can be sufficient for a relatively simple explanation. `Missing` versus `Partial` cannot be selected without clarifying the required documentary scope and searching for embedded artifacts; `Not Applicable` must also be evaluated on the merits, not inferred from Optional level. This record deliberately leaves State unselected and Applicability `Uncertain`.
 
+**Reviewer Discrimination Gate — State and Applicability**
+
+**Open; no State or Applicability approval recorded.** The pinned README describes an MVC → service → JPA → database flow **in text**. The previous filename inspection did not establish a maintained technical diagram, but did not exhaustively search Markdown for embedded Mermaid or image references.
+
+- **Verify actual evidence:** inspect relevant pinned Markdown and assets for existing architecture, entity or deployment diagrams. Screenshots and decorative SVG files do not automatically fulfill this Responsibility.
+- **Determine usefulness:** identify one or more real comprehension problems that a maintained diagram would solve. The Framework's architecture guidance treats diagrams as optional, and a clear textual flow may already be appropriate.
+- **If applicable:** select the final State based on any substantive existing visualization (`Satisfied`/`Partial`) or verified absence (`Missing`), not a filename convention. If not useful to the consumer, justify `Not Applicable` rather than creating diagrams for formal compliance.
+
+**Disposition record:** Embedded-diagram search: *not completed*; user need: *pending*; proposed contractual State: *unselected*; Applicability: `Uncertain`; reviewer/date: *not recorded*. No diagram generation is authorized.
+
 **Decision Status**
 
 `Needs Further Evaluation`
@@ -1779,6 +1809,16 @@ Confirm whether diagrams already exist, decide whether any are useful, then sele
 **Evaluation Rationale**
 
 Contextual links already exist, and a standalone index is not required by the References Component. Whether the existing collection adequately addresses the intended reader's need for external source traceability has not been assessed exhaustively. `Partial` is a **proposed documentary State conditional on an applicable references scope**; Applicability remains `Uncertain` and may prove `Not Applicable` following human review. It is not a claim that a new References file is mandatory or that existing links are broken.
+
+**Reviewer Discrimination Gate — Applicability**
+
+**Open; proposed `Partial` State remains unapproved and Applicability remains `Uncertain`.** Existing contextual references are acknowledged, and the Framework Component does **not** require a standalone reference index where in-place links are clearer.
+
+- **Inspect purpose and quality:** review whether the pinned README and specialist guides link the few authoritative sources actually needed by readers, whether important links are stale, and whether duplication or discoverability is a material problem.
+- **If a separate references responsibility is applicable:** justify whether contextual linking is already `Satisfied` or `Partial` for the intended audience, without requiring a new index by default.
+- **If centralization adds no value:** evaluate `Not Applicable` for a standalone reference catalog or clarify the scope of `DOC-REFERENCES`; reconcile the conditional proposed State with the final Applicability under the Template contract.
+
+**Disposition record:** Reference inventory and need: *pending*; proposed State: `Partial` (not approved); Applicability: `Uncertain`; reviewer/date: *not recorded*. No reference index is authorized.
 
 **Decision Status**
 
