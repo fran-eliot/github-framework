@@ -26,8 +26,10 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | --- | --- | --- | --- | --- | --- |
 | `README-QUICK-START` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-CHANGELOG` | Required | `Missing` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** two Responsibilities have completed **proposed assessment entries**; the other **26/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** four Responsibilities have completed **proposed assessment entries**; the other **24/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -94,6 +96,125 @@ The `State` and `Applicability` cells above are technically recommended contract
 **Decision Rationale**
 
 No downstream `PRESERVE`, `ADAPT`, or other Adoption Decision is approved. The reviewer must determine the sufficiency threshold and whether to request a reproducible Compose smoke run using the recorded Q1–Q8 gates. Any operational reproduction must use disposable data and avoid destructive cleanup of existing volumes.
+
+---
+
+### README-TESTING
+
+**Requirement Level**
+
+`Recommended`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — the README's testing overview points to project-specific GitHub Actions workflows and specialist guides.
+
+**Uncertainty**
+
+- The general `./mvnw test` command has not been reproduced from a clean checkout of the pinned commit, and it is not equivalent to the specific H2 test selection executed by CI.
+- Full Selenium, manual workflows, and Docker Compose testing have not been demonstrated for the pinned SHA in the inspected evidence.
+- A human reviewer must judge whether the README adequately explains test prerequisites, CI triggers, scope differences, and the limits of its testing claims.
+
+**Detected Facts**
+
+- The pinned README contains a `Pruebas y CI` section with `./mvnw test`, selected `-Dtest` examples, a table of workflows, and an explanation that the broad `tests.yml` suite is manual rather than necessarily required for each PR.
+- `postgres-migration.yml` defines H2 regression, PostgreSQL schema/runtime checks, and PostgreSQL JPA/concurrent checkout; `tests.yml` includes manual suites and conditional Selenium workflow coverage.
+- The pinned [run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) records `h2-regression` with **329 tests, 0 failures, 0 errors, 0 skipped**, and `BUILD SUCCESS`.
+- Five specifically reviewed classes account for **40** of those tests, including Review, CSRF, Ticket Security, environment hardening, and file-service tests; that subtotal is not the entire 329-test run.
+- The other two jobs in the same run, `postgres-schema` and `PostgreSQL JPA and concurrent checkout`, completed successfully, but they do not prove Selenium or Compose smoke test success.
+
+**Evidence**
+
+- [Pinned README — testing and CI](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned tests.yml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.github/workflows/tests.yml)
+- [Pinned postgres-migration.yml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.github/workflows/postgres-migration.yml)
+- [Verified Surefire and Sonar log evidence](only-film-verified-surefire-sonar-logs.md)
+- [Pinned Quick Start and CI verification](only-film-pinned-quickstart-ci-verification.md)
+- [Testing E3 semantic proposal](only-film-testing-semantic-review.md)
+
+**Evaluation Rationale**
+
+The README offers useful, discoverable testing instructions, links to the relevant CI workflows, and distinguishes common PR checks from manual testing. Execution evidence confirms that a substantial selected H2 regression ran successfully on the pinned SHA. Nevertheless, the README's broad local test command has not been independently reproduced here, and some workflow paths are conditional or manual. `Partial` is therefore a conservative **proposed assessment of the clarity and completeness of testing guidance**, not a conclusion that the tests themselves are deficient. A reviewer may instead approve `Satisfied` if the documentation Responsibility's scope is sufficiently met.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Whether to `PRESERVE` the README guidance or `ADAPT` its clarity and prerequisites remains subject to the maintainer's review. Neither code nor workflow changes are approved by this assessment record.
+
+---
+
+### DOC-TESTING
+
+**Requirement Level**
+
+`Recommended`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Specialized`, `Distributed` — specialized project documentation covers PostgreSQL integration tests, JaCoCo reporting, and SonarCloud/CI.
+
+**Uncertainty**
+
+- Whether the distributed documentation is sufficient and current for a contributor to reproduce relevant PostgreSQL, Selenium, Compose, and optional analysis paths.
+- The historical JaCoCo report was produced and uploaded, but its XML/HTML contents were not retrieved; **no measured coverage percentage** is available from the inspected evidence.
+- The Sonar scanner reported successful submission, but the **historical Quality Gate result was not verified**. Test execution and documentation quality must be evaluated separately.
+
+**Detected Facts**
+
+- The pinned `docs/POSTGRESQL_INTEGRATION_TESTS.md` describes the PostgreSQL integration-test environment.
+- The pinned `docs/JACOCO_COVERAGE_BASELINE.md` distinguishes selected H2 regression coverage from any project-wide coverage claim and explains report inspection.
+- The pinned `docs/SONARCLOUD_PR_CI.md` describes CI/SonarCloud integration and the availability requirement for `SONAR_TOKEN`.
+- The historical `h2-regression` log records JaCoCo report generation and successful upload of `jacoco-h2-regression` (artifact ID `12201642997`); a subsequent artifact listing was empty. The report's percentage has **not** been inspected.
+- The same run's scanner logs show `ANALYSIS SUCCESSFUL` and JaCoCo import. This demonstrates submission/analysis by the scanner, **not a passed Quality Gate**. The historical CE task ID `AaFU8vS6n_jCCWP5LQvY` is recorded in the specialist review, but its final processing and Quality Gate status were not obtained.
+- The H2 job's 329 passing tests, although useful, do **not** establish total test-suite coverage or complete documentation sufficiency.
+
+**Evidence**
+
+- [Pinned PostgreSQL integration testing guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_INTEGRATION_TESTS.md)
+- [Pinned JaCoCo coverage baseline](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/JACOCO_COVERAGE_BASELINE.md)
+- [Pinned SonarCloud PR CI guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/SONARCLOUD_PR_CI.md)
+- [Pinned H2 regression run](https://github.com/fran-eliot/only_film/actions/runs/39283862407/job/118164215980)
+- [Verified Surefire, JaCoCo, and Sonar logs](only-film-verified-surefire-sonar-logs.md)
+- [Testing semantic review and historical Sonar CE task](only-film-testing-semantic-review.md)
+
+**Evaluation Rationale**
+
+The consumer has substantive specialized documentation and independently identified execution evidence. The guides provide context for PostgreSQL tests, selected JaCoCo reports, and SonarCloud CI. However, those materials are distributed across different files and were not validated as a complete, current, reproducible contributor workflow. `Partial` is an **unapproved documentary sufficiency hypothesis**; it does not mean that the project lacks tests or that SonarCloud failed. A reviewer must decide whether these documents satisfy the Responsibility without requiring a single consolidated guide or full suite execution.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+A human review must determine whether to `PRESERVE` the specialized guidance, `ADAPT` discoverability or reproducibility instructions, or choose another supported action. No new test run, coverage figure, Quality Gate determination, or consumer modification is authorized.
 
 ---
 
@@ -164,28 +285,29 @@ The recommended `State` can be assessed without selecting an implementation acti
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, but `README-QUICK-START` and `DOC-CHANGELOG` are now transcribed into this Assessment working record.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and four are now transcribed into this Assessment working record: `README-QUICK-START`, `DOC-CHANGELOG`, `README-TESTING`, and `DOC-TESTING`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on the `DOC-CHANGELOG` evaluation and any substantive alternative change record.
-- Formal Assessment entries for the other 26 Responsibilities, including the P1 Testing, Security, and License review gates, plus a decision on the Quick Start Compose verification threshold.
+- Human sign-off on all four proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
+- Formal Assessment entries for the other 24 Responsibilities, including the P1 Security and License review gates, plus a decision on the Quick Start Compose verification threshold.
+- The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the `DOC-CHANGELOG` and `README-QUICK-START` entries for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
+Review the four structured entries, including `README-TESTING` and `DOC-TESTING`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `2/28` proposed, `26/28` not yet entered.
+- **Responsibility coverage in this working artifact:** `4/28` proposed, `24/28` not yet entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for the first two Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for the first four Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
