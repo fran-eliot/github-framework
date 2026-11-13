@@ -28,10 +28,12 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `DOC-CHANGELOG` | Required | `Missing` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-ARCHITECTURE` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-PROJECT-STATUS` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** six Responsibilities have completed **proposed assessment entries**; the other **22/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** eight Responsibilities have completed **proposed assessment entries**; the other **20/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -340,6 +342,124 @@ The reviewer must determine whether `PRESERVE` or `ADAPT` the existing documenta
 
 ---
 
+### DOC-ARCHITECTURE
+
+**Requirement Level**
+
+`Recommended`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Specialized`, `Distributed` — the README summarizes the MVC/JPA structure while historical architecture and maintainability documentation provides additional context, but not a verified consolidated architecture snapshot for the pinned commit.
+
+**Uncertainty**
+
+- Which boundaries, dependencies, critical flows, and architectural exceptions are present at the pinned SHA, beyond the nominal README diagram-like description?
+- Whether the existing overview and supporting documents adequately describe the **current** architecture for contributors without recasting historical issues as unresolved defects.
+- Whether a more consolidated architecture overview is warranted or the existing sources meet the Component's level of detail.
+
+**Detected Facts**
+
+- The pinned README describes a primary `MVC controller → service / business rules → JPA repository → database` flow and names domain entities including `Movie`, `Room`, `Session`, `Ticket`, `Review`, and `User`.
+- The Framework's `DOC-ARCHITECTURE` Component expects a maintained description of architectural purpose, context, key components, relationships, and constraints; it does not prescribe exhaustive class-by-class documentation or a diagram solely for formality.
+- The pinned repository contains `docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md`, dated **2026-10-10** and explicitly based on an earlier `main` after PR #23 (`b6cf52c9`). It describes some direct controller-to-repository access and proposed improvements **for that historical reference**.
+- The functional audit `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md` uses another historical baseline (`df63353564485eb6d2d60c982032e5d3c4facbf2`) and cautions against reopening findings automatically after later changes.
+- The existing sources convey a nominal architecture and selected historical concerns; no complete architecture-description reconciliation to the pinned SHA was established by the prior reviews.
+
+**Evidence**
+
+- [DOC-ARCHITECTURE Component](../../components/documentation/architecture/README.md)
+- [Pinned consumer README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Historical architecture audit in the pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md)
+- [Historical F3 functional audit in the pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
+- [DOC-ARCHITECTURE E3 semantic review](only-film-recommended-docs-semantic-review.md)
+- [README-ARCHITECTURE E3 semantic review](only-film-recommended-readme-semantic-review.md)
+
+**Evaluation Rationale**
+
+Documentation relevant to the architectural Responsibility exists, so `Missing` is not established simply by the lack of a canonical architecture snapshot. The README's high-level flow provides a useful entry point, but a historical maintainability audit is not necessarily a maintained explanation of current components, relationships, and constraints. `Partial` is a **proposed documentary sufficiency judgment**, rather than an assertion that earlier direct repository access still exists or that the pinned architecture is defective. Human review should verify the expected scope and decide whether the distributed sources sufficiently support the selected Template.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Whether to `PRESERVE` the existing documentation or `ADAPT` its architectural overview requires human review and a bounded reference check. No refactoring or consumer-documentation change is authorized by this record.
+
+---
+
+### DOC-PROJECT-STATUS
+
+**Requirement Level**
+
+`Recommended`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Specialized`, `Distributed` — the README outlines possible next steps, while a maturity assessment and functional roadmap describe the project's development history from different reference points.
+
+**Uncertainty**
+
+- The actual status of F3 initiatives (completed, open, revised, or superseded) at the pinned SHA has not been reconstructed from current evidence.
+- The latest verifiable milestone, current status by area, and immediate next objective are not established as one maintained, consumer-facing operational snapshot.
+- Whether the project's portfolio context calls for a compact maintained status page or existing descriptions suffice requires reviewer judgment.
+
+**Detected Facts**
+
+- The Framework's `DOC-PROJECT-STATUS` Component calls for an overview, progress by area, a next milestone and immediate goals, distinct from a backlog, roadmap, or changelog.
+- The consumer's `docs/TECHNICAL_MATURITY_ASSESSMENT.md` is dated **2026-10-10** and names historical reference `9f2a31e927df105d14e3d30d4d8277fa61883deb`; it describes a technically evolved academic/portfolio project with production-readiness limitations **at that baseline**.
+- The `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md` document is tied to `df63353564485eb6d2d60c982032e5d3c4facbf2` and describes F3.002–F3.008 initiatives. Their present completion status at the pinned SHA has not been verified.
+- The pinned README's future work section mentions potential REST API, real payment integration, observability, and deployment automation, explicitly **not** implemented feature claims.
+- [Run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) confirms successful checks at the pinned SHA, including an H2 regression job with 329 tests; isolated successful checks do **not** establish the overall project milestone or operational maturity.
+
+**Evidence**
+
+- [DOC-PROJECT-STATUS Component](../../components/documentation/project-status/README.md)
+- [Historical technical maturity assessment in pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/TECHNICAL_MATURITY_ASSESSMENT.md)
+- [Historical F3 audit and roadmap in pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
+- [Pinned consumer README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned CI run](https://github.com/fran-eliot/only_film/actions/runs/39283862407)
+- [DOC-PROJECT-STATUS E3 semantic review](only-film-recommended-docs-semantic-review.md)
+
+**Evaluation Rationale**
+
+Status-related material exists, but the Component's purpose is a maintained **operational snapshot** showing current progress, milestone and next steps. Historical maturity findings and a roadmap cannot safely be treated as an up-to-date account at the pinned SHA. `Partial` is a **conservative proposed evaluation of the documentary coverage and freshness**, not a conclusion that every F3 item remains open or that any historical risk still applies. A reviewer should decide whether the distributed sources meet the project's actual communication needs or need a scoped update.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The maintainer must establish the relevant reporting audience and verify present milestones before selecting `PRESERVE`, `ADAPT`, or another valid Adoption Decision. No changes to Only Film or new project status claims are authorized.
+
+---
+
 ### DOC-CHANGELOG
 
 **Requirement Level**
@@ -407,30 +527,30 @@ The recommended `State` can be assessed without selecting an implementation acti
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and six are now transcribed into this Assessment working record: `README-QUICK-START`, `DOC-CHANGELOG`, `README-TESTING`, `DOC-TESTING`, `README-LICENSE`, and `DOC-SECURITY`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and eight are now transcribed into this Assessment working record: `README-QUICK-START`, `DOC-CHANGELOG`, `README-TESTING`, `DOC-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on all six proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Formal Assessment entries for the other 22 Responsibilities, plus the human decisions on Quick Start Compose verification, security-documentation adequacy, and actual license-status communication.
+- Human sign-off on all eight proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
+- Formal Assessment entries for the other 20 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the six structured entries, including `DOC-SECURITY` and `README-LICENSE`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
+Review the eight structured entries, including `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `6/28` proposed, `22/28` not yet entered.
+- **Responsibility coverage in this working artifact:** `8/28` proposed, `20/28` not yet entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for the first six Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for the first eight Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
