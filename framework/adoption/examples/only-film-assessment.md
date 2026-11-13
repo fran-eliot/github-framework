@@ -28,8 +28,10 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `DOC-CHANGELOG` | Required | `Missing` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** four Responsibilities have completed **proposed assessment entries**; the other **24/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** six Responsibilities have completed **proposed assessment entries**; the other **22/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -218,6 +220,126 @@ A human review must determine whether to `PRESERVE` the specialized guidance, `A
 
 ---
 
+### README-LICENSE
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Equivalent` **as a documentary notice only**. The existing README notice does not constitute a license grant or establish intellectual-property ownership.
+
+**Uncertainty**
+
+- Actual copyright and reuse permissions for the original academic collaboration have not been verified.
+- The reviewer must determine whether the current non-grant notice sufficiently informs readers or whether it requires a clearer explanation supported by authoritative rights information.
+- Whether a license file or a more detailed notice can lawfully be added depends on the relevant rights holders; **no license selection is implied**.
+
+**Detected Facts**
+
+- The pinned consumer README ends with a license-related note identifying the academic origins, directing readers to the original project and project documentation for terms, and expressly stating that the README does not grant an additional license.
+- The prior pinned-tree inspection did not identify a root `LICENSE`, `LICENCE`, or `COPYING` file. That filename observation is not a complete legal rights review.
+- The pinned `pom.xml` contains an empty `<licenses><license/></licenses>` entry; it does not specify reuse terms.
+- The original project is attributed to multiple collaborators in the README. The subsequent maintenance of `fran-eliot/only_film` does not establish unilateral authority to license all original contributions.
+
+**Evidence**
+
+- [Pinned README — origin, credits, and license notice](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned POM](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
+- [Pinned consumer tree](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
+- [Original academic repository](https://github.com/certidevs/g1_testing)
+- [Optional README governance semantic review](only-film-optional-governance-semantic-review.md)
+
+**Evaluation Rationale**
+
+A license-status notice exists and deliberately avoids asserting permissions that have not been established, so `Missing` would overlook real documentary content. However, the note does not explain a verified license or clearly specify reuse permissions. The proposed `Partial` evaluates **the clarity and completeness of license-related communication**, not whether a particular open-source license should be granted. It is not a legal determination. A reviewer may find the notice sufficient for the project's actual context, but that judgment must remain distinct from ownership and authorization.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Before choosing `PRESERVE`, `ADAPT`, `ADD`, or another valid action, the maintainer must establish the intended audience and obtain appropriate rights information if stronger permission statements are contemplated. This working record neither creates nor recommends a specific license grant.
+
+---
+
+### DOC-SECURITY
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Specialized`, `Distributed` — security guidance and qualifications are spread across the README, a historical hardening audit, demo-credentials guidance, configuration, and CI records.
+
+**Uncertainty**
+
+- The historical `SECURITY_HARDENING_AUDIT.md` evaluates a **different earlier baseline**; its findings must not be presented as current defects at the pinned SHA.
+- The review has not established whether documentation adequately covers the intended threat model, secret handling, local-only deployment, vulnerability reporting, and user-data expectations.
+- Tests and scanner submission do not prove complete endpoint coverage, dependency safety, security certification, a successful Quality Gate, or production readiness.
+- The reviewer must decide whether a distributed set of guides is sufficient or a more focused security-documentation entry point would help maintainers.
+
+**Detected Facts**
+
+- The pinned README includes `Seguridad y límites actuales`, describing role restrictions, BCrypt, CSRF protection, image validation, a demonstration checkout without a real payment gateway, and explicit limitations on production deployment.
+- The `docs/SECURITY_HARDENING_AUDIT.md` document is dated **2026-10-10** and states an older project baseline. It captures historical risks and recommendations, **not** an independently current audit of the assessed commit.
+- At the pinned SHA, reviewed `ReviewController.java` and related tests provide evidence of authorization checks on review edits, including a negative POST test expecting HTTP 403.
+- `MutationCsrfSecurityTest.java` exercises protection against GET mutations, missing CSRF tokens, and unauthorized session disabling. `FileService.java` and `FileServiceTest.java` provide bounded image-content and size validation evidence.
+- Configuration and `EnvironmentHardeningTest.java` address restrictions on H2 console/SQL logging and demo configuration. `docs/DEMO_CREDENTIALS_SECURITY.md` warns about credential handling.
+- The verified `h2-regression` log on [run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) shows **329 tests, 0 failures, 0 errors, 0 skipped**; five cited security-relevant test classes account for **40** tests within that result.
+- The run's Sonar scanner reported `ANALYSIS SUCCESSFUL`; **the historical Quality Gate result remains unverified**. No pentest or exhaustive security review is established.
+
+**Evidence**
+
+- [Pinned README — security section](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Historical hardening audit at the pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/SECURITY_HARDENING_AUDIT.md)
+- [Demo credentials security guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/DEMO_CREDENTIALS_SECURITY.md)
+- [Security implementation and historical-audit reconciliation](only-film-security-testing-reconciliation.md)
+- [Negative security-test evidence](only-film-negative-security-test-evidence.md)
+- [Verified Surefire and Sonar log evidence](only-film-verified-surefire-sonar-logs.md)
+- [DOC-SECURITY E3 semantic review](only-film-security-semantic-review.md)
+
+**Evaluation Rationale**
+
+`DOC-SECURITY` is `Optional` under the Template yet relevant to a consumer that authenticates users, handles uploads and user records, and supports demonstration purchases. The reviewed evidence demonstrates substantive security-related documentation and bounded tests, so absence of a standalone `SECURITY.md` must not trigger `Missing`. `Partial` is a **provisional judgment about the adequacy and currency of the documentary coverage**, particularly the distinction between a historical audit and current controls. It is **not** an assertion that the application is insecure or that lacking a pentest automatically makes security documentation partial. Human review must establish the actual documentary acceptance criteria.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The reviewer must determine whether `PRESERVE` or `ADAPT` the existing documentation is appropriate, and whether any additional documentation is justified by the consumer's audience and deployment assumptions. No security certification, change to Only Film, or downstream adoption action follows from this proposed record.
+
+---
+
 ### DOC-CHANGELOG
 
 **Requirement Level**
@@ -285,29 +407,30 @@ The recommended `State` can be assessed without selecting an implementation acti
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and four are now transcribed into this Assessment working record: `README-QUICK-START`, `DOC-CHANGELOG`, `README-TESTING`, and `DOC-TESTING`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and six are now transcribed into this Assessment working record: `README-QUICK-START`, `DOC-CHANGELOG`, `README-TESTING`, `DOC-TESTING`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on all four proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Formal Assessment entries for the other 24 Responsibilities, including the P1 Security and License review gates, plus a decision on the Quick Start Compose verification threshold.
+- Human sign-off on all six proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
+- Formal Assessment entries for the other 22 Responsibilities, plus the human decisions on Quick Start Compose verification, security-documentation adequacy, and actual license-status communication.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
+- Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the four structured entries, including `README-TESTING` and `DOC-TESTING`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
+Review the six structured entries, including `DOC-SECURITY` and `README-LICENSE`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `4/28` proposed, `24/28` not yet entered.
+- **Responsibility coverage in this working artifact:** `6/28` proposed, `22/28` not yet entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for the first four Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for the first six Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
