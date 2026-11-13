@@ -73,7 +73,7 @@ The examined sources provide an identifiable startup procedure with consistent v
 
 **Requirement Level:** `Required`.
 
-**Proposed State:** **`Missing` (proposed, not approved)**; no version-published changelog was identified in the examined sources. Tag inventory remains unverified, and `Partial` or `Satisfied` would require evidence of a substantive equivalent source.
+**Proposed State:** **`Missing` (proposed, not approved)**; no version-published changelog was identified in the examined sources. The maintainer confirmed on 2026-11-13 that no tags or GitHub Releases exist; an independent tag inventory has not been executed. `Partial` or `Satisfied` would require evidence of a substantive equivalent source.
 
 **Proposed Applicability:** `Applicable` (provisional).
 
@@ -101,7 +101,7 @@ The examined sources provide an identifiable startup procedure with consistent v
 
 No inspected source establishes a **version-oriented record of published changes** fulfilling `DOC-CHANGELOG`. Absence of a canonical filename alone is insufficient; alternative sources must be examined. A raw Git/PR listing cannot be assigned `Partial` merely as a precaution.
 
-Following the targeted check, **`Missing` is the preferred hypothesis, not an approved State**. Tags and other substantive alternatives remain an explicit reviewer gate. If such a source is found, reconsider `Partial` or `Satisfied`.
+Following the targeted check, **`Missing` is the preferred hypothesis, not an approved State**. The maintainer has confirmed no tags or GitHub Releases, while independent tag enumeration remains unavailable; any substantive equivalent change record remains a reviewer gate. If such a source is found, reconsider `Partial` or `Satisfied`.
 
 ### Uncertainty
 
@@ -124,13 +124,18 @@ Following the targeted check, **`Missing` is the preferred hypothesis, not an ap
 | RQ-1 | Confirm the consumer context and purpose of both Required Responsibilities | Pending |
 | RQ-2 | Reproduce Compose Quick Start or justify an equivalent documentation-evidence threshold | Pending |
 | RQ-3 | Corroborate versions, variables, and safeguards at the pinned SHA | Static evidence prepared; reviewer pending |
-| RQ-4 | Verify tags, releases, and alternative records according to C1–C6 | Pending |
+| RQ-4 | Verify tags, releases, and alternative records according to C1–C6 | Tags/releases absent per maintainer confirmation (2026-11-13); independent tag listing not run; equivalent-source check bounded |
 | RQ-5 | Select a valid `State` for each Responsibility, with `Applicability` and rationale | Pending |
 | RQ-6 | Keep `Needs Further Evaluation` where material uncertainty remains | Prepared; reviewer pending |
 | RQ-7 | Resolve an Adoption Decision only with rationale and human authorization | Pending |
 
 ## 6. Conclusion
 
-E3 proposals exist for both Required Responsibilities at the pinned Only Film SHA. `README-QUICK-START` retains a `Partial` hypothesis. `DOC-CHANGELOG` now has a preferred `Missing` hypothesis, **conditional on tag and equivalent-source verification**, before any formal `State` is recorded.
+E3 proposals exist for both Required Responsibilities at the pinned Only Film SHA. `README-QUICK-START` retains a `Partial` hypothesis. `DOC-CHANGELOG` now has a preferred `Missing` hypothesis, **supported by maintainer confirmation about tags/releases and pending formal review of any equivalent source**, before any formal `State` is recorded.
 
 **No E3 semantic assessment has been approved**, no Adoption Decision has been resolved, and the overall Assessment remains `In Progress`. Docker has not been executed, and the consumer has not been modified.
+
+
+### 2026-11-13 review update — DOC-CHANGELOG
+
+The consumer maintainer confirmed that **Only Film has no GitHub Releases or tags**. This is first-party testimony, not a newly executed remote tag query; see [evidence review, section 7](only-film-changelog-evidence-review.md). Together with the pinned README/POM and inspected project documents, this supports recommending **`State: Missing` and `Applicability: Applicable`** for the individual Assessment. The human-reviewed State and Adoption Decision have **not yet been recorded or approved**, and any undiscovered equivalent change record must be considered if brought forward.

@@ -102,3 +102,29 @@ This update revisits the sources **without changing the pinned consumer referenc
 - **Decision Status: `Needs Further Evaluation`**; **Adoption Decision: `—`**. Do not prescribe creating `CHANGELOG.md` until equivalent sources and the consumer's needs have been reviewed.
 
 **Final approval gate:** the reviewer must inspect [tags](https://github.com/fran-eliot/only_film/tags), [releases](https://github.com/fran-eliot/only_film/releases), and any alternative versioned-change source. Record the date, reference, and findings. If a substantive source exists, reconsider `Missing` against `Partial` and `Satisfied`. Otherwise, `Missing` remains the best-supported proposal. This is a **Responsibility review**, not a modification to Only Film.
+
+
+## 7. Maintainer confirmation — 2026-11-13
+
+The Only Film repository maintainer explicitly confirmed that **no GitHub Releases have been published and no tags have been created** for the repository. The statement was provided during the Framework Assessment review, without a local checkout.
+
+**Evidence classification:** maintainer-reported repository history, **not** a newly executed GitHub API/tag-list query. The earlier technical checks and their limitations remain accurately recorded in sections 2 and 6. This statement narrows the uncertainty about release/tag existence but does not establish the state of every possible external or distributed change record.
+
+| Gate | Current review status |
+| --- | --- |
+| C1 — Tags | **Maintainer-confirmed absence; independent tag inventory not executed** |
+| C2 — Releases | **Maintainer-confirmed absence; earlier endpoint observation was empty** |
+| C3 — Equivalent source | No curated version-oriented change record identified in the inspected README, project documents, or Git/PR evidence; a comprehensive external-source audit was not performed |
+| C4 — Version policy | `0.0.1-SNAPSHOT` is present; no release history may be inferred from it |
+| C5 — Consumer context | Academic project with later independent development, as stated in the pinned README; audience-specific change communication remains a review consideration |
+| C6 — Assessment | `Missing` is now supported as the **recommended State for human approval**, not as an already approved field |
+
+### Recommended Assessment outcome
+
+- **State:** `Missing` — the examined sources do not provide a curated changelog; maintainer confirms the absence of tags and releases. This is a **semantic recommendation**, subject to approval and checking any specific alternative source the reviewer identifies.
+- **Applicability:** `Applicable` — recommended for the Template's `Required` documentation Responsibility.
+- **Implementation Characteristics:** Git history and PRs provide change attribution but are **not a documented equivalent changelog**.
+- **Decision Status:** `Needs Further Evaluation` until the reviewer records and approves the individual Assessment and determines whether `ADD` or another valid Adoption Decision fits the consumer.
+- **Adoption Decision:** `—` (not approved).
+
+No historical releases or changelog entries have been fabricated. No files in Only Film have been changed. The overall Assessment stays `In Progress`.
