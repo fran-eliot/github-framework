@@ -146,15 +146,28 @@ These three unselected States **cannot** be copied into a final contractual Asse
 
 ### 6.3 P1 evidence acceptance sequence
 
-| Review sequence | Responsibility | Reviewer acceptance question |
-| --- | --- | --- |
-| 1 | `README-QUICK-START` | Is the documentation sufficient on its own, or is a successful clean Compose run at the pinned SHA needed before approving the proposed State? |
-| 2 | `DOC-CHANGELOG` | Does any curated equivalent exist beyond the examined README, commit history, and maintainer-reported absence of tags/Releases? |
-| 3 | `README-TESTING` / `DOC-TESTING` | Are commands, suite boundaries, known JaCoCo/Quality Gate limitations, and the verified Surefire results communicated accurately? |
-| 4 | `DOC-SECURITY` | Are the current guidance and documented controls sufficiently distinguished from historical audit findings, without presenting CI as a security certification? |
-| 5 | `README-LICENSE` | Does the notice correctly communicate the unverified reuse-rights situation without granting permissions or assuming sole ownership? |
+| Review sequence | Responsibility | Evidence and acceptance question | Disposition |
+| --- | --- | --- | --- |
+| 1 | `README-QUICK-START` | [Compose evidence gap](only-film-compose-evidence-gap.md): decide whether static documentary sufficiency is enough, or Q1–Q8 reproduction on the pinned SHA is required | Pending reviewer |
+| 2 | `DOC-CHANGELOG` | [Changelog evidence review](only-film-changelog-evidence-review.md): examine equivalence of change records, distinguish Git history from curated change communication, and preserve the maintainer-report versus independent-verification distinction | Pending reviewer |
+| 3 | `README-TESTING` / `DOC-TESTING` | Are commands, suite boundaries, known JaCoCo/Quality Gate limitations, and verified Surefire results accurately communicated? | Pending reviewer |
+| 4 | `DOC-SECURITY` | Are current guidance and documented controls distinguished from historical findings without presenting CI as security certification? | Pending reviewer |
+| 5 | `README-LICENSE` | Does the notice describe reuse-rights uncertainty without asserting exclusive ownership or granting permissions? | Pending reviewer |
 
-These review gates may be accepted, refined, or deferred individually with written rationale. **Do not** convert each proposed `Partial` into a final result merely because the record is well formatted.
+**Quick Start review record:** The pinned README, Dockerfile, Compose, `.env.example` and PostgreSQL guide have been reviewed for static consistency. The checked run [39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) establishes three successful checks, including JAR-on-PostgreSQL, **not** a Compose smoke execution for the pinned reference. The reviewer must choose and state the documentary or operational acceptance threshold. If execution is required, use disposable resources, synthetic secrets and the existing **Q1–Q8** protocol. If documentation alone suffices, state the basis for `Satisfied` or describe the specific gap supporting `Partial`.
+
+**Changelog review record:** The pinned README/tree/POM and inspected history do not identify a curated versioned-change record. `CHANGELOG.md` absence at a single path, lack of a Git tag inventory and the earlier empty Releases query have distinct evidence boundaries. The maintainer reported **no tags or Releases on 2026-11-13**; this is not independently verified tag history. `Missing` is the preferred unapproved hypothesis unless a substantive equivalent source is identified; the reviewer must explicitly accept or revise that interpretation.
+
+| Reviewer sign-off item | `README-QUICK-START` | `DOC-CHANGELOG` |
+| --- | --- | --- |
+| Assessed consumer reference | Pinned SHA; reviewer confirmation pending | Pinned SHA; reviewer confirmation pending |
+| Evidence acceptance threshold | Documentation-only vs Q1–Q8 reproduction: **unselected** | Equivalent record and scope: **unconfirmed by reviewer** |
+| Proposed State | `Partial`, not approved | `Missing`, not approved |
+| Reviewer and review date | Not recorded | Not recorded |
+| Formal State approval | **No** | **No** |
+| Decision Status / Adoption Decision | `Needs Further Evaluation` / `—` | `Needs Further Evaluation` / `—` |
+
+A documentation Responsibility can be evaluated on documentary evidence without asserting every runtime path was executed. Conversely, if reproducibility is the agreed acceptance criterion, do not replace the required Compose evidence with an unrelated successful job. These gates may be accepted, revised, or deferred only with rationale; a merged PR **does not approve** either State or authorize consumer changes.
 
 ### 6.4 Review recording protocol
 

@@ -345,6 +345,15 @@ The reviewer must determine whether the table warrants `PRESERVE` or a specific 
 
 `README-QUICK-START` is `Required` by the pinned Template and clearly applicable to a project whose README presents two documented startup paths. The README contains a coherent sequence, and the previously examined Docker, Java, Compose and Spring parameters are internally consistent. Therefore, `Missing` would not reflect the available documentation. However, no direct Compose run for the pinned SHA has been verified and the review has not established that the documented procedure is sufficient for a new user. `Partial` is a **conservative proposed interpretation of documentary and operational sufficiency**, not evidence that Docker startup fails. A reviewer may choose `Satisfied` if the documentation Responsibility's criteria are met without a separate full runtime demonstration, but must document that judgment rather than treating an unrun workflow as passed.
 
+**P1 Reviewer Disposition**
+
+**Pending — no acceptance or rejection recorded.** The following alternatives are **decision criteria**, not approved States:
+
+- **Documentation-only review:** inspect the pinned instructions, `.env.example`, Dockerfile, `compose.yaml`, and PostgreSQL guide for a complete, coherent local onboarding path. The existing static review supports readability and consistency, **not demonstrated execution**. If this is the accepted scope for a README documentation Responsibility, the reviewer may approve `Satisfied` with that limitation stated.
+- **Operational reproduction required:** review the [Q1–Q8 gates](only-film-compose-evidence-gap.md) using a disposable environment and synthetic secrets. In the inspected checks for pinned run [39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407), JAR-on-PostgreSQL success **cannot substitute** for a Compose build/start. A missing run is an evidence gap, not a failing test.
+- **Retain or revise `Partial`:** identify a **specific** material documentation problem or accepted evidence threshold not met. Do not use `Partial` exclusively as a precaution.
+
+**Acceptance record:** Reviewer: *unassigned*; reference: `28d75a50e0a178954dd46acc23300d9dd327843c`; chosen documentary/operational threshold: *pending*; evidence disposition: *pending*; approved State and date: *none recorded*; Adoption Decision: `—`.
 **Decision Status**
 
 `Needs Further Evaluation`
@@ -527,6 +536,15 @@ A human reviewer must determine whether to `PRESERVE` the current closing materi
 
 `DOC-CHANGELOG` is `Required` by `TPL-BACKEND` 0.1.0. The relevant question is whether the consumer communicates meaningful changes in a changelog-like form, not whether a file has a prescribed name. The reviewed README, POM, and documentation did not establish such a record; the maintainer further confirmed the absence of tags and GitHub Releases. Raw commit/PR history supports attribution but is not a curated record of changes for readers. On this bounded evidence, `Missing` is more defensible than `Partial`: assigning `Partial` would require an identified partially satisfying change record. This remains **a proposed semantic assessment**, subject to human review of any alternative source.
 
+**P1 Reviewer Disposition**
+
+**Pending — no formal State approval recorded.** The proposed `Missing` is supported by the inspected versioned documentation, but the reviewer should apply the following discrimination criteria:
+
+- **Approve proposed `Missing` only if** the reviewer accepts the documented scope of the pinned README/tree/POM/commits, the reported absence of tags and Releases, and no substantive curated versioned-change record or equivalent is identified. The absence of `CHANGELOG.md` at one path is insufficient on its own.
+- **Reconsider `Partial` or `Satisfied` if** an actual consumer-facing, maintained record of changes is identified and its scope is assessed. Raw commits, PR lists, `0.0.1-SNAPSHOT`, and the academic origin narrative are not automatically such a record.
+- **Record provenance separately:** tag and Release absence was **maintainer-reported on 2026-11-13**; independent tag inventory was not executed. Earlier GitHub Releases API observations were empty but are time-dependent. Any later search must record date and its relation to the pinned commit.
+
+**Acceptance record:** Reviewer: *unassigned*; reference: `28d75a50e0a178954dd46acc23300d9dd327843c`; equivalent-source determination: *pending*; confirmed State and date: *none recorded*; Adoption Decision: `—`.
 **Decision Status**
 
 `Needs Further Evaluation`
