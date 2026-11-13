@@ -38,10 +38,12 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `README-FOOTER` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-TECH-STACK` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-HERO` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-OVERVIEW` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-ROADMAP` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** sixteen Responsibilities have completed **proposed assessment entries**; the other **12/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** eighteen Responsibilities have completed **proposed assessment entries**; the other **10/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -928,6 +930,117 @@ The reviewer must decide whether `PRESERVE` or a bounded `ADAPT` is appropriate 
 
 ---
 
+### README-OVERVIEW
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — the project's functional overview is integrated into the introductory README paragraphs rather than a separately titled `Overview` section.
+
+**Uncertainty**
+
+- Whether the introduction clearly explains the problem solved and value to visitors, users, and maintainers beyond describing functions.
+- Whether the current mix of product summary, technology stack, and academic origins keeps the Overview understandable and distinct from Hero.
+- Whether a separate heading would improve navigation or simply duplicate a sufficiently clear existing introduction.
+
+**Detected Facts**
+
+- The pinned README introduces Only Film as a cinema-management web application and outlines movie listings, screenings, seat selection, ticketing, and role-based administration.
+- A following paragraph explains the academic collaboration and subsequent technical development of the repository.
+- The [README-OVERVIEW Component](../../components/readme/overview/README.md) expects a clear description of the project, its purpose, and the problem it addresses, without turning the overview into installation or detailed implementation guidance.
+- The README introduction already fulfills a recognizable overview function; the absence of a literal `## Overview` heading does not demonstrate that the Responsibility is missing.
+
+**Evidence**
+
+- [Pinned Only Film README — introductory overview](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [README-OVERVIEW Component](../../components/readme/overview/README.md)
+- [Required Hero, Overview, and Features E3 semantic review](only-film-required-identity-semantic-review.md)
+
+**Evaluation Rationale**
+
+The introductory paragraphs convey the nature and scope of the application, so a `Missing` State is not supported. The remaining questions concern the separation of product purpose from technical description and history, and the reader's ability to identify the project's benefit without duplicative text. `Partial` is a **conservative proposed editorial judgment**, not proof of a defective overview. A reviewer may reasonably approve `Satisfied` if the existing introduction meets the Component's documentary purpose without a separate section title.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Whether to `PRESERVE` the existing introduction or `ADAPT` its organization requires human review of the communication goals. This record does not authorize changes to Only Film.
+
+---
+
+### README-ROADMAP
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — the README summarizes possible evolution, and a separate, historically pinned F3 functional audit and roadmap records more detailed initiatives.
+
+**Uncertainty**
+
+- Whether the future-work items in the README still reflect real priorities at the pinned consumer SHA.
+- Which initiatives F3.002–F3.008 in the older audit were implemented, revised, or superseded by the pinned reference; this has not been independently reconciled.
+- Whether a brief future-work summary suffices for the audience or should link to an up-to-date planning source.
+
+**Detected Facts**
+
+- The pinned README has a `Próximas líneas de evolución` section mentioning possible REST API, real payment integration, observability, and deployment automation; these are framed as **potential future work**, not completed capabilities.
+- The pinned repository contains `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md`, listing initiatives F3.002–F3.008 from an **earlier** baseline `df63353564485eb6d2d60c982032e5d3c4facbf2`.
+- The existing F3 document cannot establish, solely by its presence in the later tree, which initiatives remain open or have already been completed at the assessed commit.
+- The Framework's [README-ROADMAP Component](../../components/readme/roadmap/README.md) supports a concise overview of upcoming phases, not a duplicated detailed planning document.
+
+**Evidence**
+
+- [Pinned README — future development](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned historical F3 audit and roadmap](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
+- [README-ROADMAP Component](../../components/readme/roadmap/README.md)
+- [Optional README governance semantic review](only-film-optional-governance-semantic-review.md)
+
+**Evaluation Rationale**
+
+The README already communicates possible future directions, so a canonical roadmap heading or extra document is not automatically necessary. However, the historical planning document is tied to another commit and cannot be treated as proof of the current backlog. `Partial` is a **proposed assessment of currency and editorial usefulness**, not a finding that every F3 initiative is outstanding. The reviewer may approve `Satisfied` if a concise forward-looking summary is all the Optional Responsibility needs for this portfolio consumer.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descriptions remain accurate and valuable to the consumer's intended audience. No new roadmap promises or modifications to Only Film are authorized.
+
+---
+
 ### DOC-CHANGELOG
 
 **Requirement Level**
@@ -995,30 +1108,30 @@ The recommended `State` can be assessed without selecting an implementation acti
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and sixteen are now transcribed into this Assessment working record: `README-HERO`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-LICENSE`, and `DOC-SECURITY`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and eighteen are now transcribed into this Assessment working record: `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on all sixteen proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Formal Assessment entries for the other 12 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Human sign-off on all eighteen proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
+- Formal Assessment entries for the other 10 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the sixteen structured entries, including `README-TECH-STACK` and `README-HERO`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
+Review the eighteen structured entries, including `README-OVERVIEW` and `README-ROADMAP`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `16/28` proposed, `12/28` not yet entered.
+- **Responsibility coverage in this working artifact:** `18/28` proposed, `10/28` not yet entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for the first sixteen Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for the first eighteen Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
