@@ -1334,6 +1334,16 @@ A future `PRESERVE` or `ADAPT` choice should follow an editorial review of actua
 
 A license-status notice exists and deliberately avoids asserting permissions that have not been established, so `Missing` would overlook real documentary content. However, the note does not explain a verified license or clearly specify reuse permissions. The proposed `Partial` evaluates **the clarity and completeness of license-related communication**, not whether a particular open-source license should be granted. It is not a legal determination. A reviewer may find the notice sufficient for the project's actual context, but that judgment must remain distinct from ownership and authorization.
 
+**P1 Reviewer Disposition**
+
+**Pending — the proposed `Partial` State is not approved.** Assess the **accuracy of license-status communication** independently from ownership and permission to distribute or relicense original contributions.
+
+- **Observed documentary notice:** the pinned README identifies collaborative academic origins, points toward the original source, and expressly avoids granting an additional license. The inspected root paths did not identify `LICENSE`, `LICENCE` or `COPYING`, and the POM's `<licenses><license/></licenses>` entry has no terms. These observations **do not establish legal permission or prohibit use** by themselves.
+- **Rights and attribution boundary:** original academic collaboration involved multiple contributors, while later evolution occurred in the maintained fork. Neither GitHub hosting, subsequent technical work, repository visibility, nor a README notice proves sole ownership or authority to grant a license over the entire codebase.
+- **Documentation acceptance threshold:** decide whether the current cautionary notice accurately communicates the **unverified** terms to readers without suggesting an implied open-source license. `Satisfied` may be defensible if that disclosure meets the Optional documentary purpose; `Partial` requires a specific clarity gap. This is separate from the legally supported rights position, which remains unresolved here.
+- **Downstream boundary:** do not select a license, assert permission, replace attribution, or add `LICENSE` as an automatic consequence of this Assessment. Obtain authoritative rights information or appropriate advice before any stronger licensing statement.
+
+**Acceptance record:** Reviewer: *unassigned*; consumer SHA: `28d75a50e0a178954dd46acc23300d9dd327843c`; communication adequacy: *pending*; rights evidence: *not verified*; approved State/date: *not recorded*; Adoption Decision: `—`.
 **Decision Status**
 
 `Needs Further Evaluation`
@@ -1641,6 +1651,16 @@ Review local operational scope, the uploads warning, and the threshold for repro
 
 `DOC-SECURITY` is `Optional` under the Template yet relevant to a consumer that authenticates users, handles uploads and user records, and supports demonstration purchases. The reviewed evidence demonstrates substantive security-related documentation and bounded tests, so absence of a standalone `SECURITY.md` must not trigger `Missing`. `Partial` is a **provisional judgment about the adequacy and currency of the documentary coverage**, particularly the distinction between a historical audit and current controls. It is **not** an assertion that the application is insecure or that lacking a pentest automatically makes security documentation partial. Human review must establish the actual documentary acceptance criteria.
 
+**P1 Reviewer Disposition**
+
+**Pending — the proposed `Partial` State is not approved.** The reviewer should evaluate the **accuracy, currency and discoverability of security documentation**, not certify the application's security posture.
+
+- **Current versus historical baseline:** `docs/SECURITY_HARDENING_AUDIT.md` is dated 2026-10-10 and refers to an older commit. The risk descriptions cannot be restated as unresolved defects at the pinned `28d75a50e0a178954dd46acc23300d9dd327843c` without contemporary supporting evidence. The current README, demo-credentials guide and source/test reconciliation are distinct sources.
+- **Bounded implementation/test evidence:** the inspected security-relevant tests include authorization, CSRF, image validation and environment hardening; the pinned CI run records 329 passing selected H2 tests, including 40 tests from five named security-relevant classes. This **does not** demonstrate that all endpoints, upload threats, dependencies, or deployment configurations are safe. Sonar `ANALYSIS SUCCESSFUL` does not establish a passed Quality Gate.
+- **Documentation acceptance threshold:** decide whether the README and specialist documents appropriately inform users about credentials/secrets, supported local-only deployment, exposure constraints, relevant security practices and how to report issues. Evaluate whether a separate disclosure policy or index is **needed for the audience**, rather than automatically requiring `SECURITY.md` or a pentest.
+- **State discrimination:** the existing material supports a non-`Missing` assessment. Approve `Satisfied` if it meets the agreed documentary purpose, or `Partial` only with specific, current documentation gaps. Do not interpret either State as a security assurance.
+
+**Acceptance record:** Reviewer: *unassigned*; consumer SHA: `28d75a50e0a178954dd46acc23300d9dd327843c`; historical/current evidence separation: *pending review*; documentary threshold and threat-model scope: *pending*; approved State/date: *not recorded*; Adoption Decision: `—`.
 **Decision Status**
 
 `Needs Further Evaluation`

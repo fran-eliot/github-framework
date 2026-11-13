@@ -151,8 +151,8 @@ These three unselected States **cannot** be copied into a final contractual Asse
 | 1 | `README-QUICK-START` | [Compose evidence gap](only-film-compose-evidence-gap.md): decide whether static documentary sufficiency is enough, or Q1–Q8 reproduction on the pinned SHA is required | Pending reviewer |
 | 2 | `DOC-CHANGELOG` | [Changelog evidence review](only-film-changelog-evidence-review.md): examine equivalence of change records, distinguish Git history from curated change communication, and preserve the maintainer-report versus independent-verification distinction | Pending reviewer |
 | 3 | `README-TESTING` / `DOC-TESTING` | [Testing semantic review](only-film-testing-semantic-review.md) and [verified Surefire/JaCoCo/Sonar logs](only-film-verified-surefire-sonar-logs.md): check general vs selected commands, workflow triggers, distributed guide sufficiency, and historical artifact/Quality Gate evidence limits | Pending reviewer |
-| 4 | `DOC-SECURITY` | Are current guidance and documented controls distinguished from historical findings without presenting CI as security certification? | Pending reviewer |
-| 5 | `README-LICENSE` | Does the notice describe reuse-rights uncertainty without asserting exclusive ownership or granting permissions? | Pending reviewer |
+| 4 | `DOC-SECURITY` | [Security E3 review](only-film-security-semantic-review.md): assess README/credentials documentation, dated audit provenance, bounded tested controls and disclosure guidance without certifying system security | Pending reviewer |
+| 5 | `README-LICENSE` | [Optional governance E3 review](only-film-optional-governance-semantic-review.md): distinguish notice clarity from legal permission, collaborative authorship, and authority to grant reuse rights | Pending reviewer |
 
 **Quick Start review record:** The pinned README, Dockerfile, Compose, `.env.example` and PostgreSQL guide have been reviewed for static consistency. The checked run [39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) establishes three successful checks, including JAR-on-PostgreSQL, **not** a Compose smoke execution for the pinned reference. The reviewer must choose and state the documentary or operational acceptance threshold. If execution is required, use disposable resources, synthetic secrets and the existing **Q1–Q8** protocol. If documentation alone suffices, state the basis for `Satisfied` or describe the specific gap supporting `Partial`.
 
@@ -193,7 +193,33 @@ These observations are from the [Testing E3 review](only-film-testing-semantic-r
 
 A reviewer may accept a documentation Responsibility without demanding all tests or metrics, but must record the basis. Unverified Selenium, coverage and Quality Gate results must remain **unknown**, not be converted to passing or failing results.
 
-### 6.5 Review recording protocol
+### 6.5 Security and license evidence acceptance
+
+| Review dimension | Source-supported observation | Boundary or unanswered question |
+| --- | --- | --- |
+| Current security documentation | Pinned README describes roles, BCrypt, CSRF, image validation, simulated checkout and local deployment limitations; demo-credentials guide discusses secrets | Does this cover the actual user/deployment context and vulnerability reporting expectations? |
+| Historical security audit | `SECURITY_HARDENING_AUDIT.md` is dated **2026-10-10**, and states an older baseline | Historical findings cannot automatically be assigned as outstanding defects at the assessed SHA |
+| Implemented controls and test evidence | Pinned source review describes authorization, CSRF, upload validation and environment hardening; run [39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) reports 329 selected H2 tests passing, including 40 in five security-relevant classes | No pentest, exhaustive endpoint/third-party dependency audit, full security guarantee or verified Sonar Quality Gate |
+| License-status notice | Pinned README acknowledges the academic origin and does not purport to grant an additional license | Whether the notice is sufficient for readers is a **documentary** judgment, not proof of permissions |
+| License and ownership provenance | No root `LICENSE`/`LICENCE`/`COPYING` identified in the bounded tree review; POM license fields empty; credits name original collaborators | Rights holders, grant terms and unilateral authority to relicense original contributions **not verified** |
+
+**Security review:** Use the [E3 security review](only-film-security-semantic-review.md), [historical/current reconciliation](only-film-security-testing-reconciliation.md) and [negative test evidence](only-film-negative-security-test-evidence.md) to distinguish the documentary burden from the technical assurance burden. The absence of a standalone `SECURITY.md` or pentest does not alone make the documentation `Partial`. If a vulnerability-reporting path or secrets guidance is materially required but undocumented, record the exact gap, intended audience, and evidence before changing the proposed State.
+
+**License review:** Use the [Optional governance E3 review](only-film-optional-governance-semantic-review.md) and pinned consumer README/POM. Judge whether the existing cautionary note is sufficiently clear. Do not convert `README-LICENSE: Satisfied` into a legal opinion, a confirmed open-source grant, or approval to add a license file. Rights and collaborative attribution require separate authoritative verification.
+
+| Reviewer sign-off item | `DOC-SECURITY` | `README-LICENSE` |
+| --- | --- | --- |
+| Assessed reference | Pinned SHA; reviewer confirmation pending | Pinned SHA; reviewer confirmation pending |
+| Proposed State | `Partial` — not approved | `Partial` — not approved |
+| Main acceptance threshold | Security documentation fit for audience and supported deployment | Accurate communication of unknown reuse status |
+| Specific outstanding determination | Historical/current distinction; missing guidance, if any | Rights provenance and whether wording needs clarification |
+| Reviewer/date | Not recorded | Not recorded |
+| Formal State approval | **No** | **No** |
+| Decision Status / Adoption Decision | `Needs Further Evaluation` / `—` | `Needs Further Evaluation` / `—` |
+
+These are the final two **P1 evidence-disposition gates**. All six P1 Responsibilities now have an explicit reviewer-facing gate, but **none has formal approval** and no adoption action is authorized.
+
+### 6.6 Review recording protocol
 
 For each Responsibility, a reviewer should confirm the pinned reference, inspect the minimum linked evidence, and **explicitly approve or revise** State, Applicability, and Evaluation Rationale. Record the reviewer and date on the Assessment (or a directly linked review record) before counting an evaluation as approved. Leave `Decision Status: Needs Further Evaluation` and `Adoption Decision: —` when no adoption action has been authorized.
 
