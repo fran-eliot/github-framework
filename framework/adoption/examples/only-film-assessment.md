@@ -24,42 +24,278 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 
 | Responsibility | Requirement Level | State | Applicability | Decision Status | Adoption Decision |
 | --- | --- | --- | --- | --- | --- |
+| `README-HERO` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-OVERVIEW` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-FEATURES` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-TECH-STACK` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-QUICK-START` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-DOCUMENTATION` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-FOOTER` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-CHANGELOG` | Required | `Missing` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `README-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `DOC-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `DOC-ARCHITECTURE` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `DOC-PROJECT-STATUS` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-STATUS` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-ARCHITECTURE` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-REPOSITORY-STRUCTURE` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `README-FEATURES` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `README-DOCUMENTATION` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `README-FOOTER` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `README-TECH-STACK` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `README-HERO` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `README-OVERVIEW` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-ARCHITECTURE` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-PROJECT-STATUS` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-ROADMAP` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-CONTRIBUTING` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
-| `DOC-API` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
-| `DOC-DATABASE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `DOC-DEPLOYMENT` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(local environment; proposed)* | `Needs Further Evaluation` | `—` |
-| `DOC-ADR` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Uncertain` *(applicability pending review)* | `Needs Further Evaluation` | `—` |
 | `README-DEMO` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-AUTHOR` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-HIGHLIGHTS` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `DOC-DIAGRAMS` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-ADR` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-API` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
+| `DOC-DATABASE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-DEPLOYMENT` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(local environment; proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `DOC-DIAGRAMS` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
+| `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Uncertain` *(applicability pending review)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** twenty-five Responsibilities have selected **proposed States** (including one with Applicability `Uncertain`); three additional Responsibilities have structured entries with State **not selected** and Applicability `Uncertain`. All **28/28** Responsibilities now have structured working entries, but the three unresolved States and outstanding human review prevent completion. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** twenty-five Responsibilities have selected **proposed States** (including one with Applicability `Uncertain`); three additional Responsibilities have structured entries with State **not selected** and Applicability `Uncertain`. All **28/28** Responsibilities now have structured working entries, but the three unresolved States and outstanding human review prevent completion. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
 ---
 
 ## 3. Responsibility Details
+
+### README-HERO
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Canonical` in the functional sense: the README opens with an explicit project heading, short introductory description, and a limited group of technology badges.
+
+**Uncertainty**
+
+- Whether the opening introduction is sufficiently distinct from the later overview and adequately conveys the project identity and intended audience.
+- Whether the badges and heading remain legible and visually coherent on the intended screen sizes and light/dark themes; no responsive rendering review is recorded.
+- Whether the headline technology versions are current at the pinned SHA beyond those already checked against POM and Compose.
+
+**Detected Facts**
+
+- The pinned README begins with `# 🎬 Only Film`, followed by a brief description identifying the project and its principal technologies.
+- An additional paragraph introduces the academic collaboration from which the project originated and its subsequent technical development.
+- Five badges identify Java 25, Spring Boot 4.0.5, PostgreSQL 17, Flyway, and Docker Compose.
+- The [README-HERO Component](../../components/readme/hero/README.md) describes clear naming, tagline, structure, and restrained badge use. A decorative banner is **optional**, and the absence of one is not a defect.
+- Java, Spring Boot, and PostgreSQL versions have supporting pinned configuration evidence; the prior semantic review did not verify every visual rendering context.
+
+**Evidence**
+
+- [Pinned README — heading, introduction, badges](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [README-HERO Component](../../components/readme/hero/README.md)
+- [Required identity and overview E3 semantic review](only-film-required-identity-semantic-review.md)
+- [Pinned pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
+- [Pinned compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml)
+
+**Evaluation Rationale**
+
+The main heading, short introduction, and five badges visibly serve the Hero Responsibility; a banner or a separately titled tagline is not a mandatory prerequisite. The remaining questions are editorial distinction from Overview, reader clarity, and display compatibility, which were not reviewed as completed. `Partial` remains a **proposed editorial hypothesis**, not a documented visual failure or absent identity. A human reviewer can select `Satisfied` if the present introduction is sufficiently clear and readable.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The reviewer must decide whether `PRESERVE` or a bounded `ADAPT` is appropriate once the actual README appearance and clarity are considered. No change to the consumer is authorized.
+
+---
+
+---
+
+### README-OVERVIEW
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — the project's functional overview is integrated into the introductory README paragraphs rather than a separately titled `Overview` section.
+
+**Uncertainty**
+
+- Whether the introduction clearly explains the problem solved and value to visitors, users, and maintainers beyond describing functions.
+- Whether the current mix of product summary, technology stack, and academic origins keeps the Overview understandable and distinct from Hero.
+- Whether a separate heading would improve navigation or simply duplicate a sufficiently clear existing introduction.
+
+**Detected Facts**
+
+- The pinned README introduces Only Film as a cinema-management web application and outlines movie listings, screenings, seat selection, ticketing, and role-based administration.
+- A following paragraph explains the academic collaboration and subsequent technical development of the repository.
+- The [README-OVERVIEW Component](../../components/readme/overview/README.md) expects a clear description of the project, its purpose, and the problem it addresses, without turning the overview into installation or detailed implementation guidance.
+- The README introduction already fulfills a recognizable overview function; the absence of a literal `## Overview` heading does not demonstrate that the Responsibility is missing.
+
+**Evidence**
+
+- [Pinned Only Film README — introductory overview](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [README-OVERVIEW Component](../../components/readme/overview/README.md)
+- [Required Hero, Overview, and Features E3 semantic review](only-film-required-identity-semantic-review.md)
+
+**Evaluation Rationale**
+
+The introductory paragraphs convey the nature and scope of the application, so a `Missing` State is not supported. The remaining questions concern the separation of product purpose from technical description and history, and the reader's ability to identify the project's benefit without duplicative text. `Partial` is a **conservative proposed editorial judgment**, not proof of a defective overview. A reviewer may reasonably approve `Satisfied` if the existing introduction meets the Component's documentary purpose without a separate section title.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Whether to `PRESERVE` the existing introduction or `ADAPT` its organization requires human review of the communication goals. This record does not authorize changes to Only Film.
+
+---
+
+---
+
+### README-FEATURES
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Equivalent` — a role-grouped `Funcionalidades` section fulfills the feature-summary function without the canonical English heading.
+
+**Uncertainty**
+
+- Whether every capability listed for visitors, registered users, and administrators accurately represents the pinned consumer commit.
+- Whether demonstration ticket purchase/checkout is clearly distinguishable from integration with a real payment provider.
+- Whether the paragraph on database transactions and seat-locking is appropriate in a feature summary or should be linked from architecture documentation.
+
+**Detected Facts**
+
+- The pinned README has a `Funcionalidades` section organized by visitor, user, and administrator roles. It describes movie and session browsing, registration/login, seat and ticket operations, reviews, and management capabilities.
+- The feature description refers to simulated purchasing, not a verified production payment integration.
+- An additional paragraph describes transactional controls and database locking to prevent duplicate seat sales; this is an implementation characteristic rather than solely an end-user capability.
+- The Framework's `README-FEATURES` Component focuses on concise main capabilities instead of extensive implementation detail.
+- The pinned H2/PostgreSQL CI checks provide bounded regression evidence but do **not** establish independent functional acceptance of every advertised feature.
+
+**Evidence**
+
+- [Pinned Only Film README — Funcionalidades](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [README-FEATURES Component](../../components/readme/features/README.md)
+- [Required identity/overview/features semantic review](only-film-required-identity-semantic-review.md)
+- [Pinned CI run](https://github.com/fran-eliot/only_film/actions/runs/39283862407)
+
+**Evaluation Rationale**
+
+The consumer has an explicit, audience-oriented feature summary, so `Missing` would misrepresent the inspected README. The roles and capabilities are recognizable, but the assessment has not established feature-by-feature accuracy or whether the technical transaction paragraph obscures the user-facing overview. `Partial` is a **provisional editorial hypothesis**, not a confirmed functionality gap or failed acceptance test. The reviewer can approve `Satisfied` if the current wording accurately communicates the main functions at the level expected for this Required Responsibility.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The maintainer must confirm feature accuracy and select `PRESERVE` or `ADAPT` only when documentary changes are justified. Nothing in this working assessment authorizes edits to the Only Film consumer.
+
+---
+
+---
+
+### README-TECH-STACK
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Canonical` in the documentary sense: a project-specific `Tecnologías y arquitectura` section groups technologies by functional layer, rather than mechanically reproducing the Framework Component's suggested categories.
+
+**Uncertainty**
+
+- Whether every technology listed is actually used in the described runtime, development, or test context at the pinned consumer commit.
+- Whether the technological inventory and architecture summary remain sufficiently easy to navigate without forcing generic Cloud categories onto a consumer with no verified cloud deployment.
+- Whether additional evidence is needed for the less directly inspected dependencies and tools beyond the already corroborated Java, Spring Boot, and PostgreSQL versions.
+
+**Detected Facts**
+
+- The pinned README's technology table distinguishes backend, security, frontend, local persistence, durable persistence, testing, and infrastructure.
+- It identifies Java 25, Spring Boot 4.0.5, Spring MVC, Spring Data JPA, Hibernate, Spring Security, BCrypt, Thymeleaf, Bootstrap 5, H2, PostgreSQL 17, Flyway, JUnit 5, Mockito, MockMvc, Selenium, Docker Compose, GitHub Actions, and JaCoCo.
+- The pinned `pom.xml` declares `java.version=25` and Spring Boot parent version `4.0.5`, corroborating the prominent Java and Spring Boot version claims.
+- The pinned `compose.yaml` uses `postgres:17-alpine` and defines `app` and `postgres` services, corroborating PostgreSQL 17 and Docker Compose configuration **statically**, not demonstrating successful deployment.
+- The [README-TECH-STACK Component](../../components/readme/tech-stack/README.md) suggests categories for orientation but does not require every possible environment category.
+
+**Evidence**
+
+- [Pinned Only Film README — technology and architecture table](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
+- [Pinned compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml)
+- [README-TECH-STACK Component](../../components/readme/tech-stack/README.md)
+- [Tech Stack, Documentation, and Footer E3 semantic review](only-film-required-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+A clearly identified, categorized technology table exists, and the most salient version claims were cross-checked against versioned POM and Compose configuration. Consequently, absence of a specific suggested category or a differently named heading would not justify `Missing`. `Partial` is a **conservative proposed judgment** about complete inventory accuracy and editorial sufficiency; no comprehensive audit of all dependencies and uses has been performed. Human review may reasonably confirm `Satisfied` if the table is accurate and adequate for the README's audience, without demanding a Cloud section unrelated to this application.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The reviewer must determine whether the table warrants `PRESERVE` or a specific `ADAPT` for inaccurate or confusing entries. This proposed record does not authorize new infrastructure or revisions to Only Film.
+
+---
+
+---
 
 ### README-QUICK-START
 
@@ -123,6 +359,366 @@ No downstream `PRESERVE`, `ADAPT`, or other Adoption Decision is approved. The r
 
 ---
 
+---
+
+### README-DOCUMENTATION
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — the README links to relevant project documentation in task-oriented sections rather than providing a standalone documentation index.
+
+**Uncertainty**
+
+- Whether important source documents are discoverable by new contributors from the README's dispersed links.
+- Whether any critical links are stale, important documents lack entry points, or existing navigation creates material duplication; a comprehensive link audit has not been performed.
+- Whether a documentation index would add measurable value or the current task-oriented layout already meets the Component's purpose.
+
+**Detected Facts**
+
+- The pinned README links to `docs/screenshots/`, `docs/POSTGRESQL_SETUP.md`, `docs/SECURITY_HARDENING_AUDIT.md`, `docs/POSTGRESQL_INTEGRATION_TESTS.md`, and project GitHub Actions workflows.
+- Its `Organización del repositorio` section outlines `src/main`, `src/test`, `docs/`, `.github/workflows/`, and key Docker and configuration files.
+- The PostgreSQL setup and integration-testing documents were observed at the pinned consumer SHA. Their existence does not guarantee that every documentation link remains current.
+- The Framework's [README-DOCUMENTATION Component](../../components/readme/documentation/README.md) encourages grouping important resources. Architecture, ADR, Roadmap, API, and Deployment are examples; this does not mandate every documentation category for every consumer.
+- There is no literal `## Documentation` heading in the inspected README. The Responsibility can nevertheless be fulfilled through distributed links, so absence of that heading is **not** proof of `Missing`.
+
+**Evidence**
+
+- [Pinned README — linked documentation and repository organization](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
+- [Pinned PostgreSQL integration testing guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_INTEGRATION_TESTS.md)
+- [README-DOCUMENTATION Component](../../components/readme/documentation/README.md)
+- [Required Tech Stack, Documentation, and Footer E3 review](only-film-required-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+The README offers concrete navigation to important project resources. Therefore the documentation Responsibility is not absent merely because there is no canonical index heading. The question is whether the distributed organization is discoverable, complete enough for the intended audience, and consistent with the repository at the pinned SHA. `Partial` remains a **conservative, unapproved navigation-sufficiency hypothesis**, not a verified broken-link finding. A human reviewer may select `Satisfied` if the task-based references are demonstrably useful without an extra index.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The reviewer must establish whether to `PRESERVE` the distributed navigation or `ADAPT` any concrete gaps, based on link validation and audience needs. This record does not authorize a new documentation index or consumer edits.
+
+---
+
+---
+
+### README-FOOTER
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Equivalent` — concluding attribution and license-context material appears in the final README sections instead of a separate canonical Footer block.
+
+**Uncertainty**
+
+- Whether the credit statement comprehensively and accurately represents the original collaborators and subsequent maintainers.
+- Whether the final license notice is clearly understandable without implying reuse permission that has not been legally established.
+- Whether the concluding section arrangement communicates an effective close to the README, given that future-work material follows the origin/credits section.
+- Whether additional related links or contact information would serve the audience; the Component does not require every optional Footer element.
+
+**Detected Facts**
+
+- The pinned README includes `Origen, créditos y evolución`, attributing the academic origins to multiple contributors and linking the original [certidevs/g1_testing](https://github.com/certidevs/g1_testing) repository.
+- The text distinguishes later work on `fran-eliot/only_film` from exclusive authorship of the original collaborative project.
+- `Próximas líneas de evolución` follows, listing potential future improvements rather than implemented features.
+- The final README line contains a `Licencia` note referring to the academic origin and the original repository; it explicitly does **not** establish an additional license through the README itself.
+- The Framework [README-FOOTER Component](../../components/readme/footer/README.md) allows license, acknowledgments, related links, and contact information but does not require all of them.
+- The existence of a credit and license notice is **documentary evidence**, not a verified legal determination of rights, ownership, or permitted reuse.
+
+**Evidence**
+
+- [Pinned README — credits, evolution, and license notice](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [README-FOOTER Component](../../components/readme/footer/README.md)
+- [Required Tech Stack, Documentation, and Footer E3 review](only-film-required-final-semantic-review.md)
+- [Original academic repository, linked as background](https://github.com/certidevs/g1_testing)
+
+**Evaluation Rationale**
+
+The README already contains attribution, project history, and cautious license information, satisfying identifiable Footer functions. The remaining review concerns editorial composition and clarity, not whether the document has a literal Footer heading or a specific contact block. `Partial` is a **provisional assessment of documentary suitability**, not a finding that credit is incorrect or a statement that the project is licensed for reuse. If the present closing text is clear and appropriate for the consumer's audience, a reviewer may justify `Satisfied`.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+A human reviewer must determine whether to `PRESERVE` the current closing material or `ADAPT` its organization or wording without introducing unauthorized legal or ownership claims. No modifications to Only Film are approved.
+
+---
+
+---
+
+### DOC-CHANGELOG
+
+**Requirement Level**
+
+`Required`
+
+**State**
+
+`Missing` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Distributed` change attribution through commits and PRs exists, but no equivalent curated changelog implementation has been identified. This characteristic describes the evidence, not satisfaction of the Responsibility.
+
+**Uncertainty**
+
+- Whether any external or otherwise uninspected, substantive change record fulfills this Responsibility for the pinned consumer.
+- Whether the consumer should maintain an `Unreleased` log before any formal version is published.
+- Which bounded improvement, if any, the maintainer wishes to authorize after the semantic review; no Application decision is implied.
+
+**Detected Facts**
+
+- The pinned consumer README describes the project's academic origin and technical evolution, and points to Git history and PRs for attribution, but does not present a curated version-by-version change log.
+- A direct lookup of `CHANGELOG.md` at the pinned SHA returned `404 Not Found`; this is an observation about **one path**, not proof that no equivalent document exists anywhere.
+- The POM declares `0.0.1-SNAPSHOT`, which is an artifact version and not evidence of a published release.
+- Historical commits and PRs record individual changes; this does not automatically make them release notes or a changelog.
+- On **2026-11-13**, the consumer maintainer explicitly confirmed **no GitHub Releases and no tags**. This is **maintainer testimony**, not an independently executed tag inventory. An earlier GitHub Releases endpoint query also returned an empty list.
+
+**Evidence**
+
+- [Pinned README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
+- [Pinned Git history](https://github.com/fran-eliot/only_film/commits/28d75a50e0a178954dd46acc23300d9dd327843c/)
+- [Changelog evidence review, including maintainer confirmation](only-film-changelog-evidence-review.md)
+- [Provisional Required semantic review](only-film-required-semantic-review.md)
+- [Canonical Template metadata](../../templates/repositories/backend/metadata.yml)
+
+**Evaluation Rationale**
+
+`DOC-CHANGELOG` is `Required` by `TPL-BACKEND` 0.1.0. The relevant question is whether the consumer communicates meaningful changes in a changelog-like form, not whether a file has a prescribed name. The reviewed README, POM, and documentation did not establish such a record; the maintainer further confirmed the absence of tags and GitHub Releases. Raw commit/PR history supports attribution but is not a curated record of changes for readers. On this bounded evidence, `Missing` is more defensible than `Partial`: assigning `Partial` would require an identified partially satisfying change record. This remains **a proposed semantic assessment**, subject to human review of any alternative source.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The recommended `State` can be assessed without selecting an implementation action. The maintainer must review the proposal and determine whether the right downstream decision is `ADD`, `ADAPT`, `ACCEPT`, or another permitted value after considering audience, existing equivalent sources, and maintenance scope. No change to Only Film is authorized by this record.
+
+---
+
+---
+
+### README-STATUS
+
+**Requirement Level**
+
+`Recommended`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — the README communicates technologies, testing approaches and future possibilities; a separate historical maturity assessment supplies contextual information. No integrated, current `project_status` and `maturity` declaration was identified in the inspected README.
+
+**Uncertainty**
+
+- Who maintains and validates a concise status/maturity statement for the consumer, and against which dated reference?
+- Whether the intended audience needs explicit distinctions such as `portfolio/demo`, active development, and production readiness, and what evidence supports those descriptors.
+- Whether an updated README statement or an accessible equivalent source would be sufficient without requiring a new standalone status document.
+
+**Detected Facts**
+
+- At the pinned commit, README badges identify **technology versions** (Java 25, Spring Boot 4.0.5, PostgreSQL 17, Flyway and Docker Compose), not CI health, active project status or a maturity level.
+- The README's testing/CI section distinguishes GitHub Actions workflows and manual test paths, while the future-work section explicitly describes potential enhancements rather than completed features.
+- The historical `docs/TECHNICAL_MATURITY_ASSESSMENT.md` is dated **2026-10-10** and tied to `9f2a31e927df105d14e3d30d4d8277fa61883deb`. It describes a technically evolving academic/portfolio backend with production limitations **at that earlier reference**, not necessarily at the assessed SHA.
+- The Framework [README-STATUS Component](../../components/readme/status/README.md) concerns operational status and maturity (`project_status` and `maturity`), which are different from a technology badge.
+- A [successful CI run on the pinned commit](https://github.com/fran-eliot/only_film/actions/runs/39283862407) includes 329 passing selected H2 tests but does **not** establish overall maintenance status, deployment readiness or maturity.
+
+**Evidence**
+
+- [Pinned Only Film README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Historical technical maturity assessment in the pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/TECHNICAL_MATURITY_ASSESSMENT.md)
+- [README-STATUS Component](../../components/readme/status/README.md)
+- [Verified Surefire and Sonar log evidence](only-film-verified-surefire-sonar-logs.md)
+- [Provisional README status/architecture semantic review](only-film-recommended-readme-semantic-review.md)
+
+**Evaluation Rationale**
+
+The README and supporting documents contain useful information about the project and its evolution. However, a technology/version badge is not a status or maturity indicator, and an older technical audit cannot simply be copied forward as the current state. `Partial` is a **proposed semantic evaluation of the clarity and currency of the status information**, not a claim that the project is currently unhealthy or that a particular visual badge is mandatory. The reviewer must decide what a useful status declaration means for this consumer and whether existing equivalent sources suffice.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+No `PRESERVE`, `ADAPT` or `ADD` decision is authorized. The maintainer must assess the consumer's intended audience and verify any status or maturity statement before selecting a documentation action.
+
+---
+
+---
+
+### README-ARCHITECTURE
+
+**Requirement Level**
+
+`Recommended`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — a concise architecture/technology overview is already present in the README, with more detailed but historically scoped technical notes elsewhere in the repository.
+
+**Uncertainty**
+
+- Whether the nominal MVC/JPA flow remains a sufficiently accurate **high-level overview** of the pinned commit, including relevant exceptions.
+- Whether direct controller-to-repository access noted in an **earlier** architecture audit still exists at the assessed SHA; it has not been revalidated across all controllers.
+- Whether the README's succinct description is sufficient for the Responsibility's purpose or should better distinguish a representative flow from an exhaustive architecture contract.
+
+**Detected Facts**
+
+- The pinned README describes the principal `MVC controller → service / business logic → JPA repository → database` flow and identifies core domain entities including `Movie`, `Room`, `Session`, `Ticket`, `Review` and `User`.
+- The Framework's [README-ARCHITECTURE Component](../../components/readme/architecture/README.md) expects a high-level architecture summary, not a detailed replication of the technical documentation.
+- The `docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md` file, dated **2026-10-10**, concerns an earlier reference after PR #23 (`b6cf52c9`) and describes some direct controller-to-repository access at that point. That finding has not been comprehensively retested at the pinned SHA.
+- A historical technical maturity assessment also concerns a different reference; the existence of multiple dated audits does not, by itself, establish the actual architecture at the assessed commit.
+
+**Evidence**
+
+- [Pinned README — technology and architecture section](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [README-ARCHITECTURE Component](../../components/readme/architecture/README.md)
+- [Historical architecture maintainability audit](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md)
+- [Historical technical maturity assessment](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/TECHNICAL_MATURITY_ASSESSMENT.md)
+- [Provisional README status/architecture semantic review](only-film-recommended-readme-semantic-review.md)
+
+**Evaluation Rationale**
+
+The consumer already has a readable, appropriately concise architectural flow, so the Responsibility is not `Missing`. The line is explicitly a **principal flow**, not necessarily a guarantee that every request follows the same layers; historical reports suggest an older implementation was more nuanced. `Partial` is a **conservative, unapproved assessment hypothesis** reflecting the need to verify explanatory sufficiency and avoid overstating architecture uniformity. A human reviewer could reasonably select `Satisfied` if the overview meets the documented Component's high-level purpose, without requiring a full architecture audit or diagram.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The maintainer must decide whether to `PRESERVE` the existing overview or `ADAPT` wording for accuracy and navigability. No architecture refactoring, new diagram, or consumer change follows automatically from this proposed evaluation.
+
+---
+
+---
+
+### README-REPOSITORY-STRUCTURE
+
+**Requirement Level**
+
+`Recommended`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Canonical` in a descriptive sense: the README includes an explicit directory tree, but the Framework review did not identify a standalone Component specification for this Responsibility.
+
+**Uncertainty**
+
+- Whether the concise tree is accurate and sufficiently navigable for a new contributor at the pinned consumer SHA.
+- Whether omitted paths are genuinely important for orientation rather than intentionally excluded implementation detail.
+- The absence of a separately identified `README-REPOSITORY-STRUCTURE` Component in the inspected Framework catalog is a Framework coverage question, **not** proof of a defect in Only Film.
+
+**Detected Facts**
+
+- The pinned README contains `Organización del repositorio`, summarizing `src/main/java/com/demo`, template/static resources, `db/migration`, tests, `docs/`, `.github/workflows/`, `Dockerfile`, `compose.yaml` and `.env.example`.
+- The earlier pinned-tree review confirmed the principal referenced paths. The README tree is intentionally an overview and does not claim to list every file.
+- `README-REPOSITORY-STRUCTURE` is `Recommended` in `TPL-BACKEND` 0.1.0 metadata, regardless of whether an independently documented Component exists.
+
+**Evidence**
+
+- [Pinned README — repository organization](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned consumer repository tree](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
+- [Canonical TPL-BACKEND metadata](../../templates/repositories/backend/metadata.yml)
+- [Recommended README semantic review](only-film-recommended-readme-semantic-review.md)
+
+**Evaluation Rationale**
+
+The README already gives readers an intelligible map of the project's major source, resource, migration, documentation, and automation paths. Therefore the Responsibility is not `Missing`. The `Partial` proposal is a **conservative, unapproved hypothesis about currency and usability**, not an assertion that the directory tree is wrong or insufficient merely because it is abbreviated. The reviewer may confirm `Satisfied` if the displayed layout is accurate and adequately supports navigation.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+No rewrite or new Component is authorized. The reviewer must evaluate whether to `PRESERVE` the existing overview or `ADAPT` any genuinely misleading or missing navigation information.
+
+---
+
+---
+
 ### README-TESTING
 
 **Requirement Level**
@@ -179,6 +775,130 @@ The README offers useful, discoverable testing instructions, links to the releva
 **Decision Rationale**
 
 Whether to `PRESERVE` the README guidance or `ADAPT` its clarity and prerequisites remains subject to the maintainer's review. Neither code nor workflow changes are approved by this assessment record.
+
+---
+
+---
+
+### DOC-ARCHITECTURE
+
+**Requirement Level**
+
+`Recommended`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Specialized`, `Distributed` — the README summarizes the MVC/JPA structure while historical architecture and maintainability documentation provides additional context, but not a verified consolidated architecture snapshot for the pinned commit.
+
+**Uncertainty**
+
+- Which boundaries, dependencies, critical flows, and architectural exceptions are present at the pinned SHA, beyond the nominal README diagram-like description?
+- Whether the existing overview and supporting documents adequately describe the **current** architecture for contributors without recasting historical issues as unresolved defects.
+- Whether a more consolidated architecture overview is warranted or the existing sources meet the Component's level of detail.
+
+**Detected Facts**
+
+- The pinned README describes a primary `MVC controller → service / business rules → JPA repository → database` flow and names domain entities including `Movie`, `Room`, `Session`, `Ticket`, `Review`, and `User`.
+- The Framework's `DOC-ARCHITECTURE` Component expects a maintained description of architectural purpose, context, key components, relationships, and constraints; it does not prescribe exhaustive class-by-class documentation or a diagram solely for formality.
+- The pinned repository contains `docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md`, dated **2026-10-10** and explicitly based on an earlier `main` after PR #23 (`b6cf52c9`). It describes some direct controller-to-repository access and proposed improvements **for that historical reference**.
+- The functional audit `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md` uses another historical baseline (`df63353564485eb6d2d60c982032e5d3c4facbf2`) and cautions against reopening findings automatically after later changes.
+- The existing sources convey a nominal architecture and selected historical concerns; no complete architecture-description reconciliation to the pinned SHA was established by the prior reviews.
+
+**Evidence**
+
+- [DOC-ARCHITECTURE Component](../../components/documentation/architecture/README.md)
+- [Pinned consumer README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Historical architecture audit in the pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md)
+- [Historical F3 functional audit in the pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
+- [DOC-ARCHITECTURE E3 semantic review](only-film-recommended-docs-semantic-review.md)
+- [README-ARCHITECTURE E3 semantic review](only-film-recommended-readme-semantic-review.md)
+
+**Evaluation Rationale**
+
+Documentation relevant to the architectural Responsibility exists, so `Missing` is not established simply by the lack of a canonical architecture snapshot. The README's high-level flow provides a useful entry point, but a historical maintainability audit is not necessarily a maintained explanation of current components, relationships, and constraints. `Partial` is a **proposed documentary sufficiency judgment**, rather than an assertion that earlier direct repository access still exists or that the pinned architecture is defective. Human review should verify the expected scope and decide whether the distributed sources sufficiently support the selected Template.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Whether to `PRESERVE` the existing documentation or `ADAPT` its architectural overview requires human review and a bounded reference check. No refactoring or consumer-documentation change is authorized by this record.
+
+---
+
+---
+
+### DOC-PROJECT-STATUS
+
+**Requirement Level**
+
+`Recommended`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Specialized`, `Distributed` — the README outlines possible next steps, while a maturity assessment and functional roadmap describe the project's development history from different reference points.
+
+**Uncertainty**
+
+- The actual status of F3 initiatives (completed, open, revised, or superseded) at the pinned SHA has not been reconstructed from current evidence.
+- The latest verifiable milestone, current status by area, and immediate next objective are not established as one maintained, consumer-facing operational snapshot.
+- Whether the project's portfolio context calls for a compact maintained status page or existing descriptions suffice requires reviewer judgment.
+
+**Detected Facts**
+
+- The Framework's `DOC-PROJECT-STATUS` Component calls for an overview, progress by area, a next milestone and immediate goals, distinct from a backlog, roadmap, or changelog.
+- The consumer's `docs/TECHNICAL_MATURITY_ASSESSMENT.md` is dated **2026-10-10** and names historical reference `9f2a31e927df105d14e3d30d4d8277fa61883deb`; it describes a technically evolved academic/portfolio project with production-readiness limitations **at that baseline**.
+- The `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md` document is tied to `df63353564485eb6d2d60c982032e5d3c4facbf2` and describes F3.002–F3.008 initiatives. Their present completion status at the pinned SHA has not been verified.
+- The pinned README's future work section mentions potential REST API, real payment integration, observability, and deployment automation, explicitly **not** implemented feature claims.
+- [Run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) confirms successful checks at the pinned SHA, including an H2 regression job with 329 tests; isolated successful checks do **not** establish the overall project milestone or operational maturity.
+
+**Evidence**
+
+- [DOC-PROJECT-STATUS Component](../../components/documentation/project-status/README.md)
+- [Historical technical maturity assessment in pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/TECHNICAL_MATURITY_ASSESSMENT.md)
+- [Historical F3 audit and roadmap in pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
+- [Pinned consumer README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned CI run](https://github.com/fran-eliot/only_film/actions/runs/39283862407)
+- [DOC-PROJECT-STATUS E3 semantic review](only-film-recommended-docs-semantic-review.md)
+
+**Evaluation Rationale**
+
+Status-related material exists, but the Component's purpose is a maintained **operational snapshot** showing current progress, milestone and next steps. Historical maturity findings and a roadmap cannot safely be treated as an up-to-date account at the pinned SHA. `Partial` is a **conservative proposed evaluation of the documentary coverage and freshness**, not a conclusion that every F3 item remains open or that any historical risk still applies. A reviewer should decide whether the distributed sources meet the project's actual communication needs or need a scoped update.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The maintainer must establish the relevant reporting audience and verify present milestones before selecting `PRESERVE`, `ADAPT`, or another valid Adoption Decision. No changes to Only Film or new project status claims are authorized.
+
+---
 
 ---
 
@@ -242,6 +962,298 @@ A human review must determine whether to `PRESERVE` the specialized guidance, `A
 
 ---
 
+---
+
+### README-ROADMAP
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — the README summarizes possible evolution, and a separate, historically pinned F3 functional audit and roadmap records more detailed initiatives.
+
+**Uncertainty**
+
+- Whether the future-work items in the README still reflect real priorities at the pinned consumer SHA.
+- Which initiatives F3.002–F3.008 in the older audit were implemented, revised, or superseded by the pinned reference; this has not been independently reconciled.
+- Whether a brief future-work summary suffices for the audience or should link to an up-to-date planning source.
+
+**Detected Facts**
+
+- The pinned README has a `Próximas líneas de evolución` section mentioning possible REST API, real payment integration, observability, and deployment automation; these are framed as **potential future work**, not completed capabilities.
+- The pinned repository contains `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md`, listing initiatives F3.002–F3.008 from an **earlier** baseline `df63353564485eb6d2d60c982032e5d3c4facbf2`.
+- The existing F3 document cannot establish, solely by its presence in the later tree, which initiatives remain open or have already been completed at the assessed commit.
+- The Framework's [README-ROADMAP Component](../../components/readme/roadmap/README.md) supports a concise overview of upcoming phases, not a duplicated detailed planning document.
+
+**Evidence**
+
+- [Pinned README — future development](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned historical F3 audit and roadmap](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
+- [README-ROADMAP Component](../../components/readme/roadmap/README.md)
+- [Optional README governance semantic review](only-film-optional-governance-semantic-review.md)
+
+**Evaluation Rationale**
+
+The README already communicates possible future directions, so a canonical roadmap heading or extra document is not automatically necessary. However, the historical planning document is tied to another commit and cannot be treated as proof of the current backlog. `Partial` is a **proposed assessment of currency and editorial usefulness**, not a finding that every F3 initiative is outstanding. The reviewer may approve `Satisfied` if a concise forward-looking summary is all the Optional Responsibility needs for this portfolio consumer.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descriptions remain accurate and valuable to the consumer's intended audience. No new roadmap promises or modifications to Only Film are authorized.
+
+---
+
+---
+
+### README-CONTRIBUTING
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+**Not selected** — `Missing` or `Partial` are the documentary hypotheses requiring discrimination. This is explicitly an **incomplete Assessment field**, not a third contractual State and not a declaration of `Missing`.
+
+**Applicability**
+
+`Uncertain` — no verified policy or confirmed intention to accept external contributions at the pinned consumer reference.
+
+**Implementation Characteristics**
+
+`Distributed` is a **possible** characteristic of the existing development instructions; no independently verified contribution governance or acceptance procedure has been established.
+
+**Uncertainty**
+
+- Whether the maintainer intends the repository to accept external contributions and, if so, under what policy and review process.
+- Whether contribution rules exist outside the inspected README and tree, for example in GitHub repository settings, PR templates, project-level guidance, or other maintained sources.
+- Whether technical setup/test guidance constitutes a partial contribution entry point or a distinct contributing policy is necessary for the intended audience.
+- An inspected Framework Component catalog did not locate a standalone `README-CONTRIBUTING` Component despite this Responsibility appearing in Template metadata. That is a **Framework-side specification question**, not evidence that Only Film is deficient.
+
+**Detected Facts**
+
+- The pinned README provides development prerequisites, test commands, CI descriptions, and source-code orientation that may support technical onboarding.
+- The earlier pinned-tree inspection did not find a `CONTRIBUTING.md` file; absence of that filename does not rule out an equivalent policy.
+- The prior semantic review did not verify rules for external collaborators, PR submission, acceptance/review, or commit conventions.
+- `README-CONTRIBUTING` is `Optional` in `TPL-BACKEND` 0.1.0; optionality alone does **not** establish `Not Applicable`.
+
+**Evidence**
+
+- [Pinned README — development and testing guidance](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned consumer tree](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
+- [TPL-BACKEND metadata](../../templates/repositories/backend/metadata.yml)
+- [Optional governance E3 semantic review](only-film-optional-governance-semantic-review.md)
+
+**Evaluation Rationale**
+
+The README contains actionable technical onboarding information, but those instructions are not automatically a policy on who may contribute, how changes are proposed and reviewed, and how contributions are accepted. `Partial` would require treating technical onboarding as an adequate subset of the intended Responsibility; `Missing` would require establishing that no substantive contributing guidance is present. Neither conclusion has been human-reviewed, and whether the Responsibility is applicable to this consumer's collaboration model is unresolved. Recording `Uncertain` Applicability and leaving State unselected is more traceable than manufacturing a contractual answer.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+First establish the intended contribution model and any existing policy. Then approve a contractual State and Applicability and decide, if justified, between `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT`, or `OMIT`. No contribution policy is created or authorized here.
+
+---
+
+---
+
+### README-DEMO
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — screenshots embedded in the README and a documented local startup path, rather than an independently verified public demo.
+
+**Uncertainty**
+
+- Whether the screenshots accurately represent the behavior and appearance at the pinned consumer SHA; image presence was checked, but visual fidelity and freshness were not.
+- Whether screenshots satisfy the portfolio audience or a reproducible local demonstration is also needed.
+- Whether demo-data prerequisites and the absence of an online demo are communicated sufficiently; no public demo is established by a localhost URL.
+- Whether Docker Compose startup can be reproduced at the pinned SHA; a passing Compose smoke execution linked to that reference was not verified.
+
+**Detected Facts**
+
+- The pinned README includes `Capturas de la aplicación` with images of the movie listing, movie details, seat selection, and a QR ticket.
+- Other versioned interface screenshots appear in `docs/screenshots/`; their quality and representativeness were not visually audited in the prior semantic review.
+- The README describes Docker Compose startup and `http://localhost:8080/movies`, which is a **local address**, not a hosted demonstration.
+- A Compose smoke workflow definition exists, but the previously reviewed CI checks did not establish successful execution of that workflow for the pinned commit.
+
+**Evidence**
+
+- [Pinned README — screenshots and local startup](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned screenshots directory](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c/docs/screenshots)
+- [Optional Demo, Highlights and Diagrams E3 semantic review](only-film-optional-showcase-semantic-review.md)
+- [Compose smoke evidence gap](only-film-compose-evidence-gap.md)
+
+**Evaluation Rationale**
+
+The repository already shows the application through documented screenshots, so the Responsibility is not automatically `Missing` merely because no public live demo was verified. `Partial` is a **provisional judgment of demo clarity and reproducibility** rather than an observed broken workflow or an obligation to deploy the project publicly. The reviewer may find the existing visual examples sufficient for this Optional Responsibility.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Decide whether to `PRESERVE` the current screenshot-based presentation or `ADAPT` its explanation after validating the screenshots and audience needs. No demo deployment or consumer edit is authorized.
+
+---
+
+---
+
+### README-AUTHOR
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Equivalent` — attribution and credits are embedded in `Origen, créditos y evolución`, not in a separately titled Author block.
+
+**Uncertainty**
+
+- Whether all material original contributors and later maintainers are credited accurately and with an appropriate distinction of roles.
+- Whether an additional author/contact link would improve clarity, without implying exclusive authorship of academic group work.
+- Whether any licensing or intellectual-property rights can be substantiated; attribution does **not** independently verify code ownership or permissions.
+
+**Detected Facts**
+
+- At the pinned SHA, the README credits four members of the academic collaboration and links their profiles and the original `certidevs/g1_testing` repository.
+- The narrative distinguishes the original collaborative creation from subsequent evolution under `fran-eliot/only_film`, without representing the entire initial project as one person's exclusive work.
+- The [README-AUTHOR Component](../../components/readme/author/README.md) permits an author or team to be identified through names and links; a literal `Author` heading is not required.
+
+**Evidence**
+
+- [Pinned README — origins and credits](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [README-AUTHOR Component](../../components/readme/author/README.md)
+- [Original academic repository](https://github.com/certidevs/g1_testing)
+- [Optional README governance E3 semantic review](only-film-optional-governance-semantic-review.md)
+
+**Evaluation Rationale**
+
+Authorship and project-origin attribution are already present and directly relevant to the Responsibility; the lack of an exact heading does not make the section `Missing`. `Partial` is a **conservative editorial hypothesis** until the clarity and completeness of original and later contributions are reviewed. This is not a legal judgment or an inference of ownership. A reviewer may justify `Satisfied` if the existing credits fulfill the Component's communication purpose.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The maintainer must assess whether to `PRESERVE` the existing balanced attribution or `ADAPT` specific wording/links with verified facts. No retroactive attribution change or license claim is authorized.
+
+---
+
+---
+
+### README-HIGHLIGHTS
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — notable implementation choices are already described within `Funcionalidades` and `Seguridad y límites actuales`, without a distinct Highlights section.
+
+**Uncertainty**
+
+- Whether a small selection of highlights would materially clarify this portfolio project's differentiators instead of repeating Features.
+- Which of the stated technical qualities are sufficiently supported at the pinned commit and should be presented prominently.
+- Whether the README already balances domain features, security limitations and implementation details for its audience.
+
+**Detected Facts**
+
+- The pinned README describes measures against duplicate seat sales, transactional checkout, role-based access, review authorization, image validation, and PostgreSQL/Flyway migration support.
+- `Funcionalidades` describes visitor, user and administrator capabilities; `Seguridad y límites actuales` explicitly qualifies the checkout as simulated, not a real payment gateway.
+- [GitHub Actions run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) records 329 successful H2 tests and three successful checks for the pinned SHA, providing **bounded** regression support rather than complete validation of every feature or user experience.
+- No literal `Highlights` heading appears in the inspected README; that absence alone is not a failure of this Optional Responsibility.
+
+**Evidence**
+
+- [Pinned README — Features and security limitations](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Verified Surefire and Sonar log evidence](only-film-verified-surefire-sonar-logs.md)
+- [Optional showcase E3 semantic review](only-film-optional-showcase-semantic-review.md)
+
+**Evaluation Rationale**
+
+Differentiating qualities are communicated through existing sections and some claims have bounded technical support. A dedicated Highlights block may improve portfolio readability, but could also duplicate Features without adding information. `Partial` is a **provisional editorial interpretation**, not proof that the current README lacks compelling highlights or that a dedicated block is required. A reviewer can approve `Satisfied` if the distributed presentation already meets the consumer's needs.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+A future `PRESERVE` or `ADAPT` choice should follow an editorial review of actual value, factual support and duplication, not a requirement to manufacture showcase text.
+
+---
+
+---
+
 ### README-LICENSE
 
 **Requirement Level**
@@ -296,6 +1308,250 @@ A license-status notice exists and deliberately avoids asserting permissions tha
 **Decision Rationale**
 
 Before choosing `PRESERVE`, `ADAPT`, `ADD`, or another valid action, the maintainer must establish the intended audience and obtain appropriate rights information if stronger permission statements are contemplated. This working record neither creates nor recommends a specific license grant.
+
+---
+
+---
+
+### DOC-ADR
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Distributed` — technical decisions and operational constraints are explained within specialized documents, but a consolidated ADR convention or inventory was not established in the bounded earlier review.
+
+**Uncertainty**
+
+- Whether important, durable architectural decisions are sufficiently documented with context, alternatives, decision, consequences, and present validity.
+- Whether a formal ADR index would add useful traceability, or simply duplicate existing, task-specific documents.
+- Which recommendations in earlier architecture audits still correspond to current, accepted decisions at the pinned SHA.
+
+**Detected Facts**
+
+- The pinned `docs/FLYWAY_V2_SEAT_UNIQUENESS.md` explains `UNIQUE(session_id, fila, seat)`, preservation of existing V1 migration history, duplicate-data checks, `NULL` considerations, and careful non-destructive handling of collisions.
+- The pinned `docs/DEPENDENCY_MAINTENANCE.md` explains weekly Dependabot updates, review of major versions separately, and avoidance of unattended auto-merge.
+- The pinned `docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md` contains historical options and risks. It uses a different baseline and must not be read as a current approved ADR inventory.
+- The earlier inspected tree did not identify an `adr/` directory or `ADR-*` filenames; this does **not** establish the absence of documented decisions in other forms.
+- The prior Framework catalog review did not identify a separate `DOC-ADR` Component specification. The Template metadata does include the `Optional` Responsibility; no absent Component rule is imposed on the consumer.
+
+**Evidence**
+
+- [Pinned Flyway V2 seat uniqueness document](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/FLYWAY_V2_SEAT_UNIQUENESS.md)
+- [Pinned dependency maintenance document](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/DEPENDENCY_MAINTENANCE.md)
+- [Historical architecture audit in pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md)
+- [Canonical Template metadata](../../templates/repositories/backend/metadata.yml)
+- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+The consumer already documents reasons and operational consequences of meaningful technical choices. Therefore the Responsibility is not necessarily `Missing` merely because there is no folder named `adr`. The existing documents do not yet demonstrate a maintained, comparable record of the main architectural decisions and their current status. `Partial` is a **conservative proposed documentary interpretation**, not proof that an ADR register must be introduced. The reviewer should assess whether an optional formal register is valuable given the project's size and existing documentation.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The maintainer must decide whether to `PRESERVE` the existing decision explanations or `ADAPT` their organization after considering value and duplication. No new ADR process or consumer edit is authorized.
+
+---
+
+---
+
+### DOC-API
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+**Not selected** — `Missing` or `Partial` are the current hypotheses, contingent on an agreed scope for API documentation. This entry is **not yet a completed contractual State evaluation**.
+
+**Applicability**
+
+`Uncertain` — no independently confirmed public REST/JSON API contract, but an interface-documentation need has not been categorically ruled out.
+
+**Implementation Characteristics**
+
+No public API contract implementation was verified in the prior evidence. Spring MVC page controllers and session-authenticated routes are web interfaces, **not automatically an external REST API**.
+
+**Uncertainty**
+
+- Whether any public JSON/REST endpoints or consumer-facing HTTP contracts exist at the pinned SHA beyond the examined MVC controllers.
+- Whether the project's audience needs a documented programmatic API, a bounded internal HTTP contract, or simply web navigation and developer guidance.
+- Whether an `OpenAPI`/`Swagger` specification or other equivalent API document exists outside the filename/path checks already performed.
+- Whether `DOC-API` is in scope for this server-rendered application today, rather than only for a prospective REST API feature.
+
+**Detected Facts**
+
+- The pinned README describes a Spring MVC/Thymeleaf application with server-rendered pages, authenticated web routes, and session-based interaction.
+- The README mentions an `API REST` under `Próximas líneas de evolución` as a **possible future extension**, not an implemented feature at the pinned SHA.
+- Source inspection located Spring MVC controllers, but the presence of HTTP endpoints does not establish a documented public API for integration clients.
+- The previous file/path review did not identify filenames containing `openapi` or `swagger`; this is a **bounded name-based observation**, not exhaustive proof of API absence.
+- `DOC-API` is `Optional` in the Template; that classification does not itself settle Applicability.
+
+**Evidence**
+
+- [Pinned README — architecture and potential REST API](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned Spring MVC controller directory](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/controller)
+- [TPL-BACKEND metadata](../../templates/repositories/backend/metadata.yml)
+- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+An API documentation Responsibility should be evaluated against an actual interface and its consumers, not a generic expectation that every backend publishes REST endpoints. The README treats REST as future work, and the currently reviewed routes relate to server-rendered MVC. `Missing` would need a confirmed applicable API-documentation requirement that is unmet; `Partial` would need demonstrable partial coverage of that requirement. Neither is established by the available bounded review. The State is intentionally unselected and Applicability `Uncertain` pending a decision on scope and further endpoint evidence.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Review the actual supported interfaces and intended consumers. If API documentation is not needed for this application's present scope, the reviewer can justify `Not Applicable` and then complete State under the Template's rules; otherwise identify concrete applicable contracts and select State on evidence. No speculative REST API documentation or consumer changes follow from this record.
+
+---
+
+---
+
+### DOC-DATABASE
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed; human review pending**
+
+**Implementation Characteristics**
+
+`Own`, `Specialized`, `Distributed` — PostgreSQL setup instructions, a focused Flyway V2 integrity document, versioned SQL migration sources, and the README's domain overview.
+
+**Uncertainty**
+
+- Whether a new contributor can understand the essential entity relationships, data lifecycle, constraints, and supported profile differences without reconstructing them from JPA classes and SQL.
+- Whether the migration documentation accurately describes the current V1/V2 relationship and constraints at the pinned consumer SHA.
+- Whether a conceptual data-model summary is needed or the existing focused guides sufficiently serve this portfolio application's audience; an ER diagram is not automatically mandatory.
+
+**Detected Facts**
+
+- The pinned `docs/POSTGRESQL_SETUP.md` distinguishes quick H2 development, `dev`, `postgres`, and `postgres,demo` profiles, database environment variables, Flyway migrations, and Hibernate `ddl-auto=validate`.
+- The pinned `docs/FLYWAY_V2_SEAT_UNIQUENESS.md` describes `UNIQUE(session_id, fila, seat)`, the decision to preserve V1, preflight collision checking, `NULL` considerations, and non-destructive handling of existing duplicates.
+- The README identifies domain entities such as `Movie`, `Room`, `Session`, `Ticket`, `Review`, and `User`, and distinguishes H2 from PostgreSQL persistence.
+- At the pinned SHA, [GitHub Actions run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) reports successful `postgres-schema` and `PostgreSQL JPA and concurrent checkout` jobs. These confirm bounded CI checks, **not** completeness of database documentation or every schema invariant.
+
+**Evidence**
+
+- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
+- [Pinned Flyway V2 seat uniqueness document](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/FLYWAY_V2_SEAT_UNIQUENESS.md)
+- [Pinned README — domain entities and persistence](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned PostgreSQL CI run](https://github.com/fran-eliot/only_film/actions/runs/39283862407)
+- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+Database-specific operational and schema-integrity documentation exists, so `Missing` would not reflect the available evidence. These sources explain profiles, migration procedures, and at least one important uniqueness constraint, but the prior review has not demonstrated a sufficiently accessible conceptual model of all material relationships and invariants. `Partial` is a **conservative, unapproved documentary-sufficiency proposal**; it does not mean migrations or schema are defective. The reviewer may accept `Satisfied` if focused documentation sufficiently meets the intended user's needs without extra diagrams.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+The reviewer should establish the data-model documentation threshold and choose `PRESERVE` or a bounded `ADAPT` only if a material navigation or explanation gap is confirmed. No migration changes or data-model refactoring are authorized.
+
+---
+
+---
+
+### DOC-DEPLOYMENT
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+`Partial` — **proposed; human review pending**
+
+**Applicability**
+
+`Applicable` — **proposed for the documented local Compose development environment only; no production deployment is asserted**
+
+**Implementation Characteristics**
+
+`Own`, `Specialized`, `Distributed` — local startup and operation instructions in the README and PostgreSQL guide, plus the pinned Dockerfile and Compose configuration.
+
+**Uncertainty**
+
+- Whether the README and PostgreSQL guide consistently describe the intended persistence of uploaded files. The guide contains a warning suggesting the absence of a definitive upload-persistence strategy even though it also describes a named `uploads_data` volume; local volume persistence is not equivalent to production backup/durability.
+- Whether the documented Docker Compose route has been successfully reproduced at the pinned SHA; the earlier checks did **not** establish an associated successful Compose smoke run.
+- Whether the consumer supports only local development or a separate deployed demo, and what startup, verification, backup, recovery, and operational guidance is appropriate for that actual supported scope.
+- No evidence of production readiness, public exposure, disaster recovery, or production rollback is claimed.
+
+**Detected Facts**
+
+- The pinned README and `docs/POSTGRESQL_SETUP.md` describe preparing private `.env` settings, running `docker compose up --build -d`, connecting to PostgreSQL, accessing the local web application, and avoiding inadvertent data loss with `docker compose down -v`.
+- The pinned `compose.yaml` defines `app` and `postgres`, PostgreSQL health checks, `postgres_data` and `uploads_data` volumes, and application/DB ports bound to `127.0.0.1`.
+- The README explicitly warns that its Compose setup is not production deployment configuration for exposure to the Internet.
+- The pinned `compose-smoke.yml` **defines** build/start, web, migrations, and persistence checks. A successful execution of that workflow **for the same pinned SHA was not identified** in the earlier reviewed check set.
+- The PostgreSQL guide contains potentially inconsistent descriptions of uploads persistence; the difference may be between local operational persistence and the lack of a complete production file-storage strategy, and requires review instead of assuming a confirmed runtime bug.
+
+**Evidence**
+
+- [Pinned README — local Compose startup and limitations](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
+- [Pinned compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml)
+- [Pinned Dockerfile](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/Dockerfile)
+- [Pinned Compose smoke workflow definition](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.github/workflows/compose-smoke.yml)
+- [Compose smoke execution evidence gap](only-film-compose-evidence-gap.md)
+- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+The consumer has a documented operational route for a **local** Compose deployment and provides explicit safeguards and limitations, so the Responsibility is not absent. The semantic assessment must match the environment the project actually supports rather than imposing production requirements it does not claim to meet. The unverified Compose execution and potentially inconsistent uploads warning leave real documentation questions. `Partial` is a **proposed documentary assessment**, not proof that the Compose stack fails or that production deployment is expected. The reviewer should decide whether `Satisfied` is appropriate for local-only guidance or whether specific clarification is needed.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Review local operational scope, the uploads warning, and the threshold for reproduction evidence before choosing `PRESERVE` or `ADAPT`. No workflow trigger, deployed service, production plan, or change to Only Film is authorized.
+
+---
 
 ---
 
@@ -362,1209 +1618,6 @@ The reviewer must determine whether `PRESERVE` or `ADAPT` the existing documenta
 
 ---
 
-### DOC-ARCHITECTURE
-
-**Requirement Level**
-
-`Recommended`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Specialized`, `Distributed` — the README summarizes the MVC/JPA structure while historical architecture and maintainability documentation provides additional context, but not a verified consolidated architecture snapshot for the pinned commit.
-
-**Uncertainty**
-
-- Which boundaries, dependencies, critical flows, and architectural exceptions are present at the pinned SHA, beyond the nominal README diagram-like description?
-- Whether the existing overview and supporting documents adequately describe the **current** architecture for contributors without recasting historical issues as unresolved defects.
-- Whether a more consolidated architecture overview is warranted or the existing sources meet the Component's level of detail.
-
-**Detected Facts**
-
-- The pinned README describes a primary `MVC controller → service / business rules → JPA repository → database` flow and names domain entities including `Movie`, `Room`, `Session`, `Ticket`, `Review`, and `User`.
-- The Framework's `DOC-ARCHITECTURE` Component expects a maintained description of architectural purpose, context, key components, relationships, and constraints; it does not prescribe exhaustive class-by-class documentation or a diagram solely for formality.
-- The pinned repository contains `docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md`, dated **2026-10-10** and explicitly based on an earlier `main` after PR #23 (`b6cf52c9`). It describes some direct controller-to-repository access and proposed improvements **for that historical reference**.
-- The functional audit `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md` uses another historical baseline (`df63353564485eb6d2d60c982032e5d3c4facbf2`) and cautions against reopening findings automatically after later changes.
-- The existing sources convey a nominal architecture and selected historical concerns; no complete architecture-description reconciliation to the pinned SHA was established by the prior reviews.
-
-**Evidence**
-
-- [DOC-ARCHITECTURE Component](../../components/documentation/architecture/README.md)
-- [Pinned consumer README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Historical architecture audit in the pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md)
-- [Historical F3 functional audit in the pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
-- [DOC-ARCHITECTURE E3 semantic review](only-film-recommended-docs-semantic-review.md)
-- [README-ARCHITECTURE E3 semantic review](only-film-recommended-readme-semantic-review.md)
-
-**Evaluation Rationale**
-
-Documentation relevant to the architectural Responsibility exists, so `Missing` is not established simply by the lack of a canonical architecture snapshot. The README's high-level flow provides a useful entry point, but a historical maintainability audit is not necessarily a maintained explanation of current components, relationships, and constraints. `Partial` is a **proposed documentary sufficiency judgment**, rather than an assertion that earlier direct repository access still exists or that the pinned architecture is defective. Human review should verify the expected scope and decide whether the distributed sources sufficiently support the selected Template.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-Whether to `PRESERVE` the existing documentation or `ADAPT` its architectural overview requires human review and a bounded reference check. No refactoring or consumer-documentation change is authorized by this record.
-
----
-
-### DOC-PROJECT-STATUS
-
-**Requirement Level**
-
-`Recommended`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Specialized`, `Distributed` — the README outlines possible next steps, while a maturity assessment and functional roadmap describe the project's development history from different reference points.
-
-**Uncertainty**
-
-- The actual status of F3 initiatives (completed, open, revised, or superseded) at the pinned SHA has not been reconstructed from current evidence.
-- The latest verifiable milestone, current status by area, and immediate next objective are not established as one maintained, consumer-facing operational snapshot.
-- Whether the project's portfolio context calls for a compact maintained status page or existing descriptions suffice requires reviewer judgment.
-
-**Detected Facts**
-
-- The Framework's `DOC-PROJECT-STATUS` Component calls for an overview, progress by area, a next milestone and immediate goals, distinct from a backlog, roadmap, or changelog.
-- The consumer's `docs/TECHNICAL_MATURITY_ASSESSMENT.md` is dated **2026-10-10** and names historical reference `9f2a31e927df105d14e3d30d4d8277fa61883deb`; it describes a technically evolved academic/portfolio project with production-readiness limitations **at that baseline**.
-- The `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md` document is tied to `df63353564485eb6d2d60c982032e5d3c4facbf2` and describes F3.002–F3.008 initiatives. Their present completion status at the pinned SHA has not been verified.
-- The pinned README's future work section mentions potential REST API, real payment integration, observability, and deployment automation, explicitly **not** implemented feature claims.
-- [Run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) confirms successful checks at the pinned SHA, including an H2 regression job with 329 tests; isolated successful checks do **not** establish the overall project milestone or operational maturity.
-
-**Evidence**
-
-- [DOC-PROJECT-STATUS Component](../../components/documentation/project-status/README.md)
-- [Historical technical maturity assessment in pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/TECHNICAL_MATURITY_ASSESSMENT.md)
-- [Historical F3 audit and roadmap in pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
-- [Pinned consumer README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned CI run](https://github.com/fran-eliot/only_film/actions/runs/39283862407)
-- [DOC-PROJECT-STATUS E3 semantic review](only-film-recommended-docs-semantic-review.md)
-
-**Evaluation Rationale**
-
-Status-related material exists, but the Component's purpose is a maintained **operational snapshot** showing current progress, milestone and next steps. Historical maturity findings and a roadmap cannot safely be treated as an up-to-date account at the pinned SHA. `Partial` is a **conservative proposed evaluation of the documentary coverage and freshness**, not a conclusion that every F3 item remains open or that any historical risk still applies. A reviewer should decide whether the distributed sources meet the project's actual communication needs or need a scoped update.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-The maintainer must establish the relevant reporting audience and verify present milestones before selecting `PRESERVE`, `ADAPT`, or another valid Adoption Decision. No changes to Only Film or new project status claims are authorized.
-
----
-
-### README-STATUS
-
-**Requirement Level**
-
-`Recommended`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Distributed` — the README communicates technologies, testing approaches and future possibilities; a separate historical maturity assessment supplies contextual information. No integrated, current `project_status` and `maturity` declaration was identified in the inspected README.
-
-**Uncertainty**
-
-- Who maintains and validates a concise status/maturity statement for the consumer, and against which dated reference?
-- Whether the intended audience needs explicit distinctions such as `portfolio/demo`, active development, and production readiness, and what evidence supports those descriptors.
-- Whether an updated README statement or an accessible equivalent source would be sufficient without requiring a new standalone status document.
-
-**Detected Facts**
-
-- At the pinned commit, README badges identify **technology versions** (Java 25, Spring Boot 4.0.5, PostgreSQL 17, Flyway and Docker Compose), not CI health, active project status or a maturity level.
-- The README's testing/CI section distinguishes GitHub Actions workflows and manual test paths, while the future-work section explicitly describes potential enhancements rather than completed features.
-- The historical `docs/TECHNICAL_MATURITY_ASSESSMENT.md` is dated **2026-10-10** and tied to `9f2a31e927df105d14e3d30d4d8277fa61883deb`. It describes a technically evolving academic/portfolio backend with production limitations **at that earlier reference**, not necessarily at the assessed SHA.
-- The Framework [README-STATUS Component](../../components/readme/status/README.md) concerns operational status and maturity (`project_status` and `maturity`), which are different from a technology badge.
-- A [successful CI run on the pinned commit](https://github.com/fran-eliot/only_film/actions/runs/39283862407) includes 329 passing selected H2 tests but does **not** establish overall maintenance status, deployment readiness or maturity.
-
-**Evidence**
-
-- [Pinned Only Film README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Historical technical maturity assessment in the pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/TECHNICAL_MATURITY_ASSESSMENT.md)
-- [README-STATUS Component](../../components/readme/status/README.md)
-- [Verified Surefire and Sonar log evidence](only-film-verified-surefire-sonar-logs.md)
-- [Provisional README status/architecture semantic review](only-film-recommended-readme-semantic-review.md)
-
-**Evaluation Rationale**
-
-The README and supporting documents contain useful information about the project and its evolution. However, a technology/version badge is not a status or maturity indicator, and an older technical audit cannot simply be copied forward as the current state. `Partial` is a **proposed semantic evaluation of the clarity and currency of the status information**, not a claim that the project is currently unhealthy or that a particular visual badge is mandatory. The reviewer must decide what a useful status declaration means for this consumer and whether existing equivalent sources suffice.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-No `PRESERVE`, `ADAPT` or `ADD` decision is authorized. The maintainer must assess the consumer's intended audience and verify any status or maturity statement before selecting a documentation action.
-
----
-
-### README-ARCHITECTURE
-
-**Requirement Level**
-
-`Recommended`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Distributed` — a concise architecture/technology overview is already present in the README, with more detailed but historically scoped technical notes elsewhere in the repository.
-
-**Uncertainty**
-
-- Whether the nominal MVC/JPA flow remains a sufficiently accurate **high-level overview** of the pinned commit, including relevant exceptions.
-- Whether direct controller-to-repository access noted in an **earlier** architecture audit still exists at the assessed SHA; it has not been revalidated across all controllers.
-- Whether the README's succinct description is sufficient for the Responsibility's purpose or should better distinguish a representative flow from an exhaustive architecture contract.
-
-**Detected Facts**
-
-- The pinned README describes the principal `MVC controller → service / business logic → JPA repository → database` flow and identifies core domain entities including `Movie`, `Room`, `Session`, `Ticket`, `Review` and `User`.
-- The Framework's [README-ARCHITECTURE Component](../../components/readme/architecture/README.md) expects a high-level architecture summary, not a detailed replication of the technical documentation.
-- The `docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md` file, dated **2026-10-10**, concerns an earlier reference after PR #23 (`b6cf52c9`) and describes some direct controller-to-repository access at that point. That finding has not been comprehensively retested at the pinned SHA.
-- A historical technical maturity assessment also concerns a different reference; the existence of multiple dated audits does not, by itself, establish the actual architecture at the assessed commit.
-
-**Evidence**
-
-- [Pinned README — technology and architecture section](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [README-ARCHITECTURE Component](../../components/readme/architecture/README.md)
-- [Historical architecture maintainability audit](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md)
-- [Historical technical maturity assessment](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/TECHNICAL_MATURITY_ASSESSMENT.md)
-- [Provisional README status/architecture semantic review](only-film-recommended-readme-semantic-review.md)
-
-**Evaluation Rationale**
-
-The consumer already has a readable, appropriately concise architectural flow, so the Responsibility is not `Missing`. The line is explicitly a **principal flow**, not necessarily a guarantee that every request follows the same layers; historical reports suggest an older implementation was more nuanced. `Partial` is a **conservative, unapproved assessment hypothesis** reflecting the need to verify explanatory sufficiency and avoid overstating architecture uniformity. A human reviewer could reasonably select `Satisfied` if the overview meets the documented Component's high-level purpose, without requiring a full architecture audit or diagram.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-The maintainer must decide whether to `PRESERVE` the existing overview or `ADAPT` wording for accuracy and navigability. No architecture refactoring, new diagram, or consumer change follows automatically from this proposed evaluation.
-
----
-
-### README-REPOSITORY-STRUCTURE
-
-**Requirement Level**
-
-`Recommended`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Canonical` in a descriptive sense: the README includes an explicit directory tree, but the Framework review did not identify a standalone Component specification for this Responsibility.
-
-**Uncertainty**
-
-- Whether the concise tree is accurate and sufficiently navigable for a new contributor at the pinned consumer SHA.
-- Whether omitted paths are genuinely important for orientation rather than intentionally excluded implementation detail.
-- The absence of a separately identified `README-REPOSITORY-STRUCTURE` Component in the inspected Framework catalog is a Framework coverage question, **not** proof of a defect in Only Film.
-
-**Detected Facts**
-
-- The pinned README contains `Organización del repositorio`, summarizing `src/main/java/com/demo`, template/static resources, `db/migration`, tests, `docs/`, `.github/workflows/`, `Dockerfile`, `compose.yaml` and `.env.example`.
-- The earlier pinned-tree review confirmed the principal referenced paths. The README tree is intentionally an overview and does not claim to list every file.
-- `README-REPOSITORY-STRUCTURE` is `Recommended` in `TPL-BACKEND` 0.1.0 metadata, regardless of whether an independently documented Component exists.
-
-**Evidence**
-
-- [Pinned README — repository organization](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned consumer repository tree](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
-- [Canonical TPL-BACKEND metadata](../../templates/repositories/backend/metadata.yml)
-- [Recommended README semantic review](only-film-recommended-readme-semantic-review.md)
-
-**Evaluation Rationale**
-
-The README already gives readers an intelligible map of the project's major source, resource, migration, documentation, and automation paths. Therefore the Responsibility is not `Missing`. The `Partial` proposal is a **conservative, unapproved hypothesis about currency and usability**, not an assertion that the directory tree is wrong or insufficient merely because it is abbreviated. The reviewer may confirm `Satisfied` if the displayed layout is accurate and adequately supports navigation.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-No rewrite or new Component is authorized. The reviewer must evaluate whether to `PRESERVE` the existing overview or `ADAPT` any genuinely misleading or missing navigation information.
-
----
-
-### README-FEATURES
-
-**Requirement Level**
-
-`Required`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Equivalent` — a role-grouped `Funcionalidades` section fulfills the feature-summary function without the canonical English heading.
-
-**Uncertainty**
-
-- Whether every capability listed for visitors, registered users, and administrators accurately represents the pinned consumer commit.
-- Whether demonstration ticket purchase/checkout is clearly distinguishable from integration with a real payment provider.
-- Whether the paragraph on database transactions and seat-locking is appropriate in a feature summary or should be linked from architecture documentation.
-
-**Detected Facts**
-
-- The pinned README has a `Funcionalidades` section organized by visitor, user, and administrator roles. It describes movie and session browsing, registration/login, seat and ticket operations, reviews, and management capabilities.
-- The feature description refers to simulated purchasing, not a verified production payment integration.
-- An additional paragraph describes transactional controls and database locking to prevent duplicate seat sales; this is an implementation characteristic rather than solely an end-user capability.
-- The Framework's `README-FEATURES` Component focuses on concise main capabilities instead of extensive implementation detail.
-- The pinned H2/PostgreSQL CI checks provide bounded regression evidence but do **not** establish independent functional acceptance of every advertised feature.
-
-**Evidence**
-
-- [Pinned Only Film README — Funcionalidades](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [README-FEATURES Component](../../components/readme/features/README.md)
-- [Required identity/overview/features semantic review](only-film-required-identity-semantic-review.md)
-- [Pinned CI run](https://github.com/fran-eliot/only_film/actions/runs/39283862407)
-
-**Evaluation Rationale**
-
-The consumer has an explicit, audience-oriented feature summary, so `Missing` would misrepresent the inspected README. The roles and capabilities are recognizable, but the assessment has not established feature-by-feature accuracy or whether the technical transaction paragraph obscures the user-facing overview. `Partial` is a **provisional editorial hypothesis**, not a confirmed functionality gap or failed acceptance test. The reviewer can approve `Satisfied` if the current wording accurately communicates the main functions at the level expected for this Required Responsibility.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-The maintainer must confirm feature accuracy and select `PRESERVE` or `ADAPT` only when documentary changes are justified. Nothing in this working assessment authorizes edits to the Only Film consumer.
-
----
-
-### README-DOCUMENTATION
-
-**Requirement Level**
-
-`Required`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Distributed` — the README links to relevant project documentation in task-oriented sections rather than providing a standalone documentation index.
-
-**Uncertainty**
-
-- Whether important source documents are discoverable by new contributors from the README's dispersed links.
-- Whether any critical links are stale, important documents lack entry points, or existing navigation creates material duplication; a comprehensive link audit has not been performed.
-- Whether a documentation index would add measurable value or the current task-oriented layout already meets the Component's purpose.
-
-**Detected Facts**
-
-- The pinned README links to `docs/screenshots/`, `docs/POSTGRESQL_SETUP.md`, `docs/SECURITY_HARDENING_AUDIT.md`, `docs/POSTGRESQL_INTEGRATION_TESTS.md`, and project GitHub Actions workflows.
-- Its `Organización del repositorio` section outlines `src/main`, `src/test`, `docs/`, `.github/workflows/`, and key Docker and configuration files.
-- The PostgreSQL setup and integration-testing documents were observed at the pinned consumer SHA. Their existence does not guarantee that every documentation link remains current.
-- The Framework's [README-DOCUMENTATION Component](../../components/readme/documentation/README.md) encourages grouping important resources. Architecture, ADR, Roadmap, API, and Deployment are examples; this does not mandate every documentation category for every consumer.
-- There is no literal `## Documentation` heading in the inspected README. The Responsibility can nevertheless be fulfilled through distributed links, so absence of that heading is **not** proof of `Missing`.
-
-**Evidence**
-
-- [Pinned README — linked documentation and repository organization](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
-- [Pinned PostgreSQL integration testing guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_INTEGRATION_TESTS.md)
-- [README-DOCUMENTATION Component](../../components/readme/documentation/README.md)
-- [Required Tech Stack, Documentation, and Footer E3 review](only-film-required-final-semantic-review.md)
-
-**Evaluation Rationale**
-
-The README offers concrete navigation to important project resources. Therefore the documentation Responsibility is not absent merely because there is no canonical index heading. The question is whether the distributed organization is discoverable, complete enough for the intended audience, and consistent with the repository at the pinned SHA. `Partial` remains a **conservative, unapproved navigation-sufficiency hypothesis**, not a verified broken-link finding. A human reviewer may select `Satisfied` if the task-based references are demonstrably useful without an extra index.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-The reviewer must establish whether to `PRESERVE` the distributed navigation or `ADAPT` any concrete gaps, based on link validation and audience needs. This record does not authorize a new documentation index or consumer edits.
-
----
-
-### README-FOOTER
-
-**Requirement Level**
-
-`Required`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Equivalent` — concluding attribution and license-context material appears in the final README sections instead of a separate canonical Footer block.
-
-**Uncertainty**
-
-- Whether the credit statement comprehensively and accurately represents the original collaborators and subsequent maintainers.
-- Whether the final license notice is clearly understandable without implying reuse permission that has not been legally established.
-- Whether the concluding section arrangement communicates an effective close to the README, given that future-work material follows the origin/credits section.
-- Whether additional related links or contact information would serve the audience; the Component does not require every optional Footer element.
-
-**Detected Facts**
-
-- The pinned README includes `Origen, créditos y evolución`, attributing the academic origins to multiple contributors and linking the original [certidevs/g1_testing](https://github.com/certidevs/g1_testing) repository.
-- The text distinguishes later work on `fran-eliot/only_film` from exclusive authorship of the original collaborative project.
-- `Próximas líneas de evolución` follows, listing potential future improvements rather than implemented features.
-- The final README line contains a `Licencia` note referring to the academic origin and the original repository; it explicitly does **not** establish an additional license through the README itself.
-- The Framework [README-FOOTER Component](../../components/readme/footer/README.md) allows license, acknowledgments, related links, and contact information but does not require all of them.
-- The existence of a credit and license notice is **documentary evidence**, not a verified legal determination of rights, ownership, or permitted reuse.
-
-**Evidence**
-
-- [Pinned README — credits, evolution, and license notice](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [README-FOOTER Component](../../components/readme/footer/README.md)
-- [Required Tech Stack, Documentation, and Footer E3 review](only-film-required-final-semantic-review.md)
-- [Original academic repository, linked as background](https://github.com/certidevs/g1_testing)
-
-**Evaluation Rationale**
-
-The README already contains attribution, project history, and cautious license information, satisfying identifiable Footer functions. The remaining review concerns editorial composition and clarity, not whether the document has a literal Footer heading or a specific contact block. `Partial` is a **provisional assessment of documentary suitability**, not a finding that credit is incorrect or a statement that the project is licensed for reuse. If the present closing text is clear and appropriate for the consumer's audience, a reviewer may justify `Satisfied`.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-A human reviewer must determine whether to `PRESERVE` the current closing material or `ADAPT` its organization or wording without introducing unauthorized legal or ownership claims. No modifications to Only Film are approved.
-
----
-
-### README-TECH-STACK
-
-**Requirement Level**
-
-`Required`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Canonical` in the documentary sense: a project-specific `Tecnologías y arquitectura` section groups technologies by functional layer, rather than mechanically reproducing the Framework Component's suggested categories.
-
-**Uncertainty**
-
-- Whether every technology listed is actually used in the described runtime, development, or test context at the pinned consumer commit.
-- Whether the technological inventory and architecture summary remain sufficiently easy to navigate without forcing generic Cloud categories onto a consumer with no verified cloud deployment.
-- Whether additional evidence is needed for the less directly inspected dependencies and tools beyond the already corroborated Java, Spring Boot, and PostgreSQL versions.
-
-**Detected Facts**
-
-- The pinned README's technology table distinguishes backend, security, frontend, local persistence, durable persistence, testing, and infrastructure.
-- It identifies Java 25, Spring Boot 4.0.5, Spring MVC, Spring Data JPA, Hibernate, Spring Security, BCrypt, Thymeleaf, Bootstrap 5, H2, PostgreSQL 17, Flyway, JUnit 5, Mockito, MockMvc, Selenium, Docker Compose, GitHub Actions, and JaCoCo.
-- The pinned `pom.xml` declares `java.version=25` and Spring Boot parent version `4.0.5`, corroborating the prominent Java and Spring Boot version claims.
-- The pinned `compose.yaml` uses `postgres:17-alpine` and defines `app` and `postgres` services, corroborating PostgreSQL 17 and Docker Compose configuration **statically**, not demonstrating successful deployment.
-- The [README-TECH-STACK Component](../../components/readme/tech-stack/README.md) suggests categories for orientation but does not require every possible environment category.
-
-**Evidence**
-
-- [Pinned Only Film README — technology and architecture table](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
-- [Pinned compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml)
-- [README-TECH-STACK Component](../../components/readme/tech-stack/README.md)
-- [Tech Stack, Documentation, and Footer E3 semantic review](only-film-required-final-semantic-review.md)
-
-**Evaluation Rationale**
-
-A clearly identified, categorized technology table exists, and the most salient version claims were cross-checked against versioned POM and Compose configuration. Consequently, absence of a specific suggested category or a differently named heading would not justify `Missing`. `Partial` is a **conservative proposed judgment** about complete inventory accuracy and editorial sufficiency; no comprehensive audit of all dependencies and uses has been performed. Human review may reasonably confirm `Satisfied` if the table is accurate and adequate for the README's audience, without demanding a Cloud section unrelated to this application.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-The reviewer must determine whether the table warrants `PRESERVE` or a specific `ADAPT` for inaccurate or confusing entries. This proposed record does not authorize new infrastructure or revisions to Only Film.
-
----
-
-### README-HERO
-
-**Requirement Level**
-
-`Required`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Canonical` in the functional sense: the README opens with an explicit project heading, short introductory description, and a limited group of technology badges.
-
-**Uncertainty**
-
-- Whether the opening introduction is sufficiently distinct from the later overview and adequately conveys the project identity and intended audience.
-- Whether the badges and heading remain legible and visually coherent on the intended screen sizes and light/dark themes; no responsive rendering review is recorded.
-- Whether the headline technology versions are current at the pinned SHA beyond those already checked against POM and Compose.
-
-**Detected Facts**
-
-- The pinned README begins with `# 🎬 Only Film`, followed by a brief description identifying the project and its principal technologies.
-- An additional paragraph introduces the academic collaboration from which the project originated and its subsequent technical development.
-- Five badges identify Java 25, Spring Boot 4.0.5, PostgreSQL 17, Flyway, and Docker Compose.
-- The [README-HERO Component](../../components/readme/hero/README.md) describes clear naming, tagline, structure, and restrained badge use. A decorative banner is **optional**, and the absence of one is not a defect.
-- Java, Spring Boot, and PostgreSQL versions have supporting pinned configuration evidence; the prior semantic review did not verify every visual rendering context.
-
-**Evidence**
-
-- [Pinned README — heading, introduction, badges](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [README-HERO Component](../../components/readme/hero/README.md)
-- [Required identity and overview E3 semantic review](only-film-required-identity-semantic-review.md)
-- [Pinned pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
-- [Pinned compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml)
-
-**Evaluation Rationale**
-
-The main heading, short introduction, and five badges visibly serve the Hero Responsibility; a banner or a separately titled tagline is not a mandatory prerequisite. The remaining questions are editorial distinction from Overview, reader clarity, and display compatibility, which were not reviewed as completed. `Partial` remains a **proposed editorial hypothesis**, not a documented visual failure or absent identity. A human reviewer can select `Satisfied` if the present introduction is sufficiently clear and readable.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-The reviewer must decide whether `PRESERVE` or a bounded `ADAPT` is appropriate once the actual README appearance and clarity are considered. No change to the consumer is authorized.
-
----
-
-### README-OVERVIEW
-
-**Requirement Level**
-
-`Required`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Distributed` — the project's functional overview is integrated into the introductory README paragraphs rather than a separately titled `Overview` section.
-
-**Uncertainty**
-
-- Whether the introduction clearly explains the problem solved and value to visitors, users, and maintainers beyond describing functions.
-- Whether the current mix of product summary, technology stack, and academic origins keeps the Overview understandable and distinct from Hero.
-- Whether a separate heading would improve navigation or simply duplicate a sufficiently clear existing introduction.
-
-**Detected Facts**
-
-- The pinned README introduces Only Film as a cinema-management web application and outlines movie listings, screenings, seat selection, ticketing, and role-based administration.
-- A following paragraph explains the academic collaboration and subsequent technical development of the repository.
-- The [README-OVERVIEW Component](../../components/readme/overview/README.md) expects a clear description of the project, its purpose, and the problem it addresses, without turning the overview into installation or detailed implementation guidance.
-- The README introduction already fulfills a recognizable overview function; the absence of a literal `## Overview` heading does not demonstrate that the Responsibility is missing.
-
-**Evidence**
-
-- [Pinned Only Film README — introductory overview](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [README-OVERVIEW Component](../../components/readme/overview/README.md)
-- [Required Hero, Overview, and Features E3 semantic review](only-film-required-identity-semantic-review.md)
-
-**Evaluation Rationale**
-
-The introductory paragraphs convey the nature and scope of the application, so a `Missing` State is not supported. The remaining questions concern the separation of product purpose from technical description and history, and the reader's ability to identify the project's benefit without duplicative text. `Partial` is a **conservative proposed editorial judgment**, not proof of a defective overview. A reviewer may reasonably approve `Satisfied` if the existing introduction meets the Component's documentary purpose without a separate section title.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-Whether to `PRESERVE` the existing introduction or `ADAPT` its organization requires human review of the communication goals. This record does not authorize changes to Only Film.
-
----
-
-### README-ROADMAP
-
-**Requirement Level**
-
-`Optional`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Distributed` — the README summarizes possible evolution, and a separate, historically pinned F3 functional audit and roadmap records more detailed initiatives.
-
-**Uncertainty**
-
-- Whether the future-work items in the README still reflect real priorities at the pinned consumer SHA.
-- Which initiatives F3.002–F3.008 in the older audit were implemented, revised, or superseded by the pinned reference; this has not been independently reconciled.
-- Whether a brief future-work summary suffices for the audience or should link to an up-to-date planning source.
-
-**Detected Facts**
-
-- The pinned README has a `Próximas líneas de evolución` section mentioning possible REST API, real payment integration, observability, and deployment automation; these are framed as **potential future work**, not completed capabilities.
-- The pinned repository contains `docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md`, listing initiatives F3.002–F3.008 from an **earlier** baseline `df63353564485eb6d2d60c982032e5d3c4facbf2`.
-- The existing F3 document cannot establish, solely by its presence in the later tree, which initiatives remain open or have already been completed at the assessed commit.
-- The Framework's [README-ROADMAP Component](../../components/readme/roadmap/README.md) supports a concise overview of upcoming phases, not a duplicated detailed planning document.
-
-**Evidence**
-
-- [Pinned README — future development](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned historical F3 audit and roadmap](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md)
-- [README-ROADMAP Component](../../components/readme/roadmap/README.md)
-- [Optional README governance semantic review](only-film-optional-governance-semantic-review.md)
-
-**Evaluation Rationale**
-
-The README already communicates possible future directions, so a canonical roadmap heading or extra document is not automatically necessary. However, the historical planning document is tied to another commit and cannot be treated as proof of the current backlog. `Partial` is a **proposed assessment of currency and editorial usefulness**, not a finding that every F3 initiative is outstanding. The reviewer may approve `Satisfied` if a concise forward-looking summary is all the Optional Responsibility needs for this portfolio consumer.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descriptions remain accurate and valuable to the consumer's intended audience. No new roadmap promises or modifications to Only Film are authorized.
-
----
-
-### README-CONTRIBUTING
-
-**Requirement Level**
-
-`Optional`
-
-**State**
-
-**Not selected** — `Missing` or `Partial` are the documentary hypotheses requiring discrimination. This is explicitly an **incomplete Assessment field**, not a third contractual State and not a declaration of `Missing`.
-
-**Applicability**
-
-`Uncertain` — no verified policy or confirmed intention to accept external contributions at the pinned consumer reference.
-
-**Implementation Characteristics**
-
-`Distributed` is a **possible** characteristic of the existing development instructions; no independently verified contribution governance or acceptance procedure has been established.
-
-**Uncertainty**
-
-- Whether the maintainer intends the repository to accept external contributions and, if so, under what policy and review process.
-- Whether contribution rules exist outside the inspected README and tree, for example in GitHub repository settings, PR templates, project-level guidance, or other maintained sources.
-- Whether technical setup/test guidance constitutes a partial contribution entry point or a distinct contributing policy is necessary for the intended audience.
-- An inspected Framework Component catalog did not locate a standalone `README-CONTRIBUTING` Component despite this Responsibility appearing in Template metadata. That is a **Framework-side specification question**, not evidence that Only Film is deficient.
-
-**Detected Facts**
-
-- The pinned README provides development prerequisites, test commands, CI descriptions, and source-code orientation that may support technical onboarding.
-- The earlier pinned-tree inspection did not find a `CONTRIBUTING.md` file; absence of that filename does not rule out an equivalent policy.
-- The prior semantic review did not verify rules for external collaborators, PR submission, acceptance/review, or commit conventions.
-- `README-CONTRIBUTING` is `Optional` in `TPL-BACKEND` 0.1.0; optionality alone does **not** establish `Not Applicable`.
-
-**Evidence**
-
-- [Pinned README — development and testing guidance](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned consumer tree](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
-- [TPL-BACKEND metadata](../../templates/repositories/backend/metadata.yml)
-- [Optional governance E3 semantic review](only-film-optional-governance-semantic-review.md)
-
-**Evaluation Rationale**
-
-The README contains actionable technical onboarding information, but those instructions are not automatically a policy on who may contribute, how changes are proposed and reviewed, and how contributions are accepted. `Partial` would require treating technical onboarding as an adequate subset of the intended Responsibility; `Missing` would require establishing that no substantive contributing guidance is present. Neither conclusion has been human-reviewed, and whether the Responsibility is applicable to this consumer's collaboration model is unresolved. Recording `Uncertain` Applicability and leaving State unselected is more traceable than manufacturing a contractual answer.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-First establish the intended contribution model and any existing policy. Then approve a contractual State and Applicability and decide, if justified, between `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT`, or `OMIT`. No contribution policy is created or authorized here.
-
----
-
-### DOC-API
-
-**Requirement Level**
-
-`Optional`
-
-**State**
-
-**Not selected** — `Missing` or `Partial` are the current hypotheses, contingent on an agreed scope for API documentation. This entry is **not yet a completed contractual State evaluation**.
-
-**Applicability**
-
-`Uncertain` — no independently confirmed public REST/JSON API contract, but an interface-documentation need has not been categorically ruled out.
-
-**Implementation Characteristics**
-
-No public API contract implementation was verified in the prior evidence. Spring MVC page controllers and session-authenticated routes are web interfaces, **not automatically an external REST API**.
-
-**Uncertainty**
-
-- Whether any public JSON/REST endpoints or consumer-facing HTTP contracts exist at the pinned SHA beyond the examined MVC controllers.
-- Whether the project's audience needs a documented programmatic API, a bounded internal HTTP contract, or simply web navigation and developer guidance.
-- Whether an `OpenAPI`/`Swagger` specification or other equivalent API document exists outside the filename/path checks already performed.
-- Whether `DOC-API` is in scope for this server-rendered application today, rather than only for a prospective REST API feature.
-
-**Detected Facts**
-
-- The pinned README describes a Spring MVC/Thymeleaf application with server-rendered pages, authenticated web routes, and session-based interaction.
-- The README mentions an `API REST` under `Próximas líneas de evolución` as a **possible future extension**, not an implemented feature at the pinned SHA.
-- Source inspection located Spring MVC controllers, but the presence of HTTP endpoints does not establish a documented public API for integration clients.
-- The previous file/path review did not identify filenames containing `openapi` or `swagger`; this is a **bounded name-based observation**, not exhaustive proof of API absence.
-- `DOC-API` is `Optional` in the Template; that classification does not itself settle Applicability.
-
-**Evidence**
-
-- [Pinned README — architecture and potential REST API](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned Spring MVC controller directory](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/controller)
-- [TPL-BACKEND metadata](../../templates/repositories/backend/metadata.yml)
-- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
-
-**Evaluation Rationale**
-
-An API documentation Responsibility should be evaluated against an actual interface and its consumers, not a generic expectation that every backend publishes REST endpoints. The README treats REST as future work, and the currently reviewed routes relate to server-rendered MVC. `Missing` would need a confirmed applicable API-documentation requirement that is unmet; `Partial` would need demonstrable partial coverage of that requirement. Neither is established by the available bounded review. The State is intentionally unselected and Applicability `Uncertain` pending a decision on scope and further endpoint evidence.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-Review the actual supported interfaces and intended consumers. If API documentation is not needed for this application's present scope, the reviewer can justify `Not Applicable` and then complete State under the Template's rules; otherwise identify concrete applicable contracts and select State on evidence. No speculative REST API documentation or consumer changes follow from this record.
-
----
-
-### DOC-DATABASE
-
-**Requirement Level**
-
-`Optional`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Specialized`, `Distributed` — PostgreSQL setup instructions, a focused Flyway V2 integrity document, versioned SQL migration sources, and the README's domain overview.
-
-**Uncertainty**
-
-- Whether a new contributor can understand the essential entity relationships, data lifecycle, constraints, and supported profile differences without reconstructing them from JPA classes and SQL.
-- Whether the migration documentation accurately describes the current V1/V2 relationship and constraints at the pinned consumer SHA.
-- Whether a conceptual data-model summary is needed or the existing focused guides sufficiently serve this portfolio application's audience; an ER diagram is not automatically mandatory.
-
-**Detected Facts**
-
-- The pinned `docs/POSTGRESQL_SETUP.md` distinguishes quick H2 development, `dev`, `postgres`, and `postgres,demo` profiles, database environment variables, Flyway migrations, and Hibernate `ddl-auto=validate`.
-- The pinned `docs/FLYWAY_V2_SEAT_UNIQUENESS.md` describes `UNIQUE(session_id, fila, seat)`, the decision to preserve V1, preflight collision checking, `NULL` considerations, and non-destructive handling of existing duplicates.
-- The README identifies domain entities such as `Movie`, `Room`, `Session`, `Ticket`, `Review`, and `User`, and distinguishes H2 from PostgreSQL persistence.
-- At the pinned SHA, [GitHub Actions run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) reports successful `postgres-schema` and `PostgreSQL JPA and concurrent checkout` jobs. These confirm bounded CI checks, **not** completeness of database documentation or every schema invariant.
-
-**Evidence**
-
-- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
-- [Pinned Flyway V2 seat uniqueness document](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/FLYWAY_V2_SEAT_UNIQUENESS.md)
-- [Pinned README — domain entities and persistence](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned PostgreSQL CI run](https://github.com/fran-eliot/only_film/actions/runs/39283862407)
-- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
-
-**Evaluation Rationale**
-
-Database-specific operational and schema-integrity documentation exists, so `Missing` would not reflect the available evidence. These sources explain profiles, migration procedures, and at least one important uniqueness constraint, but the prior review has not demonstrated a sufficiently accessible conceptual model of all material relationships and invariants. `Partial` is a **conservative, unapproved documentary-sufficiency proposal**; it does not mean migrations or schema are defective. The reviewer may accept `Satisfied` if focused documentation sufficiently meets the intended user's needs without extra diagrams.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-The reviewer should establish the data-model documentation threshold and choose `PRESERVE` or a bounded `ADAPT` only if a material navigation or explanation gap is confirmed. No migration changes or data-model refactoring are authorized.
-
----
-
-### DOC-DEPLOYMENT
-
-**Requirement Level**
-
-`Optional`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed for the documented local Compose development environment only; no production deployment is asserted**
-
-**Implementation Characteristics**
-
-`Own`, `Specialized`, `Distributed` — local startup and operation instructions in the README and PostgreSQL guide, plus the pinned Dockerfile and Compose configuration.
-
-**Uncertainty**
-
-- Whether the README and PostgreSQL guide consistently describe the intended persistence of uploaded files. The guide contains a warning suggesting the absence of a definitive upload-persistence strategy even though it also describes a named `uploads_data` volume; local volume persistence is not equivalent to production backup/durability.
-- Whether the documented Docker Compose route has been successfully reproduced at the pinned SHA; the earlier checks did **not** establish an associated successful Compose smoke run.
-- Whether the consumer supports only local development or a separate deployed demo, and what startup, verification, backup, recovery, and operational guidance is appropriate for that actual supported scope.
-- No evidence of production readiness, public exposure, disaster recovery, or production rollback is claimed.
-
-**Detected Facts**
-
-- The pinned README and `docs/POSTGRESQL_SETUP.md` describe preparing private `.env` settings, running `docker compose up --build -d`, connecting to PostgreSQL, accessing the local web application, and avoiding inadvertent data loss with `docker compose down -v`.
-- The pinned `compose.yaml` defines `app` and `postgres`, PostgreSQL health checks, `postgres_data` and `uploads_data` volumes, and application/DB ports bound to `127.0.0.1`.
-- The README explicitly warns that its Compose setup is not production deployment configuration for exposure to the Internet.
-- The pinned `compose-smoke.yml` **defines** build/start, web, migrations, and persistence checks. A successful execution of that workflow **for the same pinned SHA was not identified** in the earlier reviewed check set.
-- The PostgreSQL guide contains potentially inconsistent descriptions of uploads persistence; the difference may be between local operational persistence and the lack of a complete production file-storage strategy, and requires review instead of assuming a confirmed runtime bug.
-
-**Evidence**
-
-- [Pinned README — local Compose startup and limitations](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
-- [Pinned compose.yaml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml)
-- [Pinned Dockerfile](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/Dockerfile)
-- [Pinned Compose smoke workflow definition](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/.github/workflows/compose-smoke.yml)
-- [Compose smoke execution evidence gap](only-film-compose-evidence-gap.md)
-- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
-
-**Evaluation Rationale**
-
-The consumer has a documented operational route for a **local** Compose deployment and provides explicit safeguards and limitations, so the Responsibility is not absent. The semantic assessment must match the environment the project actually supports rather than imposing production requirements it does not claim to meet. The unverified Compose execution and potentially inconsistent uploads warning leave real documentation questions. `Partial` is a **proposed documentary assessment**, not proof that the Compose stack fails or that production deployment is expected. The reviewer should decide whether `Satisfied` is appropriate for local-only guidance or whether specific clarification is needed.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-Review local operational scope, the uploads warning, and the threshold for reproduction evidence before choosing `PRESERVE` or `ADAPT`. No workflow trigger, deployed service, production plan, or change to Only Film is authorized.
-
----
-
-### DOC-ADR
-
-**Requirement Level**
-
-`Optional`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Distributed` — technical decisions and operational constraints are explained within specialized documents, but a consolidated ADR convention or inventory was not established in the bounded earlier review.
-
-**Uncertainty**
-
-- Whether important, durable architectural decisions are sufficiently documented with context, alternatives, decision, consequences, and present validity.
-- Whether a formal ADR index would add useful traceability, or simply duplicate existing, task-specific documents.
-- Which recommendations in earlier architecture audits still correspond to current, accepted decisions at the pinned SHA.
-
-**Detected Facts**
-
-- The pinned `docs/FLYWAY_V2_SEAT_UNIQUENESS.md` explains `UNIQUE(session_id, fila, seat)`, preservation of existing V1 migration history, duplicate-data checks, `NULL` considerations, and careful non-destructive handling of collisions.
-- The pinned `docs/DEPENDENCY_MAINTENANCE.md` explains weekly Dependabot updates, review of major versions separately, and avoidance of unattended auto-merge.
-- The pinned `docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md` contains historical options and risks. It uses a different baseline and must not be read as a current approved ADR inventory.
-- The earlier inspected tree did not identify an `adr/` directory or `ADR-*` filenames; this does **not** establish the absence of documented decisions in other forms.
-- The prior Framework catalog review did not identify a separate `DOC-ADR` Component specification. The Template metadata does include the `Optional` Responsibility; no absent Component rule is imposed on the consumer.
-
-**Evidence**
-
-- [Pinned Flyway V2 seat uniqueness document](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/FLYWAY_V2_SEAT_UNIQUENESS.md)
-- [Pinned dependency maintenance document](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/DEPENDENCY_MAINTENANCE.md)
-- [Historical architecture audit in pinned tree](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md)
-- [Canonical Template metadata](../../templates/repositories/backend/metadata.yml)
-- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
-
-**Evaluation Rationale**
-
-The consumer already documents reasons and operational consequences of meaningful technical choices. Therefore the Responsibility is not necessarily `Missing` merely because there is no folder named `adr`. The existing documents do not yet demonstrate a maintained, comparable record of the main architectural decisions and their current status. `Partial` is a **conservative proposed documentary interpretation**, not proof that an ADR register must be introduced. The reviewer should assess whether an optional formal register is valuable given the project's size and existing documentation.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-The maintainer must decide whether to `PRESERVE` the existing decision explanations or `ADAPT` their organization after considering value and duplication. No new ADR process or consumer edit is authorized.
-
----
-
-### DOC-REFERENCES
-
-**Requirement Level**
-
-`Optional`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Uncertain` — whether a consolidated references Responsibility is useful for this consumer remains unresolved; this is **not** a decision of `Not Applicable`.
-
-**Implementation Characteristics**
-
-`Own`, `Distributed` — references to the academic source repository, internal guides, and development tools appear in context rather than as a separately maintained references catalog.
-
-**Uncertainty**
-
-- Whether stable external technical standards or authoritative sources are needed for readers beyond the existing contextual links.
-- Whether meaningful links are out of date, repeated, or difficult to discover. A comprehensive reference URL audit has not been performed.
-- Whether a central References document would improve the user journey or create redundant maintenance; the Framework Component explicitly permits contextual linking.
-- If the reviewer determines the Responsibility is `Not Applicable`, the proposed `State` must be reconciled with the Template's contractual rules before declaring this entry complete.
-
-**Detected Facts**
-
-- The pinned README links to the original academic repository, selected technical documentation, and GitHub Actions workflows.
-- Specialized guides mention PostgreSQL, Flyway, Maven, SonarCloud, and Dependabot; their mention does **not** establish that authoritative external reference URLs for each are provided or required.
-- The Framework [DOC-REFERENCES Component](../../components/documentation/references/README.md) recommends primary sources with clear purpose and context and explicitly allows no standalone references catalog where contextual links are easier to use.
-- The earlier filename/path review did not identify a separate `REFERENCES` document. Absence of that filename alone is not a finding of deficient referencing.
-
-**Evidence**
-
-- [Pinned Only Film README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
-- [Pinned dependency maintenance guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/DEPENDENCY_MAINTENANCE.md)
-- [DOC-REFERENCES Component](../../components/documentation/references/README.md)
-- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
-
-**Evaluation Rationale**
-
-Contextual links already exist, and a standalone index is not required by the References Component. Whether the existing collection adequately addresses the intended reader's need for external source traceability has not been assessed exhaustively. `Partial` is a **proposed documentary State conditional on an applicable references scope**; Applicability remains `Uncertain` and may prove `Not Applicable` following human review. It is not a claim that a new References file is mandatory or that existing links are broken.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-The reviewer should determine whether references need consolidation or can remain contextual, then confirm Applicability and State under the Template's allowed values. No addition of a References index, external citations, or consumer changes is authorized.
-
----
-
-### README-DEMO
-
-**Requirement Level**
-
-`Optional`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Distributed` — screenshots embedded in the README and a documented local startup path, rather than an independently verified public demo.
-
-**Uncertainty**
-
-- Whether the screenshots accurately represent the behavior and appearance at the pinned consumer SHA; image presence was checked, but visual fidelity and freshness were not.
-- Whether screenshots satisfy the portfolio audience or a reproducible local demonstration is also needed.
-- Whether demo-data prerequisites and the absence of an online demo are communicated sufficiently; no public demo is established by a localhost URL.
-- Whether Docker Compose startup can be reproduced at the pinned SHA; a passing Compose smoke execution linked to that reference was not verified.
-
-**Detected Facts**
-
-- The pinned README includes `Capturas de la aplicación` with images of the movie listing, movie details, seat selection, and a QR ticket.
-- Other versioned interface screenshots appear in `docs/screenshots/`; their quality and representativeness were not visually audited in the prior semantic review.
-- The README describes Docker Compose startup and `http://localhost:8080/movies`, which is a **local address**, not a hosted demonstration.
-- A Compose smoke workflow definition exists, but the previously reviewed CI checks did not establish successful execution of that workflow for the pinned commit.
-
-**Evidence**
-
-- [Pinned README — screenshots and local startup](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned screenshots directory](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c/docs/screenshots)
-- [Optional Demo, Highlights and Diagrams E3 semantic review](only-film-optional-showcase-semantic-review.md)
-- [Compose smoke evidence gap](only-film-compose-evidence-gap.md)
-
-**Evaluation Rationale**
-
-The repository already shows the application through documented screenshots, so the Responsibility is not automatically `Missing` merely because no public live demo was verified. `Partial` is a **provisional judgment of demo clarity and reproducibility** rather than an observed broken workflow or an obligation to deploy the project publicly. The reviewer may find the existing visual examples sufficient for this Optional Responsibility.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-Decide whether to `PRESERVE` the current screenshot-based presentation or `ADAPT` its explanation after validating the screenshots and audience needs. No demo deployment or consumer edit is authorized.
-
----
-
-### README-AUTHOR
-
-**Requirement Level**
-
-`Optional`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Equivalent` — attribution and credits are embedded in `Origen, créditos y evolución`, not in a separately titled Author block.
-
-**Uncertainty**
-
-- Whether all material original contributors and later maintainers are credited accurately and with an appropriate distinction of roles.
-- Whether an additional author/contact link would improve clarity, without implying exclusive authorship of academic group work.
-- Whether any licensing or intellectual-property rights can be substantiated; attribution does **not** independently verify code ownership or permissions.
-
-**Detected Facts**
-
-- At the pinned SHA, the README credits four members of the academic collaboration and links their profiles and the original `certidevs/g1_testing` repository.
-- The narrative distinguishes the original collaborative creation from subsequent evolution under `fran-eliot/only_film`, without representing the entire initial project as one person's exclusive work.
-- The [README-AUTHOR Component](../../components/readme/author/README.md) permits an author or team to be identified through names and links; a literal `Author` heading is not required.
-
-**Evidence**
-
-- [Pinned README — origins and credits](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [README-AUTHOR Component](../../components/readme/author/README.md)
-- [Original academic repository](https://github.com/certidevs/g1_testing)
-- [Optional README governance E3 semantic review](only-film-optional-governance-semantic-review.md)
-
-**Evaluation Rationale**
-
-Authorship and project-origin attribution are already present and directly relevant to the Responsibility; the lack of an exact heading does not make the section `Missing`. `Partial` is a **conservative editorial hypothesis** until the clarity and completeness of original and later contributions are reviewed. This is not a legal judgment or an inference of ownership. A reviewer may justify `Satisfied` if the existing credits fulfill the Component's communication purpose.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-The maintainer must assess whether to `PRESERVE` the existing balanced attribution or `ADAPT` specific wording/links with verified facts. No retroactive attribution change or license claim is authorized.
-
----
-
-### README-HIGHLIGHTS
-
-**Requirement Level**
-
-`Optional`
-
-**State**
-
-`Partial` — **proposed; human review pending**
-
-**Applicability**
-
-`Applicable` — **proposed; human review pending**
-
-**Implementation Characteristics**
-
-`Own`, `Distributed` — notable implementation choices are already described within `Funcionalidades` and `Seguridad y límites actuales`, without a distinct Highlights section.
-
-**Uncertainty**
-
-- Whether a small selection of highlights would materially clarify this portfolio project's differentiators instead of repeating Features.
-- Which of the stated technical qualities are sufficiently supported at the pinned commit and should be presented prominently.
-- Whether the README already balances domain features, security limitations and implementation details for its audience.
-
-**Detected Facts**
-
-- The pinned README describes measures against duplicate seat sales, transactional checkout, role-based access, review authorization, image validation, and PostgreSQL/Flyway migration support.
-- `Funcionalidades` describes visitor, user and administrator capabilities; `Seguridad y límites actuales` explicitly qualifies the checkout as simulated, not a real payment gateway.
-- [GitHub Actions run 39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) records 329 successful H2 tests and three successful checks for the pinned SHA, providing **bounded** regression support rather than complete validation of every feature or user experience.
-- No literal `Highlights` heading appears in the inspected README; that absence alone is not a failure of this Optional Responsibility.
-
-**Evidence**
-
-- [Pinned README — Features and security limitations](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Verified Surefire and Sonar log evidence](only-film-verified-surefire-sonar-logs.md)
-- [Optional showcase E3 semantic review](only-film-optional-showcase-semantic-review.md)
-
-**Evaluation Rationale**
-
-Differentiating qualities are communicated through existing sections and some claims have bounded technical support. A dedicated Highlights block may improve portfolio readability, but could also duplicate Features without adding information. `Partial` is a **provisional editorial interpretation**, not proof that the current README lacks compelling highlights or that a dedicated block is required. A reviewer can approve `Satisfied` if the distributed presentation already meets the consumer's needs.
-
-**Decision Status**
-
-`Needs Further Evaluation`
-
-**Adoption Decision**
-
-`—`
-
-**Decision Rationale**
-
-A future `PRESERVE` or `ADAPT` choice should follow an editorial review of actual value, factual support and duplication, not a requirement to manufacture showcase text.
-
 ---
 
 ### DOC-DIAGRAMS
@@ -1624,50 +1677,51 @@ Confirm whether diagrams already exist, decide whether any are useful, then sele
 
 ---
 
-### DOC-CHANGELOG
+---
+
+### DOC-REFERENCES
 
 **Requirement Level**
 
-`Required`
+`Optional`
 
 **State**
 
-`Missing` — **proposed; human review pending**
+`Partial` — **proposed; human review pending**
 
 **Applicability**
 
-`Applicable` — **proposed; human review pending**
+`Uncertain` — whether a consolidated references Responsibility is useful for this consumer remains unresolved; this is **not** a decision of `Not Applicable`.
 
 **Implementation Characteristics**
 
-`Distributed` change attribution through commits and PRs exists, but no equivalent curated changelog implementation has been identified. This characteristic describes the evidence, not satisfaction of the Responsibility.
+`Own`, `Distributed` — references to the academic source repository, internal guides, and development tools appear in context rather than as a separately maintained references catalog.
 
 **Uncertainty**
 
-- Whether any external or otherwise uninspected, substantive change record fulfills this Responsibility for the pinned consumer.
-- Whether the consumer should maintain an `Unreleased` log before any formal version is published.
-- Which bounded improvement, if any, the maintainer wishes to authorize after the semantic review; no Application decision is implied.
+- Whether stable external technical standards or authoritative sources are needed for readers beyond the existing contextual links.
+- Whether meaningful links are out of date, repeated, or difficult to discover. A comprehensive reference URL audit has not been performed.
+- Whether a central References document would improve the user journey or create redundant maintenance; the Framework Component explicitly permits contextual linking.
+- If the reviewer determines the Responsibility is `Not Applicable`, the proposed `State` must be reconciled with the Template's contractual rules before declaring this entry complete.
 
 **Detected Facts**
 
-- The pinned consumer README describes the project's academic origin and technical evolution, and points to Git history and PRs for attribution, but does not present a curated version-by-version change log.
-- A direct lookup of `CHANGELOG.md` at the pinned SHA returned `404 Not Found`; this is an observation about **one path**, not proof that no equivalent document exists anywhere.
-- The POM declares `0.0.1-SNAPSHOT`, which is an artifact version and not evidence of a published release.
-- Historical commits and PRs record individual changes; this does not automatically make them release notes or a changelog.
-- On **2026-11-13**, the consumer maintainer explicitly confirmed **no GitHub Releases and no tags**. This is **maintainer testimony**, not an independently executed tag inventory. An earlier GitHub Releases endpoint query also returned an empty list.
+- The pinned README links to the original academic repository, selected technical documentation, and GitHub Actions workflows.
+- Specialized guides mention PostgreSQL, Flyway, Maven, SonarCloud, and Dependabot; their mention does **not** establish that authoritative external reference URLs for each are provided or required.
+- The Framework [DOC-REFERENCES Component](../../components/documentation/references/README.md) recommends primary sources with clear purpose and context and explicitly allows no standalone references catalog where contextual links are easier to use.
+- The earlier filename/path review did not identify a separate `REFERENCES` document. Absence of that filename alone is not a finding of deficient referencing.
 
 **Evidence**
 
-- [Pinned README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
-- [Pinned pom.xml](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/pom.xml)
-- [Pinned Git history](https://github.com/fran-eliot/only_film/commits/28d75a50e0a178954dd46acc23300d9dd327843c/)
-- [Changelog evidence review, including maintainer confirmation](only-film-changelog-evidence-review.md)
-- [Provisional Required semantic review](only-film-required-semantic-review.md)
-- [Canonical Template metadata](../../templates/repositories/backend/metadata.yml)
+- [Pinned Only Film README](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned PostgreSQL setup guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md)
+- [Pinned dependency maintenance guide](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/DEPENDENCY_MAINTENANCE.md)
+- [DOC-REFERENCES Component](../../components/documentation/references/README.md)
+- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
 
 **Evaluation Rationale**
 
-`DOC-CHANGELOG` is `Required` by `TPL-BACKEND` 0.1.0. The relevant question is whether the consumer communicates meaningful changes in a changelog-like form, not whether a file has a prescribed name. The reviewed README, POM, and documentation did not establish such a record; the maintainer further confirmed the absence of tags and GitHub Releases. Raw commit/PR history supports attribution but is not a curated record of changes for readers. On this bounded evidence, `Missing` is more defensible than `Partial`: assigning `Partial` would require an identified partially satisfying change record. This remains **a proposed semantic assessment**, subject to human review of any alternative source.
+Contextual links already exist, and a standalone index is not required by the References Component. Whether the existing collection adequately addresses the intended reader's need for external source traceability has not been assessed exhaustively. `Partial` is a **proposed documentary State conditional on an applicable references scope**; Applicability remains `Uncertain` and may prove `Not Applicable` following human review. It is not a claim that a new References file is mandatory or that existing links are broken.
 
 **Decision Status**
 
@@ -1679,7 +1733,7 @@ Confirm whether diagrams already exist, decide whether any are useful, then sele
 
 **Decision Rationale**
 
-The recommended `State` can be assessed without selecting an implementation action. The maintainer must review the proposal and determine whether the right downstream decision is `ADD`, `ADAPT`, `ACCEPT`, or another permitted value after considering audience, existing equivalent sources, and maintenance scope. No change to Only Film is authorized by this record.
+The reviewer should determine whether references need consolidation or can remain contextual, then confirm Applicability and State under the Template's allowed values. No addition of a References index, external citations, or consumer changes is authorized.
 
 ---
 
