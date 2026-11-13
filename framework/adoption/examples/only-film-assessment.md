@@ -40,10 +40,12 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `README-HERO` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-OVERVIEW` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-ROADMAP` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-CONTRIBUTING` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
+| `DOC-API` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** eighteen Responsibilities have completed **proposed assessment entries**; the other **10/28** have not been formally recorded in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
+**Coverage:** eighteen Responsibilities have selected **proposed States**; two additional Responsibilities have structured entries with State **not selected** and Applicability `Uncertain`; the other **8/28** have not been entered in this working artifact. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. Before declaring `Complete`, add and review every Responsibility in the Template's canonical order.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -1041,6 +1043,121 @@ A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descrip
 
 ---
 
+### README-CONTRIBUTING
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+**Not selected** — `Missing` or `Partial` are the documentary hypotheses requiring discrimination. This is explicitly an **incomplete Assessment field**, not a third contractual State and not a declaration of `Missing`.
+
+**Applicability**
+
+`Uncertain` — no verified policy or confirmed intention to accept external contributions at the pinned consumer reference.
+
+**Implementation Characteristics**
+
+`Distributed` is a **possible** characteristic of the existing development instructions; no independently verified contribution governance or acceptance procedure has been established.
+
+**Uncertainty**
+
+- Whether the maintainer intends the repository to accept external contributions and, if so, under what policy and review process.
+- Whether contribution rules exist outside the inspected README and tree, for example in GitHub repository settings, PR templates, project-level guidance, or other maintained sources.
+- Whether technical setup/test guidance constitutes a partial contribution entry point or a distinct contributing policy is necessary for the intended audience.
+- An inspected Framework Component catalog did not locate a standalone `README-CONTRIBUTING` Component despite this Responsibility appearing in Template metadata. That is a **Framework-side specification question**, not evidence that Only Film is deficient.
+
+**Detected Facts**
+
+- The pinned README provides development prerequisites, test commands, CI descriptions, and source-code orientation that may support technical onboarding.
+- The earlier pinned-tree inspection did not find a `CONTRIBUTING.md` file; absence of that filename does not rule out an equivalent policy.
+- The prior semantic review did not verify rules for external collaborators, PR submission, acceptance/review, or commit conventions.
+- `README-CONTRIBUTING` is `Optional` in `TPL-BACKEND` 0.1.0; optionality alone does **not** establish `Not Applicable`.
+
+**Evidence**
+
+- [Pinned README — development and testing guidance](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned consumer tree](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
+- [TPL-BACKEND metadata](../../templates/repositories/backend/metadata.yml)
+- [Optional governance E3 semantic review](only-film-optional-governance-semantic-review.md)
+
+**Evaluation Rationale**
+
+The README contains actionable technical onboarding information, but those instructions are not automatically a policy on who may contribute, how changes are proposed and reviewed, and how contributions are accepted. `Partial` would require treating technical onboarding as an adequate subset of the intended Responsibility; `Missing` would require establishing that no substantive contributing guidance is present. Neither conclusion has been human-reviewed, and whether the Responsibility is applicable to this consumer's collaboration model is unresolved. Recording `Uncertain` Applicability and leaving State unselected is more traceable than manufacturing a contractual answer.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+First establish the intended contribution model and any existing policy. Then approve a contractual State and Applicability and decide, if justified, between `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT`, or `OMIT`. No contribution policy is created or authorized here.
+
+---
+
+### DOC-API
+
+**Requirement Level**
+
+`Optional`
+
+**State**
+
+**Not selected** — `Missing` or `Partial` are the current hypotheses, contingent on an agreed scope for API documentation. This entry is **not yet a completed contractual State evaluation**.
+
+**Applicability**
+
+`Uncertain` — no independently confirmed public REST/JSON API contract, but an interface-documentation need has not been categorically ruled out.
+
+**Implementation Characteristics**
+
+No public API contract implementation was verified in the prior evidence. Spring MVC page controllers and session-authenticated routes are web interfaces, **not automatically an external REST API**.
+
+**Uncertainty**
+
+- Whether any public JSON/REST endpoints or consumer-facing HTTP contracts exist at the pinned SHA beyond the examined MVC controllers.
+- Whether the project's audience needs a documented programmatic API, a bounded internal HTTP contract, or simply web navigation and developer guidance.
+- Whether an `OpenAPI`/`Swagger` specification or other equivalent API document exists outside the filename/path checks already performed.
+- Whether `DOC-API` is in scope for this server-rendered application today, rather than only for a prospective REST API feature.
+
+**Detected Facts**
+
+- The pinned README describes a Spring MVC/Thymeleaf application with server-rendered pages, authenticated web routes, and session-based interaction.
+- The README mentions an `API REST` under `Próximas líneas de evolución` as a **possible future extension**, not an implemented feature at the pinned SHA.
+- Source inspection located Spring MVC controllers, but the presence of HTTP endpoints does not establish a documented public API for integration clients.
+- The previous file/path review did not identify filenames containing `openapi` or `swagger`; this is a **bounded name-based observation**, not exhaustive proof of API absence.
+- `DOC-API` is `Optional` in the Template; that classification does not itself settle Applicability.
+
+**Evidence**
+
+- [Pinned README — architecture and potential REST API](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md)
+- [Pinned Spring MVC controller directory](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/controller)
+- [TPL-BACKEND metadata](../../templates/repositories/backend/metadata.yml)
+- [Optional technical E3 semantic review](only-film-optional-final-semantic-review.md)
+
+**Evaluation Rationale**
+
+An API documentation Responsibility should be evaluated against an actual interface and its consumers, not a generic expectation that every backend publishes REST endpoints. The README treats REST as future work, and the currently reviewed routes relate to server-rendered MVC. `Missing` would need a confirmed applicable API-documentation requirement that is unmet; `Partial` would need demonstrable partial coverage of that requirement. Neither is established by the available bounded review. The State is intentionally unselected and Applicability `Uncertain` pending a decision on scope and further endpoint evidence.
+
+**Decision Status**
+
+`Needs Further Evaluation`
+
+**Adoption Decision**
+
+`—`
+
+**Decision Rationale**
+
+Review the actual supported interfaces and intended consumers. If API documentation is not needed for this application's present scope, the reviewer can justify `Not Applicable` and then complete State under the Template's rules; otherwise identify concrete applicable contracts and select State on evidence. No speculative REST API documentation or consumer changes follow from this record.
+
+---
+
 ### DOC-CHANGELOG
 
 **Requirement Level**
@@ -1108,30 +1225,30 @@ The recommended `State` can be assessed without selecting an implementation acti
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and eighteen are now transcribed into this Assessment working record: `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-LICENSE`, and `DOC-SECURITY`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and twenty have structured entries in this Assessment working record (including two with State deliberately unselected): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on all eighteen proposed evaluation entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Formal Assessment entries for the other 10 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Human sign-off on all twenty structured entries, including contractual State selection for the two unresolved entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
+- Formal Assessment entries for the other 8 Responsibilities, plus human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the eighteen structured entries, including `README-OVERVIEW` and `README-ROADMAP`, for approval or correction. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
+Review the twenty structured entries; first discriminate `README-CONTRIBUTING` and `DOC-API` applicability and State, then approve or correct the proposals. Then progressively incorporate other Responsibilities from the consolidated review matrix, prioritizing existing P1 gates rather than generating another exploratory document.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `18/28` proposed, `10/28` not yet entered.
+- **Responsibility coverage in this working artifact:** `20/28` structured entries (`18` with proposed State; `2` with State unselected), `8/28` not yet entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for the first eighteen Responsibilities. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for twenty Responsibilities; the two entries with unselected State remain incomplete. Its summary intentionally remains **partial** rather than filling missing entries with unsupported `State` values. It does not establish compliance or authorize Application/Integration.
