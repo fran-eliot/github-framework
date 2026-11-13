@@ -2,6 +2,8 @@
 
 ## 1. Context, purpose, and distinctions
 
+The [Only Film Assessment working record](only-film-assessment.md) now contains the first structured, **unapproved** Responsibility evaluation (`DOC-CHANGELOG`). This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
+
 This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting hypotheses to evaluated States or recording human approval**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
 
 | Field | Value |
