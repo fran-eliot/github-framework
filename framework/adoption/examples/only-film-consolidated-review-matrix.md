@@ -28,6 +28,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Second README content review batch:** [README content — human review batch 2](only-film-readme-content-review-batch-2.md) directly inspects the pinned README, linked technical guides and selected workflows against the Features, Documentation and Footer Components. Its recommendations were **expressly approved by the maintainer on 2026-11-14**: `README-FEATURES: Satisfied / Applicable`, `README-DOCUMENTATION: Partial / Applicable`, and `README-FOOTER: Partial / Applicable`. The review-batch file records the subsequent decision separately from its original preparation notes. Evidence limitations and unresolved Adoption Decisions are retained.
 
+**Required runtime/change-history review batch:** [Quick Start and Changelog — human review batch](only-film-required-runtime-change-review-batch.md) rechecks pinned README, Compose, Dockerfile, environment example and Maven configuration and applies the two Framework Components. It retains `README-QUICK-START: Partial / Applicable` conservatively and `DOC-CHANGELOG: Missing / Applicable` as the current documentary proposal, while documenting how a `Satisfied` Quick Start or `Not Applicable` Changelog could be defensibly selected by the maintainer. These are **not approved decisions**, and no consumer action follows.
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
