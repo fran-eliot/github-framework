@@ -9,12 +9,28 @@
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `DOC-API`, `DOC-DIAGRAMS`, `DOC-REFERENCES` |
 | Formally approved State / Applicability pairs | `28/28`, unchanged |
-| Formally resolved Adoption Decisions | `12/28` (11 `PRESERVE`, 1 `OMIT`) |
-| Unresolved Adoption Decisions | `16/28`, including all three below |
+| Formally resolved Adoption Decisions | `14/28` (11 `PRESERVE`, 3 `OMIT`; API and References approved 2026-11-14) |
+| Unresolved Adoption Decisions | `14/28`, including `DOC-DIAGRAMS` |
 | Assessment | `In Progress` |
 | Only Film mutations | `NONE` |
 
 This is a **preapproval decision-review packet**, not an Adoption Decision, application request, integration plan or change to Only Film. The independent maintainer-approved `State / Applicability` pairs have already been recorded; a separate **explicit human approval** is required for each `Decision Status: Resolved` and associated Adoption Decision. Merging this review packet or replying with `go` does not constitute that approval.
+
+## Formal maintainer Adoption Decision outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved `DOC-API = OMIT` and `DOC-REFERENCES = OMIT`**, and expressly retained `DOC-DIAGRAMS = Needs Further Evaluation / —`:
+
+| Responsibility | Decision Status | Adoption Decision | Precise approved scope and surviving uncertainty |
+| --- | --- | --- | --- |
+| `DOC-API` | `Resolved` | `OMIT` | Documentation of a **currently supported public/programmatic API contract only**; bounded controller review does not prove the absence of every HTTP or internal programmatic route |
+| `DOC-DIAGRAMS` | `Needs Further Evaluation` | `—` | Maintainer interest in future diagrams is real, but artifact inventory is not exhaustive and the diagram type, reader benefit, evidence and acceptance criteria are unselected; no diagram is authorized |
+| `DOC-REFERENCES` | `Resolved` | `OMIT` | A **standalone centralized external-technical-reference catalog only**; contextual links, their usefulness, authority, accuracy and maintenance remain relevant, and link health has not been audited |
+
+**Approval date:** 2026-11-14. **Pinned consumer source:** `28d75a50e0a178954dd46acc23300d9dd327843c` (independent of the maintainer's approval date). The 28 individually approved State / Applicability classification pairs are unchanged, including `DOC-API: Missing / Not Applicable`, `DOC-DIAGRAMS: Missing / Applicable`, and `DOC-REFERENCES: Partial / Not Applicable`.
+
+**Authorization boundary:** `Assessment: In Progress`, **14/28 Adoption Decisions formally resolved** (11 `PRESERVE`, 3 `OMIT`), **14 unresolved**. `OMIT` does not remove any consumer route, source, citation or file; diagram generation and any other Application/Integration work remain unauthorized. **Only Film is read-only**.
+
+The candidate language below is the historical **preapproval review**, superseded as to decision status by the dated express maintainer outcome above.
 
 ## Candidate decision comparison
 
@@ -89,4 +105,4 @@ The maintainer may expressly approve each decision independently or keep it open
 
 A **later, separate approval-record PR** may update the canonical [Assessment](only-film-assessment.md), [consolidated matrix](only-film-consolidated-review-matrix.md), and this packet only after express maintainer approval and individual decision rationale. Merging this preparation PR is not approval.
 
-**All 28 prior State / Applicability pairs unchanged; 12 prior Adoption Decisions resolved (11 `PRESERVE`, 1 `OMIT`), 16 still unresolved; Assessment `In Progress`; Only Film strictly read-only.**
+**Postapproval status:** All 28 State / Applicability pairs unchanged; 14 Adoption Decisions now resolved (11 `PRESERVE`, 3 `OMIT`), 14 remain unresolved; Assessment `In Progress`; Only Film strictly read-only. Merging the earlier preparation PR did not itself approve these decisions; the formal decisions were expressly granted separately by the maintainer on 2026-11-14.
