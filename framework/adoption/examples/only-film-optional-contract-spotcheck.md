@@ -75,3 +75,24 @@ The [DOC-REFERENCES Component](../../components/documentation/references/README.
 | `DOC-REFERENCES` | README contains contextual links; four documents sampled for absolute Markdown links | Complete and useful external-reference coverage |
 
 The spot check **does not** resolve the three unselected States, the four open Applicability judgments, or any Adoption Decision. No additional tests, external deployment, security audit, or consumer modification was performed.
+
+## 7. Pinned MVC controller expansion
+
+A follow-up file-by-file inspection fetched the seven controller source paths below **directly from the pinned SHA** `28d75a50e0a178954dd46acc23300d9dd327843c`. Each inspected class declares `@Controller`; the mapped handler methods observed in these classes return `String` view names or redirect targets, and none of these seven files declares `@RestController` or `@ResponseBody`.
+
+| Pinned controller | Selected mapped functions inspected | Finding |
+| --- | --- | --- |
+| [MovieController.java](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/controller/MovieController.java) | Home, listing/detail, editing and deactivate handlers | MVC views and redirects |
+| [RoomController.java](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/controller/RoomController.java) | Room listing/detail, create/edit, deactivate | MVC views and redirects |
+| [SessionController.java](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/controller/SessionController.java) | Session listing/detail, create/edit, deactivate | MVC views and redirects |
+| [TicketController.java](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/controller/TicketController.java) | Ticket listing/detail, checkout and purchase handlers | MVC views and redirects |
+| [UserController.java](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/controller/UserController.java) | Administration and profile handlers | MVC views and redirects |
+| [AuthController.java](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/controller/AuthController.java) | Registration/login handlers | MVC views and redirects |
+| [ReviewController.java](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/controller/ReviewController.java) | Review list/detail/create/edit/delete | MVC views and redirects |
+
+**Scope of negative evidence:** direct `fetch_file` results establish only that these seven inspected source files do not explicitly declare `@RestController` or `@ResponseBody`. No recursive pinned Git tree was enumerated and other controllers, filters, functional routing, content negotiation, webhooks and static resources were not audited. The earlier default-branch searches remain **mutable-branch/index-limited** observations, not pinned repository-wide results.
+
+The README still frames a REST API as a future option. Taken together, the reviewed source supports an **MVC-first consumer interpretation**, not an assertion of a public REST API. An API documentation Responsibility may be `Not Applicable` depending on the intended consumer, but the owner/reviewer must explicitly decide the scope and contractual State; **no values are approved or altered**.
+
+**Potential next verification:** compare the complete pinned Java controller directory against the seven filenames above and inspect any remaining entry points. Then ask whether programmatic integration is an intended supported interface at this revision. Do not recommend an OpenAPI document without an actual, identified contract.
+

@@ -221,7 +221,7 @@ These are the final two **P1 evidence-disposition gates**. All six P1 Responsibi
 
 ### 6.6 Optional applicability and State discrimination — reviewer session
 
-**Pinned source spot check:** [Targeted Optional Responsibility Source Spot Check](only-film-optional-contract-spotcheck.md) records three exact CONTRIBUTING/PR-template path lookups, a pinned MVC controller inspection, four sampled pinned documents checked for diagram markers, and bounded contextual-reference observations. These are **limited evidence checks**, not repository-wide absence findings or approval of any State/Applicability value.
+**Pinned source spot check:** [Targeted Optional Responsibility Source Spot Check](only-film-optional-contract-spotcheck.md) records three exact CONTRIBUTING/PR-template path lookups, **seven pinned MVC controller files** inspected for controller/response annotations and view-return patterns, four sampled pinned documents checked for diagram markers, and bounded contextual-reference observations. These are **limited evidence checks**, not repository-wide absence findings or approval of any State/Applicability value. No recursive inventory of the pinned controller directory has been established, so no global absence of an API contract is claimed.
 
 This is a **review preparation gate**, not an approval. The prior E3 reviews support only bounded facts: onboarding instructions without a confirmed collaboration policy, MVC interfaces without a confirmed public REST contract, a textual architecture flow without exhaustive embedded-diagram inspection, and references present in context without a confirmed need for an index. Do not infer `Not Applicable` merely because an item is Optional.
 
