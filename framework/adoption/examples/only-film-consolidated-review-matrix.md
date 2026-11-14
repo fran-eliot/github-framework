@@ -2,38 +2,38 @@
 
 ## 1. Context, purpose, and distinctions
 
-The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured Responsibility records: **two formally approved** by the maintainer on 2026-11-14 (`README-CONTRIBUTING`, `DOC-DIAGRAMS`) and **26 still proposed/unapproved**. All twenty-eight have allowed State values, including `Missing` for those two approved records and the unapproved `DOC-API` proposal. `README-CONTRIBUTING` has approved `Not Applicable` based on the confirmed contribution policy, `DOC-DIAGRAMS` has approved `Applicable` based on future diagram interest, and `DOC-API` now has proposed `Not Applicable` for a current public/programmatic API contract, bounded by the seven-controller review. Full structural coverage does not constitute an approved or completed Assessment. The working Assessment's summary and detail blocks follow canonical `TPL-BACKEND` metadata order for reviewer comparison. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
+The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured Responsibility records: **five formally approved** by the maintainer on 2026-11-14 (`README-HERO`, `README-OVERVIEW`, `README-TECH-STACK`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`) and **23 still proposed/unapproved**. All twenty-eight have allowed State values, including `Missing` for those two approved records and the unapproved `DOC-API` proposal. `README-CONTRIBUTING` has approved `Not Applicable` based on the confirmed contribution policy, `DOC-DIAGRAMS` has approved `Applicable` based on future diagram interest, and `DOC-API` now has proposed `Not Applicable` for a current public/programmatic API contract, bounded by the seven-controller review. Full structural coverage does not constitute an approved or completed Assessment. The working Assessment's summary and detail blocks follow canonical `TPL-BACKEND` metadata order for reviewer comparison. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
 
-This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting the remaining hypotheses to approved States; two explicit maintainer approvals are now recorded**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
+This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting the remaining hypotheses to approved States; five explicit maintainer approvals are now recorded**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
 
 | Field | Value |
 | --- | --- |
 | Consumer Repository | [fran-eliot/only_film](https://github.com/fran-eliot/only_film) |
 | Consumer Reference | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | [TPL-BACKEND 0.1.0](../../templates/repositories/backend/metadata.yml) |
-| Responsibilities consolidated | `28/28` — **2 approved / 26 proposals** |
-| Human-reviewed States and Applicability | **2 approved on 2026-11-14**, 26 pending |
+| Responsibilities consolidated | `28/28` — **5 approved / 23 proposals** |
+| Human-reviewed States and Applicability | **5 approved on 2026-11-14**, 23 pending |
 | Resolved Adoption Decisions | `0` |
 | Assessment Status | `In Progress` |
 | Consumer Mutation | `NONE` |
 
 **Legend:**
 
-- Unless explicitly marked as approved (two maintainer approvals on 2026-11-14), `Proposed State` and `Proposed Applicability` remain **reviewer-facing hypotheses**, not approved Assessment fields. The former `Missing / Partial` alternatives for the three Optional items have now been narrowed to **proposed `Missing`**, not approved States. `Uncertain` for Applicability preserves an unresolved question rather than claiming `Not Applicable`.
+- Unless explicitly marked as approved (five maintainer approvals on 2026-11-14), `Proposed State` and `Proposed Applicability` remain **reviewer-facing hypotheses**, not approved Assessment fields. The former `Missing / Partial` alternatives for the three Optional items have now been narrowed to **proposed `Missing`**, not approved States. `Uncertain` for Applicability preserves an unresolved question rather than claiming `Not Applicable`.
 - `P1/P2/P3` prioritize **evidence review**, not confirmed defects, security severity, or mandatory changes to Only Film.
 - Each `E3` link opens the underlying record with Detected Facts, Evidence, Evaluation Rationale, Uncertainty, and Decision Status. Original proposals retain `Needs Further Evaluation` and `Adoption Decision: —`.
 - Row order and Requirement Levels follow the [canonical Template metadata](../../templates/repositories/backend/metadata.yml), not Component-level priorities.
 
-**First README presentation review batch:** [README presentation — human review batch 1](only-film-readme-presentation-review-batch-1.md) rechecks the pinned README, POM and Compose against the Hero, Overview and Tech Stack Components. It proposes `Satisfied` as an **alternative** for `README-HERO` and `README-OVERVIEW` and retaining `Partial` for `README-TECH-STACK`, all subject to express maintainer sign-off. The working Assessment fields remain unchanged; merging the review packet does **not** approve these three evaluations.
+**First README presentation review batch:** [README presentation — human review batch 1](only-film-readme-presentation-review-batch-1.md) rechecks the pinned README, POM and Compose against the Hero, Overview and Tech Stack Components. Its recommendations were **explicitly approved by the maintainer on 2026-11-14**: `README-HERO: Satisfied / Applicable`, `README-OVERVIEW: Satisfied / Applicable`, and `README-TECH-STACK: Partial / Applicable`. Their documentary limitations remain, and no Adoption Decision was authorized. The preparation packet's original wording is retained as an evidence trail; this matrix and the Assessment record the subsequent approvals.
 
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
 | --- | --- | --- | --- | --- | --- | --- |
-| `README-HERO` | Required | `Partial` | `Applicable` | **P3** | [E3](only-film-required-identity-semantic-review.md) | Check heading, badges, and readability; decide whether identity is conveyed sufficiently. |
-| `README-OVERVIEW` | Required | `Partial` | `Applicable` | **P3** | [E3](only-film-required-identity-semantic-review.md) | Evaluate clarity of purpose and distinction from Hero. |
+| `README-HERO` | Required | `Satisfied` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-required-identity-semantic-review.md) | Approved from bounded pinned sources; retain evidence limits and unresolved Adoption Decision. |
+| `README-OVERVIEW` | Required | `Satisfied` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-required-identity-semantic-review.md) | Approved from bounded pinned sources; retain evidence limits and unresolved Adoption Decision. |
 | `README-FEATURES` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-identity-semantic-review.md) | Validate capability claims and distinguish them from implementation details. |
-| `README-TECH-STACK` | Required | `Partial` | `Applicable` | **P3** | [E3](only-film-required-final-semantic-review.md) | Cross-check key technologies and use contexts against POM/Compose. |
+| `README-TECH-STACK` | Required | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-required-final-semantic-review.md) | Approved from bounded pinned sources; retain evidence limits and unresolved Adoption Decision. |
 | `README-QUICK-START` | Required | `Partial` | `Applicable` | **P1** | [E3](only-film-required-semantic-review.md) | Reproduce Compose from a clean clone or justify a documentary threshold; gates Q1–Q8. |
 | `README-DOCUMENTATION` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-final-semantic-review.md) | Check key links and discoverability of useful documentation. |
 | `README-FOOTER` | Required | `Partial` | `Applicable` | **P2** | [E3](only-film-required-final-semantic-review.md) | Evaluate attribution and license notices without asserting legal permissions. |
