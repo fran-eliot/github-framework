@@ -9,12 +9,29 @@
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-SECURITY` |
 | Approved State / Applicability | `28/28`, unchanged |
-| Formally resolved Adoption Decisions | `11/28`: ten `PRESERVE`, one `OMIT` |
-| Unresolved Adoption Decisions | `17/28`, including these four |
+| Formally resolved Adoption Decisions | `12/28`: eleven `PRESERVE`, one `OMIT` (including `DOC-ADR`, approved 2026-11-14) |
+| Unresolved Adoption Decisions | `16/28`, including `DOC-DATABASE`, `DOC-DEPLOYMENT` and `DOC-SECURITY` in this batch |
 | Assessment status | `In Progress` |
 | Consumer modifications | `NONE` |
 
 This **preparation packet** does not grant a formal Adoption Decision. `State` and `Applicability` have already been formally approved for all 28 Responsibilities; a new `Resolved` status requires an independent, express maintainer choice and evidence-specific rationale. Documentation sufficiency is not the same as full runtime validation. No tests, workflows, migrations, settings, files or deployments may be changed in Only Film.
+
+## Formal maintainer Adoption Decision outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved `DOC-ADR = PRESERVE`**, limited to the documented decisions in the Flyway V2 and Dependabot guides, and expressly retained the other three as unresolved:
+
+| Responsibility | Decision Status | Adoption Decision | Rationale / preserved evidence limits |
+| --- | --- | --- | --- |
+| `DOC-ADR` | `Resolved` | `PRESERVE` | Preserve useful distributed technical decision explanations, **not** a comprehensive ADR catalog or endorsement of earlier architecture audit proposals |
+| `DOC-DATABASE` | `Needs Further Evaluation` | `—` | Database profile and migration guidance does not verify complete entity relationships, all invariants or a full current data-model inventory |
+| `DOC-DEPLOYMENT` | `Needs Further Evaluation` | `—` | Applicability remains **local, nonproduction Docker Compose only**; no independently confirmed passing Compose run for the pinned SHA or production-level backup/durability assurance |
+| `DOC-SECURITY` | `Needs Further Evaluation` | `—` | Earlier audits are historical, not established current vulnerabilities; bounded security tests and scanner submission do not prove a comprehensive audit or passed historical Quality Gate |
+
+**Human decision date:** 2026-11-14. **Immutable assessed consumer SHA:** `28d75a50e0a178954dd46acc23300d9dd327843c` (distinct from the maintainer decision date). All 28 previously approved State / Applicability pairs remain unchanged, including `DOC-ADR = Partial / Applicable` and `DOC-DEPLOYMENT = Partial / Applicable` strictly in the local Compose scope.
+
+**Authorization boundary:** Assessment `In Progress`; **12/28 formally resolved (11 `PRESERVE`, 1 `OMIT`), 16 unresolved**. No change to Only Film, migration, database model, deployment, CI, settings, security controls, test execution, new ADR process, Application or Integration is authorized.
+
+The reviewer-facing proposals below are retained as **historical preparation material**, not current formal decision status.
 
 ## Reviewer-facing decision candidates
 
@@ -100,4 +117,4 @@ An independent, express maintainer decision is required for each Responsibility.
 
 If expressly approved, a later **separate approval PR** should update the canonical [Assessment](only-film-assessment.md), the [consolidated review matrix](only-film-consolidated-review-matrix.md), and this packet with approval date, individual rationale and unchanged source limitations. Merging this preparation packet does **not** count as approval.
 
-**All 28 State / Applicability approvals unchanged; 11 existing decisions resolved (10 `PRESERVE`, 1 `OMIT`), 17 unresolved. Assessment remains `In Progress`; Only Film remains strictly read-only.**
+**Postapproval status:** All 28 State / Applicability approvals unchanged; 12 decisions resolved (11 `PRESERVE`, 1 `OMIT`), 16 unresolved. Assessment remains `In Progress`; Only Film remains strictly read-only. The earlier preparation suggestions above are not themselves an approval.
