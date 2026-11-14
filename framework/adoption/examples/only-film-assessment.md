@@ -46,12 +46,12 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `README-HIGHLIGHTS` | Optional | `Satisfied` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Resolved` *(maintainer-approved 2026-11-14)* | `PRESERVE` *(maintainer-approved 2026-11-14)* |
 | `README-LICENSE` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `DOC-ADR` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Resolved` *(maintainer-approved 2026-11-14)* | `PRESERVE` *(maintainer-approved 2026-11-14)* |
-| `DOC-API` | Optional | `Missing` *(maintainer-approved 2026-11-14)* | `Not Applicable` *(maintainer-approved 2026-11-14; current public API contract only)* | `Needs Further Evaluation` | `—` |
+| `DOC-API` | Optional | `Missing` *(maintainer-approved 2026-11-14)* | `Not Applicable` *(maintainer-approved 2026-11-14; current public API contract only)* | `Resolved` *(maintainer-approved 2026-11-14)* | `OMIT` *(maintainer-approved 2026-11-14)* |
 | `DOC-DATABASE` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `DOC-DEPLOYMENT` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14; local Compose only)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `DOC-DIAGRAMS` | Optional | `Missing` *(maintainer-approved from bounded evidence 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
-| `DOC-REFERENCES` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Not Applicable` *(maintainer-approved 2026-11-14; standalone catalog only)* | `Needs Further Evaluation` | `—` |
+| `DOC-REFERENCES` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Not Applicable` *(maintainer-approved 2026-11-14; standalone catalog only)* | `Resolved` *(maintainer-approved 2026-11-14)* | `OMIT` *(maintainer-approved 2026-11-14)* |
 
 **Coverage:** all **28/28** Responsibilities now have a **formally approved allowed State** (`Satisfied`, `Partial`, or `Missing`), including the approved `Missing` values for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`. **All twenty-eight State/Applicability evaluations have explicit maintainer approval** (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `DOC-ADR`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-ROADMAP`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`, `DOC-REFERENCES`); 0 remain proposals. No Applicability field remains `Uncertain` in the **approved Summary**; the `DOC-API` and `DOC-REFERENCES` `Not Applicable` approvals apply only to their expressly bounded documentary scopes, without exempting contextual references. Approved State/Applicability classifications are not decisions to modify the consumer and the Assessment remains `In Progress`. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
 
@@ -1869,19 +1869,33 @@ The source review supports the scoped `Missing` State as a documentary coverage 
 - **Evidence basis:** The pinned README describes MVC/Thymeleaf and places REST API among future possibilities; seven MVC controllers were inspected previously, including two rechecked for the last batch. No current external integration contract or public API documentation was established within these reviewed sources.
 - **Evidence limitations retained:** The complete pinned Java routing tree, integrations, filters, functional handlers, external API consumers and other source locations were not exhaustively inventoried; this is not proof that all programmatic interfaces are absent.
 - **Original preparation:** [API and References contract-scope review batch](only-film-api-references-contract-review-batch.md) contains the preapproval proposals and alternative scope interpretations as historical evidence.
-- **Authorization boundary:** `Assessment Status: In Progress`; `Decision Status: Needs Further Evaluation`; `Adoption Decision: —`. No changes to Only Film or other implementation action authorized.
+- **Classification-review authorization boundary:** The original State/Applicability approval did not include an Adoption Decision. See the later express maintainer Adoption Decision approval below. No changes to Only Film or other implementation action are authorized.
 
 **Decision Status**
 
-`Needs Further Evaluation`
+`Resolved` — **formally approved by the Only Film maintainer on 2026-11-14**.
 
 **Adoption Decision**
 
-`—`
+`OMIT` — **formally approved on 2026-11-14**.
 
 **Decision Rationale**
 
-Review the actual supported interfaces and intended consumers. The proposal treats a public API documentation obligation as `Not Applicable` to the evidenced present-day MVC consumer scope, subject to reviewer confirmation and remaining integration evidence; otherwise identify concrete applicable contracts and select State on evidence. No speculative REST API documentation or consumer changes follow from this record.
+The Only Film maintainer **expressly approved `OMIT` on 2026-11-14** solely for a **standalone document describing a currently supported public/programmatic API contract**, a deliverable expressly classified `Not Applicable` to the present supported consumer scope. The pinned README describes Spring MVC/Thymeleaf pages and lists REST API as potential future work; prior evidence inspected seven MVC controller paths and did not establish a published external integration API. This **does not establish absence of every HTTP route, internal JSON endpoint, filter, handler, functional router, external consumer or API contract outside the sampled files**. The separately approved documentary classification remains `Missing / Not Applicable` and was not revised to `Satisfied`. `OMIT` means no speculative API-contract documentation is added now; it **does not** delete routes, disallow a future REST API, change a public compatibility policy or authorize changes to Only Film. Reassess if a supported programmatic contract is later evidenced or introduced.
+
+**Human Adoption Decision Review**
+
+- **Reviewer:** Only Film maintainer
+- **Express decision approval date:** 2026-11-14
+- **Decision Status:** `Resolved`
+- **Adoption Decision:** `OMIT`
+- **Previously approved State / Applicability (unchanged):** `Missing / Not Applicable`
+- **Scope:** A currently supported public/programmatic API-contract document, not the absence of all existing HTTP routes
+- **Immutable consumer source baseline:** `28d75a50e0a178954dd46acc23300d9dd327843c`
+- **Evidence:** [API, Diagrams and References Adoption Decision review batch 8](only-film-api-diagrams-references-adoption-decision-review-batch-8.md) and its linked prior pinned-source checks
+- **Limitations:** The earlier controller inventory and reference/link audit were bounded, not exhaustive; no new API, absence of every programmatic endpoint, complete citation audit, link-health guarantee or system behavior is inferred
+- **Authorization boundary:** No Only Film code, documentation, interfaces, links, settings, test executions, workflows, deployments or integrations may be changed.
+
 
 ---
 
@@ -2212,7 +2226,7 @@ A future architecture, domain or checkout diagram remains an **option to scope a
 
 **Decision Rationale**
 
-The maintainer has confirmed interest in future diagrams; reviewers may later select a diagram purpose and check additional artifacts. The contractual `Missing / Applicable` evaluation was formally approved by the maintainer on 2026-11-14, subject to the recorded evidence limits. The approved `Applicable` value does not implement diagrams or authorize a change to Only Film.
+On 2026-11-14 the maintainer **expressly retained `Needs Further Evaluation / —`** in API, Diagrams and References Adoption Decision review batch 8. The maintainer has confirmed interest in future diagrams; reviewers may later select a diagram purpose and check additional artifacts. The contractual `Missing / Applicable` evaluation was formally approved by the maintainer on 2026-11-14, subject to the recorded evidence limits. The approved `Applicable` value does not implement diagrams or authorize a change to Only Film.
 
 ---
 
@@ -2273,19 +2287,33 @@ The source review supports the scoped `Partial` State as a documentary coverage 
 - **Evidence basis:** The pinned README contains contextual documentation, original-source and workflow links; two pinned technical guides and the Framework References Component were revisited. Earlier seven-file sampling did not identify a repeated technical standards corpus justifying a new centralized catalog.
 - **Evidence limitations retained:** The full pinned repository link inventory and link health, relevance, authority, duplication, and broader consumer expectations were not verified. No claim is made that contextual references are unnecessary or that all links work.
 - **Original preparation:** [API and References contract-scope review batch](only-film-api-references-contract-review-batch.md) contains the preapproval proposals and alternative scope interpretations as historical evidence.
-- **Authorization boundary:** `Assessment Status: In Progress`; `Decision Status: Needs Further Evaluation`; `Adoption Decision: —`. No changes to Only Film or other implementation action authorized.
+- **Classification-review authorization boundary:** The original State/Applicability approval did not include an Adoption Decision. See the later express maintainer Adoption Decision approval below. No changes to Only Film or other implementation action are authorized.
 
 **Decision Status**
 
-`Needs Further Evaluation`
+`Resolved` — **formally approved by the Only Film maintainer on 2026-11-14**.
 
 **Adoption Decision**
 
-`—`
+`OMIT` — **formally approved on 2026-11-14**.
 
 **Decision Rationale**
 
-The reviewer should confirm whether the narrow catalog interpretation is appropriate, or whether in-context references justify `Applicable`, and independently approve or revise the proposed State. No addition of a References index, external citations, or consumer changes is authorized.
+The Only Film maintainer **expressly approved `OMIT` on 2026-11-14** solely for a **standalone centralized external-technical-reference catalog** under the separately approved scope `Not Applicable`. Existing contextual links in the pinned README and technical guides remain in place, consistent with the Framework DOC-REFERENCES Component's allowance for meaningful references within their relevant documents instead of a redundant index. The approved documentary classification remains `Partial / Not Applicable` (not `Satisfied`). This decision **does not waive the need for attribution, appropriate authoritative sources, accurate links or their maintenance**; neither completeness, link health, external-source authority nor repository-wide reference coverage was audited. `OMIT` is a bounded documentary organization choice, not deletion of citations, documentation, source files or any consumer edits. Reassess if substantive repeated external technical references later justify a maintained centralized catalog.
+
+**Human Adoption Decision Review**
+
+- **Reviewer:** Only Film maintainer
+- **Express decision approval date:** 2026-11-14
+- **Decision Status:** `Resolved`
+- **Adoption Decision:** `OMIT`
+- **Previously approved State / Applicability (unchanged):** `Partial / Not Applicable`
+- **Scope:** A standalone centralized external-technical-reference catalog, not the utility or maintenance of contextual references
+- **Immutable consumer source baseline:** `28d75a50e0a178954dd46acc23300d9dd327843c`
+- **Evidence:** [API, Diagrams and References Adoption Decision review batch 8](only-film-api-diagrams-references-adoption-decision-review-batch-8.md) and its linked prior pinned-source checks
+- **Limitations:** The earlier controller inventory and reference/link audit were bounded, not exhaustive; no new API, absence of every programmatic endpoint, complete citation audit, link-health guarantee or system behavior is inferred
+- **Authorization boundary:** No Only Film code, documentation, interfaces, links, settings, test executions, workflows, deployments or integrations may be changed.
+
 
 ---
 
@@ -2307,11 +2335,11 @@ The reviewer should confirm whether the narrow catalog interpretation is appropr
 - The `README-CONTRIBUTING: Missing / Not Applicable` and `DOC-DIAGRAMS: Missing / Applicable` evaluations were formally approved on 2026-11-14; their bounded-source qualifications remain. The `DOC-API` and `DOC-REFERENCES` approved scoped `Not Applicable` findings retain bounded evidence limits, as do the independent Quick Start Compose execution gap (despite its approved documentary evaluation), security-documentation adequacy, license-status communication, architecture freshness and actual project milestone (evidence questions retained despite formal documentary approvals).
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
-- **Twelve formally resolved Adoption Decisions**: eleven `PRESERVE` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `DOC-TESTING`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-ADR`) and one `OMIT` (`README-CONTRIBUTING`). **Sixteen remain unresolved**, including expressly deferred `DOC-DATABASE`, `DOC-DEPLOYMENT` (local Compose only) and `DOC-SECURITY`. No consumer change is authorized.
+- **Fourteen formally resolved Adoption Decisions**: eleven `PRESERVE` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `DOC-TESTING`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-ADR`) and three `OMIT` (`README-CONTRIBUTING`, `DOC-API`, `DOC-REFERENCES`). **Fourteen remain unresolved**, including the expressly deferred `DOC-DIAGRAMS`. No consumer change is authorized.
 
 ### Recommended Next Review
 
-Preserve all twenty-eight explicit 2026-11-14 State and Applicability approvals and their source limitations. Next, separately evaluate the sixteen unresolved Adoption Decisions (including `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-SECURITY`, `README-DEMO`, `README-LICENSE`, `DOC-CHANGELOG`, `README-ROADMAP`, `README-TECH-STACK`, `README-QUICK-START`, `README-STATUS`, `README-TESTING`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS`) and any outstanding evidence gates before considering Assessment completion or authorizing changes to Only Film.
+Preserve all twenty-eight explicit 2026-11-14 State and Applicability approvals and their source limitations. Next, separately evaluate the fourteen unresolved Adoption Decisions (including `DOC-DIAGRAMS`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-SECURITY`, `README-DEMO`, `README-LICENSE`, `DOC-CHANGELOG`, `README-ROADMAP`, `README-TECH-STACK`, `README-QUICK-START`, `README-STATUS`, `README-TESTING`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS`) and any outstanding evidence gates before considering Assessment completion or authorizing changes to Only Film.
 
 ---
 
@@ -2320,7 +2348,7 @@ Preserve all twenty-eight explicit 2026-11-14 State and Applicability approvals 
 - **Assessment `Complete`: NO.**
 - **Responsibility coverage in this working artifact:** `28/28` structured entries with allowed State values; **28 approved / 0 pending human review**; `0/28` not entered.
 - **Formally approved States and Applicability evaluations in this record:** `28` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-ROADMAP`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`, `DOC-REFERENCES`; maintainer, 2026-11-14).
-- **Resolved Adoption Decisions:** `12` — eleven `PRESERVE` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `DOC-TESTING`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-ADR`) and one `OMIT` (`README-CONTRIBUTING`), all formally approved 2026-11-14. **Unresolved:** `16` (including `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-SECURITY`, `README-DEMO`, `README-LICENSE`, `DOC-CHANGELOG`, `README-ROADMAP`, `README-TECH-STACK`, `README-QUICK-START`, `README-STATUS`, `README-TESTING`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS`).
+- **Resolved Adoption Decisions:** `14` — eleven `PRESERVE` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `DOC-TESTING`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-ADR`) and three `OMIT` (`README-CONTRIBUTING`, `DOC-API`, `DOC-REFERENCES`), all formally approved 2026-11-14. **Unresolved:** `14` (including `DOC-DIAGRAMS`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-SECURITY`, `README-DEMO`, `README-LICENSE`, `DOC-CHANGELOG`, `README-ROADMAP`, `README-TECH-STACK`, `README-QUICK-START`, `README-STATUS`, `README-TESTING`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS`).
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; all three formerly unselected States were assigned `Missing` from bounded evidence; **two of those (`README-CONTRIBUTING` and `DOC-DIAGRAMS`) have since received explicit maintainer approval**, as have twenty-six other evaluations including `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-STATUS`, `README-REPOSITORY-STRUCTURE`, `README-ROADMAP`, `README-ARCHITECTURE`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS` and `README-LICENSE`. The third formerly unselected entry (`DOC-API`) now has an approved `Missing / Not Applicable` evaluation limited to the supported current public/programmatic API contract. All 28 classification pairs have received explicit maintainer approval. The Assessment remains **In Progress** with twelve formally resolved Adoption Decisions (eleven `PRESERVE`, one `OMIT`) and sixteen unresolved; no consumer mutation is authorized. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; all three formerly unselected States were assigned `Missing` from bounded evidence; **two of those (`README-CONTRIBUTING` and `DOC-DIAGRAMS`) have since received explicit maintainer approval**, as have twenty-six other evaluations including `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-STATUS`, `README-REPOSITORY-STRUCTURE`, `README-ROADMAP`, `README-ARCHITECTURE`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS` and `README-LICENSE`. The third formerly unselected entry (`DOC-API`) now has an approved `Missing / Not Applicable` evaluation limited to the supported current public/programmatic API contract. All 28 classification pairs have received explicit maintainer approval. The Assessment remains **In Progress** with fourteen formally resolved Adoption Decisions (eleven `PRESERVE`, three `OMIT`) and fourteen unresolved; no consumer mutation is authorized. It does not establish compliance or authorize Application/Integration.
