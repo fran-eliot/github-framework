@@ -116,3 +116,10 @@ The most evidence-conservative recommendation is to **leave all three decisions 
 A **formal maintainer approval** is required before a new PR may mark any entry `Resolved`. In all scenarios, all 28 independent State and Applicability approvals stay intact.
 
 **No Adoption Decision is resolved by this document. Existing totals stay 16/28 resolved (13 `PRESERVE`, 3 `OMIT`), 12 pending; Assessment `In Progress`; Only Film strictly read-only.**
+
+
+## Formal maintainer decision — 2026-11-14
+
+After the preparation and pinned-source reconciliation above, the Only Film maintainer **formally approved `DOC-ARCHITECTURE = ADAPT`**, strictly for a **future, bounded documentation-only adaptation**. Its approved `Partial / Applicable` classification stays unchanged. The decision authorizes neither an immediate document addition nor any consumer modification; future Application scope and source-backed wording require separate approval. The approval does **not** make historical audit observations current defects, require a new diagram, authorize refactoring or override `README-ARCHITECTURE = PRESERVE`.
+
+`README-STATUS` and `DOC-PROJECT-STATUS` remain `Needs Further Evaluation / —`. This is the **postreview outcome** superseding the earlier recommendation to keep all three pending: **17/28 Adoption Decisions resolved** (13 `PRESERVE`, 3 `OMIT`, 1 `ADAPT`), **11 pending**. All 28 approved State/Applicability pairs remain unchanged. Assessment **`In Progress`**; Only Film **read-only, no mutations**.

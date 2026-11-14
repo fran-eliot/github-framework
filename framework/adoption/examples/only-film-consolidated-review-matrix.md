@@ -13,7 +13,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | Template | [TPL-BACKEND 0.1.0](../../templates/repositories/backend/metadata.yml) |
 | Responsibilities consolidated | `28/28` — **28 approved / 0 proposals** |
 | Human-reviewed States and Applicability | **28 approved on 2026-11-14**, 0 pending |
-| Resolved Adoption Decisions | `16` (thirteen `PRESERVE`: Hero, Overview, Features, Documentation, Footer, Architecture, Repository Structure, DOC-TESTING, README-AUTHOR, README-HIGHLIGHTS, DOC-ADR, README-ROADMAP, README-TECH-STACK; three `OMIT`: README-CONTRIBUTING, DOC-API, DOC-REFERENCES; 12 unresolved) |
+| Resolved Adoption Decisions | `17` (thirteen `PRESERVE`: Hero, Overview, Features, Documentation, Footer, Architecture, Repository Structure, DOC-TESTING, README-AUTHOR, README-HIGHLIGHTS, DOC-ADR, README-ROADMAP, README-TECH-STACK; three `OMIT`: README-CONTRIBUTING, DOC-API, DOC-REFERENCES; one documentation-only `ADAPT`: DOC-ARCHITECTURE; 11 unresolved) |
 | Assessment Status | `In Progress` |
 | Consumer Mutation | `NONE` |
 
@@ -64,6 +64,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Status and Architecture Adoption Decision review batch 11:** [Status and Architecture — decision review](only-film-status-architecture-adoption-decision-review-batch-11.md) compares `README-STATUS`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS` against their Framework Components and directly re-fetched pinned README, technical maturity, F3 and architecture reports. All three are **recommended to remain `Needs Further Evaluation / —`** until current status/maturity values, present architectural boundaries or current milestone evidence can be verified. Older audit SHAs must not become current project state or defects by inference. **No formal Adoption Decision follows from this packet; 16 resolved and 12 pending.**
 
+**DOC-ARCHITECTURE formal Adoption Decision (2026-11-14):** The maintainer subsequently approved `ADAPT` for a bounded **future documentation-only** reconciliation of the architecture at the immutable consumer SHA. This supersedes the batch-11 preapproval recommendation for `DOC-ARCHITECTURE` alone. `README-STATUS` and `DOC-PROJECT-STATUS` remain `Needs Further Evaluation / —`. No diagram, refactoring, consumer change or Application/Integration operation is authorized; `17/28` decisions resolved (13 `PRESERVE`, 3 `OMIT`, 1 `ADAPT`), 11 pending; Assessment `In Progress`.
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
@@ -80,7 +82,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `README-ARCHITECTURE` | Recommended | `Satisfied` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Maintainer-approved high-level principal-flow summary; no complete architecture-conformance claim. Adoption Decision unresolved. |
 | `README-REPOSITORY-STRUCTURE` | Recommended | `Satisfied` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-recommended-readme-semantic-review.md) | Approved Satisfied for a useful nonexhaustive directory overview. Adoption Decision unresolved. |
 | `README-TESTING` | Recommended | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P1** | [E3](only-film-testing-semantic-review.md) | Maintainer-approved documentary Partial; retain bounded evidence and unresolved Adoption Decision. |
-| `DOC-ARCHITECTURE` | Recommended | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Maintainer-approved partial current-architecture documentation; earlier audit findings are not current defects. Adoption Decision unresolved. |
+| `DOC-ARCHITECTURE` | Recommended | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Maintainer-approved partial current-architecture documentation; earlier audit findings are not current defects. Adoption Decision `ADAPT` formally approved on 2026-11-14 for bounded future documentation only; no consumer modification authorized. |
 | `DOC-PROJECT-STATUS` | Recommended | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Maintainer-approved partial status documentation; historical roadmap is not a verified current milestone. Adoption Decision unresolved. |
 | `DOC-TESTING` | Recommended | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P1** | [E3](only-film-testing-semantic-review.md) | Maintainer-approved documentary Partial; retain bounded evidence and unresolved Adoption Decision. |
 | `README-ROADMAP` | Optional | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-optional-governance-semantic-review.md) | Approved Partial for potential future directions without a verified current phase plan. Adoption Decision unresolved. |
