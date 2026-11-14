@@ -6,7 +6,7 @@
 | **Versión publicada**    | v0.10.0           |
 | **Versión objetivo**     | Ninguna comprometida           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-11-12       |
+| **Última actualización** | 2026-11-14       |
 
 ---
 
@@ -30,6 +30,22 @@ Los trabajos posteriores a `v0.10.0` que ya están fusionados en `main` se regis
 | #149, #151, #153, #155 | Validación por Component, listado de rutas, catálogo JSON y detalles de metadata | Done — Unreleased |
 
 Se mantiene `v0.10.0` como **última versión publicada** y no existe un Sprint activo ni una versión objetivo comprometida.
+
+### Evidencia de adopción en consumidor real — Only Film (Assessment cerrado)
+
+El [Assessment de Only Film](../../framework/adoption/examples/only-film-assessment.md) está **`Complete`** por aprobación expresa del mantenedor el **2026-11-14**, para el commit `28d75a50e0a178954dd46acc23300d9dd327843c` y `TPL-BACKEND 0.1.0`. La [revisión de cierre](../../framework/adoption/examples/only-film-assessment-completion-readiness.md) delimita el alcance documental y la [matriz consolidada](../../framework/adoption/examples/only-film-consolidated-review-matrix.md) conserva la trazabilidad.
+
+| Resultado de Assessment | Valor |
+| --- | --- |
+| Responsabilidades evaluadas y State/Applicability aprobados | **28/28** |
+| Adoption Decisions aprobadas | **28/28** — 14 `PRESERVE`, 3 `OMIT`, 9 `ADAPT`, 2 `ADD` |
+| Estado | **`Complete` — evaluación documental, no certificación técnica** |
+| Consumer Only Film | **Sin modificaciones** |
+| Application / Integration | **No iniciados ni autorizados** |
+
+**Implicación para la priorización:** se dispone de un caso documentado y revisado del **Assessment Core** sobre un consumidor real. Este resultado sirve como evidencia de uso del modelo, **no** como validación de Application Core, integración estable, automatización semántica ni implementación de las decisiones `ADAPT`/`ADD`. Siguen vigentes las limitaciones sobre ejecución de Compose, pruebas completas, Quality Gate, seguridad, actualidad de las evidencias y derechos de licencia.
+
+Antes de considerar cualquier aplicación futura en Only Film u otro consumidor deberá proponerse **por separado** una Responsibility, actualizar la evidencia del estado actual, definir alcance y verificación y obtener autorización explícita. No se crea por este registro ninguna nueva Issue, Sprint, milestone, versión objetivo o release.
 
 ### Priorización siguiente (propuesta, no comprometida)
 
