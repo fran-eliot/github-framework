@@ -8,12 +8,29 @@
 | Pinned SHA | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Framework Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-ARCHITECTURE`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `README-LICENSE` |
-| Record status | **Review proposals only; none of these four evaluations approved here** |
-| Previously approved State/Applicability pairs | `13/28` |
+| Record status | **All four evaluations formally approved by the Only Film maintainer on 2026-11-14; see dated decision below** |
+| Approved State/Applicability pairs after review | `17/28` |
 | Overall Assessment | `In Progress` |
 | Consumer changes | `NONE` |
 
 This is a bounded human-review preparation document. It compares directly inspected consumer files at the **immutable pinned SHA** with the relevant Framework Components and existing Assessment. It does **not** substitute dated historical audits for current implementation evidence, confirm licensing rights, or authorize any change to Only Film.
+
+## Formal maintainer approval outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved** these four separate State and Applicability values:
+
+| Responsibility | Approved State | Approved Applicability |
+| --- | --- | --- |
+| `README-ARCHITECTURE` | `Satisfied` | `Applicable` |
+| `DOC-ARCHITECTURE` | `Partial` | `Applicable` |
+| `DOC-PROJECT-STATUS` | `Partial` | `Applicable` |
+| `README-LICENSE` | `Partial` | `Applicable` |
+
+This approval keeps **all evidence limitations**: the README's architecture flow is principal rather than exhaustive; dated architecture/functional/maturity audits concern older SHA references; current milestone and all historical issue dispositions remain unverified; and the original academic collaboration's **copyright, licensing rights, reuse permissions and relabeling authority are not established**. A documentary license-status evaluation does **not** authorize any license grant.
+
+The Assessment stays `In Progress`, all four `Decision Status` fields stay `Needs Further Evaluation`, all four `Adoption Decision` fields remain `—`, and Only Film remains read-only.
+
+The proposal and acceptance-gate language below records the **preapproval reviewer preparation** and does not supersede this dated decision.
 
 ## Proposed reviewer outcomes
 
