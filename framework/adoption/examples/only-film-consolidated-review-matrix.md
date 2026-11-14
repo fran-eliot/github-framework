@@ -52,6 +52,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Changelog and optional README governance Adoption Decision review batch 5:** [Changelog, Contributing and Roadmap — decision review](only-film-changelog-governance-adoption-decision-review-batch-5.md) received **formal maintainer approval on 2026-11-14** for `README-CONTRIBUTING = Resolved / OMIT` under the personal, no-external-contributions policy. `OMIT` does not delete existing technical onboarding or alter project settings. `DOC-CHANGELOG` and `README-ROADMAP` were **expressly retained as `Needs Further Evaluation / —`**, without inventing release history or current roadmap commitments. The preparation alternatives remain historic provenance; no consumer edit is authorized.
 
+**Optional showcase, attribution and license Adoption Decision review batch 6:** [Demo, Author, Highlights and License — decision review](only-film-optional-showcase-attribution-adoption-decision-review-batch-6.md) checks the pinned README, existing showcase/governance evidence, optional Author Component, bounded Compose evidence and blank POM license metadata. `README-AUTHOR` and `README-HIGHLIGHTS` have documentary `PRESERVE` candidates. `README-DEMO` and `README-LICENSE` are recommended to remain `Needs Further Evaluation / —` because screenshot fidelity/Compose reproducibility and underlying copyright/reuse rights were not verified. **No new Adoption Decision is approved by this packet; 9 prior decisions remain resolved, 19 unresolved.**
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
