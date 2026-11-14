@@ -9,12 +9,28 @@
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `DOC-CHANGELOG` (Required), `README-CONTRIBUTING` (Optional), `README-ROADMAP` (Optional) |
 | Approved State / Applicability pairs | `28/28`, unchanged |
-| Previously resolved Adoption Decisions | `8/28`, all `PRESERVE` |
-| Unresolved Adoption Decisions | `20/28`, including the three in this packet |
+| Formally resolved Adoption Decisions | `9/28`: eight `PRESERVE`, one `OMIT` (`README-CONTRIBUTING`; approved 2026-11-14) |
+| Unresolved Adoption Decisions | `19/28`, including `DOC-CHANGELOG` and `README-ROADMAP` in this packet |
 | Assessment | `In Progress` |
 | Consumer mutation | `NONE` |
 
 This **preapproval review packet** distinguishes observed documentary `State`, independent `Applicability`, and a possible `Adoption Decision`. Each suggested decision requires **subsequent explicit maintainer approval**; merging this preparation document or saying `go` is not approval. The [Assessment Template](../assessment-template.md) supports `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT`, and `OMIT` for justified resolved decisions, while `Needs Further Evaluation / —` can remain open. Neither a Template requirement level nor a `Missing` State mechanically selects `ADD` or `OMIT`.
+
+## Formal maintainer Adoption Decision outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved `README-CONTRIBUTING = OMIT`** and **expressly retained** the other two decisions as unresolved:
+
+| Responsibility | Decision Status | Adoption Decision | Approved rationale / evidence limitations |
+| --- | --- | --- | --- |
+| `DOC-CHANGELOG` | `Needs Further Evaluation` | `—` | A curated change record was not identified in the bounded evidence; no independent tag inventory, verified published release or justified ongoing maintenance scheme; `Missing / Applicable` does not mechanically require `ADD` |
+| `README-CONTRIBUTING` | `Resolved` | `OMIT` | Maintainer-confirmed personal project without outside contributions; do not add an inapplicable external-contribution policy, but **retain** all existing development and CI guidance. The `Missing / Not Applicable` classification stays unchanged |
+| `README-ROADMAP` | `Needs Further Evaluation` | `—` | README ideas are explicitly prospective, and the older F3 baseline does not establish current workstream progress, commitments, delivery milestones or priority |
+
+The decision approval date is **2026-11-14**. The assessed Only Film source stays pinned to `28d75a50e0a178954dd46acc23300d9dd327843c`; this SHA is a distinct evidence reference, **not** the date of the maintainer's current contribution-policy statement. The 28 formally approved State / Applicability pairs remain unchanged. The unresolved decisions must not be reported as accepted or automatically resolved by the new `OMIT`.
+
+**Authorization boundary:** Assessment remains `In Progress`, with **9/28 decisions resolved (8 `PRESERVE`, 1 `OMIT`) and 19 unresolved**. `OMIT` is a documentary **scope decision**, not deletion, repository setting modification, branch protection change, contribution/access-policy mutation or other Only Film work. No `CHANGELOG.md`, release, version, milestone or roadmap change is authorized.
+
+The options and pending reviewer language below describe the **preapproval preparation** and do not override the formal decisions above.
 
 ## Candidate decision comparison
 
@@ -93,4 +109,4 @@ The reviewer should approve or decline each candidate **independently**. Recomme
 
 If the maintainer formally approves any decision, record the chosen allowed token, reviewer, date, source-specific rationale and evidence limits in the canonical [Assessment](only-film-assessment.md), [consolidated matrix](only-film-consolidated-review-matrix.md) and this packet through a **subsequent, separate PR**. A resolved `OMIT` decision is a documentary scope choice, not removal of any consumer file.
 
-**Unchanged boundaries:** 28/28 State/Applicability approvals; 8/28 prior resolved `PRESERVE` decisions, 20 still unresolved; Assessment `In Progress`; no consumer file, branch, setting, workflow or other mutation.
+**Postapproval boundaries:** 28/28 State/Applicability approvals unchanged; 9/28 Adoption Decisions resolved (8 `PRESERVE`, 1 `OMIT`), 19 still unresolved; Assessment `In Progress`; no consumer file, branch, setting, workflow, release, roadmap or other mutation.
