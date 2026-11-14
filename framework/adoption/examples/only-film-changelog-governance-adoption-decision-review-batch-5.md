@@ -110,3 +110,10 @@ The reviewer should approve or decline each candidate **independently**. Recomme
 If the maintainer formally approves any decision, record the chosen allowed token, reviewer, date, source-specific rationale and evidence limits in the canonical [Assessment](only-film-assessment.md), [consolidated matrix](only-film-consolidated-review-matrix.md) and this packet through a **subsequent, separate PR**. A resolved `OMIT` decision is a documentary scope choice, not removal of any consumer file.
 
 **Postapproval boundaries:** 28/28 State/Applicability approvals unchanged; 9/28 Adoption Decisions resolved (8 `PRESERVE`, 1 `OMIT`), 19 still unresolved; Assessment `In Progress`; no consumer file, branch, setting, workflow, release, roadmap or other mutation.
+
+
+## Formal DOC-CHANGELOG Adoption Decision — 2026-11-14
+
+The Only Film maintainer expressly approved **`DOC-CHANGELOG = ADD`**, solely for a **future structured changelog**. The existing `Missing / Applicable` classification and its bounded-source evidence limitations remain formally approved. A future `Unreleased` section may be used when appropriate, but this approval **does not assert any previously published versions or authorize fabricated release numbers, dates, tags, release notes or change histories**. The earlier maintainer report of no tags or GitHub Releases remains separate from an independent tag inventory.
+
+This new formal approval supersedes the older pending `DOC-CHANGELOG` recommendation above, without changing prior decisions for `README-CONTRIBUTING` or `README-ROADMAP`. **No Only Film files are modified** and no Application/Integration is authorized. The wider Assessment remains `In Progress`: **21/28 decisions resolved** (13 `PRESERVE`, 3 `OMIT`, 4 `ADAPT`, 1 `ADD`), **7 pending**; 28 State/Applicability pairs approved and unchanged.
