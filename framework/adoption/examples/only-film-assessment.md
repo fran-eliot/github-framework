@@ -1101,7 +1101,7 @@ A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descrip
 
 **Evaluation Rationale**
 
-The README contains actionable technical onboarding information, but those instructions are not automatically a policy on who may contribute, how changes are proposed and reviewed, and how contributions are accepted. `Partial` would require treating technical onboarding as an adequate subset of the intended Responsibility; `Missing` would require establishing that no substantive contributing guidance is present. Neither conclusion has been human-reviewed, and whether the Responsibility is applicable to this consumer's collaboration model is unresolved. Recording `Uncertain` Applicability and leaving State unselected is more traceable than manufacturing a contractual answer.
+The README contains actionable technical onboarding information, but those instructions are not automatically a policy on who may contribute, how changes are proposed and reviewed, and how contributions are accepted. `Partial` would require treating technical onboarding as an adequate subset of the intended Responsibility; `Missing` would require establishing that no substantive contributing guidance is present. The maintainer has since confirmed that external contributions are not intended. This supports provisional `Applicability: Not Applicable`; `State: Missing` is separately proposed from the absence of an observed contribution-policy function, and both interpretations await formal review.
 
 **Maintainer Scope Confirmation — 2026-11-14**
 
