@@ -9,14 +9,29 @@
 | Repository Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities in this review | `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK` |
 | Formal State / Applicability approvals | **28/28** (maintainer, 2026-11-14; unchanged) |
-| Resolved Adoption Decisions | **0/28** (unchanged) |
+| Resolved Adoption Decisions | **3/28** formally resolved after this review (maintainer, 2026-11-14); 25 pending |
 | Assessment Status | `In Progress` |
 | Consumer mutation | `NONE` |
-| Purpose | **Prepare alternatives for human Adoption Decision review; record no new decision** |
+| Purpose | **Record the initial review alternatives and subsequent separate explicit maintainer decisions, without consumer changes** |
 
 The [Assessment Template](../assessment-template.md) permits `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT`, and `OMIT` for an explicitly resolved Adoption Decision, with a recorded rationale; `Needs Further Evaluation / —` is valid while a decision remains open. A formally approved `State` and `Applicability` pair does **not** automatically determine any Adoption Decision.
 
 The [Framework adoption guide](../README.md) keeps Assessment separate from optional Application and Integration. No consumer edit, evidence refresh to a newer Only Film branch, code change, automatic rollout or consumer authorization is implied by this review.
+
+## Formal maintainer Adoption Decision outcome — 2026-11-14
+
+The Only Film maintainer **explicitly approved** three independently resolved Adoption Decisions and expressly retained the fourth as unresolved:
+
+| Responsibility | Decision Status | Adoption Decision | Approval outcome |
+| --- | --- | --- | --- |
+| `README-HERO` | `Resolved` | `PRESERVE` | Maintain the pinned H1, concise identity and badges; mobile/dark-mode and remote badge rendering remain unverified |
+| `README-OVERVIEW` | `Resolved` | `PRESERVE` | Retain the existing integrated introduction; no separate Overview heading required |
+| `README-FEATURES` | `Resolved` | `PRESERVE` | Retain role-organized capabilities with explicit simulated-payment qualification; feature-by-feature acceptance not independently established |
+| `README-TECH-STACK` | `Needs Further Evaluation` | `—` | No decision authorized; full tool usage and concrete `PRESERVE` versus `ADAPT` rationale remain to be reviewed |
+
+**Authorization boundary:** The 28 existing `State / Applicability` pairs remain formally approved and unchanged, with their original documentary evidence limits. The pinned consumer reference remains `28d75a50e0a178954dd46acc23300d9dd327843c`, separately from the 2026-11-14 human decision date. `PRESERVE` is an Assessment decision to retain existing documentation; it does **not** authorize modifications, deployments, code changes, or integration in Only Film. **Assessment remains `In Progress`; three decisions resolved, twenty-five unresolved; consumer mutation `NONE`.**
+
+The candidate alternatives and initially pending approval language below are retained as **historical preparation**, not as the current decision status.
 
 ## Candidate decision matrix
 
@@ -100,4 +115,4 @@ No new dependency audit, Compose smoke run or cross-check of every README techno
 3. If the maintainer formally approves any `Resolved` decision, record that approval date, source evidence, `Decision Rationale`, and exact decision in a **separate narrow PR** updating the Assessment and the decision register.
 4. Preserve the **28 formally approved State/Applicability pairs unchanged**. Do not conflate a resolved `PRESERVE` with code changes; do not authorize `ADAPT` edits without the separate optional Application/Integration workflow.
 
-**Merging this PR is not approval of any Adoption Decision.** The Assessment remains `In Progress`, the current 28 Adoption Decisions remain `—`, and Only Film remains read-only.
+**Historical preparation boundary:** Merging the earlier preparation PR was not approval of any Adoption Decision. The later explicit maintainer approval of 2026-11-14 now resolves the three identified `PRESERVE` decisions, while `README-TECH-STACK` and 24 other decisions remain `Needs Further Evaluation / —`. The Assessment remains `In Progress`, and Only Film remains read-only.
