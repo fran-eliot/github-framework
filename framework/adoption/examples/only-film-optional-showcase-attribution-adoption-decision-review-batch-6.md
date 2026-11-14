@@ -115,3 +115,23 @@ For each Responsibility, the maintainer may expressly approve one valid, reasone
 A later **separate PR**, only after express maintainer approval, should update this packet, the [canonical Assessment](only-film-assessment.md), and the [consolidated matrix](only-film-consolidated-review-matrix.md). Approval must distinguish `Decision Status` and `Adoption Decision` from the already formally approved `State / Applicability`.
 
 **Historical preparation boundary:** Merging the preparation PR did not approve these decisions. The later **express maintainer approval on 2026-11-14** formally resolved `README-AUTHOR` and `README-HIGHLIGHTS` as `PRESERVE`. All 28 classification pairs remain approved; eleven Adoption Decisions are now resolved (ten `PRESERVE`, one `OMIT`), seventeen remain unresolved; Assessment remains `In Progress`; Only Film remains read-only.
+
+## Pinned README demo-profile and credential wording reconciliation — 2026-11-14
+
+This targeted **read-only static review** uses Only Film source `28d75a50e0a178954dd46acc23300d9dd327843c`. It does not open the screenshot pixels, execute the application, inspect a live database, or establish a successful Docker Compose run.
+
+| Pinned source | Direct observation | Evidence boundary |
+| --- | --- | --- |
+| [README screenshot section](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md#L13-L23) | Four image links: `cartelera.png`, `pelicula.png`, `sesion.png`, `compra-qr.png`; the pinned `docs/screenshots/` directory contains all four filenames among additional screenshots. | Source-path presence and captions only; visual correctness, image freshness and end-to-end fidelity remain unverified. |
+| [README local startup and profiles](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md#L60-L102) | `http://localhost:8080/movies` is a **local URL**. Standard `postgres` has **no demo data by default**; `postgres,demo` requires explicit opt-in and an empty database. The profile table currently describes demo accounts as having **known passwords**. | No public hosted demo or pinned-SHA Compose success has been established. |
+| [`DataInitializer.java`](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/src/main/java/com/demo/config/DataInitializer.java#L49-L74) | `demoPassword()` returns `onlyfilm.demo.password` when nonblank; otherwise it creates a fresh random UUID per call. PostgreSQL seeding is skipped when any of the checked business tables contains records. A PostgreSQL warning still says accounts are created with **known passwords** without checking whether the override is actually configured. | The generic README known-password wording and unconditional warning are broader than the implementation. This is a **documentation/log-message accuracy issue**, not evidence that a known password actually exists by default, or proof of an exploitable security flaw. |
+| [`DEMO_CREDENTIALS_SECURITY.md`](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/DEMO_CREDENTIALS_SECURITY.md) | The existing guide already explains distinct random default credentials and the optional explicit `ONLYFILM_DEMO_PASSWORD` override, with warnings against shared/real/public use. | This specialist guide explains the actual conditional behavior; its existence does not ensure README readers discover the distinction. |
+
+### Evidence-qualified candidate
+
+**Consider `README-DEMO = ADAPT`**, strictly for a **future bounded documentation clarification** of screenshot-based demonstration scope, local-only startup, opt-in demo-data prerequisites and the difference between random default account passwords and a deliberately configured local password. Any optional future correction to the runtime warning belongs to a separate implementation decision; it is **not authorized** by this documentary review. A public hosted demo, screenshots replacement, new seed policy, code refactor or successful Compose reproduction is not required or authorized here.
+
+The approved `README-DEMO: Partial / Applicable` classification is unchanged. **Formal Adoption Decision: `Needs Further Evaluation / —`**, pending the maintainer's express approval. Earlier `PRESERVE` discussion remains a historical alternative; the new pinned code/guide comparison provides a more specific case for bounded `ADAPT`.
+
+Assessment remains **`In Progress`** with **28/28 approved State/Applicability pairs**, **23/28 formal Adoption Decisions resolved** (13 `PRESERVE`, 3 `OMIT`, 5 `ADAPT`, 2 `ADD`), **5 pending**. Only Film remains strictly unmodified; no Application/Integration, runtime testing or credential change is authorized.
+
