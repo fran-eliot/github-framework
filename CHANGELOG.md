@@ -13,6 +13,7 @@
 
 * Expanded Framework Validator JSON reporting with per-Component errors, aggregate counts, portable relative paths, and explicit filtered validation scope.
 * Improved CLI reporting and file output for local developer workflows while preserving whole-library validation as the default.
+* Updated Framework Validator CI actions to Node.js 24-compatible majors (`checkout@v5`, `setup-python@v6`, `upload-artifact@v6`) while retaining the two-platform test, validation, and report workflow.
 
 These changes are integrated after v0.10.0 and have not yet been assigned to a new release.
 
