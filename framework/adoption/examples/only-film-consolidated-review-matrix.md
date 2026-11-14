@@ -2,24 +2,24 @@
 
 ## 1. Context, purpose, and distinctions
 
-The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured Responsibility records: **ten formally approved** by the maintainer on 2026-11-14 (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`) and **18 still proposed/unapproved**. All twenty-eight have allowed State values, including `Missing` for those two approved records and the unapproved `DOC-API` proposal. `README-CONTRIBUTING` has approved `Not Applicable` based on the confirmed contribution policy, `DOC-DIAGRAMS` has approved `Applicable` based on future diagram interest, and `DOC-API` now has proposed `Not Applicable` for a current public/programmatic API contract, bounded by the seven-controller review. Full structural coverage does not constitute an approved or completed Assessment. The working Assessment's summary and detail blocks follow canonical `TPL-BACKEND` metadata order for reviewer comparison. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
+The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured Responsibility records: **thirteen formally approved** by the maintainer on 2026-11-14 (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-TESTING`, `DOC-TESTING`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`) and **15 still proposed/unapproved**. All twenty-eight have allowed State values, including `Missing` for those two approved records and the unapproved `DOC-API` proposal. `README-CONTRIBUTING` has approved `Not Applicable` based on the confirmed contribution policy, `DOC-DIAGRAMS` has approved `Applicable` based on future diagram interest, and `DOC-API` now has proposed `Not Applicable` for a current public/programmatic API contract, bounded by the seven-controller review. Full structural coverage does not constitute an approved or completed Assessment. The working Assessment's summary and detail blocks follow canonical `TPL-BACKEND` metadata order for reviewer comparison. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
 
-This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting the remaining hypotheses to approved States; ten explicit maintainer approvals are now recorded**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
+This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting the remaining hypotheses to approved States; thirteen explicit maintainer approvals are now recorded**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
 
 | Field | Value |
 | --- | --- |
 | Consumer Repository | [fran-eliot/only_film](https://github.com/fran-eliot/only_film) |
 | Consumer Reference | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | [TPL-BACKEND 0.1.0](../../templates/repositories/backend/metadata.yml) |
-| Responsibilities consolidated | `28/28` — **10 approved / 18 proposals** |
-| Human-reviewed States and Applicability | **10 approved on 2026-11-14**, 18 pending |
+| Responsibilities consolidated | `28/28` — **13 approved / 15 proposals** |
+| Human-reviewed States and Applicability | **13 approved on 2026-11-14**, 15 pending |
 | Resolved Adoption Decisions | `0` |
 | Assessment Status | `In Progress` |
 | Consumer Mutation | `NONE` |
 
 **Legend:**
 
-- Unless explicitly marked as approved (ten maintainer approvals on 2026-11-14), `Proposed State` and `Proposed Applicability` remain **reviewer-facing hypotheses**, not approved Assessment fields. The former `Missing / Partial` alternatives for the three Optional items have now been narrowed to **proposed `Missing`**, not approved States. `Uncertain` for Applicability preserves an unresolved question rather than claiming `Not Applicable`.
+- Unless explicitly marked as approved (thirteen maintainer approvals on 2026-11-14), `Proposed State` and `Proposed Applicability` remain **reviewer-facing hypotheses**, not approved Assessment fields. The former `Missing / Partial` alternatives for the three Optional items have now been narrowed to **proposed `Missing`**, not approved States. `Uncertain` for Applicability preserves an unresolved question rather than claiming `Not Applicable`.
 - `P1/P2/P3` prioritize **evidence review**, not confirmed defects, security severity, or mandatory changes to Only Film.
 - Each `E3` link opens the underlying record with Detected Facts, Evidence, Evaluation Rationale, Uncertainty, and Decision Status. Original proposals retain `Needs Further Evaluation` and `Adoption Decision: —`.
 - Row order and Requirement Levels follow the [canonical Template metadata](../../templates/repositories/backend/metadata.yml), not Component-level priorities.
@@ -30,7 +30,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Required runtime/change-history review batch:** [Quick Start and Changelog — human review batch](only-film-required-runtime-change-review-batch.md) rechecks pinned README, Compose, Dockerfile, environment example and Maven configuration and applies the two Framework Components. Its `README-QUICK-START: Partial / Applicable` and `DOC-CHANGELOG: Missing / Applicable` recommendations were **expressly approved by the Only Film maintainer on 2026-11-14**, with bounded source and unverified Compose-run evidence retained. The original review packet records pre-approval alternatives as history; no consumer action or Adoption Decision follows.
 
-**Testing and security review batch:** [Testing and Security — human review batch](only-film-testing-security-review-batch.md) directly rechecks pinned README, test workflows, PostgreSQL testing, JaCoCo and SonarCloud guides, demo-credential guidance and the earlier historical security audit. It proposes retaining `Partial / Applicable` for `README-TESTING`, `DOC-TESTING` and `DOC-SECURITY`, subject to maintainer sign-off. It records a bounded mismatch between the JaCoCo guide's local selected-test command and the pinned H2 workflow's named test selection, **not** a proven failing command. These three evaluations remain unapproved; no consumer edit is authorized.
+**Testing and security review batch:** [Testing and Security — human review batch](only-film-testing-security-review-batch.md) directly rechecks pinned README, test workflows, PostgreSQL testing, JaCoCo and SonarCloud guides, demo-credential guidance and the earlier historical security audit. The maintainer **explicitly approved `Partial / Applicable` for all three** (`README-TESTING`, `DOC-TESTING`, `DOC-SECURITY`) on 2026-11-14. The source boundaries and the JaCoCo guide/workflow selection discrepancy remain recorded, **not** as failing-test or security findings. No consumer edit is authorized.
 
 ## 2. Consolidated proposals and next review gates
 
@@ -47,10 +47,10 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `README-STATUS` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Establish repository maturity at the pinned SHA; do not confuse technology badges with status. |
 | `README-ARCHITECTURE` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Reconcile MVC/JPA overview with code and dated audit material. |
 | `README-REPOSITORY-STRUCTURE` | Recommended | `Partial` | `Applicable` | **P3** | [E3](only-film-recommended-readme-semantic-review.md) | Check tree accuracy and navigability. |
-| `README-TESTING` | Recommended | `Partial` | `Applicable` | **P1** | [E3](only-film-testing-semantic-review.md) | Reconcile local commands and CI; distinguish H2, PostgreSQL, Selenium, and JaCoCo. |
+| `README-TESTING` | Recommended | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P1** | [E3](only-film-testing-semantic-review.md) | Maintainer-approved documentary Partial; retain bounded evidence and unresolved Adoption Decision. |
 | `DOC-ARCHITECTURE` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Identify the current architecture; do not treat historical audit findings as automatically current. |
 | `DOC-PROJECT-STATUS` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Reconstruct milestones and status by area using dated references. |
-| `DOC-TESTING` | Recommended | `Partial` | `Applicable` | **P1** | [E3](only-film-testing-semantic-review.md) | Assess guidance, Surefire CI evidence, coverage, and Sonar limitations. |
+| `DOC-TESTING` | Recommended | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P1** | [E3](only-film-testing-semantic-review.md) | Maintainer-approved documentary Partial; retain bounded evidence and unresolved Adoption Decision. |
 | `README-ROADMAP` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-governance-semantic-review.md) | Check currency of F3 proposals and whether a concise summary suffices. |
 | `README-CONTRIBUTING` | Optional | `Missing` *(approved 2026-11-14)* | `Not Applicable` *(approved 2026-11-14)* | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Approved for personal/no-external-contribution scope; no consumer mutation. |
 | `README-DEMO` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Check screenshot representativeness and whether reproducible demo access is needed. |
@@ -61,7 +61,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `DOC-API` | Optional | `Missing` *(proposed)* | `Not Applicable` *(current public API scope; proposed)* | **P2** | [E3](only-film-optional-final-semantic-review.md) | Check for a public API contract; do not conflate MVC with REST. |
 | `DOC-DATABASE` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-final-semantic-review.md) | Evaluate data model, invariants, and migrations against pinned sources. |
 | `DOC-DEPLOYMENT` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-final-semantic-review.md) | Delimit local use; clarify uploads guidance and Compose evidence. |
-| `DOC-SECURITY` | Optional | `Partial` | `Applicable` | **P1** | [E3](only-film-security-semantic-review.md) | Review current security guidance and controls; 329 tests do not establish full security assurance. |
+| `DOC-SECURITY` | Optional | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P1** | [E3](only-film-security-semantic-review.md) | Maintainer-approved documentary Partial; retain bounded evidence and unresolved Adoption Decision. |
 | `DOC-DIAGRAMS` | Optional | `Missing` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Approved with bounded evidence; future diagram design and source inventory remain separate. |
 | `DOC-REFERENCES` | Optional | `Partial` | `Not Applicable` *(scoped catalog proposal)* | **P3** | [E3](only-film-optional-final-semantic-review.md) | Decide whether distributed references suffice or an index adds value. |
 
@@ -76,8 +76,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `Applicable` Applicability (approved or proposed) | **25** |
 | `Not Applicable` Applicability (one approved, two scoped proposals) | **3** |
 | `Uncertain` Applicability in current working entries | **0** |
-| Formally approved State and Applicability evaluations | **10** |
-| Still awaiting formal evaluation approval | **18** |
+| Formally approved State and Applicability evaluations | **13** |
+| Still awaiting formal evaluation approval | **15** |
 | Resolved Adoption Decisions | **0** |
 
 These are **working Assessment counts** rather than conformance scores. Scoped `Not Applicable` for `DOC-API` and `DOC-REFERENCES` is not formally approved; the corresponding review limitations remain open.
@@ -115,13 +115,13 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 
 | Field | Value |
 | --- | --- |
-| Reviewer | Only Film maintainer for ten approved entries; other reviews pending |
+| Reviewer | Only Film maintainer for thirteen approved entries; other reviews pending |
 | Assessed Reference | `28d75a50e0a178954dd46acc23300d9dd327843c` |
-| Approval date and scope | 2026-11-14 — ten explicit State/Applicability approvals; 18 still pending |
+| Approval date and scope | 2026-11-14 — thirteen explicit State/Applicability approvals; 15 still pending |
 | Responsibilities with proposed E3 records | `28` |
-| Responsibilities with approved evaluations | `10` recorded |
+| Responsibilities with approved evaluations | `13` recorded |
 | First recommended set | P1: Quick Start, Changelog, Testing, Security, and License |
-| Required next output | Obtain and record explicit maintainer review of the remaining 18 State/Applicability proposals |
+| Required next output | Obtain and record explicit maintainer review of the remaining 15 State/Applicability proposals |
 | Assessment Status | `In Progress` |
 
 **Outcome:** the matrix reduces evidence fragmentation and makes review priorities explicit. It **does not replace human Assessment**, constitute an Adoption Decision, or modify the consumer.
@@ -129,14 +129,14 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 
 ## 6. Review readiness and handoff gates
 
-The working Assessment has **28/28 structural entries**, but **28/28 contractual State values** (10 approved, 18 proposals) and **10 explicit maintainer approvals**. The tables below describe **questions to decide**, not decisions taken. A merged PR recording this checklist does **not** approve any assessment value.
+The working Assessment has **28/28 structural entries**, but **28/28 contractual State values** (13 approved, 15 proposals) and **13 explicit maintainer approvals**. The tables below describe **questions to decide**, not decisions taken. A merged PR recording this checklist does **not** approve any assessment value.
 
 ### 6.1 Contract and evidence checkpoints
 
 | Checkpoint | Expected review outcome | Current status |
 | --- | --- | --- |
-| Canonical responsibility coverage | Exactly 8 Required, 7 Recommended, and 13 Optional entries, in Template metadata order | Structured: 28/28; 10 approved and 18 unapproved |
-| State contract | Each of 28 entries has an allowed `Satisfied / Partial / Missing` value | **10 approved / 18 proposed** |
+| Canonical responsibility coverage | Exactly 8 Required, 7 Recommended, and 13 Optional entries, in Template metadata order | Structured: 28/28; 13 approved and 15 unapproved |
+| State contract | Each of 28 entries has an allowed `Satisfied / Partial / Missing` value | **13 approved / 15 proposed** |
 | Applicability contract | `Applicable / Not Applicable / Uncertain` with justified scope | 0 `Uncertain` entries **in proposals**; all require review |
 | Evidence and rationale | Bounded source citation, interpretation, and uncertainty per Responsibility | Prepared as proposals; reviewer validation pending |
 | Decision handling | `Needs Further Evaluation` may retain `Adoption Decision: —`; `Resolved` must have rationale | 0 resolved |
@@ -160,8 +160,8 @@ The three formerly unselected States now carry allowed **proposed `Missing`** va
 | --- | --- | --- | --- |
 | 1 | `README-QUICK-START` | [Compose evidence gap](only-film-compose-evidence-gap.md): decide whether static documentary sufficiency is enough, or Q1–Q8 reproduction on the pinned SHA is required | Pending reviewer |
 | 2 | `DOC-CHANGELOG` | [Changelog evidence review](only-film-changelog-evidence-review.md): examine equivalence of change records, distinguish Git history from curated change communication, and preserve the maintainer-report versus independent-verification distinction | Pending reviewer |
-| 3 | `README-TESTING` / `DOC-TESTING` | [Testing semantic review](only-film-testing-semantic-review.md) and [verified Surefire/JaCoCo/Sonar logs](only-film-verified-surefire-sonar-logs.md): check general vs selected commands, workflow triggers, distributed guide sufficiency, and historical artifact/Quality Gate evidence limits | Pending reviewer |
-| 4 | `DOC-SECURITY` | [Security E3 review](only-film-security-semantic-review.md): assess README/credentials documentation, dated audit provenance, bounded tested controls and disclosure guidance without certifying system security | Pending reviewer |
+| 3 | `README-TESTING` / `DOC-TESTING` | [Testing semantic review](only-film-testing-semantic-review.md) and [verified Surefire/JaCoCo/Sonar logs](only-film-verified-surefire-sonar-logs.md): general vs selected commands, workflow triggers and historical artifact/Quality Gate evidence limits | **Maintainer-approved `Partial / Applicable` for both on 2026-11-14; evidence gaps retained** |
+| 4 | `DOC-SECURITY` | [Security E3 review](only-film-security-semantic-review.md): current README/credentials documentation, historical audit and bounded controls without a security certification | **Maintainer-approved `Partial / Applicable` on 2026-11-14; evidence gaps retained** |
 | 5 | `README-LICENSE` | [Optional governance E3 review](only-film-optional-governance-semantic-review.md): distinguish notice clarity from legal permission, collaborative authorship, and authority to grant reuse rights | Pending reviewer |
 
 **Quick Start review record:** The pinned README, Dockerfile, Compose, `.env.example` and PostgreSQL guide have been reviewed for static consistency. The checked run [39283862407](https://github.com/fran-eliot/only_film/actions/runs/39283862407) establishes three successful checks, including JAR-on-PostgreSQL, **not** a Compose smoke execution for the pinned reference. The reviewer must choose and state the documentary or operational acceptance threshold. If execution is required, use disposable resources, synthetic secrets and the existing **Q1–Q8** protocol. If documentation alone suffices, state the basis for `Satisfied` or describe the specific gap supporting `Partial`.
@@ -193,12 +193,13 @@ These observations are from the [Testing E3 review](only-film-testing-semantic-r
 
 | Reviewer sign-off item | `README-TESTING` | `DOC-TESTING` |
 | --- | --- | --- |
-| Consumer reference accepted | Pinned SHA; confirmation pending | Pinned SHA; confirmation pending |
-| Review focus | Commands, test selection and workflow trigger clarity | PostgreSQL, JaCoCo and Sonar documentation accuracy and discoverability |
-| Proposed State | `Partial`, not approved | `Partial`, not approved |
-| Evidence acceptance threshold | Documentation scope/reproducibility: **pending** | Historical artifact/Quality Gate limits: **pending** |
-| Reviewer and date | Not recorded | Not recorded |
-| Formal State approval | **No** | **No** |
+| Consumer reference | Pinned SHA `28d75a50e0a178954dd46acc23300d9dd327843c` | Pinned SHA `28d75a50e0a178954dd46acc23300d9dd327843c` |
+| Review focus | General vs selected commands, manual workflows and bounded run evidence | Specialist PostgreSQL/JaCoCo/Sonar guidance; artifact and Quality Gate gaps |
+| Approved State | `Partial` | `Partial` |
+| Approved Applicability | `Applicable` | `Applicable` |
+| Documentary evidence scope | Incomplete full-suite and clean local reproduction | Unverified coverage percentage/Quality Gate; local vs workflow selection difference |
+| Reviewer and date | Only Film maintainer / **2026-11-14** | Only Film maintainer / **2026-11-14** |
+| Formal evaluation approval | **Yes** | **Yes** |
 | Decision Status / Adoption Decision | `Needs Further Evaluation` / `—` | `Needs Further Evaluation` / `—` |
 
 A reviewer may accept a documentation Responsibility without demanding all tests or metrics, but must record the basis. Unverified Selenium, coverage and Quality Gate results must remain **unknown**, not be converted to passing or failing results.
@@ -219,15 +220,16 @@ A reviewer may accept a documentation Responsibility without demanding all tests
 
 | Reviewer sign-off item | `DOC-SECURITY` | `README-LICENSE` |
 | --- | --- | --- |
-| Assessed reference | Pinned SHA; reviewer confirmation pending | Pinned SHA; reviewer confirmation pending |
-| Proposed State | `Partial` — not approved | `Partial` — not approved |
-| Main acceptance threshold | Security documentation fit for audience and supported deployment | Accurate communication of unknown reuse status |
-| Specific outstanding determination | Historical/current distinction; missing guidance, if any | Rights provenance and whether wording needs clarification |
-| Reviewer/date | Not recorded | Not recorded |
-| Formal State approval | **No** | **No** |
+| Assessed reference | Pinned SHA; approved with bounded evidence | Pinned SHA; reviewer confirmation pending |
+| State | `Partial` (**approved**) | `Partial` (unapproved proposal) |
+| Applicability | `Applicable` (**approved**) | `Applicable` (proposal) |
+| Main acceptance threshold | Partial documentary scope, distinguishing historical and current evidence | Accurate communication of unknown reuse status |
+| Specific remaining evidence questions | Historical audit scope, reporting/disclosure guidance, nonexhaustive test evidence | Rights provenance and whether wording needs clarification |
+| Reviewer/date | Only Film maintainer / **2026-11-14** | Not recorded |
+| Formal evaluation approval | **Yes** | **No** |
 | Decision Status / Adoption Decision | `Needs Further Evaluation` / `—` | `Needs Further Evaluation` / `—` |
 
-These are the final two **P1 evidence-disposition gates**. All six P1 Responsibilities have a reviewer-facing evidence gate. `README-QUICK-START` and `DOC-CHANGELOG` now have formal maintainer evaluation approval, while the other P1 evaluations remain pending and no adoption action is authorized.
+These are the final two **P1 evidence-disposition gates**. All six P1 Responsibilities have a reviewer-facing evidence gate. `README-QUICK-START`, `DOC-CHANGELOG`, `README-TESTING`, `DOC-TESTING` and `DOC-SECURITY` now have formal maintainer evaluation approval. `README-LICENSE` remains pending, and **no adoption action is authorized**.
 
 ### 6.6 Optional applicability and State discrimination — reviewer session
 
