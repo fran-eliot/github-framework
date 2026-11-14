@@ -51,9 +51,9 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `DOC-DEPLOYMENT` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(local environment; proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-DIAGRAMS` | Optional | `Missing` *(proposed; not approved)* | `Applicable` *(proposed; maintainer interested in future diagrams, 2026-11-14)* | `Needs Further Evaluation` | `—` |
-| `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Uncertain` *(applicability pending review)* | `Needs Further Evaluation` | `—` |
+| `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Not Applicable` *(proposed for central catalog; review pending)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** all **28/28** Responsibilities now have a **single allowed proposed State** (`Satisfied`, `Partial`, or `Missing`), with three new `Missing` proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`. **None of the 28 States has formal human approval.** Two Applicability judgments (`DOC-API`, `DOC-REFERENCES`) remain `Uncertain`. State proposals are not decisions to modify the consumer and the Assessment remains `In Progress`. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
+**Coverage:** all **28/28** Responsibilities now have a **single allowed proposed State** (`Satisfied`, `Partial`, or `Missing`), with three new `Missing` proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`. **None of the 28 States has formal human approval.** One Applicability judgment (`DOC-API`) remains `Uncertain`; `DOC-REFERENCES` now has a scoped `Not Applicable` proposal. State proposals are not decisions to modify the consumer and the Assessment remains `In Progress`. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -1852,7 +1852,7 @@ The maintainer has confirmed interest in future diagrams; reviewers should now c
 
 **Applicability**
 
-`Uncertain` — whether a consolidated references Responsibility is useful for this consumer remains unresolved; this is **not** a decision of `Not Applicable`.
+`Not Applicable` — **proposed for a standalone external-reference catalog only; not formally approved**. The Component permits keeping a small number of meaningful references in their original contexts, and the pinned seven-file sample has not established a need for a central catalog.
 
 **Implementation Characteristics**
 
@@ -1884,23 +1884,29 @@ The maintainer has confirmed interest in future diagrams; reviewers should now c
 
 Contextual links already exist, and a standalone index is not required by the References Component. Whether the existing collection adequately addresses the intended reader's need for external source traceability has not been assessed exhaustively. `Partial` is a **proposed documentary State conditional on an applicable references scope**; Applicability remains `Uncertain` and may prove `Not Applicable` following human review. It is not a claim that a new References file is mandatory or that existing links are broken.
 
+**Proposed Applicability Disposition — reviewer confirmation pending**
+
+The proposed `Not Applicable` concerns a *centralized external-reference catalog*, not the existing README links, source attribution or in-place technical references. The [Framework Component](../../components/documentation/references/README.md) explicitly advises against maintaining an index when context-specific links serve the reader. In the [pinned source sample](only-film-optional-contract-spotcheck.md), no recurring standards/specifications collection requiring an index was identified.
+
+This is a **scoped reviewer proposal** rather than an approved interpretation of the full Responsibility. A reviewer may prefer `Applicable` if the intended responsibility includes maintaining sources *in context*, and must judge the separately proposed `State: Partial` on source quality and completeness, not file naming. Do not add a `REFERENCES.md` by default. No links were independently checked for liveness.
+
 **Evidence-Based References Recommendation**
 
 Seven pinned Markdown files were directly inspected for contextual links and plain URLs; the [expanded source inventory](only-film-optional-contract-spotcheck.md) distinguishes README navigation, screenshot/badge links, author attribution, GitHub issues and operational SonarCloud links from authoritative technical standards. No recurring set of external specifications requiring a central catalog was identified **in that sample**. Links were not independently health-checked.
 
 **Preferred conditional outcome for a standalone references catalog:** `Not Applicable` **if** no valuable recurring external technical-reference collection is required. The Framework Component explicitly discourages catalogs built merely for formality. However, if `DOC-REFERENCES` is interpreted as the broader purpose of ensuring clear sources **within existing documents**, `Applicable` may be the better Scope and the existing contextual links should be evaluated directly for `Satisfied` or `Partial`.
 
-This distinction requires maintainer/reviewer confirmation. **Do not change contractual `Applicability: Uncertain` or the unapproved `State: Partial` merely because no central index exists.** A standalone catalog is **not recommended at this stage**; this is an evidence-grounded recommendation, not a formal adoption decision.
+This distinction still requires maintainer/reviewer confirmation. `Applicability: Not Applicable` is now **proposed for the narrow catalog interpretation**, while `State: Partial` remains unapproved. A standalone catalog is **not recommended at this stage**; this is not a final Adoption Decision.
 
 **Reviewer Discrimination Gate — Applicability**
 
-**Open; proposed `Partial` State remains unapproved and Applicability remains `Uncertain`.** Existing contextual references are acknowledged, and the Framework Component does **not** require a standalone reference index where in-place links are clearer.
+**Open; proposed `Partial` State and scoped `Not Applicable` Applicability remain unapproved.** Existing contextual references are acknowledged, and the Framework Component does **not** require a standalone reference index where in-place links are clearer.
 
 - **Inspect purpose and quality:** review whether the pinned README and specialist guides link the few authoritative sources actually needed by readers, whether important links are stale, and whether duplication or discoverability is a material problem.
 - **If a separate references responsibility is applicable:** justify whether contextual linking is already `Satisfied` or `Partial` for the intended audience, without requiring a new index by default.
 - **If centralization adds no value:** evaluate `Not Applicable` for a standalone reference catalog or clarify the scope of `DOC-REFERENCES`; reconcile the conditional proposed State with the final Applicability under the Template contract.
 
-**Disposition record:** Reference inventory and need: *pending*; proposed State: `Partial` (not approved); Applicability: `Uncertain`; reviewer/date: *not recorded*. No reference index is authorized.
+**Disposition record:** Seven-file link inventory: *recorded, bounded*; State: `Partial` *(proposed, unapproved)*; Applicability: `Not Applicable` *(proposed for centralized catalog only)*; reviewer/date: *not recorded*. No reference index is authorized.
 
 **Decision Status**
 
@@ -1912,7 +1918,7 @@ This distinction requires maintainer/reviewer confirmation. **Do not change cont
 
 **Decision Rationale**
 
-The reviewer should determine whether references need consolidation or can remain contextual, then confirm Applicability and State under the Template's allowed values. No addition of a References index, external citations, or consumer changes is authorized.
+The reviewer should confirm whether the narrow catalog interpretation is appropriate, or whether in-context references justify `Applicable`, and independently approve or revise the proposed State. No addition of a References index, external citations, or consumer changes is authorized.
 
 ---
 
@@ -1931,14 +1937,14 @@ The reviewer should determine whether references need consolidation or can remai
 ### Open Uncertainties
 
 - Human sign-off on all twenty-eight structured entries, including formal review of the three newly selected `Missing` proposals and `DOC-CHANGELOG` interpretation and the Testing documentation sufficiency threshold.
-- Formal approval or revision of the `Missing` State proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`, review of the confirmed `README-CONTRIBUTING` no-external-contribution scope and its proposed `Not Applicable` interpretation, Applicability review for `DOC-API` and `DOC-REFERENCES`, confirmation of proposed `Applicable` for `DOC-DIAGRAMS`, and human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Formal approval or revision of the `Missing` State proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`, review of the confirmed `README-CONTRIBUTING` no-external-contribution scope and its proposed `Not Applicable` interpretation, Applicability review for `DOC-API`, confirmation of the scoped `Not Applicable` proposal for `DOC-REFERENCES` and proposed `Applicable` for `DOC-DIAGRAMS`, and human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the full 28-Responsibility working Assessment against Template metadata, first reviewing all 28 proposed States (including three newly proposed `Missing` values), resolving the two remaining `Uncertain` Applicability judgments where evidence permits, and confirming the `Not Applicable` / `Applicable` scope interpretations for `README-CONTRIBUTING` / `DOC-DIAGRAMS`. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
+Review the full 28-Responsibility working Assessment against Template metadata, first reviewing all 28 proposed States (including three newly proposed `Missing` values), resolving the the remaining `Uncertain` Applicability judgment for `DOC-API` and the scope of the `DOC-REFERENCES` catalog proposal, and confirming the `Not Applicable` / `Applicable` scope interpretations for `README-CONTRIBUTING` / `DOC-DIAGRAMS`. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
 
 ---
 
