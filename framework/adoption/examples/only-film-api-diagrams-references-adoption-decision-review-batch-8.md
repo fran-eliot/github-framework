@@ -106,3 +106,10 @@ The maintainer may expressly approve each decision independently or keep it open
 A **later, separate approval-record PR** may update the canonical [Assessment](only-film-assessment.md), [consolidated matrix](only-film-consolidated-review-matrix.md), and this packet only after express maintainer approval and individual decision rationale. Merging this preparation PR is not approval.
 
 **Postapproval status:** All 28 State / Applicability pairs unchanged; 14 Adoption Decisions now resolved (11 `PRESERVE`, 3 `OMIT`), 14 remain unresolved; Assessment `In Progress`; Only Film strictly read-only. Merging the earlier preparation PR did not itself approve these decisions; the formal decisions were expressly granted separately by the maintainer on 2026-11-14.
+
+
+## Formal DOC-DIAGRAMS Adoption Decision — 2026-11-14
+
+The Only Film maintainer subsequently **approved `DOC-DIAGRAMS = ADD`**, exclusively for **future maintainable technical diagrams based on verified source**, with the **data model as the priority**. This supersedes the earlier decision deferral for `DOC-DIAGRAMS` only. Its approved `Missing / Applicable` classification stays unchanged, including the **nonexhaustive pinned diagram-inventory caveat**. The separate `DOC-DATABASE = ADAPT` decision establishes a future conceptual-model documentation need, but neither decision authorizes generating a diagram now, modifying Only Film or representing unverified diagram cardinalities as fact.
+
+`DOC-API = OMIT` and `DOC-REFERENCES = OMIT` remain unchanged. Assessment **`In Progress`**: 28/28 State/Applicability pairs approved; **23/28 Adoption Decisions resolved** (13 `PRESERVE`, 3 `OMIT`, 5 `ADAPT`, 2 `ADD`), **5 pending**. No consumer mutation or Application/Integration permission.
