@@ -9,12 +9,29 @@
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE` |
 | Formally approved State / Applicability | `28/28`, unchanged |
-| Previously resolved Adoption Decisions | `9/28`: eight `PRESERVE`, one `OMIT` |
-| Still unresolved | `19/28`, including these four |
+| Formally resolved Adoption Decisions | `11/28`: ten `PRESERVE`, one `OMIT`; Author and Highlights approved 2026-11-14 |
+| Still unresolved | `17/28`, including `README-DEMO` and `README-LICENSE` in this packet |
 | Assessment | `In Progress` |
 | Consumer modifications | `NONE` |
 
 This packet is **review preparation only**. It does not approve any new Adoption Decision, change a previously approved State/Applicability classification, establish the legal ownership of the academic code, verify runtime behavior or authorize implementation in Only Film. An explicit, independent maintainer decision and rationale must precede any `Resolved` transition.
+
+## Formal maintainer Adoption Decision outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved `README-AUTHOR = PRESERVE` and `README-HIGHLIGHTS = PRESERVE`** and expressly retained the other two Adoption Decisions unresolved:
+
+| Responsibility | Decision Status | Adoption Decision | Approved rationale / evidence limits |
+| --- | --- | --- | --- |
+| `README-DEMO` | `Needs Further Evaluation` | `—` | Screenshots have not been independently visually inspected for accuracy/freshness; complete pinned-SHA Docker Compose startup and any public demo are not established |
+| `README-AUTHOR` | `Resolved` | `PRESERVE` | Retain balanced academic-team credits and distinguish later maintenance; full contributor attribution, ownership, permissions and licensing rights are **not** established |
+| `README-HIGHLIGHTS` | `Resolved` | `PRESERVE` | Retain informative distributed features/security differentiators, explicitly limited to simulated payment and no production security certification; full runtime feature verification is **not** established |
+| `README-LICENSE` | `Needs Further Evaluation` | `—` | Existing non-grant notice and empty POM license metadata do not prove source ownership, contributor permissions, reuse rights or an authorized license |
+
+**Formal review date: 2026-11-14.** The immutable consumer evidence baseline remains `28d75a50e0a178954dd46acc23300d9dd327843c`. The original **28 formally approved State / Applicability pairs are unchanged**; no `Partial` or `Satisfied` evaluation is silently revised by the new decisions.
+
+**Authorization boundary:** Assessment remains `In Progress`; **11/28 Adoption Decisions resolved (10 `PRESERVE`, 1 `OMIT`), 17 unresolved**. Only Film remains read-only. No screenshot modification, Compose execution, security certification, attribution alteration, license grant, deployment or other Application/Integration action is authorized.
+
+The original candidate suggestions below are **preapproval review history**, not the current formal decision state.
 
 ## Decision candidates
 
@@ -97,4 +114,4 @@ For each Responsibility, the maintainer may expressly approve one valid, reasone
 
 A later **separate PR**, only after express maintainer approval, should update this packet, the [canonical Assessment](only-film-assessment.md), and the [consolidated matrix](only-film-consolidated-review-matrix.md). Approval must distinguish `Decision Status` and `Adoption Decision` from the already formally approved `State / Applicability`.
 
-**No approval is inferred from merging this preparation PR. All 28 classification pairs remain approved; nine existing Adoption Decisions remain resolved (eight `PRESERVE`, one `OMIT`); nineteen remain unresolved; Assessment remains `In Progress`; Only Film remains read-only.**
+**Historical preparation boundary:** Merging the preparation PR did not approve these decisions. The later **express maintainer approval on 2026-11-14** formally resolved `README-AUTHOR` and `README-HIGHLIGHTS` as `PRESERVE`. All 28 classification pairs remain approved; eleven Adoption Decisions are now resolved (ten `PRESERVE`, one `OMIT`), seventeen remain unresolved; Assessment remains `In Progress`; Only Film remains read-only.
