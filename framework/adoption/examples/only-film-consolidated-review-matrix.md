@@ -38,6 +38,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Demo, author and highlights review batch:** [Demo, Author and Highlights — human review batch](only-film-demo-author-highlights-review-batch.md) revisits directly inspected pinned README content and Framework documentary expectations. The maintainer **expressly approved `README-DEMO: Partial / Applicable`, `README-AUTHOR: Satisfied / Applicable`, and `README-HIGHLIGHTS: Satisfied / Applicable` on 2026-11-14**. Screenshot pixels were not independently inspected, Compose startup was not rerun, academic credits do not establish ownership or licensing rights, and selective test evidence is not complete feature assurance. The review packet retains the preapproval proposals as historical context; no Adoption Decision or consumer edit follows.
 
+**ADR, database and local deployment review batch:** [ADR, Database and Local Deployment — human review batch](only-film-adr-database-deployment-review-batch.md) directly checks pinned Flyway/Dependabot/PostgreSQL guides, Compose/Dockerfile, and the defined Compose smoke workflow. It recommends keeping `Partial / Applicable` as an **unapproved** documentary candidate for `DOC-ADR`, `DOC-DATABASE` and `DOC-DEPLOYMENT` (local Compose only). It identifies the specific local upload-volume versus production-durability wording ambiguity without asserting actual data loss or failing CI. `DOC-API` and `DOC-REFERENCES` are reserved for a separate contract-scope review. All five remain unapproved.
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
