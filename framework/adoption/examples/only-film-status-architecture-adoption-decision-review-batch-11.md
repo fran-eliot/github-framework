@@ -73,6 +73,25 @@ The three descriptions serve different purposes: **README-STATUS** gives a quick
 
 `PRESERVE` could be argued only if the intended audience needs no richer status than the existing clearly dated portfolio/maturity context. That choice would preserve **historical context as historical**, rather than claim it is the present operational picture. No current milestone or maturity is inferred here.
 
+## Supplementary live-repository status check — 2026-11-14
+
+This limited check supplements the **pinned-source** review above with separately identified **mutable GitHub repository observations**; it does not change the immutable Assessment baseline or establish a maintainer-approved project phase.
+
+| Check | Observation | Evidence boundary |
+| --- | --- | --- |
+| Consumer `main` head | At this check, GitHub's latest commit listing placed `28d75a50e0a178954dd46acc23300d9dd327843c` first (merge PR #493, F3.003b occupancy/ranking). | A checked point in time, **not** a promise that the branch will remain at this SHA. |
+| Open issues | [#248 — SonarCloud October 2026 follow-up](https://github.com/fran-eliot/only_film/issues/248) and [#427 — Thymeleaf fallback HTML titles](https://github.com/fran-eliot/only_film/issues/427) appeared in the GitHub open-issue search. | These record maintenance topics; their issue descriptions are not independently revalidated defect findings, quality metrics or an exhaustive work plan. |
+| Open pull requests | The GitHub open-PR search returned no results for `fran-eliot/only_film`. | This does **not** establish that development is inactive or that all historical F3 work is complete. |
+| Next milestone and accountable project phase | Not established by these checks. | Requires an authoritative current source or explicit maintainer confirmation. |
+
+**Implications for the existing Batch 11 gates:**
+
+- `README-STATUS`: a live open-issue snapshot provides no contractually approved `project_status` or `maturity` values; do not infer production readiness or a status label.
+- `DOC-ARCHITECTURE`: the confirmed F3.003b merge establishes a code-history anchor, but no new pinned-SHA controller/service/repository audit was performed in this check; do not infer the entire current dependency graph.
+- `DOC-PROJECT-STATUS`: the two observed open issues are concrete candidate inputs for a **dated** operational snapshot. They are insufficient to classify all areas of progress, past F3 dispositions, active ownership or the next milestone.
+
+**Review outcome:** retain all three `Needs Further Evaluation / —`. The 28 approved State/Applicability pairs and the 16 formally resolved Adoption Decisions are unchanged. No consumer mutation or Application/Integration authorization is implied.
+
 ## Reviewer approval gate
 
 The most evidence-conservative recommendation is to **leave all three decisions unresolved** until the precise informational audience and current-source checks are agreed. Reviewer alternatives remain:
