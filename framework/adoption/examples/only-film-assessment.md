@@ -1474,6 +1474,22 @@ No public API contract implementation was verified in the prior evidence. Spring
 
 An API documentation Responsibility should be evaluated against an actual interface and its consumers, not a generic expectation that every backend publishes REST endpoints. The README treats REST as future work, and the currently reviewed routes relate to server-rendered MVC. `Missing` would need a confirmed applicable API-documentation requirement that is unmet; `Partial` would need demonstrable partial coverage of that requirement. Neither is established by the available bounded review. The State is intentionally unselected and Applicability `Uncertain` pending a decision on scope and further endpoint evidence.
 
+**Evidence-Based Applicability Recommendation**
+
+**Provisional recommendation: `Not Applicable` for a standalone public/programmatic API contract at the pinned commit — subject to maintainer review. This recommendation does not overwrite the working `Applicability: Uncertain` or select a contractual State.**
+
+At `28d75a50e0a178954dd46acc23300d9dd327843c`, direct inspection of seven controller files — `MovieController.java`, `RoomController.java`, `SessionController.java`, `TicketController.java`, `UserController.java`, `AuthController.java`, and `ReviewController.java` — found Spring `@Controller` classes with view/redirect-returning handlers. **None of those seven files declares `@RestController`, `@ResponseBody`, or `ResponseEntity`.** The pinned README separately and explicitly describes `API REST` as a *possible future extension*, not an implemented feature.
+
+These positive observations are stronger than filename or mutable-branch code searches, but **the complete pinned Java tree and other possible routing/integration mechanisms have not been inventoried**. Do not turn a seven-file sample into a proof that no programmatic endpoint exists.
+
+**Conditional reviewer outcomes:**
+
+- **If no currently supported programmatic interface is identified and the intended consumers only use MVC pages:** prefer `Applicability: Not Applicable` for *public API-contract documentation*, with rationale describing the bounded verification and the user-facing scope. The reviewer must still select a valid `State` under the Assessment Template and justify its interpretation; `Not Applicable` is **not** a substitute State.
+- **If an actual integration/JSON contract is identified:** prefer `Applicability: Applicable`, then assess the real source-backed documentation as `Satisfied`, `Partial`, or `Missing`.
+- **If a meaningful scope question remains after review:** `Applicability: Uncertain` is allowed if its uncertainty and next evidence gate are recorded. The State nevertheless cannot remain unselected in a completed Assessment.
+
+**Remaining evidence and sign-off:** inventory any additional pinned entry points; clarify whether the project promises a programmatic integration surface; record the maintainer's accepted scope, reviewer identity, date, contractual State, and rationale. **No approval or adoption action is recorded in this proposal.**
+
 **Reviewer Discrimination Gate — State and Applicability**
 
 **Open; no State or Applicability approval recorded.** A server-rendered Spring MVC controller is not automatically a public REST API, and the pinned README lists an API REST as **possible future work**.
