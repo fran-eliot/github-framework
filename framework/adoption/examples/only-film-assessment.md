@@ -15,7 +15,7 @@
 | Template Version | `0.1.0` |
 | Assessment Record Started | `2026-11-13` |
 | Assessment Status | `In Progress` |
-| Human Review | **26/28 State and Applicability evaluations formally approved** by the Only Film maintainer on 2026-11-14; 2 pending |
+| Human Review | **28/28 State and Applicability evaluations formally approved** by the Only Film maintainer on 2026-11-14; 0 pending |
 | Consumer Mutation | `NONE` |
 
 This pinned consumer reference is the evaluation baseline. Repository-wide facts outside the commit, such as the existence of GitHub tags and Releases, have separately identified provenance and verification limits.
@@ -46,14 +46,14 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `README-HIGHLIGHTS` | Optional | `Satisfied` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `DOC-ADR` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
-| `DOC-API` | Optional | `Missing` *(proposed; not approved)* | `Not Applicable` *(proposed for public API-contract scope; unapproved)* | `Needs Further Evaluation` | `—` |
+| `DOC-API` | Optional | `Missing` *(maintainer-approved 2026-11-14)* | `Not Applicable` *(maintainer-approved 2026-11-14; current public API contract only)* | `Needs Further Evaluation` | `—` |
 | `DOC-DATABASE` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `DOC-DEPLOYMENT` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14; local Compose only)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `DOC-DIAGRAMS` | Optional | `Missing` *(maintainer-approved from bounded evidence 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
-| `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Not Applicable` *(proposed for central catalog; review pending)* | `Needs Further Evaluation` | `—` |
+| `DOC-REFERENCES` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Not Applicable` *(maintainer-approved 2026-11-14; standalone catalog only)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** all **28/28** Responsibilities now have a **single allowed proposed State** (`Satisfied`, `Partial`, or `Missing`), with three new `Missing` proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`. **Twenty-six of 28 State/Applicability evaluations have explicit maintainer approval** (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-ROADMAP`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`); 2 remain proposals. No Applicability field remains `Uncertain` in the **proposed Summary**, but the scoped `Not Applicable` proposals for `DOC-API` and `DOC-REFERENCES` still require formal review. State proposals are not decisions to modify the consumer and the Assessment remains `In Progress`. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
+**Coverage:** all **28/28** Responsibilities now have a **formally approved allowed State** (`Satisfied`, `Partial`, or `Missing`), including the approved `Missing` values for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`. **All twenty-eight State/Applicability evaluations have explicit maintainer approval** (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `DOC-ADR`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-ROADMAP`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`, `DOC-REFERENCES`); 0 remain proposals. No Applicability field remains `Uncertain` in the **approved Summary**; the `DOC-API` and `DOC-REFERENCES` `Not Applicable` approvals apply only to their expressly bounded documentary scopes, without exempting contextual references. Approved State/Applicability classifications are not decisions to modify the consumer and the Assessment remains `In Progress`. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -1665,11 +1665,11 @@ The maintainer must decide whether to `PRESERVE` the existing decision explanati
 
 **State**
 
-`Missing` — **proposed documentary State, not approved**. The pinned README identifies a REST API as *future work*, and seven directly inspected pinned MVC controllers do not expose an explicit REST/JSON controller declaration or `ResponseEntity` return. No current programmatic API documentation coverage was identified in the inspected evidence. This is a bounded assessment, not a proof that no other programmatic interface exists.
+`Missing` — **formally approved by the Only Film maintainer on 2026-11-14**, with bounded documentary coverage and source limitations preserved.
 
 **Applicability**
 
-`Not Applicable` — **proposed for documentation of a currently supported public/programmatic API contract** at the pinned SHA. The README explicitly frames REST as future work, and the seven pinned controllers inspected serve MVC views/redirects. This is a scoped, **unapproved** applicability proposal; the complete pinned entry-point inventory has not been established.
+`Not Applicable` — **formally approved by the Only Film maintainer on 2026-11-14**, exclusively for documentation of a currently supported public/programmatic API contract. No broader absence or waiver is implied.
 
 **Implementation Characteristics**
 
@@ -1699,47 +1699,20 @@ No public API contract implementation was verified in the prior evidence. Spring
 
 **Evaluation Rationale**
 
-An API documentation Responsibility should be evaluated against an actual interface and its consumers, not a generic expectation that every backend publishes REST endpoints. The README treats REST as future work, and the currently reviewed routes relate to server-rendered MVC. `Missing` would need a confirmed applicable API-documentation requirement that is unmet; `Partial` would need demonstrable partial coverage of that requirement. Neither is established as an applicable *deficiency* by the bounded review. `State: Missing` remains a provisional statement that no public API documentation was observed. `Applicability: Not Applicable` is separately proposed for the **current programmatic API** scope, based on the README and reviewed controllers; a full inventory may revise this interpretation.
+The source review supports the scoped `Missing` State as a documentary coverage finding, **not** a conclusion that a missing applicable feature or document must be implemented. The maintainer approves Not Applicable only for the currently supported public/programmatic API-contract documentation purpose; HTML MVC routes and hypothetical future REST capabilities are outside this narrow scope. `State` and `Applicability` are separately approved contractual values; a `Not Applicable` interpretation does not erase `State` or resolve an Adoption Decision.
 
-**Current-Scope Applicability Proposal — reviewer sign-off pending**
+**Human Evaluation Review**
 
-**Proposal:** `State: Missing` / `Applicability: Not Applicable` **as independent values** for a supported, external/programmatic API documentation Responsibility at consumer SHA `28d75a50e0a178954dd46acc23300d9dd327843c`. The pinned README explicitly places REST API under future enhancements, not current functionality, while the seven directly checked controllers implement MVC view/redirect handlers. No standalone programmatic API contract was established by that evidence.
-
-**Limit:** a complete pinned repository tree, all possible routing mechanisms, and actual integration consumers were **not independently inventoried**. This remains a reviewable *proposal*, not a proof that there are no programmatic endpoints. If a real current interface or consumer is identified, reconsider `Applicable` and reassess its documentation. No OpenAPI specification or API feature is authorized by this Assessment.
-
-The existing `Decision Status: Needs Further Evaluation` and `Adoption Decision: —` continue to apply. The recommendation is **not** a signed-off evaluation.
-
-**Evidence-Based Applicability Recommendation**
-
-**Proposed `Not Applicable` for the current public/programmatic API-contract scope — subject to maintainer review.** The `State: Missing` proposal remains separate and unapproved. This is not a repository-wide absence finding.
-
-At `28d75a50e0a178954dd46acc23300d9dd327843c`, direct inspection of seven controller files — `MovieController.java`, `RoomController.java`, `SessionController.java`, `TicketController.java`, `UserController.java`, `AuthController.java`, and `ReviewController.java` — found Spring `@Controller` classes with view/redirect-returning handlers. **None of those seven files declares `@RestController`, `@ResponseBody`, or `ResponseEntity`.** The pinned README separately and explicitly describes `API REST` as a *possible future extension*, not an implemented feature.
-
-These positive observations are stronger than filename or mutable-branch code searches, but **the complete pinned Java tree and other possible routing/integration mechanisms have not been inventoried**. Do not turn a seven-file sample into a proof that no programmatic endpoint exists.
-
-**Conditional reviewer outcomes:**
-
-- **If no currently supported programmatic interface is identified and the intended consumers only use MVC pages:** prefer `Applicability: Not Applicable` for *public API-contract documentation*, with rationale describing the bounded verification and the user-facing scope. The reviewer must still select a valid `State` under the Assessment Template and justify its interpretation; `Not Applicable` is **not** a substitute State.
-- **If an actual integration/JSON contract is identified:** prefer `Applicability: Applicable`, then assess the real source-backed documentation as `Satisfied`, `Partial`, or `Missing`.
-- **If a meaningful scope question remains after review:** `Applicability: Uncertain` is allowed if its uncertainty and next evidence gate are recorded. A `Missing` State has now been proposed, but must still be reviewed before the Assessment can be completed.
-
-**Remaining evidence and sign-off:** inventory any additional pinned entry points; clarify whether the project promises a programmatic integration surface; record the maintainer's accepted scope, reviewer identity, date, contractual State, and rationale. **No approval or adoption action is recorded in this proposal.**
-
-**Reviewer Discrimination Gate — State and Applicability**
-
-**`State: Missing` and scoped `Applicability: Not Applicable` proposed; no formal approval recorded.** A server-rendered Spring MVC controller is not automatically a public REST API, and the pinned README lists an API REST as **possible future work**.
-
-- **Determine the contract and audience:** inspect the pinned controllers for consumer-facing JSON, programmatic HTTP contracts, or integrations. Decide whether documentation of any actual interface is materially needed for the intended consumer; do not classify a prospective feature as already implemented.
-- **If an applicable interface exists:** identify concrete endpoints and existing contractual documentation before judging `Satisfied`, `Partial` or `Missing`. A lack of OpenAPI/Swagger filenames alone does not demonstrate absence.
-- **If no API documentation purpose applies today:** explain `Not Applicable` based on the project's present supported interfaces and users. Optionality by itself does not settle the issue.
-
-**Disposition record:** Supported interface contract: *unverified beyond bounded MVC inspection*; consumer need: *pending*; proposed contractual State: `Missing` *(unapproved)*; Applicability: `Not Applicable` *(for currently supported external API contract; unapproved)*; reviewer/date: *not recorded*. No API specification, new endpoint, or adoption action is authorized.
-
-**Contractual State Proposal — reviewer sign-off pending**
-
-The proposed `Missing` State records **no programmatic API documentation identified in the reviewed evidence**, rather than asserting that the Spring MVC web application has no HTTP routes. `Applicability: Not Applicable` is proposed for the scoped, present-day public API contract based on the README and inspected MVC controllers; the nonexhaustive entry-point inventory is an explicit review limitation. If the remaining audit or maintainer reveals a supported external API, revisit both State and applicability; do not infer `Partial` merely from existing MVC page documentation.
-
-This is a **proposed** State, **not** confirmation that an API specification should be created or an Adoption Decision should be `ADD`.
+- **Reviewer:** Only Film maintainer
+- **Formal approval date:** 2026-11-14
+- **Approved State:** `Missing`
+- **Approved Applicability:** `Not Applicable`
+- **Approved scope:** documentation of a currently supported public/programmatic API contract; no broad repository-wide absence or new obligation is established.
+- **Immutable consumer SHA:** `28d75a50e0a178954dd46acc23300d9dd327843c`
+- **Evidence basis:** The pinned README describes MVC/Thymeleaf and places REST API among future possibilities; seven MVC controllers were inspected previously, including two rechecked for the last batch. No current external integration contract or public API documentation was established within these reviewed sources.
+- **Evidence limitations retained:** The complete pinned Java routing tree, integrations, filters, functional handlers, external API consumers and other source locations were not exhaustively inventoried; this is not proof that all programmatic interfaces are absent.
+- **Original preparation:** [API and References contract-scope review batch](only-film-api-references-contract-review-batch.md) contains the preapproval proposals and alternative scope interpretations as historical evidence.
+- **Authorization boundary:** `Assessment Status: In Progress`; `Decision Status: Needs Further Evaluation`; `Adoption Decision: —`. No changes to Only Film or other implementation action authorized.
 
 **Decision Status**
 
@@ -2096,11 +2069,11 @@ The maintainer has confirmed interest in future diagrams; reviewers may later se
 
 **State**
 
-`Partial` — **proposed; human review pending**
+`Partial` — **formally approved by the Only Film maintainer on 2026-11-14**, with bounded documentary coverage and source limitations preserved.
 
 **Applicability**
 
-`Not Applicable` — **proposed for a standalone external-reference catalog only; not formally approved**. The Component permits keeping a small number of meaningful references in their original contexts, and the pinned seven-file sample has not established a need for a central catalog.
+`Not Applicable` — **formally approved by the Only Film maintainer on 2026-11-14**, exclusively for a standalone centralized external-technical-reference catalog. No broader absence or waiver is implied.
 
 **Implementation Characteristics**
 
@@ -2130,31 +2103,20 @@ The maintainer has confirmed interest in future diagrams; reviewers may later se
 
 **Evaluation Rationale**
 
-Contextual links already exist, and a standalone index is not required by the References Component. Whether the existing collection adequately addresses the intended reader's need for external source traceability has not been assessed exhaustively. `Partial` is a **proposed documentary State conditional on an applicable references scope**; Applicability remains `Uncertain` and may prove `Not Applicable` following human review. It is not a claim that a new References file is mandatory or that existing links are broken.
+The source review supports the scoped `Partial` State as a documentary coverage finding, **not** a conclusion that a missing applicable feature or document must be implemented. The maintainer approves Not Applicable only for a standalone centralized catalog of external technical sources, not for references in context, their quality, attribution, or continued maintenance. `State` and `Applicability` are separately approved contractual values; a `Not Applicable` interpretation does not erase `State` or resolve an Adoption Decision.
 
-**Proposed Applicability Disposition — reviewer confirmation pending**
+**Human Evaluation Review**
 
-The proposed `Not Applicable` concerns a *centralized external-reference catalog*, not the existing README links, source attribution or in-place technical references. The [Framework Component](../../components/documentation/references/README.md) explicitly advises against maintaining an index when context-specific links serve the reader. In the [pinned source sample](only-film-optional-contract-spotcheck.md), no recurring standards/specifications collection requiring an index was identified.
-
-This is a **scoped reviewer proposal** rather than an approved interpretation of the full Responsibility. A reviewer may prefer `Applicable` if the intended responsibility includes maintaining sources *in context*, and must judge the separately proposed `State: Partial` on source quality and completeness, not file naming. Do not add a `REFERENCES.md` by default. No links were independently checked for liveness.
-
-**Evidence-Based References Recommendation**
-
-Seven pinned Markdown files were directly inspected for contextual links and plain URLs; the [expanded source inventory](only-film-optional-contract-spotcheck.md) distinguishes README navigation, screenshot/badge links, author attribution, GitHub issues and operational SonarCloud links from authoritative technical standards. No recurring set of external specifications requiring a central catalog was identified **in that sample**. Links were not independently health-checked.
-
-**Preferred conditional outcome for a standalone references catalog:** `Not Applicable` **if** no valuable recurring external technical-reference collection is required. The Framework Component explicitly discourages catalogs built merely for formality. However, if `DOC-REFERENCES` is interpreted as the broader purpose of ensuring clear sources **within existing documents**, `Applicable` may be the better Scope and the existing contextual links should be evaluated directly for `Satisfied` or `Partial`.
-
-This distinction still requires maintainer/reviewer confirmation. `Applicability: Not Applicable` is now **proposed for the narrow catalog interpretation**, while `State: Partial` remains unapproved. A standalone catalog is **not recommended at this stage**; this is not a final Adoption Decision.
-
-**Reviewer Discrimination Gate — Applicability**
-
-**Open; proposed `Partial` State and scoped `Not Applicable` Applicability remain unapproved.** Existing contextual references are acknowledged, and the Framework Component does **not** require a standalone reference index where in-place links are clearer.
-
-- **Inspect purpose and quality:** review whether the pinned README and specialist guides link the few authoritative sources actually needed by readers, whether important links are stale, and whether duplication or discoverability is a material problem.
-- **If a separate references responsibility is applicable:** justify whether contextual linking is already `Satisfied` or `Partial` for the intended audience, without requiring a new index by default.
-- **If centralization adds no value:** evaluate `Not Applicable` for a standalone reference catalog or clarify the scope of `DOC-REFERENCES`; reconcile the conditional proposed State with the final Applicability under the Template contract.
-
-**Disposition record:** Seven-file link inventory: *recorded, bounded*; State: `Partial` *(proposed, unapproved)*; Applicability: `Not Applicable` *(proposed for centralized catalog only)*; reviewer/date: *not recorded*. No reference index is authorized.
+- **Reviewer:** Only Film maintainer
+- **Formal approval date:** 2026-11-14
+- **Approved State:** `Partial`
+- **Approved Applicability:** `Not Applicable`
+- **Approved scope:** a standalone centralized external-technical-reference catalog; no broad repository-wide absence or new obligation is established.
+- **Immutable consumer SHA:** `28d75a50e0a178954dd46acc23300d9dd327843c`
+- **Evidence basis:** The pinned README contains contextual documentation, original-source and workflow links; two pinned technical guides and the Framework References Component were revisited. Earlier seven-file sampling did not identify a repeated technical standards corpus justifying a new centralized catalog.
+- **Evidence limitations retained:** The full pinned repository link inventory and link health, relevance, authority, duplication, and broader consumer expectations were not verified. No claim is made that contextual references are unnecessary or that all links work.
+- **Original preparation:** [API and References contract-scope review batch](only-film-api-references-contract-review-batch.md) contains the preapproval proposals and alternative scope interpretations as historical evidence.
+- **Authorization boundary:** `Assessment Status: In Progress`; `Decision Status: Needs Further Evaluation`; `Adoption Decision: —`. No changes to Only Film or other implementation action authorized.
 
 **Decision Status**
 
@@ -2178,30 +2140,30 @@ The reviewer should confirm whether the narrow catalog interpretation is appropr
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and all twenty-eight have structured entries in this Assessment working record (all with allowed State values, twenty-six formally approved and 2 awaiting review): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-ADR`, `DOC-REFERENCES`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-DIAGRAMS`, `README-LICENSE`, and `DOC-SECURITY`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and all twenty-eight have structured entries in this Assessment working record (all with allowed State values, twenty-eight formally approved and none awaiting State/Applicability review): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-ADR`, `DOC-REFERENCES`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-DIAGRAMS`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has an **approved `Missing / Applicable` evaluation**, based on bounded documentation and the maintainer's separate report of no tags/Releases; no changelog implementation is authorized.
 - `README-QUICK-START` has an **approved `Partial / Applicable` evaluation**, grounded in documentary and static configuration evidence; no successful pinned-Compose run has been independently verified.
 
 ### Open Uncertainties
 
-- Human sign-off on the remaining 2 entries, including review of the proposed `DOC-API: Missing` interpretation and the Testing documentation sufficiency threshold.
-- The `README-CONTRIBUTING: Missing / Not Applicable` and `DOC-DIAGRAMS: Missing / Applicable` evaluations were formally approved on 2026-11-14; their bounded-source qualifications remain. The `DOC-API` and `DOC-REFERENCES` scoped `Not Applicable` proposals still require review, as do the independent Quick Start Compose execution gap (despite its approved documentary evaluation), security-documentation adequacy, license-status communication, architecture freshness and actual project milestone (evidence questions retained despite formal documentary approvals).
+- Human sign-off on State and Applicability is complete for all 28 entries; outstanding source limitations and the Testing documentation sufficiency threshold remain independent evidence questions.
+- The `README-CONTRIBUTING: Missing / Not Applicable` and `DOC-DIAGRAMS: Missing / Applicable` evaluations were formally approved on 2026-11-14; their bounded-source qualifications remain. The `DOC-API` and `DOC-REFERENCES` approved scoped `Not Applicable` findings retain bounded evidence limits, as do the independent Quick Start Compose execution gap (despite its approved documentary evaluation), security-documentation adequacy, license-status communication, architecture freshness and actual project milestone (evidence questions retained despite formal documentary approvals).
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the 2 unapproved State/Applicability proposals against Template metadata, preserving the twenty-six explicit 2026-11-14 maintainer approvals and their source limitations. Resolve the scoped `DOC-API` present-day API-contract and `DOC-REFERENCES` centralized-catalog interpretations before any future approval. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
+Preserve all twenty-eight explicit 2026-11-14 State and Applicability approvals and their source limitations. Next, separately evaluate the twenty-eight unresolved Adoption Decisions and any outstanding evidence gates before considering Assessment completion or authorizing changes to Only Film.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `28/28` structured entries with allowed State values; **26 approved / 2 pending human review**; `0/28` not entered.
-- **Formally approved States and Applicability evaluations in this record:** `26` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-ROADMAP`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`; maintainer, 2026-11-14).
+- **Responsibility coverage in this working artifact:** `28/28` structured entries with allowed State values; **28 approved / 0 pending human review**; `0/28` not entered.
+- **Formally approved States and Applicability evaluations in this record:** `28` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-ROADMAP`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`, `DOC-REFERENCES`; maintainer, 2026-11-14).
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; all three formerly unselected States were assigned `Missing` from bounded evidence; **two of those (`README-CONTRIBUTING` and `DOC-DIAGRAMS`) have since received explicit maintainer approval**, as have twenty-four other evaluations including `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-STATUS`, `README-REPOSITORY-STRUCTURE`, `README-ROADMAP`, `README-ARCHITECTURE`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS` and `README-LICENSE`. The third previously unselected entry (`DOC-API`) remains a proposal. Its summary remains **partial** pending human review rather than asserting conformance or completion. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; all three formerly unselected States were assigned `Missing` from bounded evidence; **two of those (`README-CONTRIBUTING` and `DOC-DIAGRAMS`) have since received explicit maintainer approval**, as have twenty-six other evaluations including `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-STATUS`, `README-REPOSITORY-STRUCTURE`, `README-ROADMAP`, `README-ARCHITECTURE`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS` and `README-LICENSE`. The third formerly unselected entry (`DOC-API`) now has an approved `Missing / Not Applicable` evaluation limited to the supported current public/programmatic API contract. All 28 classification pairs have received explicit maintainer approval. The Assessment remains **In Progress** with all Adoption Decisions unresolved. It does not establish compliance or authorize Application/Integration.
