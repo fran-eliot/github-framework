@@ -41,7 +41,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `README-QUICK-START` | Required | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P1** | [E3](only-film-required-semantic-review.md) | Maintainer-approved from bounded evidence; retain documented limitations; Adoption Decision unresolved. |
 | `README-DOCUMENTATION` | Required | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P2** | [E3](only-film-required-final-semantic-review.md) | Approved from pinned documentary evidence; retain stated limitations and unresolved Adoption Decision. |
 | `README-FOOTER` | Required | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P2** | [E3](only-film-required-final-semantic-review.md) | Approved from pinned documentary evidence; retain stated limitations and unresolved Adoption Decision. |
-| `DOC-CHANGELOG` | Required | `Missing` *(proposed; not approved)* | `Applicable` | **P1** | [E3](only-film-required-semantic-review.md) | Maintainer-approved from bounded evidence; retain documented limitations; Adoption Decision unresolved. |
+| `DOC-CHANGELOG` | Required | `Missing` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P1** | [E3](only-film-required-semantic-review.md) | Maintainer-approved from bounded evidence; retain documented limitations; Adoption Decision unresolved. |
 | `README-STATUS` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Establish repository maturity at the pinned SHA; do not confuse technology badges with status. |
 | `README-ARCHITECTURE` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-readme-semantic-review.md) | Reconcile MVC/JPA overview with code and dated audit material. |
 | `README-REPOSITORY-STRUCTURE` | Recommended | `Partial` | `Applicable` | **P3** | [E3](only-film-recommended-readme-semantic-review.md) | Check tree accuracy and navigability. |
@@ -103,7 +103,7 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 ## 4. Procedure for approving the matrix without fabricating decisions
 
 1. **Set reviewer, date, and reference.** Name the approving reviewer and confirm the pinned SHA. To assess a newer consumer `main`, refresh evidence rather than reusing the old snapshot as current.
-2. **Resolve remaining alternatives.** Use the maintainer confirmation of no tags/releases to review the proposed `Missing` on `DOC-CHANGELOG`, checking any specific equivalent source before approval. Review the now-proposed `Missing` States for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`; decide Applicability for `DOC-REFERENCES`. `Uncertain` is a supported Applicability value; `Missing / Partial` is not a valid final State.
+2. **Resolve remaining alternatives.** Retain the maintainer-approved `Missing / Applicable` on `DOC-CHANGELOG` with its bounded equivalent-source and tag-history limitations; any later source evidence may justify a reassessment. Preserve the approved `Missing` States for `README-CONTRIBUTING` and `DOC-DIAGRAMS`; review the remaining proposed `Missing` for `DOC-API`; decide Applicability for `DOC-REFERENCES`. `Uncertain` is a supported Applicability value; `Missing / Partial` is not a valid final State.
 3. **Evaluate evidence sufficiency.** Ensure each record supports the selected `State` and does not default to `Partial` merely from caution. A documentation Responsibility does not require rerunning every system test, but any operational claim must be scoped accurately.
 4. **Record formal Assessment results.** For each Responsibility, enter `State: Satisfied / Partial / Missing`, `Applicability: Applicable / Not Applicable / Uncertain`, `Evidence`, `Evaluation Rationale`, `Uncertainty`, and `Decision Status`. Do not treat proposals as approved facts.
 5. **Resolve decisions only when justified.** `Decision Status: Resolved` requires a valid Adoption Decision and rationale. Otherwise keep `Needs Further Evaluation`, `Adoption Decision: —`, and an explicit unresolved question.
@@ -133,7 +133,7 @@ The working Assessment has **28/28 structural entries**, but **28/28 contractual
 
 | Checkpoint | Expected review outcome | Current status |
 | --- | --- | --- |
-| Canonical responsibility coverage | Exactly 8 Required, 7 Recommended, and 13 Optional entries, in Template metadata order | Structured: 28/28; values unapproved |
+| Canonical responsibility coverage | Exactly 8 Required, 7 Recommended, and 13 Optional entries, in Template metadata order | Structured: 28/28; 10 approved and 18 unapproved |
 | State contract | Each of 28 entries has an allowed `Satisfied / Partial / Missing` value | **10 approved / 18 proposed** |
 | Applicability contract | `Applicable / Not Applicable / Uncertain` with justified scope | 0 `Uncertain` entries **in proposals**; all require review |
 | Evidence and rationale | Bounded source citation, interpretation, and uncertainty per Responsibility | Prepared as proposals; reviewer validation pending |
@@ -225,7 +225,7 @@ A reviewer may accept a documentation Responsibility without demanding all tests
 | Formal State approval | **No** | **No** |
 | Decision Status / Adoption Decision | `Needs Further Evaluation` / `—` | `Needs Further Evaluation` / `—` |
 
-These are the final two **P1 evidence-disposition gates**. All six P1 Responsibilities now have an explicit reviewer-facing gate, but **none has formal approval** and no adoption action is authorized.
+These are the final two **P1 evidence-disposition gates**. All six P1 Responsibilities have a reviewer-facing evidence gate. `README-QUICK-START` and `DOC-CHANGELOG` now have formal maintainer evaluation approval, while the other P1 evaluations remain pending and no adoption action is authorized.
 
 ### 6.6 Optional applicability and State discrimination — reviewer session
 
