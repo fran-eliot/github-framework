@@ -135,3 +135,22 @@ The approved `README-DEMO: Partial / Applicable` classification is unchanged. **
 
 Assessment remains **`In Progress`** with **28/28 approved State/Applicability pairs**, **23/28 formal Adoption Decisions resolved** (13 `PRESERVE`, 3 `OMIT`, 5 `ADAPT`, 2 `ADD`), **5 pending**. Only Film remains strictly unmodified; no Application/Integration, runtime testing or credential change is authorized.
 
+
+## Original academic repository license-notice reconciliation — 2026-11-14
+
+A targeted **read-only comparison** checks the fixed Only Film consumer source `28d75a50e0a178954dd46acc23300d9dd327843c` against the original public [`certidevs/g1_testing`](https://github.com/certidevs/g1_testing) **`main` branch as observed on 2026-11-14**. The original branch is **mutable** and is not claimed to represent its exact state at the consumer's historical fork, nor to provide a complete legal/permission record.
+
+| Source and scope | Directly observed statement | Evidence and rights boundary |
+| --- | --- | --- |
+| [Original academic README, license heading](https://github.com/certidevs/g1_testing/blob/main/README.md) | Under `# 📄 Licencia` the README says **`Proyecto académico desarrollado con fines educativos.`** It does **not** identify license text, name a specific reuse license or state explicit redistribution/modification terms in that section. | Educational origin is a project description, **not by itself a software license grant**. This is an observation about the currently retrieved original README, not a full historical rights determination. |
+| [Original repository root and `.github/` at `main`](https://github.com/certidevs/g1_testing/tree/main) | The inspected root listing contains no files named `LICENSE`, `LICENCE` or `COPYING`; the directly inspected `.github/` listing contains only `workflows/`. | Filename absence at those two inspected locations is **not** proof that no terms, contributor agreements, permissions or legally applicable licenses exist elsewhere. |
+| [Original `pom.xml`](https://github.com/certidevs/g1_testing/blob/main/pom.xml) | The `<licenses><license/></licenses>` element is present without named license terms, paralleling the pinned consumer POM. | Empty Maven metadata does not establish legal permissions or their absence. |
+| [Pinned consumer README — origin, credits, license](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md#L161-L176) | Attributes the academic project to four named collaborators, distinguishes later development, and expressly says the README **does not establish an additional license**. | This cautious notice is **documentary disclosure**, not an ownership analysis, license grant or independent verification of permission to reuse the original code. |
+
+### Evidence-qualified adoption decision candidate
+
+**Consider `README-LICENSE = PRESERVE`** *only* for retaining the existing non-granting academic-origin license-status notice at the pinned consumer SHA. The note's reference to the original repository does not mean that an affirmative license can be found there: the directly inspected original README only describes educational purpose. `PRESERVE` would recognize that the present caution avoids an unsupported new permission statement, **not** settle whether the notice is sufficient for every potential recipient.
+
+The preapproved `README-LICENSE: Partial / Applicable` evaluation remains unchanged, retaining unresolved source ownership, original collaborator permissions, contribution rights, attribution completeness, and any other binding terms. A future clearer explanatory notice, license file, reuse grant or redistribution claim would require **separately verified rights information and explicit authorization**; none is presumed here. This proposal does not conclude that any particular exploitation, copying or redistribution is legally permitted or forbidden.
+
+**Formal decision remains `Needs Further Evaluation / —` until the maintainer explicitly approves or rejects this specific bounded `PRESERVE` option.** Assessment remains **`In Progress`** with all 28/28 approved State/Applicability pairs, **23/28 approved Adoption Decisions** (13 `PRESERVE`, 3 `OMIT`, 5 `ADAPT`, 2 `ADD`), **5 pending**. No Only Film edit, rights declaration, Application or Integration is authorized.
