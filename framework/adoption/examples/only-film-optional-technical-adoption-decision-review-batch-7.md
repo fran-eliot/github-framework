@@ -185,3 +185,10 @@ A targeted read-only review contrasts Only Film's **current-at-the-pinned-SHA** 
 The previously approved `DOC-SECURITY: Partial / Applicable` remains unchanged, along with security-test and CI evidence limitations. A `README-DEMO` clarification remains a **separate pending Adoption Decision**; this candidate does not authorize code or README edits. Static comparison does **not** certify vulnerability absence, complete security coverage, security hardening, a passed historical Sonar Quality Gate or production readiness.
 
 **Formal Adoption Decision remains `Needs Further Evaluation / —` until express maintainer approval.** Assessment **`In Progress`**, 28/28 approved State/Applicability pairs, **23/28 formally resolved Adoption Decisions** (13 `PRESERVE`, 3 `OMIT`, 5 `ADAPT`, 2 `ADD`), **5 pending**. Only Film strictly read-only; no Application/Integration authorization.
+
+
+## Formal DOC-SECURITY Adoption Decision — 2026-11-14
+
+The Only Film maintainer expressly approved **`DOC-SECURITY = ADAPT`**, exclusively for a **future, bounded documentation-only clarification** of the 2026-10-10 historical audit's earlier SHA versus the pinned consumer state and contextual discoverability of existing demo-credential guidance. This decision does **not** establish that historical findings remain current, certify absence of vulnerabilities, verify a passed historical Quality Gate or authorize a new security disclosure policy. The formal `Partial / Applicable` evaluation and evidence limits remain unchanged. No security implementation, test, secret, configuration, README or other Only Film change is authorized.
+
+**28/28 Adoption Decisions resolved** (14 `PRESERVE`, 3 `OMIT`, 9 `ADAPT`, 2 `ADD`), 0 pending; 28 State/Applicability pairs approved. Assessment **`In Progress`** and no Application/Integration authorization.

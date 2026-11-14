@@ -141,3 +141,12 @@ A targeted read-only comparison of the pinned Only Film README, `compose.yaml`, 
 `README-QUICK-START` stays formally **`Needs Further Evaluation / —`** until explicit maintainer approval. This review does **not** conclude that the existing Quick Start fails, that a clean Compose run succeeds, or that a workflow definition verifies real execution. No runtime test, container change, deletion of volumes, secret manipulation, new healthcheck, consumer edit, or Application/Integration is authorized.
 
 The Only Film Assessment remains **`In Progress`** with all 28/28 State/Applicability approvals unchanged and **23/28 formally resolved Adoption Decisions** (13 `PRESERVE`, 3 `OMIT`, 5 `ADAPT`, 2 `ADD`); **5 pending**.
+
+
+## Formal README-QUICK-START and README-TESTING Adoption Decisions — 2026-11-14
+
+The Only Film maintainer expressly approved **`README-QUICK-START = ADAPT`**, strictly for future documentary clarification of an HTTP application-readiness check versus container listing, the effect of configurable host `APP_PORT` on the example URL, and navigation to the existing local startup guide. There is **no verified passing or failing clean pinned-SHA Compose run** in the assessed evidence. No container, environment, volume or deployment operation is authorized.
+
+The maintainer independently approved **`README-TESTING = ADAPT`**, strictly for future documentation distinguishing H2-selected tests, PostgreSQL service prerequisites, Selenium browser requirements and the actual manual versus PR CI triggers. The evidence does not establish a full Maven/Selenium/Compose suite outcome, coverage percentage or passed historical Sonar Quality Gate. No Maven, test selection, workflow or application change is authorized.
+
+Both decisions supersede the earlier deferrals while preserving the approved `Partial / Applicable` evaluations and all evidence gaps. **28/28 Adoption Decisions resolved** (14 `PRESERVE`, 3 `OMIT`, 9 `ADAPT`, 2 `ADD`), 0 pending; 28 approved State/Applicability pairs. Assessment **`In Progress`** and no Only Film change or Application/Integration authorization.
