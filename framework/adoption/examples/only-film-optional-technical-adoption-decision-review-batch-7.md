@@ -133,3 +133,10 @@ A targeted static comparison at immutable Only Film commit `28d75a50e0a178954dd4
 
 The existing formal `DOC-DEPLOYMENT: Partial / Applicable` classification remains unchanged, with `Applicable` limited to **local nonproduction Compose**. **The Adoption Decision remains `Needs Further Evaluation / —` until express maintainer approval.** Assessment `In Progress`; overall formal totals at this review: **19/28 resolved** (13 `PRESERVE`, 3 `OMIT`, 3 `ADAPT`), **9 pending**; consumer mutations `NONE`.
 
+
+
+## Formal DOC-DEPLOYMENT Adoption Decision — 2026-11-14
+
+The Only Film maintainer expressly approved **`DOC-DEPLOYMENT = ADAPT`** for a **future, bounded documentation-only clarification** of local upload persistence through Docker Compose named volumes versus production durability, backups and recovery. The existing `Partial / Applicable` classification remains unchanged, and applicability is **strictly local, nonproduction Compose only**. The preceding static evidence review establishes a documentary ambiguity, **not** a runtime failure, data-loss bug, successful pinned-SHA Compose execution or production assurance.
+
+This formal approval supersedes the earlier pending recommendation for `DOC-DEPLOYMENT` only; `DOC-DATABASE` and `DOC-SECURITY` remain unresolved. No Only Film configuration, volume, documentation, CI, test or application file is modified. No Application/Integration is authorized. Assessment `In Progress`, **21/28 resolved** (13 `PRESERVE`, 3 `OMIT`, 4 `ADAPT`, 1 `ADD`), **7 pending**; all 28 previously approved State/Applicability pairs unchanged.
