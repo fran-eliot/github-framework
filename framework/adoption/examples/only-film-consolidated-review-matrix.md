@@ -2,7 +2,7 @@
 
 ## 1. Context, purpose, and distinctions
 
-The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured, **unapproved** Responsibility records: twenty-five with a proposed State (including `DOC-REFERENCES` with Applicability `Uncertain`), and three (`README-CONTRIBUTING`, `DOC-API`, `DOC-DIAGRAMS`) with State intentionally unselected and Applicability `Uncertain` pending review. Full structural coverage does not constitute an approved or completed Assessment. The working Assessment's summary and detail blocks follow canonical `TPL-BACKEND` metadata order for reviewer comparison. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
+The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured, **unapproved** Responsibility records: twenty-five with a proposed State (including `DOC-REFERENCES` with Applicability `Uncertain`), and three (`README-CONTRIBUTING`, `DOC-API`, `DOC-DIAGRAMS`) with State intentionally unselected. `README-CONTRIBUTING` now carries proposed `Not Applicable` based on maintainer-confirmed policy; the other two remain `Uncertain`. Full structural coverage does not constitute an approved or completed Assessment. The working Assessment's summary and detail blocks follow canonical `TPL-BACKEND` metadata order for reviewer comparison. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
 
 This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting hypotheses to evaluated States or recording human approval**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
 
@@ -44,7 +44,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `DOC-PROJECT-STATUS` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Reconstruct milestones and status by area using dated references. |
 | `DOC-TESTING` | Recommended | `Partial` | `Applicable` | **P1** | [E3](only-film-testing-semantic-review.md) | Assess guidance, Surefire CI evidence, coverage, and Sonar limitations. |
 | `README-ROADMAP` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-governance-semantic-review.md) | Check currency of F3 proposals and whether a concise summary suffices. |
-| `README-CONTRIBUTING` | Optional | `Missing / Partial` | `Uncertain` | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Determine collaboration policy and sources; decide Applicability and State. |
+| `README-CONTRIBUTING` | Optional | Unselected | `Not Applicable` *(proposed from confirmed scope)* | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Determine collaboration policy and sources; decide Applicability and State. |
 | `README-DEMO` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Check screenshot representativeness and whether reproducible demo access is needed. |
 | `README-AUTHOR` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Review team attribution and later development without presuming ownership rights. |
 | `README-HIGHLIGHTS` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Evaluate editorial value of highlights without duplicating Features. |
@@ -66,7 +66,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `Missing` as the preferred State hypothesis (`DOC-CHANGELOG`) | **1** |
 | Undiscriminated `Missing / Partial` State | **3** |
 | `Applicable` as proposed Applicability | **24** |
-| Pending / `Uncertain` Applicability | **4** |
+| Proposed `Not Applicable` (maintainer-confirmed scope; formal State review pending) | **1** |
+| Pending / `Uncertain` Applicability | **3** |
 | Formally approved States | **0 recorded** |
 | Resolved Adoption Decisions | **0 recorded** |
 
@@ -227,22 +228,22 @@ This is a **review preparation gate**, not an approval. The prior E3 reviews sup
 
 | Priority | Responsibility | Evidence to establish | Conditional reviewer conclusion | Status |
 | --- | --- | --- | --- | --- |
-| P2 | `README-CONTRIBUTING` | [Expanded pinned spot check](only-film-optional-contract-spotcheck.md): README describes PR CI and onboarding but not collaboration eligibility/review; three conventional contribution paths returned pinned 404 | **Conditional recommendation:** `Applicable / Missing` if a contribution policy is expected and no equivalent exists; otherwise justify `Not Applicable` or assess verified equivalent | State unselected; Applicability `Uncertain`; no approval |
+| P2 | `README-CONTRIBUTING` | Maintainer confirmed **personal project, no external contributions (2026-11-14)**; [pinned documentation spot check](only-film-optional-contract-spotcheck.md) remains relevant for technical context | Proposed `Not Applicable` for external contribution guidance; independently select/review a contractual documentary State | State unselected; proposed Applicability `Not Applicable`; no State approval |
 | P2 | `DOC-API` | Seven pinned MVC controllers inspected with no `@RestController`, `@ResponseBody`, or `ResponseEntity`; README labels REST as future work. Complete the remaining entry-point inventory and confirm intended integrations | **Conditional recommendation:** `Not Applicable` for a standalone public API contract if no current programmatic interface is supported; reviewer must still choose a contractual State | State unselected; Applicability `Uncertain`; recommendation not approved |
 | P3 | `DOC-DIAGRAMS` | [Expanded nine-document pinned sample](only-film-optional-contract-spotcheck.md): text architecture and UI screenshots, no selected technical-diagram indicators in sampled files; establish actual diagram utility | **Conditional recommendation:** `Not Applicable` if no material diagram need; otherwise assess actual artifacts and select a valid State | State unselected; Applicability `Uncertain`; no approval |
 | P3 | `DOC-REFERENCES` | Relevance, validity and discoverability of existing contextual source links | Confirm that contextual references already suffice, identify a concrete gap, or justify non-applicability of centralization | Proposed `Partial`; Applicability `Uncertain` |
 
 **DOC-API evidence-led recommendation:** Given the seven directly inspected MVC controllers and the pinned README's future-only REST statement, `Not Applicable` is the **preferred provisional Applicability** for a public programmatic API contract, **not an approved Assessment result**. This remains conditional on the rest of the entry-point inventory and confirmation of intended API consumers. If no such contract exists, do not create OpenAPI documentation simply to satisfy an Optional label. The working record remains `Uncertain` and its State remains unselected until an explicit review. See [pinned controller evidence](only-film-optional-contract-spotcheck.md).
 
-**Evidence-led Optional recommendations:** The expanded pinned README and documentation sample support a conditional `README-CONTRIBUTING: Applicable / Missing` **only if** contribution policy is intended and no equivalent exists, and `DOC-DIAGRAMS: Not Applicable` **only if** the maintainer confirms a diagram would not serve a concrete audience need. These are reviewer choices, not automatic classifications, and the working contractual values remain unchanged. See [source details](only-film-optional-contract-spotcheck.md).
+**Evidence-led Optional recommendations:** The maintainer confirmed on 2026-11-14 that Only Film is personal and does not accept external contributions. This supports proposed `README-CONTRIBUTING: Not Applicable` while documentary State remains unselected. The expanded pinned documentation sample supports `DOC-DIAGRAMS: Not Applicable` **only if** the maintainer confirms a diagram would not serve a concrete audience need. These are reviewer choices, not automatic classifications, and the working contractual values remain unchanged. See [source details](only-film-optional-contract-spotcheck.md).
 
 **Acceptance protocol:** Record the exact pinned reference, evidence checked, intended reader/use case, chosen allowed `State` (`Satisfied`, `Partial`, or `Missing`), supported `Applicability` (`Applicable`, `Not Applicable`, or `Uncertain`), rationale, reviewer and date. `Uncertain` is a supported final Applicability **when justified**; leaving State unselected is **not** sufficient for a completed Assessment. Resolving these fields must not be confused with authorizing `ADD`, `ADAPT`, `PRESERVE`, `ACCEPT` or `OMIT`.
 
 | Reviewer sign-off | `README-CONTRIBUTING` | `DOC-API` | `DOC-DIAGRAMS` | `DOC-REFERENCES` |
 | --- | --- | --- | --- | --- |
-| Evidence need | Collaboration policy | Actual interface and consumers | Embedded-diagram search and utility | Contextual link adequacy |
+| Evidence need | No external contributions confirmed; select valid documentary State | Actual interface and consumers | Embedded-diagram search and utility | Contextual link adequacy |
 | State proposal | **Unselected** | **Unselected** | **Unselected** | `Partial` (unapproved) |
-| Applicability | `Uncertain` | `Uncertain` | `Uncertain` | `Uncertain` |
+| Applicability | `Not Applicable` *(proposed, maintainer scope confirmed)* | `Uncertain` | `Uncertain` | `Uncertain` |
 | Reviewer / date | Pending | Pending | Pending | Pending |
 | Approved result | **None** | **None** | **None** | **None** |
 | Adoption Decision | `—` | `—` | `—` | `—` |
