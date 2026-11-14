@@ -46,14 +46,14 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `README-HIGHLIGHTS` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-LICENSE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-ADR` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `DOC-API` | Optional | `Missing` *(proposed; not approved)* | `Uncertain` | `Needs Further Evaluation` | `—` |
+| `DOC-API` | Optional | `Missing` *(proposed; not approved)* | `Not Applicable` *(proposed for public API-contract scope; unapproved)* | `Needs Further Evaluation` | `—` |
 | `DOC-DATABASE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-DEPLOYMENT` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(local environment; proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-DIAGRAMS` | Optional | `Missing` *(proposed; not approved)* | `Applicable` *(proposed; maintainer interested in future diagrams, 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Not Applicable` *(proposed for central catalog; review pending)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** all **28/28** Responsibilities now have a **single allowed proposed State** (`Satisfied`, `Partial`, or `Missing`), with three new `Missing` proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`. **None of the 28 States has formal human approval.** One Applicability judgment (`DOC-API`) remains `Uncertain`; `DOC-REFERENCES` now has a scoped `Not Applicable` proposal. State proposals are not decisions to modify the consumer and the Assessment remains `In Progress`. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
+**Coverage:** all **28/28** Responsibilities now have a **single allowed proposed State** (`Satisfied`, `Partial`, or `Missing`), with three new `Missing` proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`. **None of the 28 States has formal human approval.** No Applicability field remains `Uncertain` in the **proposed Summary**, but the scoped `Not Applicable` proposals for `DOC-API` and `DOC-REFERENCES` still require formal review. State proposals are not decisions to modify the consumer and the Assessment remains `In Progress`. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -1465,7 +1465,7 @@ The maintainer must decide whether to `PRESERVE` the existing decision explanati
 
 **Applicability**
 
-`Uncertain` — no independently confirmed public REST/JSON API contract, but an interface-documentation need has not been categorically ruled out.
+`Not Applicable` — **proposed for documentation of a currently supported public/programmatic API contract** at the pinned SHA. The README explicitly frames REST as future work, and the seven pinned controllers inspected serve MVC views/redirects. This is a scoped, **unapproved** applicability proposal; the complete pinned entry-point inventory has not been established.
 
 **Implementation Characteristics**
 
@@ -1476,7 +1476,7 @@ No public API contract implementation was verified in the prior evidence. Spring
 - Whether any public JSON/REST endpoints or consumer-facing HTTP contracts exist at the pinned SHA beyond the examined MVC controllers.
 - Whether the project's audience needs a documented programmatic API, a bounded internal HTTP contract, or simply web navigation and developer guidance.
 - Whether an `OpenAPI`/`Swagger` specification or other equivalent API document exists outside the filename/path checks already performed.
-- Whether `DOC-API` is in scope for this server-rendered application today, rather than only for a prospective REST API feature.
+- The proposed scope excludes a **public/programmatic API contract** at the evaluated reference, consistent with the README's future-only REST roadmap. The remaining question is whether any other pinned integration/JSON routes or external consumers contradict that interpretation.
 
 **Detected Facts**
 
@@ -1495,11 +1495,19 @@ No public API contract implementation was verified in the prior evidence. Spring
 
 **Evaluation Rationale**
 
-An API documentation Responsibility should be evaluated against an actual interface and its consumers, not a generic expectation that every backend publishes REST endpoints. The README treats REST as future work, and the currently reviewed routes relate to server-rendered MVC. `Missing` would need a confirmed applicable API-documentation requirement that is unmet; `Partial` would need demonstrable partial coverage of that requirement. Neither is established by the available bounded review. `State: Missing` is provisionally proposed from the bounded documentary evidence, while Applicability stays `Uncertain` pending remaining interface and consumer checks.
+An API documentation Responsibility should be evaluated against an actual interface and its consumers, not a generic expectation that every backend publishes REST endpoints. The README treats REST as future work, and the currently reviewed routes relate to server-rendered MVC. `Missing` would need a confirmed applicable API-documentation requirement that is unmet; `Partial` would need demonstrable partial coverage of that requirement. Neither is established as an applicable *deficiency* by the bounded review. `State: Missing` remains a provisional statement that no public API documentation was observed. `Applicability: Not Applicable` is separately proposed for the **current programmatic API** scope, based on the README and reviewed controllers; a full inventory may revise this interpretation.
+
+**Current-Scope Applicability Proposal — reviewer sign-off pending**
+
+**Proposal:** `State: Missing` / `Applicability: Not Applicable` **as independent values** for a supported, external/programmatic API documentation Responsibility at consumer SHA `28d75a50e0a178954dd46acc23300d9dd327843c`. The pinned README explicitly places REST API under future enhancements, not current functionality, while the seven directly checked controllers implement MVC view/redirect handlers. No standalone programmatic API contract was established by that evidence.
+
+**Limit:** a complete pinned repository tree, all possible routing mechanisms, and actual integration consumers were **not independently inventoried**. This remains a reviewable *proposal*, not a proof that there are no programmatic endpoints. If a real current interface or consumer is identified, reconsider `Applicable` and reassess its documentation. No OpenAPI specification or API feature is authorized by this Assessment.
+
+The existing `Decision Status: Needs Further Evaluation` and `Adoption Decision: —` continue to apply. The recommendation is **not** a signed-off evaluation.
 
 **Evidence-Based Applicability Recommendation**
 
-**Provisional recommendation: `Not Applicable` for a standalone public/programmatic API contract at the pinned commit — subject to maintainer review. This recommendation does not overwrite the working `Applicability: Uncertain` or select a contractual State.**
+**Proposed `Not Applicable` for the current public/programmatic API-contract scope — subject to maintainer review.** The `State: Missing` proposal remains separate and unapproved. This is not a repository-wide absence finding.
 
 At `28d75a50e0a178954dd46acc23300d9dd327843c`, direct inspection of seven controller files — `MovieController.java`, `RoomController.java`, `SessionController.java`, `TicketController.java`, `UserController.java`, `AuthController.java`, and `ReviewController.java` — found Spring `@Controller` classes with view/redirect-returning handlers. **None of those seven files declares `@RestController`, `@ResponseBody`, or `ResponseEntity`.** The pinned README separately and explicitly describes `API REST` as a *possible future extension*, not an implemented feature.
 
@@ -1515,17 +1523,17 @@ These positive observations are stronger than filename or mutable-branch code se
 
 **Reviewer Discrimination Gate — State and Applicability**
 
-**`State: Missing` now proposed; no State or Applicability approval recorded.** A server-rendered Spring MVC controller is not automatically a public REST API, and the pinned README lists an API REST as **possible future work**.
+**`State: Missing` and scoped `Applicability: Not Applicable` proposed; no formal approval recorded.** A server-rendered Spring MVC controller is not automatically a public REST API, and the pinned README lists an API REST as **possible future work**.
 
 - **Determine the contract and audience:** inspect the pinned controllers for consumer-facing JSON, programmatic HTTP contracts, or integrations. Decide whether documentation of any actual interface is materially needed for the intended consumer; do not classify a prospective feature as already implemented.
 - **If an applicable interface exists:** identify concrete endpoints and existing contractual documentation before judging `Satisfied`, `Partial` or `Missing`. A lack of OpenAPI/Swagger filenames alone does not demonstrate absence.
 - **If no API documentation purpose applies today:** explain `Not Applicable` based on the project's present supported interfaces and users. Optionality by itself does not settle the issue.
 
-**Disposition record:** Supported interface contract: *unverified beyond bounded MVC inspection*; consumer need: *pending*; proposed contractual State: `Missing` *(unapproved)*; Applicability: `Uncertain`; reviewer/date: *not recorded*. No API specification, new endpoint, or adoption action is authorized.
+**Disposition record:** Supported interface contract: *unverified beyond bounded MVC inspection*; consumer need: *pending*; proposed contractual State: `Missing` *(unapproved)*; Applicability: `Not Applicable` *(for currently supported external API contract; unapproved)*; reviewer/date: *not recorded*. No API specification, new endpoint, or adoption action is authorized.
 
 **Contractual State Proposal — reviewer sign-off pending**
 
-The proposed `Missing` State records **no programmatic API documentation identified in the reviewed evidence**, rather than asserting that the Spring MVC web application has no HTTP routes. `Applicability: Uncertain` remains appropriate because a complete pinned entry-point/integration inventory was not established. If the remaining audit or maintainer reveals a supported external API, revisit both State and applicability; do not infer `Partial` merely from existing MVC page documentation.
+The proposed `Missing` State records **no programmatic API documentation identified in the reviewed evidence**, rather than asserting that the Spring MVC web application has no HTTP routes. `Applicability: Not Applicable` is proposed for the scoped, present-day public API contract based on the README and inspected MVC controllers; the nonexhaustive entry-point inventory is an explicit review limitation. If the remaining audit or maintainer reveals a supported external API, revisit both State and applicability; do not infer `Partial` merely from existing MVC page documentation.
 
 This is a **proposed** State, **not** confirmation that an API specification should be created or an Adoption Decision should be `ADD`.
 
@@ -1539,7 +1547,7 @@ This is a **proposed** State, **not** confirmation that an API specification sho
 
 **Decision Rationale**
 
-Review the actual supported interfaces and intended consumers. If API documentation is not needed for this application's present scope, the reviewer can justify `Not Applicable` and then complete State under the Template's rules; otherwise identify concrete applicable contracts and select State on evidence. No speculative REST API documentation or consumer changes follow from this record.
+Review the actual supported interfaces and intended consumers. The proposal treats a public API documentation obligation as `Not Applicable` to the evidenced present-day MVC consumer scope, subject to reviewer confirmation and remaining integration evidence; otherwise identify concrete applicable contracts and select State on evidence. No speculative REST API documentation or consumer changes follow from this record.
 
 ---
 
@@ -1937,14 +1945,14 @@ The reviewer should confirm whether the narrow catalog interpretation is appropr
 ### Open Uncertainties
 
 - Human sign-off on all twenty-eight structured entries, including formal review of the three newly selected `Missing` proposals and `DOC-CHANGELOG` interpretation and the Testing documentation sufficiency threshold.
-- Formal approval or revision of the `Missing` State proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`, review of the confirmed `README-CONTRIBUTING` no-external-contribution scope and its proposed `Not Applicable` interpretation, Applicability review for `DOC-API`, confirmation of the scoped `Not Applicable` proposal for `DOC-REFERENCES` and proposed `Applicable` for `DOC-DIAGRAMS`, and human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Formal approval or revision of the `Missing` State proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`, review of the confirmed `README-CONTRIBUTING` no-external-contribution scope and its proposed `Not Applicable` interpretation, Formal review of the new, narrowly scoped `DOC-API: Not Applicable` proposal and the `DOC-REFERENCES: Not Applicable` catalog proposal and proposed `Applicable` for `DOC-DIAGRAMS`, and human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the full 28-Responsibility working Assessment against Template metadata, first reviewing all 28 proposed States (including three newly proposed `Missing` values), resolving the the remaining `Uncertain` Applicability judgment for `DOC-API` and the scope of the `DOC-REFERENCES` catalog proposal, and confirming the `Not Applicable` / `Applicable` scope interpretations for `README-CONTRIBUTING` / `DOC-DIAGRAMS`. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
+Review the full 28-Responsibility working Assessment against Template metadata, first reviewing all 28 proposed States (including three newly proposed `Missing` values), resolving the the `DOC-API` present-day API-contract scope and the `DOC-REFERENCES` centralized-catalog scope, and confirming the `Not Applicable` / `Applicable` scope interpretations for `README-CONTRIBUTING` / `DOC-DIAGRAMS`. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
 
 ---
 
