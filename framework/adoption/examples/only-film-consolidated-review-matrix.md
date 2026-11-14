@@ -26,6 +26,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **First README presentation review batch:** [README presentation — human review batch 1](only-film-readme-presentation-review-batch-1.md) rechecks the pinned README, POM and Compose against the Hero, Overview and Tech Stack Components. Its recommendations were **explicitly approved by the maintainer on 2026-11-14**: `README-HERO: Satisfied / Applicable`, `README-OVERVIEW: Satisfied / Applicable`, and `README-TECH-STACK: Partial / Applicable`. Their documentary limitations remain, and no Adoption Decision was authorized. The preparation packet's original wording is retained as an evidence trail; this matrix and the Assessment record the subsequent approvals.
 
+**Second README content review batch:** [README content — human review batch 2](only-film-readme-content-review-batch-2.md) directly inspects the pinned README, linked technical guides and selected workflows against the Features, Documentation and Footer Components. It offers `Satisfied / Applicable` as a review candidate for `README-FEATURES` and conservatively retains `Partial / Applicable` for `README-DOCUMENTATION` and `README-FOOTER`. These recommendations are **not approvals**; existing Assessment fields remain unchanged until the maintainer explicitly decides.
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
