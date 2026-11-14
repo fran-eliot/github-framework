@@ -8,12 +8,28 @@
 | Pinned consumer SHA | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-TESTING`, `DOC-TESTING`, `DOC-SECURITY` |
-| Review status | **Maintainer review proposals; no approval of these three entries recorded here** |
-| Previously approved evaluations | `10/28` |
+| Review status | **Three evaluations formally approved by the Only Film maintainer on 2026-11-14; see decision record below** |
+| Approved evaluations after maintainer review | `13/28` |
 | Assessment status | `In Progress` |
 | Consumer mutation | `NONE` |
 
 This packet verifies **pinned, directly fetched** source documents and separates documentary completeness from test outcomes or security assurance. It uses the Assessment's prior run-log evidence for historical outcomes; **no GitHub Actions log was freshly downloaded or reverified in this packet**. Merging this packet is not human approval of the proposed States/Applicability, nor permission to modify Only Film.
+
+## Formal maintainer review outcome — 2026-11-14
+
+The Only Film maintainer **explicitly approved** the following three independent documentary evaluations:
+
+| Responsibility | Approved State | Approved Applicability |
+| --- | --- | --- |
+| `README-TESTING` | `Partial` | `Applicable` |
+| `DOC-TESTING` | `Partial` | `Applicable` |
+| `DOC-SECURITY` | `Partial` | `Applicable` |
+
+The approvals **preserve all evidence limitations**, including the distinction between the selected H2 regression and full test execution, unverified JaCoCo coverage and historical Sonar Quality Gate, the documented local/CI named-test selection difference, and the 2026-10-10 security audit's older reference. Neither test failure nor current security vulnerability is inferred.
+
+All three entries retain `Decision Status: Needs Further Evaluation` and `Adoption Decision: —`; the overall Assessment remains `In Progress`. No modification to Only Film or security assurance is authorized.
+
+The following evaluation alternatives and reviewer gates are preserved as the **pre-approval preparation record**; their historical references to pending review do not supersede the dated decision above.
 
 ## Recommendation table
 
