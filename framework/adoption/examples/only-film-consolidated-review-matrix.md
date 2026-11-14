@@ -34,6 +34,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Architecture, status and license review batch:** [Architecture, Project Status and License — human review batch](only-film-architecture-status-license-review-batch.md) compares the pinned README, POM and earlier architecture/functional/maturity audits against the Framework's architecture and project status components. The maintainer **explicitly approved `README-ARCHITECTURE: Satisfied / Applicable` and `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `README-LICENSE: Partial / Applicable` on 2026-11-14**. Historical findings remain separate from current architecture/status; licensing rights remain unverified. The review packet preserves earlier alternatives as its pre-approval evidence record. No Adoption Decision or consumer edit was authorized.
 
+**README status, structure and roadmap review batch:** [README Status, Repository Structure and Roadmap — human review batch](only-film-readme-status-structure-roadmap-review-batch.md) directly checks the pinned README, `TPL-BACKEND` metadata and applicable Status/Roadmap Components, while bounding two historical planning/maturity sources. It recommends `README-STATUS: Partial / Applicable`, `README-REPOSITORY-STRUCTURE: Satisfied / Applicable` as a candidate, and `README-ROADMAP: Partial / Applicable`. The three entries are **not approved** by adding this packet; the Assessment remains at 17/28 approvals.
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
