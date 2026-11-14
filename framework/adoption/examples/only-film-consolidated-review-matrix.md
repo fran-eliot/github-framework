@@ -13,7 +13,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | Template | [TPL-BACKEND 0.1.0](../../templates/repositories/backend/metadata.yml) |
 | Responsibilities consolidated | `28/28` — **28 approved / 0 proposals** |
 | Human-reviewed States and Applicability | **28 approved on 2026-11-14**, 0 pending |
-| Resolved Adoption Decisions | `12` (eleven `PRESERVE`: Hero, Overview, Features, Documentation, Footer, Architecture, Repository Structure, DOC-TESTING, README-AUTHOR, README-HIGHLIGHTS, DOC-ADR; one `OMIT`: README-CONTRIBUTING; 16 unresolved) |
+| Resolved Adoption Decisions | `14` (eleven `PRESERVE`: Hero, Overview, Features, Documentation, Footer, Architecture, Repository Structure, DOC-TESTING, README-AUTHOR, README-HIGHLIGHTS, DOC-ADR; three `OMIT`: README-CONTRIBUTING, DOC-API, DOC-REFERENCES; 14 unresolved) |
 | Assessment Status | `In Progress` |
 | Consumer Mutation | `NONE` |
 
@@ -56,7 +56,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Optional technical documentation Adoption Decision review batch 7:** [ADR, Database, Deployment and Security — decision review](only-film-optional-technical-adoption-decision-review-batch-7.md) was **formally reviewed by the maintainer on 2026-11-14**. `DOC-ADR` was **resolved as `PRESERVE`** for bounded, existing distributed Flyway/Dependabot decision guidance, without implying a comprehensive ADR registry or current approval of older audit proposals. `DOC-DATABASE`, `DOC-DEPLOYMENT` (local Compose scope only) and `DOC-SECURITY` were **expressly retained as `Needs Further Evaluation / —`**. Neither a successful pinned Compose smoke run, complete schema inventory, current historical-audit defects, a full security assessment nor a passed historical Quality Gate is established. Preparation suggestions remain historical review context; no consumer mutation is authorized.
 
-**API, Diagrams and References Adoption Decision review batch 8:** [API, Diagrams and References — decision review](only-film-api-diagrams-references-adoption-decision-review-batch-8.md) revisits the approved limited nonapplicability scopes for public programmatic API documentation and a standalone reference catalog. It proposes carefully bounded `OMIT` candidates for `DOC-API` and `DOC-REFERENCES` while preserving web-controller documentation and contextual links. `DOC-DIAGRAMS` remains `Needs Further Evaluation / —` by default because future interest has not yet specified a chosen, source-verified diagram. **This preparation packet grants no new Adoption Decision; 12 prior resolutions remain, 16 unresolved.**
+**API, Diagrams and References Adoption Decision review batch 8:** [API, Diagrams and References — decision review](only-film-api-diagrams-references-adoption-decision-review-batch-8.md) was **formally reviewed by the maintainer on 2026-11-14**. `DOC-API` and `DOC-REFERENCES` were each **resolved as `OMIT`**, limited respectively to public/programmatic API-contract documentation and a standalone centralized reference catalog. Existing HTTP routes and in-context references are not removed, and no repository-wide interface or link-health conclusion is made. `DOC-DIAGRAMS` was **expressly retained as `Needs Further Evaluation / —`** pending scope, source verification and acceptance criteria. No diagram generation or consumer mutation is authorized.
 
 ## 2. Consolidated proposals and next review gates
 
@@ -104,7 +104,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `Uncertain` Applicability in current working entries | **0** |
 | Formally approved State and Applicability evaluations | **28** |
 | Still awaiting formal evaluation approval | **0** |
-| Resolved Adoption Decisions | **12** (11 `PRESERVE`, 1 `OMIT`; 16 remain open) |
+| Resolved Adoption Decisions | **14** (11 `PRESERVE`, 3 `OMIT`; 14 remain open) |
 
 These are **working Assessment counts** rather than conformance scores. Scoped `Not Applicable` for `DOC-API` and `DOC-REFERENCES` is formally approved as separate Applicability values, with the specific documentary scope and source limitations retained.
 
@@ -147,7 +147,7 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 | Responsibilities with proposed E3 records | `28` |
 | Responsibilities with approved evaluations | `28` recorded |
 | First recommended set | P1: Quick Start, Changelog, Testing, Security, and License |
-| Required next output | Review the 16 unresolved Adoption Decisions separately without authorizing consumer mutations |
+| Required next output | Review the 14 unresolved Adoption Decisions separately without authorizing consumer mutations |
 | Assessment Status | `In Progress` |
 
 **Outcome:** the matrix reduces evidence fragmentation and makes review priorities explicit. It **does not replace human Assessment**, constitute an Adoption Decision, or modify the consumer.
@@ -165,7 +165,7 @@ The working Assessment has **28/28 structural entries**, but **28/28 contractual
 | State contract | Each of 28 entries has an allowed `Satisfied / Partial / Missing` value | **28 approved / 0 proposed** |
 | Applicability contract | `Applicable / Not Applicable / Uncertain` with justified scope | All 28 approved; 0 `Uncertain` in current Summary; two carefully scoped `Not Applicable` results |
 | Evidence and rationale | Bounded source citation, interpretation, and uncertainty per Responsibility | Approved documentary evaluations retain named source limitations and independent technical questions |
-| Decision handling | `Needs Further Evaluation` may retain `Adoption Decision: —`; `Resolved` must have rationale | 12 formally resolved (11 `PRESERVE`, 1 `OMIT`) with individual rationales; 16 unresolved |
+| Decision handling | `Needs Further Evaluation` may retain `Adoption Decision: —`; `Resolved` must have rationale | 14 formally resolved (11 `PRESERVE`, 3 `OMIT`) with individual rationales; 14 unresolved |
 | Reviewer attribution | Named reviewer, reference confirmation, review scope and date | Only Film maintainer, 2026-11-14; immutable consumer SHA recorded |
 | Completion | Apply [Assessment Template Completion Check](../assessment-template.md) to reviewed contractual fields | `In Progress` |
 
@@ -290,4 +290,4 @@ This is a **review preparation gate**, not an approval. The prior E3 reviews sup
 
 For each Responsibility, a reviewer should confirm the pinned reference, inspect the minimum linked evidence, and **explicitly approve or revise** State, Applicability, and Evaluation Rationale. Record the reviewer and date on the Assessment (or a directly linked review record) before counting an evaluation as approved. Leave `Decision Status: Needs Further Evaluation` and `Adoption Decision: —` when no adoption action has been authorized.
 
-All 28 State and Applicability pairs have formally approved values. A future `Complete` status must be judged separately under the [Completion Check](../assessment-template.md); **16 Adoption Decisions remain unresolved** and none is authorized by this approval. That status does not authorize modifications to Only Film or imply conformance certification.
+All 28 State and Applicability pairs have formally approved values. A future `Complete` status must be judged separately under the [Completion Check](../assessment-template.md); **14 Adoption Decisions remain unresolved** and none is authorized by this approval. That status does not authorize modifications to Only Film or imply conformance certification.
