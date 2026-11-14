@@ -2,9 +2,9 @@
 
 ## 1. Context, purpose, and distinctions
 
-The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured Responsibility records: **twenty-eight formally approved** by the maintainer on 2026-11-14 (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `DOC-ADR`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-ROADMAP`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`, `DOC-REFERENCES`) and **0 still proposed/unapproved**. All twenty-eight have allowed State values, including `Missing` for those two approved records and the approved scoped `DOC-API` classification. `README-CONTRIBUTING` has approved `Not Applicable` based on the confirmed contribution policy, `DOC-DIAGRAMS` has approved `Applicable` based on future diagram interest, and `DOC-API` has approved scoped `Not Applicable` for a current public/programmatic API contract, bounded by the seven-controller review. Full structural coverage does not constitute an approved or completed Assessment. The working Assessment's summary and detail blocks follow canonical `TPL-BACKEND` metadata order for reviewer comparison. This matrix tracks completed State/Applicability approvals and the remaining **Adoption Decision and evidence gates**; it is not a completed Assessment.
+The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured Responsibility records: **twenty-eight formally approved** by the maintainer on 2026-11-14 (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `DOC-ADR`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-ROADMAP`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`, `DOC-REFERENCES`) and **0 still proposed/unapproved**. All twenty-eight have allowed State values, including `Missing` for those two approved records and the approved scoped `DOC-API` classification. `README-CONTRIBUTING` has approved `Not Applicable` based on the confirmed contribution policy, `DOC-DIAGRAMS` has approved `Applicable` based on future diagram interest, and `DOC-API` has approved scoped `Not Applicable` for a current public/programmatic API contract, bounded by the seven-controller review. Structural coverage alone did not constitute an approved or completed Assessment at the initial review stage. The [canonical Assessment](only-film-assessment.md) was **subsequently formally completed** by the maintainer on 2026-11-14, with all 28 State/Applicability pairs and all 28 Adoption Decisions approved. This matrix preserves the initial review questions and their historical provenance alongside the final decisions and unresolved **technical evidence limitations**; it is not an Application or Integration record.
 
-This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without treating those approvals as Adoption Decisions; twenty-eight explicit maintainer approvals are now recorded**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
+This matrix **consolidates** the 28 historical E3 proposals for `TPL-BACKEND` 0.1.0, the separate human approvals of classifications and Adoption Decisions, and the later documentary completion judgment. Earlier proposed gates remain useful source history, **not current unresolved Adoption Decisions or prerequisites for an already approved documentary close**. The [Assessment Template](../assessment-template.md) remains the completion contract.
 
 | Field | Value |
 | --- | --- |
@@ -165,7 +165,7 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 | Responsibilities with proposed E3 records | `28` |
 | Responsibilities with approved evaluations | `28` recorded |
 | First recommended set | P1: Quick Start, Changelog, Testing, Security, and License |
-| Required next output | Review the 12 unresolved Adoption Decisions separately without authorizing consumer mutations |
+| Historical next output at that review stage | Review the then-12 unresolved Adoption Decisions (subsequently all resolved); no consumer mutations authorized |
 | Assessment Status | `Complete` — expressly approved 2026-11-14, documentary-only, pinned consumer SHA; no Application/Integration authorization |
 
 **Outcome:** the matrix reduces evidence fragmentation and makes review priorities explicit. It **does not replace human Assessment**, constitute an Adoption Decision, or modify the consumer.
@@ -173,7 +173,7 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 
 ## 6. Review readiness and handoff gates
 
-The working Assessment has **28/28 structural entries**, but **28/28 contractual State values** (28 approved, 0 proposals) and **28 explicit maintainer approvals**. The tables below describe **questions to decide**, not decisions taken. Approval of State/Applicability is already recorded; a merged PR **does not resolve an Adoption Decision** or authorize changes to the consumer.
+The Assessment has **28/28 structured entries** and **28/28 formally approved State/Applicability evaluations**. **This section retains historical, pre-completion handoff checkpoints**: its original 16-resolved/12-open decision snapshot is no longer the current disposition. All 28 Adoption Decisions were subsequently resolved and the maintainer expressly approved documentary Assessment `Complete` on 2026-11-14. A merged PR alone does not authorize new decisions or consumer changes.
 
 ### 6.1 Contract and evidence checkpoints
 
@@ -183,9 +183,9 @@ The working Assessment has **28/28 structural entries**, but **28/28 contractual
 | State contract | Each of 28 entries has an allowed `Satisfied / Partial / Missing` value | **28 approved / 0 proposed** |
 | Applicability contract | `Applicable / Not Applicable / Uncertain` with justified scope | All 28 approved; 0 `Uncertain` in current Summary; two carefully scoped `Not Applicable` results |
 | Evidence and rationale | Bounded source citation, interpretation, and uncertainty per Responsibility | Approved documentary evaluations retain named source limitations and independent technical questions |
-| Decision handling | `Needs Further Evaluation` may retain `Adoption Decision: —`; `Resolved` must have rationale | 16 formally resolved (13 `PRESERVE`, 3 `OMIT`) with individual rationales; 12 unresolved |
+| Decision handling (historical snapshot) | `Needs Further Evaluation` may retain `Adoption Decision: —`; `Resolved` must have rationale | **At the time of this earlier checkpoint:** 16 resolved / 12 unresolved. **Final record:** 28 resolved / 0 unresolved |
 | Reviewer attribution | Named reviewer, reference confirmation, review scope and date | Only Film maintainer, 2026-11-14; immutable consumer SHA recorded |
-| Completion | Apply [Assessment Template Completion Check](../assessment-template.md) to reviewed contractual fields | `In Progress` |
+| Completion (historical checkpoint) | Apply [Assessment Template Completion Check](../assessment-template.md) to reviewed contractual fields | **Then:** `In Progress`; **final approved status:** `Complete` (documentary only, 2026-11-14) |
 
 ### 6.2 Approved State and Applicability outcomes with unresolved evidence gates
 
@@ -308,4 +308,4 @@ This is a **review preparation gate**, not an approval. The prior E3 reviews sup
 
 For each Responsibility, a reviewer should confirm the pinned reference, inspect the minimum linked evidence, and **explicitly approve or revise** State, Applicability, and Evaluation Rationale. Record the reviewer and date on the Assessment (or a directly linked review record) before counting an evaluation as approved. Leave `Decision Status: Needs Further Evaluation` and `Adoption Decision: —` when no adoption action has been authorized.
 
-All 28 State and Applicability pairs have formally approved values. A future `Complete` status must be judged separately under the [Completion Check](../assessment-template.md); **12 Adoption Decisions remain unresolved** and none is authorized by this approval. That status does not authorize modifications to Only Film or imply conformance certification.
+All 28 State/Applicability pairs were formally approved. **Historically**, at this checkpoint 12 Adoption Decisions were still unresolved and documentary completion required separate approval. **Subsequently**, the maintainer approved all 28 Adoption Decisions and expressly approved `Complete` on 2026-11-14, as documented in the [canonical Assessment](only-film-assessment.md) and [completion record](only-film-assessment-completion-readiness.md). This does **not** authorize Only Film modifications, Application/Integration, conformance certification, complete tests, security assurance or license rights.
