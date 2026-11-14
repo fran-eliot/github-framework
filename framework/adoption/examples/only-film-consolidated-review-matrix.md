@@ -32,6 +32,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Testing and security review batch:** [Testing and Security — human review batch](only-film-testing-security-review-batch.md) directly rechecks pinned README, test workflows, PostgreSQL testing, JaCoCo and SonarCloud guides, demo-credential guidance and the earlier historical security audit. The maintainer **explicitly approved `Partial / Applicable` for all three** (`README-TESTING`, `DOC-TESTING`, `DOC-SECURITY`) on 2026-11-14. The source boundaries and the JaCoCo guide/workflow selection discrepancy remain recorded, **not** as failing-test or security findings. No consumer edit is authorized.
 
+**Architecture, status and license review batch:** [Architecture, Project Status and License — human review batch](only-film-architecture-status-license-review-batch.md) compares the pinned README, POM and earlier architecture/functional/maturity audits against the Framework's architecture and project status components. It proposes `README-ARCHITECTURE: Satisfied / Applicable` as a **candidate**, and retaining `Partial / Applicable` for `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS` and `README-LICENSE`. Historical findings are not promoted into current defects; the cautious license notice does not prove rights. All four still require express maintainer approval; the Assessment remains unchanged.
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
