@@ -36,6 +36,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **README status, structure and roadmap review batch:** [README Status, Repository Structure and Roadmap — human review batch](only-film-readme-status-structure-roadmap-review-batch.md) directly checks the pinned README, `TPL-BACKEND` metadata and applicable Status/Roadmap Components, while bounding two historical planning/maturity sources. The maintainer **expressly approved `README-STATUS: Partial / Applicable`, `README-REPOSITORY-STRUCTURE: Satisfied / Applicable` and `README-ROADMAP: Partial / Applicable` on 2026-11-14**. The original preparation alternatives remain in the batch for traceability; historical status and F3 planning are not promoted to current facts, and no Adoption Decision or consumer edit is authorized.
 
+**Demo, author and highlights review batch:** [Demo, Author and Highlights — human review batch](only-film-demo-author-highlights-review-batch.md) revisits directly inspected pinned README content and Framework documentary expectations. It proposes `README-DEMO: Partial / Applicable`, with `README-AUTHOR: Satisfied / Applicable` and `README-HIGHLIGHTS: Satisfied / Applicable` as **candidate** documentary interpretations. Screenshot pixels were not independently inspected, Compose startup was not rerun and academic credits do not establish ownership or licensing rights. All three remain unapproved and no consumer action follows.
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
