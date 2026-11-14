@@ -9,12 +9,29 @@
 | Framework Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER` |
 | Formal State / Applicability approval | **28/28 approved (unchanged)** |
-| Adoption Decisions resolved | **3/28** (`README-HERO`, `README-OVERVIEW`, `README-FEATURES` — `PRESERVE`) |
-| Other Adoption Decisions | **25/28 unresolved**, including all four in this packet |
+| Adoption Decisions resolved | **5/28** (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER` — `PRESERVE`; maintainer approvals 2026-11-14) |
+| Other Adoption Decisions | **23/28 unresolved**, including `README-TECH-STACK` and `README-QUICK-START` in this packet |
 | Assessment | `In Progress` |
 | Consumer modifications | `NONE` |
 
 This packet is **preparation for separate maintainer authorization**, not an approval of any Adoption Decision. The source documents below were directly re-fetched at the pinned consumer SHA or, where specified, retained as bounded previously recorded Framework evidence. The existing formally approved `State` and `Applicability` pairs remain unchanged. The [Assessment Template](../assessment-template.md) requires an explicit `Decision Rationale` for every `Resolved` Adoption Decision; `Needs Further Evaluation / —` remains valid when the decision evidence is insufficient.
+
+## Formal maintainer Adoption Decision outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved two further `PRESERVE` decisions**, and explicitly retained the other two as unresolved:
+
+| Responsibility | Decision Status | Adoption Decision | Decision rationale and evidence boundary |
+| --- | --- | --- | --- |
+| `README-TECH-STACK` | `Needs Further Evaluation` | `—` | Decide between `PRESERVE` and a source-backed, specifically bounded `ADAPT`; incomplete tool usage verification and static Compose evidence remain |
+| `README-QUICK-START` | `Needs Further Evaluation` | `—` | No independently verified clean pinned-SHA Compose build/start; documentary sufficiency versus a reproduction gate remains open, without implying failure |
+| `README-DOCUMENTATION` | `Resolved` | `PRESERVE` | Retain current task-oriented in-context navigation; full link-health, guide freshness and reader-discoverability validation not performed |
+| `README-FOOTER` | `Resolved` | `PRESERVE` | Retain current cautious academic credits and non-granting license note; **no legal rights, contributor permissions or completeness of attribution verified** |
+
+These are **Adoption Decisions**, distinct from all **28 previously approved and unchanged State / Applicability pairs**. The evaluated consumer remains pinned to `28d75a50e0a178954dd46acc23300d9dd327843c`. Preservation does **not** assert successful Docker Compose execution, comprehensive link correctness, ownership, intellectual-property permissions, new license rights or production readiness.
+
+**Authorization boundary:** Assessment `In Progress`; **5 of 28 decisions resolved, 23 unresolved**. No consumer code, documentation, workflow, deployment or integration changes are approved. Only Film remains read-only.
+
+The candidate matrix and earlier pending-review instructions below are **historical preparation** and do not override the formal outcome above.
 
 ## Decision candidates
 
@@ -101,4 +118,4 @@ Consider `ADAPT` only after identifying a particular important unlinked document
 
 After express maintainer approval, record each approved `Resolved` decision and its rationale in a **separate PR** updating the canonical Assessment, review packet and consolidated matrix. Keep unresolved rows `Needs Further Evaluation / —`. Leave all **28 approved State/Applicability pairs unchanged**, the Assessment `In Progress`, and Only Film read-only.
 
-**Merging this preparation packet is not formal Adoption Decision approval**, execution authority, a deployment permission or a decision to edit Only Film.
+**Historical preparation boundary:** Merging the preparation PR did not constitute Adoption Decision approval. The later **explicit maintainer approval on 2026-11-14** resolved `README-DOCUMENTATION` and `README-FOOTER` as `PRESERVE`, leaving `README-TECH-STACK` and `README-QUICK-START` unresolved. Neither decision authorizes any mutation of Only Film.
