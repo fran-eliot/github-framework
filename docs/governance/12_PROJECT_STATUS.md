@@ -8,7 +8,7 @@
 | **Fase**                 | Post-release — Assisted Analysis Core                |
 | **Sprint actual**        | Ninguno activo                                              |
 | **Versión objetivo**     | Ninguna comprometida                                                    |
-| **Última actualización** | 2026-11-12                                                |
+| **Última actualización** | 2026-11-14                                                |
 
 ---
 
@@ -34,6 +34,19 @@ Tras publicar `v0.10.0`, se ha ampliado el Framework Validator en `main` mediant
 **Estado:** integrado en `main` y verificado por CI; no publicado en una nueva versión etiquetada. La versión publicada continúa siendo `v0.10.0`. No hay Sprint activo, milestone nueva ni versión objetivo comprometida.
 
 **Siguiente decisión:** concretar un incremento centrado en la aplicación práctica del Framework por consumidores y verificarlo antes de comprometer una release. No convertir estas mejoras del Validator en automatización semántica de Existing Repository Adoption.
+
+---
+
+## Caso práctico — Only Film: Assessment documental completado (2026-11-14)
+
+El Assessment de [Only Film](https://github.com/fran-eliot/only_film) frente a `TPL-BACKEND 0.1.0`, fijado en el commit `28d75a50e0a178954dd46acc23300d9dd327843c`, ha finalizado con aprobación formal del mantenedor. El [Assessment canónico](../../framework/adoption/examples/only-film-assessment.md), su [matriz consolidada](../../framework/adoption/examples/only-film-consolidated-review-matrix.md) y el [registro de verificación de cierre](../../framework/adoption/examples/only-film-assessment-completion-readiness.md) documentan el resultado:
+
+- **Assessment Status:** `Complete` (solo evaluación documental).
+- **State / Applicability:** 28/28 clasificaciones formalmente aprobadas.
+- **Adoption Decisions:** 28/28 resueltas — 14 `PRESERVE`, 3 `OMIT`, 9 `ADAPT` y 2 `ADD`.
+- **Alcance:** conserva las limitaciones sobre verificación de Docker Compose, ejecución completa de pruebas, cobertura, Quality Gate, seguridad, licencias y demás evidencias acotadas.
+
+Este caso práctico muestra la aplicación del Assessment Core a un consumer real; **no equivale a certificación técnica**, ni implica que se hayan aplicado cambios a Only Film. **Application e Integration para Only Film no están iniciados ni autorizados**. El Framework no abre por ello un Sprint, una milestone o una versión objetivo nueva; la release publicada continúa siendo `v0.10.0`.
 
 ---
 
