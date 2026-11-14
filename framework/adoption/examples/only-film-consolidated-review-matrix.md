@@ -46,6 +46,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Required README Adoption Decision review batch 2:** [Tech Stack, Quick Start, Documentation and Footer — decision review](only-film-required-readme-adoption-decision-review-batch-2.md) was formally reviewed by the maintainer on **2026-11-14**. The maintainer **expressly resolved `README-DOCUMENTATION` and `README-FOOTER` as `PRESERVE`**, while **retaining `README-TECH-STACK` and `README-QUICK-START` as `Needs Further Evaluation / —`**. Documentation navigation was not exhaustively link-checked; Footer preservation does not establish intellectual-property rights or license permissions; a successful pinned-SHA Compose start was not verified. The preparation record retains original candidate language as historical provenance. No consumer change follows.
 
+**Recommended README Adoption Decision review batch 3:** [Status, Architecture, Repository Structure and Testing — decision review](only-film-recommended-readme-adoption-decision-review-batch-1.md) uses the approved classifications and bounded pinned-source evidence. `README-ARCHITECTURE` and `README-REPOSITORY-STRUCTURE` have conditional `PRESERVE` candidates for high-level reader orientation; `README-STATUS` and `README-TESTING` are recommended to remain `Needs Further Evaluation / —` until status/maturity and testing-evidence thresholds are resolved. **The five already approved `PRESERVE` decisions remain the only resolved decisions; no new Adoption Decision is authorized by this preparation packet.**
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
