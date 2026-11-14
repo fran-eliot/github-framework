@@ -123,3 +123,10 @@ A **formal maintainer approval** is required before a new PR may mark any entry 
 After the preparation and pinned-source reconciliation above, the Only Film maintainer **formally approved `DOC-ARCHITECTURE = ADAPT`**, strictly for a **future, bounded documentation-only adaptation**. Its approved `Partial / Applicable` classification stays unchanged. The decision authorizes neither an immediate document addition nor any consumer modification; future Application scope and source-backed wording require separate approval. The approval does **not** make historical audit observations current defects, require a new diagram, authorize refactoring or override `README-ARCHITECTURE = PRESERVE`.
 
 `README-STATUS` and `DOC-PROJECT-STATUS` remain `Needs Further Evaluation / —`. This is the **postreview outcome** superseding the earlier recommendation to keep all three pending: **17/28 Adoption Decisions resolved** (13 `PRESERVE`, 3 `OMIT`, 1 `ADAPT`), **11 pending**. All 28 approved State/Applicability pairs remain unchanged. Assessment **`In Progress`**; Only Film **read-only, no mutations**.
+
+
+## Formal maintainer decisions — README-STATUS and DOC-PROJECT-STATUS (2026-11-14)
+
+The maintainer formally approved both `README-STATUS = ADAPT` and `DOC-PROJECT-STATUS = ADAPT`, superseding their prior deferrals. Both retain their independently approved `Partial / Applicable` classifications. The first concerns only a future bounded, dated and evidenced operational status/maturity statement; the second only a future dated operational progress and objectives summary supported by current authoritative sources. No maturity value, phase, milestone, F3 disposition, complete test run or production-readiness claim is approved or inferred.
+
+These Assessment decisions do not authorize changes to Only Film or any Application/Integration execution. All 28 State/Applicability pairs remain unchanged. **19/28 decisions resolved** (13 `PRESERVE`, 3 `OMIT`, 3 `ADAPT`), **9 pending**. Assessment **`In Progress`**, consumer mutations **`NONE`**.
