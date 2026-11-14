@@ -123,3 +123,29 @@ A direct reading of [pinned README lines describing CI and authorship](https://g
 
 Both recommendations are **conditional** on project purpose and maintainer judgment; neither records human approval. The working Assessment remains `In Progress`, with three States unselected and four Applicability values `Uncertain`, and no consumer changes.
 
+## 9. Pinned references inventory — sampled Markdown
+
+Seven files were fetched directly at the pinned SHA `28d75a50e0a178954dd46acc23300d9dd327843c` and examined for Markdown links and plain-text URLs. This is a **sample**, not a complete repository-wide reference or link-validity audit.
+
+| Sampled file | Markdown links found | Relevant link types observed |
+| --- | ---: | --- |
+| [README.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md) | 28 | 5 badge-image URLs, 4 screenshots, relative technical guides/workflows, GitHub Actions, academic source and author profiles |
+| [POSTGRESQL_SETUP.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md) | 0 | Local application URL in instructional text; no Markdown external-reference entry |
+| [DEPENDENCY_MAINTENANCE.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/DEPENDENCY_MAINTENANCE.md) | 0 | Technical prose, no Markdown link |
+| [SONARCLOUD_PR_CI.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/SONARCLOUD_PR_CI.md) | 0 | Plain-text SonarCloud project URL |
+| [POSTGRESQL_INTEGRATION_TESTS.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_INTEGRATION_TESTS.md) | 0 | Technical prose, no Markdown link |
+| [JACOCO_COVERAGE_BASELINE.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/JACOCO_COVERAGE_BASELINE.md) | 0 | Technical prose, no Markdown link |
+| [ARCHITECTURE_MAINTAINABILITY_AUDIT.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md) | 4 | Historical GitHub issue links #24–#27 |
+
+**Interpretation:** the 28 README Markdown links are **not** 28 independent external technical reference sources. They include screenshot/image entries, badge URLs, internal navigation and author attribution. The sampled material does not show a recurring collection of official standards, RFCs or third-party specifications requiring a maintained central index. No external URL was opened or HTTP-status-checked in this review; link health remains **unverified**. Absence of Markdown links in a document does not establish absence of useful technical context.
+
+The [Framework DOC-REFERENCES Component](../../components/documentation/references/README.md) explicitly says that a separate catalog is unnecessary when few external references are needed and links are clearer at their point of use.
+
+### Conditional interpretation — still pending review
+
+For **a standalone external-reference catalog**, the preferred proposal is **`Applicability: Not Applicable`**, because the sampled source links are primarily internal navigation, GitHub project provenance or contextual operational URLs; a new index has no demonstrated user benefit. This is a judgment about **centralization**, not a claim that links do not matter or that the broader `DOC-REFERENCES` responsibility can never be fulfilled contextually.
+
+If the maintainer intends the Responsibility to include existing in-context references, **`Applicable` with a documentary State assessed on relevance, accuracy and discoverability** may be more accurate. In particular, the existing `Partial` proposal is not justified solely by the absence of a standalone references page.
+
+The Assessment remains `In Progress`. `DOC-REFERENCES` keeps its current **unapproved `State: Partial`, `Applicability: Uncertain`** pending explicit interpretation and reviewer sign-off. No new references catalog or consumer change is authorized.
+
