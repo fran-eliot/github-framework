@@ -61,22 +61,22 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `DOC-DIAGRAMS` | Optional | `Missing` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Approved with bounded evidence; future diagram design and source inventory remain separate. |
 | `DOC-REFERENCES` | Optional | `Partial` | `Not Applicable` *(scoped catalog proposal)* | **P3** | [E3](only-film-optional-final-semantic-review.md) | Decide whether distributed references suffice or an index adds value. |
 
-**Hypothesis counts** — do **not** copy these as approved assessment results:
+**Working assessment value counts** — 8 of the following evaluations are formally approved, while 20 remain reviewer-facing proposals:
 
 | Measure | Count |
 | --- | ---: |
-| E3 proposals referenced | **28/28** |
-| `Partial` as the sole State hypothesis | **24** |
-| `Missing` as the preferred State hypothesis (`DOC-CHANGELOG`) | **1** |
-| Undiscriminated `Missing / Partial` State | **0** |
-| Newly proposed `Missing` (former alternatives; unapproved) | **3** |
-| `Applicable` as proposed Applicability | **25** |
-| Proposed `Not Applicable` (scope-dependent; formal review pending) | **3** |
-| Pending / `Uncertain` Applicability | **0** |
-| Formally approved States | **0 recorded** |
-| Resolved Adoption Decisions | **0 recorded** |
+| Responsibilities with structured entries | **28/28** |
+| `Satisfied` State (approved: Hero, Overview, Features) | **3** |
+| `Partial` State (approved: Tech Stack, Documentation, Footer; others proposed) | **21** |
+| `Missing` State (approved: Contributing, Diagrams; others proposed) | **4** |
+| `Applicable` Applicability (approved or proposed) | **25** |
+| `Not Applicable` Applicability (one approved, two scoped proposals) | **3** |
+| `Uncertain` Applicability in current working entries | **0** |
+| Formally approved State and Applicability evaluations | **8** |
+| Still awaiting formal evaluation approval | **20** |
+| Resolved Adoption Decisions | **0** |
 
-The absence of recorded approvals refers to **this Assessment**, not to possible external reviews absent from these records.
+These are **working Assessment counts** rather than conformance scores. Scoped `Not Applicable` for `DOC-API` and `DOC-REFERENCES` is not formally approved; the corresponding review limitations remain open.
 
 ## 3. Consolidated evidence-quality findings
 
@@ -111,13 +111,13 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 
 | Field | Value |
 | --- | --- |
-| Reviewer | Not assigned |
-| Accepted Reference | `28d75a50e0a178954dd46acc23300d9dd327843c` (proposed) |
-| Approval date and scope | Pending |
+| Reviewer | Only Film maintainer for eight approved entries; other reviews pending |
+| Assessed Reference | `28d75a50e0a178954dd46acc23300d9dd327843c` |
+| Approval date and scope | 2026-11-14 — eight explicit State/Applicability approvals; 20 still pending |
 | Responsibilities with proposed E3 records | `28` |
-| Responsibilities with approved evaluations | `0` recorded |
+| Responsibilities with approved evaluations | `8` recorded |
 | First recommended set | P1: Quick Start, Changelog, Testing, Security, and License |
-| Required next output | Update a genuine [Assessment Template](../assessment-template.md) record with reviewer-approved State, Applicability, and rationale |
+| Required next output | Obtain and record explicit maintainer review of the remaining 20 State/Applicability proposals |
 | Assessment Status | `In Progress` |
 
 **Outcome:** the matrix reduces evidence fragmentation and makes review priorities explicit. It **does not replace human Assessment**, constitute an Adoption Decision, or modify the consumer.
