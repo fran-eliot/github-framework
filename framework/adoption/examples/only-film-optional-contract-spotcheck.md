@@ -96,3 +96,30 @@ The README still frames a REST API as a future option. Taken together, the revie
 
 **Potential next verification:** compare the complete pinned Java controller directory against the seven filenames above and inspect any remaining entry points. Then ask whether programmatic integration is an intended supported interface at this revision. Do not recommend an OpenAPI document without an actual, identified contract.
 
+## 8. Expanded pinned documentation sample — contribution guidance and diagrams
+
+The following **nine exact Markdown files** were fetched directly at the pinned SHA and inspected for contribution-policy language and explicit diagram indicators. This expands, but does **not** exhaust, the previous four-document spot check.
+
+| Pinned document | Explicit diagram indicator (Mermaid/PlantUML/draw.io, common diagram syntax, or embedded Markdown image) |
+| --- | --- |
+| [README.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md) | Four embedded `docs/screenshots/` **UI screenshots**, not identified as technical diagrams |
+| [POSTGRESQL_SETUP.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md) | None in the selected checks |
+| [POSTGRESQL_INTEGRATION_TESTS.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_INTEGRATION_TESTS.md) | None in the selected checks |
+| [SONARCLOUD_PR_CI.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/SONARCLOUD_PR_CI.md) | None in the selected checks |
+| [ARCHITECTURE_MAINTAINABILITY_AUDIT.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/ARCHITECTURE_MAINTAINABILITY_AUDIT.md) | None in the selected checks |
+| [F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/F3_FUNCTIONAL_AUDIT_AND_ROADMAP.md) | None in the selected checks |
+| [DEMO_CREDENTIALS_SECURITY.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/DEMO_CREDENTIALS_SECURITY.md) | None in the selected checks |
+| [FLYWAY_V2_SEAT_UNIQUENESS.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/FLYWAY_V2_SEAT_UNIQUENESS.md) | None in the selected checks |
+| [JACOCO_COVERAGE_BASELINE.md](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/JACOCO_COVERAGE_BASELINE.md) | None in the selected checks |
+
+The README uses a textual MVC → service → JPA repository → database sequence. The selected indicators covered literal `mermaid`, `plantuml`, `draw.io`, `graph TD/LR`, `sequenceDiagram` and Markdown image links ending in common `.png`, `.svg` and JPEG extensions. Other notation, assets and unsampled documents may exist. The absence of selected markers in a sample **does not establish that every technical diagram is absent**.
+
+A direct reading of [pinned README lines describing CI and authorship](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/README.md) confirms that pull requests to `main` are mentioned as triggering checks, and Git history/PRs are referenced for later change attribution. These statements are **not** a published external-contribution eligibility, review or acceptance policy. The earlier pinned `404` results for three conventional contribution paths remain path-specific only.
+
+### Conditional semantic recommendations — not approved
+
+- **`README-CONTRIBUTING`:** if the maintainer confirms collaboration guidance is relevant for the intended open-source/portfolio audience, **`Applicability: Applicable` and `State: Missing` are the preferred provisional pair** *for contribution policy itself*, unless an equivalent policy is identified. Maven/CI onboarding instructions should not automatically be treated as a partial contribution policy. If the project does not invite contributions, the reviewer may instead justify `Not Applicable`. A valid contractual State is still required for Assessment completion.
+- **`DOC-DIAGRAMS`:** if maintainable diagrams would not clarify important domain relationships or operations beyond the current textual explanation, **`Applicability: Not Applicable` is the preferred provisional value**. If diagrams are useful, select `Applicable` and determine `Missing / Partial / Satisfied` against actual diagram evidence. No final State is proposed while that scope decision remains open.
+
+Both recommendations are **conditional** on project purpose and maintainer judgment; neither records human approval. The working Assessment remains `In Progress`, with three States unselected and four Applicability values `Uncertain`, and no consumer changes.
+

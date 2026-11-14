@@ -1102,6 +1102,16 @@ A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descrip
 
 The README contains actionable technical onboarding information, but those instructions are not automatically a policy on who may contribute, how changes are proposed and reviewed, and how contributions are accepted. `Partial` would require treating technical onboarding as an adequate subset of the intended Responsibility; `Missing` would require establishing that no substantive contributing guidance is present. Neither conclusion has been human-reviewed, and whether the Responsibility is applicable to this consumer's collaboration model is unresolved. Recording `Uncertain` Applicability and leaving State unselected is more traceable than manufacturing a contractual answer.
 
+**Evidence-Based Conditional Recommendation**
+
+**Preferred provisional result if external contribution guidance is in scope:** `Applicability: Applicable`; `State: Missing` **for a documented collaboration policy**, unless an actual equivalent acceptance/review source is identified. The current Assessment `State` remains **unselected**, and `Applicability` remains `Uncertain`; **neither recommendation is approved**.
+
+Direct pinned-SHA lookups found no `CONTRIBUTING.md`, `.github/CONTRIBUTING.md` or `.github/PULL_REQUEST_TEMPLATE.md` at those exact paths. The [expanded evidence review](only-film-optional-contract-spotcheck.md) confirms that the pinned README describes development commands, PR-triggered CI and Git attribution but does not set out contribution eligibility or the expected review/acceptance workflow. A filename absence alone is not a universal policy-absence finding.
+
+If the repository **does not accept external contributions**, the reviewer may instead justify `Applicability: Not Applicable`; a contractual State still must be selected under the Template. If equivalent project/organization governance is supplied, re-evaluate `Missing` against `Partial` or `Satisfied`. The remaining question is maintainer policy, not another generic README section.
+
+**Required reviewer decision:** confirm whether contributions are solicited and whether another maintained policy applies; record the evidence, chosen State, Applicability, reviewer and date. No new `CONTRIBUTING.md` or PR governance change is authorized by this proposal.
+
 **Reviewer Discrimination Gate — State and Applicability**
 
 **Open; no State or Applicability approval recorded.** Decide the intended contribution model first. Technical setup, tests and CI instructions in the pinned README support onboarding but do not themselves establish who may propose changes, review expectations or acceptance policy.
@@ -1755,6 +1765,16 @@ No maintained technical diagram artifact was confirmed in the bounded prior insp
 **Evaluation Rationale**
 
 The available evidence does not establish a maintained technical diagram, but neither does it show that diagrams are needed for the consumer's actual purpose. Absence of a diagram-named file is not proof that all diagrams are missing, and a high-level textual flow can be sufficient for a relatively simple explanation. `Missing` versus `Partial` cannot be selected without clarifying the required documentary scope and searching for embedded artifacts; `Not Applicable` must also be evaluated on the merits, not inferred from Optional level. This record deliberately leaves State unselected and Applicability `Uncertain`.
+
+**Evidence-Based Conditional Recommendation**
+
+**Preferred provisional Applicability: `Not Applicable` if** the maintainer confirms that diagrams offer no material explanatory benefit beyond the existing text for this consumer and its intended readers. The current Assessment `Applicability` remains `Uncertain`, and `State` remains **unselected**; there is **no approval**.
+
+The [expanded pinned documentation spot check](only-film-optional-contract-spotcheck.md) inspected nine named Markdown files. The README contains UI screenshots and a textual architecture chain; the sampled documents did not reveal explicit Mermaid, PlantUML, draw.io, common graph syntax or technical-diagram image markers. This is **bounded negative evidence**, not an exhaustive asset or Markdown inventory.
+
+If relationships between domain entities, booking/concurrency flow or Compose deployment would benefit materially from a maintained diagram, `Applicable` may be better supported; the reviewer should then search remaining diagram sources and select a contractual `State` based on what exists. No automatic `Missing` finding, ERD requirement or diagram generation follows from the Template's Optional level.
+
+**Required reviewer decision:** determine a concrete audience/use-case need, account for other diagram evidence, and record contractual State, Applicability, reviewer and date before completion.
 
 **Reviewer Discrimination Gate — State and Applicability**
 
