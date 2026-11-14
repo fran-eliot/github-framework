@@ -50,10 +50,10 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `DOC-DATABASE` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-DEPLOYMENT` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(local environment; proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-SECURITY` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `DOC-DIAGRAMS` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
+| `DOC-DIAGRAMS` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Applicable` *(proposed; maintainer interested in future diagrams, 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Uncertain` *(applicability pending review)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** twenty-five Responsibilities have selected **proposed States** (including one with Applicability `Uncertain`); three additional Responsibilities have structured entries with State **not selected**: two retain Applicability `Uncertain`, and `README-CONTRIBUTING` now has proposed `Not Applicable`. All **28/28** Responsibilities now have structured working entries, but the three unresolved States and outstanding human review prevent completion. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
+**Coverage:** twenty-five Responsibilities have selected **proposed States** (including one with Applicability `Uncertain`); three additional Responsibilities have structured entries with State **not selected**: one retains Applicability `Uncertain` (`DOC-API`), while `README-CONTRIBUTING` has proposed `Not Applicable` and `DOC-DIAGRAMS` has proposed `Applicable`. All **28/28** Responsibilities now have structured working entries, but the three unresolved States and outstanding human review prevent completion. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -1742,7 +1742,7 @@ The reviewer must determine whether `PRESERVE` or `ADAPT` the existing documenta
 
 **Applicability**
 
-`Uncertain` — whether diagrams provide necessary or worthwhile technical explanation for this consumer is not yet established.
+`Applicable` — **proposed, based on the maintainer's 2026-11-14 preference to add a useful technical diagram in the future**. This establishes an intended documentation use, not the presence of a diagram at the pinned SHA or a completed State review.
 
 **Implementation Characteristics**
 
@@ -1751,7 +1751,7 @@ No maintained technical diagram artifact was confirmed in the bounded prior insp
 **Uncertainty**
 
 - Whether diagrams are embedded in the pinned Markdown documents but were missed by the earlier filename/path inspection.
-- Whether important entity relationships, checkout flows, or local deployment topology would be materially clearer with a version-controlled diagram.
+- The maintainer confirmed on 2026-11-14 that introducing one or more diagrams would be worthwhile **in the future**. The specific scope, priority and acceptance criteria are not yet selected.
 - Whether the existing textual explanation is sufficient for the project's scope, so that diagrams would merely duplicate information.
 - The earlier Framework catalog check did not locate a standalone `DOC-DIAGRAMS` Component. The [DOC-ARCHITECTURE Component](../../components/documentation/architecture/README.md) states that diagrams are optional to architectural explanation; no nonexistent Component contract is imposed here.
 
@@ -1768,14 +1768,27 @@ No maintained technical diagram artifact was confirmed in the bounded prior insp
 - [Pinned consumer tree](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
 - [DOC-ARCHITECTURE Component](../../components/documentation/architecture/README.md)
 - [Optional showcase E3 semantic review](only-film-optional-showcase-semantic-review.md)
+- Maintainer preference, recorded during the Framework Assessment review on **2026-11-14**: adding a technical diagram in the future would be interesting; this is current project intent, not pinned-commit evidence.
 
 **Evaluation Rationale**
 
-The available evidence does not establish a maintained technical diagram, but neither does it show that diagrams are needed for the consumer's actual purpose. Absence of a diagram-named file is not proof that all diagrams are missing, and a high-level textual flow can be sufficient for a relatively simple explanation. `Missing` versus `Partial` cannot be selected without clarifying the required documentary scope and searching for embedded artifacts; `Not Applicable` must also be evaluated on the merits, not inferred from Optional level. This record deliberately leaves State unselected and Applicability `Uncertain`.
+The available evidence does not establish a maintained technical diagram, but neither does it show that diagrams are needed for the consumer's actual purpose. Absence of a diagram-named file is not proof that all diagrams are missing, and a high-level textual flow can be sufficient for a relatively simple explanation. `Missing` versus `Partial` remains unselected pending the final artifact scope and a sufficient source inspection. **Applicability is now proposed as `Applicable`** because the maintainer expressed interest in future technical diagrams. That preference does not imply diagrams already exist or authorize their implementation.
+
+**Maintainer Scope Confirmation — 2026-11-14**
+
+The maintainer explicitly stated that **including a diagram in the future would be useful**. On this basis the preferred documentary Applicability is now **`Applicable` (proposed; subject to formal Assessment review)**. The earlier conditional `Not Applicable` recommendation no longer reflects the confirmed intent.
+
+Suggested initial diagram **candidates**, not approved requirements or current diagrams:
+
+1. **High-level architecture:** Spring MVC/Thymeleaf → application services → JPA repositories → H2 or PostgreSQL/Flyway; confirm actual dependency boundaries against the pinned code.
+2. **Domain model:** `Movie`, `Room`, `Session`, `Ticket`, `Review`, `User`; verify relationship multiplicities and constraints from source before drawing.
+3. **Ticket purchase/seat concurrency:** show only the validated checkout and locking flow if this is the most valuable reader question.
+
+These are **future documentation options**, not changes to Only Film or a request to produce a diagram now. The `State` remains **unselected** because the bounded inspection has not established all potential embedded/alternative diagrams and the acceptance scope still needs reviewer confirmation. `Decision Status: Needs Further Evaluation` and `Adoption Decision: —` remain unchanged.
 
 **Evidence-Based Conditional Recommendation**
 
-**Preferred provisional Applicability: `Not Applicable` if** the maintainer confirms that diagrams offer no material explanatory benefit beyond the existing text for this consumer and its intended readers. The current Assessment `Applicability` remains `Uncertain`, and `State` remains **unselected**; there is **no approval**.
+**Superseded conditional alternative:** `Not Applicable` had been considered if diagrams added no value. The maintainer has since expressed interest in creating diagrams in the future; the preferred current proposal is `Applicable`, with `State` still **unselected and unapproved**.
 
 The [expanded pinned documentation spot check](only-film-optional-contract-spotcheck.md) inspected nine named Markdown files. The README contains UI screenshots and a textual architecture chain; the sampled documents did not reveal explicit Mermaid, PlantUML, draw.io, common graph syntax or technical-diagram image markers. This is **bounded negative evidence**, not an exhaustive asset or Markdown inventory.
 
@@ -1785,13 +1798,13 @@ If relationships between domain entities, booking/concurrency flow or Compose de
 
 **Reviewer Discrimination Gate — State and Applicability**
 
-**Open; no State or Applicability approval recorded.** The pinned README describes an MVC → service → JPA → database flow **in text**. The previous filename inspection did not establish a maintained technical diagram, but did not exhaustively search Markdown for embedded Mermaid or image references.
+**Diagram value confirmed by maintainer; State and formal approval remain pending.** The pinned README describes an MVC → service → JPA → database flow **in text**. The previous filename inspection did not establish a maintained technical diagram, but did not exhaustively search Markdown for embedded Mermaid or image references.
 
 - **Verify actual evidence:** inspect relevant pinned Markdown and assets for existing architecture, entity or deployment diagrams. Screenshots and decorative SVG files do not automatically fulfill this Responsibility.
 - **Determine usefulness:** identify one or more real comprehension problems that a maintained diagram would solve. The Framework's architecture guidance treats diagrams as optional, and a clear textual flow may already be appropriate.
 - **If applicable:** select the final State based on any substantive existing visualization (`Satisfied`/`Partial`) or verified absence (`Missing`), not a filename convention. If not useful to the consumer, justify `Not Applicable` rather than creating diagrams for formal compliance.
 
-**Disposition record:** Embedded-diagram search: *not completed*; user need: *pending*; proposed contractual State: *unselected*; Applicability: `Uncertain`; reviewer/date: *not recorded*. No diagram generation is authorized.
+**Disposition record:** Embedded-diagram inventory: *not exhaustive*; future diagram value: *confirmed by maintainer 2026-11-14*; scope and priority: *pending*; contractual State: *unselected*; Applicability: `Applicable` *(proposed)*; formal State approval/date: *not recorded*. No diagram generation is authorized.
 
 **Decision Status**
 
@@ -1803,7 +1816,7 @@ If relationships between domain entities, booking/concurrency flow or Compose de
 
 **Decision Rationale**
 
-Confirm whether diagrams already exist, decide whether any are useful, then select the contractual State and Applicability with human review. No diagram generation or change to Only Film is authorized.
+The maintainer has confirmed interest in future diagrams; reviewers should now choose a limited diagram purpose, verify any existing artifacts, and approve a contractual State. The proposed `Applicable` value does not implement diagrams or authorize a change to Only Film.
 
 ---
 
@@ -1892,21 +1905,21 @@ The reviewer should determine whether references need consolidation or can remai
 ### Open Uncertainties
 
 - Human sign-off on all twenty-eight structured entries, including contractual State selection for the three unresolved entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Contractual State selection for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`, review of the confirmed `README-CONTRIBUTING` no-external-contribution scope and its proposed `Not Applicable` interpretation, Applicability review for `DOC-API`, `DOC-DIAGRAMS`, and `DOC-REFERENCES`, and human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Contractual State selection for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`, review of the confirmed `README-CONTRIBUTING` no-external-contribution scope and its proposed `Not Applicable` interpretation, Applicability review for `DOC-API` and `DOC-REFERENCES`, confirmation of proposed `Applicable` for `DOC-DIAGRAMS`, and human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the full 28-Responsibility working Assessment against Template metadata, first resolving the three unselected States and three still-uncertain Applicability judgments, and confirming the proposed `Not Applicable` for `README-CONTRIBUTING`. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
+Review the full 28-Responsibility working Assessment against Template metadata, first resolving the three unselected States and two still-uncertain Applicability judgments, and confirming the proposed `Not Applicable` for `README-CONTRIBUTING` and `Applicable` for `DOC-DIAGRAMS`. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `28/28` structured entries (`25` with proposed State, one of those with Applicability `Uncertain`; `3` with State unselected (one with proposed `Not Applicable`)), `0/28` not entered.
+- **Responsibility coverage in this working artifact:** `28/28` structured entries (`25` with proposed State, one of those with Applicability `Uncertain`; `3` with State unselected (one proposed `Not Applicable`, one proposed `Applicable`)), `0/28` not entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
