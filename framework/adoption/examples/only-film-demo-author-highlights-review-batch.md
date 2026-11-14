@@ -8,13 +8,29 @@
 | Pinned consumer reference | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Framework Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS` |
-| Review status | **Three reviewer-facing proposals, no maintainer State/Applicability approval in this packet** |
-| Previous formal approvals | `20/28` |
+| Review status | **Three evaluations formally approved by the Only Film maintainer on 2026-11-14; dated record below** |
+| Formal approvals after review | `23/28` |
 | Assessment status | `In Progress` |
 | Resolved Adoption Decisions | `0` |
 | Consumer mutation | `NONE` |
 
 This review is limited to content directly fetched from Only Film's README at the pinned SHA, the existing Framework semantic reviews and the `README-AUTHOR` Component. The existing Framework review records are explicitly distinguished from fresh independent checks. This packet does not inspect the screenshot image pixels, execute Compose or deploy a hosted demo, establish intellectual-property rights, or authorize any implementation.
+
+## Formal maintainer approval outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved** the following State and Applicability classifications:
+
+| Responsibility | Approved State | Approved Applicability |
+| --- | --- | --- |
+| `README-DEMO` | `Partial` | `Applicable` |
+| `README-AUTHOR` | `Satisfied` | `Applicable` |
+| `README-HIGHLIGHTS` | `Satisfied` | `Applicable` |
+
+All evidence limitations remain: screenshot presence and Markdown links were examined without independently verifying image pixel fidelity or recency; no complete pinned-SHA Docker Compose demonstration was reproduced; a localhost address is not a hosted public demo; project credits are not evidence of ownership or licensing rights; and the technical highlights' bounded historical test evidence does not guarantee runtime or security behavior. The `Satisfied` classifications apply **only to documentary communication**.
+
+**Authorization boundary:** the Assessment remains `In Progress`; all three `Decision Status` values stay `Needs Further Evaluation`, all three `Adoption Decision` values stay `—`, and no modifications to Only Film or intellectual-property assertions are authorized.
+
+The recommendations and pending-review language below describe the **historical preapproval preparation**, not outstanding State/Applicability approvals.
 
 ## Proposed evaluations
 
