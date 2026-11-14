@@ -8,12 +8,29 @@
 | Pinned consumer commit | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-QUICK-START`, `DOC-CHANGELOG` (both Required in Template) |
-| Review status | **Unapproved proposals for maintainer evaluation** |
-| Existing approved evaluations | **8/28** |
+| Review status | **Both evaluations formally approved by the Only Film maintainer on 2026-11-14; see decision record below** |
+| Approved evaluations after maintainer decision | **10/28** |
 | Assessment status | `In Progress` |
 | Consumer mutation | `NONE` |
 
 This packet reopens direct pinned content and checks the applicable Framework Components. Neither a successful CI run of a **different startup path** nor a lack of version tags may be used to fabricate evidence or mandatory implementation work. The [Assessment](only-film-assessment.md) keeps both working State/Applicability proposals unchanged until the maintainer explicitly approves or revises them.
+
+## Formal maintainer review outcome — 2026-11-14
+
+The Only Film maintainer **explicitly approved** these two independent State and Applicability classifications:
+
+| Responsibility | Approved State | Approved Applicability |
+| --- | --- | --- |
+| `README-QUICK-START` | `Partial` | `Applicable` |
+| `DOC-CHANGELOG` | `Missing` | `Applicable` |
+
+**Quick Start evidence boundary:** startup instructions, configuration and dependencies were inspected, but a clean Docker Compose run was **not verified for the pinned SHA**; successful JAR-on-PostgreSQL CI does not constitute Compose execution.
+
+**Changelog evidence boundary:** no curated changelog was identified in bounded sources; the maintainer reported no tags/Releases, but no exhaustive alternative-source or independent tag inventory was performed. `Missing / Applicable` does **not** direct anyone to create a changelog.
+
+**Authorization:** Assessment remains `In Progress`; both `Decision Status` values remain `Needs Further Evaluation` and both `Adoption Decision` values remain `—`. The consumer is read-only.
+
+The subsequent recommendation/gate paragraphs preserve the **pre-approval evaluation alternatives** as historical source-review context. They do not supersede this dated decision.
 
 ## Recommended review alternatives
 
@@ -80,4 +97,4 @@ Record the maintainer's explicit selections and approval date **in a later Asses
 
 ## Authorization boundary
 
-Only Film at SHA `28d75a50e0a178954dd46acc23300d9dd327843c` remains **read-only** throughout the Framework adoption assessment. This packet neither authorizes creating a changelog nor changing the README, Maven/Compose setup, GitHub tags, GitHub Releases, workflows, deployment, data volumes or project licensing. The overall Assessment remains `In Progress` and retains **8/28 formally approved evaluations** at the time of this preparation.
+Only Film at SHA `28d75a50e0a178954dd46acc23300d9dd327843c` remains **read-only** throughout the Framework adoption assessment. This packet neither authorizes creating a changelog nor changing the README, Maven/Compose setup, GitHub tags, GitHub Releases, workflows, deployment, data volumes or project licensing. The overall Assessment remains `In Progress` and records **10/28 formally approved evaluations** after the maintainer's dated decision (the original packet was prepared when only eight were approved).
