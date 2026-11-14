@@ -9,12 +9,28 @@
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-ROADMAP`, `DOC-DIAGRAMS`, `DOC-DATABASE` |
 | Previously approved State / Applicability | `28/28` pairs, unchanged |
-| Existing formal Adoption Decisions | `14/28`: 11 `PRESERVE`, 3 `OMIT` |
-| Open Adoption Decisions | `14/28`, including all three in this packet |
+| Formal Adoption Decisions after explicit maintainer review | `15/28`: 12 `PRESERVE`, 3 `OMIT` (Roadmap approved 2026-11-14) |
+| Open Adoption Decisions | `13/28`, including `DOC-DIAGRAMS` and `DOC-DATABASE` |
 | Assessment status | `In Progress` |
 | Consumer changes | `NONE` |
 
 This is **decision preparation**, not formal approval or implementation. A separate, express maintainer decision is required to resolve any of these Responsibilities. The immutable pinned snapshot is evidence, whereas the maintainer's 2026-11-14 interest in diagrams is **current preference**, not a property proven at that commit. Merging this packet does not approve `PRESERVE`, `ADD`, or any consumer change.
+
+## Formal maintainer Adoption Decision outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved `README-ROADMAP = PRESERVE`** and expressly retained `DOC-DIAGRAMS` and `DOC-DATABASE` unresolved:
+
+| Responsibility | Decision Status | Adoption Decision | Approved scope / evidence limitations |
+| --- | --- | --- | --- |
+| `README-ROADMAP` | `Resolved` | `PRESERVE` | Retain **only the existing qualified possible-future-work overview** in the pinned README. It is **not** current milestones, delivery dates, priorities, completed functionality or a binding roadmap; the earlier F3 initiatives were not individually reconciled with the pinned SHA |
+| `DOC-DIAGRAMS` | `Needs Further Evaluation` | `—` | The diagram inventory remains **nonexhaustive** and no diagram type, purpose, implementation or accuracy gate has been approved; no diagrams are authorized |
+| `DOC-DATABASE` | `Needs Further Evaluation` | `—` | There is no exhaustively verified current JPA relationship model, cardinality inventory or SQL invariant list, and no model diagram or database change is authorized |
+
+**Express maintainer approval date:** 2026-11-14; **immutable consumer evidence reference:** `28d75a50e0a178954dd46acc23300d9dd327843c`. All 28 previously approved State / Applicability pairs remain unchanged: in particular `README-ROADMAP = Partial / Applicable`, `DOC-DIAGRAMS = Missing / Applicable` and `DOC-DATABASE = Partial / Applicable`.
+
+**Authorization boundary:** Assessment `In Progress`; **15/28 Adoption Decisions resolved** (12 `PRESERVE`, 3 `OMIT`) and **13 unresolved**. No Only Film code, documentation, diagram, database model, migration, issue, milestone, release, configuration, test, deployment, Application or Integration change is authorized.
+
+The candidate language below is **historical preparation material** and does not override the maintainer-approved decision status above.
 
 ## Proposed decision posture
 
@@ -92,4 +108,4 @@ Recommended post-merge review bundle, to be approved or declined **separately an
 
 If expressly approved, a later **separate PR** should update the canonical [Assessment](only-film-assessment.md), [consolidated review matrix](only-film-consolidated-review-matrix.md) and this review packet, recording formal reviewer/date, evidence-limited rationale, and the exact selected allowed decision token.
 
-**Classification pairs unchanged: 28/28. Existing formal Adoption Decisions: 14 resolved (11 `PRESERVE`, 3 `OMIT`), 14 unresolved. Assessment `In Progress`. Only Film strictly read-only.**
+**Postapproval status:** All 28 State / Applicability pairs unchanged; 15 Adoption Decisions formally resolved (12 `PRESERVE`, 3 `OMIT`), 13 unresolved. Assessment `In Progress`. Only Film strictly read-only. The earlier preparation PR did not itself grant these decisions; the separate, express maintainer approval on 2026-11-14 governs the outcome.
