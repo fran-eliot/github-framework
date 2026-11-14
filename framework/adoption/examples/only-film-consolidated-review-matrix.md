@@ -13,7 +13,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | Template | [TPL-BACKEND 0.1.0](../../templates/repositories/backend/metadata.yml) |
 | Responsibilities consolidated | `28/28` — **28 approved / 0 proposals** |
 | Human-reviewed States and Applicability | **28 approved on 2026-11-14**, 0 pending |
-| Resolved Adoption Decisions | `21` (13 `PRESERVE`, 3 `OMIT`, 4 documentation-only `ADAPT`: DOC-ARCHITECTURE, README-STATUS, DOC-PROJECT-STATUS, DOC-DEPLOYMENT; 1 documentation-only `ADD`: DOC-CHANGELOG; 7 unresolved) |
+| Resolved Adoption Decisions | `23` (13 `PRESERVE`, 3 `OMIT`, 5 documentation-only `ADAPT`: DOC-ARCHITECTURE, README-STATUS, DOC-PROJECT-STATUS, DOC-DEPLOYMENT, DOC-DATABASE; 2 documentation-only `ADD`: DOC-CHANGELOG, DOC-DIAGRAMS; 5 unresolved) |
 | Assessment Status | `In Progress` |
 | Consumer Mutation | `NONE` |
 
@@ -64,6 +64,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Status and Architecture Adoption Decision review batch 11:** [Status and Architecture — decision review](only-film-status-architecture-adoption-decision-review-batch-11.md) compares `README-STATUS`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS` against their Framework Components and directly re-fetched pinned README, technical maturity, F3 and architecture reports. All three are **recommended to remain `Needs Further Evaluation / —`** until current status/maturity values, present architectural boundaries or current milestone evidence can be verified. Older audit SHAs must not become current project state or defects by inference. **No formal Adoption Decision follows from this packet; 16 resolved and 12 pending.**
 
+**DOC-DATABASE and DOC-DIAGRAMS formal Adoption Decisions (2026-11-14):** The maintainer subsequently approved `DOC-DATABASE = ADAPT` for future source-verified conceptual model documentation and `DOC-DIAGRAMS = ADD` for future maintainable technical diagrams, prioritizing the data model. These supersede the earlier unresolved-decision recommendations for these two entries only. The approved `Partial / Applicable` and bounded `Missing / Applicable` classifications remain unchanged. **23/28 resolved**, **5 pending**; Assessment `In Progress`; no consumer edits or Application/Integration authorization.
+
 **DOC-DEPLOYMENT and DOC-CHANGELOG formal Adoption Decisions (2026-11-14):** The maintainer subsequently approved `DOC-DEPLOYMENT = ADAPT` for future local Compose upload-persistence documentation clarification and `DOC-CHANGELOG = ADD` for a future structured change record without invented releases or dates. These replace the earlier decision deferrals only for those two entries. Approved `Partial / Applicable` (local nonproduction scope) and `Missing / Applicable`, respectively, remain unchanged. **21/28 resolved**, **7 pending**; Assessment `In Progress`; no consumer edit or Application/Integration authorization.
 
 **README-STATUS and DOC-PROJECT-STATUS formal Adoption Decisions (2026-11-14):** Both were later approved as `ADAPT` for future bounded, dated and source-verified documentation only. The earlier deferrals are superseded; no current maturity, phase or milestone is asserted. 19/28 resolved (13 `PRESERVE`, 3 `OMIT`, 3 `ADAPT`), 9 pending; Assessment `In Progress`.
@@ -97,10 +99,10 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `README-LICENSE` | Optional | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P1** | [E3](only-film-optional-governance-semantic-review.md) | Maintainer-approved partial license-status notice only; copyright and reuse rights remain unverified. Adoption Decision unresolved. |
 | `DOC-ADR` | Optional | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-optional-final-semantic-review.md) | Approved documentary `Partial`; current ADR inventory not verified. Adoption Decision unresolved. |
 | `DOC-API` | Optional | `Missing` *(approved 2026-11-14)* | `Not Applicable` *(approved 2026-11-14; current public API only)* | **P2** | [E3](only-film-optional-final-semantic-review.md) | Formal approval is limited to documentation of a currently supported public/programmatic API contract; bounded evidence and unresolved Adoption Decision retained. |
-| `DOC-DATABASE` | Optional | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P2** | [E3](only-film-optional-final-semantic-review.md) | Approved documentary `Partial`; full schema/model inventory not verified. Adoption Decision unresolved. |
+| `DOC-DATABASE` | Optional | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P2** | [E3](only-film-optional-final-semantic-review.md) | Approved documentary `Partial`; full schema/model inventory not verified. Formal `ADAPT` approved 2026-11-14 for a future source-verified conceptual model summary, without schema or JPA changes. |
 | `DOC-DEPLOYMENT` | Optional | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14; local Compose only)* | **P2** | [E3](only-film-optional-final-semantic-review.md) | Approved documentary `Partial`; local-only scope and smoke/persistence evidence limits. `ADAPT` formally approved 2026-11-14 for future bounded documentation only; no consumer change authorized. |
 | `DOC-SECURITY` | Optional | `Partial` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P1** | [E3](only-film-security-semantic-review.md) | Maintainer-approved documentary Partial; retain bounded evidence and unresolved Adoption Decision. |
-| `DOC-DIAGRAMS` | Optional | `Missing` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Approved with bounded evidence; future diagram design and source inventory remain separate. |
+| `DOC-DIAGRAMS` | Optional | `Missing` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Approved with bounded evidence; Formal `ADD` approved 2026-11-14 for future maintainable technical diagrams, prioritizing the model; source inventory remains bounded. |
 | `DOC-REFERENCES` | Optional | `Partial` *(approved 2026-11-14)* | `Not Applicable` *(approved 2026-11-14; standalone catalog only)* | **P3** | [E3](only-film-optional-final-semantic-review.md) | Formal approval is limited to a standalone centralized external-technical-reference catalog; bounded evidence and unresolved Adoption Decision retained. |
 
 **Working assessment value counts** — All 28 of the following evaluations are formally approved, with 0 remaining State/Applicability proposals:
@@ -116,7 +118,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `Uncertain` Applicability in current working entries | **0** |
 | Formally approved State and Applicability evaluations | **28** |
 | Still awaiting formal evaluation approval | **0** |
-| Resolved Adoption Decisions | **21** (13 `PRESERVE`, 3 `OMIT`, 4 `ADAPT`, 1 `ADD`; 7 remain open) |
+| Resolved Adoption Decisions | **23** (13 `PRESERVE`, 3 `OMIT`, 5 `ADAPT`, 2 `ADD`; 5 remain open) |
 
 These are **working Assessment counts** rather than conformance scores. Scoped `Not Applicable` for `DOC-API` and `DOC-REFERENCES` is formally approved as separate Applicability values, with the specific documentary scope and source limitations retained.
 
