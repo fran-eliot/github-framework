@@ -58,6 +58,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **API, Diagrams and References Adoption Decision review batch 8:** [API, Diagrams and References — decision review](only-film-api-diagrams-references-adoption-decision-review-batch-8.md) was **formally reviewed by the maintainer on 2026-11-14**. `DOC-API` and `DOC-REFERENCES` were each **resolved as `OMIT`**, limited respectively to public/programmatic API-contract documentation and a standalone centralized reference catalog. Existing HTTP routes and in-context references are not removed, and no repository-wide interface or link-health conclusion is made. `DOC-DIAGRAMS` was **expressly retained as `Needs Further Evaluation / —`** pending scope, source verification and acceptance criteria. No diagram generation or consumer mutation is authorized.
 
+**Roadmap, Diagrams and Database Model Adoption Decision review batch 9:** [Roadmap, Diagrams and Database Model — decision review](only-film-roadmap-diagrams-model-adoption-decision-review-batch-9.md) distinguishes the pinned README's clearly nonbinding future-work ideas from the historical F3 roadmap tied to an older SHA. It proposes a **narrow `PRESERVE` candidate for `README-ROADMAP`**, without pretending to establish active milestones. `DOC-DIAGRAMS` and `DOC-DATABASE` are recommended to remain `Needs Further Evaluation / —` pending scoped reader need, actual pinned dependencies and relationship/invariant verification. **No new Adoption Decision is approved by this preparation packet; 14 remain formally resolved and 14 unresolved.**
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
