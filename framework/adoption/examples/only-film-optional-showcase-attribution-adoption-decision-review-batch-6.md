@@ -154,3 +154,12 @@ A targeted **read-only comparison** checks the fixed Only Film consumer source `
 The preapproved `README-LICENSE: Partial / Applicable` evaluation remains unchanged, retaining unresolved source ownership, original collaborator permissions, contribution rights, attribution completeness, and any other binding terms. A future clearer explanatory notice, license file, reuse grant or redistribution claim would require **separately verified rights information and explicit authorization**; none is presumed here. This proposal does not conclude that any particular exploitation, copying or redistribution is legally permitted or forbidden.
 
 **Formal decision remains `Needs Further Evaluation / —` until the maintainer explicitly approves or rejects this specific bounded `PRESERVE` option.** Assessment remains **`In Progress`** with all 28/28 approved State/Applicability pairs, **23/28 approved Adoption Decisions** (13 `PRESERVE`, 3 `OMIT`, 5 `ADAPT`, 2 `ADD`), **5 pending**. No Only Film edit, rights declaration, Application or Integration is authorized.
+
+
+## Formal README-DEMO and README-LICENSE Adoption Decisions — 2026-11-14
+
+The Only Film maintainer expressly approved **`README-DEMO = ADAPT`**, limited to a **future documentary clarification** of the screenshot-based **local** demo, opt-in seed prerequisites and random-by-default versus explicitly configured demo passwords, as supported by the pinned README/`DataInitializer` reconciliation above. Screenshot content/freshness, full pinned-SHA Compose execution and hosted-demo availability remain unverified; no credentials, logger, runtime or screenshot change is approved.
+
+The maintainer independently approved **`README-LICENSE = PRESERVE`**, **only** for the existing non-granting academic-origin notice and cautious attribution. The original academic README's educational-purpose description and the observed empty Maven license metadata are **not** a license grant. Original collaborator permissions, ownership and reuse terms remain unverified; no license file, rights claim or new permission is approved.
+
+These later approvals supersede the **historic decision deferrals** for those two entries without changing the earlier formal decisions for `README-AUTHOR` or `README-HIGHLIGHTS` or the approved `Partial / Applicable` classifications. **28/28 Adoption Decisions resolved** (14 `PRESERVE`, 3 `OMIT`, 9 `ADAPT`, 2 `ADD`), 0 pending; all 28 State/Applicability pairs unchanged. Assessment **`In Progress`**. No Only Film changes or Application/Integration authorization.
