@@ -1,7 +1,7 @@
-# Only Film — TPL-BACKEND Assessment (Working Record)
+# Only Film — TPL-BACKEND Assessment (Complete)
 
 > Human-reviewed, source-qualified Assessment working record based on the [Existing Repository Adoption Assessment Template](../assessment-template.md).
-> This is the **Assessment working artifact**: 28/28 classifications and Adoption Decisions are formally approved, while the Assessment remains `In Progress` pending a separate completion judgment.
+> This is the **formally completed documentary Assessment** for the immutable consumer SHA and Template version below: 28/28 approved State/Applicability pairs and 28/28 formally resolved Adoption Decisions, with all evidence limitations retained. Completion does **not** certify Only Film or authorize Application/Integration.
 
 ---
 
@@ -14,13 +14,13 @@
 | Repository Template | `TPL-BACKEND` |
 | Template Version | `0.1.0` |
 | Assessment Record Started | `2026-11-13` |
-| Assessment Status | `In Progress` |
+| Assessment Status | `Complete` — **formally approved by the Only Film maintainer on 2026-11-14**, documentary Assessment scope only |
 | Human Review | **28/28 State and Applicability evaluations formally approved** by the Only Film maintainer on 2026-11-14; 0 pending |
 | Consumer Mutation | `NONE` |
 
 This pinned consumer reference is the evaluation baseline. Repository-wide facts outside the commit, such as the existence of GitHub tags and Releases, have separately identified provenance and verification limits.
 
-## 2. Assessment Summary — Partial Record
+## 2. Assessment Summary — Approved Final Record
 
 | Responsibility | Requirement Level | State | Applicability | Decision Status | Adoption Decision |
 | --- | --- | --- | --- | --- | --- |
@@ -53,9 +53,9 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `DOC-DIAGRAMS` | Optional | `Missing` *(maintainer-approved from bounded evidence 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Resolved` *(maintainer-approved 2026-11-14)* | `ADD` *(maintainer-approved 2026-11-14; future documentation only)* |
 | `DOC-REFERENCES` | Optional | `Partial` *(maintainer-approved 2026-11-14)* | `Not Applicable` *(maintainer-approved 2026-11-14; standalone catalog only)* | `Resolved` *(maintainer-approved 2026-11-14)* | `OMIT` *(maintainer-approved 2026-11-14)* |
 
-**Coverage:** all **28/28** Responsibilities have formally approved State/Applicability values and formally approved Adoption Decisions, with none unresolved. No Applicability in the approved Summary remains `Uncertain`. `DOC-API` and `DOC-REFERENCES` retain their expressly bounded `Not Applicable` scopes. The [consolidated review matrix](only-film-consolidated-review-matrix.md) preserves historical proposals and review priorities, not competing current decisions. Field approval does **not** authorize changes to Only Film or a transition to Assessment `Complete`.
+**Coverage:** all **28/28** Responsibilities have formally approved State/Applicability values and formally approved Adoption Decisions, with none unresolved. No Applicability in the approved Summary remains `Uncertain`. `DOC-API` and `DOC-REFERENCES` retain their expressly bounded `Not Applicable` scopes. The [consolidated review matrix](only-film-consolidated-review-matrix.md) preserves historical proposals and review priorities, not competing current decisions. The maintainer separately and expressly approved **Assessment `Complete` on 2026-11-14**, solely for documentary evaluation of the pinned consumer SHA; it does **not** authorize changes to Only Film, Application or Integration.
 
-The `State`, `Applicability`, `Decision Status` and `Adoption Decision` fields above are **formally approved by the Only Film maintainer on 2026-11-14**, as recorded in the Responsibility Details. Approval of individual fields is separate from authorizing Assessment completion or modifications to the consumer.
+The `State`, `Applicability`, `Decision Status` and `Adoption Decision` fields above are **formally approved by the Only Film maintainer on 2026-11-14**, as recorded in the Responsibility Details. The maintainer separately approved documentary Assessment completion on **2026-11-14**. Neither approval authorizes consumer modifications, Application or Integration.
 
 ---
 
@@ -2355,7 +2355,7 @@ The Only Film maintainer **expressly approved `OMIT` on 2026-11-14** solely for 
 
 ### Assessment Status
 
-`In Progress`
+`Complete` — **expressly approved by the Only Film maintainer on 2026-11-14** for the documentary evaluation at consumer SHA `28d75a50e0a178954dd46acc23300d9dd327843c` against `TPL-BACKEND 0.1.0`. The approval explicitly retains the 28 approved classifications, 28 Adoption Decisions and all source limitations. It is neither technical/security certification, full test-execution verification nor licensing authority, and does **not** authorize consumer Application/Integration.
 
 ### Major Findings
 
@@ -2373,16 +2373,16 @@ The Only Film maintainer **expressly approved `OMIT` on 2026-11-14** solely for 
 
 ### Recommended Next Review
 
-Preserve all twenty-eight explicit 2026-11-14 State and Applicability approvals and their source limitations. Next, separately evaluate the separately retained evidence limitations and Assessment completion gates and any outstanding evidence gates before considering Assessment completion or authorizing changes to Only Film.
+The documentary Assessment is **Complete** at the fixed consumer SHA, with its evidence limits and decision scopes preserved. Any later Application proposal requires a **separate express authorization**, an evidence refresh against a separately identified consumer baseline and independently scoped verification; no implementation is authorized here. Revisit bounded uncertainties only when they materially affect a future authorized purpose or source baseline.
 
 ---
 
 ## Completion Check
 
-- **Assessment `Complete`: NO.**
+- **Assessment `Complete`: YES — express maintainer approval on 2026-11-14, documentary scope only.** The [completion readiness review](only-film-assessment-completion-readiness.md) records the structural and source-qualified gates; the maintainer's subsequent independent approval authorizes only this status transition.
 - **Responsibility coverage in this working artifact:** `28/28` structured entries with allowed State values; **28 approved / 0 pending human review**; `0/28` not entered.
 - **Formally approved States and Applicability evaluations in this record:** `28` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-ROADMAP`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`, `DOC-REFERENCES`; maintainer, 2026-11-14).
 - **Resolved Adoption Decisions:** `28` — fourteen `PRESERVE` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `DOC-TESTING`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-ADR`, `README-ROADMAP`, `README-TECH-STACK`, `README-LICENSE`), three `OMIT` (`README-CONTRIBUTING`, `DOC-API`, `DOC-REFERENCES`) and nine `ADAPT` (`DOC-ARCHITECTURE`, `README-STATUS`, `DOC-PROJECT-STATUS`, `DOC-DEPLOYMENT`, `DOC-DATABASE`, `README-QUICK-START`, `README-TESTING`, `README-DEMO`, `DOC-SECURITY`) and two `ADD` (`DOC-CHANGELOG`, `DOC-DIAGRAMS`), all formally approved 2026-11-14. **Unresolved:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; all three formerly unselected States were assigned `Missing` from bounded evidence; **two of those (`README-CONTRIBUTING` and `DOC-DIAGRAMS`) have since received explicit maintainer approval**, as have twenty-six other evaluations including `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-STATUS`, `README-REPOSITORY-STRUCTURE`, `README-ROADMAP`, `README-ARCHITECTURE`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS` and `README-LICENSE`. The third formerly unselected entry (`DOC-API`) now has an approved `Missing / Not Applicable` evaluation limited to the supported current public/programmatic API contract. All 28 classification pairs have received explicit maintainer approval. The Assessment remains **In Progress** with twenty-eight formally resolved Adoption Decisions (fourteen `PRESERVE`, three `OMIT`, nine documentation-only `ADAPT` and two documentation-only `ADD`) and zero unresolved; no consumer mutation is authorized. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; all three formerly unselected States were assigned `Missing` from bounded evidence; **two of those (`README-CONTRIBUTING` and `DOC-DIAGRAMS`) have since received explicit maintainer approval**, as have twenty-six other evaluations including `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-STATUS`, `README-REPOSITORY-STRUCTURE`, `README-ROADMAP`, `README-ARCHITECTURE`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS` and `README-LICENSE`. The third formerly unselected entry (`DOC-API`) now has an approved `Missing / Not Applicable` evaluation limited to the supported current public/programmatic API contract. All 28 classification pairs have received explicit maintainer approval. The Assessment is **Complete** with twenty-eight formally resolved Adoption Decisions (fourteen `PRESERVE`, three `OMIT`, nine documentation-only `ADAPT` and two documentation-only `ADD`) and zero unresolved; no consumer mutation is authorized. It does not establish compliance or authorize Application/Integration.

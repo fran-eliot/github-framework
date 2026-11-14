@@ -14,7 +14,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | Responsibilities consolidated | `28/28` — **28 approved / 0 proposals** |
 | Human-reviewed States and Applicability | **28 approved on 2026-11-14**, 0 pending |
 | Resolved Adoption Decisions | `28` (14 `PRESERVE` including README-LICENSE; 3 `OMIT`; 9 documentation-only `ADAPT` including README-QUICK-START, README-TESTING, README-DEMO, DOC-SECURITY; 2 documentation-only `ADD`; 0 unresolved) |
-| Assessment Status | `In Progress` |
+| Assessment Status | `Complete` — expressly approved 2026-11-14, documentary-only, pinned consumer SHA; no Application/Integration authorization |
 | Consumer Mutation | `NONE` |
 
 **Legend:**
@@ -63,6 +63,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 **Technology Stack, Quick Start and Testing Adoption Decision review batch 10:** [Technology Stack, Quick Start and Testing — decision review](only-film-stack-startup-testing-adoption-decision-review-batch-10.md) was **formally reviewed by the maintainer on 2026-11-14**. `README-TECH-STACK` was **resolved as `PRESERVE`** for the existing categorized, partially corroborated stack overview, without claiming an exhaustive technology inventory or successful startup. `README-QUICK-START` and `README-TESTING` were **expressly retained as `Needs Further Evaluation / —`**; neither missing a clean pinned Compose run nor bounded H2/PostgreSQL CI implies full operational success/failure, full Maven/Selenium coverage, a Quality Gate result or production readiness. No consumer mutation or test execution is authorized.
 
 **Status and Architecture Adoption Decision review batch 11:** [Status and Architecture — decision review](only-film-status-architecture-adoption-decision-review-batch-11.md) compares `README-STATUS`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS` against their Framework Components and directly re-fetched pinned README, technical maturity, F3 and architecture reports. All three are **recommended to remain `Needs Further Evaluation / —`** until current status/maturity values, present architectural boundaries or current milestone evidence can be verified. Older audit SHAs must not become current project state or defects by inference. **No formal Adoption Decision follows from this packet; 16 resolved and 12 pending.**
+
+**Formal documentary Assessment completion (2026-11-14):** The Only Film maintainer expressly approved `Assessment Status = Complete` for the immutable consumer commit `28d75a50e0a178954dd46acc23300d9dd327843c` against `TPL-BACKEND 0.1.0`. The complete review record has all 28 State/Applicability evaluations and all 28 Adoption Decisions approved. This is a bounded **documentary** completion only; all positive and negative evidence limitations survive, and neither technical certification, security assurance, full test execution, licensing rights nor consumer Application/Integration is authorized. The earlier `In Progress` entries in historical review batches remain temporal provenance, not current status.
 
 **Final five formal Adoption Decisions (2026-11-14):** The maintainer subsequently approved `README-QUICK-START = ADAPT`, `README-TESTING = ADAPT`, `README-DEMO = ADAPT`, `DOC-SECURITY = ADAPT` and `README-LICENSE = PRESERVE`. The four ADAPT decisions are strictly future documentation-only clarifications grounded in the pinned evidence recorded in batches 6, 7 and 10; `README-LICENSE` preserves the existing non-grant notice without verifying rights or granting permissions. **All 28 Adoption Decisions are now formally resolved** (14 `PRESERVE`, 3 `OMIT`, 9 `ADAPT`, 2 `ADD`); all 28 State/Applicability approvals and their uncertainties remain unchanged. Assessment **`In Progress`**, not automatically `Complete`; no Only Film modification or Application/Integration authorization.
 
@@ -164,7 +166,7 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 | Responsibilities with approved evaluations | `28` recorded |
 | First recommended set | P1: Quick Start, Changelog, Testing, Security, and License |
 | Required next output | Review the 12 unresolved Adoption Decisions separately without authorizing consumer mutations |
-| Assessment Status | `In Progress` |
+| Assessment Status | `Complete` — expressly approved 2026-11-14, documentary-only, pinned consumer SHA; no Application/Integration authorization |
 
 **Outcome:** the matrix reduces evidence fragmentation and makes review priorities explicit. It **does not replace human Assessment**, constitute an Adoption Decision, or modify the consumer.
 
