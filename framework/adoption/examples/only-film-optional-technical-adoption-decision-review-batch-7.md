@@ -158,3 +158,10 @@ The source-level review establishes a **specific documentation opportunity**: th
 
 **Formal status remains `Needs Further Evaluation / —` for `DOC-DATABASE`** until the maintainer expressly selects an Adoption Decision. All 28 State/Applicability evaluations remain approved. Overall Assessment: **21/28 resolved** (13 `PRESERVE`, 3 `OMIT`, 4 `ADAPT`, 1 `ADD`), **7 pending**, `In Progress`. No changes, database operations, tests, migration execution, refactoring, or Application/Integration are authorized in Only Film.
 
+
+
+## Formal DOC-DATABASE Adoption Decision — 2026-11-14
+
+Following the pinned V1/V2 and six-entity JPA reconciliation above, the Only Film maintainer **formally approved `DOC-DATABASE = ADAPT`** for a **future, bounded, source-verified conceptual-model documentation improvement only**. The approved `Partial / Applicable` classification remains unchanged, and the inspection is not an exhaustive model audit. No changes to SQL migrations, JPA entities, data, workflows or consumer documents are authorized. No diagram is required by this decision; `DOC-DIAGRAMS` was independently approved as `ADD` for future maintained diagrams prioritizing the data model.
+
+**Current Assessment outcome:** 28/28 approved State/Applicability pairs unchanged; **23/28 Adoption Decisions resolved** (13 `PRESERVE`, 3 `OMIT`, 5 `ADAPT`, 2 `ADD`), **5 pending**; Assessment `In Progress`. Only Film read-only; Application/Integration not authorized.
