@@ -15,7 +15,7 @@
 | Template Version | `0.1.0` |
 | Assessment Record Started | `2026-11-13` |
 | Assessment Status | `In Progress` |
-| Human Review | **5/28 State and Applicability evaluations formally approved** by the Only Film maintainer on 2026-11-14; 23 pending |
+| Human Review | **8/28 State and Applicability evaluations formally approved** by the Only Film maintainer on 2026-11-14; 20 pending |
 | Consumer Mutation | `NONE` |
 
 This pinned consumer reference is the evaluation baseline. Repository-wide facts outside the commit, such as the existence of GitHub tags and Releases, have separately identified provenance and verification limits.
@@ -26,11 +26,11 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | --- | --- | --- | --- | --- | --- |
 | `README-HERO` | Required | `Satisfied` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `README-OVERVIEW` | Required | `Satisfied` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
-| `README-FEATURES` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-FEATURES` | Required | `Satisfied` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `README-TECH-STACK` | Required | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `README-QUICK-START` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `README-DOCUMENTATION` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `README-FOOTER` | Required | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
+| `README-DOCUMENTATION` | Required | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
+| `README-FOOTER` | Required | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `DOC-CHANGELOG` | Required | `Missing` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-STATUS` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-ARCHITECTURE` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
@@ -53,7 +53,7 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `DOC-DIAGRAMS` | Optional | `Missing` *(maintainer-approved from bounded evidence 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Not Applicable` *(proposed for central catalog; review pending)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** all **28/28** Responsibilities now have a **single allowed proposed State** (`Satisfied`, `Partial`, or `Missing`), with three new `Missing` proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`. **Five of 28 State/Applicability evaluations have explicit maintainer approval** (`README-HERO`, `README-OVERVIEW`, `README-TECH-STACK`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`); 23 remain proposals. No Applicability field remains `Uncertain` in the **proposed Summary**, but the scoped `Not Applicable` proposals for `DOC-API` and `DOC-REFERENCES` still require formal review. State proposals are not decisions to modify the consumer and the Assessment remains `In Progress`. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
+**Coverage:** all **28/28** Responsibilities now have a **single allowed proposed State** (`Satisfied`, `Partial`, or `Missing`), with three new `Missing` proposals for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`. **Eight of 28 State/Applicability evaluations have explicit maintainer approval** (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-DOCUMENTATION`, `README-FOOTER`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`); 20 remain proposals. No Applicability field remains `Uncertain` in the **proposed Summary**, but the scoped `Not Applicable` proposals for `DOC-API` and `DOC-REFERENCES` still require formal review. State proposals are not decisions to modify the consumer and the Assessment remains `In Progress`. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -206,11 +206,11 @@ Whether to `PRESERVE` the existing introduction or `ADAPT` its organization requ
 
 **State**
 
-`Partial` — **proposed; human review pending**
+`Satisfied` — **formally approved by the Only Film maintainer on 2026-11-14**, with the evidence limitations retained.
 
 **Applicability**
 
-`Applicable` — **proposed; human review pending**
+`Applicable` — **formally approved by the Only Film maintainer on 2026-11-14**.
 
 **Implementation Characteristics**
 
@@ -239,7 +239,17 @@ Whether to `PRESERVE` the existing introduction or `ADAPT` its organization requ
 
 **Evaluation Rationale**
 
-The consumer has an explicit, audience-oriented feature summary, so `Missing` would misrepresent the inspected README. The roles and capabilities are recognizable, but the assessment has not established feature-by-feature accuracy or whether the technical transaction paragraph obscures the user-facing overview. `Partial` is a **provisional editorial hypothesis**, not a confirmed functionality gap or failed acceptance test. The reviewer can approve `Satisfied` if the current wording accurately communicates the main functions at the level expected for this Required Responsibility.
+The pinned README's `Funcionalidades` section provides a clear role-grouped overview of visitor, registered-user and administrator capabilities, and the separate security/current-limits section explicitly identifies checkout as a demonstration flow with no real payment gateway. The maintainer formally approved `Satisfied / Applicable` on 2026-11-14 for the documentary feature-summary purpose. The earlier `Partial` editorial proposal is superseded; feature-by-feature behavioral acceptance, production payments and potential relocation of the locking explanation remain unverified or editorial considerations, not assumed passing checks.
+
+**Human Evaluation Review**
+
+- **Reviewer:** Only Film maintainer
+- **Approval date:** 2026-11-14
+- **Explicitly approved State:** `Satisfied`
+- **Explicitly approved Applicability:** `Applicable`
+- **Evidence-supported basis:** The pinned README provides role-based feature descriptions, and the security/current-limits section clarifies that checkout is demonstrative rather than a real payment-provider integration.
+- **Evidence limitations retained:** The summary is not exhaustive proof of every advertised behavior; CI checks are bounded evidence, not full functional acceptance. The transactional/locking paragraph may later be refined editorially, without impacting this documentary approval.
+- **Review boundary:** The assessed consumer snapshot remains `28d75a50e0a178954dd46acc23300d9dd327843c`, separate from the dated maintainer approval. No consumer mutation, formal Adoption Decision, implementation or legal authorization follows.
 
 **Decision Status**
 
@@ -408,11 +418,11 @@ No downstream `PRESERVE`, `ADAPT`, or other Adoption Decision is approved. The r
 
 **State**
 
-`Partial` — **proposed; human review pending**
+`Partial` — **formally approved by the Only Film maintainer on 2026-11-14**, with the evidence limitations retained.
 
 **Applicability**
 
-`Applicable` — **proposed; human review pending**
+`Applicable` — **formally approved by the Only Film maintainer on 2026-11-14**.
 
 **Implementation Characteristics**
 
@@ -442,7 +452,17 @@ No downstream `PRESERVE`, `ADAPT`, or other Adoption Decision is approved. The r
 
 **Evaluation Rationale**
 
-The README offers concrete navigation to important project resources. Therefore the documentation Responsibility is not absent merely because there is no canonical index heading. The question is whether the distributed organization is discoverable, complete enough for the intended audience, and consistent with the repository at the pinned SHA. `Partial` remains a **conservative, unapproved navigation-sufficiency hypothesis**, not a verified broken-link finding. A human reviewer may select `Satisfied` if the task-based references are demonstrably useful without an extra index.
+The pinned README links to concrete documentation on PostgreSQL setup, PostgreSQL integration testing and security, along with task-oriented workflow and repository guidance. Those three guide files and selected workflow definitions were directly fetched at the pinned SHA, supporting useful distributed navigation without requiring a literal `Documentation` heading. The maintainer explicitly approved `Partial / Applicable` on 2026-11-14 because an exhaustive link and documentation discoverability audit has not been completed. `Partial` is not evidence of broken links or authorization to introduce a separate index.
+
+**Human Evaluation Review**
+
+- **Reviewer:** Only Film maintainer
+- **Approval date:** 2026-11-14
+- **Explicitly approved State:** `Partial`
+- **Explicitly approved Applicability:** `Applicable`
+- **Evidence-supported basis:** Pinned README task sections point to PostgreSQL setup/integration tests, security audit, screenshots and workflows; three named guides and two selected workflow files were directly fetched at the pinned SHA.
+- **Evidence limitations retained:** No complete README link health check, all-documents inventory, guide freshness validation or reader navigation test was performed. File presence is not successful workflow execution.
+- **Review boundary:** The assessed consumer snapshot remains `28d75a50e0a178954dd46acc23300d9dd327843c`, separate from the dated maintainer approval. No consumer mutation, formal Adoption Decision, implementation or legal authorization follows.
 
 **Decision Status**
 
@@ -468,11 +488,11 @@ The reviewer must establish whether to `PRESERVE` the distributed navigation or 
 
 **State**
 
-`Partial` — **proposed; human review pending**
+`Partial` — **formally approved by the Only Film maintainer on 2026-11-14**, with the evidence limitations retained.
 
 **Applicability**
 
-`Applicable` — **proposed; human review pending**
+`Applicable` — **formally approved by the Only Film maintainer on 2026-11-14**.
 
 **Implementation Characteristics**
 
@@ -503,7 +523,17 @@ The reviewer must establish whether to `PRESERVE` the distributed navigation or 
 
 **Evaluation Rationale**
 
-The README already contains attribution, project history, and cautious license information, satisfying identifiable Footer functions. The remaining review concerns editorial composition and clarity, not whether the document has a literal Footer heading or a specific contact block. `Partial` is a **provisional assessment of documentary suitability**, not a finding that credit is incorrect or a statement that the project is licensed for reuse. If the present closing text is clear and appropriate for the consumer's audience, a reviewer may justify `Satisfied`.
+The pinned README credits the original academic contributors and source project, distinguishes later technical evolution, labels future work as prospective and closes with a cautious license note. These perform substantive Footer functions without proving any right to reuse or requiring every optional contact element. The maintainer expressly approved `Partial / Applicable` on 2026-11-14, retaining uncertainty about attribution completeness, final-section clarity and legal status. This documentary evaluation does not grant a license or assert contributor ownership permissions.
+
+**Human Evaluation Review**
+
+- **Reviewer:** Only Film maintainer
+- **Approval date:** 2026-11-14
+- **Explicitly approved State:** `Partial`
+- **Explicitly approved Applicability:** `Applicable`
+- **Evidence-supported basis:** The README contains collaborative-source attribution, distinction of subsequent development, explicitly future-only roadmap items and a final note that the README itself grants no additional license.
+- **Evidence limitations retained:** No legal license or contributor IP permissions verification, exhaustive original attribution audit or external link-liveness check was performed. No license file or legal claim is authorized.
+- **Review boundary:** The assessed consumer snapshot remains `28d75a50e0a178954dd46acc23300d9dd327843c`, separate from the dated maintainer approval. No consumer mutation, formal Adoption Decision, implementation or legal authorization follows.
 
 **Decision Status**
 
@@ -1986,13 +2016,13 @@ The reviewer should confirm whether the narrow catalog interpretation is appropr
 
 ### Major Findings
 
-- All 28 Template Responsibilities have preliminary E3 review proposals, and all twenty-eight have structured entries in this Assessment working record (all with allowed State values, five formally approved and 23 awaiting review): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-ADR`, `DOC-REFERENCES`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-DIAGRAMS`, `README-LICENSE`, and `DOC-SECURITY`.
+- All 28 Template Responsibilities have preliminary E3 review proposals, and all twenty-eight have structured entries in this Assessment working record (all with allowed State values, eight formally approved and 20 awaiting review): `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `README-ROADMAP`, `README-CONTRIBUTING`, `DOC-API`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-ADR`, `DOC-REFERENCES`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-DIAGRAMS`, `README-LICENSE`, and `DOC-SECURITY`.
 - `DOC-CHANGELOG` has a recommended `Missing` State supported by reviewed documentation and maintainer confirmation of no tags or Releases.
 - `README-QUICK-START` has a proposed `Partial` State, grounded in documentation and CI evidence but bounded by the missing pinned-Compose execution evidence. **No formal human approval is claimed for either State.**
 
 ### Open Uncertainties
 
-- Human sign-off on the remaining 23 entries, including review of the proposed `DOC-API: Missing` and `DOC-CHANGELOG` interpretations and the Testing documentation sufficiency threshold.
+- Human sign-off on the remaining 20 entries, including review of the proposed `DOC-API: Missing` and `DOC-CHANGELOG` interpretations and the Testing documentation sufficiency threshold.
 - The `README-CONTRIBUTING: Missing / Not Applicable` and `DOC-DIAGRAMS: Missing / Applicable` evaluations were formally approved on 2026-11-14; their bounded-source qualifications remain. The `DOC-API` and `DOC-REFERENCES` scoped `Not Applicable` proposals still require review, as do Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
@@ -2000,16 +2030,16 @@ The reviewer should confirm whether the narrow catalog interpretation is appropr
 
 ### Recommended Next Review
 
-Review the 23 unapproved State/Applicability proposals against Template metadata, preserving the five explicit 2026-11-14 maintainer approvals and their source limitations. Resolve the scoped `DOC-API` present-day API-contract and `DOC-REFERENCES` centralized-catalog interpretations before any future approval. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
+Review the 20 unapproved State/Applicability proposals against Template metadata, preserving the eight explicit 2026-11-14 maintainer approvals and their source limitations. Resolve the scoped `DOC-API` present-day API-contract and `DOC-REFERENCES` centralized-catalog interpretations before any future approval. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `28/28` structured entries with allowed State values; **5 approved / 23 pending human review**; `0/28` not entered.
-- **Formally approved States and Applicability evaluations in this record:** `5` (`README-HERO`, `README-OVERVIEW`, `README-TECH-STACK`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`; maintainer, 2026-11-14).
+- **Responsibility coverage in this working artifact:** `28/28` structured entries with allowed State values; **8 approved / 20 pending human review**; `0/28` not entered.
+- **Formally approved States and Applicability evaluations in this record:** `8` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-DOCUMENTATION`, `README-FOOTER`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`; maintainer, 2026-11-14).
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; all three formerly unselected States were assigned `Missing` from bounded evidence; **two of those (`README-CONTRIBUTING` and `DOC-DIAGRAMS`) have since received explicit maintainer approval**, as have the `README-HERO`, `README-OVERVIEW` and `README-TECH-STACK` evaluations. The third previously unselected entry (`DOC-API`) remains a proposal. Its summary remains **partial** pending human review rather than asserting conformance or completion. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; all three formerly unselected States were assigned `Missing` from bounded evidence; **two of those (`README-CONTRIBUTING` and `DOC-DIAGRAMS`) have since received explicit maintainer approval**, as have the `README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-DOCUMENTATION` and `README-FOOTER` evaluations. The third previously unselected entry (`DOC-API`) remains a proposal. Its summary remains **partial** pending human review rather than asserting conformance or completion. It does not establish compliance or authorize Application/Integration.

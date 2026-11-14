@@ -8,11 +8,25 @@
 | Pinned consumer SHA | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Repository Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER` |
-| Review status | **Recommendation only — no approval recorded for these three Responsibilities** |
+| Review status | **Three evaluations formally approved by the maintainer on 2026-11-14; see dated review outcome below** |
 | Consumer mutation | `NONE` |
 | Overall Assessment | `In Progress` |
 
 This document is a bounded, directly sourced **human review preparation record**. It does not change the current [Assessment](only-film-assessment.md) State/Applicability values, waive evidence limitations, or authorize changes to Only Film. The [consolidated review matrix](only-film-consolidated-review-matrix.md) links this batch; only explicit maintainer decisions can approve the three evaluations.
+
+## Formal maintainer review outcome — 2026-11-14
+
+The Only Film maintainer **explicitly approved** the following State and Applicability values:
+
+| Responsibility | Approved State | Approved Applicability |
+| --- | --- | --- |
+| `README-FEATURES` | `Satisfied` | `Applicable` |
+| `README-DOCUMENTATION` | `Partial` | `Applicable` |
+| `README-FOOTER` | `Partial` | `Applicable` |
+
+The approval retains the original evidence limits: no full feature-by-feature acceptance, no comprehensive documentation-link audit, no independent verification of rights or licensing, and no successful CI execution inferred from file presence. The Assessment stays `In Progress`; all three Adoption Decisions remain `—` and no consumer change is authorized.
+
+The remaining review-proposal text is preserved **as the preparatory record prior to this explicit approval**, not as an indication that these three approvals remain pending.
 
 ## Review proposals
 
