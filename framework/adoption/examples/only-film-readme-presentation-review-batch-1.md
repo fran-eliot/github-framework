@@ -8,11 +8,25 @@
 | Pinned consumer SHA | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-HERO`, `README-OVERVIEW`, `README-TECH-STACK` |
-| Review status | **Recommendations for maintainer decision; none of these three approved here** |
+| Review status | **Original recommendations formally approved by the maintainer on 2026-11-14; see dated review outcome below** |
 | Consumer mutation | **NONE** |
 | Assessment status | `In Progress` |
 
 This batch compares the **actual pinned sources** against the relevant Framework Components; it does not infer missing requirements from non-canonical headings and does not authorize edits to Only Film. The main [Assessment](only-film-assessment.md) retains the currently recorded `Partial / Applicable` proposals for all three entries until the maintainer expressly accepts or revises them.
+
+## Formal maintainer review outcome — 2026-11-14
+
+The Only Film maintainer **explicitly approved** all three evaluations after reviewing this preparation batch:
+
+| Responsibility | Approved State | Approved Applicability |
+| --- | --- | --- |
+| `README-HERO` | `Satisfied` | `Applicable` |
+| `README-OVERVIEW` | `Satisfied` | `Applicable` |
+| `README-TECH-STACK` | `Partial` | `Applicable` |
+
+The review preserved the source limitations: no responsive/dark-theme visual audit, no independent readership/usability test, no exhaustive technology inventory, and Compose as static configuration evidence only. These are **State and Applicability approvals**, not Adoption Decisions or authorization to modify Only Film. The Assessment remains `In Progress`.
+
+The remaining sections reproduce the **earlier preparatory recommendations as a historical evidence record**; references to pending choices below describe the state **before** this approval.
 
 ## Evaluation alternatives
 
