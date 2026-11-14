@@ -44,6 +44,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Required README Adoption Decision review batch 1:** [Hero, Overview, Features and Tech Stack — decision review](only-film-required-readme-adoption-decision-review-batch-1.md) prepared individual options before formal maintainer review. On **2026-11-14**, the maintainer expressly **resolved `README-HERO`, `README-OVERVIEW` and `README-FEATURES` as `PRESERVE`**, while explicitly **retaining `README-TECH-STACK` as `Needs Further Evaluation / —`**. The three `PRESERVE` resolutions concern the documented presentation only, do not verify all runtime/visual behavior and do not authorize changes to Only Film. The batch document retains its preapproval alternatives as historical review provenance.
 
+**Required README Adoption Decision review batch 2:** [Tech Stack, Quick Start, Documentation and Footer — decision review](only-film-required-readme-adoption-decision-review-batch-2.md) compares the pinned README/POM/Compose/environment configuration and relevant Component expectations against the existing approved classifications. `README-TECH-STACK` and `README-QUICK-START` are **recommended to remain `Needs Further Evaluation / —` by default** until their individual evidence/acceptance thresholds are decided; `README-DOCUMENTATION` and `README-FOOTER` have conditional `PRESERVE` candidates with link-navigation and IP/license limits. **No new decisions are approved in this packet; the already resolved three `PRESERVE` decisions remain unchanged.**
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
