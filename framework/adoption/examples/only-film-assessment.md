@@ -27,7 +27,7 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `README-HERO` | Required | `Satisfied` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Resolved` *(maintainer-approved 2026-11-14)* | `PRESERVE` *(maintainer-approved 2026-11-14)* |
 | `README-OVERVIEW` | Required | `Satisfied` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Resolved` *(maintainer-approved 2026-11-14)* | `PRESERVE` *(maintainer-approved 2026-11-14)* |
 | `README-FEATURES` | Required | `Satisfied` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Resolved` *(maintainer-approved 2026-11-14)* | `PRESERVE` *(maintainer-approved 2026-11-14)* |
-| `README-TECH-STACK` | Required | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
+| `README-TECH-STACK` | Required | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Resolved` *(maintainer-approved 2026-11-14)* | `PRESERVE` *(maintainer-approved 2026-11-14)* |
 | `README-QUICK-START` | Required | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `README-DOCUMENTATION` | Required | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Resolved` *(maintainer-approved 2026-11-14)* | `PRESERVE` *(maintainer-approved 2026-11-14)* |
 | `README-FOOTER` | Required | `Partial` *(maintainer-approved 2026-11-14)* | `Applicable` *(maintainer-approved 2026-11-14)* | `Resolved` *(maintainer-approved 2026-11-14)* | `PRESERVE` *(maintainer-approved 2026-11-14)* |
@@ -362,15 +362,28 @@ The pinned README has a categorized stack table, with Java 25, Spring Boot 4.0.5
 
 **Decision Status**
 
-`Needs Further Evaluation`
+`Resolved` — **formally approved by the Only Film maintainer on 2026-11-14**.
 
 **Adoption Decision**
 
-`—`
+`PRESERVE` — **formally approved on 2026-11-14**.
 
 **Decision Rationale**
 
-On 2026-11-14 the maintainer **expressly reaffirmed `Needs Further Evaluation / —` in the second Required README decision batch**, with no Adoption Decision selected. The categorized technology table is accepted as `Partial / Applicable` for documentary classification but a formal choice between `PRESERVE` and a specifically justified `ADAPT` still depends on appropriate support for individual technology claims and reader benefit. The pinned POM and Compose corroborate selected versions statically; they do not exhaustively verify all tool usage or successful Compose execution. No technology, infrastructure or consumer revision is authorized.
+The Only Film maintainer **expressly approved `PRESERVE` on 2026-11-14** exclusively for the README's **existing categorized technology inventory** (Backend, Security, Frontend, local/persistent databases, Testing and Infrastructure). The pinned README identifies Java 25, Spring Boot 4.0.5, PostgreSQL 17 and other libraries/tools; the pinned POM confirms the configured Java and Spring Boot versions, the Dockerfile declares Java 25 build/runtime stages, and `compose.yaml` declares PostgreSQL 17 and local services. These are bounded **static-source corroborations**, not a complete verification that every listed dependency, framework feature, testing tool or infrastructure path was exercised. The already approved `Partial / Applicable` State and Applicability remain unchanged: the entire inventory and all runtime contexts have not been exhaustively audited, and **no clean pinned-SHA Compose build/start success or failure is established**. The Framework category suggestion does not require an invented Cloud deployment. This `PRESERVE` decision does not claim a complete verified stack inventory, runtime success, coverage or security assurance and authorizes **no Only Film modifications or integration**.
+
+**Human Adoption Decision Review**
+
+- **Reviewer:** Only Film maintainer
+- **Express approval date:** 2026-11-14
+- **Decision Status:** `Resolved`
+- **Adoption Decision:** `PRESERVE`
+- **Previously approved State / Applicability (unchanged):** `Partial / Applicable`
+- **Immutable consumer evidence reference:** `28d75a50e0a178954dd46acc23300d9dd327843c`
+- **Evidence:** [Technology Stack, Quick Start and Testing batch-10 review](only-film-stack-startup-testing-adoption-decision-review-batch-10.md), pinned README, POM, Dockerfile, Compose and CI workflow definitions
+- **Evidence limitations:** Main versions and local configuration are corroborated **statically**; no exhaustive dependency/tool inventory, all-tools runtime demonstration, clean Compose execution, complete test-suite result or external deployment was independently established
+- **Authorization boundary:** Retain existing reader-facing categorized documentation only; no changes to Only Film, source, build, environments, workflows, tests, deployments, security settings or Application/Integration.
+
 
 ---
 
@@ -450,7 +463,7 @@ The pinned README provides a concrete onboarding path, verified against its `.en
 
 **Decision Rationale**
 
-On 2026-11-14 the maintainer **expressly retained `Needs Further Evaluation / —`** in the second Required README decision batch; no `PRESERVE`, `ADAPT`, or other Adoption Decision is approved. The reviewer must determine the sufficiency threshold and whether to request a reproducible Compose smoke run using the recorded Q1–Q8 gates. Any operational reproduction must use disposable data and avoid destructive cleanup of existing volumes.
+On 2026-11-14 the maintainer **expressly retained `Needs Further Evaluation / —`** both in the second Required README decision batch and in Technology Stack, Quick Start and Testing decision batch 10; no `PRESERVE`, `ADAPT`, or other Adoption Decision is approved. The reviewer must determine the sufficiency threshold and whether to request a reproducible Compose smoke run using the recorded Q1–Q8 gates. Any operational reproduction must use disposable data and avoid destructive cleanup of existing volumes.
 
 ---
 
@@ -1002,7 +1015,7 @@ The README provides a useful testing entry point, local commands and explicit CI
 
 **Decision Rationale**
 
-On 2026-11-14 the maintainer **expressly retained `Needs Further Evaluation / —`** in Recommended README review batch 3. Whether to `PRESERVE` the README guidance or `ADAPT` its clarity and prerequisites remains subject to a later evidence-backed review. Neither code nor workflow changes are approved by this assessment record.
+On 2026-11-14 the maintainer **expressly retained `Needs Further Evaluation / —`** in Recommended README review batch 3 and in Technology Stack, Quick Start and Testing decision batch 10. Whether to `PRESERVE` the README guidance or `ADAPT` its clarity and prerequisites remains subject to a later evidence-backed review. Neither code nor workflow changes are approved by this assessment record.
 
 ---
 
@@ -2348,11 +2361,11 @@ The Only Film maintainer **expressly approved `OMIT` on 2026-11-14** solely for 
 - The `README-CONTRIBUTING: Missing / Not Applicable` and `DOC-DIAGRAMS: Missing / Applicable` evaluations were formally approved on 2026-11-14; their bounded-source qualifications remain. The `DOC-API` and `DOC-REFERENCES` approved scoped `Not Applicable` findings retain bounded evidence limits, as do the independent Quick Start Compose execution gap (despite its approved documentary evaluation), security-documentation adequacy, license-status communication, architecture freshness and actual project milestone (evidence questions retained despite formal documentary approvals).
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
-- **Fifteen formally resolved Adoption Decisions**: twelve `PRESERVE` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `DOC-TESTING`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-ADR`, `README-ROADMAP`) and three `OMIT` (`README-CONTRIBUTING`, `DOC-API`, `DOC-REFERENCES`). **Thirteen remain unresolved**, including the expressly deferred `DOC-DIAGRAMS` and `DOC-DATABASE`. No consumer change is authorized.
+- **Sixteen formally resolved Adoption Decisions**: thirteen `PRESERVE` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `DOC-TESTING`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-ADR`, `README-ROADMAP`, `README-TECH-STACK`) and three `OMIT` (`README-CONTRIBUTING`, `DOC-API`, `DOC-REFERENCES`). **Twelve remain unresolved**, including expressly deferred `README-QUICK-START`, `README-TESTING`, `DOC-DIAGRAMS` and `DOC-DATABASE`. No consumer change is authorized.
 
 ### Recommended Next Review
 
-Preserve all twenty-eight explicit 2026-11-14 State and Applicability approvals and their source limitations. Next, separately evaluate the thirteen unresolved Adoption Decisions (including `DOC-DIAGRAMS`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-SECURITY`, `README-DEMO`, `README-LICENSE`, `DOC-CHANGELOG`, `README-TECH-STACK`, `README-QUICK-START`, `README-STATUS`, `README-TESTING`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS`) and any outstanding evidence gates before considering Assessment completion or authorizing changes to Only Film.
+Preserve all twenty-eight explicit 2026-11-14 State and Applicability approvals and their source limitations. Next, separately evaluate the twelve unresolved Adoption Decisions (including `DOC-DIAGRAMS`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-SECURITY`, `README-DEMO`, `README-LICENSE`, `DOC-CHANGELOG`, `README-QUICK-START`, `README-STATUS`, `README-TESTING`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS`) and any outstanding evidence gates before considering Assessment completion or authorizing changes to Only Film.
 
 ---
 
@@ -2361,7 +2374,7 @@ Preserve all twenty-eight explicit 2026-11-14 State and Applicability approvals 
 - **Assessment `Complete`: NO.**
 - **Responsibility coverage in this working artifact:** `28/28` structured entries with allowed State values; **28 approved / 0 pending human review**; `0/28` not entered.
 - **Formally approved States and Applicability evaluations in this record:** `28` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-TECH-STACK`, `README-QUICK-START`, `README-DOCUMENTATION`, `README-FOOTER`, `DOC-CHANGELOG`, `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING`, `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-ROADMAP`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-LICENSE`, `DOC-SECURITY`, `README-CONTRIBUTING`, `DOC-DIAGRAMS`, `DOC-REFERENCES`; maintainer, 2026-11-14).
-- **Resolved Adoption Decisions:** `15` — twelve `PRESERVE` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `DOC-TESTING`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-ADR`, `README-ROADMAP`) and three `OMIT` (`README-CONTRIBUTING`, `DOC-API`, `DOC-REFERENCES`), all formally approved 2026-11-14. **Unresolved:** `13` (including `DOC-DIAGRAMS`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-SECURITY`, `README-DEMO`, `README-LICENSE`, `DOC-CHANGELOG`, `README-TECH-STACK`, `README-QUICK-START`, `README-STATUS`, `README-TESTING`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS`).
+- **Resolved Adoption Decisions:** `16` — thirteen `PRESERVE` (`README-HERO`, `README-OVERVIEW`, `README-FEATURES`, `README-DOCUMENTATION`, `README-FOOTER`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `DOC-TESTING`, `README-AUTHOR`, `README-HIGHLIGHTS`, `DOC-ADR`, `README-ROADMAP`, `README-TECH-STACK`) and three `OMIT` (`README-CONTRIBUTING`, `DOC-API`, `DOC-REFERENCES`), all formally approved 2026-11-14. **Unresolved:** `12` (including `DOC-DIAGRAMS`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `DOC-SECURITY`, `README-DEMO`, `README-LICENSE`, `DOC-CHANGELOG`, `README-QUICK-START`, `README-STATUS`, `README-TESTING`, `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS`).
 - **Consumer mutations:** `NONE`.
 
-This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; all three formerly unselected States were assigned `Missing` from bounded evidence; **two of those (`README-CONTRIBUTING` and `DOC-DIAGRAMS`) have since received explicit maintainer approval**, as have twenty-six other evaluations including `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-STATUS`, `README-REPOSITORY-STRUCTURE`, `README-ROADMAP`, `README-ARCHITECTURE`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS` and `README-LICENSE`. The third formerly unselected entry (`DOC-API`) now has an approved `Missing / Not Applicable` evaluation limited to the supported current public/programmatic API contract. All 28 classification pairs have received explicit maintainer approval. The Assessment remains **In Progress** with fifteen formally resolved Adoption Decisions (twelve `PRESERVE`, three `OMIT`) and thirteen unresolved; no consumer mutation is authorized. It does not establish compliance or authorize Application/Integration.
+This Markdown record follows the Assessment Template's field structure for all twenty-eight Responsibilities; all three formerly unselected States were assigned `Missing` from bounded evidence; **two of those (`README-CONTRIBUTING` and `DOC-DIAGRAMS`) have since received explicit maintainer approval**, as have twenty-six other evaluations including `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT`, `README-DEMO`, `README-AUTHOR`, `README-HIGHLIGHTS`, `README-STATUS`, `README-REPOSITORY-STRUCTURE`, `README-ROADMAP`, `README-ARCHITECTURE`, `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS` and `README-LICENSE`. The third formerly unselected entry (`DOC-API`) now has an approved `Missing / Not Applicable` evaluation limited to the supported current public/programmatic API contract. All 28 classification pairs have received explicit maintainer approval. The Assessment remains **In Progress** with sixteen formally resolved Adoption Decisions (thirteen `PRESERVE`, three `OMIT`) and twelve unresolved; no consumer mutation is authorized. It does not establish compliance or authorize Application/Integration.

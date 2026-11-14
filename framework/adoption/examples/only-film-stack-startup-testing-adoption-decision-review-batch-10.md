@@ -9,12 +9,26 @@
 | Framework Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-TECH-STACK` (Required); `README-QUICK-START` (Required); `README-TESTING` (Recommended) |
 | Previously approved State / Applicability | `28/28` pairs; unchanged |
-| Formally resolved Adoption Decisions | `15/28`: 12 `PRESERVE`, 3 `OMIT` |
-| Remaining unresolved Adoption Decisions | `13/28`, including these three |
+| Formally resolved Adoption Decisions after explicit maintainer review | `16/28`: 13 `PRESERVE`, 3 `OMIT` |
+| Remaining unresolved Adoption Decisions | `12/28`, including `README-QUICK-START` and `README-TESTING` |
 | Assessment | `In Progress` |
 | Only Film changes | `NONE` |
 
 This packet prepares reviewer-facing choices only. **No formal Adoption Decision is conferred** by preparing or merging it. An explicit, separately dated maintainer approval is required to mark a choice `Resolved`. A documentary `PRESERVE` decision can retain an already useful partial implementation **without converting `State: Partial` to `Satisfied`**, asserting an exhaustive dependency inventory, or validating startup and tests. Only Film remains strictly read-only.
+
+## Formal maintainer Adoption Decision outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved `README-TECH-STACK = PRESERVE`** and **expressly retained** the other two responsibilities as unresolved:
+
+| Responsibility | Decision Status | Adoption Decision | Evidence-constrained rationale |
+| --- | --- | --- | --- |
+| `README-TECH-STACK` | `Resolved` | `PRESERVE` | Retain only the **existing categorized reader-facing stack overview**, with the POM, Dockerfile, Compose and workflow definitions corroborating selected configured versions and paths; no exhaustive technology use, runtime success or cloud deployment is claimed |
+| `README-QUICK-START` | `Needs Further Evaluation` | `—` | Clean Docker Compose build/start for the pinned source was not verified; the absence of that check is neither evidence of success nor evidence of failure |
+| `README-TESTING` | `Needs Further Evaluation` | `—` | 329 **selected** passing H2 tests and separately successful PostgreSQL jobs do not establish a complete general Maven suite, Selenium/Compose runs, consolidated coverage or passed historical Quality Gate |
+
+**Human approval date:** 2026-11-14. **Immutable consumer evidence baseline:** `28d75a50e0a178954dd46acc23300d9dd327843c`. All 28 formally approved State / Applicability pairs remain unchanged; in particular all three retain `Partial / Applicable`. The prior proposed options below are retained as **historical preparation**, not as the current formal decision outcome.
+
+**Authorization boundary:** Assessment `In Progress`, **16/28 decisions formally resolved** (13 `PRESERVE`, 3 `OMIT`) and **12 unresolved**. No Only Film source, documentation, build, tool, CI, workflow, tests, runtime, deployment, infrastructure or integration may be modified or executed by this decision.
 
 ## Review candidates
 
@@ -89,4 +103,4 @@ The maintainer must approve or decline each decision independently. Recommended 
 
 After **express formal approval**, use a **separate PR** to update the canonical [Assessment](only-film-assessment.md), the [consolidated matrix](only-film-consolidated-review-matrix.md) and this packet, with independently justified rationale and unchanged evidence constraints.
 
-**All 28 State / Applicability pairs remain formally approved and unchanged. Fifteen previously resolved Adoption Decisions (12 `PRESERVE`, 3 `OMIT`); thirteen unresolved. Assessment `In Progress`; Only Film read-only.**
+**Postapproval status:** All 28 State / Applicability pairs remain formally approved and unchanged. Sixteen Adoption Decisions resolved (13 `PRESERVE`, 3 `OMIT`); twelve unresolved. Assessment `In Progress`; Only Film read-only. The earlier preparation PR did not itself approve the new decision; express maintainer approval on 2026-11-14 did.
