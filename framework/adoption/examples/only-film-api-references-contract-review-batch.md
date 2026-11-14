@@ -8,13 +8,26 @@
 | Assessed pinned reference | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Framework Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `DOC-API`, `DOC-REFERENCES` |
-| Status | **Human-review proposals; no new formal State or Applicability approval** |
-| Current formal evaluation approvals | `26/28` |
+| Status | **Both State and Applicability pairs explicitly approved by the Only Film maintainer on 2026-11-14; dated outcome below** |
+| Formal evaluation approvals after maintainer review | `28/28` |
 | Assessment status | `In Progress` |
 | Adoption Decisions | `0` resolved |
 | Consumer mutation | `NONE` |
 
 This record deliberately **separates the contractual State from Applicability** and scopes a documentation Responsibility to an actual supported reader/consumer use case. A `Not Applicable` proposal does **not** stand in for a missing State, authorize changes, prove repository-wide absence, or automatically mean a documentation gap is a defect.
+
+## Formal maintainer approval outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved each independent State and Applicability classification**:
+
+| Responsibility | Approved State | Approved Applicability and its precise scope |
+| --- | --- | --- |
+| `DOC-API` | `Missing` | `Not Applicable` — documentation for a **currently supported public/programmatic API contract** only |
+| `DOC-REFERENCES` | `Partial` | `Not Applicable` — a **standalone centralized external-technical-reference catalog** only |
+
+All source limitations remain intact: the seven-controller sample does not prove the absence of every programmatic route or integration, and the sampled documentation does not prove there are no other external references. In-context source citations, attribution, validity and maintenance **remain relevant**; no general references exemption is implied. Missing/Partial are independent contractual States, **not** authorizations to create a REST API, OpenAPI artifact or references catalog.
+
+**Boundary:** the Assessment remains `In Progress`; **all 28 Adoption Decisions remain `—`**, all 28 Decision Status values remain `Needs Further Evaluation`, no legal/rights assertions are made, and **no edits to Only Film** are authorized. The preapproval proposals and alternative scope discussions below remain as dated historical preparation, not current unapproved classifications.
 
 ## Candidate outcomes and discriminating questions
 
