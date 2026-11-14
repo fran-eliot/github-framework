@@ -118,3 +118,18 @@ An independent, express maintainer decision is required for each Responsibility.
 If expressly approved, a later **separate approval PR** should update the canonical [Assessment](only-film-assessment.md), the [consolidated review matrix](only-film-consolidated-review-matrix.md), and this packet with approval date, individual rationale and unchanged source limitations. Merging this preparation packet does **not** count as approval.
 
 **Postapproval status:** All 28 State / Applicability approvals unchanged; 12 decisions resolved (11 `PRESERVE`, 1 `OMIT`), 16 unresolved. Assessment remains `In Progress`; Only Film remains strictly read-only. The earlier preparation suggestions above are not themselves an approval.
+
+## DOC-DEPLOYMENT — verified local upload-persistence wording discrepancy (2026-11-14)
+
+A targeted static comparison at immutable Only Film commit `28d75a50e0a178954dd46acc23300d9dd327843c` establishes a **specific documentation inconsistency**, rather than an inferred Docker or data-loss failure:
+
+| Pinned source | Direct observation | Boundary |
+| --- | --- | --- |
+| [`compose.yaml`](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/compose.yaml) | `app` mounts `uploads_data:/app/uploads`, sets `ONLYFILM_UPLOAD_DIR=/app/uploads`; a separate `postgres_data` volume stores database files. The published application and database ports bind to `127.0.0.1`. | Static configuration of **local** persistence; no execution, backup, recovery or production durability is verified. |
+| [`docs/POSTGRESQL_SETUP.md`, line 44](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md#L44) | Explicitly states `docker compose down` preserves both named volumes and uploaded images across container recreation; warns that `down -v` removes both. | Documentary claim, independently consistent with the Compose volume configuration, not a successful end-to-end persistence test. |
+| [`docs/POSTGRESQL_SETUP.md`, line 50](https://github.com/fran-eliot/only_film/blob/28d75a50e0a178954dd46acc23300d9dd327843c/docs/POSTGRESQL_SETUP.md#L50) | Warns that a definitive strategy for uploaded-file persistence in the container is still absent. | As written, ambiguous against the local named-volume configuration. It may intend to warn that **production-grade backup, durability and recovery** are not designed. |
+
+**Evidence-backed candidate: `ADAPT`**, restricted to a **future, separately authorized documentation clarification** distinguishing local named-volume persistence from production storage, backup and recovery guarantees. This does not authorize changing the Compose configuration, Dockerfile, volume contents, workflows or consumer documents now. No pinned-SHA Compose success, failure, storage durability or production deployment is asserted.
+
+The existing formal `DOC-DEPLOYMENT: Partial / Applicable` classification remains unchanged, with `Applicable` limited to **local nonproduction Compose**. **The Adoption Decision remains `Needs Further Evaluation / —` until express maintainer approval.** Assessment `In Progress`; overall formal totals at this review: **19/28 resolved** (13 `PRESERVE`, 3 `OMIT`, 3 `ADAPT`), **9 pending**; consumer mutations `NONE`.
+
