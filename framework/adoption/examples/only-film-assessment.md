@@ -40,7 +40,7 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `DOC-PROJECT-STATUS` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `DOC-TESTING` | Recommended | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-ROADMAP` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
-| `README-CONTRIBUTING` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
+| `README-CONTRIBUTING` | Optional | **Unselected** (documentary State pending review) | `Not Applicable` *(proposed from maintainer-confirmed policy, 2026-11-14)* | `Needs Further Evaluation` | `—` |
 | `README-DEMO` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-AUTHOR` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
 | `README-HIGHLIGHTS` | Optional | `Partial` *(proposed; pending human approval)* | `Applicable` *(proposed)* | `Needs Further Evaluation` | `—` |
@@ -53,7 +53,7 @@ This pinned consumer reference is the evaluation baseline. Repository-wide facts
 | `DOC-DIAGRAMS` | Optional | **Unselected** (`Missing` / `Partial`; pending review) | `Uncertain` | `Needs Further Evaluation` | `—` |
 | `DOC-REFERENCES` | Optional | `Partial` *(proposed; pending human approval)* | `Uncertain` *(applicability pending review)* | `Needs Further Evaluation` | `—` |
 
-**Coverage:** twenty-five Responsibilities have selected **proposed States** (including one with Applicability `Uncertain`); three additional Responsibilities have structured entries with State **not selected** and Applicability `Uncertain`. All **28/28** Responsibilities now have structured working entries, but the three unresolved States and outstanding human review prevent completion. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
+**Coverage:** twenty-five Responsibilities have selected **proposed States** (including one with Applicability `Uncertain`); three additional Responsibilities have structured entries with State **not selected**: two retain Applicability `Uncertain`, and `README-CONTRIBUTING` now has proposed `Not Applicable`. All **28/28** Responsibilities now have structured working entries, but the three unresolved States and outstanding human review prevent completion. The [28-Responsibility review matrix](only-film-consolidated-review-matrix.md) contains hypotheses and review priorities for the remaining items, **not approved assessment results**. The summary and Responsibility Details now follow the Template's canonical order; human review and completion requirements are still outstanding.
 
 The `State` and `Applicability` cells above are technically recommended contractual values; their *approval status* is separate from the values themselves. Their inclusion does not imply formal human sign-off.
 
@@ -1071,7 +1071,7 @@ A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descrip
 
 **Applicability**
 
-`Uncertain` — no verified policy or confirmed intention to accept external contributions at the pinned consumer reference.
+`Not Applicable` — **proposed documentary applicability based on the maintainer's explicit 2026-11-14 policy confirmation**: Only Film is a personal project and does not accept external contributions. State approval remains pending.
 
 **Implementation Characteristics**
 
@@ -1079,7 +1079,7 @@ A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descrip
 
 **Uncertainty**
 
-- Whether the maintainer intends the repository to accept external contributions and, if so, under what policy and review process.
+- The maintainer explicitly confirmed on 2026-11-14 that Only Film is a personal project without external contributions. This collaboration-model question is resolved; the contractual documentary State and final Assessment sign-off remain pending.
 - Whether contribution rules exist outside the inspected README and tree, for example in GitHub repository settings, PR templates, project-level guidance, or other maintained sources.
 - Whether technical setup/test guidance constitutes a partial contribution entry point or a distinct contributing policy is necessary for the intended audience.
 - An inspected Framework Component catalog did not locate a standalone `README-CONTRIBUTING` Component despite this Responsibility appearing in Template metadata. That is a **Framework-side specification question**, not evidence that Only Film is deficient.
@@ -1097,14 +1097,21 @@ A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descrip
 - [Pinned consumer tree](https://github.com/fran-eliot/only_film/tree/28d75a50e0a178954dd46acc23300d9dd327843c)
 - [TPL-BACKEND metadata](../../templates/repositories/backend/metadata.yml)
 - [Optional governance E3 semantic review](only-film-optional-governance-semantic-review.md)
+- Maintainer confirmation during the Assessment review on **2026-11-14**: personal Only Film project, no external contributions (current policy, not pinned-commit evidence).
 
 **Evaluation Rationale**
 
 The README contains actionable technical onboarding information, but those instructions are not automatically a policy on who may contribute, how changes are proposed and reviewed, and how contributions are accepted. `Partial` would require treating technical onboarding as an adequate subset of the intended Responsibility; `Missing` would require establishing that no substantive contributing guidance is present. Neither conclusion has been human-reviewed, and whether the Responsibility is applicable to this consumer's collaboration model is unresolved. Recording `Uncertain` Applicability and leaving State unselected is more traceable than manufacturing a contractual answer.
 
+**Maintainer Scope Confirmation — 2026-11-14**
+
+The maintainer confirmed that Only Film is a **personal project without external contributions**. This directly supports proposed `Applicability: Not Applicable` for an external contribution-guidance Responsibility. This is a current project policy decision, distinct from facts proven at the historical pinned SHA. No `CONTRIBUTING.md` or GitHub settings change is authorized or required by this Assessment.
+
+The documentary `State` remains **unselected** until a valid contractual `Satisfied / Partial / Missing` value is reviewed and recorded with rationale; `Not Applicable` is an Applicability value, **not a State**. There is no approved Adoption Decision.
+
 **Evidence-Based Conditional Recommendation**
 
-**Preferred provisional result if external contribution guidance is in scope:** `Applicability: Applicable`; `State: Missing` **for a documented collaboration policy**, unless an actual equivalent acceptance/review source is identified. The current Assessment `State` remains **unselected**, and `Applicability` remains `Uncertain`; **neither recommendation is approved**.
+**Historical alternative (superseded by the maintainer-confirmed no-external-contributions policy):** `Applicability: Applicable`; `State: Missing` **for a documented collaboration policy**, unless an actual equivalent acceptance/review source is identified. The current Assessment `State` remains **unselected**, and `Applicability` remains `Uncertain`; **neither recommendation is approved**.
 
 Direct pinned-SHA lookups found no `CONTRIBUTING.md`, `.github/CONTRIBUTING.md` or `.github/PULL_REQUEST_TEMPLATE.md` at those exact paths. The [expanded evidence review](only-film-optional-contract-spotcheck.md) confirms that the pinned README describes development commands, PR-triggered CI and Git attribution but does not set out contribution eligibility or the expected review/acceptance workflow. A filename absence alone is not a universal policy-absence finding.
 
@@ -1114,13 +1121,13 @@ If the repository **does not accept external contributions**, the reviewer may i
 
 **Reviewer Discrimination Gate — State and Applicability**
 
-**Open; no State or Applicability approval recorded.** Decide the intended contribution model first. Technical setup, tests and CI instructions in the pinned README support onboarding but do not themselves establish who may propose changes, review expectations or acceptance policy.
+**Contribution model confirmed; documentary State and formal Assessment sign-off still pending.** Technical setup, tests and CI instructions in the pinned README support onboarding but do not themselves establish who may propose changes, review expectations or acceptance policy.
 
 - **If the repository accepts contributions:** inspect maintained contribution policy or equivalent repository/project guidance. Choose `Partial` only if the existing guidance demonstrably fulfills a meaningful subset of that applicable purpose; choose `Missing` if no substantive contributing guidance meets it. `Satisfied` also requires sufficient evidence, not just an expected filename.
 - **If external contributions are not intended:** document the audience and whether this Optional Responsibility is `Not Applicable`; do not infer that solely from the absence of `CONTRIBUTING.md` or from the Template's Optional level.
 - **Evidence needed:** maintainer's current contribution policy, the pinned README, any equivalent instructions or GitHub collaboration settings, and an explicit review of which obligations are in scope.
 
-**Disposition record:** Accepted contribution model: *pending*; equivalent governance evidence: *unverified*; proposed contractual State: *unselected*; Applicability: `Uncertain`; reviewer/date: *not recorded*. `Needs Further Evaluation` and `Adoption Decision: —` remain unchanged.
+**Disposition record:** Contribution model: *personal; no external contributions (maintainer-confirmed 2026-11-14)*; contractual State: *unselected*; Applicability: `Not Applicable` *(proposed)*; formal documentary approval/date: *not recorded*. `Needs Further Evaluation` and `Adoption Decision: —` remain unchanged.
 
 **Decision Status**
 
@@ -1132,7 +1139,7 @@ If the repository **does not accept external contributions**, the reviewer may i
 
 **Decision Rationale**
 
-First establish the intended contribution model and any existing policy. Then approve a contractual State and Applicability and decide, if justified, between `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT`, or `OMIT`. No contribution policy is created or authorized here.
+The contribution model is now confirmed as personal with no external contributions. The reviewer must still approve a contractual documentary State and the `Not Applicable` interpretation and decide, if justified, between `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT`, or `OMIT`. No contribution policy is created or authorized here.
 
 ---
 
@@ -1885,21 +1892,21 @@ The reviewer should determine whether references need consolidation or can remai
 ### Open Uncertainties
 
 - Human sign-off on all twenty-eight structured entries, including contractual State selection for the three unresolved entries, including `DOC-CHANGELOG` alternatives and the Testing documentation sufficiency threshold.
-- Contractual State selection for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`, Applicability review for these three plus `DOC-REFERENCES`, and human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
+- Contractual State selection for `README-CONTRIBUTING`, `DOC-API`, and `DOC-DIAGRAMS`, review of the confirmed `README-CONTRIBUTING` no-external-contribution scope and its proposed `Not Applicable` interpretation, Applicability review for `DOC-API`, `DOC-DIAGRAMS`, and `DOC-REFERENCES`, and human review of Quick Start Compose verification, security-documentation adequacy, license-status communication, architecture freshness, and actual project milestone.
 - The historical JaCoCo coverage percentage and Sonar Quality Gate outcome are not established; whether either is necessary for documentary acceptance remains a reviewer question.
 - Rights and permissions associated with the original academic contributions remain unverified; the Assessment does not grant a license.
 - Adoption Decisions and rationales where warranted.
 
 ### Recommended Next Review
 
-Review the full 28-Responsibility working Assessment against Template metadata, first resolving the three unselected States and four open Applicability judgments. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
+Review the full 28-Responsibility working Assessment against Template metadata, first resolving the three unselected States and three still-uncertain Applicability judgments, and confirming the proposed `Not Applicable` for `README-CONTRIBUTING`. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
 
 ---
 
 ## Completion Check
 
 - **Assessment `Complete`: NO.**
-- **Responsibility coverage in this working artifact:** `28/28` structured entries (`25` with proposed State, one of those with Applicability `Uncertain`; `3` with State unselected), `0/28` not entered.
+- **Responsibility coverage in this working artifact:** `28/28` structured entries (`25` with proposed State, one of those with Applicability `Uncertain`; `3` with State unselected (one with proposed `Not Applicable`)), `0/28` not entered.
 - **Formally approved States in this record:** `0`.
 - **Resolved Adoption Decisions:** `0`.
 - **Consumer mutations:** `NONE`.
