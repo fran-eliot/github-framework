@@ -8,13 +8,27 @@
 | Pinned assessment SHA | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-STATUS`, `README-REPOSITORY-STRUCTURE`, `README-ROADMAP` |
-| Review status | **Proposals only; the maintainer has not approved these three in this packet** |
-| Approved State / Applicability pairs before review | **17/28** |
+| Review status | **All three evaluations expressly approved by the Only Film maintainer on 2026-11-14; see dated record below** |
+| Approved State / Applicability pairs after maintainer review | **20/28** |
 | Assessment | `In Progress` |
 | Resolved Adoption Decisions | `0` |
 | Consumer mutation | `NONE` |
 
 This review uses directly fetched files at the immutable consumer SHA and the corresponding Framework guidance. Earlier maturity and F3 reports are considered **historical sources**, not verified present-day status. A merged review packet is not approval and cannot authorize changes to Only Film.
+
+## Formal maintainer approval outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved**:
+
+| Responsibility | Approved State | Approved Applicability |
+| --- | --- | --- |
+| `README-STATUS` | `Partial` | `Applicable` |
+| `README-REPOSITORY-STRUCTURE` | `Satisfied` | `Applicable` |
+| `README-ROADMAP` | `Partial` | `Applicable` |
+
+**Evidence limits retained:** technology badges and an earlier maturity assessment do not establish current project status/maturity; the repository tree is an informative but deliberately nonexhaustive directory summary; the historical F3 plan does not prove current milestone, priority or feature commitments. `Satisfied` for Repository Structure applies to the README's navigation purpose only.
+
+**Authorization boundary:** the Assessment remains `In Progress`, all three `Decision Status` entries remain `Needs Further Evaluation`, and all three `Adoption Decision` entries remain `—`. No changes to Only Film are authorized. The recommendations and pending-review wording below are **historical preapproval preparation notes**, not a reversal of this approval.
 
 ## Review recommendations
 
