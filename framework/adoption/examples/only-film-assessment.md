@@ -1067,7 +1067,7 @@ A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descrip
 
 **State**
 
-`Missing` — **formally approved by the maintainer on 2026-11-14**. The sampled pinned documentation contains technical onboarding and PR-triggered CI, but no observed external-contributor eligibility, submission or acceptance policy. This records *observed coverage*, not a mandate to add a policy: the maintainer confirmed that external contributions are not intended, so `Applicability: Not Applicable` is independently proposed.
+`Missing` — **formally approved by the maintainer on 2026-11-14**. The sampled pinned documentation contains technical onboarding and PR-triggered CI, but no observed external-contributor eligibility, submission or acceptance policy. This records *observed coverage*, not a mandate to add a policy: the maintainer confirmed that external contributions are not intended, so `Applicability: Not Applicable` is independently evaluated and approved.
 
 **Applicability**
 
@@ -1101,11 +1101,11 @@ A `PRESERVE` or `ADAPT` decision requires verifying that the future-work descrip
 
 **Evaluation Rationale**
 
-The README contains actionable technical onboarding information, but those instructions are not automatically a policy on who may contribute, how changes are proposed and reviewed, and how contributions are accepted. `Partial` would require treating technical onboarding as an adequate subset of the intended Responsibility; `Missing` would require establishing that no substantive contributing guidance is present. The maintainer has since confirmed that external contributions are not intended. This supports provisional `Applicability: Not Applicable`; `State: Missing` is separately proposed from the absence of an observed contribution-policy function, and both interpretations await formal review.
+The README contains actionable technical onboarding information, but those instructions are not automatically a policy on who may contribute, how changes are proposed and reviewed, and how contributions are accepted. `Partial` would require treating technical onboarding as an adequate subset of the intended Responsibility; `Missing` would require establishing that no substantive contributing guidance is present. The maintainer has since confirmed that external contributions are not intended. This supports the maintainer-approved `Applicability: Not Applicable`; `State: Missing` was independently approved from the absence of an observed contribution-policy function. Both approvals explicitly retain the bounded-evidence caveat.
 
 **Maintainer Scope Confirmation — 2026-11-14**
 
-The maintainer confirmed that Only Film is a **personal project without external contributions**. This directly supports proposed `Applicability: Not Applicable` for an external contribution-guidance Responsibility. This is a current project policy decision, distinct from facts proven at the historical pinned SHA. No `CONTRIBUTING.md` or GitHub settings change is authorized or required by this Assessment.
+The maintainer confirmed that Only Film is a **personal project without external contributions**. This directly supports the maintainer-approved `Applicability: Not Applicable` for an external contribution-guidance Responsibility. This is a current project policy decision, distinct from facts proven at the historical pinned SHA. No `CONTRIBUTING.md` or GitHub settings change is authorized or required by this Assessment.
 
 The documentary `State: Missing` and `Applicability: Not Applicable` were **explicitly approved by the maintainer on 2026-11-14**; `Not Applicable` is an Applicability value, **not a State**. There is no approved Adoption Decision.
 
@@ -1117,7 +1117,7 @@ Direct pinned-SHA lookups found no `CONTRIBUTING.md`, `.github/CONTRIBUTING.md` 
 
 If the repository **does not accept external contributions**, the reviewer may instead justify `Applicability: Not Applicable`; a contractual State still must be selected under the Template. If equivalent project/organization governance is supplied, re-evaluate `Missing` against `Partial` or `Satisfied`. The remaining question is maintainer policy, not another generic README section.
 
-**Required reviewer decision:** confirm whether contributions are solicited and whether another maintained policy applies; record the evidence, chosen State, Applicability, reviewer and date. No new `CONTRIBUTING.md` or PR governance change is authorized by this proposal.
+**Review disposition:** the maintainer has confirmed contributions are not solicited and approved `Missing / Not Applicable` on 2026-11-14. Equivalent governance beyond the sampled sources remains unverified but is not required for this project's stated scope. No new `CONTRIBUTING.md` or PR governance change is authorized.
 
 **Reviewer Discrimination Gate — State and Applicability**
 
@@ -1129,7 +1129,7 @@ If the repository **does not accept external contributions**, the reviewer may i
 
 **Disposition record:** Contribution model: *personal; no external contributions (maintainer-confirmed 2026-11-14)*; contractual State: `Missing` *(approved)*; Applicability: `Not Applicable` *(approved)*; reviewer: *Only Film maintainer*; approval date: *2026-11-14*. `Needs Further Evaluation` and `Adoption Decision: —` remain unchanged.
 
-**Contractual State Proposal — reviewer sign-off pending**
+**Contractual State Review — maintainer approved 2026-11-14**
 
 The [Assessment guidance](../README.md) explicitly permits `State: Missing` together with `Applicability: Not Applicable`. Here, `Missing` describes **no evidenced external-contribution policy**, while `Not Applicable` expresses the maintainer's 2026-11-14 decision to keep Only Film personal and closed to outside contributions. Existing commands and CI details are not a contributor-acceptance policy. Bounded source checks do not prove that no alternative organizational policy exists; however, no such policy is necessary for the confirmed audience. No `CONTRIBUTING.md` or GitHub configuration change is requested.
 
@@ -1771,7 +1771,7 @@ The reviewer must determine whether `PRESERVE` or `ADAPT` the existing documenta
 
 **Applicability**
 
-`Applicable` — **formally approved by the maintainer on 2026-11-14**, based on the value of a future maintained technical diagram. This establishes an intended documentation use, not the presence of a diagram at the pinned SHA or a completed State review.
+`Applicable` — **formally approved by the maintainer on 2026-11-14**, based on the value of a future maintained technical diagram. This establishes an intended documentation use, not the presence of a diagram at the pinned SHA or a decision to implement it.
 
 **Implementation Characteristics**
 
@@ -1801,11 +1801,11 @@ No maintained technical diagram artifact was confirmed in the bounded prior insp
 
 **Evaluation Rationale**
 
-The available evidence does not establish a maintained technical diagram, but neither does it show that diagrams are needed for the consumer's actual purpose. Absence of a diagram-named file is not proof that all diagrams are missing, and a high-level textual flow can be sufficient for a relatively simple explanation. `Missing` is now the preferred **unapproved** State, based on the bounded sample and subject to additional evidence if a more complete artifact inventory is needed. **Applicability is now proposed as `Applicable`** because the maintainer expressed interest in future technical diagrams. That preference does not imply diagrams already exist or authorize their implementation.
+The available evidence does not establish a maintained technical diagram, but neither does it show that diagrams are needed for the consumer's actual purpose. Absence of a diagram-named file is not proof that all diagrams are missing, and a high-level textual flow can be sufficient for a relatively simple explanation. `Missing` was **approved by the maintainer** from the bounded sample, with the explicit limitation that the diagram inventory was not exhaustive. **Applicability: `Applicable` was separately approved** based on the maintainer's interest in useful future technical diagrams. That preference does not imply diagrams already exist or authorize their implementation.
 
 **Maintainer Scope Confirmation — 2026-11-14**
 
-The maintainer explicitly stated that **including a diagram in the future would be useful**. On this basis the preferred documentary Applicability is now **`Applicable` (proposed; subject to formal Assessment review)**. The earlier conditional `Not Applicable` recommendation no longer reflects the confirmed intent.
+The maintainer explicitly stated that **including a diagram in the future would be useful**. On this basis the documentary Applicability is **`Applicable` (maintainer-approved 2026-11-14)**. The earlier conditional `Not Applicable` recommendation no longer reflects the confirmed intent.
 
 Suggested initial diagram **candidates**, not approved requirements or current diagrams:
 
@@ -1823,7 +1823,7 @@ The [expanded pinned documentation spot check](only-film-optional-contract-spotc
 
 If relationships between domain entities, booking/concurrency flow or Compose deployment would benefit materially from a maintained diagram, `Applicable` may be better supported; the reviewer should then search remaining diagram sources and select a contractual `State` based on what exists. No automatic `Missing` finding, ERD requirement or diagram generation follows from the Template's Optional level.
 
-**Required reviewer decision:** determine a concrete audience/use-case need, account for other diagram evidence, and record contractual State, Applicability, reviewer and date before completion.
+**Review disposition:** the maintainer approved `Missing / Applicable` on 2026-11-14, explicitly retaining the nonexhaustive diagram-inspection caveat. Future diagram priorities, audience use cases and possible additional source evidence remain open; the adoption decision is not authorized.
 
 **Reviewer Discrimination Gate — State and Applicability**
 
@@ -1835,9 +1835,9 @@ If relationships between domain entities, booking/concurrency flow or Compose de
 
 **Disposition record:** Embedded-diagram inventory: *not exhaustive*; future diagram value: *confirmed by maintainer 2026-11-14*; scope and priority: *pending*; contractual State: `Missing` *(approved from bounded evidence)*; Applicability: `Applicable` *(approved)*; reviewer: *Only Film maintainer*; approval date: *2026-11-14*. No diagram generation is authorized.
 
-**Contractual State Proposal — reviewer sign-off pending**
+**Contractual State Review — maintainer approved 2026-11-14**
 
-The [pinned evidence sample](only-film-optional-contract-spotcheck.md) documents a textual MVC architecture and UI screenshots, but no identified technical diagram artifact among nine checked Markdown files. This supports provisional `Missing` **for visual architecture/domain/operational documentation not observed**, subject to an expanded artifact inventory if required before formal acceptance. `Applicability: Applicable` is independently proposed based on the maintainer's 2026-11-14 interest in adding a useful diagram later.
+The [pinned evidence sample](only-film-optional-contract-spotcheck.md) documents a textual MVC architecture and UI screenshots, but no identified technical diagram artifact among nine checked Markdown files. This supports the maintainer-approved `Missing` **for visual architecture/domain/operational documentation not observed**, with the potential need for an expanded artifact inventory recorded as a limitation. `Applicability: Applicable` was independently approved based on the maintainer's 2026-11-14 interest in adding a useful diagram later.
 
 A future architecture, domain or checkout diagram remains an **option to scope and prioritize**, not an existing artifact or an automatically approved `ADD` decision. The formal State/Applicability approval does not authorize generating any diagram. No diagram is generated in this Assessment update.
 
@@ -1860,7 +1860,7 @@ A future architecture, domain or checkout diagram remains an **option to scope a
 
 **Decision Rationale**
 
-The maintainer has confirmed interest in future diagrams; reviewers may later select a diagram purpose and check additional artifacts. The contractual `Missing / Applicable` evaluation was formally approved by the maintainer on 2026-11-14, subject to the recorded evidence limits. The proposed `Applicable` value does not implement diagrams or authorize a change to Only Film.
+The maintainer has confirmed interest in future diagrams; reviewers may later select a diagram purpose and check additional artifacts. The contractual `Missing / Applicable` evaluation was formally approved by the maintainer on 2026-11-14, subject to the recorded evidence limits. The approved `Applicable` value does not implement diagrams or authorize a change to Only Film.
 
 ---
 
@@ -1970,7 +1970,7 @@ The reviewer should confirm whether the narrow catalog interpretation is appropr
 
 ### Recommended Next Review
 
-Review the full 28-Responsibility working Assessment against Template metadata, first reviewing the 26 unapproved State/Applicability proposals, preserving the two 2026-11-14 maintainer approvals, resolving the the `DOC-API` present-day API-contract scope and the `DOC-REFERENCES` centralized-catalog scope, and confirming the `Not Applicable` / `Applicable` scope interpretations for `README-CONTRIBUTING` / `DOC-DIAGRAMS`. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
+Review the 26 unapproved State/Applicability proposals against Template metadata, preserving the two 2026-11-14 maintainer approvals and their source limitations. Resolve the scoped `DOC-API` present-day API-contract and `DOC-REFERENCES` centralized-catalog interpretations before any future approval. Then validate proposed States, rationale, and P1 evidence gates with human sign-off before selecting Adoption Decisions or authorizing consumer changes.
 
 ---
 
