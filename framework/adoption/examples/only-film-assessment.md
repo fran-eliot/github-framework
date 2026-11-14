@@ -1866,6 +1866,14 @@ The maintainer has confirmed interest in future diagrams; reviewers should now c
 
 Contextual links already exist, and a standalone index is not required by the References Component. Whether the existing collection adequately addresses the intended reader's need for external source traceability has not been assessed exhaustively. `Partial` is a **proposed documentary State conditional on an applicable references scope**; Applicability remains `Uncertain` and may prove `Not Applicable` following human review. It is not a claim that a new References file is mandatory or that existing links are broken.
 
+**Evidence-Based References Recommendation**
+
+Seven pinned Markdown files were directly inspected for contextual links and plain URLs; the [expanded source inventory](only-film-optional-contract-spotcheck.md) distinguishes README navigation, screenshot/badge links, author attribution, GitHub issues and operational SonarCloud links from authoritative technical standards. No recurring set of external specifications requiring a central catalog was identified **in that sample**. Links were not independently health-checked.
+
+**Preferred conditional outcome for a standalone references catalog:** `Not Applicable` **if** no valuable recurring external technical-reference collection is required. The Framework Component explicitly discourages catalogs built merely for formality. However, if `DOC-REFERENCES` is interpreted as the broader purpose of ensuring clear sources **within existing documents**, `Applicable` may be the better Scope and the existing contextual links should be evaluated directly for `Satisfied` or `Partial`.
+
+This distinction requires maintainer/reviewer confirmation. **Do not change contractual `Applicability: Uncertain` or the unapproved `State: Partial` merely because no central index exists.** A standalone catalog is **not recommended at this stage**; this is an evidence-grounded recommendation, not a formal adoption decision.
+
 **Reviewer Discrimination Gate — Applicability**
 
 **Open; proposed `Partial` State remains unapproved and Applicability remains `Uncertain`.** Existing contextual references are acknowledged, and the Framework Component does **not** require a standalone reference index where in-place links are clearer.
