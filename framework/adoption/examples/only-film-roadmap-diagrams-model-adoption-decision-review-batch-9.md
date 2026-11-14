@@ -109,3 +109,10 @@ Recommended post-merge review bundle, to be approved or declined **separately an
 If expressly approved, a later **separate PR** should update the canonical [Assessment](only-film-assessment.md), [consolidated review matrix](only-film-consolidated-review-matrix.md) and this review packet, recording formal reviewer/date, evidence-limited rationale, and the exact selected allowed decision token.
 
 **Postapproval status:** All 28 State / Applicability pairs unchanged; 15 Adoption Decisions formally resolved (12 `PRESERVE`, 3 `OMIT`), 13 unresolved. Assessment `In Progress`. Only Film strictly read-only. The earlier preparation PR did not itself grant these decisions; the separate, express maintainer approval on 2026-11-14 governs the outcome.
+
+
+## Formal DOC-DATABASE and DOC-DIAGRAMS Adoption Decisions — 2026-11-14
+
+The Only Film maintainer independently **approved `DOC-DATABASE = ADAPT`** and **`DOC-DIAGRAMS = ADD`**, superseding the earlier deferrals in this preparation packet. `DOC-DATABASE` is limited to a future explanation of the **pinned, source-verified relational model** without changes to schema, JPA or migrations. `DOC-DIAGRAMS` is limited to **future maintainable, evidence-backed technical diagrams**, prioritizing the data model. The approval does not require a diagram immediately, specify its final rendering, or guarantee that the bounded earlier inventory exhaustively excluded existing diagrams.
+
+The independently approved `DOC-DATABASE: Partial / Applicable` and `DOC-DIAGRAMS: Missing / Applicable` classifications and all evidence limitations remain unchanged. `README-ROADMAP = PRESERVE` remains unchanged. **23/28 decisions resolved** (13 `PRESERVE`, 3 `OMIT`, 5 `ADAPT`, 2 `ADD`), **5 pending**. Assessment **`In Progress`**; Only Film strictly unmodified; no Application/Integration authorization.
