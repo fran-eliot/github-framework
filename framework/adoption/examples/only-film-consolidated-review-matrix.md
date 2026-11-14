@@ -30,6 +30,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **Required runtime/change-history review batch:** [Quick Start and Changelog — human review batch](only-film-required-runtime-change-review-batch.md) rechecks pinned README, Compose, Dockerfile, environment example and Maven configuration and applies the two Framework Components. Its `README-QUICK-START: Partial / Applicable` and `DOC-CHANGELOG: Missing / Applicable` recommendations were **expressly approved by the Only Film maintainer on 2026-11-14**, with bounded source and unverified Compose-run evidence retained. The original review packet records pre-approval alternatives as history; no consumer action or Adoption Decision follows.
 
+**Testing and security review batch:** [Testing and Security — human review batch](only-film-testing-security-review-batch.md) directly rechecks pinned README, test workflows, PostgreSQL testing, JaCoCo and SonarCloud guides, demo-credential guidance and the earlier historical security audit. It proposes retaining `Partial / Applicable` for `README-TESTING`, `DOC-TESTING` and `DOC-SECURITY`, subject to maintainer sign-off. It records a bounded mismatch between the JaCoCo guide's local selected-test command and the pinned H2 workflow's named test selection, **not** a proven failing command. These three evaluations remain unapproved; no consumer edit is authorized.
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
