@@ -9,12 +9,28 @@
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `DOC-ARCHITECTURE`, `DOC-PROJECT-STATUS`, `DOC-TESTING` |
 | Approved State / Applicability pairs | `28/28` — maintained |
-| Formally resolved Adoption Decisions | `7/28` — existing `PRESERVE` approvals only |
-| Unresolved Adoption Decisions | `21/28` — includes all three in this packet |
+| Formally resolved Adoption Decisions | `8/28` — all `PRESERVE`, including `DOC-TESTING` formally approved 2026-11-14 |
+| Unresolved Adoption Decisions | `20/28` — includes `DOC-ARCHITECTURE` and `DOC-PROJECT-STATUS` in this packet |
 | Assessment status | `In Progress` |
 | Consumer changes | `NONE` |
 
 This document **prepares** a separate maintainer decision. It does not approve `PRESERVE`, `ADAPT`, `ADD`, `ACCEPT`, or `OMIT`, and it does not start optional Application or Integration. The [Assessment Template](../assessment-template.md) permits `Needs Further Evaluation / —` when evidence or the intended decision has not been accepted. The previous approval of a documentary `State / Applicability` pair does not determine its Adoption Decision.
+
+## Formal maintainer Adoption Decision outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved `DOC-TESTING = PRESERVE`** and expressly retained the other two choices as unresolved:
+
+| Responsibility | Decision Status | Adoption Decision | Approved decision scope / retained evidence gap |
+| --- | --- | --- | --- |
+| `DOC-ARCHITECTURE` | `Needs Further Evaluation` | `—` | Older audits cannot be treated as current architecture defects; a current architecture-content decision needs bounded source verification |
+| `DOC-PROJECT-STATUS` | `Needs Further Evaluation` | `—` | Historical maturity and F3 planning cannot establish the current milestone, progress by area or roadmap execution status |
+| `DOC-TESTING` | `Resolved` | `PRESERVE` | Preserve useful specialist PostgreSQL/JaCoCo/SonarCloud documentation at its reviewed bounded scope; no numerical global coverage, passed historical Quality Gate, full test reproducibility or guide/workflow parity is independently verified |
+
+**The 28 previously approved State / Applicability pairs remain unchanged.** The consumer evidence baseline stays `28d75a50e0a178954dd46acc23300d9dd327843c`. The maintainer's decision date is **2026-11-14**, distinct from that source commit. `DOC-TESTING` remains `Partial / Applicable` even though its `PRESERVE` Adoption Decision is now resolved.
+
+**Authorization boundary:** The Assessment stays `In Progress`; **8/28 Adoption Decisions resolved, 20 unresolved**; Only Film is **read-only**. Preservation does not authorize documentation edits, test execution, code changes, workflow or deployment changes, licensing conclusions, Application or Integration.
+
+The proposal matrix and older conditional language below are retained as **preapproval preparation history**, not current decision status.
 
 ## Initial decision comparison
 
@@ -90,4 +106,4 @@ A reviewer may approve three decisions independently, with an allowed token and 
 
 On a future **explicit** maintainer approval, record approved `Decision Status`, `Adoption Decision`, `Decision Rationale`, reviewer/date and unchanged evidence boundaries in a **separate PR** to the canonical Assessment, consolidated matrix and this packet. A merge of this preparation PR or a bare `go` does not approve the candidates.
 
-**All 28 State / Applicability pairs remain approved; only 7 previously approved `PRESERVE` decisions are resolved; 21 remain open; Assessment is `In Progress`; Only Film remains strictly read-only.**
+**Postapproval status (maintainer, 2026-11-14): all 28 State / Applicability pairs remain approved and unchanged; eight `PRESERVE` Adoption Decisions are resolved (including `DOC-TESTING`), 20 remain unresolved; Assessment is `In Progress`; Only Film remains strictly read-only.**
