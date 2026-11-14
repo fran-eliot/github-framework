@@ -40,6 +40,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 
 **ADR, database and local deployment review batch:** [ADR, Database and Local Deployment — human review batch](only-film-adr-database-deployment-review-batch.md) directly checks pinned Flyway/Dependabot/PostgreSQL guides, Compose/Dockerfile, and the defined Compose smoke workflow. The maintainer **expressly approved `Partial / Applicable` for `DOC-ADR`, `DOC-DATABASE` and `DOC-DEPLOYMENT` on 2026-11-14**, the latter solely for **local, nonproduction Docker Compose**. The upload-volume versus production-durability wording remains an unresolved documentary question, not a confirmed data-loss bug or failed CI. Only `DOC-API` and `DOC-REFERENCES` remain awaiting State/Applicability review. No Adoption Decision or consumer modification is authorized.
 
+**API and references contract-scope review batch:** [API and References — human review batch](only-film-api-references-contract-review-batch.md) rechecks the pinned README, selected MVC controllers and two technical guides against the Framework References Component and earlier bounded source samples. It proposes `DOC-API: Missing / Not Applicable` solely for a **currently supported external/programmatic API contract**, and `DOC-REFERENCES: Partial / Not Applicable` solely for a **standalone centralized external-reference catalog**. Neither is a repository-wide absence finding; alternative scopes are explained and the two independent fields remain **unapproved** pending explicit maintainer sign-off. The Assessment stays at **26/28 approvals**.
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
