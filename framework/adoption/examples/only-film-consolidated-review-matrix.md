@@ -123,14 +123,14 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 
 ## 6. Review readiness and handoff gates
 
-The working Assessment has **28/28 structural entries**, but **28/28 contractual State values** (2 approved, 26 proposals) and **2 explicit maintainer approvals**. The tables below describe **questions to decide**, not decisions taken. A merged PR recording this checklist does **not** approve any assessment value.
+The working Assessment has **28/28 structural entries**, but **28/28 contractual State values** (5 approved, 23 proposals) and **5 explicit maintainer approvals**. The tables below describe **questions to decide**, not decisions taken. A merged PR recording this checklist does **not** approve any assessment value.
 
 ### 6.1 Contract and evidence checkpoints
 
 | Checkpoint | Expected review outcome | Current status |
 | --- | --- | --- |
 | Canonical responsibility coverage | Exactly 8 Required, 7 Recommended, and 13 Optional entries, in Template metadata order | Structured: 28/28; values unapproved |
-| State contract | Each of 28 entries has an allowed `Satisfied / Partial / Missing` value | **2 approved / 26 proposed** |
+| State contract | Each of 28 entries has an allowed `Satisfied / Partial / Missing` value | **5 approved / 23 proposed** |
 | Applicability contract | `Applicable / Not Applicable / Uncertain` with justified scope | 0 `Uncertain` entries **in proposals**; all require review |
 | Evidence and rationale | Bounded source citation, interpretation, and uncertainty per Responsibility | Prepared as proposals; reviewer validation pending |
 | Decision handling | `Needs Further Evaluation` may retain `Adoption Decision: —`; `Resolved` must have rationale | 0 resolved |
