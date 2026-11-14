@@ -4,13 +4,46 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Documento**            | Continuity Kit   |
-| **Versión**              | 1.0.0            |
+| **Versión**              | 1.1.0            |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-08-07       |
+| **Última actualización** | 2026-11-14       |
 
 > Este documento constituye el punto oficial de incorporación al proyecto.
 
 Todo nuevo colaborador o asistente deberá utilizar este documento como referencia inicial antes de comenzar cualquier desarrollo.
+
+---
+
+# Snapshot de continuidad — 2026-11-14
+
+> **Contexto vigente para reanudar el proyecto.** Este resumen actualiza la situación de ejecución sin reescribir los capítulos originales del Continuity Kit, que documentan el contexto de agosto de 2026. Las referencias antiguas a Sprint 4, `v0.2.0`, roadmap inicial o trabajo en curso deben leerse como **históricas**. Para el estado actual prevalecen [Project Status](12_PROJECT_STATUS.md) y [Product Backlog](14_BACKLOG.md).
+
+| Campo | Estado verificado |
+| --- | --- |
+| Última versión publicada del Framework | `v0.10.0` — Existing Repository Adoption Assisted Analysis Core |
+| Situación de trabajo | Post-release; **ningún Sprint activo**, milestone nueva ni versión objetivo comprometidos |
+| Framework Validator | Mejoras posteriores a `v0.10.0` integradas en `main`, **Unreleased** (CI Ubuntu/Windows, informes JSON y CLI por Component) |
+| Existing Repository Adoption | Assessment, Application, Integration y Assisted Analysis **disponibles como capabilities del Framework**, cada una con sus límites |
+| Consumer Only Film | **Assessment documental `Complete`**, aprobado formalmente el 2026-11-14 |
+| Only Film — Application / Integration | **No iniciadas ni autorizadas**; consumer sin modificaciones por el Assessment |
+
+## Caso práctico de Assessment — Only Film
+
+La [evaluación canónica](../../framework/adoption/examples/only-film-assessment.md) utiliza el consumer `fran-eliot/only_film` en el SHA inmutable `28d75a50e0a178954dd46acc23300d9dd327843c` frente a `TPL-BACKEND 0.1.0`. Registra **28/28 clasificaciones State/Applicability aprobadas** y **28/28 Adoption Decisions resueltas**: 14 `PRESERVE`, 3 `OMIT`, 9 `ADAPT` y 2 `ADD`. La [matriz](../../framework/adoption/examples/only-film-consolidated-review-matrix.md) y la [revisión de cierre](../../framework/adoption/examples/only-film-assessment-completion-readiness.md) conservan trazabilidad y límites.
+
+La condición `Complete` **solo cierra la evaluación documental**: no implica Compose verificado, suite de pruebas completa, Quality Gate aprobado, certificación de seguridad, derechos de licencia comprobados, modificación del consumer ni autorización automática para Application o Integration.
+
+## Siguiente decisión pendiente
+
+El [Product Backlog](14_BACKLOG.md) mantiene como **propuesta no comprometida** la priorización de un siguiente incremento práctico para consumidores. Deben justificarse los objetivos y criterios observables antes de abrir una Issue, Sprint, milestone o versión objetivo. Una posible Application sobre Only Film requeriría **autorización humana independiente**, selección acotada de Responsibility, Evidence Refresh, planificación y revisión previa; la mera existencia de 28 decisiones resueltas no autoriza implementarlas.
+
+## Fuentes de continuidad
+
+- [Project Status](12_PROJECT_STATUS.md): estado vigente de releases, post-release y compromisos.
+- [Product Backlog](14_BACKLOG.md): prioridades propuestas, trabajo completado y límites de nuevas iniciativas.
+- [Adoption Guide](../../framework/adoption/README.md): alcance y relaciones entre Assessment, Application, Integration y Assisted Analysis.
+- [Only Film Assessment](../../framework/adoption/examples/only-film-assessment.md): resultado formal completo sobre el commit evaluado.
+- [Only Film completion readiness](../../framework/adoption/examples/only-film-assessment-completion-readiness.md): criterios de cierre y limitaciones de evidencia.
 
 ---
 
@@ -1080,3 +1113,4 @@ Cada decisión futura deberá respetar esta filosofía.
 | Versión | Fecha      | Descripción                                                                                               |
 | ------- | ---------- | --------------------------------------------------------------------------------------------------------- |
 | 1.0.0   | 2026-08-07 | Primera versión del Continuity Kit, utilizada como documento de incorporación y continuidad del proyecto. |
+| 1.1.0   | 2026-11-14 | Incorporación del snapshot de continuidad post-release y del Assessment documental Complete de Only Film; preservación histórica del contenido de agosto. |
