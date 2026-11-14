@@ -2,24 +2,24 @@
 
 ## 1. Context, purpose, and distinctions
 
-The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured, **unapproved** Responsibility records: all twenty-eight with allowed **proposed** State values, including three new unapproved `Missing` proposals (`README-CONTRIBUTING`, `DOC-API`, `DOC-DIAGRAMS`). `README-CONTRIBUTING` carries proposed `Not Applicable` based on the confirmed contribution policy, `DOC-DIAGRAMS` carries proposed `Applicable` based on future diagram interest, and `DOC-API` now has proposed `Not Applicable` for a current public/programmatic API contract, bounded by the seven-controller review. Full structural coverage does not constitute an approved or completed Assessment. The working Assessment's summary and detail blocks follow canonical `TPL-BACKEND` metadata order for reviewer comparison. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
+The [Only Film Assessment working record](only-film-assessment.md) now contains all twenty-eight structured Responsibility records: **two formally approved** by the maintainer on 2026-11-14 (`README-CONTRIBUTING`, `DOC-DIAGRAMS`) and **26 still proposed/unapproved**. All twenty-eight have allowed State values, including `Missing` for those two approved records and the unapproved `DOC-API` proposal. `README-CONTRIBUTING` has approved `Not Applicable` based on the confirmed contribution policy, `DOC-DIAGRAMS` has approved `Applicable` based on future diagram interest, and `DOC-API` now has proposed `Not Applicable` for a current public/programmatic API contract, bounded by the seven-controller review. Full structural coverage does not constitute an approved or completed Assessment. The working Assessment's summary and detail blocks follow canonical `TPL-BACKEND` metadata order for reviewer comparison. This matrix continues to track the remaining proposals and review gates; it is not the completed Assessment.
 
-This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting hypotheses to evaluated States or recording human approval**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
+This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.0 in a single human-review entry point. It is based on the individual evidence records **without promoting the remaining hypotheses to approved States; two explicit maintainer approvals are now recorded**. It identifies missing evidence, assigns concrete review gates, and supports subsequent completion of the [Assessment Template](../assessment-template.md).
 
 | Field | Value |
 | --- | --- |
 | Consumer Repository | [fran-eliot/only_film](https://github.com/fran-eliot/only_film) |
 | Consumer Reference | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | [TPL-BACKEND 0.1.0](../../templates/repositories/backend/metadata.yml) |
-| Proposals consolidated | `28/28` — **not approved** |
-| Human-reviewed States and Applicability | **0 approved in these records** |
+| Responsibilities consolidated | `28/28` — **2 approved / 26 proposals** |
+| Human-reviewed States and Applicability | **2 approved on 2026-11-14**, 26 pending |
 | Resolved Adoption Decisions | `0` |
 | Assessment Status | `In Progress` |
 | Consumer Mutation | `NONE` |
 
 **Legend:**
 
-- `Proposed State` and `Proposed Applicability` are **reviewer-facing hypotheses**, not approved Assessment fields. The former `Missing / Partial` alternatives for the three Optional items have now been narrowed to **proposed `Missing`**, not approved States. `Uncertain` for Applicability preserves an unresolved question rather than claiming `Not Applicable`.
+- Unless explicitly marked as approved (two maintainer approvals on 2026-11-14), `Proposed State` and `Proposed Applicability` remain **reviewer-facing hypotheses**, not approved Assessment fields. The former `Missing / Partial` alternatives for the three Optional items have now been narrowed to **proposed `Missing`**, not approved States. `Uncertain` for Applicability preserves an unresolved question rather than claiming `Not Applicable`.
 - `P1/P2/P3` prioritize **evidence review**, not confirmed defects, security severity, or mandatory changes to Only Film.
 - Each `E3` link opens the underlying record with Detected Facts, Evidence, Evaluation Rationale, Uncertainty, and Decision Status. Original proposals retain `Needs Further Evaluation` and `Adoption Decision: —`.
 - Row order and Requirement Levels follow the [canonical Template metadata](../../templates/repositories/backend/metadata.yml), not Component-level priorities.
@@ -44,7 +44,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `DOC-PROJECT-STATUS` | Recommended | `Partial` | `Applicable` | **P2** | [E3](only-film-recommended-docs-semantic-review.md) | Reconstruct milestones and status by area using dated references. |
 | `DOC-TESTING` | Recommended | `Partial` | `Applicable` | **P1** | [E3](only-film-testing-semantic-review.md) | Assess guidance, Surefire CI evidence, coverage, and Sonar limitations. |
 | `README-ROADMAP` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-governance-semantic-review.md) | Check currency of F3 proposals and whether a concise summary suffices. |
-| `README-CONTRIBUTING` | Optional | `Missing` *(proposed)* | `Not Applicable` *(proposed from confirmed scope)* | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Determine collaboration policy and sources; decide Applicability and State. |
+| `README-CONTRIBUTING` | Optional | `Missing` *(approved 2026-11-14)* | `Not Applicable` *(approved 2026-11-14)* | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Approved for personal/no-external-contribution scope; no consumer mutation. |
 | `README-DEMO` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Check screenshot representativeness and whether reproducible demo access is needed. |
 | `README-AUTHOR` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-governance-semantic-review.md) | Review team attribution and later development without presuming ownership rights. |
 | `README-HIGHLIGHTS` | Optional | `Partial` | `Applicable` | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Evaluate editorial value of highlights without duplicating Features. |
@@ -54,7 +54,7 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 | `DOC-DATABASE` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-final-semantic-review.md) | Evaluate data model, invariants, and migrations against pinned sources. |
 | `DOC-DEPLOYMENT` | Optional | `Partial` | `Applicable` | **P2** | [E3](only-film-optional-final-semantic-review.md) | Delimit local use; clarify uploads guidance and Compose evidence. |
 | `DOC-SECURITY` | Optional | `Partial` | `Applicable` | **P1** | [E3](only-film-security-semantic-review.md) | Review current security guidance and controls; 329 tests do not establish full security assurance. |
-| `DOC-DIAGRAMS` | Optional | `Missing` *(proposed)* | `Applicable` *(proposed; future value confirmed)* | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Search for embedded diagrams and evaluate applicability before recommending additions. |
+| `DOC-DIAGRAMS` | Optional | `Missing` *(approved 2026-11-14)* | `Applicable` *(approved 2026-11-14)* | **P3** | [E3](only-film-optional-showcase-semantic-review.md) | Approved with bounded evidence; future diagram design and source inventory remain separate. |
 | `DOC-REFERENCES` | Optional | `Partial` | `Not Applicable` *(scoped catalog proposal)* | **P3** | [E3](only-film-optional-final-semantic-review.md) | Decide whether distributed references suffice or an index adds value. |
 
 **Hypothesis counts** — do **not** copy these as approved assessment results:
@@ -121,14 +121,14 @@ These are **review priorities**, not a declaration that every P1 Responsibility 
 
 ## 6. Review readiness and handoff gates
 
-The working Assessment has **28/28 structural entries**, but **28/28 proposed States** and **0 recorded human approvals**. The tables below describe **questions to decide**, not decisions taken. A merged PR recording this checklist does **not** approve any assessment value.
+The working Assessment has **28/28 structural entries**, but **28/28 contractual State values** (2 approved, 26 proposals) and **2 explicit maintainer approvals**. The tables below describe **questions to decide**, not decisions taken. A merged PR recording this checklist does **not** approve any assessment value.
 
 ### 6.1 Contract and evidence checkpoints
 
 | Checkpoint | Expected review outcome | Current status |
 | --- | --- | --- |
 | Canonical responsibility coverage | Exactly 8 Required, 7 Recommended, and 13 Optional entries, in Template metadata order | Structured: 28/28; values unapproved |
-| State contract | Each of 28 entries now has one `Satisfied / Partial / Missing` **proposal** | 28 proposed; **0 formally approved** |
+| State contract | Each of 28 entries has an allowed `Satisfied / Partial / Missing` value | **2 approved / 26 proposed** |
 | Applicability contract | `Applicable / Not Applicable / Uncertain` with justified scope | 0 `Uncertain` entries **in proposals**; all require review |
 | Evidence and rationale | Bounded source citation, interpretation, and uncertainty per Responsibility | Prepared as proposals; reviewer validation pending |
 | Decision handling | `Needs Further Evaluation` may retain `Adoption Decision: —`; `Resolved` must have rationale | 0 resolved |
@@ -139,9 +139,9 @@ The working Assessment has **28/28 structural entries**, but **28/28 proposed St
 
 | Responsibility | Current working record | Evidence or policy question for reviewer |
 | --- | --- | --- |
-| `README-CONTRIBUTING` | `Missing` proposed; `Not Applicable` proposed from maintainer-confirmed policy | Review source coverage separately from current project scope; no contribution file required |
+| `README-CONTRIBUTING` | `Missing / Not Applicable` **maintainer-approved 2026-11-14** | Preserve bounded evidence and no-external-contributions scope; no contribution file or consumer change authorized |
 | `DOC-API` | `Missing` and present-day API `Not Applicable` proposed, both unapproved | Verify no supported integration contract was missed; confirm scope before approval |
-| `DOC-DIAGRAMS` | `Missing` proposed; `Applicable` proposed based on future diagram interest | Verify any other diagram assets and confirm documentary scope before approval |
+| `DOC-DIAGRAMS` | `Missing / Applicable` **maintainer-approved 2026-11-14** | Preserve nonexhaustive diagram evidence; future scope and any implementation remain separate |
 | `DOC-REFERENCES` | State `Partial` / scoped catalog `Not Applicable` proposed, both unapproved | Reviewer should accept/revise catalog scope versus contextual source responsibility |
 
 The three formerly unselected States now carry allowed **proposed `Missing`** values. They still require direct human evaluation before the Assessment can be marked `Complete`. The Template **does allow** `Uncertain` Applicability when its basis and unresolved question are documented. Reviewers should not force `Applicable` or `Not Applicable` solely to eliminate uncertainty.
@@ -229,14 +229,14 @@ This is a **review preparation gate**, not an approval. The prior E3 reviews sup
 
 | Priority | Responsibility | Evidence to establish | Conditional reviewer conclusion | Status |
 | --- | --- | --- | --- | --- |
-| P2 | `README-CONTRIBUTING` | Maintainer confirmed personal project with no external contributions; source check identifies technical onboarding but no contribution policy | Proposed `Missing / Not Applicable` as **distinct State and Applicability**, consistent with the Assessment guidance; neither field approved | `Missing` proposed; Applicability `Not Applicable` proposed; no approval |
+| P2 | `README-CONTRIBUTING` | Maintainer confirmed personal project without external contributions; pinned evidence describes onboarding, not contributor policy | **Approved `Missing / Not Applicable`** as separate State and Applicability; no contribution file or consumer mutation | **Maintainer-approved 2026-11-14**; Adoption Decision unresolved |
 | P2 | `DOC-API` | Seven pinned MVC view controllers inspected; README places REST API in future work. Other routes/consumers not fully inventoried | Proposed `Missing / Not Applicable` for present-day supported public API documentation **only**; review integration scope | Both proposals unapproved; no API absence certification |
-| P3 | `DOC-DIAGRAMS` | Future usefulness confirmed by maintainer; nine pinned Markdown documents sampled with no recognized technical diagram artifacts | `Missing` proposed for unobserved technical diagrams and `Applicable` proposed for future documentation need; verify remaining assets | `Missing` proposed; Applicability `Applicable` proposed; no approval |
+| P3 | `DOC-DIAGRAMS` | Maintainer confirms future value; nine pinned Markdown documents sampled, with no identified technical diagrams | **Approved `Missing / Applicable`**, expressly bounded by nonexhaustive inspection; future diagram choice remains open | **Maintainer-approved 2026-11-14**; Adoption Decision unresolved |
 | P3 | `DOC-REFERENCES` | [Seven-file pinned link inventory](only-film-optional-contract-spotcheck.md): contextual links, no demonstrated need for centralized external-reference catalog in sample | Proposed `Not Applicable` **for central catalog only**; reviewer may prefer `Applicable` for source references in context | `Partial` State / scoped `Not Applicable` Applicability proposed; not approved |
 
 **DOC-API evidence-led recommendation:** Given the seven directly inspected MVC controllers and the pinned README's future-only REST statement, `Not Applicable` is the **preferred provisional Applicability** for a public programmatic API contract, **not an approved Assessment result**. This remains conditional on the rest of the entry-point inventory and confirmation of intended API consumers. If no such contract exists, do not create OpenAPI documentation simply to satisfy an Optional label. The working Applicability is now proposed as `Not Applicable` for present-day public/programmatic API documentation, while `State: Missing` remains independently proposed; neither is formally approved. See [pinned controller evidence](only-film-optional-contract-spotcheck.md).
 
-**Evidence-led Optional recommendations:** The maintainer confirmed on 2026-11-14 that Only Film is personal and does not accept external contributions. This supports proposed `README-CONTRIBUTING: Missing / Not Applicable` as separate State/Applicability proposals, neither formally approved. The maintainer also confirmed interest in future technical diagrams, supporting proposed `DOC-DIAGRAMS: Applicable`; this does not establish any existing diagram; `State: Missing` is proposed from bounded documentary evidence, not approved. These are reviewer-facing **State/Applicability proposals**, not approvals or automatic Adoption Decisions. See [source details](only-film-optional-contract-spotcheck.md).
+**Evidence-led Optional recommendations:** The maintainer confirmed on 2026-11-14 that Only Film is personal and does not accept external contributions. The maintainer **formally approved `README-CONTRIBUTING: Missing / Not Applicable` on 2026-11-14** as separate State/Applicability values. The maintainer also confirmed interest in future technical diagrams, and **formally approved `DOC-DIAGRAMS: Missing / Applicable` on 2026-11-14**, expressly retaining the nonexhaustive diagram-source limitation. These **two evaluations are approved**, but no Adoption Decision or consumer edit is authorized; other entries remain reviewer-facing proposals. See [source details](only-film-optional-contract-spotcheck.md).
 
 **DOC-REFERENCES evidence-led review:** A sampled seven-file pinned link inventory distinguishes internal/operational navigation and attribution from authoritative standards or specification links. The Component explicitly allows references in context and discourages unnecessary centralization. The recommended path is **not to add a standalone index** without a demonstrated need. A scoped `Not Applicable` for the **central catalog** is now proposed but still subject to reviewer confirmation. A broader contextual-source interpretation may instead warrant `Applicable`; `State: Partial` remains unapproved and should not be justified by file absence alone. [Detailed inventory](only-film-optional-contract-spotcheck.md).
 
@@ -244,11 +244,11 @@ This is a **review preparation gate**, not an approval. The prior E3 reviews sup
 
 | Reviewer sign-off | `README-CONTRIBUTING` | `DOC-API` | `DOC-DIAGRAMS` | `DOC-REFERENCES` |
 | --- | --- | --- | --- | --- |
-| Evidence need | Review `Missing / Not Applicable` proposal | Review `Missing`, current endpoints and consumers | Review `Missing / Applicable` proposal and scope | Contextual link adequacy |
-| State proposal | `Missing` (unapproved) | `Missing` (unapproved) | `Missing` (unapproved) | `Partial` (unapproved) |
-| Applicability | `Not Applicable` *(proposed, maintainer scope confirmed)* | `Not Applicable` *(proposed; present-day public API)* | `Applicable` *(proposed; future value confirmed)* | `Not Applicable` *(scoped catalog proposal)* |
-| Reviewer / date | Pending | Pending | Pending | Pending |
-| Approved result | **None** | **None** | **None** | **None** |
+| Evidence need | Approved from maintainer policy + bounded docs | Review `Missing`, current endpoints and consumers | Approved with bounded diagram evidence; future scope pending | Contextual link adequacy |
+| State evaluation | `Missing` (**approved**) | `Missing` (unapproved) | `Missing` (**approved**) | `Partial` (unapproved) |
+| Applicability | `Not Applicable` (**approved**) | `Not Applicable` *(proposed; present-day public API)* | `Applicable` (**approved**) | `Not Applicable` *(scoped catalog proposal)* |
+| Reviewer / date | Only Film maintainer / **2026-11-14** | Pending | Only Film maintainer / **2026-11-14** | Pending |
+| Approved result | **`Missing / Not Applicable`** | **None** | **`Missing / Applicable`** | **None** |
 | Adoption Decision | `—` | `—` | `—` | `—` |
 
 ### 6.7 Review recording protocol
