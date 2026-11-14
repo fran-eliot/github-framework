@@ -8,13 +8,27 @@
 | Immutable consumer baseline | `28d75a50e0a178954dd46acc23300d9dd327843c` |
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `DOC-ADR`, `DOC-DATABASE`, `DOC-DEPLOYMENT` |
-| Human State / Applicability approval | **Not yet recorded for these three** |
-| Existing formal approvals | `23/28` |
+| Human State / Applicability approval | **All three explicitly approved by the Only Film maintainer on 2026-11-14; dated record below** |
+| Formal approvals after review | `26/28` |
 | Assessment | `In Progress` |
 | Adoption Decisions | `0` resolved |
 | Consumer mutation | `NONE` |
 
 This preparation packet reopens exact consumer Markdown guides, Compose and Dockerfile, and the Compose smoke workflow at the pinned SHA, plus earlier Framework review evidence. It establishes **documentary claims and review choices only**; a defined workflow is not proof of its execution, and a local Compose arrangement is not production readiness. This packet does **not** approve any Assessment values or authorize consumer changes.
+
+## Formal maintainer approval outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved** the following independent State and Applicability classifications:
+
+| Responsibility | Approved State | Approved Applicability |
+| --- | --- | --- |
+| `DOC-ADR` | `Partial` | `Applicable` |
+| `DOC-DATABASE` | `Partial` | `Applicable` |
+| `DOC-DEPLOYMENT` | `Partial` | `Applicable` — **local, nonproduction Docker Compose only** |
+
+Evidence limits remain: the project-wide accepted architectural-decision inventory and complete database relationships/invariants have not been verified; the pinned Compose smoke execution was not confirmed; and the local upload-volume documentation must still be distinguished from production-grade durability and backups. No failing Compose execution or data-loss defect is inferred.
+
+**Authorization:** the Assessment remains `In Progress`; all Adoption Decisions remain `—` with `Needs Further Evaluation`. No deployment, migration, additional documentation or modifications to Only Film are authorized. The provisional recommendations below remain as **historical preapproval preparation**, not as unapproved current values.
 
 ## Evaluation candidates
 
