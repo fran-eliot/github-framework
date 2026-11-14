@@ -9,12 +9,29 @@
 | Template | `TPL-BACKEND` `0.1.0` |
 | Responsibilities | `README-STATUS`, `README-ARCHITECTURE`, `README-REPOSITORY-STRUCTURE`, `README-TESTING` |
 | Formally approved State / Applicability | `28/28`, unchanged |
-| Formally resolved Adoption Decisions | `5/28` (all existing `PRESERVE`; unchanged) |
-| Unresolved Adoption Decisions | `23/28`, including all four reviewed below |
+| Formally resolved Adoption Decisions | `7/28` (all `PRESERVE`, including two newly approved on 2026-11-14) |
+| Unresolved Adoption Decisions | `21/28`, including `README-STATUS` and `README-TESTING` reviewed below |
 | Assessment | `In Progress` |
 | Consumer modifications | `NONE` |
 
 This is a **maintainer-review preparation packet**, not a formal Adoption Decision, an Application plan or a consumer mutation. The [Assessment Template](../assessment-template.md) requires an explicit `Decision Rationale` when a decision moves to `Resolved`; the `Needs Further Evaluation / —` combination remains valid for the others. Existing State/Applicability approvals and source limitations cannot be replaced with presumed functional or operational assurance.
+
+## Formal maintainer Adoption Decision outcome — 2026-11-14
+
+The Only Film maintainer **expressly approved two additional `PRESERVE` decisions**, keeping the other two unresolved:
+
+| Responsibility | Decision Status | Adoption Decision | Decision rationale and evidence boundary |
+| --- | --- | --- | --- |
+| `README-STATUS` | `Needs Further Evaluation` | `—` | No present operational/maturity assertion is authorized from the older 2026-10-10 audit; a current evidence-backed statement must be assessed separately |
+| `README-ARCHITECTURE` | `Resolved` | `PRESERVE` | Retain the pinned README's **principal, high-level** MVC → service → JPA → database explanation, **not** a claim that all implementation paths follow exactly those layers |
+| `README-REPOSITORY-STRUCTURE` | `Resolved` | `PRESERVE` | Retain the useful **nonexhaustive**, annotated tree for repository orientation; no complete source-file inventory or reader usability validation is claimed |
+| `README-TESTING` | `Needs Further Evaluation` | `—` | Bounded 329-test H2 and PostgreSQL CI evidence does not establish that generic Maven, manual Selenium, or Compose paths passed; further testing-documentation criteria remain open |
+
+These decisions are **independent of and do not change any of the 28 formally approved State / Applicability pairs**. The assessed consumer remains pinned to `28d75a50e0a178954dd46acc23300d9dd327843c` and the decision review date is **2026-11-14**. Current classification and unresolved status/testing evidence limitations remain intact.
+
+**Authorization boundary:** Assessment `In Progress`; **7/28 Adoption Decisions resolved, 21 unresolved**, no changes authorized to Only Film. This decision record does **not** authorize architecture refactoring, a new Framework Component, tests, workflow execution, deployment, licensing or consumer documentation modifications.
+
+The candidates and initial unresolved language below are retained as **preapproval preparation history** and do not supersede these formally recorded outcomes.
 
 ## Summary of decision candidates
 
@@ -94,4 +111,4 @@ Each Responsibility needs an independently approved `Decision Status`, `Adoption
 3. `README-REPOSITORY-STRUCTURE`: **consider `Resolved / PRESERVE`**, treating the tree as deliberately selective.
 4. `README-TESTING`: default **`Needs Further Evaluation / —`** until the maintainer chooses a documented testing-sufficiency criterion.
 
-Once the maintainer **expressly approves** one or more outcomes, a separate approval-record PR may update the Assessment and this packet. Do not infer approvals from merging this preparation PR or an unqualified `go`. All 28 State/Applicability pairs remain approved, all five prior Adoption Decisions remain `PRESERVE`, Assessment remains `In Progress`, and **Only Film is read-only**.
+**Historical preparation boundary:** The earlier preparation PR did not approve these decisions; the later explicit maintainer approval on 2026-11-14 now resolves `README-ARCHITECTURE` and `README-REPOSITORY-STRUCTURE` as `PRESERVE`, in addition to the five prior `PRESERVE` decisions. `README-STATUS`, `README-TESTING` and nineteen other decisions remain `Needs Further Evaluation / —`. The Assessment is still `In Progress` and Only Film remains read-only.
