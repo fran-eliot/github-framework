@@ -24,6 +24,8 @@ This matrix **consolidates** the 28 existing E3 proposals for `TPL-BACKEND` 0.1.
 - Each `E3` link opens the underlying record with Detected Facts, Evidence, Evaluation Rationale, Uncertainty, and Decision Status. Original proposals retain `Needs Further Evaluation` and `Adoption Decision: —`.
 - Row order and Requirement Levels follow the [canonical Template metadata](../../templates/repositories/backend/metadata.yml), not Component-level priorities.
 
+**First README presentation review batch:** [README presentation — human review batch 1](only-film-readme-presentation-review-batch-1.md) rechecks the pinned README, POM and Compose against the Hero, Overview and Tech Stack Components. It proposes `Satisfied` as an **alternative** for `README-HERO` and `README-OVERVIEW` and retaining `Partial` for `README-TECH-STACK`, all subject to express maintainer sign-off. The working Assessment fields remain unchanged; merging the review packet does **not** approve these three evaluations.
+
 ## 2. Consolidated proposals and next review gates
 
 | Responsibility | Level | Proposed State | Proposed Applicability | Review Priority | Evidence record | Specific review gate |
