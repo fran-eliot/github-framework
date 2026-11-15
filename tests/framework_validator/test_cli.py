@@ -1420,6 +1420,162 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                         result.stderr,
                     )
 
+    def test_cli_catalog_content_hash_detects_changes_and_new_files(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            template = component / "template.md"
+            template.write_text("Initial template", encoding="utf-8")
+            catalog = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--catalog-content-sha256",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(catalog.returncode, 0, catalog.stderr)
+            snapshot = json.loads(catalog.stdout)
+            self.assertRegex(snapshot["details"][0]["content_sha256"], r"^[0-9a-f]{64}$")
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--catalog-input", "-",
+                "--catalog-verify-content-sha256", "--format", "json",
+            ]
+            unchanged = subprocess.run(
+                command, input=catalog.stdout,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(unchanged.returncode, 0, unchanged.stderr)
+            template.write_text("Changed template", encoding="utf-8")
+            stale = subprocess.run(
+                command, input=catalog.stdout,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(stale.returncode, 2)
+            self.assertIn("stale Component content", stale.stderr)
+            template.write_text("Initial template", encoding="utf-8")
+            (component / "new-file.md").write_text("Additional content", encoding="utf-8")
+            new_file = subprocess.run(
+                command, input=catalog.stdout,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(new_file.returncode, 2)
+            self.assertIn("stale Component content", new_file.stderr)
+
+    def test_cli_catalog_content_hash_supports_export_and_combined_checks(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            (component / "template.md").write_text("Template", encoding="utf-8")
+            output = root / "selected.json"
+            export = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details",
+                    "--catalog-content-sha256", "--catalog-metadata-sha256",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(export.returncode, 0, export.stderr)
+            self.assertEqual(export.stdout, "")
+            check = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--catalog-input", str(output),
+                    "--catalog-verify-content-sha256", "--catalog-verify-sha256",
+                    "--catalog-verify-details", "--format", "json",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(check.returncode, 0, check.stderr)
+            self.assertEqual(json.loads(check.stdout)["status"], "passed")
+
+    def test_cli_catalog_content_hash_rejects_missing_digest_and_bad_modes(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            for args, expected in (
+                (["--catalog-content-sha256"], "--catalog-content-sha256 requires"),
+                (["--list-components", "--format", "json", "--catalog-content-sha256"],
+                 "--catalog-content-sha256 requires"),
+                (["--catalog-verify-content-sha256"], "--catalog-verify-content-sha256 requires"),
+            ):
+                with self.subTest(args=args):
+                    result = subprocess.run(
+                        [sys.executable, "-m", "scripts.framework_validator",
+                         "--components-root", str(root), *args],
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn(expected, result.stderr)
+            for digest in (None, "", "broken", "A" * 64, 42):
+                with self.subTest(digest=digest):
+                    result = subprocess.run(
+                        [
+                            sys.executable, "-m", "scripts.framework_validator",
+                            "--components-root", str(root), "--catalog-input", "-",
+                            "--catalog-verify-content-sha256", "--format", "json",
+                        ],
+                        input=json.dumps({
+                            "components": ["documentation/architecture"],
+                            "details": [{"path": "documentation/architecture",
+                                         "content_sha256": digest}],
+                        }),
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn("missing digest", result.stderr)
+
+    def test_cli_catalog_content_hash_rejects_symlinks_without_export(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            target = root / "outside.txt"
+            target.write_text("Do not read", encoding="utf-8")
+            link = component / "external.txt"
+            try:
+                link.symlink_to(target)
+            except (OSError, NotImplementedError):
+                self.skipTest("Symlinks unavailable in this test environment")
+            output = root / "catalog.json"
+            output.write_text("previous", encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--catalog-content-sha256",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("symbolic link", result.stderr)
+            self.assertEqual(output.read_text(encoding="utf-8"), "previous")
+
     def test_cli_catalog_sha256_detects_unlisted_metadata_change(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
