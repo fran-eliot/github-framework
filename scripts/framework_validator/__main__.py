@@ -31,6 +31,34 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 COMPONENTS_ROOT = REPOSITORY_ROOT / "framework" / "components"
 
 
+def write_json_output(report: str, output_path: Path, label: str = "report") -> bool:
+    """Atomically write UTF-8 JSON, preserving existing files on failure."""
+    temporary_path = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            newline="\n",
+            dir=output_path.parent,
+            prefix=f".{output_path.name}.",
+            suffix=".tmp",
+            delete=False,
+        ) as temporary_file:
+            temporary_path = Path(temporary_file.name)
+            temporary_file.write(report + "\n")
+        os.replace(temporary_path, output_path)
+        return True
+    except OSError as exc:
+        print(
+            f"Unable to write JSON {label} to {output_path}: {exc}",
+            file=sys.stderr,
+        )
+        return False
+    finally:
+        if temporary_path is not None:
+            temporary_path.unlink(missing_ok=True)
+
+
 def main(
     output_format: str = "text",
     output_path: Path | None = None,
@@ -193,30 +221,8 @@ def main(
         )
         if output_path is None:
             print(report)
-        else:
-            temporary_path = None
-            try:
-                with tempfile.NamedTemporaryFile(
-                    mode="w",
-                    encoding="utf-8",
-                    newline="\n",
-                    dir=output_path.parent,
-                    prefix=f".{output_path.name}.",
-                    suffix=".tmp",
-                    delete=False,
-                ) as temporary_file:
-                    temporary_path = Path(temporary_file.name)
-                    temporary_file.write(report + "\n")
-                os.replace(temporary_path, output_path)
-            except OSError as exc:
-                print(
-                    f"Unable to write JSON report to {output_path}: {exc}",
-                    file=sys.stderr,
-                )
-                return 2
-            finally:
-                if temporary_path is not None:
-                    temporary_path.unlink(missing_ok=True)
+        elif not write_json_output(report, output_path):
+            return 2
     else:
         print()
         if errors:
@@ -244,7 +250,7 @@ if __name__ == "__main__":
         "--output",
         type=Path,
         metavar="PATH",
-        help="Write the JSON report to PATH (requires --format json).",
+        help="Write JSON validation or Component catalog to PATH (requires --format json).",
     )
     parser.add_argument(
         "--components-root",
@@ -283,8 +289,6 @@ if __name__ == "__main__":
     if arguments.list_components:
         if arguments.component:
             parser.error("--list-components cannot be combined with --component")
-        if arguments.output is not None:
-            parser.error("--list-components does not support --output")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
@@ -347,7 +351,11 @@ if __name__ == "__main__":
                                 entry[field] = value if isinstance(value, str) else None
                     entries.append(entry)
                 catalog["details"] = entries
-            print(json.dumps(catalog, indent=2))
+            catalog_json = json.dumps(catalog, indent=2)
+            if arguments.output is None:
+                print(catalog_json)
+            elif not write_json_output(catalog_json, arguments.output, label="catalog"):
+                raise SystemExit(2)
         else:
             for path in paths:
                 print(path)

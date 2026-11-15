@@ -3,10 +3,10 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión publicada**    | v0.10.0           |
+| **Versión publicada**    | v0.11.0           |
 | **Versión objetivo**     | Ninguna comprometida           |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-11-14       |
+| **Última actualización** | 2026-11-15       |
 
 ---
 
@@ -22,14 +22,14 @@ El backlog está vivo y evolucionará conforme madure el Framework.
 
 ## Incrementos post-release integrados — Framework Validator
 
-Los trabajos posteriores a `v0.10.0` que ya están fusionados en `main` se registran como **Unreleased**, no como una nueva versión:
+Los trabajos posteriores a `v0.10.0` se publicaron en **[`v0.11.0 — Framework Validator CLI and CI`](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0)** el 2026-11-15:
 
 | Issues | Resultado integrado | Estado |
 | --- | --- | --- |
-| #135, #137, #139, #141, #143, #145, #147 | CI de Validator, informes JSON, resúmenes, diagnóstico, matriz Ubuntu/Windows y anotaciones | Done — Unreleased |
-| #149, #151, #153, #155 | Validación por Component, listado de rutas, catálogo JSON y detalles de metadata | Done — Unreleased |
+| #135, #137, #139, #141, #143, #145, #147 | CI de Validator, informes JSON, resúmenes, diagnóstico, matriz Ubuntu/Windows y anotaciones | Done — Released v0.11.0 |
+| #149, #151, #153, #155 | Validación por Component, listado de rutas, catálogo JSON y detalles de metadata | Done — Released v0.11.0 |
 
-Se mantiene `v0.10.0` como **última versión publicada** y no existe un Sprint activo ni una versión objetivo comprometida.
+La última versión publicada es **`v0.11.0`**. No existe un Sprint activo ni una nueva versión objetivo comprometida.
 
 ### Evidencia de adopción en consumidor real — Only Film (Assessment cerrado)
 
