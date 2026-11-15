@@ -1420,6 +1420,157 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                         result.stderr,
                     )
 
+    def test_cli_catalog_pagination_json_after_descending_sort(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for family, name in (
+                ("documentation", "architecture"),
+                ("documentation", "references"),
+                ("readme", "author"),
+                ("workflow", "issue"),
+            ):
+                (root / family / name).mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--sort-by", "path",
+                    "--sort-order", "desc", "--offset", "1", "--limit", "2",
+                    "--family-summary",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            catalog = json.loads(result.stdout)
+            self.assertEqual(catalog["components"], [
+                "readme/author", "documentation/references",
+            ])
+            self.assertEqual(catalog["count"], 2)
+            self.assertEqual(catalog["pagination"], {
+                "total": 4, "offset": 1, "limit": 2,
+            })
+            self.assertEqual(catalog["family_summary"], {
+                "readme": 1, "documentation": 1, "workflow": 0,
+            })
+
+    def test_cli_catalog_pagination_text_and_offset_only(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ("architecture", "database", "references"):
+                (root / "documentation" / name).mkdir(parents=True)
+            base = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--list-components",
+            ]
+            text_result = subprocess.run(
+                base + ["--offset", "1", "--limit", "1"],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(text_result.returncode, 0, text_result.stderr)
+            self.assertEqual(text_result.stdout.splitlines(), [
+                "documentation/database",
+            ])
+            json_result = subprocess.run(
+                base + ["--format", "json", "--offset", "2"],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(json_result.returncode, 0, json_result.stderr)
+            catalog = json.loads(json_result.stdout)
+            self.assertEqual(catalog["components"], ["documentation/references"])
+            self.assertEqual(catalog["pagination"], {
+                "total": 3, "offset": 2, "limit": None,
+            })
+
+    def test_cli_catalog_pagination_summaries_and_details_cover_page_only(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name, status in (
+                ("architecture", "Experimental"),
+                ("references", "Stable"),
+                ("database", "Stable"),
+            ):
+                component = root / "documentation" / name
+                component.mkdir(parents=True)
+                (component / "metadata.yml").write_text(
+                    VALID_METADATA.replace("status: Experimental", f"status: {status}"),
+                    encoding="utf-8",
+                )
+            output = root / "catalog.json"
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--sort-by", "path",
+                    "--limit", "1", "--offset", "1", "--details",
+                    "--metadata-summary", "--component-status-summary",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            catalog = json.loads(output.read_text(encoding="utf-8"))
+            self.assertEqual(catalog["components"], ["documentation/database"])
+            self.assertEqual(
+                [entry["path"] for entry in catalog["details"]],
+                catalog["components"],
+            )
+            self.assertEqual(catalog["pagination"]["total"], 3)
+            self.assertEqual(catalog["metadata_summary"], {
+                "loaded": 1, "missing": 0, "invalid": 0,
+            })
+            self.assertEqual(catalog["component_status_summary"], {
+                "by_status": {"Stable": 1}, "missing": 0,
+            })
+
+    def test_cli_catalog_pagination_empty_page_preserves_export(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            output = root / "catalog.json"
+            output.write_text("previous", encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--offset", "1", "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 1)
+            self.assertEqual(result.stdout, "")
+            self.assertIn("No Components remain in the selected catalog page", result.stderr)
+            self.assertEqual(output.read_text(encoding="utf-8"), "previous")
+
+    def test_cli_catalog_pagination_rejects_invalid_arguments(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            for options, expected in (
+                (["--limit", "1"], "--limit and --offset require --list-components"),
+                (["--offset", "0"], "--limit and --offset require --list-components"),
+                (["--list-components", "--limit", "0"], "--limit must be a positive integer"),
+                (["--list-components", "--limit", "-1"], "--limit must be a positive integer"),
+                (["--list-components", "--offset", "-1"], "--offset must be a non-negative integer"),
+                (["--list-components", "--limit", "abc"], "invalid int value"),
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(
+                        [
+                            sys.executable, "-m", "scripts.framework_validator",
+                            "--components-root", str(root), *options,
+                        ],
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn(expected, result.stderr)
+
     def test_cli_catalog_descending_by_status_keeps_missing_last(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
