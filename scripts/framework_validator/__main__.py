@@ -31,7 +31,7 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 COMPONENTS_ROOT = REPOSITORY_ROOT / "framework" / "components"
 
 
-def write_json_output(report: str, output_path: Path) -> bool:
+def write_json_output(report: str, output_path: Path, label: str = "report") -> bool:
     """Atomically write UTF-8 JSON, preserving existing files on failure."""
     temporary_path = None
     try:
@@ -50,7 +50,7 @@ def write_json_output(report: str, output_path: Path) -> bool:
         return True
     except OSError as exc:
         print(
-            f"Unable to write JSON output to {output_path}: {exc}",
+            f"Unable to write JSON {label} to {output_path}: {exc}",
             file=sys.stderr,
         )
         return False
@@ -354,7 +354,7 @@ if __name__ == "__main__":
             catalog_json = json.dumps(catalog, indent=2)
             if arguments.output is None:
                 print(catalog_json)
-            elif not write_json_output(catalog_json, arguments.output):
+            elif not write_json_output(catalog_json, arguments.output, label="catalog"):
                 raise SystemExit(2)
         else:
             for path in paths:
