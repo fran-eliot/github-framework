@@ -67,6 +67,10 @@ python -m scripts.framework_validator --components-root path/to/framework/compon
 
 This validates Framework **Component metadata and supported artifacts**, not arbitrary application repositories or their runtime. The selection must contain existing `FAMILY/NAME` Component paths in that library.
 
+### Relocated Component library regression
+
+The automated suite also creates a **separate temporary Component library** with one tracked README, Documentation and Workflow Component copied from this repository. It verifies complete three-family discovery and full-library validation, then exports a Workflow-only catalog with metadata and content SHA-256 and reimports it for scoped validation. This tests the documented `--components-root` behavior without changing the tracked source. It is **not** a consumer application test, a Template assessment or evidence of external interoperability.
+
 ## 6. Automated and reproducible coverage
 
 The CI job executes `python -m scripts.framework_validator.smoke` on Ubuntu and Windows. That smoke test also copies a **real tracked Documentation Component** into a temporary library and exercises the entire flow: export both digests, verify the snapshot, change the **temporary copy's README**, confirm a stale-content rejection, and confirm that ordinary targeted validation can still pass. The tracked Component is never changed.

@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* Added a three-family relocated Component library CLI regression using temporary copies of real tracked README, Documentation and Workflow Components; verifies full and targeted SHA-256 catalog workflows without changing source files or validating an application consumer.
+
 No changes recorded since v0.12.0.
 
 ---
