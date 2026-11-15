@@ -5,6 +5,7 @@ Components and verifies the CLI's catalog and filtered validation contracts.
 """
 
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -325,6 +326,74 @@ def main() -> None:
     assert full_content_check.returncode == 0, full_content_check.stderr
     assert json.loads(full_content_check.stdout)["status"] == "passed"
 
+    # End-to-end workflow using a real tracked Component copied to an
+    # isolated temporary library. Never modify the checked-out source.
+    source = next(
+        (
+            ROOT / "framework" / "components" / path
+            for path in examples
+            if (ROOT / "framework" / "components" / path / "README.md").is_file()
+        ),
+        None,
+    )
+    assert source is not None, "Expected a Documentation Component README"
+    with TemporaryDirectory() as directory:
+        temporary_root = Path(directory)
+        library = temporary_root / "framework" / "components"
+        selected_path = source.relative_to(ROOT / "framework" / "components")
+        copy = library / selected_path
+        copy.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(source, copy)
+        selection_path = temporary_root / "selected-components.json"
+        catalog_command = [
+            sys.executable, "-m", "scripts.framework_validator",
+            "--components-root", str(library),
+        ]
+        export = subprocess.run(
+            catalog_command + [
+                "--list-components", "--format", "json", "--details",
+                "--catalog-metadata-sha256", "--catalog-content-sha256",
+                "--output", str(selection_path),
+            ],
+            cwd=ROOT, capture_output=True, text=True, check=False,
+        )
+        assert export.returncode == 0, export.stderr
+        snapshot_bytes = selection_path.read_bytes()
+        snapshot = json.loads(snapshot_bytes)
+        assert snapshot["components"] == [selected_path.as_posix()]
+        verify_args = catalog_command + [
+            "--catalog-input", str(selection_path),
+            "--catalog-verify-details", "--catalog-verify-sha256",
+            "--catalog-verify-content-sha256", "--format", "json",
+        ]
+        verified = subprocess.run(
+            verify_args, cwd=ROOT, capture_output=True, text=True, check=False,
+        )
+        assert verified.returncode == 0, verified.stderr
+        report = json.loads(verified.stdout)
+        assert report["status"] == "passed"
+        assert report["scope"]["component_paths"] == snapshot["components"]
+        assert report["components_discovered"] == 1
+
+        copied_readme = copy / "README.md"
+        source_bytes = (source / "README.md").read_bytes()
+        copied_readme.write_bytes(source_bytes + b"\n<!-- smoke modification -->\n")
+        stale = subprocess.run(
+            verify_args, cwd=ROOT, capture_output=True, text=True, check=False,
+        )
+        assert stale.returncode == 2 and not stale.stdout
+        assert "--catalog-verify-content-sha256 stale Component content" in stale.stderr
+        assert selection_path.read_bytes() == snapshot_bytes
+        assert (source / "README.md").read_bytes() == source_bytes
+        regular = subprocess.run(
+            catalog_command + [
+                "--catalog-input", str(selection_path), "--format", "json",
+            ],
+            cwd=ROOT, capture_output=True, text=True, check=False,
+        )
+        assert regular.returncode == 0, regular.stderr
+        assert json.loads(regular.stdout)["status"] == "passed"
+
     # Stream a real-library catalog directly to targeted validation over stdin.
     streamed_catalog = run_cli(
         "--list-components", "--format", "json",
@@ -378,6 +447,7 @@ def main() -> None:
         "catalog_metadata_snapshot_verification_verified": True,
         "catalog_metadata_sha256_verified": True,
         "catalog_component_content_sha256_verified": True,
+        "catalog_end_to_end_workflow_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,
