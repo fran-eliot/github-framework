@@ -6,7 +6,7 @@
 | Prepared | 2026-11-15 |
 | Maintainer scope decision | **Option A approved** — complete-repository scope and preparation of a candidate; publication not approved |
 | Snapshot branch | [`candidate/option-a-snapshot-20261115`](https://github.com/fran-eliot/github-framework/tree/candidate/option-a-snapshot-20261115) |
-| **Current candidate commit** | [`56a24418c63e097a01db00472b31f80ed641f789`](https://github.com/fran-eliot/github-framework/commit/56a24418c63e097a01db00472b31f80ed641f789) — updated by fast-forward after PR #323 |
+| **Current candidate commit** | [`3409568ea3735915a2ab88892be66c4a768c1224`](https://github.com/fran-eliot/github-framework/commit/3409568ea3735915a2ab88892be66c4a768c1224) — fast-forwarded after PR #326 |
 | Published comparison base | `v0.10.0` — `3c4b21a26e4e85eeef705fefd48323ffd918e681` |
 | New release version / date / tag | **Not selected or authorized** |
 | Release status | **Candidate baseline updated and verified; publication approval pending** |
@@ -17,13 +17,13 @@
 
 The maintainer explicitly approved adopting **Option A** on 2026-11-15 following the consolidated [release-readiness decision brief](../discovery/73_OPTION_A_RELEASE_READINESS_DECISION_BRIEF.md). This approval permits preparing a **complete repository-tree release candidate**, including all post-`v0.10.0` documentation and historical Only Film Assessment material, with their source-qualified limitations.
 
-The dedicated [candidate branch](https://github.com/fran-eliot/github-framework/tree/candidate/option-a-snapshot-20261115) was initially created at `9f317350b25bad39c438fd0e5ac09fe33f5b5ed7`. After PR #323 was merged and exact-main CI passed, it was **fast-forwarded**, with an expected-head safety check, to the current candidate SHA **`56a24418c63e097a01db00472b31f80ed641f789`**. The initial SHA remains historical evidence, **not** the current branch head. Keep this candidate branch until a subsequent explicit decision; every later move requires a newly pinned SHA and refreshed validation. This PR's own documentary edit is **not** part of the frozen candidate until separately incorporated.
+The dedicated [candidate branch](https://github.com/fran-eliot/github-framework/tree/candidate/option-a-snapshot-20261115) was initially created at `9f317350b25bad39c438fd0e5ac09fe33f5b5ed7`. After PR #323 was merged and exact-main CI passed, it was **fast-forwarded**, with an expected-head safety check, to the current candidate SHA **`56a24418c63e097a01db00472b31f80ed641f789`**. The initial SHA remains historical evidence, **not** the current branch head. After merged PR #326, the candidate branch was fast-forwarded a second time, using the expected previous SHA `56a24418c63e097a01db00472b31f80ed641f789`, to **`3409568ea3735915a2ab88892be66c4a768c1224`**. This is the **current** candidate reference, verified against its own push workflow. Keep this candidate branch until a subsequent explicit decision; every later move requires a newly pinned SHA and refreshed validation. This PR's own documentary edit is **not** part of the frozen candidate until separately incorporated.
 
 **Two separate permissions remain distinct:** (1) the maintainer has now accepted the full-tree **scope and candidate preparation**; (2) the maintainer has **not** selected a release version, approved final release notes, authorized tagging, or authorized GitHub Release publication.
 
 ## 2. Exact snapshot inventory
 
-The GitHub comparison [`v0.10.0...56a24418c63e097a01db00472b31f80ed641f789`](https://github.com/fran-eliot/github-framework/compare/v0.10.0...56a24418c63e097a01db00472b31f80ed641f789) reported **665 repository-wide commits ahead, zero behind, and 90 changed-file paths**. The GitHub recursive tree for this candidate commit returned **285 entries** with `truncated: false`.
+The GitHub comparison [`v0.10.0...3409568ea3735915a2ab88892be66c4a768c1224`](https://github.com/fran-eliot/github-framework/compare/v0.10.0...3409568ea3735915a2ab88892be66c4a768c1224) reported **676 repository-wide commits ahead, zero behind, and 91 changed-file paths**. The GitHub recursive tree for this candidate commit returned **286 entries** with `truncated: false`.
 
 | Change area | Paths | What the approved complete-tree scope includes |
 | --- | ---: | --- |
@@ -33,14 +33,14 @@ The GitHub comparison [`v0.10.0...56a24418c63e097a01db00472b31f80ed641f789`](htt
 | Governance documents | **3** | Project status, backlog and continuity |
 | Root public documentation | **5** | English/Spanish README, CHANGELOG, ROADMAP and CONTRIBUTING |
 | Other Adoption material | **3** | Adoption Guide and general Assessment/repeatability examples |
-| Candidate release-baseline record | **1** | Initial pinned-snapshot provenance and acceptance boundaries |
-| **Total** | **90** | All tracked files at the SHA, not just the changed paths |
+| Release-preparation documentation | **2** | Candidate provenance, proposed release notes and remaining authorization boundaries |
+| **Total** | **91** | All tracked files at the SHA, not just the changed paths |
 
 This tally describes the difference from the last published tag; a snapshot release would contain the **whole tracked candidate tree**, including unchanged files. The exact compare link is the authoritative per-path manifest. It does not imply 665 Validator code commits.
 
 ## 3. Direct evidence on this exact baseline commit
 
-GitHub [Framework Validator push run 43703461574](https://github.com/fran-eliot/github-framework/actions/runs/43703461574) has `head_sha=56a24418c63e097a01db00472b31f80ed641f789`, `event=push`, and `conclusion=success`. Its jobs ran on GitHub-hosted Ubuntu and Windows with Python 3.11:
+GitHub [Framework Validator push run 43705884458](https://github.com/fran-eliot/github-framework/actions/runs/43705884458) has `head_sha=3409568ea3735915a2ab88892be66c4a768c1224`, `event=push`, and `conclusion=success`. Its jobs ran on GitHub-hosted Ubuntu and Windows with Python 3.11:
 
 | Check | Ubuntu | Windows |
 | --- | --- | --- |
@@ -55,7 +55,7 @@ GitHub [Framework Validator push run 43703461574](https://github.com/fran-eliot/
 
 | Property | Ubuntu | Windows |
 | --- | --- | --- |
-| Artifact ID | [14156944888](https://github.com/fran-eliot/github-framework/actions/runs/43703461574/artifacts/14156944888) | [14156489576](https://github.com/fran-eliot/github-framework/actions/runs/43703461574/artifacts/14156489576) |
+| Artifact ID | [14158447004](https://github.com/fran-eliot/github-framework/actions/runs/43705884458/artifacts/14158447004) | [14157814558](https://github.com/fran-eliot/github-framework/actions/runs/43705884458/artifacts/14157814558) |
 | Report `status` | `passed` | `passed` |
 | `components_discovered` | **21** | **21** |
 | `summary.passed_components` | **21** | **21** |
@@ -71,11 +71,11 @@ This provides **direct evidence of tests, full-library validation and targeted/c
 | Gate | Evidence / current status | Action before publication |
 | --- | --- | --- |
 | **A. Full-tree publication scope** | **Approved by maintainer** on 2026-11-15; includes historical Discovery and 50 Only Film documentary files | Preserve this scope and all evidence caveats |
-| **B. Immutable source identity** | **Pinned** to `56a24418c63e097a01db00472b31f80ed641f789` on the dedicated candidate branch; complete **90-path** diff available | Re-pin and revalidate if any candidate content changes |
+| **B. Immutable source identity** | **Pinned** to `3409568ea3735915a2ab88892be66c4a768c1224` on the dedicated candidate branch; complete **91-path** diff available | Re-pin and revalidate if any candidate content changes |
 | **C. Cross-platform unit tests and full Validator JSON** | **Passed / directly verified** on updated pinned SHA: 161 tests per OS; 21/21 Components; 0 errors; normalized Ubuntu/Windows JSON payloads equal | Re-run if candidate SHA changes or CI results become unsuitable |
-| **D. Scoped/catalog CLI smoke outputs** | **Passed on this exact candidate SHA** via the new [real-library smoke step](https://github.com/fran-eliot/github-framework/actions/runs/43703461574): 21 catalog entries and 21 loaded metadata records; all three families, selective validation of three representative components, JSON scope, and rejection of invalid argument combination | Preserve these CI logs as candidate evidence; revalidate if the candidate SHA changes |
+| **D. Scoped/catalog CLI smoke outputs** | **Passed on this exact candidate SHA** via the new [real-library smoke step](https://github.com/fran-eliot/github-framework/actions/runs/43705884458): 21 catalog entries and 21 loaded metadata records; all three families, selective validation of three representative components, JSON scope, and rejection of invalid argument combination | Preserve these CI logs as candidate evidence; revalidate if the candidate SHA changes |
 | **E. Documentary evidence and source limitations** | Internal path checks, canonical Only Film links and high-risk historical/license/security/test caveats reviewed in [#70](../discovery/70_OPTION_A_MARKDOWN_PATH_INTEGRITY.md), [#71](../discovery/71_OPTION_A_ONLY_FILM_CANONICAL_SOURCE_VERIFICATION.md), [#72](../discovery/72_OPTION_A_RISK_BASED_EVIDENCE_ACCEPTANCE.md) | Complete and knowingly accept candidate-specific public claims; do not imply independent first-time UX, consumer operation or third-party rights |
-| **F. Version and publication docs** | `CHANGELOG.md` remains `[Unreleased]`; both README versions still reflect **published v0.10.0** | Select a release version and date; prepare notes and update documentation on a **revised exact candidate** before any tag |
+| **F. Version and publication docs** | `CHANGELOG.md` remains `[Unreleased]`; both README badges still reflect **published v0.10.0**; `v0.11.0 — Framework Validator CLI and CI` is **proposed** in the synchronized publication-preparation documents | Obtain express version/date/notes approval before turning Unreleased into a dated published entry or changing the README badges |
 | **G. Explicit publication approval** | **Not given** | Obtain separate maintainer approval for candidate SHA, version, notes, and actual tag/GitHub Release creation |
 
 A full source audit of third-party ownership/licensing was **not** performed. Whether documentary links/attribution are adequate for publication depends on their content and applicable rights; this baseline does not imply permissions that have not been verified. Do not import or redistribute Only Film consumer source as part of a Framework release.
@@ -90,6 +90,6 @@ This paragraph is **draft narrative**, not approved release notes. No target ver
 
 ## 6. Candidate disposition
 
-**Option A adopted. Updated candidate baseline fast-forwarded and validated, including the real-library CLI smoke checks. Final release authorization remains open.** The next release-specific step is to review the publication documents and propose a suitable version **for the maintainer to approve**, then re-pin and revalidate any candidate changes before requesting distinct final tag/GitHub Release approval.
+**Option A adopted. Updated candidate baseline fast-forwarded and validated, including the real-library CLI smoke checks. Final release authorization remains open.** The next release-specific step is to obtain the maintainer's **express decision on the proposed `v0.11.0` version/title and final release notes**, and to verify/re-pin any later changes before requesting distinct final tag/GitHub Release approval.
 
 No changes are made to Only Film. UX-02 remains `Prepared — Not Executed`.
