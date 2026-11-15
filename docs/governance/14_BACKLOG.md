@@ -51,7 +51,9 @@ La PR [#357](https://github.com/fran-eliot/github-framework/pull/357) se confirm
 
 **Referencia de continuidad:** [Continuity Kit 1.5.0](16_CONTINUITY_KIT.md), cuyo snapshot vigente sustituye al registro histórico anterior a la PR #358.
 
-**Posibles próximos incrementos — aún no comprometidos:**
+**Posibles próximos incrementos — aún no comprometidos:****Evaluación técnica de límites del consumidor (solo lectura):** [Aula Robótica — Validator Consumer Boundary Study](../implementation/aula-robotica-validator-consumer-boundary-20261115.md) identifica, sobre dos archivos del commit `92db31aabe0d9ea2ec53974b802d617ca9a250fe`, el límite entre validar bibliotecas de Framework Components y validar una aplicación. Incluye una simulación aislada con pruebas, sin ejecutar ni modificar el consumidor. No equivale a un Assessment ni cierra la necesidad de evidencia de uso en consumidores reales.
+
+
 
 1. **Consolidación del Validator:** revisar contratos de CLI/JSON, mensajes, pruebas de compatibilidad y riesgos de regresión, evitando más opciones sin caso de uso.
 2. **Validación práctica de solo lectura:** definir un escenario con consumidor y commit fijado, sin modificar el consumidor ni inferir Adoption Decisions automáticas.
