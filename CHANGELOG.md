@@ -40,6 +40,8 @@
 
 * Hardened full Component file-tree digest generation against symlinked Component root directories, with regressions for safe export rejection and renamed/removed files.
 
+* Hardened metadata SHA-256 catalog export and verification to reject symbolic links in `metadata.yml` or the Component root, preserving existing output on export errors.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.

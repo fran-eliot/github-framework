@@ -1732,6 +1732,97 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(check.returncode, 0, check.stderr)
             self.assertEqual(json.loads(check.stdout)["status"], "passed")
 
+    def test_cli_metadata_sha256_export_rejects_symlink_and_preserves_output(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            outside = root / "outside.yml"
+            outside.write_text(VALID_METADATA, encoding="utf-8")
+            link = component / "metadata.yml"
+            try:
+                link.symlink_to(outside)
+            except (OSError, NotImplementedError):
+                self.skipTest("Symlinks unavailable in this environment")
+            output = root / "catalog.json"
+            output.write_text("previous", encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--catalog-metadata-sha256",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 2)
+            self.assertEqual(result.stdout, "")
+            self.assertIn("symbolic link", result.stderr)
+            self.assertEqual(output.read_text(encoding="utf-8"), "previous")
+
+    def test_cli_metadata_sha256_verification_rejects_replaced_symlink(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            metadata_path = component / "metadata.yml"
+            metadata_path.write_text(VALID_METADATA, encoding="utf-8")
+            exported = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--catalog-metadata-sha256",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(exported.returncode, 0, exported.stderr)
+            metadata_path.unlink()
+            outside = root / "outside.yml"
+            outside.write_text(VALID_METADATA, encoding="utf-8")
+            try:
+                metadata_path.symlink_to(outside)
+            except (OSError, NotImplementedError):
+                self.skipTest("Symlinks unavailable in this environment")
+            checked = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--catalog-input", "-",
+                    "--catalog-verify-sha256", "--format", "json",
+                ],
+                input=exported.stdout,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(checked.returncode, 2)
+            self.assertEqual(checked.stdout, "")
+            self.assertIn("--catalog-verify-sha256 unable to hash", checked.stderr)
+            self.assertIn("symbolic link", checked.stderr)
+
+    def test_cli_metadata_sha256_export_rejects_symlinked_component_root(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            alias = root / "documentation" / "alias"
+            try:
+                alias.symlink_to(component, target_is_directory=True)
+            except (OSError, NotImplementedError):
+                self.skipTest("Directory symlinks unavailable in this environment")
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--match", "documentation/alias", "--format", "json",
+                    "--details", "--catalog-metadata-sha256",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("symbolic link", result.stderr)
+
     def test_cli_catalog_sha256_rejects_missing_or_invalid_digest(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
