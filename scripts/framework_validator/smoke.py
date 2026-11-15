@@ -85,6 +85,15 @@ def main() -> None:
     )
     assert no_match.returncode == 1 and not no_match.stdout
 
+    excluded = run_cli(
+        "--list-components", "--format", "json",
+        "--match", "documentation/*", "--exclude", examples[0],
+    )
+    assert excluded["components"] == examples[1:]
+    assert excluded["count"] == len(examples) - 1
+    assert excluded["scope"]["match"] == ["documentation/*"]
+    assert excluded["scope"]["exclude"] == [examples[0]]
+
     representatives = []
     for family in FAMILIES:
         selected = [path for path in paths if path.startswith(f"{family}/")]
@@ -127,6 +136,7 @@ def main() -> None:
         "details_metadata_loaded": len(details["details"]),
         "catalog_export_verified": True,
         "catalog_pattern_matching_verified": True,
+        "catalog_exclusion_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,
