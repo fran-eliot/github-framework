@@ -52,6 +52,8 @@
 
 ### Changed
 
+* Extracted Component metadata and full file-tree SHA-256 helpers into a dedicated Validator integrity module, preserving CLI behavior while adding direct unit coverage for deterministic hashes, file changes and symbolic-link rejection.
+
 * Extended real-library Validator CI smoke coverage for metadata ID/name/version selectors, sorting, family and metadata summaries, combined JSON export, and preservation of existing output on empty matches.
 
 * Extended real-library Framework Validator smoke checks to verify atomic JSON Component catalog export on the 21 tracked Components; added regression coverage for safe replacement failures and invalid metadata in exported catalogs.
