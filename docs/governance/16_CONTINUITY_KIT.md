@@ -4,7 +4,7 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Documento**            | Continuity Kit   |
-| **Versión**              | 1.2.0            |
+| **Versión**              | 1.3.0            |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-11-15       |
 
@@ -14,9 +14,61 @@ Todo nuevo colaborador o asistente deberá utilizar este documento como referenc
 
 ---
 
-# Snapshot de continuidad — 2026-11-15
+# Snapshot vigente — Post-release Validator Catalog (2026-11-15)
 
-> **Punto de reanudación vigente.** Este snapshot prevalece sobre los capítulos históricos de agosto de 2026 (Sprint 4, v0.2.0 y prioridades iniciales) y sobre el snapshot sustituido del 2026-11-14. No sustituye la consulta en vivo de GitHub: al reanudar, comprobar primero el estado real de `main`, las PR y los checks. [Project Status](12_PROJECT_STATUS.md), [Product Backlog](14_BACKLOG.md), [Roadmap](../../ROADMAP.md) y [CHANGELOG](../../CHANGELOG.md) reflejan el estado documental tras los merges verificados.
+> **Punto de reanudación actual.** Esta actualización prevalece sobre el snapshot histórico de PR #330 y sobre las instrucciones de reanudación antiguas que aparecen más abajo. Antes de actuar, verificar siempre las PR, `main` y los workflows directamente en GitHub.
+
+| Campo | Evidencia / situación verificada |
+| --- | --- |
+| Repositorio | [fran-eliot/github-framework](https://github.com/fran-eliot/github-framework) |
+| Última release publicada | [v0.11.0 — Framework Validator CLI and CI](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0) |
+| Tag inmutable de release | `v0.11.0` → `55680b388b0fd8256c95e15866e53d21cc9a5033` |
+| `main` al revisar este snapshot | [`f8c032cfbf035d8936b3c48c0baf1bc9bd60f435`](https://github.com/fran-eliot/github-framework/commit/f8c032cfbf035d8936b3c48c0baf1bc9bd60f435) |
+| Última PR fusionada | [#349 — Previous-page catalog navigation](https://github.com/fran-eliot/github-framework/pull/349) |
+| Última verificación de la PR #349 | [Framework Validator run 43740069053](https://github.com/fran-eliot/github-framework/actions/runs/43740069053): `success` |
+| PR abiertas / rama de PR #349 | Ninguna / rama remota eliminada, comprobado antes de crear la rama de actualización de este kit |
+| Estado de esta actualización | La **PR que introduce este snapshot debe revisarse y fusionarse**; el SHA anterior no incluye todavía esta actualización |
+| Release/Sprint/milestone siguientes | **Sin compromiso ni autorización de publicación o apertura** |
+| Only Film | Assessment `Complete` **solo documental**, sobre SHA `28d75a50e0a178954dd46acc23300d9dd327843c`; no modificar ni aplicar/integrar sin autorización |
+| UX-02 | `Prepared — Not Executed`; no presentar evidencia de participantes independientes |
+
+## Evolución integrada posterior al tag v0.11.0
+
+**Todo el trabajo enumerado a continuación está fusionado en `main` pero es posterior al tag `v0.11.0`.** No atribuir estas capacidades a la release ya publicada. El historial completo figura en [Unreleased / CHANGELOG](../../CHANGELOG.md), GitHub PR y el código vigente.
+
+| Área | Incrementos integrados |
+| --- | --- |
+| Exportación y seguridad | Catálogo JSON a archivo (`--output`), escritura atómica, conservación del archivo ante selecciones vacías o errores y tests de regresión |
+| Selección por rutas y metadatos | Filtros `--match`, `--exclude`, `--metadata-status` (estado de carga), `--metadata-id`, `--metadata-name`, `--metadata-version` y `--component-status` (estado declarado) |
+| Resúmenes JSON | `--family-summary`, `--metadata-summary` y `--component-status-summary`, aplicados al conjunto seleccionado |
+| Ordenación | `--sort-by path|id|name|version|status` y `--sort-order asc|desc`; por defecto se conserva el orden por ruta. Metadatos ausentes quedan al final |
+| Paginación | `--limit`, `--offset`, y objeto JSON `pagination` con `total`, `offset`, `limit`, `has_next`, `next_offset`, `has_previous` y `previous_offset` |
+| Verificación | Tests CLI de integración y smoke test sobre la biblioteca real en CI Ubuntu y Windows, incluida navegación paginada sin omisiones o duplicados |
+
+Entre las PR verificadas están [#339](https://github.com/fran-eliot/github-framework/pull/339) (versión), [#340](https://github.com/fran-eliot/github-framework/pull/340) (ordenación), [#341](https://github.com/fran-eliot/github-framework/pull/341) (nombre), [#342](https://github.com/fran-eliot/github-framework/pull/342) (smoke test ampliado), [#343](https://github.com/fran-eliot/github-framework/pull/343) y [#344](https://github.com/fran-eliot/github-framework/pull/344) (estado y resumen), [#345](https://github.com/fran-eliot/github-framework/pull/345) y [#346](https://github.com/fran-eliot/github-framework/pull/346) (ordenación), y [#347](https://github.com/fran-eliot/github-framework/pull/347), [#348](https://github.com/fran-eliot/github-framework/pull/348) y [#349](https://github.com/fran-eliot/github-framework/pull/349) (paginación y navegación). La exportación JSON inicial se incorporó mediante [#330](https://github.com/fran-eliot/github-framework/pull/330).
+
+### Contratos que deben preservarse
+
+- Catálogo de Components de **solo lectura**: no altera ni verifica automáticamente un repositorio consumidor. `--list-components` no equivale a una validación semántica de Adoption.
+- Los filtros se aplican antes de ordenar y paginar; las salidas paginadas presentan `count`, `components`, `details` y resúmenes **de la página actual**. `pagination.total` corresponde al conjunto completo filtrado, antes de paginar.
+- La ordenación de versiones es **lexicográfica**, no SemVer. Los filtros glob son sensibles a mayúsculas. Los campos opcionales se añaden al JSON cuando se solicita la opción correspondiente.
+- Una selección sin resultados o una página vacía devuelve código `1`, sin sobrescribir una exportación anterior. Error de escritura devuelve `2`; argumentos incorrectos, `2`.
+- No publicar una nueva versión, tag o release ni iniciar Sprint/milestone por inferencia. El trabajo integrado queda bajo `Unreleased` hasta decisión formal.
+- Protocolo operativo: el asistente crea rama, implementa y abre PR; el mantenedor revisa, fusiona y elimina la rama remota. Se verifica CI y estado de GitHub antes del siguiente incremento.
+
+### Reanudación recomendada
+
+1. Comprobar que la PR de **actualización de este kit** se haya fusionado y eliminado su rama; este snapshot registra el estado **previo** a dicha PR.
+2. Obtener la punta vigente de `main`, PR abiertas, resultados de CI y estado de tags/releases directamente en GitHub. Ante discrepancias, prevalece GitHub.
+3. Leer la sección `Unreleased` del [CHANGELOG](../../CHANGELOG.md), `scripts/framework_validator/__main__.py`, `scripts/framework_validator/smoke.py` y `tests/framework_validator/test_cli.py`.
+4. Priorizar mejoras con casos de uso observables y compatibilidad contrastable; valorar consolidar contratos, usabilidad y aplicación real **de solo lectura** antes de seguir acumulando opciones pequeñas.
+5. Mantener el Assessment de Only Film cerrado documentalmente y no modificar el consumidor sin nueva autorización explícita.
+
+---
+
+# Snapshot histórico — PR #330 (2026-11-15)
+
+> **Snapshot histórico sustituido por el bloque vigente anterior.** Este snapshot prevalecía sobre los capítulos históricos de agosto de 2026 (Sprint 4, v0.2.0 y prioridades iniciales) y sobre el snapshot sustituido del 2026-11-14. No sustituye la consulta en vivo de GitHub: al reanudar, comprobar primero el estado real de `main`, las PR y los checks. [Project Status](12_PROJECT_STATUS.md), [Product Backlog](14_BACKLOG.md), [Roadmap](../../ROADMAP.md) y [CHANGELOG](../../CHANGELOG.md) reflejan el estado documental tras los merges verificados.
 
 | Campo | Estado confirmado el 2026-11-15 |
 | --- | --- |
