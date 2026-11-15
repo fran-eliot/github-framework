@@ -1420,6 +1420,163 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                         result.stderr,
                     )
 
+    def test_cli_import_exported_catalog_for_targeted_validation(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            architecture = self.create_component(root)
+            (architecture / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            references = root / "documentation" / "references"
+            references.mkdir(parents=True)
+            (references / "metadata.yml").write_text(
+                VALID_METADATA.replace("DOC-ARCHITECTURE", "DOC-REFERENCES"),
+                encoding="utf-8",
+            )
+            (root / "readme" / "author").mkdir(parents=True)
+            catalog = root / "selected.json"
+            base = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root),
+            ]
+            export = subprocess.run(
+                base + [
+                    "--list-components", "--format", "json",
+                    "--match", "documentation/*", "--limit", "1",
+                    "--sort-by", "path", "--sort-order", "desc",
+                    "--output", str(catalog),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(export.returncode, 0, export.stderr)
+            inventory = json.loads(catalog.read_text(encoding="utf-8"))
+            self.assertEqual(inventory["components"], ["documentation/references"])
+            validation = subprocess.run(
+                base + [
+                    "--catalog-input", str(catalog), "--format", "json",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(validation.returncode, 0, validation.stderr)
+            report = json.loads(validation.stdout)
+            self.assertEqual(report["status"], "passed")
+            self.assertEqual(report["components_discovered"], 1)
+            self.assertEqual(report["components"][0]["relative_path"], "documentation/references")
+            self.assertEqual(report["scope"]["component_paths"], ["documentation/references"])
+            self.assertTrue(report["scope"]["filtered"])
+
+    def test_cli_import_catalog_reports_selected_validation_failures(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA.replace("DOC-ARCHITECTURE", "INVALID"),
+                encoding="utf-8",
+            )
+            catalog = root / "selected.json"
+            catalog.write_text(
+                json.dumps({"components": ["documentation/architecture"]}),
+                encoding="utf-8",
+            )
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root),
+                    "--catalog-input", str(catalog), "--format", "json",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 1, result.stderr)
+            report = json.loads(result.stdout)
+            self.assertEqual(report["components_discovered"], 1)
+            self.assertEqual(report["status"], "failed")
+            self.assertEqual(report["summary"]["failed_components"], 1)
+            self.assertEqual(
+                report["components"][0]["relative_path"],
+                "documentation/architecture",
+            )
+
+    def test_cli_import_catalog_rejects_malformed_or_untrusted_paths(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.create_component(root)
+            catalog = root / "selected.json"
+            base = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--catalog-input", str(catalog),
+                "--format", "json",
+            ]
+            fixtures = [
+                ([], "requires a non-empty components array"),
+                ({"components": []}, "requires a non-empty components array"),
+                ({"components": "documentation/architecture"}, "requires a non-empty components array"),
+                ({"components": [1]}, "must be FAMILY/NAME strings"),
+                ({"components": ["../architecture"]}, "invalid Component path"),
+                ({"components": ["/etc/passwd"]}, "invalid Component path"),
+                ({"components": ["documentation/../architecture"]}, "invalid Component path"),
+                ({"components": ["documentation/architecture", "documentation/architecture"]}, "duplicate Component path"),
+                ({"components": ["workflow/missing"]}, "directory does not exist"),
+                ({"components": ["unknown/architecture"]}, "invalid Component path"),
+            ]
+            for payload, expected in fixtures:
+                with self.subTest(payload=payload):
+                    catalog.write_text(json.dumps(payload), encoding="utf-8")
+                    result = subprocess.run(
+                        base, cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertEqual(result.stdout, "")
+                    self.assertIn(expected, result.stderr)
+
+    def test_cli_import_catalog_rejects_bad_json_and_conflicting_options(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.create_component(root)
+            catalog = root / "selected.json"
+            catalog.write_text("{bad JSON", encoding="utf-8")
+            base = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root),
+                "--catalog-input", str(catalog),
+            ]
+            malformed = subprocess.run(
+                base, cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(malformed.returncode, 2)
+            self.assertIn("Unable to read JSON Component catalog", malformed.stderr)
+            catalog.write_text(
+                json.dumps({"components": ["documentation/architecture"]}),
+                encoding="utf-8",
+            )
+            for options in (
+                ["--family", "documentation"],
+                ["--component", "documentation/architecture"],
+                ["--list-components"],
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(
+                        base + options, cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn("--catalog-input cannot combine", result.stderr)
+            missing = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root),
+                    "--catalog-input", str(root / "missing.json"),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(missing.returncode, 2)
+            self.assertIn("Unable to read JSON Component catalog", missing.stderr)
+
     def test_cli_catalog_pagination_json_after_descending_sort(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
