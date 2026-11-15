@@ -66,7 +66,7 @@ def main() -> None:
         assert exported.returncode == 0, exported.stderr
         assert exported.stdout == "", "Catalog export must not print JSON to stdout"
         assert json.loads(destination.read_text(encoding="utf-8")) == details
-        assert destination.read_bytes().endswith(b"\\n")
+        assert destination.read_bytes().endswith(b"\n")
         assert list(Path(directory).glob(".component-catalog.json.*.tmp")) == []
 
     representatives = []
