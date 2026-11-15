@@ -1510,7 +1510,7 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                 "--format", "json",
             ]
             fixtures = [
-                ([], "requires a non-empty components array"),
+                ([], "must contain a JSON catalog object"),
                 ({"components": []}, "requires a non-empty components array"),
                 ({"components": "documentation/architecture"}, "requires a non-empty components array"),
                 ({"components": [1]}, "must be FAMILY/NAME strings"),
