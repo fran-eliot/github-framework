@@ -200,6 +200,28 @@ def main() -> None:
         assert no_match.returncode == 1 and not no_match.stdout
         assert destination.read_bytes() == original
 
+    # Page through the tracked inventory without skipping or repeating Components.
+    traversed = []
+    offset = 0
+    while True:
+        page = run_cli(
+            "--list-components", "--format", "json",
+            "--limit", "4", "--offset", str(offset),
+            "--sort-by", "path",
+        )
+        navigation = page["pagination"]
+        assert navigation["total"] == len(paths)
+        assert navigation["offset"] == offset
+        assert navigation["limit"] == 4
+        assert page["count"] == len(page["components"])
+        traversed.extend(page["components"])
+        if not navigation["has_next"]:
+            assert navigation["next_offset"] is None
+            break
+        assert navigation["next_offset"] == offset + page["count"]
+        offset = navigation["next_offset"]
+    assert traversed == paths
+
     representatives = []
     for family in FAMILIES:
         selected = [path for path in paths if path.startswith(f"{family}/")]
@@ -248,6 +270,7 @@ def main() -> None:
         "catalog_metadata_sorting_verified": True,
         "catalog_summaries_verified": True,
         "catalog_combined_export_verified": True,
+        "catalog_pagination_navigation_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,
