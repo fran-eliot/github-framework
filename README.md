@@ -195,6 +195,15 @@ python -m scripts.framework_validator --list-components --format json --componen
 
 The optional `component_status_summary` object contains `by_status` counts keyed by declared status (sorted alphabetically) and a separate `missing` count for absent or non-string statuses, including unreadable metadata. These counts total the catalog `count` after all filters. Unlike `--metadata-summary`, this summarizes the Component's declared status rather than YAML loading outcomes. It requires `--list-components --format json`, composes with catalog filters, other summaries, `--details` and JSON export, and leaves the default catalog unchanged.
 
+Validate a selection previously exported from a Component catalog by passing its JSON file to `--catalog-input`. This connects read-only discovery to the existing targeted Validator without requiring manual `--component` arguments:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --family documentation --limit 5 --output selected-components.json
+python -m scripts.framework_validator --catalog-input selected-components.json --format json
+```
+
+The input must be a JSON catalog object with a non-empty `components` array of unique `FAMILY/NAME` paths from the **current Component library**. Pagination is supported: only the paths present in the exported page are validated. Use `--components-root` on both commands when working with a custom library; the input does not authorize access outside that root. The option cannot be combined with `--list-components`, `--component`, or `--family`. Invalid or missing catalogs, unsafe paths and missing Component directories cause argument error `2` before validation. Component validation errors retain exit code `1` and the normal text/JSON report, including its filtered scope. No Component files are modified.
+
 Page a Component catalog after applying all filters and sorting, using `--limit N` (positive integer) and/or `--offset N` (non-negative integer):
 
 ```bash
