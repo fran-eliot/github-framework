@@ -30,6 +30,8 @@
 
 * Read-only `--catalog-input` validation workflow for selecting Components from a previously exported JSON catalog, including paginated selections, strict path validation and real-library CI smoke coverage.
 
+* `--catalog-input -` now accepts a JSON Component catalog from stdin, enabling read-only catalog-to-validation pipelines without intermediate files; covered by isolated CLI tests and real-library CI smoke checks.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.

@@ -202,6 +202,14 @@ python -m scripts.framework_validator --list-components --format json --family d
 python -m scripts.framework_validator --catalog-input selected-components.json --format json
 ```
 
+For automated workflows, use `--catalog-input -` to read the catalog directly from standard input, avoiding an intermediate file:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --family documentation | python -m scripts.framework_validator --catalog-input - --format json
+```
+
+The same selection, path-safety checks, report format and exit codes apply to file and stdin input. The input stream is read only once; this does not modify Components.
+
 The input must be a JSON catalog object with a non-empty `components` array of unique `FAMILY/NAME` paths from the **current Component library**. Pagination is supported: only the paths present in the exported page are validated. Use `--components-root` on both commands when working with a custom library; the input does not authorize access outside that root. The option cannot be combined with `--list-components`, `--component`, or `--family`. Invalid or missing catalogs, unsafe paths and missing Component directories cause argument error `2` before validation. Component validation errors retain exit code `1` and the normal text/JSON report, including its filtered scope. No Component files are modified.
 
 Page a Component catalog after applying all filters and sorting, using `--limit N` (positive integer) and/or `--offset N` (non-negative integer):
