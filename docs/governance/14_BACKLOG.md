@@ -45,6 +45,8 @@ Los incrementos de catálogo y validación dirigida integrados en `main` despué
 
 La PR [#357](https://github.com/fran-eliot/github-framework/pull/357) se confirmó fusionada en `main` (`b9f44517a8ec5783c03769ebab1d154502d7a7dc`) y el [CI 43744364574](https://github.com/fran-eliot/github-framework/actions/runs/43744364574) finalizó correctamente en Ubuntu y Windows. La documentación se sincroniza mediante una PR posterior que debe verificarse por separado.
 
+**Revisión de preparación:** [Framework Validator — Unreleased Delivery Readiness Review](../releases/framework-validator-unreleased-readiness-20261115.md) consolida las PR #330–#363, evidencia de CI y limitaciones. [PR #363](https://github.com/fran-eliot/github-framework/pull/363) quedó fusionada en `main` (`f8464b4a5307620d1db281945207aead154c6ca0`); el [CI corregido 43748589509](https://github.com/fran-eliot/github-framework/actions/runs/43748589509) pasó sus tres jobs. Los incrementos de #358–#363, incluidos consolidación de integridad, guía práctica, artefactos CI y equivalencia Ubuntu/Windows, permanecen **Done — Unreleased**, no publicados en v0.11.0. El documento de revisión no aprueba por sí solo ninguna publicación.
+
 **Posibles próximos incrementos — aún no comprometidos:**
 
 1. **Consolidación del Validator:** revisar contratos de CLI/JSON, mensajes, pruebas de compatibilidad y riesgos de regresión, evitando más opciones sin caso de uso.
