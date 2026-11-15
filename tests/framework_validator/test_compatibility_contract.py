@@ -192,7 +192,7 @@ class ValidatorCompatibilityContractTests(unittest.TestCase):
                 self.assertEqual(exported.stdout, "")
                 self.assertEqual(json.loads(destination.read_text(encoding="utf-8")),
                                  json.loads(stdout.stdout))
-                self.assertTrue(destination.read_bytes().endswith(b"\\n"))
+                self.assertTrue(destination.read_bytes().endswith(b"\n"))
 
     def test_failed_validation_still_exports_json_report_with_failure_code(self) -> None:
         (self.component / "metadata.yml").write_text(
