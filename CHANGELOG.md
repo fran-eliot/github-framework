@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* CI parity uses a consistent Git checkout byte policy (`core.autocrlf=false` before checkout) on Ubuntu and Windows, preventing platform-default CRLF conversions from producing false-positive SHA-256 catalog differences.
+
 * Optional `--metadata-summary` for JSON Component catalogs, reporting loaded, missing, and invalid metadata counts for the selected inventory without altering default catalog output.
 
 * Read-only Component catalog filtering by metadata `id` using repeatable `--metadata-id` glob patterns, composable with existing catalog filters and JSON export.
