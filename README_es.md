@@ -203,7 +203,7 @@ Pagina el catálogo después de aplicar los filtros y la ordenación mediante `-
 python -m scripts.framework_validator --list-components --format json --sort-by name --limit 10 --offset 10 --details
 ```
 
-Ambas opciones requieren `--list-components` y funcionan con texto, JSON, filtros de metadatos, resúmenes y exportación atómica. Cuando se solicitan, la salida JSON incorpora `pagination` con `total` (Componentes coincidentes **antes** de paginar), `offset` y `limit` (null si se omite). `count`, `components`, `details` y los resúmenes representan la **página actual**. Una página vacía devuelve código `1` y no sobrescribe la exportación existente. Sin estas opciones, la salida y el orden se mantienen.
+Ambas opciones requieren `--list-components` y funcionan con texto, JSON, filtros de metadatos, resúmenes y exportación atómica. Cuando se solicitan, la salida JSON incorpora `pagination` con `total` (Components coincidentes **antes** de paginar), `offset`, `limit` (null si se omite), `has_next` (booleano) y `next_offset` (entero con el desplazamiento de la siguiente página, o null al terminar). Usa `next_offset` con los mismos filtros y ordenación hasta que `has_next` sea false. `count`, `components`, `details` y los resúmenes representan la **página actual**. Una página vacía devuelve código `1` y no sobrescribe la exportación existente. Sin estas opciones, la salida y el orden se mantienen.
 
 Controla la dirección de una ordenación explícita con `--sort-order asc|desc` (ascendente por defecto):
 
