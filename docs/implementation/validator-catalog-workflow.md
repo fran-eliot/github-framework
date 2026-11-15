@@ -69,7 +69,7 @@ This validates Framework **Component metadata and supported artifacts**, not arb
 
 ### Relocated Component library regression
 
-The automated suite also creates a **separate temporary Component library** with one tracked README, Documentation and Workflow Component copied from this repository. It verifies complete three-family discovery and full-library validation, then exports a Workflow-only catalog with metadata and content SHA-256 and reimports it for scoped validation. This tests the documented `--components-root` behavior without changing the tracked source. It is **not** a consumer application test, a Template assessment or evidence of external interoperability.
+The automated suite also creates a **separate temporary Component library** with one tracked README, Documentation and Workflow Component copied from this repository. It verifies complete three-family discovery and full-library validation, then exports a Workflow-only catalog with metadata and content SHA-256 and reimports it for scoped validation. This tests the documented `--components-root` behavior without changing the tracked source. Additional regression coverage exports a Workflow-only snapshot from that relocated library, changes an **unselected README Component** and confirms the saved Workflow selection still passes; changing the **selected Workflow Component** then rejects the stale content digest before validation without overwriting the saved selection. It is **not** a consumer application test, a Template assessment or evidence of external interoperability.
 
 ## 6. Automated and reproducible coverage
 
