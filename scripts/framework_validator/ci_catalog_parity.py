@@ -46,6 +46,14 @@ def read_catalog(path: Path) -> dict:
     ):
         raise ValueError(f"{path}: missing or invalid catalog family scope")
     for component, detail in zip(components, details):
+        parts = component.split("/")
+        if (
+            len(parts) != 2
+            or parts[0] not in scope["families"]
+            or parts[1] in ("", ".", "..")
+            or "\\\\" in component
+        ):
+            raise ValueError(f"{path}: invalid or out-of-scope Component path {component!r}")
         if not isinstance(detail, dict) or detail.get("path") != component:
             raise ValueError(f"{path}: catalog detail order/path mismatch")
         for field in REQUIRED_DETAIL_FIELDS:
