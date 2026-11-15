@@ -14,6 +14,8 @@
 
 * Read-only Component catalog `--metadata-name` glob filtering and `--sort-by name` ordering, with regression coverage for missing metadata and safe exports.
 
+* Read-only `--component-status` catalog filtering by the declared Component metadata `status` field, distinct from YAML loading status, with composable filters and safe JSON export.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
