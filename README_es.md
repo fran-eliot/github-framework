@@ -197,6 +197,15 @@ python -m scripts.framework_validator --list-components --metadata-status missin
 
 Se combina con `--family`, `--match`, `--exclude` y `--output` JSON. El catálogo JSON añade `scope.metadata_status` en orden `loaded`, `missing`, `invalid` cuando se emplea el filtro. Si no hay coincidencias devuelve código `1` sin sobrescribir archivos.
 
+Ordena el catálogo por ruta (valor predeterminado), ID o versión de los metadatos mediante `--sort-by path|id|version`:
+
+```bash
+python -m scripts.framework_validator --list-components --sort-by id
+python -m scripts.framework_validator --list-components --format json --sort-by version --details
+```
+
+La ordenación por metadatos es lexicográfica y distingue mayúsculas (las versiones **no** siguen la precedencia SemVer). Los valores ausentes o que no son cadenas aparecen al final; las rutas portables resuelven los empates. Se aplica después de los filtros y conserva la correspondencia entre `components` y `details`. `scope.sort_by` solo se añade cuando se solicita; funciona con texto, JSON, resúmenes y exportación, pero no en modo validación.
+
 Filtra por la cadena `version` de `metadata.yml` mediante patrones glob `--metadata-version` repetibles y sensibles a mayúsculas. Es un filtro textual, no interpreta rangos de Semantic Versioning. Los Components sin versión de tipo cadena o sin metadatos legibles quedan excluidos:
 
 ```bash

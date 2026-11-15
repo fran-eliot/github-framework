@@ -195,6 +195,15 @@ python -m scripts.framework_validator --list-components --metadata-status missin
 
 This also works with `--family`, `--match`, `--exclude` and JSON `--output`. The JSON catalog includes `scope.metadata_status` in the order `loaded`, `missing`, `invalid` when this filter is present. An empty selection exits with code `1` without overwriting an output file.
 
+Order catalog output by path (the default), metadata ID, or metadata version with `--sort-by path|id|version`:
+
+```bash
+python -m scripts.framework_validator --list-components --sort-by id
+python -m scripts.framework_validator --list-components --format json --sort-by version --details
+```
+
+Metadata sorting is case-sensitive and lexicographical (version sorting does **not** interpret SemVer precedence). Missing or non-string values appear last, with portable Component paths breaking ties. Sorting applies after filters, preserves alignment between `components` and `details`, and adds `scope.sort_by` only when explicitly requested. It supports text listings, JSON catalogs, summaries and JSON export, but not validation mode.
+
 Filter by the `version` string from `metadata.yml` using repeatable case-sensitive `--metadata-version` glob patterns. This is a string pattern filter rather than a Semantic Versioning range resolver. Components with missing, invalid, or non-string versions are excluded:
 
 ```bash
