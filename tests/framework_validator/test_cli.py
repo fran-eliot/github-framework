@@ -1150,6 +1150,63 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertIn("Unable to write JSON catalog", result.stderr)
             self.assertFalse(destination.exists())
 
+    def test_cli_json_catalog_export_replace_failure_preserves_existing_file(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            output = root / "catalog.json"
+            old_catalog = '{"components": ["previous"]}\n'
+            output.write_text(old_catalog, encoding="utf-8")
+            stdout = io.StringIO()
+            stderr = io.StringIO()
+
+            with (
+                patch.object(
+                    validator_cli.os,
+                    "replace",
+                    side_effect=OSError("simulated replace failure"),
+                ),
+                redirect_stdout(stdout),
+                redirect_stderr(stderr),
+            ):
+                written = validator_cli.write_json_output(
+                    '{"components": ["readme/author"]}',
+                    output,
+                    label="catalog",
+                )
+
+            self.assertFalse(written)
+            self.assertEqual(stdout.getvalue(), "")
+            self.assertIn("Unable to write JSON catalog", stderr.getvalue())
+            self.assertEqual(output.read_text(encoding="utf-8"), old_catalog)
+            self.assertEqual(list(root.glob(".catalog.json.*.tmp")), [])
+
+    def test_cli_json_catalog_export_with_invalid_metadata(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                "family: [unclosed", encoding="utf-8"
+            )
+            output = root / "catalog.json"
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            report = json.loads(output.read_text(encoding="utf-8"))
+            self.assertEqual(report["count"], 1)
+            self.assertEqual(report["details"][0]["metadata_status"], "invalid")
+            self.assertIsNone(report["details"][0]["id"])
+
+
     def test_cli_catalog_text_output_argument_rejected(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)

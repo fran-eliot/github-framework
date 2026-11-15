@@ -2,7 +2,9 @@
 
 ## [Unreleased]
 
-No unreleased changes recorded after v0.11.0.
+### Changed
+
+* Extended real-library Framework Validator smoke checks to verify atomic JSON Component catalog export on the 21 tracked Components; added regression coverage for safe replacement failures and invalid metadata in exported catalogs.
 
 ---
 
