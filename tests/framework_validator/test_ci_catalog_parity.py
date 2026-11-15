@@ -184,7 +184,7 @@ class CatalogParityTests(unittest.TestCase):
             "documentation/",
             "/example",
             "documentation/nested/example",
-            "documentation\\\\example",
+            "documentation\\example",
             "unknown/example",
         ):
             with self.subTest(path=invalid_path):
