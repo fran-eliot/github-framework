@@ -313,6 +313,12 @@ if __name__ == "__main__":
         help="Exclude matching family/name paths from the catalog (repeatable; listing only).",
     )
     parser.add_argument(
+        "--metadata-id",
+        action="append",
+        metavar="GLOB",
+        help="Select catalog Components by metadata id glob (repeatable; listing only).",
+    )
+    parser.add_argument(
         "--metadata-summary",
         action="store_true",
         help="Include metadata loading status counts in the JSON Component catalog.",
@@ -346,6 +352,8 @@ if __name__ == "__main__":
         parser.error("--match and --exclude require --list-components")
     elif arguments.metadata_status:
         parser.error("--metadata-status requires --list-components")
+    elif arguments.metadata_id:
+        parser.error("--metadata-id requires --list-components")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
@@ -387,11 +395,21 @@ if __name__ == "__main__":
                 )
             ]
         entries = {}
-        if arguments.details or arguments.metadata_status or arguments.metadata_summary:
+        if (arguments.details or arguments.metadata_status
+                or arguments.metadata_summary or arguments.metadata_id):
             entries = {
                 component: catalog_metadata_entry(component, root)
                 for component in available
             }
+        if arguments.metadata_id:
+            available = [
+                component for component in available
+                if isinstance(entries[component]["id"], str)
+                and any(
+                    fnmatchcase(entries[component]["id"], pattern)
+                    for pattern in arguments.metadata_id
+                )
+            ]
         if arguments.metadata_status:
             statuses = set(arguments.metadata_status)
             available = [
@@ -401,7 +419,8 @@ if __name__ == "__main__":
         if not available:
             message = (
                 "No Components match the selected catalog filters."
-                if arguments.match or arguments.exclude or arguments.metadata_status
+                if (arguments.match or arguments.exclude or arguments.metadata_status
+                    or arguments.metadata_id)
                 else "No Components discovered."
             )
             print(message, file=sys.stderr)
@@ -421,6 +440,8 @@ if __name__ == "__main__":
                 catalog["scope"]["match"] = list(dict.fromkeys(arguments.match))
             if arguments.exclude:
                 catalog["scope"]["exclude"] = list(dict.fromkeys(arguments.exclude))
+            if arguments.metadata_id:
+                catalog["scope"]["metadata_id"] = list(dict.fromkeys(arguments.metadata_id))
             if arguments.metadata_status:
                 catalog["scope"]["metadata_status"] = [
                     status for status in ("loaded", "missing", "invalid")

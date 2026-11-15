@@ -195,6 +195,14 @@ python -m scripts.framework_validator --list-components --metadata-status missin
 
 This also works with `--family`, `--match`, `--exclude` and JSON `--output`. The JSON catalog includes `scope.metadata_status` in the order `loaded`, `missing`, `invalid` when this filter is present. An empty selection exits with code `1` without overwriting an output file.
 
+Filter the catalog by the `id` declared in `metadata.yml` with repeatable, case-sensitive `--metadata-id` glob patterns (a union of matches). Unlike `--match`, this selects metadata IDs rather than Component paths; Components with missing, unreadable, or non-string IDs cannot match:
+
+```bash
+python -m scripts.framework_validator --list-components --metadata-id "DOC-*" --format json --details
+```
+
+Combine it with path/family filters, `--metadata-status`, `--metadata-summary`, and JSON `--output`. JSON catalogs add `scope.metadata_id` only when selected. An empty result exits with code `1` and preserves an existing export file.
+
 For a compact inventory health check, add `--metadata-summary` to a JSON Component catalog to count `loaded`, `missing`, and `invalid` metadata entries after all selected filters, without including full Component details:
 
 ```bash
