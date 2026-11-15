@@ -75,6 +75,11 @@ def component_content_sha256(component: Path) -> str:
     Reject symbolic links, including links to directories, instead of following
     potentially external content. The framing prevents path/content ambiguity.
     """
+    if component.is_symlink():
+        raise ValueError("Component root is a symbolic link")
+    if not component.is_dir():
+        raise ValueError("Component root is not a directory")
+
     digest = hashlib.sha256()
     files = []
 
