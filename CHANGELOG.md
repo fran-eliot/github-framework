@@ -26,6 +26,8 @@
 
 * JSON catalog pagination now includes `has_next` and `next_offset` for deterministic navigation across filtered, sorted Component pages.
 
+* JSON catalog pagination now exposes `has_previous` and `previous_offset`, supporting backward page navigation alongside existing forward navigation.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.

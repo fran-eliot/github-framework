@@ -587,6 +587,12 @@ if __name__ == "__main__":
                         if (arguments.offset or 0) + len(available) < total
                         else None
                     ),
+                    "has_previous": (arguments.offset or 0) > 0,
+                    "previous_offset": (
+                        max(0, (arguments.offset or 0) - arguments.limit)
+                        if arguments.limit is not None and (arguments.offset or 0) > 0
+                        else (0 if (arguments.offset or 0) > 0 else None)
+                    ),
                 }
             if arguments.sort_by is not None:
                 catalog["scope"]["sort_by"] = arguments.sort_by

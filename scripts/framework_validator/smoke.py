@@ -213,6 +213,10 @@ def main() -> None:
         assert navigation["total"] == len(paths)
         assert navigation["offset"] == offset
         assert navigation["limit"] == 4
+        assert navigation["has_previous"] == (offset > 0)
+        assert navigation["previous_offset"] == (
+            max(0, offset - 4) if offset > 0 else None
+        )
         assert page["count"] == len(page["components"])
         traversed.extend(page["components"])
         if not navigation["has_next"]:
