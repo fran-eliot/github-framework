@@ -331,7 +331,11 @@ if __name__ == "__main__":
                 )
             ]
         if not available:
-            print("No Components match the selected catalog filters.", file=sys.stderr)
+            message = (
+                "No Components match the selected catalog filters."
+                if arguments.match else "No Components discovered."
+            )
+            print(message, file=sys.stderr)
             raise SystemExit(1)
         paths = [component.relative_to(root).as_posix() for component in available]
         if arguments.format == "json":
