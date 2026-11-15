@@ -71,4 +71,10 @@ This validates Framework **Component metadata and supported artifacts**, not arb
 
 The CI job executes `python -m scripts.framework_validator.smoke` on Ubuntu and Windows. That smoke test also copies a **real tracked Documentation Component** into a temporary library and exercises the entire flow: export both digests, verify the snapshot, change the **temporary copy's README**, confirm a stale-content rejection, and confirm that ordinary targeted validation can still pass. The tracked Component is never changed.
 
+### CI artifacts for inspection
+
+The [Framework Validator workflow](../../.github/workflows/framework-validator.yml) exports an **unfiltered** detailed Component catalog with both SHA-256 fields and immediately runs all three optional verification checks against that catalog. On successful jobs, GitHub Actions provides a downloadable `framework-component-catalog-ubuntu-latest` or `framework-component-catalog-windows-latest` artifact containing `component-catalog.json` and `catalog-verification-report.json` (7-day retention). The verification report is a targeted full-selection Validator result; it does not replace the separate `validator-report.json` artifact from the ordinary full-library validation step. The catalog describes the checked-out revision in that CI run, not necessarily the current tip of `main`.
+
+The job stops at a failing export or verification, while the separate standard Validator report and its diagnostics still run via `always()`. GitHub's artifact association supports traceability to the workflow run but is not a signed attestation; consumers should independently verify the trusted commit and source.
+
 See [Framework Validation](../../README.md) for the full CLI reference and [Existing Repository Adoption](../../framework/adoption/README.md) for the distinct, human-reviewed consumer Assessment process.

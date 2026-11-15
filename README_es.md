@@ -126,6 +126,8 @@ Para información detallada, explora el directorio `docs/` y los artifacts reuti
 
 ## ✅ Validación del Framework
 
+El workflow de CI del Framework Validator también exporta un **catálogo completo verificable de Components** en Ubuntu y Windows. Cada job correcto publica `framework-component-catalog-<os>` con `component-catalog.json` (metadatos y huellas SHA-256) y `catalog-verification-report.json` (resultado de la validación inmediata). Se conservan durante siete días y están asociados a la ejecución de GitHub Actions; no constituyen una certificación firmada de procedencia.
+
 Para ver un recorrido reproducible de selección, exportación y validación, con comprobación de huellas y distinción entre contenido desactualizado y validación fallida, consulta la [guía de flujo del catálogo de Components](docs/implementation/validator-catalog-workflow.md) (en inglés).
 
 
