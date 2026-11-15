@@ -69,6 +69,41 @@ def metadata_sha256(path: Path) -> str | None:
         return None
 
 
+def component_content_sha256(component: Path) -> str:
+    """Hash every regular Component file and its relative path, in stable order.
+
+    Reject symbolic links, including links to directories, instead of following
+    potentially external content. The framing prevents path/content ambiguity.
+    """
+    digest = hashlib.sha256()
+    files = []
+    for directory, directories, filenames in os.walk(component, followlinks=False):
+        parent = Path(directory)
+        for name in directories + filenames:
+            entry = parent / name
+            if entry.is_symlink():
+                raise ValueError(
+                    f"Component content contains symbolic link: {entry.relative_to(component).as_posix()}"
+                )
+        for name in filenames:
+            entry = parent / name
+            if not entry.is_file():
+                raise ValueError(
+                    f"Component content contains non-regular file: {entry.relative_to(component).as_posix()}"
+                )
+            files.append(entry)
+    for path in sorted(files, key=lambda item: item.relative_to(component).as_posix()):
+        relative = path.relative_to(component).as_posix().encode("utf-8")
+        digest.update(len(relative).to_bytes(8, "big"))
+        digest.update(relative)
+        size = path.stat().st_size
+        digest.update(size.to_bytes(8, "big"))
+        with path.open("rb") as stream:
+            while chunk := stream.read(65536):
+                digest.update(chunk)
+    return digest.hexdigest()
+
+
 def catalog_metadata_entry(component: Path, root: Path) -> dict:
     """Read basic metadata for catalog filtering or detailed inventories."""
     metadata_path = component / "metadata.yml"
@@ -392,6 +427,16 @@ if __name__ == "__main__":
         help="Filter catalog by metadata loading state (repeatable; listing only).",
     )
     parser.add_argument(
+        "--catalog-content-sha256",
+        action="store_true",
+        help="Include a deterministic SHA-256 for all Component files in detailed JSON catalogs.",
+    )
+    parser.add_argument(
+        "--catalog-verify-content-sha256",
+        action="store_true",
+        help="Verify full Component content SHA-256 digests from an imported catalog.",
+    )
+    parser.add_argument(
         "--catalog-metadata-sha256",
         action="store_true",
         help="Include a SHA-256 of each metadata.yml in JSON catalog details.",
@@ -470,6 +515,13 @@ if __name__ == "__main__":
         parser.error("--catalog-verify-details requires --catalog-input")
     if arguments.catalog_verify_sha256 and arguments.catalog_input is None:
         parser.error("--catalog-verify-sha256 requires --catalog-input")
+    if arguments.catalog_verify_content_sha256 and arguments.catalog_input is None:
+        parser.error("--catalog-verify-content-sha256 requires --catalog-input")
+    if arguments.catalog_content_sha256 and (
+        not arguments.list_components or arguments.format != "json"
+        or not arguments.details
+    ):
+        parser.error("--catalog-content-sha256 requires --list-components --format json --details")
     if arguments.catalog_metadata_sha256 and (
         not arguments.list_components or arguments.format != "json"
         or not arguments.details
@@ -526,7 +578,8 @@ if __name__ == "__main__":
             if (component_directory.is_symlink()
                     or not component_directory.resolve().is_relative_to(root.resolve())):
                 parser.error(f"--catalog-input Component path escapes the library: {selected_path}")
-        if arguments.catalog_verify_details or arguments.catalog_verify_sha256:
+        if (arguments.catalog_verify_details or arguments.catalog_verify_sha256
+                or arguments.catalog_verify_content_sha256):
             details = imported_catalog.get("details")
             if not isinstance(details, list) or len(details) != len(selected_paths):
                 parser.error("--catalog-verify-details requires one detail per selected Component")
@@ -552,6 +605,16 @@ if __name__ == "__main__":
                             parser.error(
                                 f"--catalog-verify-details stale {field} for {selected_path}"
                             )
+                if arguments.catalog_verify_content_sha256:
+                    digest = snapshot.get("content_sha256")
+                    if not isinstance(digest, str) or re.fullmatch(r"[0-9a-f]{64}", digest) is None:
+                        parser.error(f"--catalog-verify-content-sha256 missing digest for {selected_path}")
+                    try:
+                        current_digest = component_content_sha256(component_dir)
+                    except (OSError, ValueError) as exc:
+                        parser.error(f"--catalog-verify-content-sha256 unable to hash {selected_path}: {exc}")
+                    if current_digest != digest:
+                        parser.error(f"--catalog-verify-content-sha256 stale Component content for {selected_path}")
                 if arguments.catalog_verify_sha256:
                     digest = snapshot.get("metadata_sha256")
                     if not isinstance(digest, str) or re.fullmatch(r"[0-9a-f]{64}", digest) is None:
@@ -734,11 +797,20 @@ if __name__ == "__main__":
                     if status in set(arguments.metadata_status)
                 ]
             if arguments.details:
-                catalog["details"] = [
-                    {**entries[component], "metadata_sha256": metadata_sha256(component / "metadata.yml")}
-                    if arguments.catalog_metadata_sha256 else entries[component]
-                    for component in available
-                ]
+                catalog["details"] = []
+                for component in available:
+                    detail = dict(entries[component])
+                    if arguments.catalog_metadata_sha256:
+                        detail["metadata_sha256"] = metadata_sha256(component / "metadata.yml")
+                    if arguments.catalog_content_sha256:
+                        try:
+                            detail["content_sha256"] = component_content_sha256(component)
+                        except (OSError, ValueError) as exc:
+                            parser.error(
+                                f"--catalog-content-sha256 unable to hash "
+                                f"{component.relative_to(root).as_posix()}: {exc}"
+                            )
+                    catalog["details"].append(detail)
             if arguments.family_summary:
                 catalog["family_summary"] = {
                     family: sum(
