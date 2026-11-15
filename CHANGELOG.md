@@ -8,6 +8,8 @@
 * Downloadable per-platform JSON reports, GitHub Actions job summaries, bounded failed-Component diagnostics and file-linked error annotations.
 * Targeted Component validation through repeatable `--component FAMILY/NAME` selection.
 * Read-only Component discovery via `--list-components`, including family filters, JSON output, and optional basic metadata inventory with `--details`.
+* Real-library CLI smoke checks in the Ubuntu/Windows Validator workflow, covering Component catalogs, metadata, family filters, targeted validation and invalid argument rejection.
+* A completed, source-qualified **documentary** Only Film Adoption Assessment (28 approved classifications and 28 approved Adoption Decisions), together with historical evidence and Discovery/governance records; **no consumer Application/Integration or change to Only Film**.
 
 ### Changed
 
@@ -15,7 +17,7 @@
 * Improved CLI reporting and file output for local developer workflows while preserving whole-library validation as the default.
 * Updated Framework Validator CI actions to Node.js 24-compatible majors (`checkout@v5`, `setup-python@v6`, `upload-artifact@v6`) while retaining the two-platform test, validation, and report workflow.
 
-These changes are integrated after v0.10.0 and have not yet been assigned to a new release.
+**Release preparation:** `v0.11.0 — Framework Validator CLI and CI` is the proposed next release under approved Option A complete-tree scope. This section remains **Unreleased** until a final candidate SHA, version, date, release notes and publication are expressly authorized. The entire snapshot includes historical documentary work, not only Validator features. The case study does not verify end-to-end runtime, Sonar Quality Gate, security certification, independent usability or third-party licensing rights.
 
 ---
 
