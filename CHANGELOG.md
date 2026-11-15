@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+* Added focused cross-platform subprocess regression contracts for default and opt-in Validator CLI/JSON output, targeted imports, exit codes and snapshot export safety, with a bounded compatibility guide.
+
 
 * CI parity uses a consistent Git checkout byte policy (`core.autocrlf=false` before checkout) on Ubuntu and Windows, preventing platform-default CRLF conversions from producing false-positive SHA-256 catalog differences.
 
