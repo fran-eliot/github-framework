@@ -9,6 +9,8 @@
 **Preparation date:** 2026-11-15  
 **Status:** `Unreleased — Draft`
 
+For explicit choices and outstanding authorization checks, consult the [publication decision proposal](framework-validator-publication-decision-proposal-20261115.md). This draft remains unpublished regardless of whether that proposal is merged.
+
 This draft groups user-visible behavior recorded in [CHANGELOG.md > Unreleased](../../CHANGELOG.md), linked implementation guides and merged PRs. It deliberately excludes older v0.11.0 capabilities that are already published. It is not an exhaustive list of 246 individual commits.
 
 ---
