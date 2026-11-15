@@ -94,6 +94,19 @@ def main() -> None:
     assert excluded["scope"]["match"] == ["documentation/*"]
     assert excluded["scope"]["exclude"] == [examples[0]]
 
+    loaded_catalog = run_cli(
+        "--list-components", "--format", "json", "--details",
+        "--metadata-status", "loaded",
+    )
+    assert loaded_catalog["components"] == paths
+    assert loaded_catalog["details"] == details["details"]
+    assert loaded_catalog["scope"]["metadata_status"] == ["loaded"]
+    missing_catalog = run_cli(
+        "--list-components", "--format", "json",
+        "--metadata-status", "missing", success=False,
+    )
+    assert missing_catalog.returncode == 1 and not missing_catalog.stdout
+
     representatives = []
     for family in FAMILIES:
         selected = [path for path in paths if path.startswith(f"{family}/")]
@@ -137,6 +150,7 @@ def main() -> None:
         "catalog_export_verified": True,
         "catalog_pattern_matching_verified": True,
         "catalog_exclusion_verified": True,
+        "catalog_metadata_status_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,
