@@ -307,6 +307,24 @@ def main() -> None:
     assert verified_hash.returncode == 0, verified_hash.stderr
     assert json.loads(verified_hash.stdout)["status"] == "passed"
 
+    # Validate a complete real Component file-tree snapshot without mutations.
+    full_content_catalog = run_cli(
+        "--list-components", "--format", "json", "--details",
+        "--catalog-content-sha256", "--family", "documentation", "--limit", "1",
+    )
+    assert len(full_content_catalog["details"][0]["content_sha256"]) == 64
+    full_content_check = subprocess.run(
+        [
+            sys.executable, "-m", "scripts.framework_validator",
+            "--catalog-input", "-", "--catalog-verify-content-sha256",
+            "--format", "json",
+        ],
+        input=json.dumps(full_content_catalog), cwd=ROOT,
+        capture_output=True, text=True, check=False,
+    )
+    assert full_content_check.returncode == 0, full_content_check.stderr
+    assert json.loads(full_content_check.stdout)["status"] == "passed"
+
     # Stream a real-library catalog directly to targeted validation over stdin.
     streamed_catalog = run_cli(
         "--list-components", "--format", "json",
@@ -359,6 +377,7 @@ def main() -> None:
         "catalog_stdin_validation_verified": True,
         "catalog_metadata_snapshot_verification_verified": True,
         "catalog_metadata_sha256_verified": True,
+        "catalog_component_content_sha256_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,
