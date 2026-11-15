@@ -271,6 +271,24 @@ def main() -> None:
             selected_catalog["components"]
         )
 
+    # Verify a real exported metadata snapshot before targeted validation.
+    checked_catalog = run_cli(
+        "--list-components", "--format", "json",
+        "--family", "documentation", "--limit", "1", "--details",
+    )
+    checked = subprocess.run(
+        [
+            sys.executable, "-m", "scripts.framework_validator",
+            "--catalog-input", "-", "--catalog-verify-details", "--format", "json",
+        ],
+        input=json.dumps(checked_catalog), cwd=ROOT,
+        capture_output=True, text=True, check=False,
+    )
+    assert checked.returncode == 0, checked.stderr
+    checked_report = json.loads(checked.stdout)
+    assert checked_report["status"] == "passed"
+    assert checked_report["scope"]["component_paths"] == checked_catalog["components"]
+
     # Stream a real-library catalog directly to targeted validation over stdin.
     streamed_catalog = run_cli(
         "--list-components", "--format", "json",
@@ -321,6 +339,7 @@ def main() -> None:
         "catalog_pagination_navigation_verified": True,
         "catalog_selection_validation_verified": True,
         "catalog_stdin_validation_verified": True,
+        "catalog_metadata_snapshot_verification_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,
