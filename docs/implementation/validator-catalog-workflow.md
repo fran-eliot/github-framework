@@ -75,6 +75,10 @@ The CI job executes `python -m scripts.framework_validator.smoke` on Ubuntu and 
 
 The [Framework Validator workflow](../../.github/workflows/framework-validator.yml) exports an **unfiltered** detailed Component catalog with both SHA-256 fields and immediately runs all three optional verification checks against that catalog. On successful jobs, GitHub Actions provides a downloadable `framework-component-catalog-ubuntu-latest` or `framework-component-catalog-windows-latest` artifact containing `component-catalog.json` and `catalog-verification-report.json` (7-day retention). The verification report is a targeted full-selection Validator result; it does not replace the separate `validator-report.json` artifact from the ordinary full-library validation step. The catalog describes the checked-out revision in that CI run, not necessarily the current tip of `main`.
 
+### Cross-platform parity gate
+
+After both platform validation jobs succeed, a separate CI job downloads the Ubuntu and Windows catalog artifacts and compares their **complete JSON catalogs**, including the Component path inventory, metadata fields, and both SHA-256 digests. The job fails on any catalog difference or invalid/missing artifact; it does not silently ignore platform-specific variations. The comparison uses the catalogs from the same GitHub Actions run/checked-out commit. A parity pass means the catalog snapshots match between these environments, **not** that either source is cryptographically authenticated or a consumer application has been verified.
+
 The job stops at a failing export or verification, while the separate standard Validator report and its diagnostics still run via `always()`. GitHub's artifact association supports traceability to the workflow run but is not a signed attestation; consumers should independently verify the trusted commit and source.
 
 See [Framework Validation](../../README.md) for the full CLI reference and [Existing Repository Adoption](../../framework/adoption/README.md) for the distinct, human-reviewed consumer Assessment process.
