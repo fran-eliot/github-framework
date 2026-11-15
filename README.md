@@ -179,6 +179,14 @@ python -m scripts.framework_validator --list-components --match "documentation/*
 
 Patterns match portable `family/name` paths using shell-style wildcards; quote them to prevent shell expansion. Use `--match` only with `--list-components`. JSON catalogs include `scope.match` when patterns are supplied. No match returns exit code `1` without overwriting an existing `--output` file.
 
+Exclude paths from the catalog with repeatable `--exclude` glob patterns. Exclusions are applied **after** family and inclusion filtering, and remove every matching path:
+
+```bash
+python -m scripts.framework_validator --list-components --match "documentation/*" --exclude "*/architecture" --format json
+```
+
+`--exclude` requires `--list-components` and can be combined with `--match`, `--family`, `--details`, or JSON `--output`. JSON catalogs include `scope.exclude` only when exclusion patterns were supplied. Excluding all Components returns code `1` without overwriting an existing output file.
+
 The default listing prints one portable path per line. For scripts, use `--list-components --format json` to get an object with sorted `components`, `count`, and `scope.families`:
 
 ```bash
