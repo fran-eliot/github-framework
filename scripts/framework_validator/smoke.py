@@ -289,6 +289,24 @@ def main() -> None:
     assert checked_report["status"] == "passed"
     assert checked_report["scope"]["component_paths"] == checked_catalog["components"]
 
+    # Verify the raw metadata.yml digest for a selected real Component.
+    hashed_catalog = run_cli(
+        "--list-components", "--format", "json", "--details",
+        "--catalog-metadata-sha256", "--family", "documentation", "--limit", "1",
+    )
+    assert len(hashed_catalog["details"][0]["metadata_sha256"]) == 64
+    verified_hash = subprocess.run(
+        [
+            sys.executable, "-m", "scripts.framework_validator",
+            "--catalog-input", "-", "--catalog-verify-sha256",
+            "--catalog-verify-details", "--format", "json",
+        ],
+        input=json.dumps(hashed_catalog), cwd=ROOT,
+        capture_output=True, text=True, check=False,
+    )
+    assert verified_hash.returncode == 0, verified_hash.stderr
+    assert json.loads(verified_hash.stdout)["status"] == "passed"
+
     # Stream a real-library catalog directly to targeted validation over stdin.
     streamed_catalog = run_cli(
         "--list-components", "--format", "json",
@@ -340,6 +358,7 @@ def main() -> None:
         "catalog_selection_validation_verified": True,
         "catalog_stdin_validation_verified": True,
         "catalog_metadata_snapshot_verification_verified": True,
+        "catalog_metadata_sha256_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,

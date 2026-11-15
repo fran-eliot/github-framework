@@ -34,6 +34,8 @@
 
 * Optional `--catalog-verify-details` preflight to reject stale or incomplete imported Component catalog metadata snapshots before targeted validation; supported for file and stdin inputs, with real-library CI coverage.
 
+* Opt-in SHA-256 digests of raw `metadata.yml` bytes for detailed JSON catalogs (`--catalog-metadata-sha256`) and pre-validation consistency checks for imported selections (`--catalog-verify-sha256`), with regression and real-library CI coverage.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.

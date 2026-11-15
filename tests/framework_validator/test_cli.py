@@ -1420,6 +1420,140 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                         result.stderr,
                     )
 
+    def test_cli_catalog_sha256_detects_unlisted_metadata_change(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            metadata_path = component / "metadata.yml"
+            metadata_path.write_text(VALID_METADATA, encoding="utf-8")
+            export = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--catalog-metadata-sha256",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(export.returncode, 0, export.stderr)
+            catalog = json.loads(export.stdout)
+            self.assertRegex(
+                catalog["details"][0]["metadata_sha256"], r"^[0-9a-f]{64}$"
+            )
+            verify_command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--catalog-input", "-",
+                "--catalog-verify-sha256", "--format", "json",
+            ]
+            current = subprocess.run(
+                verify_command, input=export.stdout,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(current.returncode, 0, current.stderr)
+            metadata_path.write_text(
+                VALID_METADATA.replace(
+                    "Architecture documentation Component.",
+                    "A revised Architecture documentation Component.",
+                ),
+                encoding="utf-8",
+            )
+            changed = subprocess.run(
+                verify_command, input=export.stdout,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(changed.returncode, 2)
+            self.assertIn(
+                "--catalog-verify-sha256 stale metadata.yml for documentation/architecture",
+                changed.stderr,
+            )
+            self.assertEqual(changed.stdout, "")
+
+    def test_cli_catalog_sha256_supports_file_export_and_both_checks(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            catalog_file = root / "snapshot.json"
+            export = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details",
+                    "--catalog-metadata-sha256", "--output", str(catalog_file),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(export.returncode, 0, export.stderr)
+            self.assertEqual(export.stdout, "")
+            check = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root),
+                    "--catalog-input", str(catalog_file),
+                    "--catalog-verify-details", "--catalog-verify-sha256",
+                    "--format", "json",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(check.returncode, 0, check.stderr)
+            self.assertEqual(json.loads(check.stdout)["status"], "passed")
+
+    def test_cli_catalog_sha256_rejects_missing_or_invalid_digest(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            path = "documentation/architecture"
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--catalog-input", "-",
+                "--catalog-verify-sha256", "--format", "json",
+            ]
+            for digest in (None, "", "xyz", "a" * 63, "A" * 64, 1):
+                with self.subTest(digest=digest):
+                    detail = {"path": path}
+                    if digest is not None:
+                        detail["metadata_sha256"] = digest
+                    result = subprocess.run(
+                        command, input=json.dumps({
+                            "components": [path], "details": [detail],
+                        }),
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn("missing digest", result.stderr)
+
+    def test_cli_catalog_sha256_flags_require_correct_modes(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "documentation" / "architecture").mkdir(parents=True)
+            for options, expected in (
+                (["--catalog-metadata-sha256"], "--catalog-metadata-sha256 requires"),
+                (["--list-components", "--catalog-metadata-sha256"],
+                 "--catalog-metadata-sha256 requires"),
+                (["--list-components", "--format", "json", "--catalog-metadata-sha256"],
+                 "--catalog-metadata-sha256 requires"),
+                (["--catalog-verify-sha256"], "--catalog-verify-sha256 requires"),
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(
+                        [sys.executable, "-m", "scripts.framework_validator",
+                         "--components-root", str(root), *options],
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn(expected, result.stderr)
+
     def test_cli_catalog_verify_details_accepts_current_snapshot(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)

@@ -1,6 +1,7 @@
 """Command-line entry point for the Framework Validator."""
 
 import argparse
+import hashlib
 from fnmatch import fnmatchcase
 import json
 import os
@@ -58,6 +59,14 @@ def write_json_output(report: str, output_path: Path, label: str = "report") -> 
     finally:
         if temporary_path is not None:
             temporary_path.unlink(missing_ok=True)
+
+
+def metadata_sha256(path: Path) -> str | None:
+    """Hash the raw metadata bytes, returning None for unreadable or absent files."""
+    try:
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+    except OSError:
+        return None
 
 
 def catalog_metadata_entry(component: Path, root: Path) -> dict:
@@ -383,6 +392,16 @@ if __name__ == "__main__":
         help="Filter catalog by metadata loading state (repeatable; listing only).",
     )
     parser.add_argument(
+        "--catalog-metadata-sha256",
+        action="store_true",
+        help="Include a SHA-256 of each metadata.yml in JSON catalog details.",
+    )
+    parser.add_argument(
+        "--catalog-verify-sha256",
+        action="store_true",
+        help="Verify metadata.yml SHA-256 digests from an imported JSON catalog.",
+    )
+    parser.add_argument(
         "--catalog-verify-details",
         action="store_true",
         help="Verify exported catalog details against current Component metadata before validation.",
@@ -449,6 +468,13 @@ if __name__ == "__main__":
         parser.error("--catalog-input cannot combine with --list-components, --component or --family")
     if arguments.catalog_verify_details and arguments.catalog_input is None:
         parser.error("--catalog-verify-details requires --catalog-input")
+    if arguments.catalog_verify_sha256 and arguments.catalog_input is None:
+        parser.error("--catalog-verify-sha256 requires --catalog-input")
+    if arguments.catalog_metadata_sha256 and (
+        not arguments.list_components or arguments.format != "json"
+        or not arguments.details
+    ):
+        parser.error("--catalog-metadata-sha256 requires --list-components --format json --details")
     if arguments.output is not None and arguments.format != "json":
         parser.error("--output requires --format json")
     if arguments.components_root is not None and not arguments.components_root.is_dir():
@@ -500,7 +526,7 @@ if __name__ == "__main__":
             if (component_directory.is_symlink()
                     or not component_directory.resolve().is_relative_to(root.resolve())):
                 parser.error(f"--catalog-input Component path escapes the library: {selected_path}")
-        if arguments.catalog_verify_details:
+        if arguments.catalog_verify_details or arguments.catalog_verify_sha256:
             details = imported_catalog.get("details")
             if not isinstance(details, list) or len(details) != len(selected_paths):
                 parser.error("--catalog-verify-details requires one detail per selected Component")
@@ -520,11 +546,19 @@ if __name__ == "__main__":
                     parser.error(f"--catalog-verify-details missing detail: {selected_path}")
                 component_dir = root / selected_path
                 current = catalog_metadata_entry(component_dir, root)
-                for field in ("id", "name", "version", "status", "metadata_status"):
-                    if field not in snapshot or type(snapshot[field]) is not type(current[field]) or snapshot[field] != current[field]:
-                        parser.error(
-                            f"--catalog-verify-details stale {field} for {selected_path}"
-                        )
+                if arguments.catalog_verify_details:
+                    for field in ("id", "name", "version", "status", "metadata_status"):
+                        if field not in snapshot or type(snapshot[field]) is not type(current[field]) or snapshot[field] != current[field]:
+                            parser.error(
+                                f"--catalog-verify-details stale {field} for {selected_path}"
+                            )
+                if arguments.catalog_verify_sha256:
+                    digest = snapshot.get("metadata_sha256")
+                    if not isinstance(digest, str) or re.fullmatch(r"[0-9a-f]{64}", digest) is None:
+                        parser.error(f"--catalog-verify-sha256 missing digest for {selected_path}")
+                    current_digest = metadata_sha256(component_dir / "metadata.yml")
+                    if current_digest != digest:
+                        parser.error(f"--catalog-verify-sha256 stale metadata.yml for {selected_path}")
         arguments.component = selected_paths
     if arguments.list_components:
         root = arguments.components_root or COMPONENTS_ROOT
@@ -700,7 +734,11 @@ if __name__ == "__main__":
                     if status in set(arguments.metadata_status)
                 ]
             if arguments.details:
-                catalog["details"] = [entries[component] for component in available]
+                catalog["details"] = [
+                    {**entries[component], "metadata_sha256": metadata_sha256(component / "metadata.yml")}
+                    if arguments.catalog_metadata_sha256 else entries[component]
+                    for component in available
+                ]
             if arguments.family_summary:
                 catalog["family_summary"] = {
                     family: sum(
