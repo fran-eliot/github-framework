@@ -201,7 +201,7 @@ Page a Component catalog after applying all filters and sorting, using `--limit 
 python -m scripts.framework_validator --list-components --format json --sort-by name --limit 10 --offset 10 --details
 ```
 
-Both options require `--list-components` and work with text, JSON, metadata filtering, summaries and atomic export. When requested, JSON adds `pagination` with `total` (matching Components **before** pagination), `offset`, and `limit` (null if omitted). `count`, `components`, `details`, and all summaries describe the **current page**. An empty page exits with code `1` and does not overwrite existing output. Without pagination flags the output schema and ordering are unchanged.
+Both options require `--list-components` and work with text, JSON, metadata filtering, summaries and atomic export. When requested, JSON adds `pagination` with `total` (matching Components **before** pagination), `offset`, `limit` (null if omitted), `has_next` (boolean), and `next_offset` (integer for the next page or null at the end). Follow `next_offset` with the same filters and sort options until `has_next` is false. `count`, `components`, `details`, and all summaries describe the **current page**. An empty page exits with code `1` and does not overwrite existing output. Without pagination flags the output schema and ordering are unchanged.
 
 Control the direction of an explicit catalog sort using `--sort-order asc|desc` (ascending by default):
 
