@@ -142,6 +142,40 @@ class CatalogParityTests(unittest.TestCase):
                 self.save(left, right)
                 self.assertEqual(compare_catalogs(self.ubuntu, self.windows), 2)
 
+    def test_identically_malformed_catalogs_cannot_pass_parity(self) -> None:
+        def invalid_count(value: dict) -> None:
+            value["count"] = True  # bool compares equal to integer 1 in Python.
+
+        def missing_scope(value: dict) -> None:
+            value.pop("scope")
+
+        def invalid_scope(value: dict) -> None:
+            value["scope"] = {"families": "documentation"}
+
+        def duplicate_family(value: dict) -> None:
+            value["scope"] = {"families": ["readme", "readme"]}
+
+        def unknown_family(value: dict) -> None:
+            value["scope"] = {"families": ["external"]}
+
+        def blank_path(value: dict) -> None:
+            value["components"][0] = ""
+            value["details"][0]["path"] = ""
+
+        for modify in (
+            invalid_count, missing_scope, invalid_scope,
+            duplicate_family, unknown_family, blank_path,
+        ):
+            with self.subTest(modify=modify.__name__):
+                malformed = catalog()
+                modify(malformed)
+                self.save(malformed, malformed)
+                stderr = io.StringIO()
+                with redirect_stderr(stderr):
+                    outcome = compare_catalogs(self.ubuntu, self.windows)
+                self.assertEqual(outcome, 2)
+                self.assertIn("Unable to compare Component catalogs", stderr.getvalue())
+
     def test_missing_artifact_is_rejected(self) -> None:
         self.ubuntu.write_text(json.dumps(catalog()), encoding="utf-8")
         self.assertEqual(compare_catalogs(self.ubuntu, self.windows), 2)
