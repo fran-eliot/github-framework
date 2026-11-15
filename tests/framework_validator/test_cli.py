@@ -1420,6 +1420,148 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                         result.stderr,
                     )
 
+    def test_cli_catalog_descending_by_status_keeps_missing_last(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            cases = (
+                ("documentation", "architecture", "Experimental"),
+                ("documentation", "references", "Stable"),
+                ("workflow", "issue", "Stable"),
+            )
+            for family, name, status in cases:
+                component = root / family / name
+                component.mkdir(parents=True)
+                (component / "metadata.yml").write_text(
+                    VALID_METADATA.replace("status: Experimental", f"status: {status}"),
+                    encoding="utf-8",
+                )
+            (root / "readme" / "author").mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--sort-by", "status",
+                    "--sort-order", "desc", "--component-status-summary",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            catalog = json.loads(result.stdout)
+            self.assertEqual(catalog["components"], [
+                "documentation/references", "workflow/issue",
+                "documentation/architecture", "readme/author",
+            ])
+            self.assertEqual(
+                [entry["status"] for entry in catalog["details"]],
+                ["Stable", "Stable", "Experimental", None],
+            )
+            self.assertEqual(catalog["scope"]["sort_order"], "desc")
+            self.assertEqual(catalog["component_status_summary"], {
+                "by_status": {"Experimental": 1, "Stable": 2}, "missing": 1,
+            })
+
+    def test_cli_catalog_descending_path_and_explicit_ascending(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for family, name in (
+                ("workflow", "issue"), ("documentation", "architecture"),
+                ("readme", "author"),
+            ):
+                (root / family / name).mkdir(parents=True)
+            base = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--list-components",
+                "--format", "json", "--sort-by", "path",
+            ]
+            implicit = subprocess.run(
+                base, cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            ascending = subprocess.run(
+                base + ["--sort-order", "asc"], cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            descending = subprocess.run(
+                base + ["--sort-order", "desc"], cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            for result in (implicit, ascending, descending):
+                self.assertEqual(result.returncode, 0, result.stderr)
+            before = json.loads(implicit.stdout)
+            asc = json.loads(ascending.stdout)
+            desc = json.loads(descending.stdout)
+            self.assertNotIn("sort_order", before["scope"])
+            self.assertEqual(asc["scope"]["sort_order"], "asc")
+            self.assertEqual(asc["components"], before["components"])
+            self.assertEqual(desc["scope"]["sort_order"], "desc")
+            self.assertEqual(desc["components"], list(reversed(before["components"])))
+
+    def test_cli_catalog_descending_metadata_name_and_export(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name, metadata_name in (
+                ("architecture", "Zulu"), ("references", "Alpha"),
+            ):
+                component = root / "documentation" / name
+                component.mkdir(parents=True)
+                (component / "metadata.yml").write_text(
+                    VALID_METADATA.replace("name: Architecture", f"name: {metadata_name}"),
+                    encoding="utf-8",
+                )
+            (root / "readme" / "author").mkdir(parents=True)
+            output = root / "catalog.json"
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--sort-by", "name",
+                    "--sort-order", "desc", "--metadata-summary",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            catalog = json.loads(output.read_text(encoding="utf-8"))
+            self.assertEqual(catalog["components"], [
+                "documentation/architecture", "documentation/references",
+                "readme/author",
+            ])
+            self.assertEqual(
+                [entry["name"] for entry in catalog["details"]],
+                ["Zulu", "Alpha", None],
+            )
+            self.assertEqual(catalog["metadata_summary"], {
+                "loaded": 2, "missing": 1, "invalid": 0,
+            })
+
+    def test_cli_catalog_sort_order_requires_sort_by(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            for options, expected in (
+                (["--sort-order", "desc"], "--sort-order requires --sort-by"),
+                (["--list-components", "--sort-order", "desc"],
+                 "--sort-order requires --sort-by"),
+                (["--list-components", "--sort-by", "path",
+                  "--sort-order", "backwards"], "invalid choice"),
+                (["--sort-by", "path", "--sort-order", "desc"],
+                 "--sort-by requires --list-components"),
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(
+                        [
+                            sys.executable, "-m", "scripts.framework_validator",
+                            "--components-root", str(root), *options,
+                        ],
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn(expected, result.stderr)
+
     def test_cli_catalog_sort_by_status_places_missing_last(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)

@@ -319,6 +319,12 @@ if __name__ == "__main__":
         help="Order catalog Components by path, metadata id, name, version or status (listing only).",
     )
     parser.add_argument(
+        "--sort-order",
+        choices=("asc", "desc"),
+        metavar="{asc,desc}",
+        help="Direction for --sort-by (default: asc; catalog only).",
+    )
+    parser.add_argument(
         "--metadata-version",
         action="append",
         metavar="GLOB",
@@ -404,6 +410,8 @@ if __name__ == "__main__":
         parser.error("--metadata-version requires --list-components")
     elif arguments.sort_by is not None:
         parser.error("--sort-by requires --list-components")
+    if arguments.sort_order is not None and arguments.sort_by is None:
+        parser.error("--sort-order requires --sort-by")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
@@ -514,6 +522,23 @@ if __name__ == "__main__":
                 if isinstance(entries[component][field], str) else "",
                 component.relative_to(root).as_posix(),
             ))
+        if arguments.sort_order == "desc":
+            if arguments.sort_by == "path":
+                available.reverse()
+            else:
+                field = arguments.sort_by
+                present = [
+                    component for component in available
+                    if isinstance(entries[component][field], str)
+                ]
+                missing = [
+                    component for component in available
+                    if not isinstance(entries[component][field], str)
+                ]
+                present.sort(
+                    key=lambda component: entries[component][field], reverse=True
+                )
+                available = present + missing
         paths = [component.relative_to(root).as_posix() for component in available]
         if arguments.format == "json":
             families = [
@@ -527,6 +552,8 @@ if __name__ == "__main__":
             }
             if arguments.sort_by is not None:
                 catalog["scope"]["sort_by"] = arguments.sort_by
+            if arguments.sort_order is not None:
+                catalog["scope"]["sort_order"] = arguments.sort_order
             if arguments.match:
                 catalog["scope"]["match"] = list(dict.fromkeys(arguments.match))
             if arguments.exclude:
