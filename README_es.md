@@ -197,6 +197,14 @@ python -m scripts.framework_validator --list-components --metadata-status missin
 
 Se combina con `--family`, `--match`, `--exclude` y `--output` JSON. El catálogo JSON añade `scope.metadata_status` en orden `loaded`, `missing`, `invalid` cuando se emplea el filtro. Si no hay coincidencias devuelve código `1` sin sobrescribir archivos.
 
+Filtra por el identificador `id` definido en `metadata.yml` con patrones glob repetibles `--metadata-id` (coincidencia sensible a mayúsculas; se admiten varias alternativas). A diferencia de `--match`, compara identificadores, no rutas. Los Components sin identificador de tipo cadena o sin metadatos legibles no coinciden:
+
+```bash
+python -m scripts.framework_validator --list-components --metadata-id "DOC-*" --format json --details
+```
+
+Admite filtros de ruta y familia, `--metadata-status`, `--metadata-summary` y exportación JSON. Solo incorpora `scope.metadata_id` cuando se solicita; si no hay coincidencias, devuelve código `1` y conserva el archivo exportado existente.
+
 Para consultar rápidamente el estado del inventario, añade `--metadata-summary` al catálogo JSON. Devuelve recuentos de metadatos `loaded`, `missing` e `invalid` después de aplicar los filtros, sin necesidad de incluir los detalles completos:
 
 ```bash
