@@ -7,7 +7,7 @@
 **Published baseline:** [v0.11.0](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0), commit `55680b388b0fd8256c95e15866e53d21cc9a5033`  
 **Draft source baseline:** `main` at [`5890237d4513404bc99d144f7cb33b4d7ea42d17`](https://github.com/fran-eliot/github-framework/commit/5890237d4513404bc99d144f7cb33b4d7ea42d17), following merged [PR #370](https://github.com/fran-eliot/github-framework/pull/370)  
 **Preparation date:** 2026-11-15  
-**Status:** `Unreleased — Draft`
+**Preparation direction:** Option A selected by the maintainer on 2026-11-15; `v0.12.0` is proposed, not approved as a tag or publication. The final candidate SHA and approval of these notes remain outstanding.\n**Status:** `Unreleased — Draft`
 
 For explicit choices and outstanding authorization checks, consult the [publication decision proposal](framework-validator-publication-decision-proposal-20261115.md). This draft remains unpublished regardless of whether that proposal is merged.
 
