@@ -60,6 +60,30 @@ def write_json_output(report: str, output_path: Path, label: str = "report") -> 
             temporary_path.unlink(missing_ok=True)
 
 
+def catalog_metadata_entry(component: Path, root: Path) -> dict:
+    """Read basic metadata for catalog filtering or detailed inventories."""
+    metadata_path = component / "metadata.yml"
+    entry = {
+        "path": component.relative_to(root).as_posix(),
+        "id": None,
+        "name": None,
+        "version": None,
+        "status": None,
+        "metadata_status": "missing",
+    }
+    if metadata_path.is_file():
+        try:
+            metadata = load_metadata(metadata_path)
+        except (OSError, yaml.YAMLError, ValueError):
+            entry["metadata_status"] = "invalid"
+        else:
+            entry["metadata_status"] = "loaded"
+            for field in ("id", "name", "version", "status"):
+                value = metadata.get(field)
+                entry[field] = value if isinstance(value, str) else None
+    return entry
+
+
 def main(
     output_format: str = "text",
     output_path: Path | None = None,
@@ -289,6 +313,13 @@ if __name__ == "__main__":
         help="Exclude matching family/name paths from the catalog (repeatable; listing only).",
     )
     parser.add_argument(
+        "--metadata-status",
+        action="append",
+        choices=("loaded", "missing", "invalid"),
+        metavar="{loaded,missing,invalid}",
+        help="Filter catalog by metadata loading state (repeatable; listing only).",
+    )
+    parser.add_argument(
         "--component",
         action="append",
         metavar="FAMILY/NAME",
@@ -304,6 +335,8 @@ if __name__ == "__main__":
             parser.error("--list-components cannot be combined with --component")
     elif arguments.match or arguments.exclude:
         parser.error("--match and --exclude require --list-components")
+    elif arguments.metadata_status:
+        parser.error("--metadata-status requires --list-components")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
@@ -344,10 +377,23 @@ if __name__ == "__main__":
                     for pattern in arguments.exclude
                 )
             ]
+        entries = {}
+        if arguments.details or arguments.metadata_status:
+            entries = {
+                component: catalog_metadata_entry(component, root)
+                for component in available
+            }
+        if arguments.metadata_status:
+            statuses = set(arguments.metadata_status)
+            available = [
+                component for component in available
+                if entries[component]["metadata_status"] in statuses
+            ]
         if not available:
             message = (
                 "No Components match the selected catalog filters."
-                if arguments.match or arguments.exclude else "No Components discovered."
+                if arguments.match or arguments.exclude or arguments.metadata_status
+                else "No Components discovered."
             )
             print(message, file=sys.stderr)
             raise SystemExit(1)
@@ -366,30 +412,13 @@ if __name__ == "__main__":
                 catalog["scope"]["match"] = list(dict.fromkeys(arguments.match))
             if arguments.exclude:
                 catalog["scope"]["exclude"] = list(dict.fromkeys(arguments.exclude))
+            if arguments.metadata_status:
+                catalog["scope"]["metadata_status"] = [
+                    status for status in ("loaded", "missing", "invalid")
+                    if status in set(arguments.metadata_status)
+                ]
             if arguments.details:
-                entries = []
-                for component in available:
-                    metadata_path = component / "metadata.yml"
-                    entry = {
-                        "path": component.relative_to(root).as_posix(),
-                        "id": None,
-                        "name": None,
-                        "version": None,
-                        "status": None,
-                        "metadata_status": "missing",
-                    }
-                    if metadata_path.is_file():
-                        try:
-                            metadata = load_metadata(metadata_path)
-                        except (OSError, yaml.YAMLError, ValueError):
-                            entry["metadata_status"] = "invalid"
-                        else:
-                            entry["metadata_status"] = "loaded"
-                            for field in ("id", "name", "version", "status"):
-                                value = metadata.get(field)
-                                entry[field] = value if isinstance(value, str) else None
-                    entries.append(entry)
-                catalog["details"] = entries
+                catalog["details"] = [entries[component] for component in available]
             catalog_json = json.dumps(catalog, indent=2)
             if arguments.output is None:
                 print(catalog_json)
