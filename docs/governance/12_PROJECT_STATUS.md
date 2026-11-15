@@ -38,7 +38,13 @@ Tras publicar `v0.10.0`, se amplió el Framework Validator en `main` mediante in
 
 Se han fusionado [PR #365](https://github.com/fran-eliot/github-framework/pull/365) y [PR #366](https://github.com/fran-eliot/github-framework/pull/366), que incorporan un [contrato documentado de compatibilidad CLI/JSON](../implementation/validator-compatibility-contract.md) y tests subprocess sobre salidas estándar y opcionales, errores de validación, exportaciones y conservación de archivos. El estado verificado tras #366 es `main` `69d617169a7ac4f59ce8ee096cb2cf8962688d79`, con [CI 43757311645](https://github.com/fran-eliot/github-framework/actions/runs/43757311645) `success`. El [Kit de Continuidad 1.5.0](16_CONTINUITY_KIT.md) recoge el snapshot de reanudación. Estas capacidades son **Unreleased** y no acreditan compatibilidad exhaustiva ni autorización para publicar.
 
-## Revisión de preparación de entregas Unreleased — 2026-11-15**Decisión de publicación no adoptada:** una [propuesta de decisión sobre el siguiente incremento del Validator](../releases/framework-validator-publication-decision-proposal-20261115.md) distingue alcance publicable, evidencia de PR, verificación pendiente del SHA exacto y opciones de publicación o aplazamiento. La versión `v0.12.0` es una **posibilidad condicionada**, no una versión objetivo comprometida ni una release autorizada.
+## Dirección de publicación seleccionada — 2026-11-15
+
+El mantenedor ha seleccionado **Opción A: preparar una release limitada del Framework Validator**. La propuesta [v0.12.0](../releases/framework-validator-publication-decision-proposal-20261115.md) queda condicionada a aprobar la versión definitiva, las notas, el SHA exacto y la creación del tag/GitHub Release. El `main` comprobado tras el merge de PR #372 es `76411a2b5698cbdf1795f365256a52c132884e96`; el compare frente a `v0.11.0` da 267 commits por delante, 0 por detrás y 24 rutas afectadas. Los tres jobs del [CI de PR #372](https://github.com/fran-eliot/github-framework/actions/runs/43760711212) pasaron, pero no se ha confirmado en esta preparación un workflow ligado al SHA exacto de merge. La versión publicada continúa siendo `v0.11.0`.
+
+## Revisión de preparación de entregas Unreleased — 2026-11-15
+
+**Decisión de publicación en preparación — Opción A:** una [propuesta de decisión sobre el siguiente incremento del Validator](../releases/framework-validator-publication-decision-proposal-20261115.md) distingue alcance publicable, evidencia de PR, verificación pendiente del SHA exacto y opciones de publicación o aplazamiento. La versión `v0.12.0` es una **posibilidad condicionada**, no una versión objetivo comprometida ni una release autorizada.
 
 
 

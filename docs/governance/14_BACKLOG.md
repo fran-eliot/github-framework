@@ -51,6 +51,8 @@ La PR [#357](https://github.com/fran-eliot/github-framework/pull/357) se confirm
 
 **Referencia de continuidad:** [Continuity Kit 1.5.0](16_CONTINUITY_KIT.md), cuyo snapshot vigente sustituye al registro histórico anterior a la PR #358.
 
+**Dirección aprobada para preparar publicación (2026-11-15):** el mantenedor se inclina por **Opción A**, una release delimitada del Framework Validator. `v0.12.0` es el identificador propuesto, aún pendiente de aceptación explícita junto con el SHA de tag y las notas definitivas. La [propuesta de decisión](../releases/framework-validator-publication-decision-proposal-20261115.md) incorpora la comparación actualizada de `v0.11.0` frente a `main` `76411a2b5698cbdf1795f365256a52c132884e96` (267 commits, 24 archivos cambiados) y deja pendiente verificar CI ligado al commit elegido. No se ha creado release, tag, Sprint ni milestone.
+
 **Posibles próximos incrementos — aún no comprometidos:**
 
 **Propuesta de decisión de publicación (no aprobada):** [Framework Validator — Publication Decision Packet](../releases/framework-validator-publication-decision-proposal-20261115.md) recoge la comparación fijada a `main` `85cfd9e18c7f13277ad323b7e744ad405809519a` (262 commits por delante, 23 rutas afectadas respecto al tag `v0.11.0`), evidencia del CI de la PR #371 y las opciones de publicar un incremento limitado o posponerlo. `v0.12.0` aparece solo como identificador sugerido sujeto a aprobación; **no se aprueba ni se publica ninguna release por incluir esta propuesta**.

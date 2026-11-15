@@ -1,10 +1,16 @@
 # Framework Validator — Publication Decision Packet (Proposal Only)
 
 **Prepared:** 2026-11-15  
-**Decision status:** **Pending maintainer review — NOT approved**  
+**Decision status:** **Option A selected for preparation; candidate/tag/publication approval pending**  
 **Published baseline:** [v0.11.0](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0), commit `55680b388b0fd8256c95e15866e53d21cc9a5033`  
 **Candidate for review (not selected/approved):** `85cfd9e18c7f13277ad323b7e744ad405809519a`, the `main` merge of [PR #371](https://github.com/fran-eliot/github-framework/pull/371)  
-**Potential next identifier:** `v0.12.0` **only if expressly approved**. No tag, release, milestone, Sprint or publication action has been authorized.
+**Proposed next identifier:** `v0.12.0` **subject to explicit version approval**. No tag, release, milestone, Sprint or publication action has been authorized.
+
+> **Decision update — 2026-11-15:** The maintainer selected **Option A** as the appropriate release-preparation direction. This approves preparing a bounded Framework Validator release proposal, **not** an exact release candidate, a tag, or publication. `v0.12.0` remains the proposed identifier, pending explicit confirmation.
+>
+> The previous comparison (262 commits / 23 paths at `85cfd9e18c7f13277ad323b7e744ad405809519a`) remains historical. A newer GitHub compare from the published `v0.11.0` commit to `main` `76411a2b5698cbdf1795f365256a52c132884e96` reports **267 commits ahead, 0 behind, 24 changed paths**. This does not commit to using that merge SHA as the release tag target.
+>
+> [PR #372 workflow 43760711212](https://github.com/fran-eliot/github-framework/actions/runs/43760711212) passed on Ubuntu, Windows and cross-platform catalog parity. An exact-SHA workflow run for `76411a2b5698cbdf1795f365256a52c132884e96` was **not confirmed** during this preparation. Do not substitute the PR-head result for merge-commit evidence.
 
 This packet offers a bounded decision to the maintainer. It does **not** designate the current branch tip or any later `main` commit as an approved candidate. The candidate is a concrete commit for verification, not an automatic consequence of preparing release notes.
 
@@ -66,7 +72,7 @@ Consider `v0.12.0` for the completed **Framework Component Validator** enhanceme
 **Option B — Defer publication and collect additional evidence.**  
 Keep all changes Unreleased, with no target version. Prioritize a separately authorized, reproducible read-only exercise using a real **Framework Component library** and check remaining CLI/JSON compatibility risks. Do not change or classify an external consumer without a new, explicitly defined Assessment scope.
 
-**Recommendation for decision-making:** Option A is a reasonable **proposal for review** only if the maintainer accepts the explicitly bounded scope and confirms candidate-specific CI. Option B remains appropriate if external interoperability is required as a release gate. Neither option is silently selected by the existence or merge of this document.
+**Maintainer direction (2026-11-15):** **Option A was selected for preparation**. Option B remains recorded as the alternative not selected at this stage. The selected direction does **not** waive candidate-specific CI, the review of release notes, or separate authorization of the exact tag target and publication.
 
 ## 5. Approval boundaries
 
@@ -78,7 +84,7 @@ The maintainer must explicitly specify, in a separate decision:
 4. **Which final notes** may be published;
 5. **Whether to create the tag and GitHub Release**.
 
-Until then, do **not** create tags, releases, milestones, Sprints or automated follow-on publication actions. A merged PR containing this proposal **is not publication approval**.
+The maintainer has selected the bounded Option A direction, but **has not yet approved the exact SHA, version identifier, final publication notes or tag/Release creation**. Until then, do **not** create tags, releases, milestones, Sprints or automated follow-on publication actions. A merged PR containing this proposal **is not publication approval**.
 
 **Only Film remains unchanged:** documentary Assessment `Complete` only for pinned consumer commit `28d75a50e0a178954dd46acc23300d9dd327843c` against `TPL-BACKEND 0.1.0`. UX-02 remains `Prepared — Not Executed`.
 
