@@ -9,7 +9,7 @@
 | **Current candidate commit** | [`56a24418c63e097a01db00472b31f80ed641f789`](https://github.com/fran-eliot/github-framework/commit/56a24418c63e097a01db00472b31f80ed641f789) — updated by fast-forward after PR #323 |
 | Published comparison base | `v0.10.0` — `3c4b21a26e4e85eeef705fefd48323ffd918e681` |
 | New release version / date / tag | **Not selected or authorized** |
-| Release status | **Candidate baseline created; not ready to tag or publish** |
+| Release status | **Candidate baseline updated and verified; publication approval pending** |
 | Consumer boundary | Only Film repository unchanged; Application/Integration not authorized |
 | UX-02 | `Prepared — Not Executed` |
 
@@ -64,15 +64,15 @@ GitHub [Framework Validator push run 43703461574](https://github.com/fran-eliot/
 
 The 21 individual Component records all have `passed` status. After excluding platform-dependent absolute `path` values from Component records, the parsed reports are **equal** (including ordered IDs, relative paths, statuses, errors, scope and summaries). These artifacts are subject to finite GitHub retention; their URLs are not permanent audit storage.
 
-This is **strong evidence of the Validator tests and unfiltered Component validation on the pinned baseline**, not a substitute for targeted CLI smoke verification, a full documentation audit or approval to publish.
+This provides **direct evidence of tests, full-library validation and targeted/catalog CLI smoke execution on the updated pinned candidate**. It is not a complete documentary audit or approval to publish.
 
 ## 4. Candidate acceptance checklist
 
 | Gate | Evidence / current status | Action before publication |
 | --- | --- | --- |
 | **A. Full-tree publication scope** | **Approved by maintainer** on 2026-11-15; includes historical Discovery and 50 Only Film documentary files | Preserve this scope and all evidence caveats |
-| **B. Immutable source identity** | **Pinned** to `9f317350b25bad39c438fd0e5ac09fe33f5b5ed7` on dedicated candidate branch; complete 88-path diff available | Re-pin and revalidate if any candidate content changes |
-| **C. Cross-platform unit tests and full Validator JSON** | **Passed / directly verified** on pinned SHA: 161/161 tests and 21/21 Components on Ubuntu/Windows | Re-run only if candidate SHA changes or CI results become unsuitable |
+| **B. Immutable source identity** | **Pinned** to `56a24418c63e097a01db00472b31f80ed641f789` on the dedicated candidate branch; complete **90-path** diff available | Re-pin and revalidate if any candidate content changes |
+| **C. Cross-platform unit tests and full Validator JSON** | **Passed / directly verified** on updated pinned SHA: 161 tests per OS; 21/21 Components; 0 errors; normalized Ubuntu/Windows JSON payloads equal | Re-run if candidate SHA changes or CI results become unsuitable |
 | **D. Scoped/catalog CLI smoke outputs** | **Passed on this exact candidate SHA** via the new [real-library smoke step](https://github.com/fran-eliot/github-framework/actions/runs/43703461574): 21 catalog entries and 21 loaded metadata records; all three families, selective validation of three representative components, JSON scope, and rejection of invalid argument combination | Preserve these CI logs as candidate evidence; revalidate if the candidate SHA changes |
 | **E. Documentary evidence and source limitations** | Internal path checks, canonical Only Film links and high-risk historical/license/security/test caveats reviewed in [#70](../discovery/70_OPTION_A_MARKDOWN_PATH_INTEGRITY.md), [#71](../discovery/71_OPTION_A_ONLY_FILM_CANONICAL_SOURCE_VERIFICATION.md), [#72](../discovery/72_OPTION_A_RISK_BASED_EVIDENCE_ACCEPTANCE.md) | Complete and knowingly accept candidate-specific public claims; do not imply independent first-time UX, consumer operation or third-party rights |
 | **F. Version and publication docs** | `CHANGELOG.md` remains `[Unreleased]`; both README versions still reflect **published v0.10.0** | Select a release version and date; prepare notes and update documentation on a **revised exact candidate** before any tag |
