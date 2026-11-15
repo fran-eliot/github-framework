@@ -1420,6 +1420,114 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                         result.stderr,
                     )
 
+    def test_cli_catalog_component_status_summary_counts_declared_and_missing(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            experimental = self.create_component(root)
+            (experimental / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            stable = root / "documentation" / "references"
+            stable.mkdir(parents=True)
+            (stable / "metadata.yml").write_text(
+                VALID_METADATA.replace("DOC-ARCHITECTURE", "DOC-REFERENCES")
+                .replace("status: Experimental", "status: Stable"),
+                encoding="utf-8",
+            )
+            invalid = root / "readme" / "author"
+            invalid.mkdir(parents=True)
+            (invalid / "metadata.yml").write_text(
+                "status: [invalid", encoding="utf-8"
+            )
+            (root / "workflow" / "issue").mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--component-status-summary",
+                    "--metadata-summary", "--family-summary",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            catalog = json.loads(result.stdout)
+            self.assertEqual(catalog["count"], 4)
+            self.assertEqual(catalog["component_status_summary"], {
+                "by_status": {"Experimental": 1, "Stable": 1},
+                "missing": 2,
+            })
+            self.assertEqual(catalog["metadata_summary"], {
+                "loaded": 2, "missing": 1, "invalid": 1,
+            })
+            self.assertNotIn("details", catalog)
+            self.assertEqual(
+                sum(catalog["component_status_summary"]["by_status"].values())
+                + catalog["component_status_summary"]["missing"],
+                catalog["count"],
+            )
+
+    def test_cli_catalog_component_status_summary_respects_filters_and_export(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            experimental = self.create_component(root)
+            (experimental / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            stable = root / "documentation" / "references"
+            stable.mkdir(parents=True)
+            (stable / "metadata.yml").write_text(
+                VALID_METADATA.replace("DOC-ARCHITECTURE", "DOC-REFERENCES")
+                .replace("status: Experimental", "status: Stable"),
+                encoding="utf-8",
+            )
+            (root / "readme" / "author").mkdir(parents=True)
+            output = root / "catalog.json"
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--component-status-summary",
+                    "--family", "documentation", "--component-status", "Sta*",
+                    "--metadata-status", "loaded", "--details",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            catalog = json.loads(output.read_text(encoding="utf-8"))
+            self.assertEqual(catalog["components"], ["documentation/references"])
+            self.assertEqual(catalog["component_status_summary"], {
+                "by_status": {"Stable": 1}, "missing": 0,
+            })
+            self.assertEqual(catalog["details"][0]["status"], "Stable")
+
+    def test_cli_catalog_component_status_summary_requires_json_listing(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            for options in (
+                ["--component-status-summary"],
+                ["--format", "json", "--component-status-summary"],
+                ["--list-components", "--component-status-summary"],
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(
+                        [
+                            sys.executable, "-m", "scripts.framework_validator",
+                            "--components-root", str(root), *options,
+                        ],
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn(
+                        "--component-status-summary requires --list-components --format json",
+                        result.stderr,
+                    )
+
     def test_cli_catalog_component_status_filters_declared_status(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)

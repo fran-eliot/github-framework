@@ -342,6 +342,11 @@ if __name__ == "__main__":
         help="Include per-family Component counts in the JSON catalog.",
     )
     parser.add_argument(
+        "--component-status-summary",
+        action="store_true",
+        help="Count declared Component status values in the JSON catalog.",
+    )
+    parser.add_argument(
         "--metadata-summary",
         action="store_true",
         help="Include metadata loading status counts in the JSON Component catalog.",
@@ -374,6 +379,10 @@ if __name__ == "__main__":
         not arguments.list_components or arguments.format != "json"
     ):
         parser.error("--family-summary requires --list-components --format json")
+    if arguments.component_status_summary and (
+        not arguments.list_components or arguments.format != "json"
+    ):
+        parser.error("--component-status-summary requires --list-components --format json")
     if arguments.metadata_summary and (
         not arguments.list_components or arguments.format != "json"
     ):
@@ -439,7 +448,7 @@ if __name__ == "__main__":
         if (arguments.details or arguments.metadata_status
                 or arguments.metadata_summary or arguments.metadata_id
                 or arguments.metadata_version or arguments.metadata_name
-                or arguments.component_status
+                or arguments.component_status or arguments.component_status_summary
                 or arguments.sort_by in ("id", "name", "version")):
             entries = {
                 component: catalog_metadata_entry(component, root)
@@ -549,6 +558,24 @@ if __name__ == "__main__":
                         component.parent.name == family for component in available
                     )
                     for family in COMPONENT_FAMILIES
+                }
+            if arguments.component_status_summary:
+                known_statuses = sorted({
+                    entries[component]["status"] for component in available
+                    if isinstance(entries[component]["status"], str)
+                })
+                catalog["component_status_summary"] = {
+                    "by_status": {
+                        status: sum(
+                            entries[component]["status"] == status
+                            for component in available
+                        )
+                        for status in known_statuses
+                    },
+                    "missing": sum(
+                        entries[component]["status"] is None
+                        for component in available
+                    ),
                 }
             if arguments.metadata_summary:
                 catalog["metadata_summary"] = {
