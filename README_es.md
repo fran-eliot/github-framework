@@ -185,7 +185,15 @@ Para obtener también el ID, nombre, versión, estado y situación de lectura de
 python -m scripts.framework_validator --list-components --format json --details
 ```
 
-Se mantiene intacta la lista original `components` y los registros detallados aparecen en `details`. La metadata ausente, ilegible o inválida se señala como `missing` o `invalid`, sin validación semántica. Ambos modos admiten `--family` y `--components-root`. El listado no puede combinarse con `--component` ni `--output`. Si no hay Components, devuelve código de salida 1.
+Para exportar el catálogo a un archivo JSON UTF-8 sin imprimirlo en pantalla, utiliza `--output` (compatible con `--details`, `--family` y `--components-root`):
+
+```bash
+python -m scripts.framework_validator --list-components --format json --details --output component-catalog.json
+```
+
+La escritura es atómica: el archivo existente solo se reemplaza tras una escritura correcta. Si falla, el programa devuelve el código `2`; no se crea automáticamente el directorio de destino.
+
+Se mantiene intacta la lista original `components` y los registros detallados aparecen en `details`. La metadata ausente, ilegible o inválida se señala como `missing` o `invalid`, sin validación semántica. Ambos modos admiten `--family` y `--components-root`. El listado no puede combinarse con `--component`. Para exportar el catálogo es obligatorio `--format json`. Si no hay Components, devuelve código de salida 1.
 
 Para comprobar un único Component, indica su ruta relativa `familia/nombre` (repite `--component` si necesitas varios):
 
