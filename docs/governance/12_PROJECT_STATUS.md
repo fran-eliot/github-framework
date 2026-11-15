@@ -34,6 +34,10 @@ Tras publicar `v0.10.0`, se amplió el Framework Validator en `main` mediante in
 
 **Estado:** [`v0.11.0`](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0) publicado el 2026-11-15 con CI del commit exacto aprobado: 161 tests por sistema operativo, 21 Components y smoke test real de CLI. La release no convierte estas mejoras del Validator en automatización semántica de Existing Repository Adoption ni altera Only Film.
 
+## Consolidación de compatibilidad posterior a la revisión — 2026-11-15
+
+Se han fusionado [PR #365](https://github.com/fran-eliot/github-framework/pull/365) y [PR #366](https://github.com/fran-eliot/github-framework/pull/366), que incorporan un [contrato documentado de compatibilidad CLI/JSON](../implementation/validator-compatibility-contract.md) y tests subprocess sobre salidas estándar y opcionales, errores de validación, exportaciones y conservación de archivos. El estado verificado tras #366 es `main` `69d617169a7ac4f59ce8ee096cb2cf8962688d79`, con [CI 43757311645](https://github.com/fran-eliot/github-framework/actions/runs/43757311645) `success`. El [Kit de Continuidad 1.5.0](16_CONTINUITY_KIT.md) recoge el snapshot de reanudación. Estas capacidades son **Unreleased** y no acreditan compatibilidad exhaustiva ni autorización para publicar.
+
 ## Revisión de preparación de entregas Unreleased — 2026-11-15
 
 Se ha preparado una [revisión documental de preparación del Framework Validator](../releases/framework-validator-unreleased-readiness-20261115.md) sobre `main` `f8464b4a5307620d1db281945207aead154c6ca0`, tras el merge de [PR #363](https://github.com/fran-eliot/github-framework/pull/363). El [CI corregido 43748589509](https://github.com/fran-eliot/github-framework/actions/runs/43748589509) terminó correctamente en Ubuntu, Windows y equivalencia de catálogos. Los cambios siguen **Unreleased**; el documento distingue evidencia probada y pendientes de compatibilidad, uso externo y aprobación de publicación. No se ha autorizado ninguna versión, tag, release, Sprint o milestone nueva.
