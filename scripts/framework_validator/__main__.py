@@ -313,6 +313,12 @@ if __name__ == "__main__":
         help="Exclude matching family/name paths from the catalog (repeatable; listing only).",
     )
     parser.add_argument(
+        "--sort-by",
+        choices=("path", "id", "version"),
+        metavar="{path,id,version}",
+        help="Order catalog Components by path, metadata id or version (listing only).",
+    )
+    parser.add_argument(
         "--metadata-version",
         action="append",
         metavar="GLOB",
@@ -371,6 +377,8 @@ if __name__ == "__main__":
         parser.error("--metadata-id requires --list-components")
     elif arguments.metadata_version:
         parser.error("--metadata-version requires --list-components")
+    elif arguments.sort_by is not None:
+        parser.error("--sort-by requires --list-components")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
@@ -414,7 +422,8 @@ if __name__ == "__main__":
         entries = {}
         if (arguments.details or arguments.metadata_status
                 or arguments.metadata_summary or arguments.metadata_id
-                or arguments.metadata_version):
+                or arguments.metadata_version
+                or arguments.sort_by in ("id", "version")):
             entries = {
                 component: catalog_metadata_entry(component, root)
                 for component in available
@@ -452,6 +461,14 @@ if __name__ == "__main__":
             )
             print(message, file=sys.stderr)
             raise SystemExit(1)
+        if arguments.sort_by in ("id", "version"):
+            field = arguments.sort_by
+            available.sort(key=lambda component: (
+                not isinstance(entries[component][field], str),
+                entries[component][field]
+                if isinstance(entries[component][field], str) else "",
+                component.relative_to(root).as_posix(),
+            ))
         paths = [component.relative_to(root).as_posix() for component in available]
         if arguments.format == "json":
             families = [
@@ -463,6 +480,8 @@ if __name__ == "__main__":
                 "count": len(paths),
                 "scope": {"families": families},
             }
+            if arguments.sort_by is not None:
+                catalog["scope"]["sort_by"] = arguments.sort_by
             if arguments.match:
                 catalog["scope"]["match"] = list(dict.fromkeys(arguments.match))
             if arguments.exclude:
