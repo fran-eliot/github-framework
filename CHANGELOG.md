@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* Added a relocated-library regression proving that changes to unselected Component families do not invalidate a saved Workflow selection, while selected Component content drift rejects its stale SHA-256 snapshot without modifying the saved catalog.
+
 * Added a three-family relocated Component library CLI regression using temporary copies of real tracked README, Documentation and Workflow Components; verifies full and targeted SHA-256 catalog workflows without changing source files or validating an application consumer.
 
 No changes recorded since v0.12.0.
