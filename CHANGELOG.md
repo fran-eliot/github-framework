@@ -24,6 +24,8 @@
 
 ### Changed
 
+* Extended real-library Validator CI smoke coverage for metadata ID/name/version selectors, sorting, family and metadata summaries, combined JSON export, and preservation of existing output on empty matches.
+
 * Extended real-library Framework Validator smoke checks to verify atomic JSON Component catalog export on the 21 tracked Components; added regression coverage for safe replacement failures and invalid metadata in exported catalogs.
 
 ---

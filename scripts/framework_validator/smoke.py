@@ -107,6 +107,99 @@ def main() -> None:
     )
     assert missing_catalog.returncode == 1 and not missing_catalog.stdout
 
+    # Check newer catalog contracts against the real metadata, not test fixtures.
+    metadata = {entry["path"]: entry for entry in details["details"]}
+    assert all(isinstance(entry["name"], str) for entry in metadata.values())
+    assert all(isinstance(entry["version"], str) for entry in metadata.values())
+
+    family_summary = run_cli(
+        "--list-components", "--format", "json", "--family-summary",
+    )
+    expected_families = {
+        family: sum(path.startswith(f"{family}/") for path in paths)
+        for family in FAMILIES
+    }
+    assert family_summary["components"] == paths
+    assert family_summary["family_summary"] == expected_families
+    assert sum(family_summary["family_summary"].values()) == len(paths)
+
+    metadata_summary = run_cli(
+        "--list-components", "--format", "json", "--metadata-summary",
+    )
+    assert metadata_summary["components"] == paths
+    assert metadata_summary["metadata_summary"] == {
+        "loaded": len(paths), "missing": 0, "invalid": 0,
+    }
+
+    first = details["details"][0]
+    for option, field in (
+        ("--metadata-id", "id"),
+        ("--metadata-name", "name"),
+        ("--metadata-version", "version"),
+    ):
+        value = first[field]
+        assert isinstance(value, str)
+        selected = [path for path in paths if metadata[path][field] == value]
+        filtered = run_cli(
+            "--list-components", "--format", "json", option, value,
+            "--family-summary", "--metadata-summary",
+        )
+        assert filtered["components"] == selected
+        assert filtered["scope"][option.removeprefix("--").replace("-", "_")] == [value]
+        assert filtered["metadata_summary"] == {
+            "loaded": len(selected), "missing": 0, "invalid": 0,
+        }
+        assert sum(filtered["family_summary"].values()) == len(selected)
+
+    for field in ("id", "name", "version"):
+        ordered = run_cli(
+            "--list-components", "--format", "json",
+            "--sort-by", field, "--details",
+        )
+        expected = sorted(paths, key=lambda path: (metadata[path][field], path))
+        assert ordered["components"] == expected
+        assert [entry["path"] for entry in ordered["details"]] == expected
+        assert ordered["scope"]["sort_by"] == field
+
+    # Combined filtering, ordering, summaries and atomic output must agree.
+    sample_family = first["path"].split("/", 1)[0]
+    expected = sorted(
+        [path for path in paths if path.startswith(f"{sample_family}/")],
+        key=lambda path: (metadata[path]["name"], path),
+    )
+    with TemporaryDirectory() as directory:
+        destination = Path(directory) / "selected-catalog.json"
+        command = [
+            sys.executable, "-m", "scripts.framework_validator",
+            "--list-components", "--format", "json",
+            "--family", sample_family, "--metadata-status", "loaded",
+            "--sort-by", "name", "--details", "--family-summary",
+            "--metadata-summary", "--output", str(destination),
+        ]
+        exported = subprocess.run(
+            command, cwd=ROOT, capture_output=True, text=True, check=False,
+        )
+        assert exported.returncode == 0, exported.stderr
+        assert not exported.stdout
+        selected = json.loads(destination.read_text(encoding="utf-8"))
+        assert selected["components"] == expected
+        assert [item["path"] for item in selected["details"]] == expected
+        assert selected["family_summary"][sample_family] == len(expected)
+        assert selected["metadata_summary"]["loaded"] == len(expected)
+        original = destination.read_bytes()
+
+        no_match = subprocess.run(
+            [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--list-components", "--format", "json",
+                "--metadata-id", "NONEXISTENT-ID-FOR-SMOKE-*",
+                "--output", str(destination),
+            ],
+            cwd=ROOT, capture_output=True, text=True, check=False,
+        )
+        assert no_match.returncode == 1 and not no_match.stdout
+        assert destination.read_bytes() == original
+
     representatives = []
     for family in FAMILIES:
         selected = [path for path in paths if path.startswith(f"{family}/")]
@@ -151,6 +244,10 @@ def main() -> None:
         "catalog_pattern_matching_verified": True,
         "catalog_exclusion_verified": True,
         "catalog_metadata_status_verified": True,
+        "catalog_metadata_queries_verified": True,
+        "catalog_metadata_sorting_verified": True,
+        "catalog_summaries_verified": True,
+        "catalog_combined_export_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,
