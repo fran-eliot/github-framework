@@ -51,7 +51,11 @@ La PR [#357](https://github.com/fran-eliot/github-framework/pull/357) se confirm
 
 **Referencia de continuidad:** [Continuity Kit 1.5.0](16_CONTINUITY_KIT.md), cuyo snapshot vigente sustituye al registro histórico anterior a la PR #358.
 
-**Posibles próximos incrementos — aún no comprometidos:****Preparación de notas (sin aprobación):** [borrador de notas de publicación del Validator](../releases/framework-validator-candidate-release-notes-unreleased.md), basado en el estado de `main` tras PR #370, agrupa las capacidades realmente añadidas después de `v0.11.0` y las verificaciones pendientes. No asigna número de versión, fecha, tag ni autoriza su publicación.
+**Posibles próximos incrementos — aún no comprometidos:**
+
+**Propuesta de decisión de publicación (no aprobada):** [Framework Validator — Publication Decision Packet](../releases/framework-validator-publication-decision-proposal-20261115.md) recoge la comparación fijada a `main` `85cfd9e18c7f13277ad323b7e744ad405809519a` (262 commits por delante, 23 rutas afectadas respecto al tag `v0.11.0`), evidencia del CI de la PR #371 y las opciones de publicar un incremento limitado o posponerlo. `v0.12.0` aparece solo como identificador sugerido sujeto a aprobación; **no se aprueba ni se publica ninguna release por incluir esta propuesta**.
+
+**Preparación de notas (sin aprobación):** [borrador de notas de publicación del Validator](../releases/framework-validator-candidate-release-notes-unreleased.md), basado en el estado de `main` tras PR #370, agrupa las capacidades realmente añadidas después de `v0.11.0` y las verificaciones pendientes. No asigna número de versión, fecha, tag ni autoriza su publicación.
 
 **Inventario verificable del alcance Unreleased:** la [comparación del tag v0.11.0 con `main` fijado tras PR #368](../releases/framework-validator-v0110-to-main-delta-20261115.md) registra 246 commits por delante y 21 rutas modificadas/añadidas. No es un candidato de release ni acredita pruebas ejecutadas para una futura publicación. Recalcular en el SHA que eventualmente proponga el mantenedor.
 
