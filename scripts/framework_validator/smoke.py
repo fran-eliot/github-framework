@@ -271,6 +271,25 @@ def main() -> None:
             selected_catalog["components"]
         )
 
+    # Stream a real-library catalog directly to targeted validation over stdin.
+    streamed_catalog = run_cli(
+        "--list-components", "--format", "json",
+        "--family", "documentation", "--limit", "1",
+    )
+    streamed = subprocess.run(
+        [
+            sys.executable, "-m", "scripts.framework_validator",
+            "--catalog-input", "-", "--format", "json",
+        ],
+        input=json.dumps(streamed_catalog),
+        cwd=ROOT, capture_output=True, text=True, check=False,
+    )
+    assert streamed.returncode == 0, streamed.stderr
+    streamed_report = json.loads(streamed.stdout)
+    assert streamed_report["status"] == "passed"
+    assert streamed_report["scope"]["component_paths"] == streamed_catalog["components"]
+    assert streamed_report["components_discovered"] == 1
+
     selections = [arg for path in representatives for arg in ("--component", path)]
     targeted = run_cli("--format", "json", *selections)
     assert targeted["status"] == "passed"
@@ -301,6 +320,7 @@ def main() -> None:
         "catalog_combined_export_verified": True,
         "catalog_pagination_navigation_verified": True,
         "catalog_selection_validation_verified": True,
+        "catalog_stdin_validation_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,
