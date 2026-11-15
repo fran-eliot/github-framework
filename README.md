@@ -183,7 +183,15 @@ For a basic inventory that also includes each Component's ID, name, version, sta
 python -m scripts.framework_validator --list-components --format json --details
 ```
 
-The original `components` list remains unchanged; detailed entries appear under `details`. Missing or unreadable/invalid metadata is reported as `missing` or `invalid`, without running semantic validation. Both listing modes support `--family` and `--components-root`. Listing cannot be combined with `--component` or `--output`. An empty catalog returns exit code 1.
+To export the catalog as UTF-8 JSON without printing it to stdout, use `--output` (also supports `--details`, `--family`, and `--components-root`):
+
+```bash
+python -m scripts.framework_validator --list-components --format json --details --output component-catalog.json
+```
+
+The file is written atomically, replacing an existing destination only after a successful write. A write failure returns exit code `2`; a missing destination directory is not created automatically.
+
+The original `components` list remains unchanged; detailed entries appear under `details`. Missing or unreadable/invalid metadata is reported as `missing` or `invalid`, without running semantic validation. Both listing modes support `--family` and `--components-root`. Listing cannot be combined with `--component`. Catalog export requires `--format json`. An empty catalog returns exit code 1.
 
 For a single Component, use its relative `family/name` path (repeat `--component` to select several):
 
