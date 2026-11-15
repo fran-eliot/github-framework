@@ -1450,6 +1450,7 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(catalog["pagination"], {
                 "total": 4, "offset": 1, "limit": 2,
                 "has_next": True, "next_offset": 3,
+                "has_previous": True, "previous_offset": 0,
             })
             self.assertEqual(catalog["family_summary"], {
                 "readme": 1, "documentation": 1, "workflow": 0,
@@ -1484,6 +1485,7 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(catalog["pagination"], {
                 "total": 3, "offset": 2, "limit": None,
                 "has_next": False, "next_offset": None,
+                "has_previous": True, "previous_offset": 0,
             })
 
     def test_cli_catalog_pagination_summaries_and_details_cover_page_only(self) -> None:
@@ -1565,6 +1567,54 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                 "documentation/testing",
             ])
 
+    def test_cli_catalog_previous_page_navigation_across_pages(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ("architecture", "database", "references", "standards", "testing"):
+                (root / "documentation" / name).mkdir(parents=True)
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--list-components",
+                "--format", "json", "--limit", "2",
+                "--sort-by", "path",
+            ]
+            pages = []
+            for offset, previous in ((0, None), (2, 0), (4, 2)):
+                result = subprocess.run(
+                    command + ["--offset", str(offset)],
+                    cwd=validator_cli.REPOSITORY_ROOT,
+                    capture_output=True, text=True, check=False,
+                )
+                self.assertEqual(result.returncode, 0, result.stderr)
+                data = json.loads(result.stdout)
+                navigation = data["pagination"]
+                self.assertEqual(navigation["has_previous"], offset > 0)
+                self.assertEqual(navigation["previous_offset"], previous)
+                self.assertEqual(navigation["total"], 5)
+                pages.append(data["components"])
+            self.assertEqual([len(page) for page in pages], [2, 2, 1])
+            self.assertEqual(len({item for page in pages for item in page}), 5)
+
+    def test_cli_catalog_previous_offset_without_limit(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ("architecture", "database", "references"):
+                (root / "documentation" / name).mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--offset", "2",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            navigation = json.loads(result.stdout)["pagination"]
+            self.assertEqual(navigation["has_previous"], True)
+            self.assertEqual(navigation["previous_offset"], 0)
+            self.assertEqual(navigation["next_offset"], None)
+
     def test_cli_catalog_limit_only_includes_navigation_metadata(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
@@ -1584,6 +1634,7 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(catalog["pagination"], {
                 "total": 3, "offset": 0, "limit": 3,
                 "has_next": False, "next_offset": None,
+                "has_previous": False, "previous_offset": None,
             })
             self.assertEqual(catalog["count"], 3)
 
