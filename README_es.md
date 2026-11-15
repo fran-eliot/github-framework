@@ -197,6 +197,14 @@ python -m scripts.framework_validator --list-components --format json --componen
 
 El objeto opcional `component_status_summary` contiene los recuentos `by_status` por estado declarado (ordenados alfabéticamente) y un recuento independiente `missing` para estados ausentes o que no son cadenas, incluidos los metadatos ilegibles. La suma coincide con `count` tras aplicar todos los filtros. A diferencia de `--metadata-summary`, resume el estado declarado del Component, no el resultado de cargar el YAML. Requiere `--list-components --format json`, admite los demás filtros, resúmenes, `--details` y exportación JSON sin modificar la salida predeterminada.
 
+Ordena el catálogo por el estado declarado del Component mediante `--sort-by status`, tanto en texto como en JSON:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --sort-by status --details
+```
+
+La ordenación es lexicográfica y distingue mayúsculas. Los estados ausentes, inválidos o que no son cadenas aparecen al final; las rutas portables desempatan. Admite todos los filtros, resúmenes y exportación JSON existentes, sin modificar el orden predeterminado por ruta.
+
 Filtra el campo `status` declarado por cada Component mediante patrones glob `--component-status` repetibles y sensibles a mayúsculas. Es distinto de `--metadata-status`, que indica si el YAML se ha cargado (`loaded`, `missing`, `invalid`):
 
 ```bash

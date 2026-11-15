@@ -18,6 +18,8 @@
 
 * Optional `--component-status-summary` in JSON Component catalogs, counting declared statuses and absent/unreadable statuses after filtering without changing the default schema.
 
+* Opt-in `--sort-by status` ordering for Component catalogs, using declared metadata status, stable path tie-breaking and missing-value-last handling.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.

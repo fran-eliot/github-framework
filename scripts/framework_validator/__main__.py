@@ -314,9 +314,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--sort-by",
-        choices=("path", "id", "name", "version"),
-        metavar="{path,id,name,version}",
-        help="Order catalog Components by path, metadata id, name or version (listing only).",
+        choices=("path", "id", "name", "version", "status"),
+        metavar="{path,id,name,version,status}",
+        help="Order catalog Components by path, metadata id, name, version or status (listing only).",
     )
     parser.add_argument(
         "--metadata-version",
@@ -449,7 +449,7 @@ if __name__ == "__main__":
                 or arguments.metadata_summary or arguments.metadata_id
                 or arguments.metadata_version or arguments.metadata_name
                 or arguments.component_status or arguments.component_status_summary
-                or arguments.sort_by in ("id", "name", "version")):
+                or arguments.sort_by in ("id", "name", "version", "status")):
             entries = {
                 component: catalog_metadata_entry(component, root)
                 for component in available
@@ -506,7 +506,7 @@ if __name__ == "__main__":
             )
             print(message, file=sys.stderr)
             raise SystemExit(1)
-        if arguments.sort_by in ("id", "name", "version"):
+        if arguments.sort_by in ("id", "name", "version", "status"):
             field = arguments.sort_by
             available.sort(key=lambda component: (
                 not isinstance(entries[component][field], str),
