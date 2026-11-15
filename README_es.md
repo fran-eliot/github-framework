@@ -220,7 +220,7 @@ python -m scripts.framework_validator --list-components --format json --details 
 python -m scripts.framework_validator --catalog-input selected-components.json --catalog-verify-sha256 --format json
 ```
 
-El campo opcional `metadata_sha256` se calcula sobre los **bytes exactos** de cada `metadata.yml`, no solo sobre los campos visibles en `--details`. `--catalog-metadata-sha256` requiere un catálogo JSON detallado; `--catalog-verify-sha256` exige las huellas correspondientes y puede combinarse con `--catalog-verify-details`. Los archivos modificados o las huellas ausentes producen código `2` antes de validar. Es una comprobación de consistencia del archivo de metadatos, **no** cubre otros archivos del Component ni acredita la autenticidad del origen. El JSON predeterminado no cambia.
+El campo opcional `metadata_sha256` se calcula sobre los **bytes exactos** de cada `metadata.yml`, no solo sobre los campos visibles en `--details`. `--catalog-metadata-sha256` requiere un catálogo JSON detallado; `--catalog-verify-sha256` exige las huellas correspondientes y puede combinarse con `--catalog-verify-details`. Los archivos modificados o las huellas ausentes producen código `2` antes de validar. La comprobación rechaza los enlaces simbólicos en `metadata.yml` y en la raíz del Component, sin seguir posibles enlaces a archivos externos a la biblioteca. Es una comprobación de consistencia del archivo de metadatos, **no** cubre otros archivos del Component ni acredita la autenticidad del origen. El JSON predeterminado no cambia.
 
 Para detectar **metadatos exportados desactualizados** antes de validar, genera el catálogo con `--details` y utiliza `--catalog-verify-details` al importarlo:
 
