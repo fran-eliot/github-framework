@@ -181,6 +181,14 @@ python -m scripts.framework_validator --list-components --match "documentation/*
 
 Los patrones se comparan con rutas portables `familia/nombre`; utiliza comillas para evitar la expansión de la shell. `--match` solo funciona con `--list-components`. La salida JSON añade `scope.match` cuando se utilizan patrones. Si no hay coincidencias, devuelve código `1` y no sobrescribe un archivo indicado con `--output`.
 
+Se pueden excluir rutas mediante patrones glob repetibles `--exclude`. Las exclusiones se aplican **después** del filtrado por familia y de las coincidencias inclusivas:
+
+```bash
+python -m scripts.framework_validator --list-components --match "documentation/*" --exclude "*/architecture" --format json
+```
+
+`--exclude` requiere `--list-components` y admite `--match`, `--family`, `--details` y `--output` JSON. Los catálogos JSON incluyen `scope.exclude` cuando se indican exclusiones. Si se excluyen todos los Components, se devuelve código `1` sin sobrescribir el archivo existente.
+
 Por defecto, el listado devuelve una ruta portable por línea. Para integraciones, `--list-components --format json` devuelve un objeto con `components` ordenados, `count` y `scope.families`:
 
 ```bash
