@@ -202,6 +202,15 @@ python -m scripts.framework_validator --list-components --format json --family d
 python -m scripts.framework_validator --catalog-input selected-components.json --format json
 ```
 
+To detect **stale exported metadata** before validating, generate the catalog with `--details` and supply `--catalog-verify-details` when importing it:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --details --family documentation --output selected-components.json
+python -m scripts.framework_validator --catalog-input selected-components.json --catalog-verify-details --format json
+```
+
+This optional preflight compares each selected Component's exported `id`, `name`, `version`, `status` and metadata loading state with the current library. Missing/mismatched detail entries or changed metadata produce argument error `2` before validation; the default import behavior is unchanged without the flag. This is a consistency check of catalog metadata fields, **not** a cryptographic integrity check or verification of Component content. It also works with catalog input from stdin.
+
 For automated workflows, use `--catalog-input -` to read the catalog directly from standard input, avoiding an intermediate file:
 
 ```bash

@@ -383,6 +383,11 @@ if __name__ == "__main__":
         help="Filter catalog by metadata loading state (repeatable; listing only).",
     )
     parser.add_argument(
+        "--catalog-verify-details",
+        action="store_true",
+        help="Verify exported catalog details against current Component metadata before validation.",
+    )
+    parser.add_argument(
         "--catalog-input",
         type=Path,
         metavar="PATH",
@@ -442,6 +447,8 @@ if __name__ == "__main__":
         arguments.list_components or arguments.component or arguments.family
     ):
         parser.error("--catalog-input cannot combine with --list-components, --component or --family")
+    if arguments.catalog_verify_details and arguments.catalog_input is None:
+        parser.error("--catalog-verify-details requires --catalog-input")
     if arguments.output is not None and arguments.format != "json":
         parser.error("--output requires --format json")
     if arguments.components_root is not None and not arguments.components_root.is_dir():
@@ -493,6 +500,31 @@ if __name__ == "__main__":
             if (component_directory.is_symlink()
                     or not component_directory.resolve().is_relative_to(root.resolve())):
                 parser.error(f"--catalog-input Component path escapes the library: {selected_path}")
+        if arguments.catalog_verify_details:
+            details = imported_catalog.get("details")
+            if not isinstance(details, list) or len(details) != len(selected_paths):
+                parser.error("--catalog-verify-details requires one detail per selected Component")
+            snapshots = {}
+            for detail in details:
+                if not isinstance(detail, dict):
+                    parser.error("--catalog-verify-details requires detail objects")
+                detail_path = detail.get("path")
+                if not isinstance(detail_path, str) or detail_path not in unique_paths:
+                    parser.error("--catalog-verify-details includes an unexpected Component path")
+                if detail_path in snapshots:
+                    parser.error(f"--catalog-verify-details duplicate detail: {detail_path}")
+                snapshots[detail_path] = detail
+            for selected_path in selected_paths:
+                snapshot = snapshots.get(selected_path)
+                if snapshot is None:
+                    parser.error(f"--catalog-verify-details missing detail: {selected_path}")
+                component_dir = root / selected_path
+                current = catalog_metadata_entry(component_dir, root)
+                for field in ("id", "name", "version", "status", "metadata_status"):
+                    if field not in snapshot or type(snapshot[field]) is not type(current[field]) or snapshot[field] != current[field]:
+                        parser.error(
+                            f"--catalog-verify-details stale {field} for {selected_path}"
+                        )
         arguments.component = selected_paths
     if arguments.list_components:
         root = arguments.components_root or COMPONENTS_ROOT
