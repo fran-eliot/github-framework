@@ -386,7 +386,7 @@ if __name__ == "__main__":
         "--catalog-input",
         type=Path,
         metavar="PATH",
-        help="Validate Components selected in a previously exported JSON catalog.",
+        help="Validate Components from a JSON catalog file (use - for stdin).",
     )
     parser.add_argument(
         "--component",
@@ -461,8 +461,11 @@ if __name__ == "__main__":
     if arguments.catalog_input is not None:
         root = arguments.components_root or COMPONENTS_ROOT
         try:
-            with arguments.catalog_input.open(encoding="utf-8") as catalog_file:
-                imported_catalog = json.load(catalog_file)
+            if str(arguments.catalog_input) == "-":
+                imported_catalog = json.load(sys.stdin)
+            else:
+                with arguments.catalog_input.open(encoding="utf-8") as catalog_file:
+                    imported_catalog = json.load(catalog_file)
         except (OSError, UnicodeError, json.JSONDecodeError) as exc:
             parser.error(f"Unable to read JSON Component catalog: {exc}")
         if not isinstance(imported_catalog, dict):
