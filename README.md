@@ -202,6 +202,15 @@ python -m scripts.framework_validator --list-components --format json --family d
 python -m scripts.framework_validator --catalog-input selected-components.json --format json
 ```
 
+For a stronger raw-file consistency check, include SHA-256 digests in a detailed catalog and verify them before targeted validation:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --details --catalog-metadata-sha256 --output selected-components.json
+python -m scripts.framework_validator --catalog-input selected-components.json --catalog-verify-sha256 --format json
+```
+
+The opt-in `metadata_sha256` property is computed from the **exact bytes** of each `metadata.yml` (not only the fields shown in `--details`). `--catalog-metadata-sha256` requires a detailed JSON listing; `--catalog-verify-sha256` requires an imported catalog with matching digests, and can be combined with `--catalog-verify-details`. A changed file or missing digest causes argument error `2` before validation. This verifies metadata file consistency, **not** other Component files or authenticity against a trusted signer. The default JSON schema remains unchanged.
+
 To detect **stale exported metadata** before validating, generate the catalog with `--details` and supply `--catalog-verify-details` when importing it:
 
 ```bash
