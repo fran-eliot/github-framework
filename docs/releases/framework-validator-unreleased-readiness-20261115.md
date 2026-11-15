@@ -1,5 +1,7 @@
 # Framework Validator — Unreleased Delivery Readiness Review
 
+> **Historical evidence snapshot.** The originally reviewed changes were subsequently included in the published [v0.12.0 Release](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0) on 2026-11-15, at `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1`. Its outstanding readiness gates and `Unreleased` designation below refer to the **earlier pinned review baseline**, not the published status. [Exact-commit CI 43761458819](https://github.com/fran-eliot/github-framework/actions/runs/43761458819) succeeded.
+
 **Review date:** 2026-11-15  
 **Evidence baseline:** `main` commit [`f8464b4a5307620d1db281945207aead154c6ca0`](https://github.com/fran-eliot/github-framework/commit/f8464b4a5307620d1db281945207aead154c6ca0) (merged PR #363).  
 **Published baseline:** [`v0.11.0`](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0), fixed at `55680b388b0fd8256c95e15866e53d21cc9a5033`.  
