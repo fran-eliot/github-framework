@@ -484,8 +484,12 @@ if __name__ == "__main__":
             if selected_path in unique_paths:
                 parser.error(f"--catalog-input duplicate Component path: {selected_path}")
             unique_paths.add(selected_path)
-            if not (root / parts[0] / parts[1]).is_dir():
+            component_directory = root / parts[0] / parts[1]
+            if not component_directory.is_dir():
                 parser.error(f"--catalog-input Component directory does not exist: {selected_path}")
+            if (component_directory.is_symlink()
+                    or not component_directory.resolve().is_relative_to(root.resolve())):
+                parser.error(f"--catalog-input Component path escapes the library: {selected_path}")
         arguments.component = selected_paths
     if arguments.list_components:
         root = arguments.components_root or COMPONENTS_ROOT
