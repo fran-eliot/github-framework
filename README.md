@@ -299,7 +299,7 @@ The latest published release is:
 
 Assessment, Application, Integration and Assisted Analysis Cores are implemented, verified, integrated and published. Assisted Analysis collects bounded, source-traceable Evidence through a read-only, human-reviewed process; it does not automate adoption decisions or modify consumer repositories.
 
-**In preparation (not published):** [proposed v0.11.0 — Framework Validator CLI and CI](docs/releases/PROPOSED_V0_11_0_RELEASE_NOTES.md). This planned Option A snapshot includes Validator CI/CLI improvements and the completed, evidence-qualified **documentary** Only Film Assessment; it does not imply consumer migration, runtime/security certification or independent usability testing. The version badge above continues to identify the **latest published release**, v0.10.0, until publication is separately approved.
+**In preparation (not published):** [approved v0.11.0 — Framework Validator CLI and CI](docs/releases/PROPOSED_V0_11_0_RELEASE_NOTES.md). This planned Option A snapshot includes Validator CI/CLI improvements and the completed, evidence-qualified **documentary** Only Film Assessment; it does not imply consumer migration, runtime/security certification or independent usability testing. The version badge above continues to identify the **latest published release**, v0.10.0, until publication is separately approved.
 
 ---
 
