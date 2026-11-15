@@ -16,6 +16,8 @@
 
 * Read-only `--component-status` catalog filtering by the declared Component metadata `status` field, distinct from YAML loading status, with composable filters and safe JSON export.
 
+* Optional `--component-status-summary` in JSON Component catalogs, counting declared statuses and absent/unreadable statuses after filtering without changing the default schema.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
