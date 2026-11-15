@@ -74,3 +74,27 @@ jobs:
       - name: Annotate Validator errors
         if: ${{ always() }}
         run: python -m scripts.framework_validator.ci_summary validator-report.json --annotations
+
+  catalog-parity:
+    name: Cross-platform Component catalog parity
+    needs: validator
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out comparison script
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Download Ubuntu and Windows Component catalogs
+        uses: actions/download-artifact@v6
+        with:
+          pattern: framework-component-catalog-*
+          path: downloaded-catalogs
+
+      - name: Compare catalog inventories and digests
+        run: python -m scripts.framework_validator.ci_catalog_parity downloaded-catalogs/framework-component-catalog-ubuntu-latest/component-catalog.json downloaded-catalogs/framework-component-catalog-windows-latest/component-catalog.json
