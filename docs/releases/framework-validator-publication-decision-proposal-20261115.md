@@ -1,5 +1,7 @@
 # Framework Validator — Publication Decision Packet (Proposal Only)
 
+> **Decision resolved — 2026-11-15:** Option A was selected and **[v0.12.0 — Framework Validator Catalog and Integrity](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0)** was subsequently published at `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1`, with [exact-commit CI 43761458819](https://github.com/fran-eliot/github-framework/actions/runs/43761458819) successful in Ubuntu, Windows and parity. The original decision alternatives, pending gates and old SHA comparisons below are **historical planning records, not outstanding actions**. The release does not change Only Film or authorize Application/Integration.
+
 **Prepared:** 2026-11-15  
 **Decision status:** **Option A selected for preparation; candidate/tag/publication approval pending**  
 **Published baseline:** [v0.11.0](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0), commit `55680b388b0fd8256c95e15866e53d21cc9a5033`  
