@@ -1270,8 +1270,8 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             root = Path(directory)
             (root / "readme" / "author").mkdir(parents=True)
             for options, fragment in (
-                (["--metadata-status", "loaded"], "require --list-components"),
-                (["--format", "json", "--metadata-status", "missing"], "require --list-components"),
+                (["--metadata-status", "loaded"], "requires --list-components"),
+                (["--format", "json", "--metadata-status", "missing"], "requires --list-components"),
                 (["--list-components", "--metadata-status", "broken"], "invalid choice"),
             ):
                 with self.subTest(options=options):
