@@ -1,5 +1,7 @@
 # Framework Validator — Candidate Release Notes (Unreleased Draft)
 
+> **Historical preparation artifact — superseded by the published [v0.12.0 GitHub Release](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0).** The tag was published on 2026-11-15 at `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1`. This document preserves the **pre-publication draft and gates as historical context**; its statements that approval/publication is pending are no longer the current state. See [CHANGELOG](../../CHANGELOG.md) and the official GitHub Release for the published scope.
+
 > **Draft for maintainer review only — NOT approved for publication.**
 >
 > No release version, release date, tag, GitHub Release, Sprint or milestone is assigned by this document. Do not copy these notes to a published Release until an exact candidate commit, accompanying CI evidence, release scope and maintainer authorization have been confirmed.

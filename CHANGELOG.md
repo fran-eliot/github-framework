@@ -1,6 +1,15 @@
 # Changelog
 
 ## [Unreleased]
+
+No changes recorded since v0.12.0.
+
+---
+
+## [0.12.0] - 2026-11-15
+
+**Released:** [v0.12.0 — Framework Validator Catalog and Integrity](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0) at commit [`8fc0a036489a60f72c2ee66185bbd5e53b3a89c1`](https://github.com/fran-eliot/github-framework/commit/8fc0a036489a60f72c2ee66185bbd5e53b3a89c1). [Verified push-to-main CI](https://github.com/fran-eliot/github-framework/actions/runs/43761458819) passed Ubuntu, Windows and catalog parity. This release includes the post-v0.11.0 Component Validator catalog, integrity and CI improvements; the read-only consumer scope study does not establish external application certification or Adoption Application/Integration.
+
 * Prepared unpublished, version-neutral draft release notes grouping post-v0.11.0 Validator catalog, integrity, cross-platform CI, testing and scope improvements for later maintainer review.
 
 

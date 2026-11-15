@@ -3,12 +3,22 @@
 | Campo                    | Valor                                                     |
 | ------------------------ | --------------------------------------------------------- |
 | **Proyecto**             | GitHub Framework                                          |
-| **Versión actual**       | v0.11.0                                                    |
+| **Versión actual**       | v0.12.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Post-release — Framework Validator CLI and CI                |
+| **Fase**                 | Post-release — Framework Validator Catalog and Integrity                |
 | **Sprint actual**        | Ninguno activo                                              |
 | **Versión objetivo**     | Ninguna comprometida                        |
 | **Última actualización** | 2026-11-15                                                |
+
+---
+
+## Estado vigente tras la publicación de v0.12.0 — 2026-11-15
+
+**Última release publicada:** [v0.12.0 — Framework Validator Catalog and Integrity](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0), publicada el 2026-11-15. El tag apunta exactamente a `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1`. La [ejecución push-to-main 43761458819](https://github.com/fran-eliot/github-framework/actions/runs/43761458819) pasó en Ubuntu, Windows y equivalencia de catálogos; se verificaron los cuatro artefactos asociados a ese SHA.
+
+Las ampliaciones de catálogo, filtros, ordenación, paginación, importación y validación dirigida de selecciones, comprobaciones opcionales SHA-256, paridad de CI y pruebas de compatibilidad incorporadas tras `v0.11.0` **ya están publicadas en v0.12.0**. La [descripción oficial de la GitHub Release](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0) prevalece sobre los documentos históricos de preparación, que deben leerse como evidencia de su momento, no como el estado vigente.
+
+**Gobierno:** ningún Sprint ni milestone nuevo se ha abierto como parte de esta publicación; no hay versión objetivo posterior comprometida. El Assessment de Only Film sigue `Complete` solo documental frente a `TPL-BACKEND 0.1.0` en `28d75a50e0a178954dd46acc23300d9dd327843c`, sin Application/Integration. UX-02 permanece `Prepared — Not Executed`. El Validator sigue orientado a bibliotecas de Framework Components, no a certificar consumidores.
 
 ---
 
@@ -18,7 +28,7 @@ GitHub Framework ha completado las fases de arquitectura, Open Source Readiness,
 
 El Framework dispone de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno, una biblioteca de Documentation Components, tres Repository Templates y una primera familia de Core Workflow Components.
 
-Las versiones `v0.1.0` a `v0.11.0` han sido publicadas. La última versión publicada es **[`v0.11.0 — Framework Validator CLI and CI`](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0)** (2026-11-15), con el tag fijado en `55680b388b0fd8256c95e15866e53d21cc9a5033`.
+Las versiones `v0.1.0` a `v0.12.0` han sido publicadas. La última es **[`v0.12.0 — Framework Validator Catalog and Integrity`](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0)** (2026-11-15); el tag apunta a `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1`. La versión anterior `v0.11.0` conserva su snapshot publicado independiente.
 
 Sprint 12 finalizó con la publicación de `v0.10.0` y el cierre de la milestone #9. Posteriormente se publicó **`v0.11.0 — Framework Validator CLI and CI`** el 2026-11-15 como snapshot completo de la opción A. No se abrió un nuevo Sprint ni una milestone para esta release; no hay Sprint activo ni nueva versión objetivo comprometida.
 

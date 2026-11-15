@@ -4,7 +4,7 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Documento**            | Continuity Kit   |
-| **Versión**              | 1.5.0            |
+| **Versión**              | 1.6.0            |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-11-15       |
 
@@ -14,7 +14,51 @@ Todo nuevo colaborador o asistente deberá utilizar este documento como referenc
 
 ---
 
-# Snapshot vigente — Validator Readiness & Compatibility (2026-11-15)
+# Snapshot vigente — v0.12.0 Published & Post-release Continuity (2026-11-15)
+
+> **Punto oficial de reanudación.** Este snapshot reemplaza la situación de preparación para v0.12.0. Los snapshots de PR anteriores se conservan debajo **solo como evidencia histórica**; no prevalecen sobre la release real. Antes de actuar, comprobar el estado de GitHub y los checks de la PR que introduce este snapshot.
+
+| Campo | Estado comprobado |
+| --- | --- |
+| Repositorio | [fran-eliot/github-framework](https://github.com/fran-eliot/github-framework) |
+| Última release publicada | [v0.12.0 — Framework Validator Catalog and Integrity](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0), publicada 2026-11-15; no prerelease |
+| SHA inmutable del tag | `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1` (tag Git apunta directamente a ese commit) |
+| `main` al preparar la sincronización | `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1`; la PR documental llevará el HEAD posterior a ese SHA |
+| Última PR fusionada antes del sync | [#373 — Release preparation](https://github.com/fran-eliot/github-framework/pull/373); sin PR abiertas ni rama remota de #373 |
+| CI del SHA exacto del tag | [Framework Validator run 43761458819](https://github.com/fran-eliot/github-framework/actions/runs/43761458819) — `push` a `main`; Ubuntu, Windows y paridad `success` |
+| Artefactos del CI del tag | Cuatro artefactos asociados al mismo SHA (catálogo + reporte de Ubuntu/Windows), comprobados disponibles al preparar este documento; retención temporal |
+| Estado del trabajo posterior a v0.11.0 | **Released v0.12.0**; CHANGELOG y notas públicas prevalecen sobre las propuestas previas |
+| Versión objetivo, Sprint y milestone | Sin siguiente versión comprometida, sin Sprint activo ni milestone nueva aprobada |
+| Only Film | Assessment `Complete` **solo documental** para `28d75a50e0a178954dd46acc23300d9dd327843c` frente a `TPL-BACKEND 0.1.0`; no modificar ni iniciar Application/Integration |
+| UX-02 | `Prepared — Not Executed`; no atribuir participantes o pruebas independientes |
+
+## Alcance efectivamente publicado en v0.12.0
+
+- Catálogo de Components con filtrado por rutas/familia/estado/metadatos, ordenación, resúmenes y paginación opcionales.
+- Exportación JSON segura; selecciones de catálogo guardadas con `--catalog-input` por archivo o stdin para validación dirigida.
+- Integridad opcional por detalles, huellas SHA-256 de metadatos y árbol de archivos, protección ante enlaces simbólicos y detección acotada de cambios durante la lectura.
+- CI con informes y catálogos descargables por plataforma y comparación estricta de hashes/contenido Ubuntu-Windows; diagnósticos por campo.
+- Pruebas de regresión CLI/JSON y guías de uso; estudio documental de límites para un consumidor externo, **sin afirmar pruebas funcionales de dicho consumidor**.
+
+**Límites permanentes:** no existe validación genérica de aplicaciones, certificación de consumidores, autenticidad criptográfica de snapshots, snapshot atómico de archivos, ni sustitución de Adoption Decisions humanas. Los tests cubren casos explícitos, no un contrato de estabilidad universal.
+
+**Referencias vigentes:** [Release v0.12.0](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0), [CHANGELOG](../../CHANGELOG.md), [Project Status](12_PROJECT_STATUS.md), [Backlog](14_BACKLOG.md), [Roadmap](../../ROADMAP.md), [guía del catálogo](../implementation/validator-catalog-workflow.md), [contrato CLI/JSON](../implementation/validator-compatibility-contract.md).
+
+## Punto de reanudación
+
+1. Comprobar el resultado de la PR que introduce el Kit **1.6.0**, sus tres jobs y la eliminación de la rama tras el merge.
+2. Confirmar `main`, PR abiertas y releases antes de iniciar nuevas ramas; distinguir el tag fijo de `v0.12.0` de cambios post-release.
+3. Priorizar trabajo mediante un caso de uso real, sin ampliar indiscriminadamente flags de CLI ni confundir validación de bibliotecas con validación de consumidores.
+4. No modificar Only Film, abrir una fase de Application/Integration o atribuir resultados a UX-02 sin decisión específica.
+5. Mantener el procedimiento: rama y PR implementada por el asistente; revisión, merge y eliminación de rama remota por el mantenedor. Para cualquier versión futura, exigir aprobación separada del alcance y publicación.
+
+---
+
+# Snapshot histórico — Validator Readiness & Compatibility (PR #367, 2026-11-15)
+
+> Este bloque describía el estado de preparación antes de v0.12.0. Sus menciones a `v0.11.0` como última release o a trabajo `Unreleased` son históricas, **no actuales**. Usar el snapshot superior y verificar GitHub.
+
+
 
 > **Referencia principal de continuidad.** Sustituye al snapshot de PR #358 que pasa a histórico. Antes de actuar, confirmar siempre la situación real de GitHub, porque este punto de control se ha redactado **antes** de fusionar la nueva PR documental.
 

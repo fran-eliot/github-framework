@@ -762,6 +762,27 @@ Mantener el Framework Validator y sus comprobaciones CI, evaluar nuevos incremen
 
 ---
 
+# v0.12.0 — Framework Validator Catalog and Integrity
+
+**Estado:** ✅ Released — 2026-11-15
+
+[GitHub Release v0.12.0](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0) publicada el 2026-11-15 sobre `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1`, con [CI 43761458819](https://github.com/fran-eliot/github-framework/actions/runs/43761458819) correcto en Ubuntu, Windows y comprobación de paridad.
+
+## Alcance publicado
+
+- Catálogo de README, Documentation y Workflow Components: filtros, ordenación, paginación, resúmenes y exportación segura de JSON.
+- Importación de selecciones de catálogo para validación dirigida desde archivos o stdin, con verificaciones opcionales de metadatos e integridad SHA-256.
+- Artefactos de catálogo e informes de validación por plataforma; comprobación estricta de equivalencia Ubuntu/Windows con diagnóstico acotado por campo.
+- Pruebas de regresión de compatibilidad CLI/JSON, integridad, seguridad de exportación y guía reproducible de uso.
+
+**Límites:** las comprobaciones SHA-256 verifican consistencia local frente a un snapshot proporcionado, no su autenticidad; el Validator no certifica repositorios de aplicaciones ni sustituye el proceso de Existing Repository Adoption. Only Film permanece sin modificaciones, con Assessment exclusivamente documental. UX-02 no se ha ejecutado.
+
+## Seguimiento post-release
+
+No hay Sprint, milestone o versión posterior comprometida. Los nuevos incrementos exigirán priorización independiente y un caso de uso definido. `v1.0.0` continúa como objetivo general planificado, sin fecha ni alcance comprometido por esta publicación.
+
+---
+
 # v1.0.0 — Stable Release
 
 **Estado:** ⚪ Planned
