@@ -1063,7 +1063,118 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                         capture_output=True, text=True, check=False,
                     )
                     self.assertEqual(result.returncode, 2)
-                    self.assertIn("--match requires --list-components", result.stderr)
+                    self.assertIn("--match and --exclude require --list-components", result.stderr)
+
+
+    def test_cli_catalog_exclude_text_and_case_sensitive(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for family, name in (
+                ("documentation", "architecture"),
+                ("documentation", "references"),
+                ("readme", "architecture"),
+                ("workflow", "issue"),
+            ):
+                (root / family / name).mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--exclude", "documentation/*",
+                    "--exclude", "*/architecture",
+                    "--exclude", "documentation/*",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout.splitlines(), ["workflow/issue"])
+
+            case_result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--exclude", "Documentation/*",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(case_result.returncode, 0, case_result.stderr)
+            self.assertIn("documentation/architecture", case_result.stdout)
+
+    def test_cli_catalog_exclude_json_match_family_details_export(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(VALID_METADATA, encoding="utf-8")
+            (root / "documentation" / "references").mkdir(parents=True)
+            (root / "workflow" / "issue").mkdir(parents=True)
+            output = root / "filtered.json"
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--family", "documentation",
+                    "--match", "documentation/*", "--match", "*/architecture",
+                    "--exclude", "*/references", "--exclude", "*/references",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            catalog = json.loads(output.read_text(encoding="utf-8"))
+            self.assertEqual(catalog["components"], ["documentation/architecture"])
+            self.assertEqual(catalog["count"], 1)
+            self.assertEqual(catalog["scope"], {
+                "families": ["documentation"],
+                "match": ["documentation/*", "*/architecture"],
+                "exclude": ["*/references"],
+            })
+            self.assertEqual(catalog["details"][0]["id"], "DOC-ARCHITECTURE")
+
+    def test_cli_catalog_exclude_empty_result_preserves_output(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "workflow" / "issue").mkdir(parents=True)
+            output = root / "catalog.json"
+            output.write_text("previous", encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--exclude", "workflow/*",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 1)
+            self.assertEqual(result.stdout, "")
+            self.assertIn("No Components match", result.stderr)
+            self.assertEqual(output.read_text(encoding="utf-8"), "previous")
+
+    def test_cli_catalog_exclude_requires_listing(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            for options in (
+                ["--exclude", "readme/*"],
+                ["--format", "json", "--exclude", "readme/*"],
+                ["--component", "readme/author", "--exclude", "readme/*"],
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(
+                        [
+                            sys.executable, "-m", "scripts.framework_validator",
+                            "--components-root", str(root), *options,
+                        ],
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn("require --list-components", result.stderr)
 
 
     def test_cli_list_components_json_catalog(self) -> None:
