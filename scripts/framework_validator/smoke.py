@@ -246,6 +246,31 @@ def main() -> None:
         assert {item["relative_path"] for item in family_validation["components"]} == set(selected)
         assert family_validation["summary"]["error_count"] == 0
 
+    # Export a real-library catalog page, then validate exactly its selection.
+    with TemporaryDirectory() as directory:
+        selection_path = Path(directory) / "catalog-selection.json"
+        exported = subprocess.run(
+            [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--list-components", "--format", "json",
+                "--family", "documentation", "--limit", "1",
+                "--output", str(selection_path),
+            ],
+            cwd=ROOT, capture_output=True, text=True, check=False,
+        )
+        assert exported.returncode == 0, exported.stderr
+        selected_catalog = json.loads(selection_path.read_text(encoding="utf-8"))
+        imported = run_cli(
+            "--catalog-input", str(selection_path), "--format", "json",
+        )
+        assert imported["status"] == "passed"
+        assert imported["components_discovered"] == 1
+        assert imported["scope"]["filtered"] is True
+        assert imported["scope"]["component_paths"] == selected_catalog["components"]
+        assert [entry["relative_path"] for entry in imported["components"]] == (
+            selected_catalog["components"]
+        )
+
     selections = [arg for path in representatives for arg in ("--component", path)]
     targeted = run_cli("--format", "json", *selections)
     assert targeted["status"] == "passed"
@@ -275,6 +300,7 @@ def main() -> None:
         "catalog_summaries_verified": True,
         "catalog_combined_export_verified": True,
         "catalog_pagination_navigation_verified": True,
+        "catalog_selection_validation_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,
