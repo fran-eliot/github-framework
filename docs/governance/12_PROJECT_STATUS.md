@@ -34,6 +34,10 @@ Tras publicar `v0.10.0`, se amplió el Framework Validator en `main` mediante in
 
 **Estado:** [`v0.11.0`](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0) publicado el 2026-11-15 con CI del commit exacto aprobado: 161 tests por sistema operativo, 21 Components y smoke test real de CLI. La release no convierte estas mejoras del Validator en automatización semántica de Existing Repository Adoption ni altera Only Film.
 
+## Revisión de preparación de entregas Unreleased — 2026-11-15
+
+Se ha preparado una [revisión documental de preparación del Framework Validator](../releases/framework-validator-unreleased-readiness-20261115.md) sobre `main` `f8464b4a5307620d1db281945207aead154c6ca0`, tras el merge de [PR #363](https://github.com/fran-eliot/github-framework/pull/363). El [CI corregido 43748589509](https://github.com/fran-eliot/github-framework/actions/runs/43748589509) terminó correctamente en Ubuntu, Windows y equivalencia de catálogos. Los cambios siguen **Unreleased**; el documento distingue evidencia probada y pendientes de compatibilidad, uso externo y aprobación de publicación. No se ha autorizado ninguna versión, tag, release, Sprint o milestone nueva.
+
 ## Estado de los incrementos Unreleased tras v0.11.0 — 2026-11-15
 
 **Línea base:** la release publicada `v0.11.0` permanece fijada en `55680b388b0fd8256c95e15866e53d21cc9a5033`. Las mejoras siguientes se incorporaron **después del tag**, por lo que están en `main` y en `CHANGELOG.md > Unreleased`, pero **no** forman parte de la release publicada.
