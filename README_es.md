@@ -197,6 +197,15 @@ python -m scripts.framework_validator --list-components --format json --componen
 
 El objeto opcional `component_status_summary` contiene los recuentos `by_status` por estado declarado (ordenados alfabéticamente) y un recuento independiente `missing` para estados ausentes o que no son cadenas, incluidos los metadatos ilegibles. La suma coincide con `count` tras aplicar todos los filtros. A diferencia de `--metadata-summary`, resume el estado declarado del Component, no el resultado de cargar el YAML. Requiere `--list-components --format json`, admite los demás filtros, resúmenes, `--details` y exportación JSON sin modificar la salida predeterminada.
 
+Controla la dirección de una ordenación explícita con `--sort-order asc|desc` (ascendente por defecto):
+
+```bash
+python -m scripts.framework_validator --list-components --sort-by path --sort-order desc
+python -m scripts.framework_validator --list-components --format json --sort-by status --sort-order desc --details
+```
+
+Al ordenar metadatos en sentido descendente, los valores ausentes o que no son cadenas permanecen **al final**; las rutas portables resuelven los empates en orden ascendente. `--sort-order` requiere `--sort-by`, se aplica después de los filtros y admite salida de texto y exportación JSON. `scope.sort_order` solo se incluye cuando se solicita, preservando la salida existente.
+
 Ordena el catálogo por el estado declarado del Component mediante `--sort-by status`, tanto en texto como en JSON:
 
 ```bash
