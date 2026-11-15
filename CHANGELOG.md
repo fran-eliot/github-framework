@@ -36,6 +36,8 @@
 
 * Opt-in SHA-256 digests of raw `metadata.yml` bytes for detailed JSON catalogs (`--catalog-metadata-sha256`) and pre-validation consistency checks for imported selections (`--catalog-verify-sha256`), with regression and real-library CI coverage.
 
+* Optional full Component file-tree SHA-256 digests in detailed JSON catalogs (`--catalog-content-sha256`) and imported selection verification (`--catalog-verify-content-sha256`), covering templates and other artifacts beyond metadata with symlink-safe traversal and regression/CI smoke tests.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
