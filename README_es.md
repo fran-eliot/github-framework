@@ -204,6 +204,15 @@ python -m scripts.framework_validator --list-components --format json --family d
 python -m scripts.framework_validator --catalog-input selected-components.json --format json
 ```
 
+Para detectar **metadatos exportados desactualizados** antes de validar, genera el catálogo con `--details` y utiliza `--catalog-verify-details` al importarlo:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --details --family documentation --output selected-components.json
+python -m scripts.framework_validator --catalog-input selected-components.json --catalog-verify-details --format json
+```
+
+Esta comprobación opcional compara los campos exportados `id`, `name`, `version`, `status` y el estado de carga de metadatos de cada Component con la biblioteca actual. La ausencia de detalles o cualquier discrepancia devuelve el código de argumentos `2` antes de validar. Sin esta opción, la importación conserva su comportamiento. Es una comprobación de coherencia de metadatos, **no** una garantía criptográfica ni una verificación del contenido de los Components. También se admite entrada estándar.
+
 Para automatizaciones, usa `--catalog-input -` y lee el catálogo directamente de la entrada estándar, sin crear un archivo intermedio:
 
 ```bash
