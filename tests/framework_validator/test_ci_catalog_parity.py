@@ -176,6 +176,38 @@ class CatalogParityTests(unittest.TestCase):
                 self.assertEqual(outcome, 2)
                 self.assertIn("Unable to compare Component catalogs", stderr.getvalue())
 
+    def test_identical_invalid_or_out_of_scope_paths_are_rejected(self) -> None:
+        for invalid_path in (
+            "../example",
+            "documentation/..",
+            "documentation/.",
+            "documentation/",
+            "/example",
+            "documentation/nested/example",
+            "documentation\\\\example",
+            "unknown/example",
+        ):
+            with self.subTest(path=invalid_path):
+                bad = catalog()
+                bad["components"] = [invalid_path]
+                bad["details"][0]["path"] = invalid_path
+                self.save(bad, bad)
+                stderr = io.StringIO()
+                with redirect_stderr(stderr):
+                    outcome = compare_catalogs(self.ubuntu, self.windows)
+                self.assertEqual(outcome, 2)
+                self.assertIn("invalid or out-of-scope Component path", stderr.getvalue())
+
+    def test_identical_component_outside_declared_family_scope_is_rejected(self) -> None:
+        bad = catalog()
+        bad["scope"]["families"] = ["readme", "workflow"]
+        self.save(bad, bad)
+        stderr = io.StringIO()
+        with redirect_stderr(stderr):
+            outcome = compare_catalogs(self.ubuntu, self.windows)
+        self.assertEqual(outcome, 2)
+        self.assertIn("invalid or out-of-scope Component path", stderr.getvalue())
+
     def test_missing_artifact_is_rejected(self) -> None:
         self.ubuntu.write_text(json.dumps(catalog()), encoding="utf-8")
         self.assertEqual(compare_catalogs(self.ubuntu, self.windows), 2)
