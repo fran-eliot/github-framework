@@ -22,16 +22,29 @@ def read_catalog(path: Path) -> dict:
         raise ValueError(f"{path}: expected JSON object")
     components = data.get("components")
     details = data.get("details")
+    scope = data.get("scope")
     if (
         not isinstance(components, list) or not components
-        or not all(isinstance(item, str) for item in components)
+        or not all(isinstance(item, str) and item for item in components)
         or len(set(components)) != len(components)
         or not isinstance(details, list)
         or len(details) != len(components)
-        or data.get("count") != len(components)
+        or type(data.get("count")) is not int
+        or data["count"] != len(components)
         or "pagination" in data
     ):
         raise ValueError(f"{path}: expected a complete, non-paginated catalog")
+    if (
+        not isinstance(scope, dict)
+        or not isinstance(scope.get("families"), list)
+        or not scope["families"]
+        or not all(
+            isinstance(family, str) and family in ("readme", "documentation", "workflow")
+            for family in scope["families"]
+        )
+        or len(set(scope["families"])) != len(scope["families"])
+    ):
+        raise ValueError(f"{path}: missing or invalid catalog family scope")
     for component, detail in zip(components, details):
         if not isinstance(detail, dict) or detail.get("path") != component:
             raise ValueError(f"{path}: catalog detail order/path mismatch")

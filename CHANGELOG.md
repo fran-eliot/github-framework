@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* Hardened cross-platform catalog parity preflight so two identically malformed CI artifacts cannot pass: reject non-integer counts, invalid/missing family scope and empty Component paths, with regression tests for symmetric malformed inputs.
+
 * Fixed cross-platform Component catalog parity diagnostics for missing-versus-explicit-null optional fields at Component and top-level scope, with isolated regression coverage. Catalog equality and CI failure behavior remain strict and unchanged.
 
 * Added a relocated-library regression proving that changes to unselected Component families do not invalidate a saved Workflow selection, while selected Component content drift rejects its stale SHA-256 snapshot without modifying the saved catalog.
