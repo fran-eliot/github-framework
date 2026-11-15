@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+* Added isolated regression coverage and a pinned read-only consumer-boundary study clarifying that the Framework Component Validator does not validate arbitrary application repositories or perform Existing Repository Adoption.
+
 
 * Extended Validator CLI/JSON compatibility regressions for failed validation reports, stdout/file JSON equivalence, failure-report exports, and preservation of output files on argument errors.
 * Added focused cross-platform subprocess regression contracts for default and opt-in Validator CLI/JSON output, targeted imports, exit codes and snapshot export safety, with a bounded compatibility guide.
