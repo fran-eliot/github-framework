@@ -301,7 +301,7 @@ La última release publicada es:
 
 Los Cores de Assessment, Application, Integration y Assisted Analysis están implementados, verificados, integrados y publicados. Assisted Analysis recopila Evidence delimitada y trazable a su fuente mediante un proceso read-only con revisión humana, sin automatizar decisiones de adopción ni modificar repositorios consumer.
 
-El siguiente incremento del Framework todavía no está comprometido en una release.
+**En preparación (aún no publicada):** [propuesta v0.11.0 — Framework Validator CLI and CI](docs/releases/PROPOSED_V0_11_0_RELEASE_NOTES.md). El snapshot completo de la opción A incluye mejoras del Validator y el Assessment **documental** de Only Film, con sus evidencias acotadas; no acredita migración del consumidor, certificación de seguridad, verificación operativa integral ni pruebas independientes de usabilidad. La insignia de versión sigue indicando la **última release publicada**, v0.10.0, hasta la aprobación expresa de la publicación.
 
 ---
 
