@@ -204,6 +204,14 @@ python -m scripts.framework_validator --list-components --format json --family d
 python -m scripts.framework_validator --catalog-input selected-components.json --format json
 ```
 
+Para automatizaciones, usa `--catalog-input -` y lee el catálogo directamente de la entrada estándar, sin crear un archivo intermedio:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --family documentation | python -m scripts.framework_validator --catalog-input - --format json
+```
+
+Se mantienen las mismas validaciones de rutas, formato de informes y códigos de salida que al leer un archivo. La entrada solo se lee una vez y no se modifican Components.
+
 La entrada debe ser un objeto JSON de catálogo con `components`, un array no vacío de rutas `FAMILY/NAME` únicas de la **biblioteca actual**. Se admiten catálogos paginados: solo se validan las rutas de la página exportada. Usa `--components-root` en ambos comandos para bibliotecas personalizadas; la entrada no permite acceder fuera de esa raíz. Es incompatible con `--list-components`, `--component` y `--family`. Los catálogos ilegibles o inválidos, rutas inseguras y directorios inexistentes producen código `2` antes de validar. Los fallos de validación conservan código `1` y el informe habitual, con el alcance filtrado. No se modifican archivos de los Components.
 
 Pagina el catálogo después de aplicar los filtros y la ordenación mediante `--limit N` (entero positivo) y/o `--offset N` (entero no negativo):
