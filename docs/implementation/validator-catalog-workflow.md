@@ -83,4 +83,6 @@ After both platform validation jobs succeed, a separate CI job downloads the Ubu
 
 The job stops at a failing export or verification, while the separate standard Validator report and its diagnostics still run via `always()`. GitHub's artifact association supports traceability to the workflow run but is not a signed attestation; consumers should independently verify the trusted commit and source.
 
+For the bounded default and opt-in output guarantees covered by isolated regression tests, consult the [Validator CLI/JSON Compatibility Contract](validator-compatibility-contract.md).
+
 See [Framework Validation](../../README.md) for the full CLI reference and [Existing Repository Adoption](../../framework/adoption/README.md) for the distinct, human-reviewed consumer Assessment process.

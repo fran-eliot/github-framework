@@ -64,6 +64,10 @@ These increments were merged into `main` after publication of v0.11.0. **Do not 
 
 ## 6. Suggested next action (proposal only)
 
+**Follow-up compatibility work (post-baseline, pending its own CI review):** [CLI/JSON Compatibility Contract](../implementation/validator-compatibility-contract.md) adds bounded subprocess regression assertions for default and opt-in schemas, targeted import validation, exit codes, and safe export behavior. This is a subsequent improvement proposal; it must not be treated as evidence established at the `f8464b4a` review baseline until merged and verified independently.
+
+
+
 Consolidate a small, reproducible CLI/JSON **compatibility contract** that compares existing defaults and common filtered/unfiltered workflows, then reassess the remaining gaps in section 5. This is preferable to adding further unrelated command-line flags. A read-only consumer exercise can be planned independently without modifying the consumer.
 
 No Application or Integration work on Only Film is authorized. Its completed Assessment remains strictly documentary, pinned to `28d75a50e0a178954dd46acc23300d9dd327843c` against `TPL-BACKEND 0.1.0`; it does not certify Docker Compose, Maven, Selenium, security checks, licensing or deployment.
