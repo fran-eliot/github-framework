@@ -89,6 +89,29 @@ class CatalogParityTests(unittest.TestCase):
         self.assertIn("documentation/example: name", message)
         self.assertIn("catalog field: scope", message)
 
+    def test_missing_optional_detail_field_differs_from_explicit_null(self) -> None:
+        left, right = catalog(), catalog()
+        left["details"][0]["description"] = None
+        self.save(left, right)
+        stderr = io.StringIO()
+        with redirect_stderr(stderr):
+            outcome = compare_catalogs(self.ubuntu, self.windows)
+        self.assertEqual(outcome, 1)
+        self.assertIn(
+            "documentation/example: description", stderr.getvalue()
+        )
+        self.assertNotIn("documentation/example: ;", stderr.getvalue())
+
+    def test_missing_top_level_field_differs_from_explicit_null(self) -> None:
+        left, right = catalog(), catalog()
+        right["metadata_summary"] = None
+        self.save(left, right)
+        stderr = io.StringIO()
+        with redirect_stderr(stderr):
+            outcome = compare_catalogs(self.ubuntu, self.windows)
+        self.assertEqual(outcome, 1)
+        self.assertIn("catalog field: metadata_summary", stderr.getvalue())
+
     def test_mismatch_diagnostics_are_bounded(self) -> None:
         left, right = catalog(), catalog()
         for i in range(12):

@@ -63,11 +63,15 @@ def describe_mismatches(left: dict, right: dict, limit: int = 10) -> str:
         elif before != after:
             fields = sorted(
                 key for key in set(before) | set(after)
-                if before.get(key) != after.get(key)
+                if (key in before) != (key in after)
+                or before.get(key) != after.get(key)
             )
             differences.append(f"{path}: {', '.join(fields)}")
     for key in sorted(set(left) | set(right)):
-        if key not in ("components", "details") and left.get(key) != right.get(key):
+        if key not in ("components", "details") and (
+            (key in left) != (key in right)
+            or left.get(key) != right.get(key)
+        ):
             differences.append(f"catalog field: {key}")
     shown = differences[:limit]
     if len(differences) > limit:
