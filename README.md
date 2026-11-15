@@ -124,6 +124,8 @@ For detailed information, explore the `docs/` directory and the reusable Framewo
 
 ## ✅ Framework Validation
 
+CI additionally runs a **cross-platform catalog parity check** after successful Ubuntu and Windows jobs. It compares the complete JSON inventories and metadata/content SHA-256 digests for the checked-out commit and fails if they differ; this detects platform-dependent catalog results without changing the Validator CLI. See the [workflow guide](docs/implementation/validator-catalog-workflow.md).
+
 The Framework Validator CI workflow also exports a **verifiable full Component catalog** on Ubuntu and Windows. Each successful job uploads `framework-component-catalog-<os>` containing `component-catalog.json` (detailed metadata and SHA-256 digests) and `catalog-verification-report.json` (the immediate validation result). These artifacts are retained for seven days and are tied to the GitHub Actions run; they are not signed attestations and do not establish provenance if downloaded separately.
 
 For a complete, reproducible catalog-to-validation example (including integrity checks and the difference between stale content and failed validation), see the [Component Catalog Workflow Guide](docs/implementation/validator-catalog-workflow.md).
