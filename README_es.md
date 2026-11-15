@@ -189,6 +189,14 @@ python -m scripts.framework_validator --list-components --match "documentation/*
 
 `--exclude` requiere `--list-components` y admite `--match`, `--family`, `--details` y `--output` JSON. Los catálogos JSON incluyen `scope.exclude` cuando se indican exclusiones. Si se excluyen todos los Components, se devuelve código `1` sin sobrescribir el archivo existente.
 
+Para resumir los estados declarados por los Components seleccionados, usa `--component-status-summary` con salida JSON:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --component-status-summary
+```
+
+El objeto opcional `component_status_summary` contiene los recuentos `by_status` por estado declarado (ordenados alfabéticamente) y un recuento independiente `missing` para estados ausentes o que no son cadenas, incluidos los metadatos ilegibles. La suma coincide con `count` tras aplicar todos los filtros. A diferencia de `--metadata-summary`, resume el estado declarado del Component, no el resultado de cargar el YAML. Requiere `--list-components --format json`, admite los demás filtros, resúmenes, `--details` y exportación JSON sin modificar la salida predeterminada.
+
 Filtra el campo `status` declarado por cada Component mediante patrones glob `--component-status` repetibles y sensibles a mayúsculas. Es distinto de `--metadata-status`, que indica si el YAML se ha cargado (`loaded`, `missing`, `invalid`):
 
 ```bash
