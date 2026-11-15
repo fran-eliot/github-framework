@@ -1,6 +1,8 @@
 # Changelog
 
 ## [Unreleased]
+* Prepared unpublished, version-neutral draft release notes grouping post-v0.11.0 Validator catalog, integrity, cross-platform CI, testing and scope improvements for later maintainer review.
+
 
 * Improved Ubuntu/Windows Component catalog parity failure diagnostics to identify differing field names and top-level catalog properties, with bounded output and regressions for digest and metadata mismatches.
 

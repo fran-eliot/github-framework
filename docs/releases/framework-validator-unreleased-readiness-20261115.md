@@ -47,7 +47,9 @@ These increments were merged into `main` after publication of v0.11.0. **Do not 
 6. **Documentation compatibility:** the growing set of optional CLI flags and JSON shapes merits a consolidated compatibility audit before release notes claim stable consumer-facing behavior.
 7. **Independent usability:** the adoption study's UX-02 remains **Prepared — Not Executed**; this review must not attribute results to independent participants.
 
-## 5. Readiness criteria for a subsequent proposal
+## 5. Readiness criteria for a subsequent proposal**Candidate-note drafting (later than this pinned review):** [Unreleased Validator candidate release notes](framework-validator-candidate-release-notes-unreleased.md) organize post-v0.11.0 features for maintainer review. Their source baseline is later than this review's pinned `f8464b4a` commit; they provide no release authorization and require fresh candidate-specific verification.
+
+
 
 | Criterion | Current documented state | Action before approval |
 | --- | --- | --- |
