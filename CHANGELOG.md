@@ -44,6 +44,8 @@
 
 * Framework Validator CI now exports and immediately verifies a complete Component catalog with metadata and file-tree SHA-256 fields on Ubuntu and Windows, uploading the catalog and its targeted validation report as seven-day GitHub Actions artifacts.
 
+* CI cross-platform parity gate compares the complete exported Ubuntu and Windows Component catalogs (including metadata and file-tree SHA-256 digests), with isolated regression tests and failure on missing or divergent artifacts.
+
 ### Added
 
 * Reproducible catalog-to-validation workflow guide and end-to-end CI smoke scenario using a temporary copy of a tracked Component, including stale-content rejection without modifying repository files.
