@@ -22,6 +22,8 @@
 
 * Optional `--sort-order asc|desc` for Component catalog ordering, preserving missing-metadata-last behavior and stable path ties for descending sorts.
 
+* Opt-in Component catalog pagination using `--limit` and `--offset` after filtering and sorting, with JSON pagination totals, page-scoped summaries and safe empty-page handling.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
