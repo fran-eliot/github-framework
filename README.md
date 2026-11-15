@@ -195,6 +195,14 @@ python -m scripts.framework_validator --list-components --format json --componen
 
 The optional `component_status_summary` object contains `by_status` counts keyed by declared status (sorted alphabetically) and a separate `missing` count for absent or non-string statuses, including unreadable metadata. These counts total the catalog `count` after all filters. Unlike `--metadata-summary`, this summarizes the Component's declared status rather than YAML loading outcomes. It requires `--list-components --format json`, composes with catalog filters, other summaries, `--details` and JSON export, and leaves the default catalog unchanged.
 
+Sort by the declared Component status using `--sort-by status` in text or JSON catalogs:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --sort-by status --details
+```
+
+Status ordering is case-sensitive and lexicographical. Missing, invalid or non-string statuses appear last; portable Component paths break ties. This works with all existing catalog filters, summaries and JSON export, while leaving the default path order unchanged.
+
 Filter the declared Component `status` field with repeatable, case-sensitive `--component-status` glob patterns. Unlike `--metadata-status`, which selects YAML loading states (`loaded`, `missing`, `invalid`), this option matches the actual `status` string in `metadata.yml`:
 
 ```bash
