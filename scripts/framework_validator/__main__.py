@@ -347,6 +347,12 @@ if __name__ == "__main__":
         help="Include metadata loading status counts in the JSON Component catalog.",
     )
     parser.add_argument(
+        "--component-status",
+        action="append",
+        metavar="GLOB",
+        help="Filter catalog by Component metadata status (repeatable; listing only).",
+    )
+    parser.add_argument(
         "--metadata-status",
         action="append",
         choices=("loaded", "missing", "invalid"),
@@ -379,6 +385,8 @@ if __name__ == "__main__":
         parser.error("--match and --exclude require --list-components")
     elif arguments.metadata_status:
         parser.error("--metadata-status requires --list-components")
+    elif arguments.component_status:
+        parser.error("--component-status requires --list-components")
     elif arguments.metadata_id:
         parser.error("--metadata-id requires --list-components")
     elif arguments.metadata_name:
@@ -431,6 +439,7 @@ if __name__ == "__main__":
         if (arguments.details or arguments.metadata_status
                 or arguments.metadata_summary or arguments.metadata_id
                 or arguments.metadata_version or arguments.metadata_name
+                or arguments.component_status
                 or arguments.sort_by in ("id", "name", "version")):
             entries = {
                 component: catalog_metadata_entry(component, root)
@@ -463,6 +472,15 @@ if __name__ == "__main__":
                     for pattern in arguments.metadata_version
                 )
             ]
+        if arguments.component_status:
+            available = [
+                component for component in available
+                if isinstance(entries[component]["status"], str)
+                and any(
+                    fnmatchcase(entries[component]["status"], pattern)
+                    for pattern in arguments.component_status
+                )
+            ]
         if arguments.metadata_status:
             statuses = set(arguments.metadata_status)
             available = [
@@ -474,7 +492,7 @@ if __name__ == "__main__":
                 "No Components match the selected catalog filters."
                 if (arguments.match or arguments.exclude or arguments.metadata_status
                     or arguments.metadata_id or arguments.metadata_version
-                    or arguments.metadata_name)
+                    or arguments.metadata_name or arguments.component_status)
                 else "No Components discovered."
             )
             print(message, file=sys.stderr)
@@ -513,6 +531,10 @@ if __name__ == "__main__":
             if arguments.metadata_version:
                 catalog["scope"]["metadata_version"] = list(
                     dict.fromkeys(arguments.metadata_version)
+                )
+            if arguments.component_status:
+                catalog["scope"]["component_status"] = list(
+                    dict.fromkeys(arguments.component_status)
                 )
             if arguments.metadata_status:
                 catalog["scope"]["metadata_status"] = [
