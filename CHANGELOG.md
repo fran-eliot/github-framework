@@ -38,6 +38,8 @@
 
 * Optional full Component file-tree SHA-256 digests in detailed JSON catalogs (`--catalog-content-sha256`) and imported selection verification (`--catalog-verify-content-sha256`), covering templates and other artifacts beyond metadata with symlink-safe traversal and regression/CI smoke tests.
 
+* Hardened full Component file-tree digest generation against symlinked Component root directories, with regressions for safe export rejection and renamed/removed files.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
