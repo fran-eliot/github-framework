@@ -195,6 +195,15 @@ python -m scripts.framework_validator --list-components --metadata-status missin
 
 This also works with `--family`, `--match`, `--exclude` and JSON `--output`. The JSON catalog includes `scope.metadata_status` in the order `loaded`, `missing`, `invalid` when this filter is present. An empty selection exits with code `1` without overwriting an output file.
 
+For a compact inventory health check, add `--metadata-summary` to a JSON Component catalog to count `loaded`, `missing`, and `invalid` metadata entries after all selected filters, without including full Component details:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --metadata-summary
+python -m scripts.framework_validator --list-components --format json --metadata-status missing --metadata-summary
+```
+
+This option requires `--list-components --format json` and adds `metadata_summary` only when requested. It works with `--family`, `--match`, `--exclude`, `--metadata-status`, `--details`, and JSON `--output`; an empty selection keeps the existing exit code `1` behavior.
+
 The default listing prints one portable path per line. For scripts, use `--list-components --format json` to get an object with sorted `components`, `count`, and `scope.families`:
 
 ```bash
