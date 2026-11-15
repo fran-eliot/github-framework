@@ -151,5 +151,81 @@ class ValidatorCompatibilityContractTests(unittest.TestCase):
         self.assertEqual(destination.read_bytes(), saved_bytes)
 
 
+    def test_failed_validation_keeps_json_schema_and_component_diagnostics(self) -> None:
+        metadata = self.component / "metadata.yml"
+        metadata.write_text(
+            METADATA.replace("status: Experimental", "status: Unknown"),
+            encoding="utf-8",
+        )
+        result = self.invoke("--format", "json")
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertEqual(result.stderr, "")
+        report = json.loads(result.stdout)
+        self.assertEqual(set(report), {
+            "status", "components_discovered", "component_ids",
+            "errors", "components", "scope", "summary",
+        })
+        self.assertEqual(report["status"], "failed")
+        self.assertEqual(report["components_discovered"], 1)
+        self.assertGreater(report["summary"]["error_count"], 0)
+        self.assertEqual(report["summary"]["failed_components"], 1)
+        self.assertEqual(report["summary"]["passed_components"], 0)
+        self.assertEqual(report["components"][0]["status"], "failed")
+        self.assertEqual(
+            report["components"][0]["relative_path"], "documentation/architecture",
+        )
+        self.assertTrue(report["components"][0]["errors"])
+        self.assertEqual(report["summary"]["error_count"], len(report["errors"]))
+
+    def test_json_export_matches_stdout_for_catalog_and_successful_validation(self) -> None:
+        destination = Path(self.temp.name) / "output.json"
+        scenarios = (
+            ("--list-components", "--format", "json", "--details"),
+            ("--format", "json"),
+        )
+        for options in scenarios:
+            with self.subTest(options=options):
+                stdout = self.invoke(*options)
+                exported = self.invoke(*options, "--output", str(destination))
+                self.assertEqual(stdout.returncode, 0, stdout.stderr)
+                self.assertEqual(exported.returncode, stdout.returncode, exported.stderr)
+                self.assertEqual(exported.stdout, "")
+                self.assertEqual(json.loads(destination.read_text(encoding="utf-8")),
+                                 json.loads(stdout.stdout))
+                self.assertTrue(destination.read_bytes().endswith(b"\\n"))
+
+    def test_failed_validation_still_exports_json_report_with_failure_code(self) -> None:
+        (self.component / "metadata.yml").write_text(
+            METADATA.replace("status: Experimental", "status: Unknown"),
+            encoding="utf-8",
+        )
+        destination = Path(self.temp.name) / "failed-report.json"
+        stdout = self.invoke("--format", "json")
+        exported = self.invoke("--format", "json", "--output", str(destination))
+        self.assertEqual(stdout.returncode, 1)
+        self.assertEqual(exported.returncode, 1)
+        self.assertEqual(exported.stdout, "")
+        self.assertEqual(json.loads(destination.read_text(encoding="utf-8")),
+                         json.loads(stdout.stdout))
+        self.assertEqual(json.loads(stdout.stdout)["status"], "failed")
+
+    def test_invalid_arguments_do_not_overwrite_existing_json(self) -> None:
+        destination = Path(self.temp.name) / "existing.json"
+        destination.write_text("previous contents", encoding="utf-8")
+        result = self.invoke(
+            "--list-components", "--details", "--format", "json",
+            "--output", str(destination),
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        previous = destination.read_bytes()
+        invalid = self.invoke(
+            "--list-components", "--format", "json",
+            "--catalog-verify-sha256", "--output", str(destination),
+        )
+        self.assertEqual(invalid.returncode, 2)
+        self.assertEqual(invalid.stdout, "")
+        self.assertEqual(destination.read_bytes(), previous)
+
+
 if __name__ == "__main__":
     unittest.main()
