@@ -3,10 +3,20 @@
 | Campo                    | Valor            |
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
-| **Versión publicada**    | v0.11.0           |
+| **Versión publicada**    | v0.12.0           |
 | **Versión objetivo**     | Ninguna comprometida           |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-11-15       |
+
+---
+
+## Estado vigente tras la publicación de v0.12.0 — 2026-11-15
+
+La [release v0.12.0 — Framework Validator Catalog and Integrity](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0) está publicada. Tag: `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1`; [CI push-to-main 43761458819](https://github.com/fran-eliot/github-framework/actions/runs/43761458819) completado correctamente con tres jobs (Ubuntu, Windows y paridad).
+
+**Transición de estados:** los incrementos enumerados más abajo como `Done — Unreleased` son **registros históricos anteriores a la publicación**. Los trabajos post-`v0.11.0` incluidos en la comparación y las [notas publicadas](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0) quedan ahora **Done — Released v0.12.0**. Ningún Sprint ni milestone posterior está comprometido.
+
+**Pendiente de priorización:** uso práctico de bibliotecas de Components, evolución del contrato CLI/JSON y otras mejoras con un caso de uso acreditado; **no** suponer validación genérica de consumidores ni permiso para iniciar Application/Integration de Only Film. UX-02 continúa `Prepared — Not Executed`. No hay versión objetivo siguiente aprobada.
 
 ---
 
@@ -29,25 +39,25 @@ Los trabajos posteriores a `v0.10.0` se publicaron en **[`v0.11.0 — Framework 
 | #135, #137, #139, #141, #143, #145, #147 | CI de Validator, informes JSON, resúmenes, diagnóstico, matriz Ubuntu/Windows y anotaciones | Done — Released v0.11.0 |
 | #149, #151, #153, #155 | Validación por Component, listado de rutas, catálogo JSON y detalles de metadata | Done — Released v0.11.0 |
 
-La última versión publicada es **`v0.11.0`**. No existe un Sprint activo ni una nueva versión objetivo comprometida.
+La última versión publicada es ahora **`v0.12.0`**. No existe un Sprint activo ni una nueva versión objetivo comprometida.
 
-### Estado de las entregas posteriores a v0.11.0 (Unreleased)
+### Historial de entregas posteriores a v0.11.0 (publicadas en v0.12.0)
 
-Los incrementos de catálogo y validación dirigida integrados en `main` después del tag `v0.11.0` permanecen **Unreleased**. No confundir estos cambios con los trabajos de las Issues #135–#155 incluidos en la release.
+Los incrementos de catálogo y validación dirigida integrados en `main` después del tag `v0.11.0` **forman ahora parte de la release publicada v0.12.0**. La tabla siguiente conserva su trazabilidad histórica; no confundir estos cambios con los trabajos de las Issues #135–#155 publicados en v0.11.0.
 
 | PR | Entrega integrada | Estado |
 | --- | --- | --- |
-| [#330](https://github.com/fran-eliot/github-framework/pull/330) y posteriores hasta [#349](https://github.com/fran-eliot/github-framework/pull/349) | Exportación atómica, filtros, ordenación, resúmenes, paginación y navegación del catálogo | Done — Unreleased |
-| [#350](https://github.com/fran-eliot/github-framework/pull/350) | Kit de continuidad actualizado tras las mejoras de catálogo | Done — Unreleased |
-| [#351](https://github.com/fran-eliot/github-framework/pull/351) y [#352](https://github.com/fran-eliot/github-framework/pull/352) | Importación de selecciones JSON para validación dirigida, desde archivo o stdin | Done — Unreleased |
-| [#353](https://github.com/fran-eliot/github-framework/pull/353)–[#355](https://github.com/fran-eliot/github-framework/pull/355) | Verificación opcional de metadatos y huellas SHA-256 de archivos y árbol de Component | Done — Unreleased |
-| [#356](https://github.com/fran-eliot/github-framework/pull/356) y [#357](https://github.com/fran-eliot/github-framework/pull/357) | Refuerzo de rechazo de enlaces simbólicos al calcular/verificar huellas | Done — Unreleased |
+| [#330](https://github.com/fran-eliot/github-framework/pull/330) y posteriores hasta [#349](https://github.com/fran-eliot/github-framework/pull/349) | Exportación atómica, filtros, ordenación, resúmenes, paginación y navegación del catálogo | Done — Released v0.12.0 |
+| [#350](https://github.com/fran-eliot/github-framework/pull/350) | Kit de continuidad actualizado tras las mejoras de catálogo | Done — Released v0.12.0 |
+| [#351](https://github.com/fran-eliot/github-framework/pull/351) y [#352](https://github.com/fran-eliot/github-framework/pull/352) | Importación de selecciones JSON para validación dirigida, desde archivo o stdin | Done — Released v0.12.0 |
+| [#353](https://github.com/fran-eliot/github-framework/pull/353)–[#355](https://github.com/fran-eliot/github-framework/pull/355) | Verificación opcional de metadatos y huellas SHA-256 de archivos y árbol de Component | Done — Released v0.12.0 |
+| [#356](https://github.com/fran-eliot/github-framework/pull/356) y [#357](https://github.com/fran-eliot/github-framework/pull/357) | Refuerzo de rechazo de enlaces simbólicos al calcular/verificar huellas | Done — Released v0.12.0 |
 
 La PR [#357](https://github.com/fran-eliot/github-framework/pull/357) se confirmó fusionada en `main` (`b9f44517a8ec5783c03769ebab1d154502d7a7dc`) y el [CI 43744364574](https://github.com/fran-eliot/github-framework/actions/runs/43744364574) finalizó correctamente en Ubuntu y Windows. La documentación se sincroniza mediante una PR posterior que debe verificarse por separado.
 
-**Revisión de preparación:** [Framework Validator — Unreleased Delivery Readiness Review](../releases/framework-validator-unreleased-readiness-20261115.md) consolida las PR #330–#363, evidencia de CI y limitaciones. [PR #363](https://github.com/fran-eliot/github-framework/pull/363) quedó fusionada en `main` (`f8464b4a5307620d1db281945207aead154c6ca0`); el [CI corregido 43748589509](https://github.com/fran-eliot/github-framework/actions/runs/43748589509) pasó sus tres jobs. Los incrementos de #358–#363, incluidos consolidación de integridad, guía práctica, artefactos CI y equivalencia Ubuntu/Windows, permanecen **Done — Unreleased**, no publicados en v0.11.0. El documento de revisión no aprueba por sí solo ninguna publicación.
+**Revisión de preparación:** [Framework Validator — Unreleased Delivery Readiness Review](../releases/framework-validator-unreleased-readiness-20261115.md) consolida las PR #330–#363, evidencia de CI y limitaciones. [PR #363](https://github.com/fran-eliot/github-framework/pull/363) quedó fusionada en `main` (`f8464b4a5307620d1db281945207aead154c6ca0`); el [CI corregido 43748589509](https://github.com/fran-eliot/github-framework/actions/runs/43748589509) pasó sus tres jobs. Los incrementos de #358–#363, incluidos consolidación de integridad, guía práctica, artefactos CI y equivalencia Ubuntu/Windows, están **Done — Released v0.12.0**, no publicados en v0.11.0. El documento de revisión no aprueba por sí solo ninguna publicación.
 
-**Progreso adicional verificado:** [PR #364](https://github.com/fran-eliot/github-framework/pull/364) integró la revisión de preparación; [#365](https://github.com/fran-eliot/github-framework/pull/365) y [#366](https://github.com/fran-eliot/github-framework/pull/366) integraron el [contrato de compatibilidad CLI/JSON](../implementation/validator-compatibility-contract.md) y pruebas de reportes fallidos, equivalencia de salida/archivo y conservación de exportaciones. La PR #366 fue fusionada en `69d617169a7ac4f59ce8ee096cb2cf8962688d79`, con [CI 43757311645](https://github.com/fran-eliot/github-framework/actions/runs/43757311645) satisfactorio. Estado de todas: **Done — Unreleased**. No equivalen a autorización de una nueva release.
+**Progreso adicional verificado:** [PR #364](https://github.com/fran-eliot/github-framework/pull/364) integró la revisión de preparación; [#365](https://github.com/fran-eliot/github-framework/pull/365) y [#366](https://github.com/fran-eliot/github-framework/pull/366) integraron el [contrato de compatibilidad CLI/JSON](../implementation/validator-compatibility-contract.md) y pruebas de reportes fallidos, equivalencia de salida/archivo y conservación de exportaciones. La PR #366 fue fusionada en `69d617169a7ac4f59ce8ee096cb2cf8962688d79`, con [CI 43757311645](https://github.com/fran-eliot/github-framework/actions/runs/43757311645) satisfactorio. Estado de todas: **Done — Released v0.12.0**. Su integración original no constituyó autorización de publicación; la release fue autorizada y publicada posteriormente.
 
 **Referencia de continuidad:** [Continuity Kit 1.5.0](16_CONTINUITY_KIT.md), cuyo snapshot vigente sustituye al registro histórico anterior a la PR #358.
 
