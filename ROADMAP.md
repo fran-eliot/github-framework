@@ -742,7 +742,7 @@ La versión `v0.10.0 — Existing Repository Adoption Assisted Analysis Core` se
 
 # Preparación de v0.11.0 — Framework Validator CLI and CI (opción A)
 
-**Estado:** ✅ Integrado y verificado en `main`; 🟡 versión y notas propuestas, release no publicada
+**Estado:** ✅ Integrado y verificado en `main`; 🟡 versión y notas aprobadas; release no publicada
 
 Tras la publicación de `v0.10.0` se han incorporado mejoras de Framework Automation independientes del alcance del Assisted Analysis Core publicado:
 
@@ -754,7 +754,7 @@ Tras la publicación de `v0.10.0` se han incorporado mejoras de Framework Automa
 - Actualización de las acciones de CI a versiones compatibles con Node.js 24.
 - Inclusión dentro del snapshot completo de la opción A del Assessment **documental** aprobado de Only Film y de las evidencias históricas de Adoption/Discovery, sin modificar el consumidor.
 
-Estas capacidades amplían el Framework Validator del `v0.6.0`, pero **no forman parte de la release publicada `v0.10.0`**. El mantenedor ha aprobado preparar la **opción A** (snapshot completo del repositorio). Se propone `v0.11.0` como siguiente versión, pendiente de aprobación final de versión, fecha, commit y notas; **no existe todavía tag ni GitHub Release nuevos**.
+Estas capacidades amplían el Framework Validator del `v0.6.0`, pero **no forman parte de la release publicada `v0.10.0`**. El mantenedor ha aprobado preparar la **opción A** (snapshot completo del repositorio). El mantenedor ha aprobado **`v0.11.0 — Framework Validator CLI and CI` y el contenido de sus notas** el 2026-11-15. La fecha, el commit final y el acto de publicación siguen pendientes de autorización expresa; **no existe todavía tag ni GitHub Release nuevos**.
 
 ## Próxima decisión de publicación
 
