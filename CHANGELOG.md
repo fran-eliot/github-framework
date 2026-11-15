@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* Fixed cross-platform Component catalog parity diagnostics for missing-versus-explicit-null optional fields at Component and top-level scope, with isolated regression coverage. Catalog equality and CI failure behavior remain strict and unchanged.
+
 * Added a relocated-library regression proving that changes to unselected Component families do not invalidate a saved Workflow selection, while selected Component content drift rejects its stale SHA-256 snapshot without modifying the saved catalog.
 
 * Added a three-family relocated Component library CLI regression using temporary copies of real tracked README, Documentation and Workflow Components; verifies full and targeted SHA-256 catalog workflows without changing source files or validating an application consumer.
