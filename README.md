@@ -195,6 +195,14 @@ python -m scripts.framework_validator --list-components --metadata-status missin
 
 This also works with `--family`, `--match`, `--exclude` and JSON `--output`. The JSON catalog includes `scope.metadata_status` in the order `loaded`, `missing`, `invalid` when this filter is present. An empty selection exits with code `1` without overwriting an output file.
 
+Filter by the `version` string from `metadata.yml` using repeatable case-sensitive `--metadata-version` glob patterns. This is a string pattern filter rather than a Semantic Versioning range resolver. Components with missing, invalid, or non-string versions are excluded:
+
+```bash
+python -m scripts.framework_validator --list-components --metadata-version "0.1.*" --format json --details
+```
+
+Combine it with ID, path, family and loading-status filters, optional summaries, and JSON `--output`. `scope.metadata_version` appears only when requested; no matches return code `1` without overwriting an existing export.
+
 Filter the catalog by the `id` declared in `metadata.yml` with repeatable, case-sensitive `--metadata-id` glob patterns (a union of matches). Unlike `--match`, this selects metadata IDs rather than Component paths; Components with missing, unreadable, or non-string IDs cannot match:
 
 ```bash

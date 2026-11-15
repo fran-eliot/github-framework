@@ -1177,6 +1177,116 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                     self.assertIn("require --list-components", result.stderr)
 
 
+    def test_cli_catalog_metadata_version_filters_and_exports(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            stable = self.create_component(root)
+            (stable / "metadata.yml").write_text(
+                VALID_METADATA.replace('version: "0.1.0"', 'version: "1.2.0"'),
+                encoding="utf-8",
+            )
+            preview = root / "documentation" / "references"
+            preview.mkdir(parents=True)
+            (preview / "metadata.yml").write_text(
+                VALID_METADATA.replace("DOC-ARCHITECTURE", "DOC-REFERENCES")
+                .replace('version: "0.1.0"', 'version: "0.2.0"'),
+                encoding="utf-8",
+            )
+            (root / "readme" / "author").mkdir(parents=True)
+            destination = root / "catalog.json"
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--metadata-summary",
+                    "--family-summary", "--family", "documentation",
+                    "--metadata-version", "1.*", "--metadata-version", "0.2.*",
+                    "--metadata-version", "1.*", "--output", str(destination),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            catalog = json.loads(destination.read_text(encoding="utf-8"))
+            self.assertEqual(catalog["components"], [
+                "documentation/architecture", "documentation/references",
+            ])
+            self.assertEqual(catalog["scope"]["metadata_version"], [
+                "1.*", "0.2.*",
+            ])
+            self.assertEqual(
+                [item["version"] for item in catalog["details"]],
+                ["1.2.0", "0.2.0"],
+            )
+            self.assertEqual(catalog["family_summary"]["documentation"], 2)
+            self.assertEqual(catalog["metadata_summary"]["loaded"], 2)
+
+    def test_cli_catalog_metadata_version_text_and_empty_export(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            loaded = self.create_component(root)
+            (loaded / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            missing = root / "documentation" / "references"
+            missing.mkdir(parents=True)
+            invalid = root / "readme" / "author"
+            invalid.mkdir(parents=True)
+            (invalid / "metadata.yml").write_text(
+                "family: [bad", encoding="utf-8"
+            )
+            common = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--list-components",
+            ]
+            matched = subprocess.run(
+                common + ["--metadata-version", "0.1.*"],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(matched.returncode, 0, matched.stderr)
+            self.assertEqual(matched.stdout.splitlines(), [
+                "documentation/architecture",
+            ])
+            destination = root / "catalog.json"
+            destination.write_text("previous", encoding="utf-8")
+            empty = subprocess.run(
+                common + [
+                    "--format", "json", "--metadata-version", "9.*",
+                    "--output", str(destination),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(empty.returncode, 1)
+            self.assertIn("No Components match", empty.stderr)
+            self.assertEqual(empty.stdout, "")
+            self.assertEqual(destination.read_text(encoding="utf-8"), "previous")
+
+    def test_cli_catalog_metadata_version_requires_listing(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            for options in (
+                ["--metadata-version", "0.*"],
+                ["--format", "json", "--metadata-version", "0.*"],
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(
+                        [
+                            sys.executable, "-m", "scripts.framework_validator",
+                            "--components-root", str(root), *options,
+                        ],
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn(
+                        "--metadata-version requires --list-components",
+                        result.stderr,
+                    )
+
     def test_cli_catalog_metadata_id_filters_loaded_ids(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
