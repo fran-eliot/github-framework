@@ -1546,6 +1546,78 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                     self.assertEqual(result.returncode, 2)
                     self.assertIn("missing digest", result.stderr)
 
+    def test_cli_catalog_content_hash_rejects_symlinked_component_root(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            alias = root / "documentation" / "alias"
+            try:
+                alias.symlink_to(component, target_is_directory=True)
+            except (OSError, NotImplementedError):
+                self.skipTest("Directory symlinks unavailable in this environment")
+            output = root / "catalog.json"
+            output.write_text("previous", encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--match", "documentation/alias", "--format", "json",
+                    "--details", "--catalog-content-sha256",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("Component root is a symbolic link", result.stderr)
+            self.assertEqual(output.read_text(encoding="utf-8"), "previous")
+
+    def test_cli_catalog_content_hash_detects_removed_and_renamed_files(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            nested = component / "templates"
+            nested.mkdir()
+            original = nested / "template.md"
+            original.write_text("Template content", encoding="utf-8")
+            export = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details", "--catalog-content-sha256",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(export.returncode, 0, export.stderr)
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--catalog-input", "-",
+                "--catalog-verify-content-sha256", "--format", "json",
+            ]
+            original.rename(nested / "renamed.md")
+            renamed = subprocess.run(
+                command, input=export.stdout,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(renamed.returncode, 2)
+            self.assertIn("stale Component content", renamed.stderr)
+            (nested / "renamed.md").unlink()
+            removed = subprocess.run(
+                command, input=export.stdout,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(removed.returncode, 2)
+            self.assertIn("stale Component content", removed.stderr)
+
     def test_cli_catalog_content_hash_rejects_symlinks_without_export(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
