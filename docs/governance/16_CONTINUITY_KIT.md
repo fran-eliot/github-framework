@@ -4,7 +4,7 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Documento**            | Continuity Kit   |
-| **Versión**              | 1.4.0            |
+| **Versión**              | 1.5.0            |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-11-15       |
 
@@ -14,7 +14,54 @@ Todo nuevo colaborador o asistente deberá utilizar este documento como referenc
 
 ---
 
-# Snapshot vigente — Validator Catalog & Integrity (2026-11-15)
+# Snapshot vigente — Validator Readiness & Compatibility (2026-11-15)
+
+> **Referencia principal de continuidad.** Sustituye al snapshot de PR #358 que pasa a histórico. Antes de actuar, confirmar siempre la situación real de GitHub, porque este punto de control se ha redactado **antes** de fusionar la nueva PR documental.
+
+| Campo | Estado verificado |
+| --- | --- |
+| Repositorio | [fran-eliot/github-framework](https://github.com/fran-eliot/github-framework) |
+| Última release publicada | [v0.11.0 — Framework Validator CLI and CI](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0), tag `55680b388b0fd8256c95e15866e53d21cc9a5033` |
+| `main` comprobado antes de la actualización | [`69d617169a7ac4f59ce8ee096cb2cf8962688d79`](https://github.com/fran-eliot/github-framework/commit/69d617169a7ac4f59ce8ee096cb2cf8962688d79) |
+| Última PR fusionada | [#366 — Failure and JSON export compatibility](https://github.com/fran-eliot/github-framework/pull/366) |
+| CI de la PR #366 | [Run 43757311645](https://github.com/fran-eliot/github-framework/actions/runs/43757311645) — `success` |
+| PR abiertas y rama remota de #366 | Sin PR abiertas; rama eliminada (comprobación anterior a la PR de este snapshot) |
+| Versión objetivo, Sprint y milestone | Ninguno aprobado o activo; todo lo posterior al tag sigue `Unreleased` |
+| Only Film | Assessment `Complete` exclusivamente documental en `28d75a50e0a178954dd46acc23300d9dd327843c`; ninguna Application/Integration autorizada |
+| UX-02 | `Prepared — Not Executed`; no existen resultados atribuibles a participantes independientes |
+
+## Evolución verificada desde el snapshot de PR #358
+
+Estos cambios están fusionados en `main` **después del tag v0.11.0**. No los describir como funcionalidades publicadas en la versión actual.
+
+| PR | Resultado integrado y documentación |
+| --- | --- |
+| [#359](https://github.com/fran-eliot/github-framework/pull/359)–[#360](https://github.com/fran-eliot/github-framework/pull/360) | Módulo de huellas SHA-256 separado, pruebas unitarias directas y detección acotada de cambios durante la lectura |
+| [#361](https://github.com/fran-eliot/github-framework/pull/361) | [Guía de catálogo → validación](../../docs/implementation/validator-catalog-workflow.md) y smoke test de extremo a extremo con copia temporal de un Component real |
+| [#362](https://github.com/fran-eliot/github-framework/pull/362) | Artefactos JSON de catálogo completo y validación dirigida por plataforma, retención de siete días |
+| [#363](https://github.com/fran-eliot/github-framework/pull/363) | Comparación estricta de catálogos y SHA-256 de Ubuntu/Windows, con `core.autocrlf=false` antes del checkout |
+| [#364](https://github.com/fran-eliot/github-framework/pull/364) | [Revisión de preparación Unreleased](../../docs/releases/framework-validator-unreleased-readiness-20261115.md): evidencia, riesgos, pendientes y límites, **sin aprobación de release** |
+| [#365](https://github.com/fran-eliot/github-framework/pull/365)–[#366](https://github.com/fran-eliot/github-framework/pull/366) | [Contrato de compatibilidad CLI/JSON](../../docs/implementation/validator-compatibility-contract.md) con regresiones de defaults, campos opcionales, importación, errores y exportación a archivo |
+
+**Regresión histórica importante:** el primer job de comparación de la PR #363 falló ([run 43747497334](https://github.com/fran-eliot/github-framework/actions/runs/43747497334)) porque los bytes del checkout diferían entre plataformas. La corrección no alteró el hashing: desactivó la conversión automática de finales de línea antes del checkout; [run 43748589509](https://github.com/fran-eliot/github-framework/actions/runs/43748589509) superó los tres jobs. No omitir esta incidencia de futuras valoraciones de reproducibilidad.
+
+**Contratos y límites:** la CLI opera sobre bibliotecas de Components y sus metadatos, no valida de forma semántica un repositorio consumidor; las huellas prueban coincidencia con un catálogo suministrado, no autenticidad; las lecturas del sistema de archivos no son una instantánea atómica. Los resultados de CI solo corresponden al commit concreto probado. Los tests de compatibilidad cubren casos explícitos, **no todas las combinaciones posibles ni un compromiso formal de estabilidad de API**.
+
+## Reanudación recomendada
+
+1. Verificar el merge, CI y eliminación de la rama de la **PR de actualización del Kit 1.5.0**; el SHA anterior registra el estado previo a dicha PR.
+2. Consultar directamente `main`, PR abiertas, checks y la GitHub Release; distinguir la etiqueta `v0.11.0` del estado `Unreleased`.
+3. Leer [Revisión de preparación](../../docs/releases/framework-validator-unreleased-readiness-20261115.md), [Contrato de compatibilidad](../../docs/implementation/validator-compatibility-contract.md) y `CHANGELOG.md > Unreleased`.
+4. Priorizar una **evaluación práctica acotada y de solo lectura** con criterios observables, o revisar los pendientes de compatibilidad antes de plantear un candidato de release; no agregar flags sin necesidad demostrada.
+5. No crear una release, tag, Sprint o milestone ni modificar Only Film sin aprobación expresa del mantenedor. Mantener el flujo: rama y PR por incremento; el mantenedor revisa, fusiona y borra la rama remota.
+
+---
+
+# Snapshot histórico — PR #358 (2026-11-15)
+
+> Este bloque fue el snapshot vigente en la versión documental 1.4.0; conserva evidencia de aquel momento, no el estado actual. Para reanudar, usar el snapshot anterior y verificar GitHub.
+
+
 
 > **Punto de reanudación actual.** Este snapshot sustituye al snapshot de PR #350 que aparece debajo; el contenido histórico se conserva como referencia. Al reanudar el trabajo, comprobar siempre `main`, PR y CI en GitHub, porque pueden haber cambiado desde esta actualización.
 
