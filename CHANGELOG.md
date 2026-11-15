@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+No unreleased changes recorded after v0.11.0.
+
+---
+
+## [0.11.0] - 2026-11-15
+
 ### Added
 
 * Framework Validator automation for pull requests and pushes to `main`, with Python 3.11 test and Component validation jobs on Ubuntu and Windows.
@@ -17,7 +23,7 @@
 * Improved CLI reporting and file output for local developer workflows while preserving whole-library validation as the default.
 * Updated Framework Validator CI actions to Node.js 24-compatible majors (`checkout@v5`, `setup-python@v6`, `upload-artifact@v6`) while retaining the two-platform test, validation, and report workflow.
 
-**Release preparation:** `v0.11.0 — Framework Validator CLI and CI` is the proposed next release under approved Option A complete-tree scope. This section remains **Unreleased** until a final candidate SHA, version, date, release notes and publication are expressly authorized. The entire snapshot includes historical documentary work, not only Validator features. The case study does not verify end-to-end runtime, Sonar Quality Gate, security certification, independent usability or third-party licensing rights.
+**Released:** `v0.11.0 — Framework Validator CLI and CI` on 2026-11-15 as an Option A complete-tree GitHub Release at commit [`55680b388b0fd8256c95e15866e53d21cc9a5033`](https://github.com/fran-eliot/github-framework/commit/55680b388b0fd8256c95e15866e53d21cc9a5033). The snapshot includes historical documentary work, not only Validator functionality. The Only Film case study does not establish end-to-end runtime verification, Sonar Quality Gate acceptance, security certification, independent usability or third-party licensing rights. [Release](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0).
 
 ---
 
