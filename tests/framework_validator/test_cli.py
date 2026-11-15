@@ -943,7 +943,6 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             ]
             for options in (
                 ["--component", "documentation/architecture"],
-                ["--output", "report.json"],
             ):
                 with self.subTest(options=options):
                     result = subprocess.run(
@@ -1077,6 +1076,96 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             catalog = json.loads(result.stdout)
             self.assertEqual(catalog["details"][0]["metadata_status"], "invalid")
             self.assertIsNone(catalog["details"][0]["id"])
+
+    def test_cli_json_catalog_export_with_metadata_and_family_filter(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(VALID_METADATA, encoding="utf-8")
+            (root / "workflow" / "issue").mkdir(parents=True)
+            output = root / "catalog.json"
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--family", "documentation",
+                    "--details", "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            self.assertEqual(json.loads(output.read_text(encoding="utf-8")), {
+                "components": ["documentation/architecture"],
+                "count": 1,
+                "scope": {"families": ["documentation"]},
+                "details": [{
+                    "path": "documentation/architecture",
+                    "id": "DOC-ARCHITECTURE",
+                    "name": "Architecture",
+                    "version": "0.1.0",
+                    "status": "Experimental",
+                    "metadata_status": "loaded",
+                }],
+            })
+            self.assertTrue(output.read_bytes().endswith(b"\n"))
+
+    def test_cli_json_catalog_export_replaces_existing_file(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            output = root / "catalog.json"
+            output.write_text("outdated", encoding="utf-8")
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root),
+                    "--list-components", "--format", "json",
+                    "--output", str(output),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(json.loads(output.read_text(encoding="utf-8"))["count"], 1)
+            self.assertEqual(list(root.glob(".catalog.json.*.tmp")), [])
+
+    def test_cli_json_catalog_export_reports_write_error(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            destination = root / "missing-parent" / "catalog.json"
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--output", str(destination),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 2)
+            self.assertEqual(result.stdout, "")
+            self.assertIn("Unable to write JSON output", result.stderr)
+            self.assertFalse(destination.exists())
+
+    def test_cli_catalog_text_output_argument_rejected(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--output", str(root / "catalog.json"),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 2)
+            self.assertIn("--output requires --format json", result.stderr)
+
 
     def test_cli_details_requires_json_catalog(self) -> None:
         with TemporaryDirectory() as directory:
