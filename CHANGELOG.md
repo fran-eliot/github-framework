@@ -24,6 +24,8 @@
 
 * Opt-in Component catalog pagination using `--limit` and `--offset` after filtering and sorting, with JSON pagination totals, page-scoped summaries and safe empty-page handling.
 
+* JSON catalog pagination now includes `has_next` and `next_offset` for deterministic navigation across filtered, sorted Component pages.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
