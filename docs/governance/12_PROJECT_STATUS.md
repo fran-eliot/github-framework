@@ -3,11 +3,11 @@
 | Campo                    | Valor                                                     |
 | ------------------------ | --------------------------------------------------------- |
 | **Proyecto**             | GitHub Framework                                          |
-| **Versión actual**       | v0.10.0                                                    |
+| **Versión actual**       | v0.11.0                                                    |
 | **Estado**               | En desarrollo                                             |
-| **Fase**                 | Post-release — Assisted Analysis Core                |
+| **Fase**                 | Post-release — Framework Validator CLI and CI                |
 | **Sprint actual**        | Ninguno activo                                              |
-| **Versión objetivo**     | v0.11.0 aprobada — publicación pendiente                        |
+| **Versión objetivo**     | Ninguna comprometida                        |
 | **Última actualización** | 2026-11-15                                                |
 
 ---
@@ -18,13 +18,13 @@ GitHub Framework ha completado las fases de arquitectura, Open Source Readiness,
 
 El Framework dispone de una arquitectura formal, estándares de repositorio, un sistema de Components reutilizables, mecanismos de gobierno, una biblioteca de Documentation Components, tres Repository Templates y una primera familia de Core Workflow Components.
 
-Las versiones `v0.1.0` a `v0.10.0` han sido publicadas. La última versión publicada es **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`**.
+Las versiones `v0.1.0` a `v0.11.0` han sido publicadas. La última versión publicada es **[`v0.11.0 — Framework Validator CLI and CI`](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0)** (2026-11-15), con el tag fijado en `55680b388b0fd8256c95e15866e53d21cc9a5033`.
 
-Sprint 12 ha finalizado y **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`** ha sido publicada. La milestone #9 está cerrada, con las Issues #78, #79 y #80 completadas. No hay Sprint activo ni nueva release publicada. El mantenedor ha aprobado preparar un snapshot completo de la **opción A**, con `v0.11.0 — Framework Validator CLI and CI` y sus notas aprobadas el 2026-11-15; la publicación sigue pendiente de autorización final.
+Sprint 12 finalizó con la publicación de `v0.10.0` y el cierre de la milestone #9. Posteriormente se publicó **`v0.11.0 — Framework Validator CLI and CI`** el 2026-11-15 como snapshot completo de la opción A. No se abrió un nuevo Sprint ni una milestone para esta release; no hay Sprint activo ni nueva versión objetivo comprometida.
 
 ## Evolución post-release del Framework Validator (noviembre de 2026)
 
-Tras publicar `v0.10.0`, se ha ampliado el Framework Validator en `main` mediante incrementos independientes y todavía no incluidos en una nueva release:
+Tras publicar `v0.10.0`, se amplió el Framework Validator en `main` mediante incrementos independientes incorporados finalmente a `v0.11.0`:
 
 - CI automático en Pull Requests y en `main`, con validación y tests sobre Ubuntu y Windows.
 - Informes JSON por plataforma, resúmenes de ejecución y anotaciones limitadas para facilitar el diagnóstico.
@@ -32,9 +32,9 @@ Tras publicar `v0.10.0`, se ha ampliado el Framework Validator en `main` mediant
 - Mejoras del contrato de informes JSON para ofrecer resultados por Component, conteos, rutas relativas y alcance de selección.
 - Smoke test de CLI ejecutado sobre los Components reales en Ubuntu y Windows, y acciones GitHub Actions actualizadas para Node.js 24.
 
-**Estado:** integrado en `main` y verificado por CI (161 tests por sistema operativo, 21 Components, smoke test real de CLI). El alcance completo de la opción A está aprobado para **preparación**, y `v0.11.0` y sus notas están aprobadas para una futura release; continúa publicada únicamente `v0.10.0`. No se ha autorizado el tag, GitHub Release, milestone ni Sprint nuevos.
+**Estado:** [`v0.11.0`](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0) publicado el 2026-11-15 con CI del commit exacto aprobado: 161 tests por sistema operativo, 21 Components y smoke test real de CLI. La release no convierte estas mejoras del Validator en automatización semántica de Existing Repository Adoption ni altera Only Film.
 
-**Siguiente decisión:** revisar las notas de release, sincronizar los documentos y verificar el SHA final del candidato. Obtener autorización separada para el SHA y la fecha definitivos, la creación del tag y la publicación. No convertir estas mejoras del Validator en automatización semántica de Existing Repository Adoption.
+**Siguiente decisión:** priorizar la siguiente mejora funcional tras el cierre post-release, sin asignar una nueva versión, Sprint o milestone sin aprobación.
 
 ---
 
@@ -47,7 +47,7 @@ El Assessment de [Only Film](https://github.com/fran-eliot/only_film) frente a `
 - **Adoption Decisions:** 28/28 resueltas — 14 `PRESERVE`, 3 `OMIT`, 9 `ADAPT` y 2 `ADD`.
 - **Alcance:** conserva las limitaciones sobre verificación de Docker Compose, ejecución completa de pruebas, cobertura, Quality Gate, seguridad, licencias y demás evidencias acotadas.
 
-Este caso práctico muestra la aplicación del Assessment Core a un consumer real; **no equivale a certificación técnica**, ni implica que se hayan aplicado cambios a Only Film. **Application e Integration para Only Film no están iniciados ni autorizados**. El Framework no abre por ello un Sprint, una milestone o una versión objetivo nueva; la release publicada continúa siendo `v0.10.0`.
+Este caso práctico muestra la aplicación del Assessment Core a un consumer real; **no equivale a certificación técnica**, ni implica que se hayan aplicado cambios a Only Film. **Application e Integration para Only Film no están iniciados ni autorizados**. El Assessment no abre por sí mismo un Sprint, una milestone o una nueva versión objetivo. La última release publicada del Framework es `v0.11.0`.
 
 ---
 
@@ -865,3 +865,4 @@ Sprint 12 ha completado su alcance y `v0.10.0` se ha publicado como GitHub Relea
 | v0.8.0  | 2026-10-31 | Existing Repository Adoption Application Core publicado            |
 | v0.9.0  | 2026-11-01 | Existing Repository Adoption Integration Core publicado            |
 | v0.10.0 | 2026-11-05 | Existing Repository Adoption Assisted Analysis Core publicado |
+| v0.11.0 | 2026-11-15 | Framework Validator CLI and CI publicado (opción A) |

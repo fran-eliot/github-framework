@@ -740,9 +740,9 @@ La versión `v0.10.0 — Existing Repository Adoption Assisted Analysis Core` se
 
 ---
 
-# Preparación de v0.11.0 — Framework Validator CLI and CI (opción A)
+# v0.11.0 — Framework Validator CLI and CI (opción A)
 
-**Estado:** ✅ Integrado y verificado en `main`; 🟡 versión y notas aprobadas; release no publicada
+**Estado:** ✅ Released — 2026-11-15
 
 Tras la publicación de `v0.10.0` se han incorporado mejoras de Framework Automation independientes del alcance del Assisted Analysis Core publicado:
 
@@ -754,11 +754,11 @@ Tras la publicación de `v0.10.0` se han incorporado mejoras de Framework Automa
 - Actualización de las acciones de CI a versiones compatibles con Node.js 24.
 - Inclusión dentro del snapshot completo de la opción A del Assessment **documental** aprobado de Only Film y de las evidencias históricas de Adoption/Discovery, sin modificar el consumidor.
 
-Estas capacidades amplían el Framework Validator del `v0.6.0`, pero **no forman parte de la release publicada `v0.10.0`**. El mantenedor ha aprobado preparar la **opción A** (snapshot completo del repositorio). El mantenedor ha aprobado **`v0.11.0 — Framework Validator CLI and CI` y el contenido de sus notas** el 2026-11-15. La fecha, el commit final y el acto de publicación siguen pendientes de autorización expresa; **no existe todavía tag ni GitHub Release nuevos**.
+Estas capacidades amplían el Framework Validator del `v0.6.0` y se publicaron en **[`v0.11.0 — Framework Validator CLI and CI`](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0)** el 2026-11-15, bajo la opción A de snapshot completo. El tag apunta al commit autorizado `55680b388b0fd8256c95e15866e53d21cc9a5033`; el resultado documental de Only Film conserva sus límites de evidencia.
 
-## Próxima decisión de publicación
+## Seguimiento post-release
 
-Finalizar la documentación de publicación y comprobar el commit exacto del candidato, incluyendo ambos sistemas operativos, el Validator y el smoke test de CLI. Solicitar aprobación expresa antes de crear cualquier tag o GitHub Release. No presentar UX-02 como ejecutado ni confundir el Assessment documental de Only Film con Application/Integration.
+Mantener el Framework Validator y sus comprobaciones CI, evaluar nuevos incrementos funcionales de manera independiente y conservar las limitaciones explícitas del Assessment documental de Only Film. UX-02 continúa `Prepared — Not Executed`; esta publicación no autoriza Application/Integration del consumidor ni compromete la versión estable v1.0.0.
 
 ---
 
