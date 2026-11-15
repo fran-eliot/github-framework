@@ -212,6 +212,15 @@ python -m scripts.framework_validator --list-components --metadata-version "0.1.
 
 Combine it with ID, path, family and loading-status filters, optional summaries, and JSON `--output`. `scope.metadata_version` appears only when requested; no matches return code `1` without overwriting an existing export.
 
+Search the human-readable `name` field in Component metadata with repeatable, case-sensitive `--metadata-name` glob patterns, or order results by name with `--sort-by name`:
+
+```bash
+python -m scripts.framework_validator --list-components --metadata-name "*Architecture*" --format json --details
+python -m scripts.framework_validator --list-components --sort-by name --format json
+```
+
+Name filters match any selected glob pattern and compose with existing catalog filters, summaries and JSON export. Missing, unreadable or non-string names cannot match and sort last; ties use the Component path. JSON catalogs include `scope.metadata_name` only when filtering by name. An empty selection returns exit code `1` without changing an existing export.
+
 Filter the catalog by the `id` declared in `metadata.yml` with repeatable, case-sensitive `--metadata-id` glob patterns (a union of matches). Unlike `--match`, this selects metadata IDs rather than Component paths; Components with missing, unreadable, or non-string IDs cannot match:
 
 ```bash

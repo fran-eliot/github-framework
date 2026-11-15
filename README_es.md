@@ -214,6 +214,15 @@ python -m scripts.framework_validator --list-components --metadata-version "0.1.
 
 Admite filtros por ID, ruta, familia y estado de lectura, los resúmenes opcionales y `--output` JSON. `scope.metadata_version` solo aparece cuando se solicita. Una selección vacía devuelve código `1` sin sobrescribir la exportación existente.
 
+Busca por el campo descriptivo `name` de los metadatos con patrones glob repetibles `--metadata-name` (sensibles a mayúsculas), u ordena los resultados con `--sort-by name`:
+
+```bash
+python -m scripts.framework_validator --list-components --metadata-name "*Architecture*" --format json --details
+python -m scripts.framework_validator --list-components --sort-by name --format json
+```
+
+Los patrones se combinan como alternativas y admiten el resto de filtros, resúmenes y exportación JSON. Los nombres ausentes, ilegibles o que no son cadenas no coinciden y se ordenan al final; la ruta desempata. `scope.metadata_name` solo aparece cuando se solicita el filtro. Una selección vacía devuelve `1` sin modificar un archivo exportado existente.
+
 Filtra por el identificador `id` definido en `metadata.yml` con patrones glob repetibles `--metadata-id` (coincidencia sensible a mayúsculas; se admiten varias alternativas). A diferencia de `--match`, compara identificadores, no rutas. Los Components sin identificador de tipo cadena o sin metadatos legibles no coinciden:
 
 ```bash

@@ -12,6 +12,8 @@
 
 * Opt-in `--sort-by path|id|version` ordering for Component catalog listings, preserving default path order and placing missing metadata sort keys last.
 
+* Read-only Component catalog `--metadata-name` glob filtering and `--sort-by name` ordering, with regression coverage for missing metadata and safe exports.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
