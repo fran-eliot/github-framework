@@ -1147,7 +1147,7 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             )
             self.assertEqual(result.returncode, 2)
             self.assertEqual(result.stdout, "")
-            self.assertIn("Unable to write JSON output", result.stderr)
+            self.assertIn("Unable to write JSON catalog", result.stderr)
             self.assertFalse(destination.exists())
 
     def test_cli_catalog_text_output_argument_rejected(self) -> None:
