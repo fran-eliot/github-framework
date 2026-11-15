@@ -187,6 +187,14 @@ python -m scripts.framework_validator --list-components --match "documentation/*
 
 `--exclude` requires `--list-components` and can be combined with `--match`, `--family`, `--details`, or JSON `--output`. JSON catalogs include `scope.exclude` only when exclusion patterns were supplied. Excluding all Components returns code `1` without overwriting an existing output file.
 
+Filter the declared Component `status` field with repeatable, case-sensitive `--component-status` glob patterns. Unlike `--metadata-status`, which selects YAML loading states (`loaded`, `missing`, `invalid`), this option matches the actual `status` string in `metadata.yml`:
+
+```bash
+python -m scripts.framework_validator --list-components --component-status "Experimental" --format json --details
+```
+
+Multiple patterns form a union and combine with other catalog filters, ordering, summaries and JSON export. Missing, invalid or non-string status fields do not match. The JSON scope includes `component_status` only when requested; an empty selection exits with code `1` without replacing an existing export.
+
 Filter catalog entries by metadata loading state using repeatable `--metadata-status loaded|missing|invalid` (combined as a union). This loads metadata only when the status filter or `--details` requires it; it does not perform semantic validation:
 
 ```bash
