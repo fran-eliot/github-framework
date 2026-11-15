@@ -7,7 +7,7 @@
 | **Estado**               | En desarrollo                                             |
 | **Fase**                 | Post-release — Assisted Analysis Core                |
 | **Sprint actual**        | Ninguno activo                                              |
-| **Versión objetivo**     | v0.11.0 propuesta — pendiente de aprobación final                        |
+| **Versión objetivo**     | v0.11.0 aprobada — publicación pendiente                        |
 | **Última actualización** | 2026-11-15                                                |
 
 ---
@@ -20,7 +20,7 @@ El Framework dispone de una arquitectura formal, estándares de repositorio, un 
 
 Las versiones `v0.1.0` a `v0.10.0` han sido publicadas. La última versión publicada es **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`**.
 
-Sprint 12 ha finalizado y **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`** ha sido publicada. La milestone #9 está cerrada, con las Issues #78, #79 y #80 completadas. No hay Sprint activo ni nueva release publicada. El mantenedor ha aprobado preparar un snapshot completo de la **opción A**, con `v0.11.0 — Framework Validator CLI and CI` como versión propuesta, pendiente de aprobación final.
+Sprint 12 ha finalizado y **`v0.10.0 — Existing Repository Adoption Assisted Analysis Core`** ha sido publicada. La milestone #9 está cerrada, con las Issues #78, #79 y #80 completadas. No hay Sprint activo ni nueva release publicada. El mantenedor ha aprobado preparar un snapshot completo de la **opción A**, con `v0.11.0 — Framework Validator CLI and CI` y sus notas aprobadas el 2026-11-15; la publicación sigue pendiente de autorización final.
 
 ## Evolución post-release del Framework Validator (noviembre de 2026)
 
@@ -32,9 +32,9 @@ Tras publicar `v0.10.0`, se ha ampliado el Framework Validator en `main` mediant
 - Mejoras del contrato de informes JSON para ofrecer resultados por Component, conteos, rutas relativas y alcance de selección.
 - Smoke test de CLI ejecutado sobre los Components reales en Ubuntu y Windows, y acciones GitHub Actions actualizadas para Node.js 24.
 
-**Estado:** integrado en `main` y verificado por CI (161 tests por sistema operativo, 21 Components, smoke test real de CLI). El alcance completo de la opción A está aprobado para **preparación**, y se propone `v0.11.0` como siguiente versión; continúa publicada únicamente `v0.10.0`. No se ha autorizado el tag, GitHub Release, milestone ni Sprint nuevos.
+**Estado:** integrado en `main` y verificado por CI (161 tests por sistema operativo, 21 Components, smoke test real de CLI). El alcance completo de la opción A está aprobado para **preparación**, y `v0.11.0` y sus notas están aprobadas para una futura release; continúa publicada únicamente `v0.10.0`. No se ha autorizado el tag, GitHub Release, milestone ni Sprint nuevos.
 
-**Siguiente decisión:** revisar las notas de release, sincronizar los documentos y verificar el SHA final del candidato. Obtener autorización separada para la versión definitiva y la publicación. No convertir estas mejoras del Validator en automatización semántica de Existing Repository Adoption.
+**Siguiente decisión:** revisar las notas de release, sincronizar los documentos y verificar el SHA final del candidato. Obtener autorización separada para el SHA y la fecha definitivos, la creación del tag y la publicación. No convertir estas mejoras del Validator en automatización semántica de Existing Repository Adoption.
 
 ---
 
