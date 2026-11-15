@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.10.0-blue" alt="Versión" />
+  <img src="https://img.shields.io/badge/version-v0.11.0-blue" alt="Versión" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Estado" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="Licencia" />
 </p>
@@ -271,6 +271,7 @@ Las versiones publicadas incluyen:
 - **v0.8.0** — Existing Repository Adoption Application Core
 - **v0.9.0** — Existing Repository Adoption Integration Core
 - **v0.10.0** — Existing Repository Adoption Assisted Analysis Core
+- **v0.11.0** — Framework Validator CLI and CI
 - **v1.0.0** — Versión estable
 
 Para consultar el roadmap completo, visita [ROADMAP.md](ROADMAP.md).
@@ -297,11 +298,11 @@ GitHub Framework evoluciona mediante versiones incrementales.
 
 La última release publicada es:
 
-**v0.10.0 — Existing Repository Adoption Assisted Analysis Core**
+**v0.11.0 — Framework Validator CLI and CI** ([GitHub Release](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0))
 
 Los Cores de Assessment, Application, Integration y Assisted Analysis están implementados, verificados, integrados y publicados. Assisted Analysis recopila Evidence delimitada y trazable a su fuente mediante un proceso read-only con revisión humana, sin automatizar decisiones de adopción ni modificar repositorios consumer.
 
-**En preparación (aún no publicada):** [v0.11.0 — Framework Validator CLI and CI, aprobada](docs/releases/PROPOSED_V0_11_0_RELEASE_NOTES.md). El snapshot completo de la opción A incluye mejoras del Validator y el Assessment **documental** de Only Film, con sus evidencias acotadas; no acredita migración del consumidor, certificación de seguridad, verificación operativa integral ni pruebas independientes de usabilidad. La insignia de versión sigue indicando la **última release publicada**, v0.10.0, hasta la aprobación expresa de la publicación.
+**Publicada el 2026-11-15:** [v0.11.0 — Framework Validator CLI and CI](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0). El snapshot completo de la opción A incluye mejoras del Validator y el Assessment **documental** de Only Film, con sus evidencias acotadas; no acredita migración del consumidor, certificación de seguridad, verificación operativa integral ni pruebas independientes de usabilidad.
 
 ---
 
