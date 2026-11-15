@@ -218,7 +218,7 @@ python -m scripts.framework_validator --list-components --format json --details 
 python -m scripts.framework_validator --catalog-input selected-components.json --catalog-verify-sha256 --format json
 ```
 
-The opt-in `metadata_sha256` property is computed from the **exact bytes** of each `metadata.yml` (not only the fields shown in `--details`). `--catalog-metadata-sha256` requires a detailed JSON listing; `--catalog-verify-sha256` requires an imported catalog with matching digests, and can be combined with `--catalog-verify-details`. A changed file or missing digest causes argument error `2` before validation. This verifies metadata file consistency, **not** other Component files or authenticity against a trusted signer. The default JSON schema remains unchanged.
+The opt-in `metadata_sha256` property is computed from the **exact bytes** of each `metadata.yml` (not only the fields shown in `--details`). `--catalog-metadata-sha256` requires a detailed JSON listing; `--catalog-verify-sha256` requires an imported catalog with matching digests, and can be combined with `--catalog-verify-details`. A changed file or missing digest causes argument error `2` before validation. The metadata digest check rejects symlinked `metadata.yml` files and symlinked Component roots rather than following them, including links to files outside the selected library. This verifies metadata file consistency, **not** other Component files or authenticity against a trusted signer. The default JSON schema remains unchanged.
 
 To detect **stale exported metadata** before validating, generate the catalog with `--details` and supply `--catalog-verify-details` when importing it:
 
