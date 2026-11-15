@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* Optional `--metadata-summary` for JSON Component catalogs, reporting loaded, missing, and invalid metadata counts for the selected inventory without altering default catalog output.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
