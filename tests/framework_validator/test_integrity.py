@@ -70,6 +70,20 @@ class ComponentIntegrityTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "not a directory"):
                 component_content_sha256(Path(directory) / "missing")
 
+    def test_content_digest_preserves_existing_framing(self) -> None:
+        with TemporaryDirectory() as directory:
+            component = Path(directory) / "component"
+            component.mkdir()
+            content = b"sample bytes"
+            (component / "README.md").write_bytes(content)
+            expected = hashlib.sha256()
+            name = b"README.md"
+            expected.update(len(name).to_bytes(8, "big"))
+            expected.update(name)
+            expected.update(len(content).to_bytes(8, "big"))
+            expected.update(content)
+            self.assertEqual(component_content_sha256(component), expected.hexdigest())
+
     def test_content_digest_rejects_file_size_change_during_hash(self) -> None:
         with TemporaryDirectory() as directory:
             component = Path(directory) / "component"
