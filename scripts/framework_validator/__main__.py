@@ -333,8 +333,10 @@ if __name__ == "__main__":
     if arguments.list_components:
         if arguments.component:
             parser.error("--list-components cannot be combined with --component")
-    elif arguments.match or arguments.exclude or arguments.metadata_status:
-        parser.error("--match, --exclude and --metadata-status require --list-components")
+    elif arguments.match or arguments.exclude:
+        parser.error("--match and --exclude require --list-components")
+    elif arguments.metadata_status:
+        parser.error("--metadata-status requires --list-components")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
