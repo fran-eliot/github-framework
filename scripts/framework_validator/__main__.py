@@ -283,6 +283,12 @@ if __name__ == "__main__":
         help="List only matching family/name paths (repeatable; --list-components only).",
     )
     parser.add_argument(
+        "--exclude",
+        action="append",
+        metavar="GLOB",
+        help="Exclude matching family/name paths from the catalog (repeatable; listing only).",
+    )
+    parser.add_argument(
         "--component",
         action="append",
         metavar="FAMILY/NAME",
@@ -296,8 +302,8 @@ if __name__ == "__main__":
     if arguments.list_components:
         if arguments.component:
             parser.error("--list-components cannot be combined with --component")
-    elif arguments.match:
-        parser.error("--match requires --list-components")
+    elif arguments.match or arguments.exclude:
+        parser.error("--match and --exclude require --list-components")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
@@ -330,10 +336,18 @@ if __name__ == "__main__":
                     for pattern in arguments.match
                 )
             ]
+        if arguments.exclude:
+            available = [
+                component for component in available
+                if not any(
+                    fnmatchcase(component.relative_to(root).as_posix(), pattern)
+                    for pattern in arguments.exclude
+                )
+            ]
         if not available:
             message = (
                 "No Components match the selected catalog filters."
-                if arguments.match else "No Components discovered."
+                if arguments.match or arguments.exclude else "No Components discovered."
             )
             print(message, file=sys.stderr)
             raise SystemExit(1)
@@ -350,6 +364,8 @@ if __name__ == "__main__":
             }
             if arguments.match:
                 catalog["scope"]["match"] = list(dict.fromkeys(arguments.match))
+            if arguments.exclude:
+                catalog["scope"]["exclude"] = list(dict.fromkeys(arguments.exclude))
             if arguments.details:
                 entries = []
                 for component in available:
