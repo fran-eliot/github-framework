@@ -1265,6 +1265,90 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                         "--metadata-id requires --list-components", result.stderr
                     )
 
+    def test_cli_catalog_family_summary_counts_all_families(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for family, name in (
+                ("documentation", "architecture"),
+                ("documentation", "references"),
+                ("readme", "author"),
+                ("workflow", "issue"),
+            ):
+                (root / family / name).mkdir(parents=True)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--family-summary",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            catalog = json.loads(result.stdout)
+            self.assertEqual(catalog["count"], 4)
+            self.assertEqual(catalog["family_summary"], {
+                "readme": 1, "documentation": 2, "workflow": 1,
+            })
+            self.assertNotIn("details", catalog)
+            self.assertNotIn("metadata_summary", catalog)
+
+    def test_cli_catalog_family_summary_composes_with_filters_and_export(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            doc = self.create_component(root)
+            (doc / "metadata.yml").write_text(VALID_METADATA, encoding="utf-8")
+            (root / "documentation" / "references").mkdir(parents=True)
+            (root / "readme" / "author").mkdir(parents=True)
+            destination = root / "catalog.json"
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--family-summary",
+                    "--metadata-id", "DOC-*",
+                    "--metadata-status", "loaded",
+                    "--metadata-summary", "--output", str(destination),
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "")
+            catalog = json.loads(destination.read_text(encoding="utf-8"))
+            self.assertEqual(catalog["components"], ["documentation/architecture"])
+            self.assertEqual(catalog["family_summary"], {
+                "readme": 0, "documentation": 1, "workflow": 0,
+            })
+            self.assertEqual(catalog["metadata_summary"], {
+                "loaded": 1, "missing": 0, "invalid": 0,
+            })
+            self.assertEqual(sum(catalog["family_summary"].values()), catalog["count"])
+
+    def test_cli_catalog_family_summary_requires_json_listing(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "readme" / "author").mkdir(parents=True)
+            for options in (
+                ["--family-summary"],
+                ["--format", "json", "--family-summary"],
+                ["--list-components", "--family-summary"],
+            ):
+                with self.subTest(options=options):
+                    result = subprocess.run(
+                        [
+                            sys.executable, "-m", "scripts.framework_validator",
+                            "--components-root", str(root), *options,
+                        ],
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertIn(
+                        "--family-summary requires --list-components --format json",
+                        result.stderr,
+                    )
+
     def test_cli_catalog_metadata_summary_counts_all_states(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)

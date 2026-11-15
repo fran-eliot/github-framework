@@ -203,6 +203,14 @@ python -m scripts.framework_validator --list-components --metadata-id "DOC-*" --
 
 Combine it with path/family filters, `--metadata-status`, `--metadata-summary`, and JSON `--output`. JSON catalogs add `scope.metadata_id` only when selected. An empty result exits with code `1` and preserves an existing export file.
 
+To summarize the number of selected Components per family without loading metadata, add `--family-summary` to the JSON catalog:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --family-summary
+```
+
+The optional `family_summary` object contains counts for `readme`, `documentation`, and `workflow` in stable order (including zero counts). Counts reflect the final selection after all filters, and sum to `count`. The option requires `--list-components --format json`, composes with `--metadata-summary`, and supports JSON `--output`.
+
 For a compact inventory health check, add `--metadata-summary` to a JSON Component catalog to count `loaded`, `missing`, and `invalid` metadata entries after all selected filters, without including full Component details:
 
 ```bash

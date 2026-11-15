@@ -205,6 +205,14 @@ python -m scripts.framework_validator --list-components --metadata-id "DOC-*" --
 
 Admite filtros de ruta y familia, `--metadata-status`, `--metadata-summary` y exportación JSON. Solo incorpora `scope.metadata_id` cuando se solicita; si no hay coincidencias, devuelve código `1` y conserva el archivo exportado existente.
 
+Para obtener el recuento de Components seleccionados por familia sin cargar los metadatos, utiliza `--family-summary` en el catálogo JSON:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --family-summary
+```
+
+El objeto opcional `family_summary` contiene los recuentos de `readme`, `documentation` y `workflow` en orden estable, incluidos los valores cero. Los recuentos corresponden a la selección después de aplicar todos los filtros y suman `count`. Requiere `--list-components --format json`, admite `--metadata-summary` y la exportación JSON con `--output`.
+
 Para consultar rápidamente el estado del inventario, añade `--metadata-summary` al catálogo JSON. Devuelve recuentos de metadatos `loaded`, `missing` e `invalid` después de aplicar los filtros, sin necesidad de incluir los detalles completos:
 
 ```bash
