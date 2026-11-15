@@ -1449,6 +1449,7 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(catalog["count"], 2)
             self.assertEqual(catalog["pagination"], {
                 "total": 4, "offset": 1, "limit": 2,
+                "has_next": True, "next_offset": 3,
             })
             self.assertEqual(catalog["family_summary"], {
                 "readme": 1, "documentation": 1, "workflow": 0,
@@ -1482,6 +1483,7 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(catalog["components"], ["documentation/references"])
             self.assertEqual(catalog["pagination"], {
                 "total": 3, "offset": 2, "limit": None,
+                "has_next": False, "next_offset": None,
             })
 
     def test_cli_catalog_pagination_summaries_and_details_cover_page_only(self) -> None:
@@ -1526,6 +1528,64 @@ class FrameworkValidatorCLITests(unittest.TestCase):
             self.assertEqual(catalog["component_status_summary"], {
                 "by_status": {"Stable": 1}, "missing": 0,
             })
+
+    def test_cli_catalog_pagination_navigation_across_pages(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ("architecture", "database", "references", "standards", "testing"):
+                (root / "documentation" / name).mkdir(parents=True)
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--list-components",
+                "--format", "json", "--sort-by", "path", "--limit", "2",
+            ]
+            pages = []
+            offset = 0
+            while True:
+                result = subprocess.run(
+                    command + ["--offset", str(offset)],
+                    cwd=validator_cli.REPOSITORY_ROOT,
+                    capture_output=True, text=True, check=False,
+                )
+                self.assertEqual(result.returncode, 0, result.stderr)
+                catalog = json.loads(result.stdout)
+                pages.extend(catalog["components"])
+                pagination = catalog["pagination"]
+                self.assertEqual(pagination["total"], 5)
+                self.assertEqual(pagination["offset"], offset)
+                if not pagination["has_next"]:
+                    self.assertIsNone(pagination["next_offset"])
+                    break
+                self.assertIsInstance(pagination["next_offset"], int)
+                self.assertGreater(pagination["next_offset"], offset)
+                offset = pagination["next_offset"]
+            self.assertEqual(pages, [
+                "documentation/architecture", "documentation/database",
+                "documentation/references", "documentation/standards",
+                "documentation/testing",
+            ])
+
+    def test_cli_catalog_limit_only_includes_navigation_metadata(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ("architecture", "database", "references"):
+                (root / "documentation" / name).mkdir(parents=True)
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--list-components",
+                "--format", "json", "--limit", "3",
+            ]
+            full_page = subprocess.run(
+                command, cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(full_page.returncode, 0, full_page.stderr)
+            catalog = json.loads(full_page.stdout)
+            self.assertEqual(catalog["pagination"], {
+                "total": 3, "offset": 0, "limit": 3,
+                "has_next": False, "next_offset": None,
+            })
+            self.assertEqual(catalog["count"], 3)
 
     def test_cli_catalog_pagination_empty_page_preserves_export(self) -> None:
         with TemporaryDirectory() as directory:
