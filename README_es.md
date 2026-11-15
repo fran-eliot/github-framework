@@ -126,6 +126,9 @@ Para información detallada, explora el directorio `docs/` y los artifacts reuti
 
 ## ✅ Validación del Framework
 
+Para ver un recorrido reproducible de selección, exportación y validación, con comprobación de huellas y distinción entre contenido desactualizado y validación fallida, consulta la [guía de flujo del catálogo de Components](docs/implementation/validator-catalog-workflow.md) (en inglés).
+
+
 GitHub Framework incorpora un validador determinista para sus Components implementados.
 
 El validador descubre los Components, carga sus archivos de metadata y comprueba el Common Core, la identidad, la unicidad, la madurez, las dependencias y las extensiones Workflow aplicables.

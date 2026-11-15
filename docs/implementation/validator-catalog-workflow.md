@@ -1,0 +1,74 @@
+# Component Catalog → Targeted Validation: Practical Workflow
+
+This guide demonstrates a **read-only** selection and validation workflow for the implemented GitHub Framework Component library. Commands are run from the **GitHub Framework repository root** with Python 3.11 and PyYAML installed.
+
+It does not assess, apply, or integrate an existing consumer repository. In particular, it does not infer any Adoption Decision, modify Only Film, or establish that a consumer's tools, tests, or deployment run successfully.
+
+## 1. Discover Components
+
+Start with the actual tracked Component library:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --family documentation --details
+```
+
+The JSON `components` array contains portable `FAMILY/NAME` paths. `details` reports the currently readable metadata for each selected Component. This **catalog listing is not a validation pass**.
+
+## 2. Export a bounded, verifiable selection
+
+Select one Documentation Component after deterministic path sorting:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --family documentation --sort-by path --limit 1 --details --catalog-metadata-sha256 --catalog-content-sha256 --output selected-components.json
+```
+
+This creates a JSON file in the current directory. Its `components` array identifies the **page**, not the full library. `metadata_sha256` hashes the bytes of `metadata.yml`; `content_sha256` covers regular files within the Component, including their relative paths. Neither digest authenticates who produced the JSON.
+
+For an unpaginated selection, omit `--limit 1`. To select a different family, replace `documentation` with `readme` or `workflow`. The catalog source must remain the same library when checking it later.
+
+## 3. Validate exactly the exported selection
+
+```bash
+python -m scripts.framework_validator --catalog-input selected-components.json --catalog-verify-details --catalog-verify-sha256 --catalog-verify-content-sha256 --format json
+```
+
+The three optional preflight checks compare the exported metadata fields, raw `metadata.yml` digest and complete Component file-tree digest against the current local library. Only after they pass does the Validator check the selected Components.
+
+A successful JSON report returns `status: "passed"`, `components_discovered: 1` in this one-Component example, and a `scope.component_paths` array equal to the exported selection. The precise Component path depends on the library. The report is **filtered** and is not proof of whole-library validation.
+
+To validate the entire library instead, run separately:
+
+```bash
+python -m scripts.framework_validator --format json
+```
+
+## 4. Interpret exit status and changes
+
+| Exit code | Interpretation for this workflow |
+| --- | --- |
+| `0` | The requested validation completed successfully |
+| `1` | Validation failed (or a listing had no matching Components) |
+| `2` | Invalid arguments, unusable input, failed export, or a rejected/stale digest preflight |
+
+If an exported Component file is edited, renamed, added, or removed before step 3, the `--catalog-verify-content-sha256` preflight rejects the old snapshot. The CLI does not change the Component or repair the mismatch; export a new catalog **only after reviewing the change**.
+
+A file change can leave the ordinary metadata validation passing. **Validation success and content snapshot consistency are different claims.** Rejecting a stale digest says the content differs from the saved snapshot; it does not mean the modified content is invalid.
+
+The SHA-256 checks reject symbolic links, and full-content verification checks file size and modification time around reads. They are not an atomic filesystem snapshot, a signed attestation, or a verification of a consumer repository.
+
+## 5. Use a custom Component library (optional)
+
+The same selection workflow works against an existing folder containing the `readme/`, `documentation/`, and/or `workflow/` Component family directories. Pass the **same** root to both commands:
+
+```bash
+python -m scripts.framework_validator --components-root path/to/framework/components --list-components --format json --details --catalog-content-sha256 --output selected-components.json
+python -m scripts.framework_validator --components-root path/to/framework/components --catalog-input selected-components.json --catalog-verify-content-sha256 --format json
+```
+
+This validates Framework **Component metadata and supported artifacts**, not arbitrary application repositories or their runtime. The selection must contain existing `FAMILY/NAME` Component paths in that library.
+
+## 6. Automated and reproducible coverage
+
+The CI job executes `python -m scripts.framework_validator.smoke` on Ubuntu and Windows. That smoke test also copies a **real tracked Documentation Component** into a temporary library and exercises the entire flow: export both digests, verify the snapshot, change the **temporary copy's README**, confirm a stale-content rejection, and confirm that ordinary targeted validation can still pass. The tracked Component is never changed.
+
+See [Framework Validation](../../README.md) for the full CLI reference and [Existing Repository Adoption](../../framework/adoption/README.md) for the distinct, human-reviewed consumer Assessment process.

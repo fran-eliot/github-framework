@@ -124,6 +124,9 @@ For detailed information, explore the `docs/` directory and the reusable Framewo
 
 ## ✅ Framework Validation
 
+For a complete, reproducible catalog-to-validation example (including integrity checks and the difference between stale content and failed validation), see the [Component Catalog Workflow Guide](docs/implementation/validator-catalog-workflow.md).
+
+
 GitHub Framework includes a deterministic validator for its implemented Components.
 
 The validator discovers Components, loads their metadata, and checks the Common Core, identity, uniqueness, maturity, dependencies, and applicable Workflow extensions.

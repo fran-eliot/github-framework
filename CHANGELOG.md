@@ -44,6 +44,9 @@
 
 ### Added
 
+* Reproducible catalog-to-validation workflow guide and end-to-end CI smoke scenario using a temporary copy of a tracked Component, including stale-content rejection without modifying repository files.
+
+
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
 
 * Repeatable `--exclude` glob patterns for read-only Component catalog listings, composing with `--match`, family filtering, metadata details, JSON export and real-library CI smoke checks.
