@@ -1420,6 +1420,86 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                         result.stderr,
                     )
 
+    def test_cli_catalog_stdin_streams_discovery_to_validation(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root),
+            ]
+            discovery = subprocess.run(
+                command + ["--list-components", "--format", "json"],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(discovery.returncode, 0, discovery.stderr)
+            validation = subprocess.run(
+                command + ["--catalog-input", "-", "--format", "json"],
+                input=discovery.stdout,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(validation.returncode, 0, validation.stderr)
+            report = json.loads(validation.stdout)
+            self.assertEqual(report["status"], "passed")
+            self.assertEqual(report["components_discovered"], 1)
+            self.assertEqual(
+                report["scope"]["component_paths"],
+                ["documentation/architecture"],
+            )
+
+    def test_cli_catalog_stdin_rejects_invalid_json_and_paths(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.create_component(root)
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--catalog-input", "-",
+                "--format", "json",
+            ]
+            for source, expected in (
+                ("{oops", "Unable to read JSON Component catalog"),
+                ("", "Unable to read JSON Component catalog"),
+                ('{"components":["../private"]}', "invalid Component path"),
+                ('{"components":[]}', "non-empty components array"),
+            ):
+                with self.subTest(source=source):
+                    result = subprocess.run(
+                        command, input=source,
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertEqual(result.stdout, "")
+                    self.assertIn(expected, result.stderr)
+
+    def test_cli_catalog_stdin_preserves_validation_failure_status(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA.replace("DOC-ARCHITECTURE", "INVALID"),
+                encoding="utf-8",
+            )
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root),
+                    "--catalog-input", "-", "--format", "json",
+                ],
+                input=json.dumps({"components": ["documentation/architecture"]}),
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 1)
+            report = json.loads(result.stdout)
+            self.assertEqual(report["status"], "failed")
+            self.assertEqual(report["summary"]["failed_components"], 1)
+
     def test_cli_import_exported_catalog_for_targeted_validation(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
