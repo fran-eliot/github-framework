@@ -189,6 +189,14 @@ python -m scripts.framework_validator --list-components --match "documentation/*
 
 `--exclude` requiere `--list-components` y admite `--match`, `--family`, `--details` y `--output` JSON. Los catálogos JSON incluyen `scope.exclude` cuando se indican exclusiones. Si se excluyen todos los Components, se devuelve código `1` sin sobrescribir el archivo existente.
 
+Filtra el catálogo por el estado de lectura de la metadata mediante `--metadata-status loaded|missing|invalid` (repetible; sus selecciones se combinan). Solo se carga la metadata cuando se necesita para este filtro o `--details`, sin ejecutar validación semántica:
+
+```bash
+python -m scripts.framework_validator --list-components --metadata-status missing --metadata-status invalid --format json --details
+```
+
+Se combina con `--family`, `--match`, `--exclude` y `--output` JSON. El catálogo JSON añade `scope.metadata_status` en orden `loaded`, `missing`, `invalid` cuando se emplea el filtro. Si no hay coincidencias devuelve código `1` sin sobrescribir archivos.
+
 Por defecto, el listado devuelve una ruta portable por línea. Para integraciones, `--list-components --format json` devuelve un objeto con `components` ordenados, `count` y `scope.families`:
 
 ```bash
