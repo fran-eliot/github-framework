@@ -1,6 +1,9 @@
 # Changelog
 
 ## [Unreleased]
+
+* Improved Ubuntu/Windows Component catalog parity failure diagnostics to identify differing field names and top-level catalog properties, with bounded output and regressions for digest and metadata mismatches.
+
 * Added a commit-pinned v0.11.0-to-main release-scope inventory, grouping the 21 changed paths and documenting release candidate, compatibility and CI verification gaps without proposing publication.
 
 * Added isolated regression coverage and a pinned read-only consumer-boundary study clarifying that the Framework Component Validator does not validate arbitrary application repositories or perform Existing Repository Adoption.
