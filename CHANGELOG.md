@@ -4,6 +4,8 @@
 
 ### Added
 
+* Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
+
 * Repeatable `--exclude` glob patterns for read-only Component catalog listings, composing with `--match`, family filtering, metadata details, JSON export and real-library CI smoke checks.
 
 * Read-only CLI Component catalog path search through repeatable `--match` glob patterns, with text/JSON catalog output, family filtering, JSON export and real-library CI smoke coverage.
