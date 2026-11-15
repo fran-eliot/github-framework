@@ -62,7 +62,9 @@ These increments were merged into `main` after publication of v0.11.0. **Do not 
 
 **Overall outcome:** **evidence suitable for scoping discussion; not ready for an automatic release decision**. The testing evidence is encouraging, but a new published version is a separate governance action.
 
-## 6. Suggested next action (proposal only)**Follow-up compatibility work (post-baseline, pending its own CI review):** [CLI/JSON Compatibility Contract](../implementation/validator-compatibility-contract.md) adds bounded subprocess regression assertions for default and opt-in schemas, targeted import validation, exit codes, and safe export behavior. This is a subsequent improvement proposal; it must not be treated as evidence established at the `f8464b4a` review baseline until merged and verified independently.
+## 6. Suggested next action (proposal only)
+
+**Follow-up compatibility work (post-baseline, pending its own CI review):** [CLI/JSON Compatibility Contract](../implementation/validator-compatibility-contract.md) adds bounded subprocess regression assertions for default and opt-in schemas, targeted import validation, exit codes, and safe export behavior. This is a subsequent improvement proposal; it must not be treated as evidence established at the `f8464b4a` review baseline until merged and verified independently.
 
 
 
