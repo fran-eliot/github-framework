@@ -52,6 +52,8 @@
 
 ### Changed
 
+* Hardened full Component SHA-256 calculation against files changing while being read, checking bytes read, file size and modification timestamps around each file stream; added focused regression tests without changing stable digest values.
+
 * Extracted Component metadata and full file-tree SHA-256 helpers into a dedicated Validator integrity module, preserving CLI behavior while adding direct unit coverage for deterministic hashes, file changes and symbolic-link rejection.
 
 * Extended real-library Validator CI smoke coverage for metadata ID/name/version selectors, sorting, family and metadata summaries, combined JSON export, and preservation of existing output on empty matches.

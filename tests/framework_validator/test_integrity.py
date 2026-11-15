@@ -1,9 +1,12 @@
 """Unit tests for the read-only Component integrity digest helpers."""
 
 import hashlib
+import os
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
+from types import SimpleNamespace
+from unittest.mock import patch
 
 from scripts.framework_validator.integrity import (
     component_content_sha256,
@@ -66,6 +69,70 @@ class ComponentIntegrityTests(unittest.TestCase):
         with TemporaryDirectory() as directory:
             with self.assertRaisesRegex(ValueError, "not a directory"):
                 component_content_sha256(Path(directory) / "missing")
+
+    def test_content_digest_preserves_existing_framing(self) -> None:
+        with TemporaryDirectory() as directory:
+            component = Path(directory) / "component"
+            component.mkdir()
+            content = b"sample bytes"
+            (component / "README.md").write_bytes(content)
+            expected = hashlib.sha256()
+            name = b"README.md"
+            expected.update(len(name).to_bytes(8, "big"))
+            expected.update(name)
+            expected.update(len(content).to_bytes(8, "big"))
+            expected.update(content)
+            self.assertEqual(component_content_sha256(component), expected.hexdigest())
+
+    def test_content_digest_rejects_file_size_change_during_hash(self) -> None:
+        with TemporaryDirectory() as directory:
+            component = Path(directory) / "component"
+            component.mkdir()
+            (component / "README.md").write_bytes(b"fixed content")
+            real_fstat = os.fstat
+            calls = 0
+
+            def changed_size(fd: int) -> object:
+                nonlocal calls
+                calls += 1
+                actual = real_fstat(fd)
+                if calls == 2:
+                    return SimpleNamespace(
+                        st_size=actual.st_size + 1,
+                        st_mtime_ns=actual.st_mtime_ns,
+                    )
+                return actual
+
+            with patch("scripts.framework_validator.integrity.os.fstat",
+                       side_effect=changed_size):
+                with self.assertRaisesRegex(ValueError, "changed during hashing"):
+                    component_content_sha256(component)
+            self.assertEqual(calls, 2)
+
+    def test_content_digest_rejects_timestamp_change_during_hash(self) -> None:
+        with TemporaryDirectory() as directory:
+            component = Path(directory) / "component"
+            component.mkdir()
+            (component / "README.md").write_bytes(b"fixed content")
+            real_fstat = os.fstat
+            calls = 0
+
+            def changed_timestamp(fd: int) -> object:
+                nonlocal calls
+                calls += 1
+                actual = real_fstat(fd)
+                if calls == 2:
+                    return SimpleNamespace(
+                        st_size=actual.st_size,
+                        st_mtime_ns=actual.st_mtime_ns + 1,
+                    )
+                return actual
+
+            with patch("scripts.framework_validator.integrity.os.fstat",
+                       side_effect=changed_timestamp):
+                with self.assertRaisesRegex(ValueError, "changed during hashing"):
+                    component_content_sha256(component)
+            self.assertEqual(calls, 2)
 
     def test_digest_helpers_reject_symlinked_files_and_directories(self) -> None:
         with TemporaryDirectory() as directory:
