@@ -51,7 +51,7 @@ def read_catalog(path: Path) -> dict:
             len(parts) != 2
             or parts[0] not in scope["families"]
             or parts[1] in ("", ".", "..")
-            or "\\\\" in component
+            or "\\" in component
         ):
             raise ValueError(f"{path}: invalid or out-of-scope Component path {component!r}")
         if not isinstance(detail, dict) or detail.get("path") != component:
