@@ -4,7 +4,7 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Documento**            | Continuity Kit   |
-| **Versión**              | 1.3.0            |
+| **Versión**              | 1.4.0            |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-11-15       |
 
@@ -14,9 +14,49 @@ Todo nuevo colaborador o asistente deberá utilizar este documento como referenc
 
 ---
 
-# Snapshot vigente — Post-release Validator Catalog (2026-11-15)
+# Snapshot vigente — Validator Catalog & Integrity (2026-11-15)
 
-> **Punto de reanudación actual.** Esta actualización prevalece sobre el snapshot histórico de PR #330 y sobre las instrucciones de reanudación antiguas que aparecen más abajo. Antes de actuar, verificar siempre las PR, `main` y los workflows directamente en GitHub.
+> **Punto de reanudación actual.** Este snapshot sustituye al snapshot de PR #350 que aparece debajo; el contenido histórico se conserva como referencia. Al reanudar el trabajo, comprobar siempre `main`, PR y CI en GitHub, porque pueden haber cambiado desde esta actualización.
+
+| Campo | Estado comprobado |
+| --- | --- |
+| Repositorio | [fran-eliot/github-framework](https://github.com/fran-eliot/github-framework) |
+| Última release publicada | [v0.11.0](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0), tag `55680b388b0fd8256c95e15866e53d21cc9a5033` |
+| `main` antes de esta actualización | [`b9f44517a8ec5783c03769ebab1d154502d7a7dc`](https://github.com/fran-eliot/github-framework/commit/b9f44517a8ec5783c03769ebab1d154502d7a7dc) |
+| Última PR integrada comprobada | [#357 — Reject symlinked metadata during SHA-256 checks](https://github.com/fran-eliot/github-framework/pull/357) |
+| Último CI comprobado | [Framework Validator 43744364574](https://github.com/fran-eliot/github-framework/actions/runs/43744364574) — `success`, Ubuntu y Windows |
+| PR abiertas / rama #357 | Ninguna / eliminada, comprobado antes de esta actualización |
+| Nueva PR de sincronización | **Pendiente de revisión, CI y merge**: el SHA anterior aún no contiene este snapshot |
+| Release/Sprint/milestone | Sin nueva aprobación o compromiso; los incrementos actuales siguen `Unreleased` |
+| Only Film | Assessment `Complete` exclusivamente documental, SHA `28d75a50e0a178954dd46acc23300d9dd327843c`; no modificar, aplicar ni integrar sin aprobación independiente |
+
+## Entregas Unreleased posteriores al tag v0.11.0
+
+Tras la [PR #350](https://github.com/fran-eliot/github-framework/pull/350), se integraron nuevas capacidades funcionales y correcciones en las PR [#351](https://github.com/fran-eliot/github-framework/pull/351)–[#357](https://github.com/fran-eliot/github-framework/pull/357):
+
+- **Importación:** `--catalog-input PATH` y `--catalog-input -` (stdin) validan exactamente las rutas seleccionadas de un catálogo JSON exportado, también filtrado/paginado. No modifican archivos.
+- **Metadatos:** `--catalog-verify-details` comprueba los valores `id`, `name`, `version`, `status` y `metadata_status` respecto a la biblioteca actual.
+- **SHA-256 de metadatos:** `--catalog-metadata-sha256` exporta un digest de los bytes de `metadata.yml`; `--catalog-verify-sha256` lo comprueba antes de validar.
+- **SHA-256 del Component:** `--catalog-content-sha256` exporta huellas que consideran rutas relativas, longitudes y contenido de todos los archivos regulares del Component; `--catalog-verify-content-sha256` comprueba los digests al importar.
+- **Seguridad y CI:** rechazo de enlaces simbólicos en las operaciones de hashing y conservación del archivo exportado ante errores; pruebas de regresión y smoke tests sobre la biblioteca real ejecutados en Ubuntu y Windows.
+
+Las opciones de comprobación son explícitas y **no alteran por defecto** el esquema ni los resultados del catálogo. La verificación SHA-256 comprueba consistencia con un snapshot proporcionado, **no** la identidad del emisor ni la autenticidad del origen. No implica verificaciones de ejecución de herramientas de un consumidor ni análisis semántico automático de Adoption.
+
+**Documentos de estado sincronizados:** [Project Status](12_PROJECT_STATUS.md), [Backlog](14_BACKLOG.md) y sección [Unreleased](../../CHANGELOG.md). El snapshot previo recoge los filtros, ordenación y paginación integrados con anterioridad y sigue siendo válido como evidencia histórica, pero sus instrucciones sobre cuál es la PR más reciente están superadas.
+
+## Siguiente punto de trabajo recomendado
+
+1. Verificar el merge y la eliminación de la rama de la **PR que actualice este snapshot**, además del CI correspondiente. Nunca asumir el merge.
+2. Consultar las últimas PR, `main` y la versión publicada; usar el CHANGELOG para distinguir `Unreleased` de `v0.11.0`.
+3. Priorizar una revisión de compatibilidad y una aplicación práctica de **solo lectura** de las capacidades del Framework, antes de acumular más flags de CLI.
+4. Definir evidencia y criterios de éxito para cualquier consumidor; no modificar Only Film ni inferir un permiso para Application o Integration.
+5. Someter por separado al mantenedor cualquier propuesta de nueva release, Sprint o milestone.
+
+---
+
+# Snapshot histórico — PR #350 (2026-11-15)
+
+> **Snapshot histórico sustituido por el bloque vigente anterior.** Esta actualización prevalecía sobre el snapshot histórico de PR #330 y sobre las instrucciones de reanudación antiguas que aparecen más abajo. Antes de actuar, verificar siempre las PR, `main` y los workflows directamente en GitHub.
 
 | Campo | Evidencia / situación verificada |
 | --- | --- |
