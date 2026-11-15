@@ -740,9 +740,9 @@ La versión `v0.10.0 — Existing Repository Adoption Assisted Analysis Core` se
 
 ---
 
-# Post-release — Framework Validator CLI y CI (sin versión comprometida)
+# Preparación de v0.11.0 — Framework Validator CLI and CI (opción A)
 
-**Estado:** ✅ Integrado en `main`, pendiente de asignación a una futura release
+**Estado:** ✅ Integrado y verificado en `main`; 🟡 versión y notas propuestas, release no publicada
 
 Tras la publicación de `v0.10.0` se han incorporado mejoras de Framework Automation independientes del alcance del Assisted Analysis Core publicado:
 
@@ -750,12 +750,15 @@ Tras la publicación de `v0.10.0` se han incorporado mejoras de Framework Automa
 - Informes JSON descargables por plataforma, resumen de resultados y anotaciones de errores en GitHub Actions.
 - Selección de Components concretos mediante `--component`.
 - Listado de rutas mediante `--list-components`, con salida de texto o JSON y catálogo de metadata básica opcional (`--details`).
+- Smoke tests de la CLI sobre los 21 Components reales, ejecutados en Ubuntu y Windows.
+- Actualización de las acciones de CI a versiones compatibles con Node.js 24.
+- Inclusión dentro del snapshot completo de la opción A del Assessment **documental** aprobado de Only Film y de las evidencias históricas de Adoption/Discovery, sin modificar el consumidor.
 
-Estas capacidades amplían el Framework Validator del `v0.6.0`, pero **no forman parte de la release `v0.10.0`**. No se ha abierto un nuevo Sprint, milestone ni versión objetivo.
+Estas capacidades amplían el Framework Validator del `v0.6.0`, pero **no forman parte de la release publicada `v0.10.0`**. El mantenedor ha aprobado preparar la **opción A** (snapshot completo del repositorio). Se propone `v0.11.0` como siguiente versión, pendiente de aprobación final de versión, fecha, commit y notas; **no existe todavía tag ni GitHub Release nuevos**.
 
-## Próxima decisión de planificación
+## Próxima decisión de publicación
 
-Antes de comprometer una nueva versión, priorizar un incremento de funcionalidad observable para consumidores del Framework (por ejemplo, uso efectivo de Components o tooling de adopción con alcance acotado) y definir sus criterios de aceptación y verificación. El trabajo de CI debe continuar orientado a sostener ese objetivo.
+Finalizar la documentación de publicación y comprobar el commit exacto del candidato, incluyendo ambos sistemas operativos, el Validator y el smoke test de CLI. Solicitar aprobación expresa antes de crear cualquier tag o GitHub Release. No presentar UX-02 como ejecutado ni confundir el Assessment documental de Only Film con Application/Integration.
 
 ---
 
