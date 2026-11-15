@@ -1,6 +1,7 @@
 """Command-line entry point for the Framework Validator."""
 
 import argparse
+from fnmatch import fnmatchcase
 import json
 import os
 import re
@@ -276,6 +277,12 @@ if __name__ == "__main__":
         help="Include basic metadata in the JSON Component catalog.",
     )
     parser.add_argument(
+        "--match",
+        action="append",
+        metavar="GLOB",
+        help="List only matching family/name paths (repeatable; --list-components only).",
+    )
+    parser.add_argument(
         "--component",
         action="append",
         metavar="FAMILY/NAME",
@@ -289,6 +296,8 @@ if __name__ == "__main__":
     if arguments.list_components:
         if arguments.component:
             parser.error("--list-components cannot be combined with --component")
+    elif arguments.match:
+        parser.error("--match requires --list-components")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
     if arguments.output is not None and arguments.format != "json":
@@ -313,8 +322,20 @@ if __name__ == "__main__":
             tuple(dict.fromkeys(arguments.family)) if arguments.family else None
         )
         available = discover_components(root, families=family_filter)
+        if arguments.match:
+            available = [
+                component for component in available
+                if any(
+                    fnmatchcase(component.relative_to(root).as_posix(), pattern)
+                    for pattern in arguments.match
+                )
+            ]
         if not available:
-            print("No Components discovered.", file=sys.stderr)
+            message = (
+                "No Components match the selected catalog filters."
+                if arguments.match else "No Components discovered."
+            )
+            print(message, file=sys.stderr)
             raise SystemExit(1)
         paths = [component.relative_to(root).as_posix() for component in available]
         if arguments.format == "json":
@@ -327,6 +348,8 @@ if __name__ == "__main__":
                 "count": len(paths),
                 "scope": {"families": families},
             }
+            if arguments.match:
+                catalog["scope"]["match"] = list(dict.fromkeys(arguments.match))
             if arguments.details:
                 entries = []
                 for component in available:

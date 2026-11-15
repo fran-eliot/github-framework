@@ -69,6 +69,22 @@ def main() -> None:
         assert destination.read_bytes().endswith(b"\n")
         assert list(Path(directory).glob(".component-catalog.json.*.tmp")) == []
 
+    # Pattern filtering selects a sorted, unique union of portable Component paths.
+    examples = [path for path in paths if path.startswith("documentation/")]
+    assert examples, "No Documentation Components available for pattern matching"
+    matched = run_cli(
+        "--list-components", "--format", "json",
+        "--match", "documentation/*", "--match", examples[0],
+    )
+    assert matched["components"] == examples
+    assert matched["count"] == len(examples)
+    assert matched["scope"]["match"] == ["documentation/*", examples[0]]
+    no_match = run_cli(
+        "--list-components", "--format", "json",
+        "--match", "nonexistent/*", success=False,
+    )
+    assert no_match.returncode == 1 and not no_match.stdout
+
     representatives = []
     for family in FAMILIES:
         selected = [path for path in paths if path.startswith(f"{family}/")]
@@ -110,6 +126,7 @@ def main() -> None:
         "catalog_components": len(paths),
         "details_metadata_loaded": len(details["details"]),
         "catalog_export_verified": True,
+        "catalog_pattern_matching_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,

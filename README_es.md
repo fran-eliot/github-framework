@@ -173,6 +173,14 @@ python -m scripts.framework_validator --list-components
 python -m scripts.framework_validator --list-components --family documentation
 ```
 
+Filtra las rutas del catálogo con patrones glob `--match`, repetibles y sensibles a mayúsculas. Los resultados se combinan sin duplicados y pueden restringirse con `--family`:
+
+```bash
+python -m scripts.framework_validator --list-components --match "documentation/*" --match "*/architecture"
+```
+
+Los patrones se comparan con rutas portables `familia/nombre`; utiliza comillas para evitar la expansión de la shell. `--match` solo funciona con `--list-components`. La salida JSON añade `scope.match` cuando se utilizan patrones. Si no hay coincidencias, devuelve código `1` y no sobrescribe un archivo indicado con `--output`.
+
 Por defecto, el listado devuelve una ruta portable por línea. Para integraciones, `--list-components --format json` devuelve un objeto con `components` ordenados, `count` y `scope.families`:
 
 ```bash

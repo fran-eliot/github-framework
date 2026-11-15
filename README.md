@@ -171,6 +171,14 @@ python -m scripts.framework_validator --list-components
 python -m scripts.framework_validator --list-components --family documentation
 ```
 
+Filter catalog paths with repeatable, case-sensitive `--match` glob patterns. Matches are combined as a sorted union; combine with `--family` to narrow the scope:
+
+```bash
+python -m scripts.framework_validator --list-components --match "documentation/*" --match "*/architecture"
+```
+
+Patterns match portable `family/name` paths using shell-style wildcards; quote them to prevent shell expansion. Use `--match` only with `--list-components`. JSON catalogs include `scope.match` when patterns are supplied. No match returns exit code `1` without overwriting an existing `--output` file.
+
 The default listing prints one portable path per line. For scripts, use `--list-components --format json` to get an object with sorted `components`, `count`, and `scope.families`:
 
 ```bash

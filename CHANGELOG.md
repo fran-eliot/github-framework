@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Added
+
+* Read-only CLI Component catalog path search through repeatable `--match` glob patterns, with text/JSON catalog output, family filtering, JSON export and real-library CI smoke coverage.
+
 ### Changed
 
 * Extended real-library Framework Validator smoke checks to verify atomic JSON Component catalog export on the 21 tracked Components; added regression coverage for safe replacement failures and invalid metadata in exported catalogs.
