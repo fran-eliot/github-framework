@@ -20,6 +20,8 @@
 
 * Opt-in `--sort-by status` ordering for Component catalogs, using declared metadata status, stable path tie-breaking and missing-value-last handling.
 
+* Optional `--sort-order asc|desc` for Component catalog ordering, preserving missing-metadata-last behavior and stable path ties for descending sorts.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
