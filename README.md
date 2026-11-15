@@ -202,6 +202,15 @@ python -m scripts.framework_validator --list-components --format json --family d
 python -m scripts.framework_validator --catalog-input selected-components.json --format json
 ```
 
+To detect changes anywhere in a Component (including templates, examples, README, metadata, and newly added or removed files), export an optional **complete Component file-tree digest**:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --details --catalog-content-sha256 --output selected-components.json
+python -m scripts.framework_validator --catalog-input selected-components.json --catalog-verify-content-sha256 --format json
+```
+
+The `content_sha256` digest is deterministic: it hashes each regular file's portable relative path, byte length and raw content, in sorted path order. Nested files are included; directory-only changes without file changes are not. Symbolic links are rejected rather than followed, including links to files outside the library. A missing digest, changed file tree, or unreadable file prevents validation (argument error `2`). Both options are opt-in, require a detailed JSON catalog for export and can be combined with existing metadata checks. **This compares local Component bytes**, not the authenticity of a catalog supplied by an untrusted party or any external consumer files; default JSON and validation behavior remain unchanged.
+
 For a stronger raw-file consistency check, include SHA-256 digests in a detailed catalog and verify them before targeted validation:
 
 ```bash
