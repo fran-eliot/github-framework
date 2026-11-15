@@ -8,6 +8,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -47,6 +48,26 @@ def main() -> None:
     assert [entry["path"] for entry in details["details"]] == paths
     assert all(entry["metadata_status"] == "loaded" for entry in details["details"])
     assert all(entry["id"] for entry in details["details"])
+
+    # Exercise the exported catalog with actual tracked Component metadata.
+    with TemporaryDirectory() as directory:
+        destination = Path(directory) / "component-catalog.json"
+        exported = subprocess.run(
+            [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--list-components", "--format", "json", "--details",
+                "--output", str(destination),
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        assert exported.returncode == 0, exported.stderr
+        assert exported.stdout == "", "Catalog export must not print JSON to stdout"
+        assert json.loads(destination.read_text(encoding="utf-8")) == details
+        assert destination.read_bytes().endswith(b"\\n")
+        assert list(Path(directory).glob(".component-catalog.json.*.tmp")) == []
 
     representatives = []
     for family in FAMILIES:
@@ -88,6 +109,7 @@ def main() -> None:
         "status": "passed",
         "catalog_components": len(paths),
         "details_metadata_loaded": len(details["details"]),
+        "catalog_export_verified": True,
         "families_checked": list(FAMILIES),
         "targeted_components": representatives,
         "invalid_combination_rejected": True,
