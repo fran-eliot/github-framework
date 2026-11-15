@@ -325,6 +325,18 @@ if __name__ == "__main__":
         help="Direction for --sort-by (default: asc; catalog only).",
     )
     parser.add_argument(
+        "--limit",
+        type=int,
+        metavar="N",
+        help="Return at most N catalog Components after filtering and sorting.",
+    )
+    parser.add_argument(
+        "--offset",
+        type=int,
+        metavar="N",
+        help="Skip the first N selected catalog Components (default: 0).",
+    )
+    parser.add_argument(
         "--metadata-version",
         action="append",
         metavar="GLOB",
@@ -410,6 +422,12 @@ if __name__ == "__main__":
         parser.error("--metadata-version requires --list-components")
     elif arguments.sort_by is not None:
         parser.error("--sort-by requires --list-components")
+    if (arguments.limit is not None or arguments.offset is not None) and not arguments.list_components:
+        parser.error("--limit and --offset require --list-components")
+    if arguments.limit is not None and arguments.limit <= 0:
+        parser.error("--limit must be a positive integer")
+    if arguments.offset is not None and arguments.offset < 0:
+        parser.error("--offset must be a non-negative integer")
     if arguments.sort_order is not None and arguments.sort_by is None:
         parser.error("--sort-order requires --sort-by")
     if arguments.component and arguments.family:
@@ -539,6 +557,14 @@ if __name__ == "__main__":
                     key=lambda component: entries[component][field], reverse=True
                 )
                 available = present + missing
+        total = len(available)
+        if arguments.limit is not None or arguments.offset is not None:
+            start = arguments.offset or 0
+            stop = start + arguments.limit if arguments.limit is not None else None
+            available = available[start:stop]
+            if not available:
+                print("No Components remain in the selected catalog page.", file=sys.stderr)
+                raise SystemExit(1)
         paths = [component.relative_to(root).as_posix() for component in available]
         if arguments.format == "json":
             families = [
@@ -550,6 +576,12 @@ if __name__ == "__main__":
                 "count": len(paths),
                 "scope": {"families": families},
             }
+            if arguments.limit is not None or arguments.offset is not None:
+                catalog["pagination"] = {
+                    "total": total,
+                    "offset": arguments.offset or 0,
+                    "limit": arguments.limit,
+                }
             if arguments.sort_by is not None:
                 catalog["scope"]["sort_by"] = arguments.sort_by
             if arguments.sort_order is not None:

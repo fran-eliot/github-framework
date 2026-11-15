@@ -195,6 +195,14 @@ python -m scripts.framework_validator --list-components --format json --componen
 
 The optional `component_status_summary` object contains `by_status` counts keyed by declared status (sorted alphabetically) and a separate `missing` count for absent or non-string statuses, including unreadable metadata. These counts total the catalog `count` after all filters. Unlike `--metadata-summary`, this summarizes the Component's declared status rather than YAML loading outcomes. It requires `--list-components --format json`, composes with catalog filters, other summaries, `--details` and JSON export, and leaves the default catalog unchanged.
 
+Page a Component catalog after applying all filters and sorting, using `--limit N` (positive integer) and/or `--offset N` (non-negative integer):
+
+```bash
+python -m scripts.framework_validator --list-components --format json --sort-by name --limit 10 --offset 10 --details
+```
+
+Both options require `--list-components` and work with text, JSON, metadata filtering, summaries and atomic export. When requested, JSON adds `pagination` with `total` (matching Components **before** pagination), `offset`, and `limit` (null if omitted). `count`, `components`, `details`, and all summaries describe the **current page**. An empty page exits with code `1` and does not overwrite existing output. Without pagination flags the output schema and ordering are unchanged.
+
 Control the direction of an explicit catalog sort using `--sort-order asc|desc` (ascending by default):
 
 ```bash
