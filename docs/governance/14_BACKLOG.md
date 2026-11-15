@@ -47,6 +47,10 @@ La PR [#357](https://github.com/fran-eliot/github-framework/pull/357) se confirm
 
 **Revisión de preparación:** [Framework Validator — Unreleased Delivery Readiness Review](../releases/framework-validator-unreleased-readiness-20261115.md) consolida las PR #330–#363, evidencia de CI y limitaciones. [PR #363](https://github.com/fran-eliot/github-framework/pull/363) quedó fusionada en `main` (`f8464b4a5307620d1db281945207aead154c6ca0`); el [CI corregido 43748589509](https://github.com/fran-eliot/github-framework/actions/runs/43748589509) pasó sus tres jobs. Los incrementos de #358–#363, incluidos consolidación de integridad, guía práctica, artefactos CI y equivalencia Ubuntu/Windows, permanecen **Done — Unreleased**, no publicados en v0.11.0. El documento de revisión no aprueba por sí solo ninguna publicación.
 
+**Progreso adicional verificado:** [PR #364](https://github.com/fran-eliot/github-framework/pull/364) integró la revisión de preparación; [#365](https://github.com/fran-eliot/github-framework/pull/365) y [#366](https://github.com/fran-eliot/github-framework/pull/366) integraron el [contrato de compatibilidad CLI/JSON](../implementation/validator-compatibility-contract.md) y pruebas de reportes fallidos, equivalencia de salida/archivo y conservación de exportaciones. La PR #366 fue fusionada en `69d617169a7ac4f59ce8ee096cb2cf8962688d79`, con [CI 43757311645](https://github.com/fran-eliot/github-framework/actions/runs/43757311645) satisfactorio. Estado de todas: **Done — Unreleased**. No equivalen a autorización de una nueva release.
+
+**Referencia de continuidad:** [Continuity Kit 1.5.0](16_CONTINUITY_KIT.md), cuyo snapshot vigente sustituye al registro histórico anterior a la PR #358.
+
 **Posibles próximos incrementos — aún no comprometidos:**
 
 1. **Consolidación del Validator:** revisar contratos de CLI/JSON, mensajes, pruebas de compatibilidad y riesgos de regresión, evitando más opciones sin caso de uso.
