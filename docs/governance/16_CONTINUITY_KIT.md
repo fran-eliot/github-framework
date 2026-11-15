@@ -4,9 +4,9 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Documento**            | Continuity Kit   |
-| **Versión**              | 1.1.0            |
+| **Versión**              | 1.2.0            |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-11-14       |
+| **Última actualización** | 2026-11-15       |
 
 > Este documento constituye el punto oficial de incorporación al proyecto.
 
@@ -14,36 +14,79 @@ Todo nuevo colaborador o asistente deberá utilizar este documento como referenc
 
 ---
 
-# Snapshot de continuidad — 2026-11-14
+# Snapshot de continuidad — 2026-11-15
 
-> **Contexto vigente para reanudar el proyecto.** Este resumen actualiza la situación de ejecución sin reescribir los capítulos originales del Continuity Kit, que documentan el contexto de agosto de 2026. Las referencias antiguas a Sprint 4, `v0.2.0`, roadmap inicial o trabajo en curso deben leerse como **históricas**. Para el estado actual prevalecen [Project Status](12_PROJECT_STATUS.md) y [Product Backlog](14_BACKLOG.md).
+> **Punto de reanudación vigente.** Este snapshot prevalece sobre los capítulos históricos de agosto de 2026 (Sprint 4, v0.2.0 y prioridades iniciales) y sobre el snapshot sustituido del 2026-11-14. No sustituye la consulta en vivo de GitHub: al reanudar, comprobar primero el estado real de `main`, las PR y los checks. [Project Status](12_PROJECT_STATUS.md), [Product Backlog](14_BACKLOG.md), [Roadmap](../../ROADMAP.md) y [CHANGELOG](../../CHANGELOG.md) reflejan el estado documental tras los merges verificados.
 
-| Campo | Estado verificado |
+| Campo | Estado confirmado el 2026-11-15 |
 | --- | --- |
-| Última versión publicada del Framework | `v0.10.0` — Existing Repository Adoption Assisted Analysis Core |
-| Situación de trabajo | Post-release; **ningún Sprint activo**, milestone nueva ni versión objetivo comprometidos |
-| Framework Validator | Mejoras posteriores a `v0.10.0` integradas en `main`, **Unreleased** (CI Ubuntu/Windows, informes JSON y CLI por Component) |
-| Existing Repository Adoption | Assessment, Application, Integration y Assisted Analysis **disponibles como capabilities del Framework**, cada una con sus límites |
-| Consumer Only Film | **Assessment documental `Complete`**, aprobado formalmente el 2026-11-14 |
-| Only Film — Application / Integration | **No iniciadas ni autorizadas**; consumer sin modificaciones por el Assessment |
+| Repositorio | [`fran-eliot/github-framework`](https://github.com/fran-eliot/github-framework) |
+| Última release publicada | **[`v0.11.0 — Framework Validator CLI and CI`](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0)**, publicada 2026-11-15 |
+| Tag publicado | `v0.11.0` → commit **`55680b388b0fd8256c95e15866e53d21cc9a5033`**, verificado mediante la referencia GitHub |
+| Referencia `main` revisada | [`1aab5a6a402d013e1797bbb71482715e62e84291`](https://github.com/fran-eliot/github-framework/commit/1aab5a6a402d013e1797bbb71482715e62e84291) — merge de PR #330 |
+| Última PR fusionada en este snapshot | [#330 — Export Component catalogs to JSON files](https://github.com/fran-eliot/github-framework/pull/330) |
+| PR abiertas al elaborar el snapshot | **Ninguna**; volver a verificar en GitHub antes del siguiente cambio |
+| Último CI sobre `main` | [Run 43715010476](https://github.com/fran-eliot/github-framework/actions/runs/43715010476): **success**, Ubuntu y Windows, 165 tests y smoke test superados por plataforma |
+| Verificación de Components | 21 Components reales en el catálogo/smoke test; validación completa en los jobs de CI |
+| Próxima versión / Sprint / milestone | **Ninguna comprometida / ningún Sprint activo**; `v1.0.0` sigue siendo una aspiración futura, no una release aprobada |
+| Existing Repository Adoption | Assessment, Application, Integration y Assisted Analysis son capabilities documentadas del Framework, con límites propios |
+| Consumer Only Film | **Assessment documental `Complete`**; no se ha modificado Only Film ni autorizado Application/Integration |
+| UX-02 | **`Prepared — Not Executed`**; no atribuir resultados de usabilidad independiente |
+
+## Release v0.11.0 — cierre y trazabilidad
+
+La [GitHub Release v0.11.0](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0) se publicó con la aprobación explícita del mantenedor bajo la **opción A (snapshot completo del repositorio)**, no como una entrega limitada a código del Validator. El tag `v0.11.0` se verificó contra el SHA autorizado, `55680b388b0fd8256c95e15866e53d21cc9a5033`. La [validación de ese commit](https://github.com/fran-eliot/github-framework/actions/runs/43708742212) superó los tests y smoke tests en Ubuntu y Windows.
+
+La [PR #329](https://github.com/fran-eliot/github-framework/pull/329) sincronizó después `CHANGELOG.md`, `README.md`, `README_es.md`, `ROADMAP.md` y `12_PROJECT_STATUS.md`: `v0.11.0` figura como **publicada**, con badges EN/ES actualizados. Los documentos de propuesta y baseline en `docs/releases/` conservan **evidencia histórica de preparación**; sus referencias y afirmaciones sobre aprobación pendiente no deben confundirse con el estado actual de la release.
+
+La rama [`candidate/option-a-snapshot-20261115`](https://github.com/fran-eliot/github-framework/tree/candidate/option-a-snapshot-20261115) quedó vinculada al SHA publicado al cerrar el ciclo. **No es la referencia de desarrollo futuro** y no debe fusionarse por rutina contra `main`; el siguiente trabajo empieza desde `main`. Consultar si conviene conservarla o retirarla solo después de verificar el estado remoto y los requisitos de trazabilidad.
+
+## Desarrollo posterior a v0.11.0 — PR #330
+
+Se integró una mejora concreta y **posterior al tag**: el Framework Validator permite exportar su catálogo JSON de Components a un archivo mediante:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --details --output component-catalog.json
+```
+
+La opción también permite `--family` y `--components-root`. Reutiliza escritura atómica mediante archivo temporal y reemplazo, mantiene stdout si no se indica `--output`, y conserva el contrato histórico de error en exportaciones de informes. Una escritura fallida devuelve código `2`; no se crea automáticamente el directorio de destino. Se incorporaron cuatro nuevos tests y se actualizaron los README EN/ES.
+
+La primera revisión de CI de la PR #330 detectó dos tests existentes que exigían el mensaje de error original. El cambio se corrigió **dentro de la misma PR**; el último CI del merge en `main` terminó con **165/165 tests por plataforma**, smoke test del catálogo de 21 Components y validación de la biblioteca correctos: [run 43715010476](https://github.com/fran-eliot/github-framework/actions/runs/43715010476). No confundir la primera ejecución fallida con el resultado final fusionado.
+
+Esta exportación JSON es trabajo **Unreleased posterior a v0.11.0**. No alterar el tag publicado, no presentar la funcionalidad como incluida en esa release, ni fijar automáticamente `v0.12.0` o iniciar Sprint/milestone.
 
 ## Caso práctico de Assessment — Only Film
 
-La [evaluación canónica](../../framework/adoption/examples/only-film-assessment.md) utiliza el consumer `fran-eliot/only_film` en el SHA inmutable `28d75a50e0a178954dd46acc23300d9dd327843c` frente a `TPL-BACKEND 0.1.0`. Registra **28/28 clasificaciones State/Applicability aprobadas** y **28/28 Adoption Decisions resueltas**: 14 `PRESERVE`, 3 `OMIT`, 9 `ADAPT` y 2 `ADD`. La [matriz](../../framework/adoption/examples/only-film-consolidated-review-matrix.md) y la [revisión de cierre](../../framework/adoption/examples/only-film-assessment-completion-readiness.md) conservan trazabilidad y límites.
+La [evaluación canónica](../../framework/adoption/examples/only-film-assessment.md) utiliza el consumer [`fran-eliot/only_film`](https://github.com/fran-eliot/only_film) en el SHA inmutable `28d75a50e0a178954dd46acc23300d9dd327843c` frente a `TPL-BACKEND 0.1.0`. Registra **28/28 clasificaciones State/Applicability aprobadas** y **28/28 Adoption Decisions resueltas**: 14 `PRESERVE`, 3 `OMIT`, 9 `ADAPT`, 2 `ADD`. La [matriz consolidada](../../framework/adoption/examples/only-film-consolidated-review-matrix.md) conserva la trazabilidad. Los documentos de verificación y Completion Readiness históricos pueden retener estados intermedios; **el estado canónico final es `Complete`, solo documental**.
 
-La condición `Complete` **solo cierra la evaluación documental**: no implica Compose verificado, suite de pruebas completa, Quality Gate aprobado, certificación de seguridad, derechos de licencia comprobados, modificación del consumer ni autorización automática para Application o Integration.
+`Complete` **no implica** ejecución verificada de Docker Compose o Selenium, suite Maven completa, Quality Gate aprobado, certificación de seguridad, autorización de derechos de terceros, modificación del consumidor, ni permiso automático para Application o Integration. Mantener las decisiones aprobadas y sus limitaciones; **no modificar Only Film** sin una autorización específica e independiente.
 
-## Siguiente decisión pendiente
+## Flujo de trabajo operativo acordado
 
-El [Product Backlog](14_BACKLOG.md) mantiene como **propuesta no comprometida** la priorización de un siguiente incremento práctico para consumidores. Deben justificarse los objetivos y criterios observables antes de abrir una Issue, Sprint, milestone o versión objetivo. Una posible Application sobre Only Film requeriría **autorización humana independiente**, selección acotada de Responsibility, Evidence Refresh, planificación y revisión previa; la mera existencia de 28 decisiones resueltas no autoriza implementarlas.
+1. **Ante cada “go”**, consultar GitHub: verificar si la PR anterior está efectivamente fusionada, buscar PR abiertas, identificar el SHA de `main` y revisar el CI relevante. Si la PR anterior continúa abierta o fallan los checks, atender esa situación **antes de crear otra PR funcional**.
+2. El asistente desarrolla **directamente en GitHub**: crea una rama temática desde `main`, realiza cambios acotados y verificables, ejecuta o revisa tests/CI y abre una PR real. Facilitar siempre su **enlace directo**.
+3. El mantenedor **revisa y hace el merge y elimina la rama remota de trabajo**. El asistente **no realiza el merge** ni borra ramas de trabajo por su cuenta. Las ramas de release/candidato tienen tratamiento específico, distinto de las ramas de PR.
+4. No crear versiones, tags, releases, Sprints o milestones sin autorización explícita. Una aprobación de alcance, de versión o de notas **no equivale** a una autorización de publicación. Nunca afirmar acciones de GitHub no comprobadas.
+5. Las PR y la documentación técnica nueva se redactan profesionalmente **en inglés**, salvo contenido ya establecido en español o mantenimiento de la versión española. **No incluir indicaciones internas, comentarios sobre uso de IA ni instrucciones al revisor** en el texto público de la PR. Evitar archivos de Discovery redundantes y priorizar **funcionalidad comprobable**.
+6. Conservar el contexto de código y documentación anterior: cambios mínimos, tests de regresión, compatibilidad de contratos de CLI e informes JSON, rutas y ejemplos de README sincronizados entre idiomas. Ante una discrepancia entre este kit y GitHub, prevalece la **evidencia actual del repositorio**.
+
+## Punto de reanudación inmediato
+
+- **Primero:** verificar si la PR que actualice este propio Kit se fusionó y si su rama remota fue eliminada. No asumirlo porque aparezca el archivo actualizado.
+- **Después:** partir del último `main`; revisar [Product Backlog](14_BACKLOG.md), el historial [v0.11.0](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0) y la CLI `scripts/framework_validator/__main__.py`, con tests en `tests/framework_validator/`. El nuevo soporte de exportación JSON está disponible **en `main`, no en el tag v0.11.0**.
+- **Siguiente posible desarrollo:** continuar mejorando la usabilidad e integración de las capacidades del Framework Validator y sus contratos de salida, con una necesidad concreta y criterios verificables; no abrir una nueva release sin planificación. Si se decide un trabajo distinto, validarlo con las fuentes del repositorio.
+- **Para retomar en un chat nuevo:** proporcionar este archivo (o la URL de su versión integrada), el enlace al repositorio y una petición como “Continúa GitHub Framework desde el último Continuity Kit: verifica PR, `main` y CI, y prepara el siguiente incremento en rama y PR; yo haré el merge y borraré la rama remota”.
 
 ## Fuentes de continuidad
 
-- [Project Status](12_PROJECT_STATUS.md): estado vigente de releases, post-release y compromisos.
-- [Product Backlog](14_BACKLOG.md): prioridades propuestas, trabajo completado y límites de nuevas iniciativas.
-- [Adoption Guide](../../framework/adoption/README.md): alcance y relaciones entre Assessment, Application, Integration y Assisted Analysis.
-- [Only Film Assessment](../../framework/adoption/examples/only-film-assessment.md): resultado formal completo sobre el commit evaluado.
-- [Only Film completion readiness](../../framework/adoption/examples/only-film-assessment-completion-readiness.md): criterios de cierre y limitaciones de evidencia.
+- [GitHub Framework — main](https://github.com/fran-eliot/github-framework)
+- [Release v0.11.0](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0)
+- [Project Status](12_PROJECT_STATUS.md) y [Product Backlog](14_BACKLOG.md)
+- [Roadmap](../../ROADMAP.md) y [CHANGELOG](../../CHANGELOG.md)
+- [Adoption Guide](../../framework/adoption/README.md)
+- [Only Film Assessment canónico](../../framework/adoption/examples/only-film-assessment.md)
+- [Release candidate baseline histórico](../releases/OPTION_A_CANDIDATE_BASELINE.md)
+- [Release notes históricas](../releases/PROPOSED_V0_11_0_RELEASE_NOTES.md)
 
 ---
 
