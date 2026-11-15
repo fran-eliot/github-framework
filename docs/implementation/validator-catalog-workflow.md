@@ -71,4 +71,4 @@ This validates Framework **Component metadata and supported artifacts**, not arb
 
 The CI job executes `python -m scripts.framework_validator.smoke` on Ubuntu and Windows. That smoke test also copies a **real tracked Documentation Component** into a temporary library and exercises the entire flow: export both digests, verify the snapshot, change the **temporary copy's README**, confirm a stale-content rejection, and confirm that ordinary targeted validation can still pass. The tracked Component is never changed.
 
-See [Framework Validation](../../README.md#-framework-validation) for the full CLI reference and [Existing Repository Adoption](../../framework/adoption/README.md) for the distinct, human-reviewed consumer Assessment process.
+See [Framework Validation](../../README.md) for the full CLI reference and [Existing Repository Adoption](../../framework/adoption/README.md) for the distinct, human-reviewed consumer Assessment process.
