@@ -319,6 +319,11 @@ if __name__ == "__main__":
         help="Select catalog Components by metadata id glob (repeatable; listing only).",
     )
     parser.add_argument(
+        "--family-summary",
+        action="store_true",
+        help="Include per-family Component counts in the JSON catalog.",
+    )
+    parser.add_argument(
         "--metadata-summary",
         action="store_true",
         help="Include metadata loading status counts in the JSON Component catalog.",
@@ -341,6 +346,10 @@ if __name__ == "__main__":
         not arguments.list_components or arguments.format != "json"
     ):
         parser.error("--details requires --list-components --format json")
+    if arguments.family_summary and (
+        not arguments.list_components or arguments.format != "json"
+    ):
+        parser.error("--family-summary requires --list-components --format json")
     if arguments.metadata_summary and (
         not arguments.list_components or arguments.format != "json"
     ):
@@ -449,6 +458,13 @@ if __name__ == "__main__":
                 ]
             if arguments.details:
                 catalog["details"] = [entries[component] for component in available]
+            if arguments.family_summary:
+                catalog["family_summary"] = {
+                    family: sum(
+                        component.parent.name == family for component in available
+                    )
+                    for family in COMPONENT_FAMILIES
+                }
             if arguments.metadata_summary:
                 catalog["metadata_summary"] = {
                     status: sum(
