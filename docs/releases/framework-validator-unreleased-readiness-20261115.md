@@ -62,7 +62,9 @@ These increments were merged into `main` after publication of v0.11.0. **Do not 
 
 **Overall outcome:** **evidence suitable for scoping discussion; not ready for an automatic release decision**. The testing evidence is encouraging, but a new published version is a separate governance action.
 
-## 6. Suggested next action (proposal only)
+## 6. Suggested next action (proposal only)**Additional post-baseline evidence (requires independent review):** the [published-tag → pinned-main comparison](framework-validator-v0110-to-main-delta-20261115.md) records 246 commits ahead and 21 changed paths at `main` `78742038065c8feb9ebf081132d132b4cf7115d9`, after PR #368. This is a later scoped inventory, not a retroactive change to this review's `f8464b4a` baseline. Release candidate and approval remain open.
+
+
 
 **Follow-up compatibility work (post-baseline, pending its own CI review):** [CLI/JSON Compatibility Contract](../implementation/validator-compatibility-contract.md) adds bounded subprocess regression assertions for default and opt-in schemas, targeted import validation, exit codes, and safe export behavior. This is a subsequent improvement proposal; it must not be treated as evidence established at the `f8464b4a` review baseline until merged and verified independently.
 
