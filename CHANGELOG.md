@@ -10,6 +10,8 @@
 
 * Repeatable `--metadata-version` glob patterns for filtering read-only Component catalogs by metadata version, including combined catalog filters and safe JSON export.
 
+* Opt-in `--sort-by path|id|version` ordering for Component catalog listings, preserving default path order and placing missing metadata sort keys last.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
