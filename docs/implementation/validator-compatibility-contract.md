@@ -14,6 +14,9 @@ This companion to the [practical Component catalog workflow](validator-catalog-w
 | Selection scope | An unfiltered full-library validation has `scope.filtered=false`; a one-Component selection reports `scope.filtered=true` and the selected `scope.component_paths` |
 | Saved snapshot | Exported JSON is a newline-terminated UTF-8 file; a metadata/content-verified import succeeds with unchanged input |
 | Failure safety | Stale content preflight returns code `2` without emitting a validation report; a zero-match catalog returns code `1`; neither overwrites an existing saved catalog |
+| Failed validation report | Invalid Component metadata returns code `1` but still emits a structured JSON failure report, including component-level diagnostics and summary counts |
+| stdout vs file export | Successful catalog and validation commands serialize equivalent JSON to stdout or `--output`; a failed validation still writes its JSON report and returns `1` |
+| Argument-error export safety | An invalid flag combination returns code `2` without clobbering a pre-existing output file |
 
 **Exit codes:** `0` indicates successful requested operation or validation; `1` indicates validation failure or an empty listing; `2` indicates invalid arguments or rejected imported snapshot/export. The same exit code can have different contextual meanings; the caller must also consider which operation was requested.
 
