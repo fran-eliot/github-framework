@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* CI parity uses a consistent Git checkout byte policy (`core.autocrlf=false` before checkout) on Ubuntu and Windows, preventing platform-default CRLF conversions from producing false-positive SHA-256 catalog differences.
+
 * Optional `--metadata-summary` for JSON Component catalogs, reporting loaded, missing, and invalid metadata counts for the selected inventory without altering default catalog output.
 
 * Read-only Component catalog filtering by metadata `id` using repeatable `--metadata-id` glob patterns, composable with existing catalog filters and JSON export.
@@ -43,6 +45,8 @@
 * Hardened metadata SHA-256 catalog export and verification to reject symbolic links in `metadata.yml` or the Component root, preserving existing output on export errors.
 
 * Framework Validator CI now exports and immediately verifies a complete Component catalog with metadata and file-tree SHA-256 fields on Ubuntu and Windows, uploading the catalog and its targeted validation report as seven-day GitHub Actions artifacts.
+
+* CI cross-platform parity gate compares the complete exported Ubuntu and Windows Component catalogs (including metadata and file-tree SHA-256 digests), with isolated regression tests and failure on missing or divergent artifacts.
 
 ### Added
 
