@@ -20,6 +20,11 @@ jobs:
         os: [ubuntu-latest, windows-latest]
 
     steps:
+      # Hash raw repository bytes consistently across Linux and Windows.
+      # Windows Git often defaults to CRLF checkout conversion.
+      - name: Disable Git checkout line-ending conversion
+        run: git config --global core.autocrlf false
+
       - name: Check out repository
         uses: actions/checkout@v5
 
