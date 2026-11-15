@@ -109,6 +109,49 @@ class RelocatedComponentLibraryTests(unittest.TestCase):
         for source, before in self.source_checks.items():
             self.assertEqual(source.read_bytes(), before)
 
+    def test_verified_selection_ignores_unselected_changes_and_rejects_selected(self) -> None:
+        selection = Path(self.temp.name) / "workflow-selection.json"
+        exported = self.run_cli(
+            "--list-components", "--format", "json", "--family", "workflow",
+            "--details", "--catalog-metadata-sha256",
+            "--catalog-content-sha256", "--output", str(selection),
+        )
+        self.assertEqual(exported.returncode, 0, exported.stderr)
+        saved = selection.read_bytes()
+
+        verify_args = (
+            "--catalog-input", str(selection), "--catalog-verify-details",
+            "--catalog-verify-sha256", "--catalog-verify-content-sha256",
+            "--format", "json",
+        )
+        baseline = self.run_cli(*verify_args)
+        self.assertEqual(baseline.returncode, 0, baseline.stderr)
+
+        # A README-family change must not invalidate a Workflow-only selection.
+        unrelated = self.library / self.paths[0] / "scope-probe.txt"
+        unrelated.write_bytes(b"independent change\n")
+        unchanged = self.run_cli(*verify_args)
+        self.assertEqual(unchanged.returncode, 0, unchanged.stderr)
+        self.assertEqual(
+            json.loads(unchanged.stdout)["scope"]["component_paths"],
+            [self.paths[2]],
+        )
+
+        # Changing a selected Component must reject the saved content snapshot.
+        selected = self.library / self.paths[2] / "scope-probe.txt"
+        selected.write_bytes(b"stale selected content\n")
+        stale = self.run_cli(*verify_args)
+        self.assertEqual(stale.returncode, 2)
+        self.assertEqual(stale.stdout, "")
+        self.assertIn(
+            "--catalog-verify-content-sha256 stale Component content",
+            stale.stderr,
+        )
+        self.assertEqual(selection.read_bytes(), saved)
+        for source, before in self.source_checks.items():
+            self.assertEqual(source.read_bytes(), before)
+
+
 
 if __name__ == "__main__":
     unittest.main()
