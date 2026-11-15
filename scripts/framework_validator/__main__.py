@@ -77,7 +77,13 @@ def component_content_sha256(component: Path) -> str:
     """
     digest = hashlib.sha256()
     files = []
-    for directory, directories, filenames in os.walk(component, followlinks=False):
+
+    def fail_on_walk_error(error: OSError) -> None:
+        raise error
+
+    for directory, directories, filenames in os.walk(
+        component, followlinks=False, onerror=fail_on_walk_error
+    ):
         parent = Path(directory)
         for name in directories + filenames:
             entry = parent / name
