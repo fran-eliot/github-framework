@@ -314,15 +314,21 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--sort-by",
-        choices=("path", "id", "version"),
-        metavar="{path,id,version}",
-        help="Order catalog Components by path, metadata id or version (listing only).",
+        choices=("path", "id", "name", "version"),
+        metavar="{path,id,name,version}",
+        help="Order catalog Components by path, metadata id, name or version (listing only).",
     )
     parser.add_argument(
         "--metadata-version",
         action="append",
         metavar="GLOB",
         help="Select catalog Components by metadata version glob (repeatable; listing only).",
+    )
+    parser.add_argument(
+        "--metadata-name",
+        action="append",
+        metavar="GLOB",
+        help="Filter catalog by metadata name glob (repeatable; listing only).",
     )
     parser.add_argument(
         "--metadata-id",
@@ -375,6 +381,8 @@ if __name__ == "__main__":
         parser.error("--metadata-status requires --list-components")
     elif arguments.metadata_id:
         parser.error("--metadata-id requires --list-components")
+    elif arguments.metadata_name:
+        parser.error("--metadata-name requires --list-components")
     elif arguments.metadata_version:
         parser.error("--metadata-version requires --list-components")
     elif arguments.sort_by is not None:
@@ -422,8 +430,8 @@ if __name__ == "__main__":
         entries = {}
         if (arguments.details or arguments.metadata_status
                 or arguments.metadata_summary or arguments.metadata_id
-                or arguments.metadata_version
-                or arguments.sort_by in ("id", "version")):
+                or arguments.metadata_version or arguments.metadata_name
+                or arguments.sort_by in ("id", "name", "version")):
             entries = {
                 component: catalog_metadata_entry(component, root)
                 for component in available
@@ -435,6 +443,15 @@ if __name__ == "__main__":
                 and any(
                     fnmatchcase(entries[component]["id"], pattern)
                     for pattern in arguments.metadata_id
+                )
+            ]
+        if arguments.metadata_name:
+            available = [
+                component for component in available
+                if isinstance(entries[component]["name"], str)
+                and any(
+                    fnmatchcase(entries[component]["name"], pattern)
+                    for pattern in arguments.metadata_name
                 )
             ]
         if arguments.metadata_version:
@@ -456,12 +473,13 @@ if __name__ == "__main__":
             message = (
                 "No Components match the selected catalog filters."
                 if (arguments.match or arguments.exclude or arguments.metadata_status
-                    or arguments.metadata_id or arguments.metadata_version)
+                    or arguments.metadata_id or arguments.metadata_version
+                    or arguments.metadata_name)
                 else "No Components discovered."
             )
             print(message, file=sys.stderr)
             raise SystemExit(1)
-        if arguments.sort_by in ("id", "version"):
+        if arguments.sort_by in ("id", "name", "version"):
             field = arguments.sort_by
             available.sort(key=lambda component: (
                 not isinstance(entries[component][field], str),
@@ -488,6 +506,10 @@ if __name__ == "__main__":
                 catalog["scope"]["exclude"] = list(dict.fromkeys(arguments.exclude))
             if arguments.metadata_id:
                 catalog["scope"]["metadata_id"] = list(dict.fromkeys(arguments.metadata_id))
+            if arguments.metadata_name:
+                catalog["scope"]["metadata_name"] = list(
+                    dict.fromkeys(arguments.metadata_name)
+                )
             if arguments.metadata_version:
                 catalog["scope"]["metadata_version"] = list(
                     dict.fromkeys(arguments.metadata_version)
