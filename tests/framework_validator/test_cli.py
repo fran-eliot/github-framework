@@ -1420,6 +1420,134 @@ class FrameworkValidatorCLITests(unittest.TestCase):
                         result.stderr,
                     )
 
+    def test_cli_catalog_verify_details_accepts_current_snapshot(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            export = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(export.returncode, 0, export.stderr)
+            result = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--catalog-input", "-",
+                    "--catalog-verify-details", "--format", "json",
+                ],
+                input=export.stdout,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(
+                json.loads(result.stdout)["scope"]["component_paths"],
+                ["documentation/architecture"],
+            )
+
+    def test_cli_catalog_verify_details_detects_stale_metadata(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            metadata_path = component / "metadata.yml"
+            metadata_path.write_text(VALID_METADATA, encoding="utf-8")
+            export = subprocess.run(
+                [
+                    sys.executable, "-m", "scripts.framework_validator",
+                    "--components-root", str(root), "--list-components",
+                    "--format", "json", "--details",
+                ],
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(export.returncode, 0, export.stderr)
+            snapshot = export.stdout
+            metadata_path.write_text(
+                VALID_METADATA.replace('version: "0.1.0"', 'version: "0.2.0"'),
+                encoding="utf-8",
+            )
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--catalog-input", "-",
+                "--catalog-verify-details", "--format", "json",
+            ]
+            stale = subprocess.run(
+                command, input=snapshot,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(stale.returncode, 2)
+            self.assertEqual(stale.stdout, "")
+            self.assertIn("stale version for documentation/architecture", stale.stderr)
+            regular = subprocess.run(
+                command[:command.index("--catalog-verify-details")] + ["--format", "json"],
+                input=snapshot,
+                cwd=validator_cli.REPOSITORY_ROOT,
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(regular.returncode, 0, regular.stderr)
+            self.assertEqual(json.loads(regular.stdout)["status"], "passed")
+
+    def test_cli_catalog_verify_details_rejects_incomplete_or_mismatched_snapshots(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            component = self.create_component(root)
+            (component / "metadata.yml").write_text(
+                VALID_METADATA, encoding="utf-8"
+            )
+            path = "documentation/architecture"
+            command = [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--components-root", str(root), "--catalog-input", "-",
+                "--catalog-verify-details", "--format", "json",
+            ]
+            valid_detail = {
+                "path": path, "id": "DOC-ARCHITECTURE",
+                "name": "Architecture", "version": "0.1.0",
+                "status": "Experimental", "metadata_status": "loaded",
+            }
+            cases = [
+                ({"components": [path]}, "requires one detail"),
+                ({"components": [path], "details": []}, "requires one detail"),
+                ({"components": [path], "details": [None]}, "requires detail objects"),
+                ({"components": [path], "details": [{**valid_detail, "path": "readme/author"}]},
+                 "unexpected Component path"),
+                ({"components": [path], "details": [{**valid_detail, "id": "DOC-OLD"}]},
+                 "stale id"),
+                ({"components": [path], "details": [{k:v for k,v in valid_detail.items() if k != "status"}]},
+                 "stale status"),
+            ]
+            for payload, expected in cases:
+                with self.subTest(expected=expected):
+                    result = subprocess.run(
+                        command, input=json.dumps(payload),
+                        cwd=validator_cli.REPOSITORY_ROOT,
+                        capture_output=True, text=True, check=False,
+                    )
+                    self.assertEqual(result.returncode, 2)
+                    self.assertEqual(result.stdout, "")
+                    self.assertIn(expected, result.stderr)
+
+    def test_cli_catalog_verify_details_requires_catalog_input(self) -> None:
+        result = subprocess.run(
+            [
+                sys.executable, "-m", "scripts.framework_validator",
+                "--catalog-verify-details",
+            ],
+            cwd=validator_cli.REPOSITORY_ROOT,
+            capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("--catalog-verify-details requires --catalog-input", result.stderr)
+
     def test_cli_catalog_stdin_streams_discovery_to_validation(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
