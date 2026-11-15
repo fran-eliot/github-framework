@@ -28,6 +28,8 @@
 
 * JSON catalog pagination now exposes `has_previous` and `previous_offset`, supporting backward page navigation alongside existing forward navigation.
 
+* Read-only `--catalog-input` validation workflow for selecting Components from a previously exported JSON catalog, including paginated selections, strict path validation and real-library CI smoke coverage.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.

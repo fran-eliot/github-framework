@@ -197,6 +197,15 @@ python -m scripts.framework_validator --list-components --format json --componen
 
 El objeto opcional `component_status_summary` contiene los recuentos `by_status` por estado declarado (ordenados alfabéticamente) y un recuento independiente `missing` para estados ausentes o que no son cadenas, incluidos los metadatos ilegibles. La suma coincide con `count` tras aplicar todos los filtros. A diferencia de `--metadata-summary`, resume el estado declarado del Component, no el resultado de cargar el YAML. Requiere `--list-components --format json`, admite los demás filtros, resúmenes, `--details` y exportación JSON sin modificar la salida predeterminada.
 
+Valida una selección exportada previamente desde el catálogo JSON con `--catalog-input`. Así puedes conectar la exploración de Components con la validación dirigida sin escribir manualmente opciones `--component`:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --family documentation --limit 5 --output selected-components.json
+python -m scripts.framework_validator --catalog-input selected-components.json --format json
+```
+
+La entrada debe ser un objeto JSON de catálogo con `components`, un array no vacío de rutas `FAMILY/NAME` únicas de la **biblioteca actual**. Se admiten catálogos paginados: solo se validan las rutas de la página exportada. Usa `--components-root` en ambos comandos para bibliotecas personalizadas; la entrada no permite acceder fuera de esa raíz. Es incompatible con `--list-components`, `--component` y `--family`. Los catálogos ilegibles o inválidos, rutas inseguras y directorios inexistentes producen código `2` antes de validar. Los fallos de validación conservan código `1` y el informe habitual, con el alcance filtrado. No se modifican archivos de los Components.
+
 Pagina el catálogo después de aplicar los filtros y la ordenación mediante `--limit N` (entero positivo) y/o `--offset N` (entero no negativo):
 
 ```bash

@@ -383,6 +383,12 @@ if __name__ == "__main__":
         help="Filter catalog by metadata loading state (repeatable; listing only).",
     )
     parser.add_argument(
+        "--catalog-input",
+        type=Path,
+        metavar="PATH",
+        help="Validate Components selected in a previously exported JSON catalog.",
+    )
+    parser.add_argument(
         "--component",
         action="append",
         metavar="FAMILY/NAME",
@@ -432,6 +438,10 @@ if __name__ == "__main__":
         parser.error("--sort-order requires --sort-by")
     if arguments.component and arguments.family:
         parser.error("--component cannot be combined with --family")
+    if arguments.catalog_input is not None and (
+        arguments.list_components or arguments.component or arguments.family
+    ):
+        parser.error("--catalog-input cannot combine with --list-components, --component or --family")
     if arguments.output is not None and arguments.format != "json":
         parser.error("--output requires --format json")
     if arguments.components_root is not None and not arguments.components_root.is_dir():
@@ -448,6 +458,39 @@ if __name__ == "__main__":
                 parser.error("--component must use FAMILY/NAME with a known family")
             if not (root / parts[0] / parts[1]).is_dir():
                 parser.error(f"--component directory does not exist: {component_path}")
+    if arguments.catalog_input is not None:
+        root = arguments.components_root or COMPONENTS_ROOT
+        try:
+            with arguments.catalog_input.open(encoding="utf-8") as catalog_file:
+                imported_catalog = json.load(catalog_file)
+        except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+            parser.error(f"Unable to read JSON Component catalog: {exc}")
+        if not isinstance(imported_catalog, dict):
+            parser.error("--catalog-input must contain a JSON catalog object")
+        selected_paths = imported_catalog.get("components")
+        if not isinstance(selected_paths, list) or not selected_paths:
+            parser.error("--catalog-input requires a non-empty components array")
+        unique_paths = set()
+        for selected_path in selected_paths:
+            if not isinstance(selected_path, str):
+                parser.error("--catalog-input components must be FAMILY/NAME strings")
+            parts = selected_path.split("/")
+            if (
+                len(parts) != 2
+                or parts[0] not in COMPONENT_FAMILIES
+                or not re.fullmatch(r"[a-zA-Z0-9][a-zA-Z0-9_-]*", parts[1])
+            ):
+                parser.error(f"--catalog-input invalid Component path: {selected_path}")
+            if selected_path in unique_paths:
+                parser.error(f"--catalog-input duplicate Component path: {selected_path}")
+            unique_paths.add(selected_path)
+            component_directory = root / parts[0] / parts[1]
+            if not component_directory.is_dir():
+                parser.error(f"--catalog-input Component directory does not exist: {selected_path}")
+            if (component_directory.is_symlink()
+                    or not component_directory.resolve().is_relative_to(root.resolve())):
+                parser.error(f"--catalog-input Component path escapes the library: {selected_path}")
+        arguments.component = selected_paths
     if arguments.list_components:
         root = arguments.components_root or COMPONENTS_ROOT
         family_filter = (
