@@ -63,6 +63,8 @@ def write_json_output(report: str, output_path: Path, label: str = "report") -> 
 
 def metadata_sha256(path: Path) -> str | None:
     """Hash the raw metadata bytes, returning None for unreadable or absent files."""
+    if path.is_symlink() or path.parent.is_symlink():
+        raise ValueError("metadata.yml or its Component root is a symbolic link")
     try:
         return hashlib.sha256(path.read_bytes()).hexdigest()
     except OSError:
@@ -630,7 +632,10 @@ if __name__ == "__main__":
                     digest = snapshot.get("metadata_sha256")
                     if not isinstance(digest, str) or re.fullmatch(r"[0-9a-f]{64}", digest) is None:
                         parser.error(f"--catalog-verify-sha256 missing digest for {selected_path}")
-                    current_digest = metadata_sha256(component_dir / "metadata.yml")
+                    try:
+                        current_digest = metadata_sha256(component_dir / "metadata.yml")
+                    except ValueError as exc:
+                        parser.error(f"--catalog-verify-sha256 unable to hash {selected_path}: {exc}")
                     if current_digest != digest:
                         parser.error(f"--catalog-verify-sha256 stale metadata.yml for {selected_path}")
         arguments.component = selected_paths
@@ -812,7 +817,13 @@ if __name__ == "__main__":
                 for component in available:
                     detail = dict(entries[component])
                     if arguments.catalog_metadata_sha256:
-                        detail["metadata_sha256"] = metadata_sha256(component / "metadata.yml")
+                        try:
+                            detail["metadata_sha256"] = metadata_sha256(component / "metadata.yml")
+                        except ValueError as exc:
+                            parser.error(
+                                f"--catalog-metadata-sha256 unable to hash "
+                                f"{component.relative_to(root).as_posix()}: {exc}"
+                            )
                     if arguments.catalog_content_sha256:
                         try:
                             detail["content_sha256"] = component_content_sha256(component)
