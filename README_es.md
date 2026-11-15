@@ -197,6 +197,15 @@ python -m scripts.framework_validator --list-components --metadata-status missin
 
 Se combina con `--family`, `--match`, `--exclude` y `--output` JSON. El catálogo JSON añade `scope.metadata_status` en orden `loaded`, `missing`, `invalid` cuando se emplea el filtro. Si no hay coincidencias devuelve código `1` sin sobrescribir archivos.
 
+Para consultar rápidamente el estado del inventario, añade `--metadata-summary` al catálogo JSON. Devuelve recuentos de metadatos `loaded`, `missing` e `invalid` después de aplicar los filtros, sin necesidad de incluir los detalles completos:
+
+```bash
+python -m scripts.framework_validator --list-components --format json --metadata-summary
+python -m scripts.framework_validator --list-components --format json --metadata-status missing --metadata-summary
+```
+
+Requiere `--list-components --format json` y solo añade `metadata_summary` cuando se solicita. Admite `--family`, `--match`, `--exclude`, `--metadata-status`, `--details` y `--output` JSON. Si no hay coincidencias, se mantiene el código de salida `1`.
+
 Por defecto, el listado devuelve una ruta portable por línea. Para integraciones, `--list-components --format json` devuelve un objeto con `components` ordenados, `count` y `scope.families`:
 
 ```bash

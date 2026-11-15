@@ -313,6 +313,11 @@ if __name__ == "__main__":
         help="Exclude matching family/name paths from the catalog (repeatable; listing only).",
     )
     parser.add_argument(
+        "--metadata-summary",
+        action="store_true",
+        help="Include metadata loading status counts in the JSON Component catalog.",
+    )
+    parser.add_argument(
         "--metadata-status",
         action="append",
         choices=("loaded", "missing", "invalid"),
@@ -330,6 +335,10 @@ if __name__ == "__main__":
         not arguments.list_components or arguments.format != "json"
     ):
         parser.error("--details requires --list-components --format json")
+    if arguments.metadata_summary and (
+        not arguments.list_components or arguments.format != "json"
+    ):
+        parser.error("--metadata-summary requires --list-components --format json")
     if arguments.list_components:
         if arguments.component:
             parser.error("--list-components cannot be combined with --component")
@@ -378,7 +387,7 @@ if __name__ == "__main__":
                 )
             ]
         entries = {}
-        if arguments.details or arguments.metadata_status:
+        if arguments.details or arguments.metadata_status or arguments.metadata_summary:
             entries = {
                 component: catalog_metadata_entry(component, root)
                 for component in available
@@ -419,6 +428,14 @@ if __name__ == "__main__":
                 ]
             if arguments.details:
                 catalog["details"] = [entries[component] for component in available]
+            if arguments.metadata_summary:
+                catalog["metadata_summary"] = {
+                    status: sum(
+                        entries[component]["metadata_status"] == status
+                        for component in available
+                    )
+                    for status in ("loaded", "missing", "invalid")
+                }
             catalog_json = json.dumps(catalog, indent=2)
             if arguments.output is None:
                 print(catalog_json)
