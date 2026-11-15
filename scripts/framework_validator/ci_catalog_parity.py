@@ -48,6 +48,33 @@ def read_catalog(path: Path) -> dict:
     return data
 
 
+
+def describe_mismatches(left: dict, right: dict, limit: int = 10) -> str:
+    """Summarize which fields differ without printing large catalog contents."""
+    differences = []
+    if left["components"] != right["components"]:
+        differences.append("Component path inventory/order")
+    left_details = {entry["path"]: entry for entry in left["details"]}
+    right_details = {entry["path"]: entry for entry in right["details"]}
+    for path in sorted(set(left_details) | set(right_details)):
+        before, after = left_details.get(path), right_details.get(path)
+        if before is None or after is None:
+            differences.append(f"{path}: missing Component details")
+        elif before != after:
+            fields = sorted(
+                key for key in set(before) | set(after)
+                if before.get(key) != after.get(key)
+            )
+            differences.append(f"{path}: {', '.join(fields)}")
+    for key in sorted(set(left) | set(right)):
+        if key not in ("components", "details") and left.get(key) != right.get(key):
+            differences.append(f"catalog field: {key}")
+    shown = differences[:limit]
+    if len(differences) > limit:
+        shown.append(f"... and {len(differences) - limit} more differences")
+    return "; ".join(shown)
+
+
 def compare_catalogs(ubuntu: Path, windows: Path) -> int:
     """Return zero only if both checked-out Component catalogs match exactly."""
     try:
@@ -57,16 +84,9 @@ def compare_catalogs(ubuntu: Path, windows: Path) -> int:
         print(f"Unable to compare Component catalogs: {exc}", file=sys.stderr)
         return 2
     if left != right:
-        left_details = {entry["path"]: entry for entry in left["details"]}
-        right_details = {entry["path"]: entry for entry in right["details"]}
-        different = sorted(
-            path for path in set(left_details) | set(right_details)
-            if left_details.get(path) != right_details.get(path)
-        )
         print(
             "Component catalogs differ between Ubuntu and Windows. "
-            f"Different Component details: {different}. "
-            f"Path inventories equal: {left['components'] == right['components']}.",
+            + describe_mismatches(left, right),
             file=sys.stderr,
         )
         return 1

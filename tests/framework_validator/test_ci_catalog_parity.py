@@ -1,12 +1,15 @@
 """Contract tests for the cross-platform CI Component catalog comparison."""
 
+import io
 import json
 import unittest
+from contextlib import redirect_stderr
 from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from scripts.framework_validator.ci_catalog_parity import (
     compare_catalogs,
+    describe_mismatches,
     read_catalog,
 )
 
@@ -64,6 +67,42 @@ class CatalogParityTests(unittest.TestCase):
         windows["details"][0]["version"] = "0.2.0"
         self.save(linux, windows)
         self.assertEqual(compare_catalogs(self.ubuntu, self.windows), 1)
+
+    def test_digest_mismatch_identifies_field_without_printing_digests(self) -> None:
+        left, right = catalog(), catalog()
+        right["details"][0]["content_sha256"] = "3" * 64
+        self.save(left, right)
+        stderr = io.StringIO()
+        with redirect_stderr(stderr):
+            outcome = compare_catalogs(self.ubuntu, self.windows)
+        self.assertEqual(outcome, 1)
+        message = stderr.getvalue()
+        self.assertIn("documentation/example: content_sha256", message)
+        self.assertNotIn("3" * 64, message)
+        self.assertNotIn("metadata_sha256", message)
+
+    def test_metadata_and_catalog_scope_differences_are_identified(self) -> None:
+        left, right = catalog(), catalog()
+        right["details"][0]["name"] = "Updated example"
+        right["scope"]["families"] = ["documentation"]
+        message = describe_mismatches(left, right)
+        self.assertIn("documentation/example: name", message)
+        self.assertIn("catalog field: scope", message)
+
+    def test_mismatch_diagnostics_are_bounded(self) -> None:
+        left, right = catalog(), catalog()
+        for i in range(12):
+            path = f"documentation/item-{i}"
+            left["components"].append(path)
+            right["components"].append(path)
+            original = dict(left["details"][0], path=path, name="Original")
+            changed = dict(original, name="Changed")
+            left["details"].append(original)
+            right["details"].append(changed)
+        left["count"] = right["count"] = 13
+        message = describe_mismatches(left, right)
+        self.assertIn("... and 2 more differences", message)
+        self.assertNotIn("documentation/item-9: name", message)
 
     def test_malformed_or_partial_snapshots_are_rejected(self) -> None:
         for update in (
