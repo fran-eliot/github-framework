@@ -37,6 +37,23 @@ jobs:
       - name: Smoke-test real-library CLI catalog and filtered validation
         run: python -m scripts.framework_validator.smoke
 
+      - name: Export verifiable Component catalog
+        run: python -m scripts.framework_validator --list-components --format json --details --catalog-metadata-sha256 --catalog-content-sha256 --output component-catalog.json
+
+      - name: Verify exported Component catalog
+        run: python -m scripts.framework_validator --catalog-input component-catalog.json --catalog-verify-details --catalog-verify-sha256 --catalog-verify-content-sha256 --format json --output catalog-verification-report.json
+
+      - name: Upload verifiable Component catalog
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: framework-component-catalog-${{ matrix.os }}
+          path: |
+            component-catalog.json
+            catalog-verification-report.json
+          if-no-files-found: warn
+          retention-days: 7
+
       - name: Validate Framework Components
         if: ${{ always() }}
         run: python -m scripts.framework_validator --format json --output validator-report.json
