@@ -53,11 +53,23 @@ def component_content_sha256(component: Path) -> str:
         relative = path.relative_to(component).as_posix().encode("utf-8")
         digest.update(len(relative).to_bytes(8, "big"))
         digest.update(relative)
-        size = path.stat().st_size
-        digest.update(size.to_bytes(8, "big"))
         with path.open("rb") as stream:
+            before = os.fstat(stream.fileno())
+            digest.update(before.st_size.to_bytes(8, "big"))
+            bytes_read = 0
             while chunk := stream.read(65536):
                 digest.update(chunk)
+                bytes_read += len(chunk)
+            after = os.fstat(stream.fileno())
+            if (
+                bytes_read != before.st_size
+                or after.st_size != before.st_size
+                or after.st_mtime_ns != before.st_mtime_ns
+            ):
+                raise ValueError(
+                    f"Component file changed during hashing: "
+                    f"{path.relative_to(component).as_posix()}"
+                )
     return digest.hexdigest()
 
 
