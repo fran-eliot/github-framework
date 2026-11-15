@@ -34,6 +34,23 @@ Tras publicar `v0.10.0`, se amplió el Framework Validator en `main` mediante in
 
 **Estado:** [`v0.11.0`](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0) publicado el 2026-11-15 con CI del commit exacto aprobado: 161 tests por sistema operativo, 21 Components y smoke test real de CLI. La release no convierte estas mejoras del Validator en automatización semántica de Existing Repository Adoption ni altera Only Film.
 
+## Estado de los incrementos Unreleased tras v0.11.0 — 2026-11-15
+
+**Línea base:** la release publicada `v0.11.0` permanece fijada en `55680b388b0fd8256c95e15866e53d21cc9a5033`. Las mejoras siguientes se incorporaron **después del tag**, por lo que están en `main` y en `CHANGELOG.md > Unreleased`, pero **no** forman parte de la release publicada.
+
+| Bloque | Capacidades verificadas en el repositorio |
+| --- | --- |
+| Catálogo consultable | Exportación JSON atómica, selección por familias/rutas/metadatos, exclusiones, resúmenes, ordenación y paginación con navegación anterior/siguiente |
+| Flujo catálogo → validación | `--catalog-input` desde archivo o stdin (`-`), validación dirigida de la selección y comprobación de rutas antes de ejecutar |
+| Vigencia e integridad local | `--catalog-verify-details`, huellas SHA-256 de `metadata.yml` y del árbol de archivos completo, con comprobaciones opcionales al importar |
+| Protección y pruebas | Rechazo de enlaces simbólicos en las rutas verificadas, preservación de exportaciones ante errores, pruebas CLI de regresión y smoke test de los Components reales en CI Ubuntu y Windows |
+
+**Última PR integrada comprobada:** [#357 — metadata SHA-256 symlink protection](https://github.com/fran-eliot/github-framework/pull/357), merge `b9f44517a8ec5783c03769ebab1d154502d7a7dc`; [CI 43744364574](https://github.com/fran-eliot/github-framework/actions/runs/43744364574) `success`. Ninguna PR abierta y rama remota de #357 eliminada al consultar GitHub. Este SHA identifica el estado **antes** de la PR que actualice estos documentos.
+
+**Limitaciones:** las comprobaciones criptográficas detectan diferencias respecto a un catálogo previamente generado; no certifican su procedencia, no verifican repositorios consumidores, no sustituyen la evaluación semántica de Adoption ni autorizan modificaciones a Only Film. No hay Sprint activo, nueva versión objetivo, milestone ni publicación aprobada.
+
+**Prioridad propuesta, pendiente de decisión:** consolidar los contratos del Validator y su documentación; contrastar un flujo de uso real de solo lectura contra un repositorio consumidor con referencia fijada; revisar compatibilidad y alcance antes de decidir una posible nueva release. Evitar añadir opciones aisladas sin un caso de uso verificable. La propuesta no abre Issues, Sprint o milestone ni aprueba publicación.
+
 **Siguiente decisión:** priorizar la siguiente mejora funcional tras el cierre post-release, sin asignar una nueva versión, Sprint o milestone sin aprobación.
 
 ---

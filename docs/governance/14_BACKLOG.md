@@ -31,6 +31,30 @@ Los trabajos posteriores a `v0.10.0` se publicaron en **[`v0.11.0 — Framework 
 
 La última versión publicada es **`v0.11.0`**. No existe un Sprint activo ni una nueva versión objetivo comprometida.
 
+### Estado de las entregas posteriores a v0.11.0 (Unreleased)
+
+Los incrementos de catálogo y validación dirigida integrados en `main` después del tag `v0.11.0` permanecen **Unreleased**. No confundir estos cambios con los trabajos de las Issues #135–#155 incluidos en la release.
+
+| PR | Entrega integrada | Estado |
+| --- | --- | --- |
+| [#330](https://github.com/fran-eliot/github-framework/pull/330) y posteriores hasta [#349](https://github.com/fran-eliot/github-framework/pull/349) | Exportación atómica, filtros, ordenación, resúmenes, paginación y navegación del catálogo | Done — Unreleased |
+| [#350](https://github.com/fran-eliot/github-framework/pull/350) | Kit de continuidad actualizado tras las mejoras de catálogo | Done — Unreleased |
+| [#351](https://github.com/fran-eliot/github-framework/pull/351) y [#352](https://github.com/fran-eliot/github-framework/pull/352) | Importación de selecciones JSON para validación dirigida, desde archivo o stdin | Done — Unreleased |
+| [#353](https://github.com/fran-eliot/github-framework/pull/353)–[#355](https://github.com/fran-eliot/github-framework/pull/355) | Verificación opcional de metadatos y huellas SHA-256 de archivos y árbol de Component | Done — Unreleased |
+| [#356](https://github.com/fran-eliot/github-framework/pull/356) y [#357](https://github.com/fran-eliot/github-framework/pull/357) | Refuerzo de rechazo de enlaces simbólicos al calcular/verificar huellas | Done — Unreleased |
+
+La PR [#357](https://github.com/fran-eliot/github-framework/pull/357) se confirmó fusionada en `main` (`b9f44517a8ec5783c03769ebab1d154502d7a7dc`) y el [CI 43744364574](https://github.com/fran-eliot/github-framework/actions/runs/43744364574) finalizó correctamente en Ubuntu y Windows. La documentación se sincroniza mediante una PR posterior que debe verificarse por separado.
+
+**Posibles próximos incrementos — aún no comprometidos:**
+
+1. **Consolidación del Validator:** revisar contratos de CLI/JSON, mensajes, pruebas de compatibilidad y riesgos de regresión, evitando más opciones sin caso de uso.
+2. **Validación práctica de solo lectura:** definir un escenario con consumidor y commit fijado, sin modificar el consumidor ni inferir Adoption Decisions automáticas.
+3. **Revisión de alcance publicable:** contrastar documentación, estabilidad y evidencia de CI antes de proponer al mantenedor una nueva versión, Sprint o milestone.
+
+Ninguno de estos puntos presupone la autorización de Application/Integration para Only Film, certifica un consumer ni supone una planificación de release aprobada.
+
+---
+
 ### Evidencia de adopción en consumidor real — Only Film (Assessment cerrado)
 
 El [Assessment de Only Film](../../framework/adoption/examples/only-film-assessment.md) está **`Complete`** por aprobación expresa del mantenedor el **2026-11-14**, para el commit `28d75a50e0a178954dd46acc23300d9dd327843c` y `TPL-BACKEND 0.1.0`. La [revisión de cierre](../../framework/adoption/examples/only-film-assessment-completion-readiness.md) delimita el alcance documental y la [matriz consolidada](../../framework/adoption/examples/only-film-consolidated-review-matrix.md) conserva la trazabilidad.
