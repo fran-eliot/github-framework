@@ -34,6 +34,9 @@ jobs:
       - name: Run Validator test suite
         run: python -m unittest discover -s tests/framework_validator -p "test_*.py"
 
+      - name: Smoke-test real-library CLI catalog and filtered validation
+        run: python -m scripts.framework_validator.smoke
+
       - name: Validate Framework Components
         if: ${{ always() }}
         run: python -m scripts.framework_validator --format json --output validator-report.json
