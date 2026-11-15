@@ -6,6 +6,8 @@
 
 * Read-only Component catalog filtering by metadata `id` using repeatable `--metadata-id` glob patterns, composable with existing catalog filters and JSON export.
 
+* Optional `--family-summary` for JSON Component catalogs, providing per-family counts after filtering without requiring metadata loading or changing default output.
+
 ### Added
 
 * Read-only `--metadata-status` catalog filtering for loaded, missing or invalid Component metadata, including composable path/family filters, JSON export, and cross-platform real-library smoke coverage.
