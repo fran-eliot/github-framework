@@ -101,7 +101,7 @@ Antes de considerar cualquier aplicación futura en Only Film u otro consumidor 
 
 ### Priorización siguiente (propuesta, no comprometida)
 
-**Candidato con Delivery Scope propuesto (2026-11-18):** [Repository Template Composition Preview — Delivery Scope](../implementation/repository-template-composition-preview-delivery-scope.md). Se propone la alternativa A, con entrada CLI independiente, informe read-only y 17 Acceptance Criteria. Pendiente de aprobación formal del alcance y planificación de implementación; no se ha abierto Sprint, milestone ni versión objetivo. No se autoriza la modificación de consumidores.
+**Candidato con Implementation Plan propuesto (2026-11-18):** [Repository Template Composition Preview — Implementation Plan](../implementation/repository-template-composition-preview-implementation-plan.md). Cuatro unidades dependientes (A–D) y trazabilidad AC-01–AC-17. Alternativa A, Delivery Scope e implementación pendientes de aprobación formal; no se ha comprometido Sprint, milestone ni versión objetivo. No se autoriza la modificación de consumidores.
 
 1. Definir un incremento de uso real de los Components o una capacidad práctica para consumidores, con criterios observables.
 2. Verificar el incremento en uno o más repositorios consumidores sin modificar su contenido automáticamente.
