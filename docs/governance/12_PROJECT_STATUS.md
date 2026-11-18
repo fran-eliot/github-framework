@@ -22,6 +22,10 @@ Las ampliaciones de catálogo, filtros, ordenación, paginación, importación y
 
 ---
 
+## Repository Template Composition Preview — 2026-11-18
+
+Alcance AC-01–AC-17 aprobado; unidades A–C integradas mediante PR #387, #389 y #390. La CLI independiente está disponible en `main` (Unreleased), no en v0.12.0. El [CI de #390](https://github.com/fran-eliot/github-framework/actions/runs/44404005246) concluyó correctamente. Unidad D en revisión con [matriz de verificación](../implementation/repository-template-composition-preview-acceptance.md); cierre pendiente de evidencia CI y aceptación del mantenedor. No se compromete nueva versión, Sprint o milestone. Only Film y UX-02 permanecen sin cambios.
+
 # Estado General
 
 GitHub Framework ha completado las fases de arquitectura, Open Source Readiness, Documentation Framework, Repository Templates y Workflow Framework.
