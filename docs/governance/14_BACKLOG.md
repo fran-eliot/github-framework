@@ -101,7 +101,7 @@ Antes de considerar cualquier aplicación futura en Only Film u otro consumidor 
 
 ### Priorización siguiente (propuesta, no comprometida)
 
-**Candidato con Implementation Plan propuesto (2026-11-18):** [Repository Template Composition Preview — Implementation Plan](../implementation/repository-template-composition-preview-implementation-plan.md). Cuatro unidades dependientes (A–D) y trazabilidad AC-01–AC-17. Alternativa A, Delivery Scope e implementación pendientes de aprobación formal; no se ha comprometido Sprint, milestone ni versión objetivo. No se autoriza la modificación de consumidores.
+**Repository Template Composition Preview — alcance aprobado (2026-11-18):** Alternativa A, [Delivery Scope](../implementation/repository-template-composition-preview-delivery-scope.md) AC-01–AC-17 y [Implementation Plan](../implementation/repository-template-composition-preview-implementation-plan.md) A–D aprobados formalmente por el maintainer. Unidad A en implementación y revisión; criterios todavía pendientes de evidencia CI. Sin compromiso de versión, Sprint ni milestone; no se autoriza modificar consumidores.
 
 1. Definir un incremento de uso real de los Components o una capacidad práctica para consumidores, con criterios observables.
 2. Verificar el incremento en uno o más repositorios consumidores sin modificar su contenido automáticamente.
