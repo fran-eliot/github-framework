@@ -1,10 +1,10 @@
 # Repository Template Composition Preview — Acceptance Verification
 
-**Status:** Core verification evidenced; maintainer delivery acceptance pending  
+**Status:** Complete — Unreleased (formally accepted by maintainer)  
 **Baseline:** `6247a34e348b6b4c0f9efe3d16c139f6cf69b34d` (PR #390 merged)  
 **Date:** 2026-11-18
 
-The [approved scope](repository-template-composition-preview-delivery-scope.md) defines AC-01–AC-17. Units A–C are integrated. [PR #390 CI](https://github.com/fran-eliot/github-framework/actions/runs/44404005246) completed successfully; it predates the new Unit D assertions. The following matrix maps the approved criteria to verification evidence. The integrated revision and CI results are recorded below; delivery acceptance remains a maintainer decision.
+The [approved scope](repository-template-composition-preview-delivery-scope.md) defines AC-01–AC-17. Units A–C are integrated. [PR #390 CI](https://github.com/fran-eliot/github-framework/actions/runs/44404005246) completed successfully; it predates the new Unit D assertions. The following matrix maps the approved criteria to verification evidence. The integrated revision and CI results are recorded below; the formal maintainer decision is recorded below.
 
 | Criterion | Verification location |
 | --- | --- |
@@ -73,3 +73,7 @@ Counts and absence of reported skips were checked in the platform job logs, not 
 No skips were reported by either platform's unittest summaries; the permission-denial fixture simulates an exception, rather than proving all operating-system permission configurations. Registry structural checks cannot prove completeness. No independent user study, consumer conformance test, atomic source snapshot or system-wide filesystem/network audit was performed.
 
 **Recommendation:** accept the four implementation units and AC-01–AC-17 for the bounded approved scope, with the stated evidence limitations. This verification is not itself formal maintainer acceptance, a release candidate or an authorization to publish. The capability remains Unreleased after v0.12.0; no change to Only Film, UX-02, Sprint or milestone.
+
+## Formal delivery acceptance — 2026-11-18
+
+The maintainer formally accepted Repository Template Composition Preview as **Complete — Unreleased**, including all four implementation units and the bounded evidence for AC-01–AC-17. Core verification documentation was integrated through [PR #392](https://github.com/fran-eliot/github-framework/pull/392) at `9896d7ea84df72d73856e6487ecb9ac599f065f9`; its [CI run 44406655239](https://github.com/fran-eliot/github-framework/actions/runs/44406655239) succeeded. The tested implementation baseline and all limitations above remain unchanged. No new release is authorized; v0.12.0 remains the published version. No consumer changes, Sprint or milestone are authorized by this decision.
