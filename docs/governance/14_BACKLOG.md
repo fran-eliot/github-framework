@@ -101,7 +101,7 @@ Antes de considerar cualquier aplicación futura en Only Film u otro consumidor 
 
 ### Priorización siguiente (propuesta, no comprometida)
 
-**Candidato en Discovery (2026-11-18):** [Repository Template Composition Preview](../implementation/repository-template-composition-preview-discovery.md). Consulta read-only de la composición de los tres Templates, distinguiendo coincidencias físicas y referencias Conceptual, sin generar repositorios ni evaluar conformidad de consumidores. El alcance de implementación, representación y CLI aún no se han aprobado.
+**Candidato con Discovery consolidado (2026-11-18):** [Repository Template Composition Preview — Discovery Synthesis](../implementation/repository-template-composition-preview-synthesis.md). Consulta read-only de la composición de los tres Templates, distinguiendo coincidencias físicas y referencias Conceptual, sin generar repositorios ni evaluar conformidad de consumidores. El alcance de implementación, representación y CLI aún no se han aprobado.
 
 1. Definir un incremento de uso real de los Components o una capacidad práctica para consumidores, con criterios observables.
 2. Verificar el incremento en uno o más repositorios consumidores sin modificar su contenido automáticamente.
