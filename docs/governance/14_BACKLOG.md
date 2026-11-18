@@ -101,7 +101,7 @@ Antes de considerar cualquier aplicación futura en Only Film u otro consumidor 
 
 ### Priorización siguiente (propuesta, no comprometida)
 
-**Repository Template Composition Preview — alcance aprobado (2026-11-18):** Alternativa A, [Delivery Scope](../implementation/repository-template-composition-preview-delivery-scope.md) AC-01–AC-17 y [Implementation Plan](../implementation/repository-template-composition-preview-implementation-plan.md) A–D aprobados formalmente por el maintainer. Unidad A en implementación y revisión; criterios todavía pendientes de evidencia CI. Sin compromiso de versión, Sprint ni milestone; no se autoriza modificar consumidores.
+**Repository Template Composition Preview — alcance aprobado (2026-11-18):** Alternativa A, [Delivery Scope](../implementation/repository-template-composition-preview-delivery-scope.md) AC-01–AC-17 y [Implementation Plan](../implementation/repository-template-composition-preview-implementation-plan.md) A–D aprobados formalmente por el maintainer. Unidades A–C integradas (#387, #389, #390); CLI disponible en main, CI de #390 correcto. Unidad D en revisión: pruebas integrales y documentación; cierre AC-01–AC-17 sujeto a evidencia CI y revisión del mantenedor. Sin compromiso de versión, Sprint ni milestone; no se autoriza modificar consumidores.
 
 1. Definir un incremento de uso real de los Components o una capacidad práctica para consumidores, con criterios observables.
 2. Verificar el incremento en uno o más repositorios consumidores sin modificar su contenido automáticamente.

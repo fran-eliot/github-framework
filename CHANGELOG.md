@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* Added the standalone read-only Repository Template Composition Preview for the three canonical Templates, with strict source loading, explicit resolution outcomes, ordered text evidence and exit codes 0/1/2. Includes fixture and real-checkout regression tests; does not generate or assess consumer repositories. See the [guide](docs/implementation/repository-template-composition-preview.md).
+
 * Reject duplicate JSON object keys and non-standard NaN/Infinity constants when reading CI catalog artifacts, with regressions for identical malformed inputs.
 
 * Strengthened cross-platform catalog parity preflight to reject invalid or out-of-scope `FAMILY/NAME` Component paths (including traversal, nested paths and Windows separators), even when both artifacts are identical.

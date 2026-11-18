@@ -386,6 +386,18 @@ The validator checks deterministic rules; it does not replace architectural revi
 
 ---
 
+## Repository Template Composition Preview (Unreleased)
+
+On current `main`, inspect the declared composition of a canonical Repository Template without generating or modifying repositories:
+
+```bash
+python -B -m scripts.template_composition_preview TPL-BACKEND
+```
+
+Also supports `TPL-FULLSTACK` and `TPL-DOCUMENTATION`. The preview distinguishes Conceptual references from missing or conflicting evidence. It is not consumer validation. See the [Composition Preview guide](docs/implementation/repository-template-composition-preview.md).
+
+---
+
 ## 🔄 Existing Repository Adoption
 
 GitHub Framework includes a reusable **Existing Repository Adoption Assessment Core** for evaluating an existing repository against the Responsibilities defined by a Repository Template.
