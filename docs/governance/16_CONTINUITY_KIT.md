@@ -4,17 +4,93 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Documento**            | Continuity Kit   |
-| **Versión**              | 1.6.0            |
+| **Versión**              | 1.7.0            |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-11-15       |
+| **Última actualización** | 2026-11-18       |
 
 > Este documento constituye el punto oficial de incorporación al proyecto.
 
-Todo nuevo colaborador o asistente deberá utilizar este documento como referencia inicial antes de comenzar cualquier desarrollo.
+Todo nuevo colaborador deberá utilizar este documento como referencia inicial antes de comenzar cualquier desarrollo.
 
 ---
 
-# Snapshot vigente — v0.12.0 Published & Post-release Continuity (2026-11-15)
+# Snapshot vigente — Repository Template Composition Preview (2026-11-18)
+
+> **Punto oficial de reanudación.** Este bloque sustituye todos los snapshots anteriores como referencia operativa. Los documentos y snapshots históricos conservan su evidencia, no su vigencia como instrucciones. Verificar GitHub antes de retomar.
+
+| Campo | Estado comprobado |
+| --- | --- |
+| Repositorio | [fran-eliot/github-framework](https://github.com/fran-eliot/github-framework) |
+| Release publicada | [v0.12.0 — Framework Validator Catalog and Integrity](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0), 2026-11-15, no prerelease |
+| SHA del tag | `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1` |
+| `main` antes de actualizar este Kit | [`d4512488ad416b1ec523423a9c2f423c215d4ab2`](https://github.com/fran-eliot/github-framework/commit/d4512488ad416b1ec523423a9c2f423c215d4ab2) |
+| Última PR integrada | [#387 — Strict source readers and registry adapter](https://github.com/fran-eliot/github-framework/pull/387) |
+| CI de #387 | [Run 44399979109](https://github.com/fran-eliot/github-framework/actions/runs/44399979109), tres jobs correctos; paso de tests de fuentes del preview correcto en Ubuntu y Windows |
+| PR abiertas / rama de #387 | Ninguna / eliminada antes de crear esta actualización |
+| Versión objetivo / Sprint / milestone | Ninguno nuevo comprometido; trabajo posterior al tag Unreleased |
+| Only Film | Assessment Complete exclusivamente documental, SHA `28d75a50e0a178954dd46acc23300d9dd327843c` frente a TPL-BACKEND 0.1.0; 28 clasificaciones y 28 decisiones aprobadas (14 PRESERVE, 3 OMIT, 9 ADAPT, 2 ADD). Sin autorización de modificación, Application o Integration |
+| UX-02 | Prepared — Not Executed; no atribuir participantes independientes |
+
+## Evolución posterior a v0.12.0
+
+| PR | Entrega integrada |
+| --- | --- |
+| [#374](https://github.com/fran-eliot/github-framework/pull/374) | Sincronización post-release y Kit 1.6.0 |
+| [#375](https://github.com/fran-eliot/github-framework/pull/375)–[#376](https://github.com/fran-eliot/github-framework/pull/376) | Regresiones de biblioteca externa de tres familias y aislamiento del cambio de integridad en selección guardada |
+| [#377](https://github.com/fran-eliot/github-framework/pull/377)–[#380](https://github.com/fran-eliot/github-framework/pull/380) | Refuerzo del comparador CI: ausente frente a null, estructura/count/scope, rutas y JSON ambiguo o no estándar |
+| [#381](https://github.com/fran-eliot/github-framework/pull/381) | [Discovery](../implementation/repository-template-composition-preview-discovery.md); README EN/ES sincronizados con v0.12.0 |
+| [#382](https://github.com/fran-eliot/github-framework/pull/382) | [Solution Shaping](../implementation/repository-template-composition-preview-solution-shaping.md) |
+| [#383](https://github.com/fran-eliot/github-framework/pull/383) | [Repeatability Experiment](../implementation/repository-template-composition-preview-repeatability.md) |
+| [#384](https://github.com/fran-eliot/github-framework/pull/384) | [Discovery Synthesis](../implementation/repository-template-composition-preview-synthesis.md) |
+| [#385](https://github.com/fran-eliot/github-framework/pull/385) | [Delivery Scope](../implementation/repository-template-composition-preview-delivery-scope.md) |
+| [#386](https://github.com/fran-eliot/github-framework/pull/386) | [Implementation Plan](../implementation/repository-template-composition-preview-implementation-plan.md) |
+| [#387](https://github.com/fran-eliot/github-framework/pull/387) | Unit A: lectores de fuentes, adaptador de registro, fixtures y verificación CI de los tests de fuentes; aprobación anotada en Backlog |
+
+## Aprobación y contrato de entrega
+
+El 2026-11-18 el mantenedor aprobó formalmente **alternativa A, Delivery Scope AC-01–AC-17 e Implementation Plan A–D**, y autorizó comenzar Unit A. Esta autorización no compromete nueva versión, Sprint o milestone. Los encabezados históricos de propuesta en los documentos de planificación no invalidan la aprobación registrada en [Backlog](14_BACKLOG.md). No ampliar alcance por inferencia; preservar los límites aprobados.
+
+- Alternativa A: adaptador acotado de las cuatro tablas de registro del Component Catalog, secciones 40, 57, 93 y 112; no duplicar IDs en un registro autoritativo paralelo. La sintaxis no prueba completitud.
+- Tres Templates canónicos, por ID estable: TPL-BACKEND, TPL-FULLSTACK y TPL-DOCUMENTATION. Metadata del Template determina niveles y orden; registro determina clasificación; metadata física determina identidad y evidencia de ubicación.
+- CLI futura independiente `python -m scripts.template_composition_preview TPL-BACKEND` (también los otros dos IDs); texto determinista en stdout, errores de fuente/argumentos en stderr, sin salida parcial. Exit 0: Resolved/Conceptual; 1: informe completo con Unknown/Inconsistent/Ambiguous; 2: error de fuente o argumentos. No disponible aún.
+- Preservar niveles required/recommended/optional y orden declarado. Resolved no implica materialización válida, resultado del Validator ni conformidad de consumidores. Un requerido Conceptual no provoca error por sí mismo.
+- Python 3.11 y PyYAML 6.0.2; no nuevos flags del Validator, JSON del preview, roots públicos, generación, mutación de consumidores, red, migración de registro ni promoción de lifecycle.
+
+## Evidencia de Discovery
+
+Replay documental y rutinas temporales en memoria sobre fuentes fijadas: 62 registros (21 Implemented, 41 Conceptual); 77 referencias acumuladas, 43 Resolved y 34 Conceptual; nueve combinaciones sintéticas y cuatro variantes mal formadas. No fue un pipeline Python integrado.
+
+| Template 0.1.0 | Required R/C | Recommended R/C | Optional R/C |
+| --- | --- | --- | --- |
+| TPL-BACKEND | 8/0 | 5/2 | 3/10 |
+| TPL-FULLSTACK | 9/0 | 4/4 | 3/8 |
+| TPL-DOCUMENTATION | 8/1 | 2/5 | 1/4 |
+
+README-LICENSE permanece required y Conceptual en TPL-DOCUMENTATION. Estas cifras son evidencia de baseline y expectativas de replay, no resultados de una CLI ya existente ni constantes de producción.
+
+## Estado de implementación y siguiente paso exacto
+
+| Unidad | Estado |
+| --- | --- |
+| A — Source Acquisition & Registry Adapter | Integrada en #387; CI de tests de fuentes correcto en ambas plataformas. AC-08–AC-11 con cobertura unitaria; contribuciones parciales AC-03, AC-13 y AC-14. Confirmación integral pendiente |
+| B — Pure Resolution Model | Siguiente unidad, pendiente |
+| C — Report & CLI | Pendiente, depende de B |
+| D — Verification & Documentation | Pendiente; replay real, evidencia AC-01–AC-17 y cierre |
+
+Código actual: `scripts/template_composition_preview/__init__.py` (SourceError), `sources.py` (TemplateSource, PhysicalSource, load_template, discover_physical), `registry.py` (RegistrySource, parse_registry, load_registry). Tests: `tests/template_composition_preview/test_sources.py`, `test_registry.py`. Workflow existente ejecuta `python -B -m unittest discover -s tests/template_composition_preview -p "test_*.py"` en ambas plataformas. No hay resolver, report, ni __main__.py todavía. Las comprobaciones de symlink pueden omitirse si no están disponibles; el éxito del paso CI no acredita ausencia de skips.
+
+**Reanudación:**
+1. Confirmar merge, CI y rama eliminada de la PR que introduce Kit 1.7.0; consultar `main`, PR abiertas y release. Resolver un CI fallido en la misma PR antes de avanzar.
+2. Leer Delivery Scope, Implementation Plan y código actual de Unit A. Crear una rama desde el nuevo `main` para **Unit B**, sin reabrir Discovery ni repetir la aprobación existente; mantener revisión por unidades.
+3. Implementar `resolution.py` y tests puros: Implemented + una coincidencia = Resolved; Conceptual + ninguna = Conceptual; Implemented sin coincidencia, Conceptual con una o registro ausente con una = Inconsistent; sin registro ni coincidencia = Unknown; múltiples coincidencias = Ambiguous con precedencia y sin elegir arbitrariamente. Retener evidencia, razón, niveles y orden, y probar las nueve combinaciones. AC-06 y contribuciones AC-03/05/07/12.
+4. Tras revisión, CI, merge y eliminación de rama, continuar Unit C y después D. No marcar todos los AC como verificados antes de la evidencia integral. Mantener CHANGELOG Unreleased y sincronizar gobierno con hechos comprobados.
+5. Flujo de trabajo: rama temática y PR acotada; revisión, merge y eliminación de rama remota a cargo del mantenedor. Documentación técnica nueva en inglés, gobierno existente en español. Sin publicación, cambios en Only Film ni nuevas fases de Adoption sin aprobación independiente.
+
+---
+
+# Snapshot histórico — v0.12.0 Published & Post-release Continuity (2026-11-15)
+
+> Snapshot sustituido por el de 2026-11-18; conserva evidencia histórica. Sus instrucciones de continuación ya no prevalecen sobre el bloque vigente.
 
 > **Punto oficial de reanudación.** Este snapshot reemplaza la situación de preparación para v0.12.0. Los snapshots de PR anteriores se conservan debajo **solo como evidencia histórica**; no prevalecen sobre la release real. Antes de actuar, comprobar el estado de GitHub y los checks de la PR que introduce este snapshot.
 
@@ -50,7 +126,7 @@ Todo nuevo colaborador o asistente deberá utilizar este documento como referenc
 2. Confirmar `main`, PR abiertas y releases antes de iniciar nuevas ramas; distinguir el tag fijo de `v0.12.0` de cambios post-release.
 3. Priorizar trabajo mediante un caso de uso real, sin ampliar indiscriminadamente flags de CLI ni confundir validación de bibliotecas con validación de consumidores.
 4. No modificar Only Film, abrir una fase de Application/Integration o atribuir resultados a UX-02 sin decisión específica.
-5. Mantener el procedimiento: rama y PR implementada por el asistente; revisión, merge y eliminación de rama remota por el mantenedor. Para cualquier versión futura, exigir aprobación separada del alcance y publicación.
+5. Mantener el procedimiento: rama y PR de trabajo; revisión, merge y eliminación de rama remota por el mantenedor. Para cualquier versión futura, exigir aprobación separada del alcance y publicación.
 
 ---
 
@@ -1340,3 +1416,4 @@ Cada decisión futura deberá respetar esta filosofía.
 | ------- | ---------- | --------------------------------------------------------------------------------------------------------- |
 | 1.0.0   | 2026-08-07 | Primera versión del Continuity Kit, utilizada como documento de incorporación y continuidad del proyecto. |
 | 1.1.0   | 2026-11-14 | Incorporación del snapshot de continuidad post-release y del Assessment documental Complete de Only Film; preservación histórica del contenido de agosto. |
+| 1.7.0 | 2026-11-18 | Continuidad post-v0.12.0, alcance aprobado de Composition Preview, Unit A integrada y punto de reanudación Unit B. |
