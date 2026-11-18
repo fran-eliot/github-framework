@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* Reject duplicate JSON object keys and non-standard NaN/Infinity constants when reading CI catalog artifacts, with regressions for identical malformed inputs.
+
 * Strengthened cross-platform catalog parity preflight to reject invalid or out-of-scope `FAMILY/NAME` Component paths (including traversal, nested paths and Windows separators), even when both artifacts are identical.
 
 * Hardened cross-platform catalog parity preflight so two identically malformed CI artifacts cannot pass: reject non-integer counts, invalid/missing family scope and empty Component paths, with regression tests for symmetric malformed inputs.
@@ -11,8 +13,6 @@
 * Added a relocated-library regression proving that changes to unselected Component families do not invalidate a saved Workflow selection, while selected Component content drift rejects its stale SHA-256 snapshot without modifying the saved catalog.
 
 * Added a three-family relocated Component library CLI regression using temporary copies of real tracked README, Documentation and Workflow Components; verifies full and targeted SHA-256 catalog workflows without changing source files or validating an application consumer.
-
-No changes recorded since v0.12.0.
 
 ---
 
