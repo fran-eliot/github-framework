@@ -1,10 +1,10 @@
 # Repository Template Composition Preview — Acceptance Verification
 
-**Status:** Unit D verification candidate; final CI evidence and maintainer acceptance pending  
+**Status:** Core verification evidenced; maintainer delivery acceptance pending  
 **Baseline:** `6247a34e348b6b4c0f9efe3d16c139f6cf69b34d` (PR #390 merged)  
 **Date:** 2026-11-18
 
-The [approved scope](repository-template-composition-preview-delivery-scope.md) defines AC-01–AC-17. Units A–C are integrated. [PR #390 CI](https://github.com/fran-eliot/github-framework/actions/runs/44404005246) completed successfully; it predates the new Unit D assertions. The following matrix identifies test evidence to review, not a declaration of final acceptance.
+The [approved scope](repository-template-composition-preview-delivery-scope.md) defines AC-01–AC-17. Units A–C are integrated. [PR #390 CI](https://github.com/fran-eliot/github-framework/actions/runs/44404005246) completed successfully; it predates the new Unit D assertions. The following matrix maps the approved criteria to verification evidence. The integrated revision and CI results are recorded below; delivery acceptance remains a maintainer decision.
 
 | Criterion | Verification location |
 | --- | --- |
@@ -45,3 +45,31 @@ python -B -m unittest discover -s tests/template_composition_preview -p "test_*.
 The tests snapshot isolated fixture trees, including directory paths and regular file bytes. They do not constitute a system-wide filesystem or network audit. The command has no consumer input or network retrieval path. Permissions are simulated in a targeted test; symlink checks may be skipped on unsupported platforms. Source reads are not atomic snapshots. Registry completeness and consumer conformance are not certified.
 
 Final verification must record the exact tested revision and CI outcome, identify any skipped checks or unavailable evidence, and receive maintainer review before marking delivery complete. No version, Sprint, milestone or consumer change follows automatically.
+
+## Core verification evidence
+
+**Integrated revision:** [`3bc48973dfca8b596e02cc0936c88b88e16b1184`](https://github.com/fran-eliot/github-framework/commit/3bc48973dfca8b596e02cc0936c88b88e16b1184) (PR #391 merged). The PR branch was removed. The [PR CI run 44405148104](https://github.com/fran-eliot/github-framework/actions/runs/44405148104) and [push-to-main run 44406140362](https://github.com/fran-eliot/github-framework/actions/runs/44406140362) both completed successfully. The second run's head SHA is exactly the integrated revision above.
+
+| Evidence on integrated revision | Ubuntu | Windows |
+| --- | --- | --- |
+| Validator unit/regression suite | 282 tests, OK | 282 tests, OK |
+| Composition Preview suite | 24 tests, OK | 24 tests, OK |
+| Validator real-library CLI smoke | Success | Success |
+| Cross-platform catalog parity | Success (shared job) | Success (shared job) |
+
+Counts and absence of reported skips were checked in the platform job logs, not inferred solely from the workflow status. The same test totals were observed in PR CI. The CLI subprocess assertions compare the reference rows and per-level and aggregate counts for all three canonical Templates, including the required Conceptual README-LICENSE, without embedding those counts in production code. The verified baseline therefore contains 77 reference occurrences (43 Resolved, 34 Conceptual), not 77 distinct Components.
+
+| AC | Core verification assessment |
+| --- | --- |
+| AC-01–AC-02 | Supported by CLI help, canonical selection and argument error tests |
+| AC-03–AC-05 | Supported by ordered groups, zero counts, real baseline replay and required Conceptual evidence |
+| AC-06–AC-07 | Supported by nine-case matrix and complete conflict reports |
+| AC-08–AC-11 | Supported by bounded registry and strict source fixtures, source-error subprocesses and runtime identity discovery |
+| AC-12–AC-13 | Supported by report evidence, count reconciliation and repeated subprocesses |
+| AC-14 | Supported within isolated fixture scope by byte/path snapshots for exits 0/1/2 with -B; network and consumer exclusion assessed by code scope, not a system-wide access trace |
+| AC-15–AC-16 | Supported by exact integrated-revision CI, both platform test suites, real CLI subprocesses, smoke and parity |
+| AC-17 | Supported by the usage guide and English/Spanish README navigation |
+
+No skips were reported by either platform's unittest summaries; the permission-denial fixture simulates an exception, rather than proving all operating-system permission configurations. Registry structural checks cannot prove completeness. No independent user study, consumer conformance test, atomic source snapshot or system-wide filesystem/network audit was performed.
+
+**Recommendation:** accept the four implementation units and AC-01–AC-17 for the bounded approved scope, with the stated evidence limitations. This verification is not itself formal maintainer acceptance, a release candidate or an authorization to publish. The capability remains Unreleased after v0.12.0; no change to Only Film, UX-02, Sprint or milestone.
