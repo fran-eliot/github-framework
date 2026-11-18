@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* Strengthened cross-platform catalog parity preflight to reject invalid or out-of-scope `FAMILY/NAME` Component paths (including traversal, nested paths and Windows separators), even when both artifacts are identical.
+
 * Hardened cross-platform catalog parity preflight so two identically malformed CI artifacts cannot pass: reject non-integer counts, invalid/missing family scope and empty Component paths, with regression tests for symmetric malformed inputs.
 
 * Fixed cross-platform Component catalog parity diagnostics for missing-versus-explicit-null optional fields at Component and top-level scope, with isolated regression coverage. Catalog equality and CI failure behavior remain strict and unchanged.
