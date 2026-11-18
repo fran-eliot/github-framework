@@ -4,7 +4,7 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Documento**            | Continuity Kit   |
-| **Versión**              | 1.7.0            |
+| **Versión**              | 1.8.0            |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-11-18       |
 
@@ -14,7 +14,61 @@ Todo nuevo colaborador deberá utilizar este documento como referencia inicial a
 
 ---
 
-# Snapshot vigente — Repository Template Composition Preview (2026-11-18)
+# Snapshot vigente — Composition Preview Complete — Unreleased (2026-11-18)
+
+> **Punto oficial de reanudación.** Prevalece sobre los snapshots históricos. El estado real de GitHub debe comprobarse antes de cada incremento.
+
+| Campo | Estado |
+| --- | --- |
+| Repositorio | [fran-eliot/github-framework](https://github.com/fran-eliot/github-framework) |
+| Última release publicada | [v0.12.0 — Framework Validator Catalog and Integrity](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0) |
+| SHA del tag | `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1` |
+| main previo al cierre documental | `9896d7ea84df72d73856e6487ecb9ac599f065f9` (PR #392 fusionada) |
+| CI de #392 | [44406655239](https://github.com/fran-eliot/github-framework/actions/runs/44406655239), success |
+| PR abiertas antes de esta actualización | Ninguna |
+| Repository Template Composition Preview | **Complete — Unreleased**, aceptación formal del mantenedor el 2026-11-18 |
+| Nueva release / Sprint / milestone | No autorizados ni comprometidos |
+| Only Film | Assessment Complete exclusivamente documental, SHA `28d75a50e0a178954dd46acc23300d9dd327843c`, TPL-BACKEND 0.1.0; 28 clasificaciones y 28 decisiones aprobadas (14 PRESERVE, 3 OMIT, 9 ADAPT, 2 ADD). Sin Application/Integration ni modificación autorizada |
+| UX-02 | Prepared — Not Executed; sin participantes independientes |
+
+## Cierre de Repository Template Composition Preview
+
+El mantenedor ha aceptado formalmente las cuatro unidades A–D y la evidencia de AC-01–AC-17 dentro de sus límites documentados. No ha autorizado una nueva release. La alternativa A y los contratos de [Delivery Scope](../implementation/repository-template-composition-preview-delivery-scope.md) e [Implementation Plan](../implementation/repository-template-composition-preview-implementation-plan.md) se mantienen.
+
+| PR | Entrega |
+| --- | --- |
+| [#387](https://github.com/fran-eliot/github-framework/pull/387) | A — Source Acquisition & Registry Adapter |
+| [#388](https://github.com/fran-eliot/github-framework/pull/388) | Continuity Kit 1.7.0 |
+| [#389](https://github.com/fran-eliot/github-framework/pull/389) | B — Pure Resolution Model |
+| [#390](https://github.com/fran-eliot/github-framework/pull/390) | C — Report & CLI |
+| [#391](https://github.com/fran-eliot/github-framework/pull/391) | D — Verification & Documentation |
+| [#392](https://github.com/fran-eliot/github-framework/pull/392) | Core Verification |
+
+Evidencia de [Core Verification y aceptación](../implementation/repository-template-composition-preview-acceptance.md): baseline integrado `3bc48973dfca8b596e02cc0936c88b88e16b1184`, [CI push 44406140362](https://github.com/fran-eliot/github-framework/actions/runs/44406140362), 282 tests del Validator y 24 del preview correctos por plataforma, sin skips reportados, smoke y paridad correctos. Los tres Templates contienen 77 referencias acumuladas (43 Resolved, 34 Conceptual, cero conflictos). Son ocurrencias, no IDs únicos. La evidencia se restringe a la revisión y escenarios probados.
+
+## Utilización y límites
+
+```bash
+python -B -m scripts.template_composition_preview TPL-BACKEND
+python -B -m scripts.template_composition_preview TPL-FULLSTACK
+python -B -m scripts.template_composition_preview TPL-DOCUMENTATION
+```
+
+Disponible en main, no en el tag v0.12.0. Guía: [Composition Preview](../implementation/repository-template-composition-preview.md). Código en `scripts/template_composition_preview/`, tests en `tests/template_composition_preview/`. Python 3.11 y PyYAML 6.0.2. Exit 0: Resolved/Conceptual; 1: informe completo con conflictos; 2: argumentos o fuentes inválidos, sin informe parcial. El registro Markdown se interpreta mediante adaptador acotado. No se garantiza completitud, atomicidad de lecturas ni conformidad de consumidores; la evidencia read-only corresponde a fixtures aislados con -B, no a una auditoría global de red o filesystem. No hay generación ni JSON del preview.
+
+## Reanudación
+
+1. Verificar merge, CI y eliminación de rama de la PR que introduce este Kit 1.8.0. Consultar main, PR abiertas, releases y CHANGELOG. Resolver checks fallidos antes de avanzar.
+2. La capability está cerrada; no repetir Unit A–D ni solicitar otra aceptación sin nueva evidencia que lo justifique.
+3. Revisar prioridades reales del [Backlog](14_BACKLOG.md), [Project Status](12_PROJECT_STATUS.md) y [Roadmap](../../ROADMAP.md). El siguiente incremento requiere seleccionar una necesidad concreta y acotada; no se ha decidido aún una nueva capability.
+4. Mantener el alcance Unreleased y la versión publicada v0.12.0. Una propuesta de release requiere decisión independiente; no crear tag, release, Sprint o milestone sin aprobación.
+5. Conservar límites de Only Film y UX-02. Rama temática y PR por incremento; revisión, merge y eliminación de rama remota a cargo del mantenedor. Documentación técnica nueva en inglés y gobierno existente en español.
+
+---
+
+# Snapshot histórico — Repository Template Composition Preview, Unit A (2026-11-18)
+
+> Sustituido por el snapshot de cierre 1.8.0. Los estados pendientes de este bloque son históricos y no deben reabrirse por rutina.
 
 > **Punto oficial de reanudación.** Este bloque sustituye todos los snapshots anteriores como referencia operativa. Los documentos y snapshots históricos conservan su evidencia, no su vigencia como instrucciones. Verificar GitHub antes de retomar.
 
@@ -1417,3 +1471,4 @@ Cada decisión futura deberá respetar esta filosofía.
 | 1.0.0   | 2026-08-07 | Primera versión del Continuity Kit, utilizada como documento de incorporación y continuidad del proyecto. |
 | 1.1.0   | 2026-11-14 | Incorporación del snapshot de continuidad post-release y del Assessment documental Complete de Only Film; preservación histórica del contenido de agosto. |
 | 1.7.0 | 2026-11-18 | Continuidad post-v0.12.0, alcance aprobado de Composition Preview, Unit A integrada y punto de reanudación Unit B. |
+| 1.8.0 | 2026-11-18 | Cierre formal Complete — Unreleased de Composition Preview, evidencia de CI y reanudación posterior a la entrega. |
