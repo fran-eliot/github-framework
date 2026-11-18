@@ -208,6 +208,24 @@ class CatalogParityTests(unittest.TestCase):
         self.assertEqual(outcome, 2)
         self.assertIn("invalid or out-of-scope Component path", stderr.getvalue())
 
+    def test_ambiguous_or_nonstandard_json_is_rejected(self) -> None:
+        valid = json.dumps(catalog())
+        for payload in (
+            valid.replace('"count": 1', '"count": 0, "count": 1'),
+            valid.replace('"id": "DOC-EXAMPLE"', '"id": "OTHER", "id": "DOC-EXAMPLE"'),
+            valid[:-1] + ', "extra": NaN}',
+            valid[:-1] + ', "extra": Infinity}',
+            valid[:-1] + ', "extra": -Infinity}',
+        ):
+            with self.subTest(payload=payload):
+                self.ubuntu.write_text(payload, encoding="utf-8")
+                self.windows.write_text(payload, encoding="utf-8")
+                stderr = io.StringIO()
+                with redirect_stderr(stderr):
+                    outcome = compare_catalogs(self.ubuntu, self.windows)
+                self.assertEqual(outcome, 2)
+                self.assertIn("Unable to compare Component catalogs", stderr.getvalue())
+
     def test_missing_artifact_is_rejected(self) -> None:
         self.ubuntu.write_text(json.dumps(catalog()), encoding="utf-8")
         self.assertEqual(compare_catalogs(self.ubuntu, self.windows), 2)
