@@ -24,7 +24,7 @@ Las ampliaciones de catálogo, filtros, ordenación, paginación, importación y
 
 ## Repository Template Composition Preview — 2026-11-18
 
-Alcance AC-01–AC-17 aprobado; unidades A–C integradas mediante PR #387, #389 y #390. La CLI independiente está disponible en `main` (Unreleased), no en v0.12.0. El [CI de #390](https://github.com/fran-eliot/github-framework/actions/runs/44404005246) concluyó correctamente. Unidad D en revisión con [matriz de verificación](../implementation/repository-template-composition-preview-acceptance.md); cierre pendiente de evidencia CI y aceptación del mantenedor. No se compromete nueva versión, Sprint o milestone. Only Film y UX-02 permanecen sin cambios.
+Alcance AC-01–AC-17 aprobado; unidades A–C integradas mediante PR #387, #389 y #390. La CLI independiente está disponible en `main` (Unreleased), no en v0.12.0. El [CI de #390](https://github.com/fran-eliot/github-framework/actions/runs/44404005246) concluyó correctamente. Unidad D integrada (#391); [Core Verification](../implementation/repository-template-composition-preview-acceptance.md) sustentada por CI de main `44406140362` (282 tests del Validator y 24 del preview correctos por plataforma, smoke y paridad). AC-01–AC-17 con evidencia acotada; aceptación formal del mantenedor pendiente. No se compromete nueva versión, Sprint o milestone. Only Film y UX-02 permanecen sin cambios.
 
 # Estado General
 
