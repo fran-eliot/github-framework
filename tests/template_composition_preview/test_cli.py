@@ -14,13 +14,13 @@ ROOT = Path(__file__).resolve().parents[2]
 MODULE = "scripts.template_composition_preview"
 
 
-def invoke(root, *args):
+def invoke(root, *args, cwd=None):
     env = os.environ.copy()
     env["PYTHONPATH"] = str(root)
     env["PYTHONIOENCODING"] = "utf-8"
     return subprocess.run(
         [sys.executable, "-B", "-m", MODULE, *args],
-        cwd=root, env=env, capture_output=True, text=True, encoding="utf-8",
+        cwd=root if cwd is None else cwd, env=env, capture_output=True, text=True, encoding="utf-8",
         timeout=30,
     )
 
@@ -45,6 +45,40 @@ class CLITests(unittest.TestCase):
                     license_row = required.split("- README-LICENSE |")[1].split("\n- ")[0]
                     self.assertIn("Metadata: no physical match", license_row)
                     self.assertIn("40. README Component Registry", license_row)
+
+    def test_baseline_counts_and_repeatability(self):
+        expected = {
+            "TPL-BACKEND": ((8, 0), (5, 2), (3, 10)),
+            "TPL-FULLSTACK": ((9, 0), (4, 4), (3, 8)),
+            "TPL-DOCUMENTATION": ((8, 1), (2, 5), (1, 4)),
+        }
+        with TemporaryDirectory() as outside:
+            for identity, levels in expected.items():
+                with self.subTest(identity=identity):
+                    first = invoke(ROOT, identity)
+                    second = invoke(ROOT, identity, cwd=Path(outside))
+                    self.assertEqual(first.returncode, 0, first.stderr)
+                    self.assertEqual((first.returncode, first.stdout, first.stderr),
+                                     (second.returncode, second.stdout, second.stderr))
+                    for level, (resolved, conceptual) in zip(
+                            ("required", "recommended", "optional"), levels):
+                        section = first.stdout.split(f"[{level}]\n")[1].split("\n[")[0]
+                        rows = [line for line in section.splitlines() if line.startswith("- ")]
+                        self.assertEqual(len(rows), resolved + conceptual)
+                        self.assertEqual(sum(row.endswith(" | Resolved") for row in rows), resolved)
+                        self.assertEqual(sum(row.endswith(" | Conceptual") for row in rows), conceptual)
+                        self.assertIn(
+                            f"Counts: Total={resolved + conceptual}; Resolved={resolved}; "
+                            f"Conceptual={conceptual}; Unknown=0; Inconsistent=0; Ambiguous=0",
+                            section,
+                        )
+                    resolved = sum(pair[0] for pair in levels)
+                    conceptual = sum(pair[1] for pair in levels)
+                    self.assertIn(
+                        f"Overall: Total={resolved + conceptual}; Resolved={resolved}; "
+                        f"Conceptual={conceptual}; Unknown=0; Inconsistent=0; Ambiguous=0",
+                        first.stdout,
+                    )
 
     def test_argument_contract(self):
         help_result = invoke(ROOT, "--help")
@@ -117,6 +151,36 @@ class FixtureCLITests(unittest.TestCase):
         missing = invoke(self.root, "TPL-BACKEND")
         self.assertEqual(missing.returncode, 1, missing.stderr)
         self.assertIn("- README-EXAMPLE | Implemented | Inconsistent", missing.stdout)
+
+    def snapshot(self):
+        return {p.relative_to(self.root).as_posix(): (
+            p.read_bytes() if p.is_file() else None
+        ) for p in self.root.rglob("*")}
+
+    def assert_read_only_repeatable(self, expected):
+        before = self.snapshot()
+        first = invoke(self.root, "TPL-BACKEND")
+        second = invoke(self.root, "TPL-BACKEND")
+        self.assertEqual(first.returncode, expected, first.stderr)
+        self.assertEqual((first.returncode, first.stdout, first.stderr),
+                         (second.returncode, second.stdout, second.stderr))
+        self.assertEqual(self.snapshot(), before)
+        return first
+
+    def test_read_only_success_conflict_and_source_error(self):
+        self.assert_read_only_repeatable(0)
+        self.write("framework/components/readme/duplicate/metadata.yml", self.metadata)
+        self.assert_read_only_repeatable(1)
+        self.write(self.template, "id: TPL-BACKEND\nid: TPL-BACKEND\n")
+        result = self.assert_read_only_repeatable(2)
+        self.assertEqual(result.stdout, "")
+        self.assertIn("duplicate YAML key", result.stderr)
+
+    def test_missing_metadata_is_source_error(self):
+        (self.root / self.physical).unlink()
+        result = self.assert_read_only_repeatable(2)
+        self.assertEqual(result.stdout, "")
+        self.assertIn("unavailable source", result.stderr)
 
     def test_source_error_has_no_partial_report(self):
         self.write(self.catalog, "invalid registry")
