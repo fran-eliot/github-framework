@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-v0.11.0-blue" alt="Version" />
+  <img src="https://img.shields.io/badge/version-v0.12.0-blue" alt="Version" />
   <img src="https://img.shields.io/badge/status-active-success" alt="Status" />
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
 </p>
@@ -445,6 +445,7 @@ Published milestones include:
 - **v0.9.0** — Existing Repository Adoption Integration Core
 - **v0.10.0** — Existing Repository Adoption Assisted Analysis Core
 - **v0.11.0** — Framework Validator CLI and CI
+- **v0.12.0** — Framework Validator Catalog and Integrity
 - **v1.0.0** — Stable Release
 
 For the complete roadmap, see [ROADMAP.md](ROADMAP.md).
@@ -471,11 +472,13 @@ GitHub Framework is currently evolving through incremental releases.
 
 The latest published release is:
 
-**v0.11.0 — Framework Validator CLI and CI** ([GitHub Release](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0))
+**v0.12.0 — Framework Validator Catalog and Integrity** ([GitHub Release](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0))
 
 Assessment, Application, Integration and Assisted Analysis Cores are implemented, verified, integrated and published. Assisted Analysis collects bounded, source-traceable Evidence through a read-only, human-reviewed process; it does not automate adoption decisions or modify consumer repositories.
 
-**Published on 2026-11-15:** [v0.11.0 — Framework Validator CLI and CI](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0). This Option A full-tree snapshot includes Validator CI/CLI improvements and the completed, evidence-qualified **documentary** Only Film Assessment; it does not imply consumer migration, runtime/security certification or independent usability testing.
+**Latest release, published 2026-11-15:** [v0.12.0 — Framework Validator Catalog and Integrity](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0). Adds catalog selection, integrity and cross-platform parity capabilities. The Validator does not certify consumer repositories.
+
+**Previous release (2026-11-15):** [v0.11.0 — Framework Validator CLI and CI](https://github.com/fran-eliot/github-framework/releases/tag/v0.11.0). This Option A full-tree snapshot includes Validator CI/CLI improvements and the completed, evidence-qualified **documentary** Only Film Assessment; it does not imply consumer migration, runtime/security certification or independent usability testing.
 
 ---
 
