@@ -15,9 +15,28 @@ REQUIRED_DETAIL_FIELDS = (
 )
 
 
+def unique_object(pairs: list[tuple[str, object]]) -> dict:
+    """Reject duplicate JSON keys rather than silently keeping the last value."""
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"Duplicate JSON key: {key!r}")
+        result[key] = value
+    return result
+
+
+def reject_constant(value: str) -> None:
+    """Reject non-standard JSON numeric constants."""
+    raise ValueError(f"Invalid JSON constant: {value}")
+
+
 def read_catalog(path: Path) -> dict:
     """Load a complete catalog, rejecting truncated or partial inventories."""
-    data = json.loads(path.read_text(encoding="utf-8"))
+    data = json.loads(
+        path.read_text(encoding="utf-8"),
+        object_pairs_hook=unique_object,
+        parse_constant=reject_constant,
+    )
     if not isinstance(data, dict):
         raise ValueError(f"{path}: expected JSON object")
     components = data.get("components")
