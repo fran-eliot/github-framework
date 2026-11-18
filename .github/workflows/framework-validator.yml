@@ -39,6 +39,9 @@ jobs:
       - name: Run Validator test suite
         run: python -m unittest discover -s tests/framework_validator -p "test_*.py"
 
+      - name: Run Template composition preview source tests
+        run: python -B -m unittest discover -s tests/template_composition_preview -p "test_*.py"
+
       - name: Smoke-test real-library CLI catalog and filtered validation
         run: python -m scripts.framework_validator.smoke
 
