@@ -1,0 +1,48 @@
+name: Repository Generation Feasibility
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/repository-generation-feasibility.yml'
+      - 'docs/implementation/experiments/repository-generation-feasibility/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  feasibility:
+    name: Experimental replay (${{ matrix.os }}, Python 3.11)
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
+    steps:
+      - name: Disable checkout line-ending conversion
+        run: git config --global core.autocrlf false
+
+      - name: Check out exact PR head or dispatch revision
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+
+      - name: Record tested revision
+        run: git rev-parse HEAD
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install isolated experiment dependencies
+        run: python -m pip install PyYAML==6.0.2 Jinja2==3.1.6 MarkupSafe==3.0.3
+
+      - name: Replay Experiment I
+        run: python -B docs/implementation/experiments/repository-generation-feasibility/probe.py .
+
+      - name: Replay Experiment II
+        run: python -B docs/implementation/experiments/repository-generation-feasibility/refinement.py .
