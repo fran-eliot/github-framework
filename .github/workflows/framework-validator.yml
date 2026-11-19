@@ -45,6 +45,17 @@ jobs:
       - name: Run Repository Generation tests
         run: python -B -m unittest discover -s tests/repository_generation -p "test_*.py"
 
+      - name: Generate public example for output parity
+        run: python -B -m scripts.repository_generation generate TPL-BACKEND --template-version 0.1.0 --input framework/generation/examples/backend-project.json --output-parent "${{ runner.temp }}" --name atlas-parity
+
+      - name: Upload generated documentation for parity
+        uses: actions/upload-artifact@v6
+        with:
+          name: repository-generation-output-${{ matrix.os }}
+          path: ${{ runner.temp }}/atlas-parity/
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Smoke-test real-library CLI catalog and filtered validation
         run: python -m scripts.framework_validator.smoke
 
@@ -109,3 +120,27 @@ jobs:
 
       - name: Compare catalog inventories and digests
         run: python -m scripts.framework_validator.ci_catalog_parity downloaded-catalogs/framework-component-catalog-ubuntu-latest/component-catalog.json downloaded-catalogs/framework-component-catalog-windows-latest/component-catalog.json
+
+  generation-parity:
+    name: Cross-platform generated-document parity
+    needs: validator
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out comparison script
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Download generated documents
+        uses: actions/download-artifact@v6
+        with:
+          pattern: repository-generation-output-*
+          path: downloaded-generation
+
+      - name: Compare generated document bytes and digests
+        run: python -B -m scripts.repository_generation.ci_output_parity downloaded-generation/repository-generation-output-ubuntu-latest downloaded-generation/repository-generation-output-windows-latest
