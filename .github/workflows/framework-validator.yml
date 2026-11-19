@@ -42,6 +42,9 @@ jobs:
       - name: Run Template composition preview tests
         run: python -B -m unittest discover -s tests/template_composition_preview -p "test_*.py"
 
+      - name: Run Repository Generation tests
+        run: python -B -m unittest discover -s tests/repository_generation -p "test_*.py"
+
       - name: Smoke-test real-library CLI catalog and filtered validation
         run: python -m scripts.framework_validator.smoke
 
