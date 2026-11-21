@@ -4,7 +4,7 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Documento**            | Continuity Kit   |
-| **Versión**              | 1.9.0            |
+| **Versión**              | 1.9.1            |
 | **Estado**               | Activo           |
 | **Última actualización** | 2026-11-21       |
 
@@ -31,6 +31,12 @@ Todo nuevo colaborador deberá utilizar este documento como referencia inicial a
 | Nueva release / Sprint / milestone | **No autorizados** |
 | Only Film | Assessment Complete solamente documental, commit `28d75a50e0a178954dd46acc23300d9dd327843c`; no aplicación ni modificación autorizada |
 | UX-02 | Prepared — Not Executed; sin participantes independientes |
+
+## Actualización de decisión de versión (2026-11-21; Kit 1.9.1)
+
+El mantenedor **aceptó v0.13.0 como versión candidata condicional** tras la integración de UX-A; ello **no autoriza** tag, Release, fecha, Sprint ni milestone. Preparar la propuesta de release solo tras completar las unidades UX-B/C/D que se autoricen por separado, revalidar experiencia real y obtener aceptación formal de GEN-15/GEN-16. [Decisión de candidata y gates](../implementation/v0.13.0-conditional-release-candidate.md).
+
+UX-A: PR #424 y evidencia #425 integradas; `main` en `4adf0230af9a5c54b6d0cb3903a5b28ffd083287`, [CI 44928595597](https://github.com/fran-eliot/github-framework/actions/runs/44928595597) success. **UX-B todavía no autorizada a empezar** con la aprobación anterior, que fue exclusivamente UX-A; solicitar aprobación expresa antes de código. Última publicada sigue siendo **v0.12.0**.
 
 ## 2026-11-19 a 2026-11-21 — Evolución posterior a Kit 1.8.0
 
@@ -1531,3 +1537,4 @@ Cada decisión futura deberá respetar esta filosofía.
 | 1.7.0 | 2026-11-18 | Continuidad post-v0.12.0, alcance aprobado de Composition Preview, Unit A integrada y punto de reanudación Unit B. |
 | 1.8.0 | 2026-11-18 | Cierre formal Complete — Unreleased de Composition Preview, evidencia de CI y reanudación posterior a la entrega. |
 | 1.9.0 | 2026-11-21 | Continuidad post v0.12.0 de Repository Generation Core y primera evaluación humana; decisión Guided B+A, Scope UXG-01–UXG-12 y Plan aprobados, UX-A autorizada; sin nueva release. |
+| 1.9.1 | 2026-11-21 | UX-A integrada y verificada; v0.13.0 aceptada como candidata condicional, sin tag ni publicación. UX-B pendiente de autorización de inicio. |
