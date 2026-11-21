@@ -135,6 +135,25 @@ python -B -m scripts.repository_generation generate TPL-BACKEND --template-versi
 
 The short report explains the supported text-only scope, eight selected required Components versus twenty unselected references, the specific conceptual VCL-HERO limitation, the intended or written destination, and the two SHA-256 hashes. It ends with a safe next step. **Plan is read-only; generate writes only to a fresh child**, exactly as before. If you need exact Component versions, metadata paths, detailed reference classifications or dependencies, omit `--summary` to display the original full report. Do not treat the concise report as full Template conformance or proof that fictional project facts are real.
 
+## Guided terminal workflow (UX-B)
+
+The opt-in guided command asks for your project facts directly, avoiding manual JSON authoring. It uses the **same** Backend text-only profile, strict validation, canonical Components and safe writer as `plan`/`generate`. Use it only in a **real interactive terminal** from the Framework root; it deliberately rejects piped input, CI execution and noninteractive sessions.
+
+```powershell
+python -B -m scripts.repository_generation guide
+```
+
+The assistant explains the ten required fields and three optional fields. For ordered lists, add one entry per line and type `done` when finished. For multiline Markdown, enter each line and finish with `:end`. To include a literal line consisting of `:end`, enter `::end`. Enter `:cancel` at a field prompt to cancel the current session. Optional changelog categories are explicitly selected; there is no invented version or project content.
+
+A full JSON review appears before planning. Choose `edit` followed by the field name to correct an entry, `continue` when strict validation succeeds, or `cancel` to stop without generating files. A read-only generation plan then shows the destination, the eight selected and twenty unselected Components, the known Conceptual VCL-HERO exception, and the intended two document hashes.
+
+Choose an existing directory **outside** the Framework checkout and a fresh lowercase child name; the tool does not create the parent. After inspecting the plan, the tool displays the exact target and asks you to type **`yes`** to generate. Any other response cancels, with no destination created. The tool revalidates before writing, rejects an existing output directory and never overwrites it. On success, inspect `README.md` and `CHANGELOG.md`; all generated project facts still require your review.
+
+Exit codes for `guide`: **0** verified success, **1** destination or write failure, **2** invalid input, source error or noninteractive/EOF refusal, **3** cancellation or terminal interruption. Existing `plan`/`generate` remain noninteractive and retain their original 0/1/2 semantics. A failure after a directory is created can leave an incomplete child for manual inspection: **never delete files automatically** or assume filesystem-wide atomicity. Project JSON is *not* saved automatically.
+
+The guided workflow does not generate an application, initialize Git, publish anything, support other Templates or certify full Template conformance. Use `plan`/`generate` with JSON for scripts and reproducible automation; use `--summary` when you prefer a short report.
+
+
 ## 4. Understand the report and inspect results
 
 Both operations perform the same input, canonical composition and rendering preflight. Plan creates no destination files. Generate repeats preflight and creates the new child exclusively; it does not consume a saved plan.
