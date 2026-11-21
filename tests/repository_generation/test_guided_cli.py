@@ -119,12 +119,20 @@ class GuidedCliTests(unittest.TestCase):
         self.assertIn("invalid portable", err)
         self.assertFalse((self.parent.parent / "escape").exists())
         self.sample["overview"] = "too short"
-        iterator = iter(answers_for(self.sample) + [":cancel"])
+        scripted = answers_for(self.sample)
+        # Cancel at the immediate retry prompt after rejecting the short
+        # overview; do not continue with unrelated scripted field answers.
+        scripted = scripted[:scripted.index("too short") + 2] + [":cancel"]
+        iterator = iter(scripted)
         messages = []
         with redirect_stderr(StringIO()):
             code = run_guided(read=lambda _: next(iterator), write=messages.append)
         self.assertEqual(code, 3)
-        self.assertIn("Input issue: overview", "\n".join(messages))
+        output = "\n".join(messages)
+        self.assertIn("Please correct overview", output)
+        self.assertIn("Overview requires 80", output)
+        self.assertIn("Cancelled; no destination created", output)
+        self.assertNotIn("Read-only plan", output)
         self.assertEqual(list(self.parent.iterdir()), [])
 
     def test_eof_or_interrupt_before_write(self):
