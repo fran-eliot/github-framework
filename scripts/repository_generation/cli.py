@@ -8,6 +8,7 @@ from .assembly import assemble
 from .composition import load_composition
 from .destination import DestinationError, validate_destination, write_documents
 from .inputs import load_project_input
+from .guided import GuidedCancelled, ask, collect_draft, validate_draft
 from .profile import VISUAL_LIMITATION, require_profile
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -26,6 +27,8 @@ def parser():
         command.add_argument("--name", required=True)
         command.add_argument("--summary", action="store_true",
                              help="Show a short, interpreted report instead of detailed provenance")
+    modes.add_parser("guide", help="Interactively prepare, preview and confirm a new documentation seed",
+                     allow_abbrev=False)
     return result
 
 
@@ -93,8 +96,72 @@ def summary_report(mode, composition, documents, target):
     return "\n".join(lines)
 
 
+
+def run_guided(*, read=input, write=print):
+    """Explicit guided flow; never writes before an affirmative confirmation.
+
+    The guided draft and CLI plan both reuse the canonical resolver/assembler.
+    A confirmed generate repeats preflight and uses the exclusive writer.
+    """
+    try:
+        draft, _project = collect_draft(read=read, write=write)
+        write("\nChoose an existing local output parent OUTSIDE the Framework checkout.")
+        write("The tool creates a new child; it never overwrites an existing one.")
+        parent = Path(ask("Existing output parent path> ", read=read, write=write))
+        name = ask("New child directory name (lowercase letters/digits/hyphens)> ",
+                   read=read, write=write)
+        require_profile("TPL-BACKEND", "0.1.0")
+        project = validate_draft(draft)
+        composition = load_composition(ROOT, "TPL-BACKEND", "0.1.0")
+        documents = assemble(composition, project)
+        target = validate_destination(ROOT, parent, name)
+        # The summary checks the supported profile before confirmation and writes.
+        preview = summary_report("plan", composition, documents, target)
+        write("\nRead-only plan (no destination files created):")
+        write(preview)
+        write(f"\nGenerate only if the exact destination is correct:\n{target}")
+        confirmation = ask("Type yes to generate; anything else cancels> ",
+                           read=read, write=write)
+        if confirmation != "yes":
+            raise GuidedCancelled()
+        # Reuse and repeat all canonical preflight checks after confirmation.
+        project = validate_draft(draft)
+        require_profile("TPL-BACKEND", "0.1.0")
+        composition = load_composition(ROOT, "TPL-BACKEND", "0.1.0")
+        documents = assemble(composition, project)
+        target = validate_destination(ROOT, parent, name)
+        # Validate report before any write to prevent success-report failures
+        # after committed output. The writer rechecks destination exclusively.
+        summary_report("generate", composition, documents, target)
+        target = write_documents(ROOT, parent, name, documents)
+        write(summary_report("generate", composition, documents, target))
+        return 0
+    except GuidedCancelled:
+        write("Cancelled; no destination created by this operation.")
+        return 3
+    except (EOFError, StopIteration):
+        print("Guided error: input ended before confirmation; no generation attempted.",
+              file=sys.stderr)
+        return 2
+    except KeyboardInterrupt:
+        print("\nGuided session interrupted; no automatic cleanup.", file=sys.stderr)
+        return 3
+    except DestinationError as exc:
+        print(f"Destination error: {exc}", file=sys.stderr)
+        return 1
+    except GenerationError as exc:
+        print(f"Generation error: {exc}", file=sys.stderr)
+        return 2
+
+
 def main(argv=None):
     args = parser().parse_args(argv)
+    if args.mode == "guide":
+        if not (sys.stdin.isatty() and sys.stdout.isatty()):
+            print("Guided error: guide requires an interactive terminal; "
+                  "use plan/generate for noninteractive scripts.", file=sys.stderr)
+            return 2
+        return run_guided()
     try:
         require_profile(args.template, args.template_version)
         project = load_project_input(args.input)
