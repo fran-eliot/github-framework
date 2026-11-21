@@ -57,16 +57,15 @@ class GuidedInputTests(unittest.TestCase):
         sample["alignment"] = "center"
         sample["short_description"] = ""
         sample["unreleased_changes"] = {}
-        bad = dict(sample, project_name="A")
-        lines = self.scripted_project(bad) + [
-            "continue", "edit", "not_a_field",
+        lines = self.scripted_project(sample) + [
+            "edit", "not_a_field",
             "edit", "project_name", "A valid backend title", "continue",
         ]
         read, write, messages = self.scripted(lines)
         draft, _ = collect_draft(read=read, write=write)
         self.assertEqual(draft["project_name"], "A valid backend title")
-        self.assertIn("Input issue: project_name", "\n".join(messages))
         self.assertIn("Unknown field", "\n".join(messages))
+        self.assertEqual("\n".join(messages).count("Review your exact input"), 2)
 
     def test_markdown_terminator_escape_and_spaces(self):
         read, write, _ = self.scripted(["alpha", "::end", "", "  beta  ", ":end"])
@@ -108,6 +107,41 @@ class GuidedInputTests(unittest.TestCase):
         data["invented_field"] = "unsupported"
         with self.assertRaises(GenerationError):
             validate_draft(data)
+
+
+    def test_invalid_inputs_are_corrected_during_entry_not_after_full_review(self):
+        sample = fixture()
+        sample["short_description"] = ""
+        sample["alignment"] = "center"
+        sample["unreleased_changes"] = {}
+        lines = self.scripted_project(sample)
+        # First attempt fails single-line minimum, overview minimum and
+        # required Markdown emptiness. Each retry occurs before next field.
+        lines[0:1] = ["A", sample["project_name"]]
+        overview_index = lines.index(sample["overview"])
+        lines[overview_index:overview_index + 2] = ["Too short", ":end", sample["overview"], ":end"]
+        installation_index = lines.index(sample["installation"])
+        lines[installation_index:installation_index + 2] = [":end", sample["installation"], ":end"]
+        footer_index = lines.index(sample["footer"])
+        lines[footer_index:footer_index + 2] = [":end", sample["footer"], ":end"]
+        read, write, messages = self.scripted(lines + ["continue"])
+        draft, project = collect_draft(read=read, write=write)
+        self.assertEqual(project.project_name, sample["project_name"])
+        self.assertEqual(draft["overview"], sample["overview"])
+        output = "\n".join(messages)
+        self.assertIn("Please correct project_name", output)
+        self.assertIn("Please correct overview", output)
+        self.assertIn("Overview requires 80", output)
+        self.assertIn("Please correct installation", output)
+        self.assertIn("Please correct footer", output)
+        self.assertEqual(output.count("Review your exact input"), 1)
+
+    def test_cancel_during_required_field_retry(self):
+        read, write, messages = self.scripted(["Prueba", "Esto es una prueba",
+                                                "Too short", ":end", ":cancel"])
+        with self.assertRaises(GuidedCancelled):
+            collect_draft(read=read, write=write)
+        self.assertIn("Please correct overview", "\n".join(messages))
 
 
 if __name__ == "__main__":
