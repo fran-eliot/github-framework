@@ -24,6 +24,8 @@ def parser():
         command.add_argument("--input", required=True, type=Path)
         command.add_argument("--output-parent", required=True, type=Path)
         command.add_argument("--name", required=True)
+        command.add_argument("--summary", action="store_true",
+                             help="Show a short, interpreted report instead of detailed provenance")
     return result
 
 
@@ -58,6 +60,39 @@ def report(mode, composition, documents, target):
     return "\n".join(lines)
 
 
+def summary_report(mode, composition, documents, target):
+    """User-oriented report derived from the same typed preflight as the full report.
+
+    The detailed report remains the default and retains all source provenance.
+    """
+    template = composition.resolution.template
+    selected = {item.id for item in composition.selected}
+    unselected = sum(1 for group in composition.resolution.groups
+                     for ref in group.references if ref.id not in selected)
+    if len(selected) != 8 or unselected != 20:
+        raise GenerationError("summary: unexpected supported composition")
+    preview = mode == "plan"
+    lines = [
+        "Repository documentation " + ("plan" if preview else "generated"),
+        f"Profile: {template.id} {template.version} (text-only documentation seed)",
+        "Scope: README.md and CHANGELOG.md only; no application code or full Template conformance.",
+        f"Composition: {len(selected)} required Components selected; {unselected} recommended/optional references unselected.",
+        "Known limitation: README-HERO requires Conceptual VCL-HERO 1.0.0; "
+        "a text-only Hero is used, not full Template conformance.",
+        f"Destination: {target}",
+        "Intended files (not yet written):" if preview else "Written and verified files:",
+    ]
+    for document in documents:
+        lines.append(f"  {document.name} | SHA-256: {document.digest}")
+    if preview:
+        lines.append("Next: review this plan; run generate with the same input and a fresh destination.")
+        lines.append("No destination files were created by plan.")
+    else:
+        lines.append("Next: open and inspect the generated README.md and CHANGELOG.md for accuracy.")
+    lines.append("For source paths, dependency classifications and full provenance, omit --summary.")
+    return "\n".join(lines)
+
+
 def main(argv=None):
     args = parser().parse_args(argv)
     try:
@@ -74,5 +109,11 @@ def main(argv=None):
     except GenerationError as exc:
         print(f"Generation error: {exc}", file=sys.stderr)
         return 2
-    print(report(args.mode, composition, documents, target))
+    try:
+        output = (summary_report(args.mode, composition, documents, target)
+                  if args.summary else report(args.mode, composition, documents, target))
+    except GenerationError as exc:
+        print(f"Generation error: {exc}", file=sys.stderr)
+        return 2
+    print(output)
     return 0

@@ -124,5 +124,53 @@ class CliTests(unittest.TestCase):
         self.assertIn(str(target), err.getvalue())
 
 
+    def test_summary_help_and_read_only_plan(self):
+        help_result = self.invoke(["plan", "--help"])
+        self.assertEqual(help_result.returncode, 0, help_result.stderr)
+        self.assertIn("--summary", help_result.stdout)
+        default = self.invoke(self.arguments())
+        short = self.invoke(self.arguments() + ["--summary"])
+        self.assertEqual(short.returncode, 0, short.stderr)
+        self.assertEqual(short.stderr, "")
+        self.assertIn("Repository documentation plan", short.stdout)
+        self.assertIn("8 required Components selected; 20 recommended/optional references unselected", short.stdout)
+        self.assertIn("Conceptual VCL-HERO 1.0.0", short.stdout)
+        self.assertIn("not yet written", short.stdout)
+        self.assertIn("No destination files were created by plan.", short.stdout)
+        self.assertIn("omit --summary", short.stdout)
+        self.assertNotIn("Metadata:", short.stdout)
+        self.assertIn("Metadata:", default.stdout)
+        self.assertIn(" | Selected", default.stdout)
+        self.assertEqual(sorted(p.name for p in self.parent.iterdir()), ["project.json"])
+
+    def test_summary_generate_hashes_and_collision(self):
+        plan = self.invoke(self.arguments() + ["--summary"])
+        self.assertEqual(plan.returncode, 0, plan.stderr)
+        result = self.invoke(self.arguments("generate") + ["--summary"])
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("Repository documentation generated", result.stdout)
+        self.assertIn("Written and verified files:", result.stdout)
+        self.assertIn("Next: open and inspect", result.stdout)
+        self.assertNotIn("Intended files", result.stdout)
+        target = self.parent / "sample-backend"
+        self.assertEqual(sorted(p.name for p in target.iterdir()), ["CHANGELOG.md", "README.md"])
+        for name in ("README.md", "CHANGELOG.md"):
+            digest = sha256((target / name).read_bytes()).hexdigest()
+            self.assertIn(f"{name} | SHA-256: {digest}", plan.stdout)
+            self.assertIn(f"{name} | SHA-256: {digest}", result.stdout)
+        collision = self.invoke(self.arguments("generate") + ["--summary"])
+        self.assertEqual(collision.returncode, 1)
+        self.assertEqual(collision.stdout, "")
+        self.assertIn("already exists", collision.stderr)
+
+    def test_summary_validation_failure_is_not_a_success_report(self):
+        self.input.write_text("{}", encoding="utf-8")
+        result = self.invoke(self.arguments() + ["--summary"])
+        self.assertEqual(result.returncode, 2)
+        self.assertEqual(result.stdout, "")
+        self.assertIn("Generation error", result.stderr)
+        self.assertFalse((self.parent / "sample-backend").exists())
+
+
 if __name__ == "__main__":
     unittest.main()
