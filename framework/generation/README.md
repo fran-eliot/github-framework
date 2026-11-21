@@ -8,6 +8,34 @@ Supply your project facts, inspect a generation plan and create a fresh local di
 
 The generator does not create application code, install or run the application, initialize Git, publish a remote repository or update an existing project. It does not certify full Template conformance or validate the truth of the project facts supplied.
 
+## Start here — three steps
+
+**This is a documentation generator, not a backend application generator.** It creates only two files in a **new** directory you choose: `README.md` and `CHANGELOG.md`. It cannot overwrite an existing destination. For now it supports one profile, `TPL-BACKEND 0.1.0`, and needs a JSON file containing your own project facts.
+
+1. **Plan** — Preview the intended files and their hashes. No output directory is created.
+2. **Generate** — Recheck the same information and create those two files in a fresh directory.
+3. **Inspect** — Open both files; review accuracy and compare the printed SHA-256 hashes if needed. Inspect only **after** generate.
+
+For a safe first try, use the [complete fictional JSON example](examples/backend-project.json) and the PowerShell/Bash commands in section 3 below. Set up Python and PyYAML (section 1) first. To document your **own** project, copy and replace the fictional JSON fields (section 2). No technology, feature or application command is inferred for you.
+
+### How to read `plan` and `generate` output
+
+| Report item | Meaning for you |
+| --- | --- |
+| `Template: TPL-BACKEND 0.1.0` | The single supported documentation profile |
+| `Selected` / `Unselected` | Used in your generated files / listed for transparency but **not** generated |
+| `Resolved` / `Conceptual` | Library source exists / a declared concept has no physical Component |
+| Eight `required ... Selected` | Seven README fragments plus one standalone changelog Component |
+| Twenty `recommended/optional ... Unselected` | Not an error, and not part of the two-file seed |
+| `VCL-HERO ... Conceptual` | Known visual dependency gap; the profile only generates a text Hero, **not** full Template conformance |
+| `Destination` | New folder that would be created by generate |
+| `Intended artifacts` | Preview paths and predicted SHA-256; they do **not** exist yet |
+| `Written and verified artifacts` | Generated files and their verified SHA-256 after success |
+| Exit `0` / `1` / `2` | Success / destination or write error / input, argument or source contract error |
+
+You do **not** need to understand every internal Component or metadata path to perform this first workflow. They appear in the full report for transparency. If `plan` fails, do **not** proceed to generate until the problem is corrected. For an existing destination, choose a different new child name; never delete unrelated content to force success.
+
+
 ## 1. Prepare your environment
 
 Use Python 3.11 and the existing PyYAML 6.0.2 dependency. Open a terminal in a Framework checkout containing this guide. If needed, use an isolated Python environment and install the dependency:

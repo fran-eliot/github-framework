@@ -1,7 +1,7 @@
 # Repository Generation Core — First-Use Walkthrough
 
 Date: 2026-11-19  
-Status: **Maintainer walkthrough performed — observations and final GEN-15 assessment pending**  
+Status: **Maintainer walkthrough completed with usability concerns — GEN-15 acceptance pending**  
 Baseline: `77c90915d52e0db647c7d4f36800b1390be9f6f8`  
 Guide: [Repository Generation Guide](../../framework/generation/README.md)  
 Criterion: GEN-15; related evidence for GEN-01, GEN-02, GEN-04, GEN-07–GEN-11.
@@ -42,18 +42,18 @@ Evidence: maintainer-supplied PowerShell transcript (plan and generate, director
 - FU-06: maintainer pasted both files; canonical sections, fictional facts, and initial Unreleased change present. PASS with readability issue noted below.
 - FU-07: local file hashes match plan/generate reports and the recorded Windows/Ubuntu CI reference: README `e5dd6bf860185d83a9c32b5b7c7b7ea1d5d7de8f75eb87c781644abbb063864d`, CHANGELOG `2506e7084a50ed0d72340b3319083d5bcf2583e0d0fb335067c45f191f560785`. PASS.
 - FU-08: second generate attempt into the same child exited 1 with `output destination already exists`; README hash unchanged. PASS for inspected file; no separate post-collision CHANGELOG hash recorded.
-- FU-09: friction observations recorded below; **maintainer's subjective assessment, elapsed time and manual recovery understanding pending**. Do not claim full GEN-15 acceptance.
+- FU-09: **maintainer explicitly reports that the generator is not easy to use and asks for clearer information, help and interpretation for users**. Qualitative friction established; elapsed time and manual recovery understanding remain unrecorded. This is one maintainer observation, not independent user research. Do not claim full GEN-15 acceptance.
 - Environment setup duration and walkthrough elapsed duration: not recorded; do not infer from transcript timestamps.
 
 ### Friction and presentation findings
 
 1. The maintainer ran inspection commands after the read-only plan but before generate. PowerShell returned missing-path diagnostics. This is a procedure-order difficulty; the subsequent generation succeeded. Improve guide sequence visibility (`plan → generate → inspect`), rather than reporting a generator failure.
 2. Generated README contains multiple consecutive blank lines around the Hero, Features and Documentation list items. This is a visible readability/polish issue in otherwise valid output. Assess a **bounded renderer-level whitespace correction** in a separate reviewed change. Do not silently edit canonical templates or globally normalize user-authored Markdown; preserve existing semantics and add cross-platform deterministic regression tests. Reverify changed hashes if corrected.
-3. Plan report prints substantial component and dependency detail. Its comprehensibility remains to be assessed by the maintainer; do not invent an opinion.
+3. Plan report prints substantial component and dependency detail without a user-oriented interpretation layer. The maintainer reports the overall experience is difficult and requests better information, help and interpretation; exact report-specific causes remain hypotheses until retested.
 
 ### Unrecorded first-use feedback
 
-Maintainer satisfaction, perceived clarity, recovery understanding, total duration, and any further points of friction remain unconfirmed. Record these if supplied, including `not measured` for duration. Do not substitute automated CI performance timings for human time.
+Overall difficulty and request for simpler information/help/interpretation are confirmed by maintainer feedback. Step-specific clarity, recovery understanding, total duration, and any further points of friction remain unconfirmed. Record these if supplied, including `not measured` for duration. Do not substitute automated CI performance timings for human time.
 
 Record actual observations rather than expected outcomes. If a step fails, retain its diagnostic and classify the cause before retrying. Do not delete existing content to satisfy the test. Timing is descriptive, not a performance threshold.
 
