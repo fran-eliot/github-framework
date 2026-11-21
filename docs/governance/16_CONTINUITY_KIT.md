@@ -4,9 +4,9 @@
 | ------------------------ | ---------------- |
 | **Proyecto**             | GitHub Framework |
 | **Documento**            | Continuity Kit   |
-| **Versión**              | 1.8.0            |
+| **Versión**              | 1.9.0            |
 | **Estado**               | Activo           |
-| **Última actualización** | 2026-11-18       |
+| **Última actualización** | 2026-11-21       |
 
 > Este documento constituye el punto oficial de incorporación al proyecto.
 
@@ -14,7 +14,65 @@ Todo nuevo colaborador deberá utilizar este documento como referencia inicial a
 
 ---
 
-# Snapshot vigente — Composition Preview Complete — Unreleased (2026-11-18)
+# Snapshot vigente — Guided Experience UX-A authorized (2026-11-21)
+
+> **Punto oficial de reanudación (Kit 1.9.0).** Este snapshot reemplaza los de 2026-11-18 como referencia operativa. Verificar siempre el estado real de GitHub, las PR y el CI antes de avanzar.
+
+| Campo | Estado verificado |
+| --- | --- |
+| Repositorio | [fran-eliot/github-framework](https://github.com/fran-eliot/github-framework) |
+| Última versión publicada | [v0.12.0](https://github.com/fran-eliot/github-framework/releases/tag/v0.12.0), tag en `8fc0a036489a60f72c2ee66185bbd5e53b3a89c1` |
+| Baseline de `main` antes de actualizar Kit | `8e394455505643a989b79a2a7e344c067ed4bcfa` (PR #422 integrada) |
+| CI de `main` | [44927335154](https://github.com/fran-eliot/github-framework/actions/runs/44927335154) — success, commit exacto anterior |
+| PR abiertas al preparar snapshot | Ninguna; verificar de nuevo al reanudar |
+| Repository Template Composition Preview | Complete — Unreleased, AC-01–AC-17 formalmente aceptados; no revertir ni repetir el cierre |
+| Repository Generation Core | Implementación acotada Units A–D completada; `GEN-15` pendiente por usabilidad real; `GEN-16` aceptación final pendiente; capacidad **Unreleased** |
+| UX Guided Experience | Alternativa B + A seleccionada como dirección, Scope UXG-01–UXG-12 y Plan UX-A–UX-D documentados y **aprobados formalmente el 2026-11-21**; autorizado empezar **solo UX-A** |
+| Nueva release / Sprint / milestone | **No autorizados** |
+| Only Film | Assessment Complete solamente documental, commit `28d75a50e0a178954dd46acc23300d9dd327843c`; no aplicación ni modificación autorizada |
+| UX-02 | Prepared — Not Executed; sin participantes independientes |
+
+## 2026-11-19 a 2026-11-21 — Evolución posterior a Kit 1.8.0
+
+- [#394](https://github.com/fran-eliot/github-framework/pull/394)–[#396](https://github.com/fran-eliot/github-framework/pull/396): revisión estratégica, mapa de capacidades y priorización de Repository Generation Core. Experimentos y planificación acotados mediante PR posteriores.
+- [#403](https://github.com/fran-eliot/github-framework/pull/403)–[#406](https://github.com/fran-eliot/github-framework/pull/406): Generation Unit A (input/composition); [#407](https://github.com/fran-eliot/github-framework/pull/407)–[#410](https://github.com/fran-eliot/github-framework/pull/410): Unit B (renderer/assembly); [#411](https://github.com/fran-eliot/github-framework/pull/411)–[#413](https://github.com/fran-eliot/github-framework/pull/413): Unit C (CLI/safe output).
+- [#414](https://github.com/fran-eliot/github-framework/pull/414)–[#417](https://github.com/fran-eliot/github-framework/pull/417): Unit D (guía, E2E, paridad determinista Ubuntu/Windows, protocolo First-Use). CI automatizado: 282 Validator + 24 Preview + 66 Generation tests por plataforma en el baseline inicial. Validar cifras reales por run futuro; no tratarlas como constantes.
+- [#418](https://github.com/fran-eliot/github-framework/pull/418): primera prueba manual del mantenedor, Windows PowerShell 5.1, Python 3.12.2 y PyYAML 6.0.3; `plan` sin escritura, `generate` creó README y CHANGELOG con hashes coincidentes, segunda ejecución rechazada con exit 1 sin sobrescribir README. Compatibilidad observada fuera del target verificado Python 3.11/PyYAML 6.0.2, **no** ampliar soporte por inferencia.
+- El mantenedor valoró explícitamente el generador como **difícil de utilizar**; solicitó más información, ayuda e interpretación. Documentos generados presentaron exceso de líneas en blanco. `GEN-15` no está superado a pesar del éxito técnico.
+- [#419](https://github.com/fran-eliot/github-framework/pull/419): guía inicial Plan → Generate → Inspect, explicación de informe y puerta de usabilidad.
+- [#420](https://github.com/fran-eliot/github-framework/pull/420): decisión propuesta B (experiencia guiada opcional) + A (informes más claros); interfaz web C pospuesta.
+- [#421](https://github.com/fran-eliot/github-framework/pull/421): [Guided Experience Delivery Scope](../implementation/repository-generation-core-guided-experience-delivery-scope.md), criterios UXG-01–UXG-12.
+- [#422](https://github.com/fran-eliot/github-framework/pull/422): [Guided Experience Implementation Plan](../implementation/repository-generation-core-guided-experience-implementation-plan.md), cuatro unidades UX-A–UX-D, decisiones propuestas para `--summary`, `guide`, confirmación y cancelación.
+
+## Aprobación formal del mantenedor (2026-11-21)
+
+El mantenedor declaró: «Apruebo formalmente el Delivery Scope UXG-01–UXG-12 y el Guided Experience Implementation Plan. Autorizo comenzar la Unidad UX-A, manteniendo los límites documentados y sin autorizar una nueva release, Sprint o milestone».
+
+**Alcance autorizado ahora:** UX-A — informe legible mediante opción `--summary`, ayuda contextual y tests; preservar la salida detallada por defecto, las salidas 0/1/2, las garantías de `plan` sin escritura y `generate` con destino exclusivamente nuevo. **No interpretar la aprobación de UX-A como autorización para comenzar UX-B, UX-C o UX-D**; solicitar autorización explícita antes de cada unidad cuando corresponda.
+
+**UX-B pendiente:** propuesta de `guide` exclusivamente interactivo, revisión/edición y confirmación de escritura, sin guardar datos ni crear archivos antes de confirmar; código de cancelación 3 propuesto, no implementado. **UX-C pendiente:** corrección de espaciado Markdown sin alterar texto del autor o componentes canónicos, paridad nueva. **UX-D pendiente:** repetición humana del walkthrough, aceptación UXG/GEN y cierre formal, sin release automática.
+
+## Recorrido del generador y evidencias
+
+- Código: `scripts/repository_generation/`, tests `tests/repository_generation/`.
+- Guía: [framework/generation/README.md](../../framework/generation/README.md).
+- Entrada: [backend-project.json](../../framework/generation/examples/backend-project.json), datos sintéticos. Perfil TPL-BACKEND 0.1.0, solo documentación, ocho referencias requeridas seleccionadas, veinte no seleccionadas, excepción conceptual explícita `VCL-HERO`, ninguna afirmación de conformidad total.
+- CLI actual: `python -B -m scripts.repository_generation plan TPL-BACKEND --template-version 0.1.0 --input framework/generation/examples/backend-project.json --output-parent "<existing external parent>" --name atlas-sample`; `generate` cambia únicamente la operación.
+- Artefactos exclusivamente `README.md` y `CHANGELOG.md`, UTF-8/LF, hashes inicialmente reproducidos en ambas plataformas y entorno local: README `e5dd6bf860185d83a9c32b5b7c7b7ea1d5d7de8f75eb87c781644abbb063864d`, CHANGELOG `2506e7084a50ed0d72340b3319083d5bcf2583e0d0fb335067c45f191f560785`. Estos hashes son históricos, no umbrales permanentes si UX-C modifica la salida.
+- Limitaciones: no aplicación ejecutable, Git, red, publicación, modificaciones en consumidores, plantillas adicionales ni limpieza automática. Parent preexistente fuera del checkout, child nuevo; preservar archivos ante colisión.
+- Evidencias: [First-Use Walkthrough](../implementation/repository-generation-core-first-use.md), [Delivery Scope GEN-01–GEN-16](../implementation/repository-generation-core-delivery-scope.md), [Guided UX Decision](../implementation/repository-generation-core-guided-experience-decision.md).
+
+## Instrucciones exactas de reanudación
+
+1. Verificar primero merge y CI de la PR de Kit 1.9.0, `main` y PR abiertas. Si Kit y UX-A están en distintas PR, mantenerlas revisables y comprobar cada integración.
+2. Implementar exclusivamente UX-A mediante rama temática y PR: `--summary` explícito tanto para `plan` como para `generate`, sin cambiar la salida detallada existente por defecto. Informar selección, limitación visual, ruta, hashes y siguiente paso; asegurar tests Windows/Ubuntu.
+3. Tras merge de UX-A y CI exacto de `main` satisfactorio, presentar evidencia y solicitar autorización de UX-B antes de implementar el asistente interactivo.
+4. Mantener `GEN-15` y cierre de generación pendientes hasta nueva valoración humana. No publicar versión ni crear tag, Sprint o milestone sin aprobación independiente.
+5. El asistente prepara ramas, commits y PR; el mantenedor revisa, fusiona y elimina ramas remotas. Documentación técnica nueva en inglés, gobierno existente en español; preservar entradas históricas del Kit sin reinterpretar sus estados.
+
+---
+
+# Snapshot histórico — Composition Preview Complete — Unreleased (2026-11-18)
 
 > **Punto oficial de reanudación.** Prevalece sobre los snapshots históricos. El estado real de GitHub debe comprobarse antes de cada incremento.
 
@@ -1472,3 +1530,4 @@ Cada decisión futura deberá respetar esta filosofía.
 | 1.1.0   | 2026-11-14 | Incorporación del snapshot de continuidad post-release y del Assessment documental Complete de Only Film; preservación histórica del contenido de agosto. |
 | 1.7.0 | 2026-11-18 | Continuidad post-v0.12.0, alcance aprobado de Composition Preview, Unit A integrada y punto de reanudación Unit B. |
 | 1.8.0 | 2026-11-18 | Cierre formal Complete — Unreleased de Composition Preview, evidencia de CI y reanudación posterior a la entrega. |
+| 1.9.0 | 2026-11-21 | Continuidad post v0.12.0 de Repository Generation Core y primera evaluación humana; decisión Guided B+A, Scope UXG-01–UXG-12 y Plan aprobados, UX-A autorizada; sin nueva release. |
