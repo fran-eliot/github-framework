@@ -97,6 +97,33 @@ def _changelog(source, project):
     return "\n\n".join(sections) + "\n"
 
 
+# These are the two canonical list-loop shapes for the supported 0.1.0
+# text-only profile. Collapse only template-owned loop separators, never
+# user-supplied item contents or free-form Markdown.
+_LIST_LOOPS = {
+    "README-FEATURES": ("features", "## ✨ Features"),
+    "README-DOCUMENTATION": ("documents", "## 📚 Documentation"),
+}
+
+
+def _compact_canonical_list_source(identity, source):
+    field, heading = _LIST_LOOPS[identity]
+    expected = f"{heading}\n\n{{{{#each {field}}}}}\n\n- {{{{ this }}}}\n\n{{{{/each}}}}"
+    if source != expected:
+        raise GenerationError(f"{identity}: unsupported list whitespace structure")
+    # The loop body is a single list line and one LF. Do not touch values.
+    return f"{heading}\n\n{{{{#each {field}}}}}- {{{{ this }}}}\n{{{{/each}}}}"
+
+
+def _compact_hero_separators(rendered):
+    """Strip blank lines left by disabled template-only visual/optional blocks.
+
+    Hero inputs are strictly one-line and HTML escaped, so these separators
+    cannot be author-authored multiline Markdown. Other fragments are untouched.
+    """
+    return re.sub(r"\n{3,}", "\n\n", rendered)
+
+
 def render_component(component: SelectedComponent, project: ProjectInput) -> str:
     """Render one canonical artifact in memory; input data is never parsed as syntax."""
     identity = component.id
@@ -111,7 +138,12 @@ def render_component(component: SelectedComponent, project: ProjectInput) -> str
     if identity == "README-HERO":
         source = re.sub(r"\A<!--.*?-->\s*", "", source, count=1, flags=re.S)
         nodes = parse_component(identity, source)
+    if identity in _LIST_LOOPS:
+        source = _compact_canonical_list_source(identity, source)
+        nodes = parse_component(identity, source)
     rendered = _evaluate(nodes, _context(project), html=identity == "README-HERO")
+    if identity == "README-HERO":
+        rendered = _compact_hero_separators(rendered)
     if not rendered.strip():
         raise GenerationError(f"{identity}: empty rendered fragment")
     # No global whitespace normalization: preserve literal Markdown content.
