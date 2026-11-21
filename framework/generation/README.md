@@ -119,6 +119,22 @@ ls -la "$parent/atlas-sample"
 sha256sum "$parent/atlas-sample/README.md" "$parent/atlas-sample/CHANGELOG.md"
 ```
 
+## Optional short report (UX-A)
+
+For a less technical explanation, append `--summary` to **either** the `plan` or `generate` invocation. Existing commands without this flag continue to display the **same detailed output by default**. The short report is a presentation choice, not a different generation mode or a replacement for provenance.
+
+Example from the Framework root using a fresh external parent and the fictional sample:
+
+```powershell
+$parent = (New-Item -ItemType Directory -Path (Join-Path ([System.IO.Path]::GetTempPath()) ("framework-generation-" + [guid]::NewGuid().ToString("N")))).FullName
+python -B -m scripts.repository_generation plan TPL-BACKEND --template-version 0.1.0 --input framework/generation/examples/backend-project.json --output-parent "$parent" --name atlas-sample --summary
+# Examine the preview first. No files have been created.
+python -B -m scripts.repository_generation generate TPL-BACKEND --template-version 0.1.0 --input framework/generation/examples/backend-project.json --output-parent "$parent" --name atlas-sample --summary
+# Inspect README.md and CHANGELOG.md inside the new child.
+```
+
+The short report explains the supported text-only scope, eight selected required Components versus twenty unselected references, the specific conceptual VCL-HERO limitation, the intended or written destination, and the two SHA-256 hashes. It ends with a safe next step. **Plan is read-only; generate writes only to a fresh child**, exactly as before. If you need exact Component versions, metadata paths, detailed reference classifications or dependencies, omit `--summary` to display the original full report. Do not treat the concise report as full Template conformance or proof that fictional project facts are real.
+
 ## 4. Understand the report and inspect results
 
 Both operations perform the same input, canonical composition and rendering preflight. Plan creates no destination files. Generate repeats preflight and creates the new child exclusively; it does not consume a saved plan.
