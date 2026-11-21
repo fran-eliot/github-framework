@@ -92,5 +92,50 @@ class RenderingTests(unittest.TestCase):
                 self.assertNotIn("\r", original)
 
 
+    def test_canonical_list_spacing_is_compact_and_ordered(self):
+        for identity, field, heading in (
+            ("README-FEATURES", "features", "## ✨ Features"),
+            ("README-DOCUMENTATION", "documents", "## 📚 Documentation"),
+        ):
+            with self.subTest(identity=identity):
+                rendered = self.render(identity, **{field: ["First **bold**", "Second literal"]})
+                self.assertEqual(rendered,
+                                 f"{heading}\n\n- First **bold**\n- Second literal\n")
+                self.assertNotIn("\n\n\n", rendered)
+
+    def test_canonical_list_source_drift_is_rejected(self):
+        project = parse_project_input(json.dumps(fixture()))
+        for identity in ("README-FEATURES", "README-DOCUMENTATION"):
+            original = self.components[identity]
+            altered = replace(original, template=original.template.replace(
+                "\n\n- {{ this }}", "\n- {{ this }}"
+            ))
+            with self.subTest(identity=identity), self.assertRaisesRegex(
+                GenerationError, "unsupported list whitespace structure"
+            ):
+                render_component(altered, project)
+
+    def test_hero_removes_only_template_owned_blank_separators(self):
+        for description in ("", "A literal {{ variable }} & <tag>"):
+            with self.subTest(description=description):
+                hero = self.render("README-HERO", short_description=description)
+                self.assertNotIn("\n\n\n", hero)
+                self.assertIn('<h1 align="center">', hero)
+                if description:
+                    self.assertIn("A literal {{ variable }} &amp; &lt;tag&gt;", hero)
+                self.assertNotIn("<img", hero)
+
+    def test_author_multiline_markdown_and_literal_fragments_unchanged(self):
+        literal = "Author paragraph\n\n\nNext paragraph\n\n{{#each untouched}}\n:end"
+        output = self.render("README-FOOTER", footer=literal)
+        self.assertIn(literal, output)
+        overview = self.render("README-OVERVIEW", overview=(
+            "A deliberately long authored description with preserved spacing "
+            "and ordinary project details to satisfy the strict minimum length."
+            "\n\n\nA second paragraph."
+        ))
+        self.assertIn("\n\n\nA second paragraph.", overview)
+
+
 if __name__ == "__main__":
     unittest.main()
