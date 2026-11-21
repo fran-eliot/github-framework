@@ -79,5 +79,19 @@ class AssemblyTests(unittest.TestCase):
         self.assertEqual(changelog.content, b"# Changelog\n\n## [Unreleased]\n\n### Added\n\n- Initial documentation\n")
 
 
+    def test_compact_lists_and_preserved_author_whitespace_in_document(self):
+        readme, changelog = self.build(
+            features=["First feature", "Second feature"],
+            documents=["Guide.md", "API.md"],
+            footer="Closing text\n\n\nAuthor-intended paragraph",
+        )
+        output = readme.content.decode("utf-8")
+        self.assertIn("## ✨ Features\n\n- First feature\n- Second feature\n", output)
+        self.assertIn("## 📚 Documentation\n\n- Guide.md\n- API.md\n", output)
+        self.assertIn("Closing text\n\n\nAuthor-intended paragraph", output)
+        self.assertNotIn("\r", output)
+        self.assertEqual((readme.name, changelog.name), ("README.md", "CHANGELOG.md"))
+
+
 if __name__ == "__main__":
     unittest.main()
